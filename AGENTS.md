@@ -66,6 +66,7 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 - Put scoring and timer logic in testable units.
 - Add unit tests for score-once behaviour, timer expiry, round completion, and no-repeat question selection.
 - Add SwiftUI previews for user-facing views where practical.
+- Do not run iPhone/simulator test commands (for example, `xcodebuild test` with an iOS Simulator destination) unless the user explicitly asks in that turn.
 
 ## Delivery expectations
 - Keep the app compiling after each task.

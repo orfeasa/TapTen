@@ -1,0 +1,26 @@
+{
+  "id": "starter-pack-v1",
+  "title": "Starter Pack",
+  "languageCode": "en",
+  "questions": [
+    {
+      "id": "countries-starting-s",
+      "category": "Factual",
+      "prompt": "Name countries that start with the letter S",
+      "validationStyle": "factual",
+      "sourceURL": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
+      "answers": [
+        { "text": "Spain", "points": 1 },
+        { "text": "Sweden", "points": 1 },
+        { "text": "Switzerland", "points": 1 },
+        { "text": "Serbia", "points": 2 },
+        { "text": "Slovakia", "points": 2 },
+        { "text": "Slovenia", "points": 2 },
+        { "text": "Singapore", "points": 2 },
+        { "text": "South Africa", "points": 2 },
+        { "text": "Sudan", "points": 2 },
+        { "text": "San Marino", "points": 3 }
+      ]
+    }
+  ]
+}
