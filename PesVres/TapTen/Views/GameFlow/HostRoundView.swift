@@ -7,23 +7,36 @@ struct HostRoundView: View {
     var body: some View {
         GeometryReader { geometry in
             let containerHeight = geometry.size.height
-            let topSectionHeight = max(130, min(180, containerHeight * 0.23))
-            let bottomSectionHeight = viewModel.isRoundFinished ? 92.0 : 58.0
-            let verticalSpacing = 8.0
-            let answerAreaHeight = max(
-                360,
-                containerHeight - topSectionHeight - bottomSectionHeight - 42
-            )
+            let sectionSpacing = 6.0
+            let rowSpacing = 6.0
+            let outerPadding = 14.0
+            let buttonHeight = 58.0
+            let minimumRowHeight = 30.0
+            let minimumAnswersHeight = (minimumRowHeight * 10) + (rowSpacing * 9)
+            let approximateQuestionLines = max(1, min(4, Int(ceil(Double(viewModel.question.prompt.count) / 28.0))))
+            let questionHeaderHeight = max(56, min(116, 24 + (Double(approximateQuestionLines) * 22)))
+            let timerSectionHeight = max(76, min(100, containerHeight * 0.12))
+            let availableRowsHeight = containerHeight
+                - (outerPadding * 2)
+                - questionHeaderHeight
+                - timerSectionHeight
+                - buttonHeight
+                - (sectionSpacing * 3)
+            let fittedRowsHeight = max(minimumAnswersHeight, availableRowsHeight)
             let rowHeight = max(
-                36,
-                min(56, (answerAreaHeight - (9 * verticalSpacing)) / 10)
+                minimumRowHeight,
+                (fittedRowsHeight - (rowSpacing * 9)) / 10
             )
+            let answersHeight = (rowHeight * 10) + (rowSpacing * 9)
 
-            VStack(spacing: 10) {
-                topSection
-                    .frame(maxWidth: .infinity, minHeight: topSectionHeight, maxHeight: topSectionHeight)
+            VStack(spacing: sectionSpacing) {
+                questionHeader
+                    .frame(maxWidth: .infinity, minHeight: questionHeaderHeight, maxHeight: questionHeaderHeight, alignment: .topLeading)
 
-                VStack(spacing: verticalSpacing) {
+                timerSection
+                    .frame(maxWidth: .infinity, minHeight: timerSectionHeight, maxHeight: timerSectionHeight)
+
+                VStack(spacing: rowSpacing) {
                     ForEach(Array(viewModel.question.answers.enumerated()), id: \.offset) { index, answer in
                         HostAnswerRow(
                             title: answer.text,
@@ -36,11 +49,12 @@ struct HostRoundView: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: answerAreaHeight, alignment: .top)
+                .frame(height: answersHeight, alignment: .top)
 
-                footerSection
+                bottomActionButton
+                    .frame(maxWidth: .infinity, minHeight: buttonHeight, maxHeight: buttonHeight)
             }
-            .padding()
+            .padding(outerPadding)
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
         }
         .navigationTitle("Host Round")
@@ -54,28 +68,37 @@ struct HostRoundView: View {
         }
     }
 
-    private var topSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(viewModel.question.prompt)
-                .font(.headline.weight(.semibold))
-                .lineLimit(2)
-                .minimumScaleFactor(0.75)
-                .multilineTextAlignment(.leading)
+    private var questionHeader: some View {
+        Text(viewModel.question.prompt)
+            .font(.title2.weight(.semibold))
+            .lineLimit(4)
+            .minimumScaleFactor(0.55)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    }
 
+    private var timerSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
                 Label(viewModel.formattedCountdown, systemImage: "timer")
-                    .font(.title2.monospacedDigit().weight(.bold))
+                    .font(.system(size: 34, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(viewModel.isRoundFinished ? .red : .primary)
 
                 Spacer()
 
                 Text("\(viewModel.pointsAwarded) pts")
-                    .font(.headline)
+                    .font(.title3.weight(.semibold))
                     .foregroundStyle(.secondary)
             }
 
+            if viewModel.isPaused && !viewModel.isRoundFinished {
+                Text("Paused")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.orange)
+            }
+
             ProgressView(
-                value: Double(viewModel.remainingSeconds),
+                value: viewModel.remainingTime,
                 total: Double(viewModel.roundDurationSeconds)
             )
             .tint(timerProgressColor)
@@ -84,29 +107,37 @@ struct HostRoundView: View {
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
-    @ViewBuilder
-    private var footerSection: some View {
-        if viewModel.isRoundFinished {
-            Button("Continue to Summary") {
-                onRoundFinished?()
-            }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
-            .frame(maxWidth: .infinity, minHeight: 56)
-        } else {
-            Text("Timer running...")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, minHeight: 28)
+    private var bottomActionButton: some View {
+        Button(bottomButtonTitle) {
+            bottomButtonTapped()
         }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
+    }
+
+    private var bottomButtonTitle: String {
+        if viewModel.isRoundFinished {
+            return "Continue to Summary"
+        }
+
+        return viewModel.isPaused ? "Resume" : "Pause"
+    }
+
+    private func bottomButtonTapped() {
+        if viewModel.isRoundFinished {
+            onRoundFinished?()
+            return
+        }
+
+        viewModel.togglePause()
     }
 
     private var timerProgressColor: Color {
-        if viewModel.remainingSeconds <= 10 {
+        if viewModel.remainingTime <= 10 {
             return .red
         }
 
-        let remainingRatio = Double(viewModel.remainingSeconds) / Double(viewModel.roundDurationSeconds)
+        let remainingRatio = viewModel.remainingTime / Double(viewModel.roundDurationSeconds)
         if remainingRatio <= 0.33 {
             return .orange
         }

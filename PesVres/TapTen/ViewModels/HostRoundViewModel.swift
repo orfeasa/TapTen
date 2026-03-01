@@ -7,11 +7,14 @@ final class HostRoundViewModel {
     let roundDurationSeconds: Int
     private let countdownSoundPlayer: any CountdownSoundPlaying
 
-    private(set) var remainingSeconds: Int
+    private(set) var remainingTime: TimeInterval
     private(set) var isRoundFinished = false
+    private(set) var isPaused = false
     private(set) var revealedAnswerIndices: Set<Int> = []
 
     private var timer: Timer?
+    private var lastTickDate: Date?
+    private var lastAnnouncedSecond: Int?
 
     init(
         question: Question,
@@ -20,7 +23,7 @@ final class HostRoundViewModel {
     ) {
         self.question = question
         self.roundDurationSeconds = max(roundDurationSeconds, 1)
-        self.remainingSeconds = max(roundDurationSeconds, 1)
+        self.remainingTime = TimeInterval(max(roundDurationSeconds, 1))
         self.countdownSoundPlayer = countdownSoundPlayer
     }
 
@@ -29,9 +32,32 @@ final class HostRoundViewModel {
     }
 
     var formattedCountdown: String {
-        let minutes = remainingSeconds / 60
-        let seconds = remainingSeconds % 60
-        return String(format: "%02d:%02d", minutes, seconds)
+        let clampedTime = max(0, remainingTime)
+        if clampedTime == 0 {
+            return "0"
+        }
+
+        // Show decimals only during the final 10 seconds.
+        if clampedTime <= 10 {
+            let totalTenths = Int((clampedTime * 10).rounded(.up))
+            let seconds = totalTenths / 10
+            let tenths = totalTenths % 10
+            return "\(seconds).\(tenths)"
+        }
+
+        // For sub-minute times, avoid a "00:" prefix.
+        let roundedSeconds = Int(ceil(clampedTime))
+        if roundedSeconds < 60 {
+            return "\(roundedSeconds)"
+        }
+
+        let minutes = roundedSeconds / 60
+        let seconds = roundedSeconds % 60
+        return String(format: "%d:%02d", minutes, seconds)
+    }
+
+    var remainingSeconds: Int {
+        max(0, Int(ceil(remainingTime)))
     }
 
     var pointsAwarded: Int {
@@ -45,7 +71,10 @@ final class HostRoundViewModel {
             return
         }
 
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+        lastTickDate = Date()
+        lastAnnouncedSecond = Int(ceil(remainingTime))
+
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0 / 30.0, repeats: true) { [weak self] _ in
             self?.tick()
         }
         RunLoop.main.add(timer!, forMode: .common)
@@ -54,12 +83,23 @@ final class HostRoundViewModel {
     func stopTimer() {
         timer?.invalidate()
         timer = nil
+        lastTickDate = nil
     }
 
     func endRound() {
-        remainingSeconds = 0
+        remainingTime = 0
         isRoundFinished = true
+        isPaused = false
         stopTimer()
+    }
+
+    func togglePause() {
+        guard !isRoundFinished else {
+            return
+        }
+
+        isPaused.toggle()
+        lastTickDate = Date()
     }
 
     func toggleAnswer(at index: Int) {
@@ -80,16 +120,47 @@ final class HostRoundViewModel {
             return
         }
 
-        if remainingSeconds > 0 {
-            remainingSeconds -= 1
+        guard !isPaused else {
+            lastTickDate = Date()
+            return
         }
 
-        if (1...10).contains(remainingSeconds) {
-            countdownSoundPlayer.playFinalCountdownTick()
+        let now = Date()
+        guard let lastTickDate else {
+            self.lastTickDate = now
+            return
         }
 
-        if remainingSeconds == 0 {
+        let elapsed = now.timeIntervalSince(lastTickDate)
+        self.lastTickDate = now
+
+        remainingTime = max(0, remainingTime - elapsed)
+        playCountdownSoundIfNeeded()
+
+        if remainingTime <= 0 {
+            countdownSoundPlayer.playRoundEndedTone(volume: 1.0)
             endRound()
         }
+    }
+
+    private func playCountdownSoundIfNeeded() {
+        let currentSecond = max(0, Int(ceil(remainingTime)))
+        guard currentSecond != lastAnnouncedSecond else {
+            return
+        }
+
+        defer {
+            lastAnnouncedSecond = currentSecond
+        }
+
+        guard (1...10).contains(currentSecond) else {
+            return
+        }
+
+        // 10...5 uses the lower pitch, 4...1 uses the higher pitch.
+        let style: CountdownTickStyle = currentSecond >= 5 ? .beep : .click
+        let progress = Double(11 - currentSecond) / 10.0
+        let volume = Float(0.22 + (progress * 0.78))
+        countdownSoundPlayer.playFinalCountdownTick(style: style, volume: volume)
     }
 }
