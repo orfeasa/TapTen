@@ -45,12 +45,14 @@ struct NewGameView: View {
                     Button("Include All") {
                         viewModel.includeAllCategories()
                     }
+                    .buttonStyle(.borderless)
 
                     Spacer()
 
                     Button("Exclude All") {
                         viewModel.excludeAllCategories()
                     }
+                    .buttonStyle(.borderless)
                 }
                 .font(.subheadline)
             } header: {
