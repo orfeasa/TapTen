@@ -15,6 +15,7 @@ final class GameFlowViewModel {
         let roundNumber: Int
         let prompt: String
         let sourceURL: URL
+        let sassyComment: String
         let answeringTeamName: String
         let pointsAwarded: Int
         let revealedAnswers: Int
@@ -33,7 +34,6 @@ final class GameFlowViewModel {
     private(set) var latestRoundSummary: RoundSummary?
     private(set) var teamAScore = 0
     private(set) var teamBScore = 0
-    private(set) var passDeviceSassyComment: String?
 
     init(
         settings: GameSettings,
@@ -151,7 +151,6 @@ final class GameFlowViewModel {
 
         hasCommittedActiveRound = false
         latestRoundSummary = nil
-        passDeviceSassyComment = nil
 
         hostRoundViewModel = HostRoundViewModel(
             question: currentRound.question,
@@ -190,6 +189,10 @@ final class GameFlowViewModel {
             roundNumber: currentRound.roundNumber,
             prompt: currentRound.question.prompt,
             sourceURL: currentRound.question.sourceURL,
+            sassyComment: makeRoundSassyComment(
+                revealedAnswers: revealedAnswers,
+                totalAnswers: totalAnswers
+            ),
             answeringTeamName: answeringTeamName,
             pointsAwarded: pointsAwarded,
             revealedAnswers: revealedAnswers,
@@ -219,17 +222,8 @@ final class GameFlowViewModel {
         hostRoundViewModel = nil
 
         if engine.isGameOver {
-            passDeviceSassyComment = nil
             phase = .finalResults
         } else {
-            if let latestRoundSummary {
-                passDeviceSassyComment = makeRoundSassyComment(
-                    revealedAnswers: latestRoundSummary.revealedAnswers,
-                    totalAnswers: latestRoundSummary.totalAnswers
-                )
-            } else {
-                passDeviceSassyComment = nil
-            }
             phase = .passDevice
         }
     }
@@ -246,7 +240,6 @@ final class GameFlowViewModel {
         )
 
         phase = .passDevice
-        passDeviceSassyComment = nil
     }
 
     private func setError(_ message: String) {

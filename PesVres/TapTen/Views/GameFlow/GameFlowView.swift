@@ -11,7 +11,6 @@ struct GameFlowView: View {
                     roundProgressText: viewModel.roundProgressText,
                     answeringTeamName: viewModel.answeringTeamName,
                     hostingTeamName: viewModel.hostingTeamName,
-                    sassyComment: viewModel.passDeviceSassyComment,
                     startAction: viewModel.startRound
                 )
 
@@ -54,6 +53,7 @@ struct GameFlowView: View {
                 flowErrorView(message: message)
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 
     @ViewBuilder
@@ -72,7 +72,6 @@ private struct PassDeviceView: View {
     let roundProgressText: String
     let answeringTeamName: String
     let hostingTeamName: String
-    let sassyComment: String?
     let startAction: () -> Void
 
     var body: some View {
@@ -94,21 +93,6 @@ private struct PassDeviceView: View {
                     .foregroundStyle(.secondary)
             }
             .padding(.horizontal)
-
-            if let sassyComment {
-                VStack(spacing: 8) {
-                    Text("LAST ROUND VERDICT")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(.secondary)
-                    Text(sassyComment)
-                        .font(.body.weight(.medium))
-                        .multilineTextAlignment(.center)
-                }
-                .frame(maxWidth: .infinity)
-                .padding(14)
-                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .padding(.horizontal)
-            }
 
             Spacer(minLength: 0)
 
@@ -173,6 +157,15 @@ private struct RoundSummaryView: View {
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+
+                VStack(spacing: 0) {
+                    Text(summary.sassyComment)
+                        .font(.body.weight(.medium))
+                        .multilineTextAlignment(.center)
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(.background, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
 
                 VStack(alignment: .leading, spacing: 10) {
                     scoreRow(name: teamAName, score: teamAScore)
@@ -332,6 +325,7 @@ private extension GameFlowView {
                 roundNumber: 2,
                 prompt: "Name countries that start with the letter S",
                 sourceURL: URL(string: "https://example.com/q2")!,
+                sassyComment: "Solid showing. Mildly smug behavior is now permitted.",
                 answeringTeamName: "Lions",
                 pointsAwarded: 8,
                 revealedAnswers: 5,

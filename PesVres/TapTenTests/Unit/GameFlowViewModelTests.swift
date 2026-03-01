@@ -4,33 +4,30 @@ import Testing
 
 struct GameFlowViewModelTests {
     @Test
-    func passDeviceSassyCommentUsesLowTierAfterNonFinalRoundWithFewAnswers() {
+    func roundSummarySassyCommentUsesLowTierWhenFewAnswersAreRevealed() {
         let viewModel = GameFlowViewModel(
-            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 2, roundDurationSeconds: 60),
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
             enabledCategoryNames: ["Factual"],
-            questionPacks: [makePack(questionCount: 2)],
+            questionPacks: [makePack(questionCount: 1)],
             randomIndexProvider: { _ in 0 },
             randomSassyCommentProvider: { comments in
                 comments.first ?? ""
             }
         )
 
-        #expect(viewModel.passDeviceSassyComment == nil)
-
         viewModel.startRound()
         viewModel.finalizeActiveRoundIfNeeded()
-        viewModel.continueAfterRoundSummary()
 
-        #expect(viewModel.phase == .passDevice)
-        #expect(viewModel.passDeviceSassyComment == "That round was mostly vibes and very few answers.")
+        #expect(viewModel.phase == .roundSummary)
+        #expect(viewModel.latestRoundSummary?.sassyComment == "That round was mostly vibes and very few answers.")
     }
 
     @Test
-    func passDeviceSassyCommentUsesTopTierWhenMostAnswersAreRevealed() throws {
+    func roundSummarySassyCommentUsesTopTierWhenMostAnswersAreRevealed() throws {
         let viewModel = GameFlowViewModel(
-            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 2, roundDurationSeconds: 60),
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
             enabledCategoryNames: ["Factual"],
-            questionPacks: [makePack(questionCount: 2)],
+            questionPacks: [makePack(questionCount: 1)],
             randomIndexProvider: { _ in 0 },
             randomSassyCommentProvider: { comments in
                 comments.first ?? ""
@@ -44,17 +41,9 @@ struct GameFlowViewModelTests {
         }
 
         viewModel.finalizeActiveRoundIfNeeded()
-        viewModel.continueAfterRoundSummary()
 
-        #expect(viewModel.phase == .passDevice)
-        #expect(viewModel.passDeviceSassyComment == "Absolute demolition. Please leave some points for society.")
-
-        viewModel.startRound()
-        viewModel.finalizeActiveRoundIfNeeded()
-        viewModel.continueAfterRoundSummary()
-
-        #expect(viewModel.phase == .finalResults)
-        #expect(viewModel.passDeviceSassyComment == nil)
+        #expect(viewModel.phase == .roundSummary)
+        #expect(viewModel.latestRoundSummary?.sassyComment == "Absolute demolition. Please leave some points for society.")
     }
 }
 
