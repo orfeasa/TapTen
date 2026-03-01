@@ -6,7 +6,6 @@ final class NewGameViewModel {
     var settings: GameSettings
     var categories: [GameCategory]
     var includedCategoryIDs: Set<GameCategory.ID>
-    var showStartConfirmation = false
 
     init(
         settings: GameSettings = GameSettings(),
@@ -20,6 +19,14 @@ final class NewGameViewModel {
 
     var includedCategoryCount: Int {
         includedCategoryIDs.count
+    }
+
+    var includedCategoryNames: Set<String> {
+        Set(
+            categories
+                .filter { includedCategoryIDs.contains($0.id) }
+                .map(\.name)
+        )
     }
 
     var trimmedTeamAName: String {
@@ -80,13 +87,14 @@ final class NewGameViewModel {
         includedCategoryIDs.removeAll()
     }
 
-    func startGame() {
+    @discardableResult
+    func startGame() -> Bool {
         guard canStartGame else {
-            return
+            return false
         }
 
         settings.teamAName = trimmedTeamAName
         settings.teamBName = trimmedTeamBName
-        showStartConfirmation = true
+        return true
     }
 }

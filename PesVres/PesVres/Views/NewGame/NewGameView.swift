@@ -2,6 +2,7 @@ import SwiftUI
 
 struct NewGameView: View {
     @State var viewModel: NewGameViewModel
+    @State private var gameStartRequest: GameStartRequest?
 
     var body: some View {
         Form {
@@ -60,7 +61,12 @@ struct NewGameView: View {
 
             Section {
                 Button("Start Game") {
-                    viewModel.startGame()
+                    if viewModel.startGame() {
+                        gameStartRequest = GameStartRequest(
+                            settings: viewModel.settings,
+                            enabledCategoryNames: viewModel.includedCategoryNames
+                        )
+                    }
                 }
                 .buttonStyle(.borderedProminent)
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -76,10 +82,13 @@ struct NewGameView: View {
             }
         }
         .navigationTitle("New Game")
-        .alert("Game Setup Ready", isPresented: $viewModel.showStartConfirmation) {
-            Button("OK", role: .cancel) { }
-        } message: {
-            Text("Round screens are not part of this milestone yet.")
+        .navigationDestination(item: $gameStartRequest) { request in
+            GameFlowView(
+                viewModel: GameFlowViewModel(
+                    settings: request.settings,
+                    enabledCategoryNames: request.enabledCategoryNames
+                )
+            )
         }
     }
 }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HostRoundView: View {
     @State var viewModel: HostRoundViewModel
+    var onRoundFinished: (() -> Void)? = nil
 
     var body: some View {
         ScrollView {
@@ -51,6 +52,11 @@ struct HostRoundView: View {
         }
         .onDisappear {
             viewModel.stopTimer()
+        }
+        .onChange(of: viewModel.isRoundFinished) { _, isFinished in
+            if isFinished {
+                onRoundFinished?()
+            }
         }
     }
 }
