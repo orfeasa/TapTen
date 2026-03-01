@@ -2,5 +2,5 @@ import Foundation
 
 @Observable
 final class HomeViewModel {
-    let title = "PesVres"
+    let title = "Tap Ten"
 }

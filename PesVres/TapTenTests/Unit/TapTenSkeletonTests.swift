@@ -1,7 +1,7 @@
 import Testing
-@testable import PesVres
+@testable import TapTen
 
-struct PesVresSkeletonTests {
+struct TapTenSkeletonTests {
     @Test
     func defaultGameSettingsAreValid() {
         let settings = GameSettings()

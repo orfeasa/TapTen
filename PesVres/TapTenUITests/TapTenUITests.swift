@@ -1,13 +1,13 @@
 //
-//  PesVresUITests.swift
-//  PesVresUITests
+//  TapTenUITests.swift
+//  TapTenUITests
 //
 //  Created by Orfeas Antoniou on 01/03/2026.
 //
 
 import XCTest
 
-final class PesVresUITests: XCTestCase {
+final class TapTenUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

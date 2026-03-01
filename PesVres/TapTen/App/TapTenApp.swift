@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct PesVresApp: App {
+struct TapTenApp: App {
     var body: some Scene {
         WindowGroup {
             AppRootView()

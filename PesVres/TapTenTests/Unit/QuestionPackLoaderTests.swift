@@ -1,6 +1,6 @@
 import Foundation
 import Testing
-@testable import PesVres
+@testable import TapTen
 
 struct QuestionPackLoaderTests {
     @Test

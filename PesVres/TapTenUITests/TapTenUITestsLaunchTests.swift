@@ -1,13 +1,13 @@
 //
-//  PesVresUITestsLaunchTests.swift
-//  PesVresUITests
+//  TapTenUITestsLaunchTests.swift
+//  TapTenUITests
 //
 //  Created by Orfeas Antoniou on 01/03/2026.
 //
 
 import XCTest
 
-final class PesVresUITestsLaunchTests: XCTestCase {
+final class TapTenUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
