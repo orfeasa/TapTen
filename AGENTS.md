@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Project context
-This repository is for an iPhone-first SwiftUI game inspired by the party game mechanic described in `PROJECT_BRIEF.md`.
+This repository is for an iPhone-first SwiftUI game ("Tap Ten", formerly "PesVres") inspired by the party game mechanic described in `PROJECT_BRIEF.md`.
 Read `PROJECT_BRIEF.md` before making product or UX decisions.
 
 ## Working style
@@ -20,7 +20,9 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 - Organise code into Models, Views, ViewModels, Services, Resources, and Tests.
 - Keep gameplay state separate from question-pack content.
 - Use bundled local JSON for question packs in v1.
+- Include multiple bundled starter packs so a fresh launch can always start a game.
 - Avoid adding network dependencies in v1.
+- Do not add remote question-pack fetching in v1.
 
 ## UX expectations
 - The app should feel elegant, native, and Apple-clean.
@@ -42,7 +44,8 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 - The host sees all 10 answers immediately.
 - The answering team never sees the phone during the round.
 - Scores are shown after the round, not during it.
-- Source links are shown after a round, not during gameplay.
+- Source links are available after a round ends (host round and summary), not during active countdown play.
+- End-of-game screen includes winner celebration and a sassy comment based on game performance.
 
 ## Game rules
 - Team A answers first while someone from Team B acts as host and holds the phone.
@@ -51,9 +54,13 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 - Default round duration is 60 seconds and should be configurable.
 - Default number of rounds is 5.
 - Each answer is worth 1 to 5 points based on guess difficulty.
-- Tapping an answer reveals it and awards points exactly once.
-- The host should be able to undo the last reveal.
-- The round ends immediately when the timer reaches zero.
+- Tapping an answer toggles reveal/unreveal; points are awarded only while revealed.
+- No separate "undo last reveal" control; toggling the same answer removes it.
+- Timer runs continuously (not coarse second ticks).
+- Display timer as whole seconds except in the final 10 seconds, where tenths are shown.
+- Do not show `00:` prefix for sub-minute timer values.
+- The round timer stopping at zero does not auto-advance to the next screen; host explicitly continues.
+- Host round includes a fixed bottom action button: `Pause`/`Resume` while active, `Continue to Summary` when finished.
 
 ## Content model expectations
 - Question packs are curated editorial content.
@@ -65,8 +72,10 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 ## Testing expectations
 - Put scoring and timer logic in testable units.
 - Add unit tests for score-once behaviour, timer expiry, round completion, and no-repeat question selection.
+- Add unit tests for end-game sassy comment tier selection.
 - Add SwiftUI previews for user-facing views where practical.
 - Do not run iPhone/simulator test commands (for example, `xcodebuild test` with an iOS Simulator destination) unless the user explicitly asks in that turn.
+- Do not launch iPhone simulator windows unless the user explicitly asks in that turn.
 
 ## Delivery expectations
 - Keep the app compiling after each task.
