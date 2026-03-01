@@ -65,6 +65,7 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 ## Content model expectations
 - Question packs are curated editorial content.
 - Questions may be factual, editorial, or humorous.
+- Each question must include a difficulty of `easy`, `medium`, or `hard`.
 - Each question has exactly one source link.
 - Keep content fields flexible enough for future pack growth.
 - Add validation when loading JSON.
