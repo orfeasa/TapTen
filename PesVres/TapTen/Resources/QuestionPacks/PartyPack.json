@@ -7,6 +7,7 @@
       "id": "things-that-make-parties-awkward",
       "category": "Humorous",
       "prompt": "Things that make a party awkward",
+      "difficulty": "medium",
       "validationStyle": "humorous",
       "sourceURL": "https://www.buzzfeed.com/",
       "answers": [
@@ -26,6 +27,7 @@
       "id": "karaoke-songs",
       "category": "Pop Culture",
       "prompt": "Songs people sing at karaoke",
+      "difficulty": "medium",
       "validationStyle": "editorial",
       "sourceURL": "https://www.billboard.com/charts/",
       "answers": [
@@ -45,6 +47,7 @@
       "id": "midnight-snacks",
       "category": "Food",
       "prompt": "Popular midnight snacks",
+      "difficulty": "easy",
       "validationStyle": "editorial",
       "sourceURL": "https://www.foodnetwork.com/",
       "answers": [

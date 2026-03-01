@@ -287,6 +287,7 @@ private extension GameFlowView {
                         id: "q1",
                         category: "Factual",
                         prompt: "Name countries that start with the letter S",
+                        difficulty: .medium,
                         validationStyle: .factual,
                         sourceURL: URL(string: "https://example.com/q1")!,
                         answers: sampleAnswers
@@ -295,6 +296,7 @@ private extension GameFlowView {
                         id: "q2",
                         category: "Factual",
                         prompt: "Name common pizza toppings",
+                        difficulty: .easy,
                         validationStyle: .editorial,
                         sourceURL: URL(string: "https://example.com/q2")!,
                         answers: sampleAnswers

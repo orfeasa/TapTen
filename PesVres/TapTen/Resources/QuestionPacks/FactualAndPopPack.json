@@ -7,6 +7,7 @@
       "id": "countries-starting-b",
       "category": "Factual",
       "prompt": "Countries that start with the letter B",
+      "difficulty": "medium",
       "validationStyle": "factual",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
       "answers": [
@@ -26,6 +27,7 @@
       "id": "largest-us-cities",
       "category": "Factual",
       "prompt": "Top 10 most populated U.S. cities",
+      "difficulty": "medium",
       "validationStyle": "factual",
       "sourceURL": "https://www.census.gov/newsroom/press-releases/2021/2020-census-counts.html",
       "answers": [
@@ -45,6 +47,7 @@
       "id": "highest-grossing-film-franchises",
       "category": "Pop Culture",
       "prompt": "Highest-grossing film franchises",
+      "difficulty": "hard",
       "validationStyle": "editorial",
       "sourceURL": "https://www.the-numbers.com/movies/franchises",
       "answers": [

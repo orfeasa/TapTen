@@ -14,6 +14,7 @@ struct QuestionPackLoaderTests {
         #expect(packs.count == 1)
         #expect(packs[0].id == "starter-pack-v1")
         #expect(packs[0].questions.count == 1)
+        #expect(packs[0].questions[0].difficulty == .medium)
         #expect(packs[0].questions[0].answers.count == 10)
     }
 
@@ -72,9 +73,31 @@ struct QuestionPackLoaderTests {
             }
         }
     }
+
+    @Test
+    func unknownDifficultyThrowsCleanError() throws {
+        let loader = QuestionPackLoader()
+        let invalidData = try makeValidPackData(difficulty: "legendary")
+
+        do {
+            _ = try loader.loadPack(from: invalidData, fileName: "InvalidDifficulty.json")
+            Issue.record("Expected malformed JSON error.")
+        } catch let error as QuestionPackLoaderError {
+            switch error {
+            case .malformedJSON(let fileName, _):
+                #expect(fileName == "InvalidDifficulty.json")
+            default:
+                Issue.record("Expected .malformedJSON, got \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
-private func makeValidPackData(answerCount: Int = 10, pointsForFirstAnswer: Int = 1) throws -> Data {
+private func makeValidPackData(
+    answerCount: Int = 10,
+    pointsForFirstAnswer: Int = 1,
+    difficulty: String = "medium"
+) throws -> Data {
     var answers: [[String: Any]] = []
     for index in 0..<answerCount {
         let points = index == 0 ? pointsForFirstAnswer : 1
@@ -93,6 +116,7 @@ private func makeValidPackData(answerCount: Int = 10, pointsForFirstAnswer: Int 
                 "id": "question-1",
                 "category": "Factual",
                 "prompt": "Sample prompt",
+                "difficulty": difficulty,
                 "validationStyle": "factual",
                 "sourceURL": "https://example.com/source",
                 "answers": answers

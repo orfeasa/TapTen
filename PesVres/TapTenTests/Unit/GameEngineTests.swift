@@ -168,6 +168,7 @@ private func makeQuestion(id: String, category: String) -> Question {
         id: id,
         category: category,
         prompt: "Prompt \(id)",
+        difficulty: .medium,
         validationStyle: .factual,
         sourceURL: URL(string: "https://example.com/\(id)")!,
         answers: makeAnswers()

@@ -163,6 +163,7 @@ private struct QuestionDTO: Decodable {
     let id: String
     let category: String
     let prompt: String
+    let difficulty: QuestionDifficulty
     let validationStyle: ValidationStyle
     let sourceURL: String
     let answers: [AnswerOptionDTO]
@@ -206,6 +207,7 @@ private struct QuestionDTO: Decodable {
             id: id.trimmed,
             category: category.trimmed,
             prompt: prompt.trimmed,
+            difficulty: difficulty,
             validationStyle: validationStyle,
             sourceURL: parsedURL,
             answers: validatedAnswers

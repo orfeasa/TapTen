@@ -44,6 +44,7 @@ Question packs live in `PesVres/TapTen/Resources/QuestionPacks/` and are bundled
 Each question must include:
 
 - exactly 10 answers
+- a difficulty value: `easy`, `medium`, or `hard`
 - points from 1 to 5 per answer
 - one `sourceURL`
 - `validationStyle` (`factual`, `editorial`, or `humorous`)

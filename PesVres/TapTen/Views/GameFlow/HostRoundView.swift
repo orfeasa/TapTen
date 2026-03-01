@@ -217,6 +217,7 @@ private extension HostRoundView {
             id: "countries-starting-s",
             category: "Factual",
             prompt: "Name countries that start with the letter S",
+            difficulty: .medium,
             validationStyle: .factual,
             sourceURL: URL(string: "https://en.wikipedia.org/wiki/List_of_sovereign_states")!,
             answers: [

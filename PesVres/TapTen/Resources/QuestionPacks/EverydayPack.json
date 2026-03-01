@@ -7,6 +7,7 @@
       "id": "things-people-forget-to-pack",
       "category": "Editorial",
       "prompt": "Things people forget to pack for vacation",
+      "difficulty": "easy",
       "validationStyle": "editorial",
       "sourceURL": "https://www.travelandleisure.com/travel-tips/packing-tips",
       "answers": [
@@ -26,6 +27,7 @@
       "id": "popular-pizza-toppings",
       "category": "Food",
       "prompt": "Popular pizza toppings",
+      "difficulty": "easy",
       "validationStyle": "editorial",
       "sourceURL": "https://www.statista.com/statistics/299280/top-10-us-favorite-pizza-toppings/",
       "answers": [
@@ -45,6 +47,7 @@
       "id": "late-to-work-excuses",
       "category": "Humorous",
       "prompt": "Excuses people use for being late to work",
+      "difficulty": "medium",
       "validationStyle": "humorous",
       "sourceURL": "https://www.careerbuilder.com/advice/excuses-for-being-late",
       "answers": [
