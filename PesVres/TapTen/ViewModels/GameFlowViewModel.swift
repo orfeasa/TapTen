@@ -23,23 +23,31 @@ final class GameFlowViewModel {
 
     private let settings: GameSettings
     private let enabledCategoryNames: Set<String>
+    private let randomSassyCommentProvider: ([String]) -> String
 
     private var engine: GameEngine?
     private var hasCommittedActiveRound = false
+    private var totalRevealedAnswers = 0
+    private var totalAnswerSlots = 0
 
     private(set) var phase: Phase = .error("Unable to start game.")
     private(set) var hostRoundViewModel: HostRoundViewModel?
     private(set) var latestRoundSummary: RoundSummary?
     private(set) var teamAScore = 0
     private(set) var teamBScore = 0
+    private(set) var finalSassyComment: String?
 
     init(
         settings: GameSettings,
         enabledCategoryNames: Set<String>,
-        questionPackLoader: QuestionPackLoader = QuestionPackLoader()
+        questionPackLoader: QuestionPackLoader = QuestionPackLoader(),
+        randomSassyCommentProvider: @escaping ([String]) -> String = { comments in
+            comments.randomElement() ?? "Confetti machine malfunctioned. You still get a clap."
+        }
     ) {
         self.settings = settings
         self.enabledCategoryNames = enabledCategoryNames
+        self.randomSassyCommentProvider = randomSassyCommentProvider
 
         do {
             let packs = try questionPackLoader.loadAllPacks()
@@ -53,10 +61,14 @@ final class GameFlowViewModel {
         settings: GameSettings,
         enabledCategoryNames: Set<String>,
         questionPacks: [QuestionPack],
-        randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) }
+        randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) },
+        randomSassyCommentProvider: @escaping ([String]) -> String = { comments in
+            comments.randomElement() ?? "Confetti machine malfunctioned. You still get a clap."
+        }
     ) {
         self.settings = settings
         self.enabledCategoryNames = enabledCategoryNames
+        self.randomSassyCommentProvider = randomSassyCommentProvider
 
         do {
             try configureEngine(
@@ -166,6 +178,12 @@ final class GameFlowViewModel {
         hasCommittedActiveRound = true
 
         let pointsAwarded = hostRoundViewModel.pointsAwarded
+        let revealedAnswers = hostRoundViewModel.revealedAnswerIndices.count
+        let totalAnswers = currentRound.question.answers.count
+
+        totalRevealedAnswers += revealedAnswers
+        totalAnswerSlots += totalAnswers
+
         if currentRound.answeringTeam == .teamA {
             teamAScore += pointsAwarded
         } else {
@@ -178,8 +196,8 @@ final class GameFlowViewModel {
             sourceURL: currentRound.question.sourceURL,
             answeringTeamName: answeringTeamName,
             pointsAwarded: pointsAwarded,
-            revealedAnswers: hostRoundViewModel.revealedAnswerIndices.count,
-            totalAnswers: currentRound.question.answers.count
+            revealedAnswers: revealedAnswers,
+            totalAnswers: totalAnswers
         )
         phase = .roundSummary
     }
@@ -205,6 +223,7 @@ final class GameFlowViewModel {
         hostRoundViewModel = nil
 
         if engine.isGameOver {
+            finalSassyComment = makeFinalSassyComment()
             phase = .finalResults
         } else {
             phase = .passDevice
@@ -227,5 +246,47 @@ final class GameFlowViewModel {
 
     private func setError(_ message: String) {
         phase = .error(message)
+    }
+
+    private func makeFinalSassyComment() -> String {
+        let totalAnswers = max(totalAnswerSlots, 1)
+        let revealedRatio = Double(totalRevealedAnswers) / Double(totalAnswers)
+        let comments = comments(for: revealedRatio)
+        return randomSassyCommentProvider(comments)
+    }
+
+    private func comments(for revealedRatio: Double) -> [String] {
+        switch revealedRatio {
+        case ..<0.2:
+            return [
+                "That round was mostly vibes and very few answers.",
+                "If guessing was cardio, you'd still be at warm-up pace.",
+                "Bold strategy: reveal almost nothing and call it mystery."
+            ]
+        case ..<0.45:
+            return [
+                "Not a disaster, but definitely a character-building performance.",
+                "You found a few answers and left the rest for archaeology.",
+                "Half-cooked effort, served with confidence."
+            ]
+        case ..<0.7:
+            return [
+                "Solid showing. Mildly smug behavior is now permitted.",
+                "You did well enough to brag, but keep it tasteful.",
+                "Respectable work. Nobody needs to pretend this was luck."
+            ]
+        case ..<0.9:
+            return [
+                "Now that was sharp. The other team may request therapy.",
+                "Excellent run. You made this look suspiciously rehearsed.",
+                "Strong performance. Someone clearly came prepared to win."
+            ]
+        default:
+            return [
+                "Absolute demolition. Please leave some points for society.",
+                "Nearly perfect. Somewhere a trivia host just got nervous.",
+                "That was ruthless. Sportsmanship survives, barely."
+            ]
+        }
     }
 }

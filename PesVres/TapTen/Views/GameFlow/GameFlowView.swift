@@ -46,7 +46,8 @@ struct GameFlowView: View {
                     teamAName: viewModel.teamAName,
                     teamAScore: viewModel.teamAScore,
                     teamBName: viewModel.teamBName,
-                    teamBScore: viewModel.teamBScore
+                    teamBScore: viewModel.teamBScore,
+                    sassyComment: viewModel.finalSassyComment ?? "Confetti machine malfunctioned. You still get a clap."
                 )
 
             case .error(let message):
@@ -196,6 +197,7 @@ private struct FinalResultsView: View {
     let teamAScore: Int
     let teamBName: String
     let teamBScore: Int
+    let sassyComment: String
 
     @State private var celebrate = false
 
@@ -221,6 +223,19 @@ private struct FinalResultsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
             .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .padding(.horizontal)
+
+            VStack(spacing: 8) {
+                Text("SASSY VERDICT")
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(.secondary)
+                Text(sassyComment)
+                    .font(.body.weight(.medium))
+                    .multilineTextAlignment(.center)
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(.background.opacity(0.88), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
             .padding(.horizontal)
 
             Spacer(minLength: 0)
@@ -338,7 +353,8 @@ private extension GameFlowView {
             teamAName: "Lions",
             teamAScore: 41,
             teamBName: "Tigers",
-            teamBScore: 35
+            teamBScore: 35,
+            sassyComment: "Excellent run. You made this look suspiciously rehearsed."
         )
     }
 }
