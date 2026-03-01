@@ -1,0 +1,64 @@
+{
+  "id": "party-pack-v1",
+  "title": "Party Pack",
+  "languageCode": "en",
+  "questions": [
+    {
+      "id": "things-that-make-parties-awkward",
+      "category": "Humorous",
+      "prompt": "Things that make a party awkward",
+      "validationStyle": "humorous",
+      "sourceURL": "https://www.buzzfeed.com/",
+      "answers": [
+        { "text": "Long silence", "points": 1 },
+        { "text": "No music", "points": 1 },
+        { "text": "Spilled drink", "points": 1 },
+        { "text": "Ex shows up", "points": 2 },
+        { "text": "Bad karaoke", "points": 2 },
+        { "text": "Food runs out", "points": 2 },
+        { "text": "Political argument", "points": 3 },
+        { "text": "Mic feedback squeal", "points": 3 },
+        { "text": "Wrong name introduction", "points": 4 },
+        { "text": "Fire alarm goes off", "points": 5 }
+      ]
+    },
+    {
+      "id": "karaoke-songs",
+      "category": "Pop Culture",
+      "prompt": "Songs people sing at karaoke",
+      "validationStyle": "editorial",
+      "sourceURL": "https://www.billboard.com/charts/",
+      "answers": [
+        { "text": "Bohemian Rhapsody", "points": 1 },
+        { "text": "Sweet Caroline", "points": 1 },
+        { "text": "I Will Survive", "points": 1 },
+        { "text": "Livin on a Prayer", "points": 2 },
+        { "text": "Dont Stop Believin", "points": 2 },
+        { "text": "Wonderwall", "points": 2 },
+        { "text": "Mr Brightside", "points": 3 },
+        { "text": "Dancing Queen", "points": 3 },
+        { "text": "Lose Yourself", "points": 4 },
+        { "text": "Tequila", "points": 5 }
+      ]
+    },
+    {
+      "id": "midnight-snacks",
+      "category": "Food",
+      "prompt": "Popular midnight snacks",
+      "validationStyle": "editorial",
+      "sourceURL": "https://www.foodnetwork.com/",
+      "answers": [
+        { "text": "Chips", "points": 1 },
+        { "text": "Cookies", "points": 1 },
+        { "text": "Ice cream", "points": 1 },
+        { "text": "Popcorn", "points": 1 },
+        { "text": "Instant noodles", "points": 2 },
+        { "text": "Peanut butter toast", "points": 2 },
+        { "text": "Cereal", "points": 2 },
+        { "text": "Leftover pizza", "points": 2 },
+        { "text": "Cheese and crackers", "points": 3 },
+        { "text": "Pickles straight from the jar", "points": 5 }
+      ]
+    }
+  ]
+}

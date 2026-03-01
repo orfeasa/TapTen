@@ -1,0 +1,64 @@
+{
+  "id": "factual-pop-pack-v1",
+  "title": "Factual & Pop Pack",
+  "languageCode": "en",
+  "questions": [
+    {
+      "id": "countries-starting-b",
+      "category": "Factual",
+      "prompt": "Countries that start with the letter B",
+      "validationStyle": "factual",
+      "sourceURL": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
+      "answers": [
+        { "text": "Bahamas", "points": 1 },
+        { "text": "Bahrain", "points": 1 },
+        { "text": "Bangladesh", "points": 1 },
+        { "text": "Barbados", "points": 2 },
+        { "text": "Belarus", "points": 2 },
+        { "text": "Belgium", "points": 1 },
+        { "text": "Belize", "points": 2 },
+        { "text": "Benin", "points": 3 },
+        { "text": "Bhutan", "points": 3 },
+        { "text": "Bolivia", "points": 2 }
+      ]
+    },
+    {
+      "id": "largest-us-cities",
+      "category": "Factual",
+      "prompt": "Top 10 most populated U.S. cities",
+      "validationStyle": "factual",
+      "sourceURL": "https://www.census.gov/newsroom/press-releases/2021/2020-census-counts.html",
+      "answers": [
+        { "text": "New York City", "points": 1 },
+        { "text": "Los Angeles", "points": 1 },
+        { "text": "Chicago", "points": 1 },
+        { "text": "Houston", "points": 1 },
+        { "text": "Phoenix", "points": 2 },
+        { "text": "Philadelphia", "points": 2 },
+        { "text": "San Antonio", "points": 2 },
+        { "text": "San Diego", "points": 2 },
+        { "text": "Dallas", "points": 2 },
+        { "text": "San Jose", "points": 3 }
+      ]
+    },
+    {
+      "id": "highest-grossing-film-franchises",
+      "category": "Pop Culture",
+      "prompt": "Highest-grossing film franchises",
+      "validationStyle": "editorial",
+      "sourceURL": "https://www.the-numbers.com/movies/franchises",
+      "answers": [
+        { "text": "Marvel Cinematic Universe", "points": 1 },
+        { "text": "Star Wars", "points": 1 },
+        { "text": "Spider-Man", "points": 2 },
+        { "text": "Wizarding World", "points": 2 },
+        { "text": "James Bond", "points": 2 },
+        { "text": "Fast and Furious", "points": 2 },
+        { "text": "Batman", "points": 3 },
+        { "text": "Jurassic Park", "points": 3 },
+        { "text": "X-Men", "points": 3 },
+        { "text": "Mission Impossible", "points": 4 }
+      ]
+    }
+  ]
+}

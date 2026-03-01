@@ -98,6 +98,13 @@ struct QuestionPackLoader {
             }
         }
 
+        if let rootJSONURLs = bundle.urls(forResourcesWithExtension: "json", subdirectory: nil) {
+            let filtered = rootJSONURLs.filter { !$0.lastPathComponent.hasSuffix("Contents.json") }
+            if !filtered.isEmpty {
+                return filtered
+            }
+        }
+
         throw QuestionPackLoaderError.noPackFilesFound
     }
 
@@ -106,6 +113,10 @@ struct QuestionPackLoader {
             if let url = bundle.url(forResource: resourceName, withExtension: "json", subdirectory: subdirectory) {
                 return url
             }
+        }
+
+        if let rootURL = bundle.url(forResource: resourceName, withExtension: "json", subdirectory: nil) {
+            return rootURL
         }
 
         return nil
