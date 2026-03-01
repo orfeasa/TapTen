@@ -4,31 +4,33 @@ import Testing
 
 struct GameFlowViewModelTests {
     @Test
-    func finalSassyCommentUsesLowTierWhenAlmostNoAnswersAreRevealed() {
+    func passDeviceSassyCommentUsesLowTierAfterNonFinalRoundWithFewAnswers() {
         let viewModel = GameFlowViewModel(
-            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 2, roundDurationSeconds: 60),
             enabledCategoryNames: ["Factual"],
-            questionPacks: [makePack()],
+            questionPacks: [makePack(questionCount: 2)],
             randomIndexProvider: { _ in 0 },
             randomSassyCommentProvider: { comments in
                 comments.first ?? ""
             }
         )
 
+        #expect(viewModel.passDeviceSassyComment == nil)
+
         viewModel.startRound()
         viewModel.finalizeActiveRoundIfNeeded()
         viewModel.continueAfterRoundSummary()
 
-        #expect(viewModel.phase == .finalResults)
-        #expect(viewModel.finalSassyComment == "That round was mostly vibes and very few answers.")
+        #expect(viewModel.phase == .passDevice)
+        #expect(viewModel.passDeviceSassyComment == "That round was mostly vibes and very few answers.")
     }
 
     @Test
-    func finalSassyCommentUsesTopTierWhenMostAnswersAreRevealed() throws {
+    func passDeviceSassyCommentUsesTopTierWhenMostAnswersAreRevealed() throws {
         let viewModel = GameFlowViewModel(
-            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 2, roundDurationSeconds: 60),
             enabledCategoryNames: ["Factual"],
-            questionPacks: [makePack()],
+            questionPacks: [makePack(questionCount: 2)],
             randomIndexProvider: { _ in 0 },
             randomSassyCommentProvider: { comments in
                 comments.first ?? ""
@@ -44,36 +46,50 @@ struct GameFlowViewModelTests {
         viewModel.finalizeActiveRoundIfNeeded()
         viewModel.continueAfterRoundSummary()
 
+        #expect(viewModel.phase == .passDevice)
+        #expect(viewModel.passDeviceSassyComment == "Absolute demolition. Please leave some points for society.")
+
+        viewModel.startRound()
+        viewModel.finalizeActiveRoundIfNeeded()
+        viewModel.continueAfterRoundSummary()
+
         #expect(viewModel.phase == .finalResults)
-        #expect(viewModel.finalSassyComment == "Absolute demolition. Please leave some points for society.")
+        #expect(viewModel.passDeviceSassyComment == nil)
     }
 }
 
-private func makePack() -> QuestionPack {
-    QuestionPack(
+private func makePack(questionCount: Int) -> QuestionPack {
+    let questionTotal = max(questionCount, 1)
+    let questions = (1...questionTotal).map { index in
+        makeQuestion(id: "q\(index)")
+    }
+
+    return QuestionPack(
         id: "pack",
         title: "Pack",
         languageCode: "en",
-        questions: [
-            Question(
-                id: "q1",
-                category: "Factual",
-                prompt: "Sample prompt",
-                validationStyle: .factual,
-                sourceURL: URL(string: "https://example.com/source")!,
-                answers: [
-                    AnswerOption(text: "A1", points: 1),
-                    AnswerOption(text: "A2", points: 1),
-                    AnswerOption(text: "A3", points: 1),
-                    AnswerOption(text: "A4", points: 1),
-                    AnswerOption(text: "A5", points: 1),
-                    AnswerOption(text: "A6", points: 1),
-                    AnswerOption(text: "A7", points: 1),
-                    AnswerOption(text: "A8", points: 1),
-                    AnswerOption(text: "A9", points: 1),
-                    AnswerOption(text: "A10", points: 1)
-                ]
-            )
+        questions: questions
+    )
+}
+
+private func makeQuestion(id: String) -> Question {
+    Question(
+        id: id,
+        category: "Factual",
+        prompt: "Sample prompt \(id)",
+        validationStyle: .factual,
+        sourceURL: URL(string: "https://example.com/source/\(id)")!,
+        answers: [
+            AnswerOption(text: "A1", points: 1),
+            AnswerOption(text: "A2", points: 1),
+            AnswerOption(text: "A3", points: 1),
+            AnswerOption(text: "A4", points: 1),
+            AnswerOption(text: "A5", points: 1),
+            AnswerOption(text: "A6", points: 1),
+            AnswerOption(text: "A7", points: 1),
+            AnswerOption(text: "A8", points: 1),
+            AnswerOption(text: "A9", points: 1),
+            AnswerOption(text: "A10", points: 1)
         ]
     )
 }

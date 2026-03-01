@@ -27,15 +27,13 @@ final class GameFlowViewModel {
 
     private var engine: GameEngine?
     private var hasCommittedActiveRound = false
-    private var totalRevealedAnswers = 0
-    private var totalAnswerSlots = 0
 
     private(set) var phase: Phase = .error("Unable to start game.")
     private(set) var hostRoundViewModel: HostRoundViewModel?
     private(set) var latestRoundSummary: RoundSummary?
     private(set) var teamAScore = 0
     private(set) var teamBScore = 0
-    private(set) var finalSassyComment: String?
+    private(set) var passDeviceSassyComment: String?
 
     init(
         settings: GameSettings,
@@ -153,6 +151,7 @@ final class GameFlowViewModel {
 
         hasCommittedActiveRound = false
         latestRoundSummary = nil
+        passDeviceSassyComment = nil
 
         hostRoundViewModel = HostRoundViewModel(
             question: currentRound.question,
@@ -180,9 +179,6 @@ final class GameFlowViewModel {
         let pointsAwarded = hostRoundViewModel.pointsAwarded
         let revealedAnswers = hostRoundViewModel.revealedAnswerIndices.count
         let totalAnswers = currentRound.question.answers.count
-
-        totalRevealedAnswers += revealedAnswers
-        totalAnswerSlots += totalAnswers
 
         if currentRound.answeringTeam == .teamA {
             teamAScore += pointsAwarded
@@ -223,9 +219,17 @@ final class GameFlowViewModel {
         hostRoundViewModel = nil
 
         if engine.isGameOver {
-            finalSassyComment = makeFinalSassyComment()
+            passDeviceSassyComment = nil
             phase = .finalResults
         } else {
+            if let latestRoundSummary {
+                passDeviceSassyComment = makeRoundSassyComment(
+                    revealedAnswers: latestRoundSummary.revealedAnswers,
+                    totalAnswers: latestRoundSummary.totalAnswers
+                )
+            } else {
+                passDeviceSassyComment = nil
+            }
             phase = .passDevice
         }
     }
@@ -242,15 +246,16 @@ final class GameFlowViewModel {
         )
 
         phase = .passDevice
+        passDeviceSassyComment = nil
     }
 
     private func setError(_ message: String) {
         phase = .error(message)
     }
 
-    private func makeFinalSassyComment() -> String {
-        let totalAnswers = max(totalAnswerSlots, 1)
-        let revealedRatio = Double(totalRevealedAnswers) / Double(totalAnswers)
+    private func makeRoundSassyComment(revealedAnswers: Int, totalAnswers: Int) -> String {
+        let clampedTotalAnswers = max(totalAnswers, 1)
+        let revealedRatio = Double(revealedAnswers) / Double(clampedTotalAnswers)
         let comments = comments(for: revealedRatio)
         return randomSassyCommentProvider(comments)
     }
