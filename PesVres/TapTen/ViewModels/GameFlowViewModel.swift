@@ -14,6 +14,7 @@ final class GameFlowViewModel {
     struct RoundSummary: Equatable {
         let roundNumber: Int
         let prompt: String
+        let sourceURL: URL
         let answeringTeamName: String
         let pointsAwarded: Int
         let revealedAnswers: Int
@@ -174,6 +175,7 @@ final class GameFlowViewModel {
         latestRoundSummary = RoundSummary(
             roundNumber: currentRound.roundNumber,
             prompt: currentRound.question.prompt,
+            sourceURL: currentRound.question.sourceURL,
             answeringTeamName: answeringTeamName,
             pointsAwarded: pointsAwarded,
             revealedAnswers: hostRoundViewModel.revealedAnswerIndices.count,

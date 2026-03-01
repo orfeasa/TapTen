@@ -123,6 +123,24 @@ private struct RoundSummaryView: View {
                 Text("Round \(summary.roundNumber) Complete")
                     .font(.title2.weight(.bold))
 
+                HStack(alignment: .top, spacing: 10) {
+                    Text(summary.prompt)
+                        .font(.headline)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    Link(destination: summary.sourceURL) {
+                        Image(systemName: "safari")
+                            .font(.title3.weight(.semibold))
+                            .foregroundStyle(.blue)
+                            .frame(width: 36, height: 36)
+                            .background(.background, in: Circle())
+                    }
+                    .accessibilityLabel("Open question source")
+                }
+                .padding()
+                .background(.background, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+
                 VStack(spacing: 8) {
                     Text(summary.answeringTeamName)
                         .font(.headline)
@@ -296,6 +314,7 @@ private extension GameFlowView {
             summary: GameFlowViewModel.RoundSummary(
                 roundNumber: 2,
                 prompt: "Name countries that start with the letter S",
+                sourceURL: URL(string: "https://example.com/q2")!,
                 answeringTeamName: "Lions",
                 pointsAwarded: 8,
                 revealedAnswers: 5,

@@ -69,12 +69,26 @@ struct HostRoundView: View {
     }
 
     private var questionHeader: some View {
-        Text(viewModel.question.prompt)
-            .font(.title2.weight(.semibold))
-            .lineLimit(4)
-            .minimumScaleFactor(0.55)
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        HStack(alignment: .top, spacing: 10) {
+            Text(viewModel.question.prompt)
+                .font(.title2.weight(.semibold))
+                .lineLimit(4)
+                .minimumScaleFactor(0.55)
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+
+            if viewModel.isRoundFinished {
+                Link(destination: viewModel.question.sourceURL) {
+                    Image(systemName: "safari")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(.blue)
+                        .frame(width: 34, height: 34)
+                        .background(.background, in: Circle())
+                }
+                .accessibilityLabel("Open question source")
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
 
     private var timerSection: some View {
