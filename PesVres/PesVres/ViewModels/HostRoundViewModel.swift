@@ -5,6 +5,7 @@ import Observation
 final class HostRoundViewModel {
     let question: Question
     let roundDurationSeconds: Int
+    private let countdownSoundPlayer: any CountdownSoundPlaying
 
     private(set) var remainingSeconds: Int
     private(set) var isRoundFinished = false
@@ -12,10 +13,15 @@ final class HostRoundViewModel {
 
     private var timer: Timer?
 
-    init(question: Question, roundDurationSeconds: Int = 60) {
+    init(
+        question: Question,
+        roundDurationSeconds: Int = 60,
+        countdownSoundPlayer: any CountdownSoundPlaying = CountdownSoundService()
+    ) {
         self.question = question
         self.roundDurationSeconds = max(roundDurationSeconds, 1)
         self.remainingSeconds = max(roundDurationSeconds, 1)
+        self.countdownSoundPlayer = countdownSoundPlayer
     }
 
     deinit {
@@ -57,7 +63,7 @@ final class HostRoundViewModel {
     }
 
     func toggleAnswer(at index: Int) {
-        guard !isRoundFinished, question.answers.indices.contains(index) else {
+        guard question.answers.indices.contains(index) else {
             return
         }
 
@@ -76,6 +82,10 @@ final class HostRoundViewModel {
 
         if remainingSeconds > 0 {
             remainingSeconds -= 1
+        }
+
+        if (1...10).contains(remainingSeconds) {
+            countdownSoundPlayer.playFinalCountdownTick()
         }
 
         if remainingSeconds == 0 {
