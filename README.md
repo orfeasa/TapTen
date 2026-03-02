@@ -7,7 +7,7 @@ Two teams play on one device. One team answers out loud while the other team hos
 ## Current MVP Behavior
 
 - Single-device game with exactly two teams.
-- Configurable round count and round duration.
+- Configurable rounds per team and round duration.
 - Random question selection from enabled categories.
 - No repeated questions in a single game session.
 - Bundled local JSON question packs only (no network fetching).
@@ -31,6 +31,8 @@ Two teams play on one device. One team answers out loud while the other team hos
 - Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Home`).
 - Shared theme tokens for warm background/card, celebration gold, and reveal green.
 - Minimal v1 Settings screen (`sounds`, `haptics`, default rounds, default timer) plus safe in-game end confirmation.
+  - Settings is available from Home via the toolbar gear button.
+  - `End Game` is available during in-progress game flow and always requires explicit confirmation.
 - Optional editorial metadata fields in local packs for quality control (`contentType`, `quality`, `difficultyNotes`, `editorialNotes`, `packVersion`).
 
 ## Project Layout

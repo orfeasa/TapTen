@@ -9,7 +9,11 @@ struct HomeView: View {
                 header
 
                 NavigationLink {
-                    NewGameView(viewModel: NewGameViewModel())
+                    NewGameView(
+                        viewModel: NewGameViewModel(
+                            settings: AppSettingsStore.shared.defaultGameSettings
+                        )
+                    )
                 } label: {
                     Label("Start New Game", systemImage: "play.fill")
                         .font(.headline)
@@ -25,6 +29,15 @@ struct HomeView: View {
         }
         .navigationTitle(viewModel.title)
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink {
+                    SettingsView(settingsStore: AppSettingsStore.shared)
+                } label: {
+                    Label("Settings", systemImage: "gearshape")
+                }
+            }
+        }
         .background(
             LinearGradient(
                 colors: [
@@ -48,11 +61,11 @@ struct HomeView: View {
 private extension HomeView {
     var header: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Fast mouths. Faster taps.")
+            Text("Good guesses. Fast taps.")
                 .font(.title2.weight(.bold))
                 .foregroundStyle(.primary)
 
-            Text("One phone, two teams, one loud room. The host listens, taps, and keeps the clock honest.")
+            Text("One phone, two teams, and one host under pressure. Listen sharp, tap fast, keep the round moving.")
                 .font(.body)
                 .foregroundStyle(.secondary)
         }

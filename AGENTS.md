@@ -37,7 +37,7 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 ## Product constraints
 - Single-device only in v1.
 - Two teams only in v1.
-- Fixed number of rounds.
+- Fixed number of rounds per team.
 - No steal mechanic.
 - Random question selection from included categories.
 - No repeated questions in a single game session.
@@ -52,7 +52,7 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 - Team B then answers while someone from Team A hosts.
 - One question per round.
 - Default round duration is 60 seconds and should be configurable.
-- Default number of rounds is 5.
+- Default number of rounds is 5 per team.
 - Each answer is worth 1 to 5 points based on guess difficulty.
 - While timer is active, tapping an answer reveals it (no active-time unreveal on second tap).
 - Include an `Undo Last` control during active play to safely remove the most recent reveal.
@@ -62,6 +62,7 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 - Do not show `00:` prefix for sub-minute timer values.
 - The round timer stopping at zero does not auto-advance to the next screen; host explicitly continues.
 - Host round includes clear active-round controls (`Undo Last` and `Pause`/`Resume`) and a distinct post-timeup `Continue to Summary` action.
+- The game ends only after both teams complete the configured rounds per team.
 
 ## Content model expectations
 - Question packs are curated editorial content.

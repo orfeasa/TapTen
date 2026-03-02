@@ -284,33 +284,33 @@ final class GameFlowViewModel {
         switch revealedRatio {
         case ..<0.2:
             return [
-                "Big energy, light scoring.",
-                "Plenty of confidence, not many hits.",
-                "You kept the drama high and the points low."
+                "Bold noise, light damage.",
+                "Big swing. Tiny scoreboard.",
+                "More chaos than points."
             ]
         case ..<0.45:
             return [
-                "Decent sparks, not quite fireworks.",
-                "You got momentum, then misplaced it.",
-                "Solid effort, chaotic finish."
+                "Solid try. Not quite ruthless.",
+                "Good pace, patchy finish.",
+                "Some hits, some hopeful shouting."
             ]
         case ..<0.7:
             return [
-                "Strong round. Brag responsibly.",
-                "Clean work under pressure.",
-                "You looked very ready for this."
+                "Strong round. Clean work.",
+                "Composed and quick.",
+                "Nice control under pressure."
             ]
         case ..<0.9:
             return [
-                "Sharp round. The other team felt that.",
-                "Confident, quick, and slightly ruthless.",
-                "That was smooth from start to finish."
+                "That was sharp.",
+                "Clinical round.",
+                "You made that look easy."
             ]
         default:
             return [
-                "Clinical performance. Borderline unfair.",
-                "You cleared that round like pros.",
-                "Absolute heater. Save some points for next game."
+                "Absolute clinic.",
+                "Elite round. No notes.",
+                "That was borderline unfair."
             ]
         }
     }

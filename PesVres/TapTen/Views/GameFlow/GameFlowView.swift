@@ -3,6 +3,7 @@ import SwiftUI
 struct GameFlowView: View {
     @Bindable var viewModel: GameFlowViewModel
     @Environment(\.dismiss) private var dismiss
+    @State private var isShowingEndGameConfirmation = false
 
     var body: some View {
         Group {
@@ -19,7 +20,8 @@ struct GameFlowView: View {
                 if let hostRoundViewModel = viewModel.hostRoundViewModel {
                     HostRoundView(
                         viewModel: hostRoundViewModel,
-                        onRoundFinished: viewModel.finalizeActiveRoundIfNeeded
+                        onRoundFinished: viewModel.finalizeActiveRoundIfNeeded,
+                        onEndGameRequested: { isShowingEndGameConfirmation = true }
                     )
                 } else {
                     flowErrorView(message: "Missing host round data.")
@@ -57,6 +59,27 @@ struct GameFlowView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .toolbar {
+            if canShowEndGameButton {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("End Game", role: .destructive) {
+                        isShowingEndGameConfirmation = true
+                    }
+                }
+            }
+        }
+        .confirmationDialog(
+            "End this game?",
+            isPresented: $isShowingEndGameConfirmation,
+            titleVisibility: .visible
+        ) {
+            Button("End Game", role: .destructive) {
+                dismiss()
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("This will end the current game and return Home.")
+        }
     }
 
     @ViewBuilder
@@ -68,6 +91,15 @@ struct GameFlowView: View {
         }
         .navigationTitle("Game")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private var canShowEndGameButton: Bool {
+        switch viewModel.phase {
+        case .passDevice, .hostRound, .roundSummary:
+            return true
+        case .finalResults, .error:
+            return false
+        }
     }
 }
 
@@ -83,27 +115,26 @@ private struct PassDeviceView: View {
         VStack(alignment: .leading, spacing: 18) {
             roundBadge
 
-            ritualCard
-                .opacity(showContent ? 1 : 0)
-                .offset(y: showContent ? 0 : 10)
+            Spacer(minLength: 8)
 
-            Spacer(minLength: 0)
+            VStack(alignment: .leading, spacing: 14) {
+                ritualCard
+                    .opacity(showContent ? 1 : 0)
+                    .offset(y: showContent ? 0 : 10)
+
+                Button("Start Round", action: startAction)
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .frame(maxWidth: .infinity, minHeight: 56)
+            }
+
+            Spacer(minLength: 12)
         }
         .padding(.horizontal, 20)
         .padding(.top, 20)
         .navigationTitle("Pass Device")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.tapTenWarmBackground)
-        .safeAreaInset(edge: .bottom) {
-            Button("Start Round", action: startAction)
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .frame(maxWidth: .infinity, minHeight: 56)
-                .padding(.horizontal, 20)
-                .padding(.top, 8)
-                .padding(.bottom, 12)
-                .background(.thinMaterial)
-        }
         .onAppear {
             withAnimation(.easeOut(duration: 0.3)) {
                 showContent = true
@@ -151,7 +182,7 @@ private struct PassDeviceView: View {
                 .font(.title3.weight(.semibold))
                 .foregroundStyle(.primary)
 
-            Text("No peeking. Eyes up, guesses out loud.")
+            Text("No peeking. Keep it honest.")
                 .font(.body)
                 .foregroundStyle(.secondary)
         }
@@ -183,10 +214,11 @@ private struct RoundSummaryView: View {
     let continueTitle: String
     let continueAction: () -> Void
     @State private var animateHero = false
+    @State private var showVerdict = false
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(spacing: 18) {
                 Text("Round \(summary.roundNumber) Wrapped")
                     .font(.title2.weight(.bold))
 
@@ -208,25 +240,25 @@ private struct RoundSummaryView: View {
                 .padding()
                 .background(Color.tapTenWarmCard, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
 
-                VStack(spacing: 10) {
+                VStack(spacing: 8) {
                     Text(summary.answeringTeamName)
-                        .font(.headline)
+                        .font(.headline.weight(.semibold))
                         .foregroundStyle(.primary)
 
                     Text("+\(summary.pointsAwarded) points")
-                        .font(.system(size: 50, weight: .black, design: .rounded))
+                        .font(.system(size: 56, weight: .black, design: .rounded))
                         .contentTransition(.numericText())
 
-                    Text("You found \(summary.revealedAnswers) of \(summary.totalAnswers) answers")
-                        .font(.subheadline)
+                    Text("\(summary.revealedAnswers) of \(summary.totalAnswers) answers found.")
+                        .font(.footnote.weight(.medium))
                         .foregroundStyle(.secondary)
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 20)
-                .padding(.horizontal, 16)
+                .padding(.vertical, 24)
+                .padding(.horizontal, 18)
                 .background(
                     LinearGradient(
-                        colors: [Color.orange.opacity(0.22), Color.tapTenCelebrationGold.opacity(0.16)],
+                        colors: [Color.orange.opacity(0.24), Color.tapTenCelebrationGold.opacity(0.2)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),
@@ -234,24 +266,38 @@ private struct RoundSummaryView: View {
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .stroke(Color.orange.opacity(0.25), lineWidth: 1)
+                        .stroke(Color.tapTenCelebrationGold.opacity(0.35), lineWidth: 1)
                 )
+                .shadow(color: Color.orange.opacity(0.12), radius: 14, y: 6)
                 .scaleEffect(animateHero ? 1 : 0.97)
                 .opacity(animateHero ? 1 : 0.88)
 
                 HStack(spacing: 8) {
-                    Image(systemName: "theatermasks.fill")
+                    Image(systemName: "sparkles")
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(Color.tapTenCelebrationGold)
 
                     Text(summary.sassyComment)
                         .font(.subheadline.weight(.semibold))
                         .multilineTextAlignment(.leading)
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 10)
-                .background(.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .padding(.horizontal, 14)
+                .padding(.vertical, 11)
+                .background(
+                    LinearGradient(
+                        colors: [Color.tapTenCelebrationGold.opacity(0.16), Color.orange.opacity(0.1)],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    ),
+                    in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(Color.tapTenCelebrationGold.opacity(0.24), lineWidth: 1)
+                )
+                .opacity(showVerdict ? 1 : 0)
+                .offset(y: showVerdict ? 0 : 6)
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Match Score")
@@ -275,8 +321,11 @@ private struct RoundSummaryView: View {
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.tapTenWarmBackground)
         .onAppear {
-            withAnimation(.spring(response: 0.32, dampingFraction: 0.78)) {
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.8)) {
                 animateHero = true
+            }
+            withAnimation(.easeOut(duration: 0.24).delay(0.08)) {
+                showVerdict = true
             }
         }
     }
@@ -308,14 +357,14 @@ private struct FinalResultsView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
-                VStack(spacing: 10) {
+            VStack(spacing: 14) {
+                VStack(spacing: 12) {
                     Image(systemName: winnerName == nil ? "person.3.fill" : "trophy.fill")
-                        .font(.system(size: 58, weight: .bold))
+                        .font(.system(size: 62, weight: .bold))
                         .foregroundStyle(Color.tapTenCelebrationGold)
-                        .scaleEffect(celebrate ? 1.08 : 1.0)
+                        .scaleEffect(celebrate ? 1.05 : 1.0)
                         .animation(
-                            .spring(response: 0.52, dampingFraction: 0.62).repeatForever(autoreverses: true),
+                            .spring(response: 0.6, dampingFraction: 0.72).repeatForever(autoreverses: true),
                             value: celebrate
                         )
 
@@ -327,13 +376,22 @@ private struct FinalResultsView: View {
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
+
+                    if let winningMargin {
+                        Text("Won by \(winningMargin) point\(winningMargin == 1 ? "" : "s")")
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(.regularMaterial, in: Capsule())
+                    }
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 22)
+                .padding(.vertical, 24)
                 .padding(.horizontal, 18)
                 .background(
                     LinearGradient(
-                        colors: [Color.tapTenCelebrationGold.opacity(0.22), Color.orange.opacity(0.12)],
+                        colors: [Color.tapTenCelebrationGold.opacity(0.28), Color.orange.opacity(0.14)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),
@@ -341,8 +399,9 @@ private struct FinalResultsView: View {
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 22, style: .continuous)
-                        .stroke(Color.tapTenCelebrationGold.opacity(0.4), lineWidth: 1)
+                        .stroke(Color.tapTenCelebrationGold.opacity(0.45), lineWidth: 1)
                 )
+                .shadow(color: Color.tapTenCelebrationGold.opacity(0.15), radius: 14, y: 7)
                 .scaleEffect(showHero ? 1 : 0.97)
                 .opacity(showHero ? 1 : 0.86)
 
@@ -355,7 +414,18 @@ private struct FinalResultsView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(16)
-                .background(Color.tapTenWarmCard, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .background(
+                    LinearGradient(
+                        colors: [Color.tapTenWarmCard, Color.tapTenWarmCard.opacity(0.86)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    ),
+                    in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .stroke(Color.tapTenCelebrationGold.opacity(0.15), lineWidth: 1)
+                )
 
                 VStack(spacing: 10) {
                     Button("Play Again", action: playAgainAction)
@@ -368,10 +438,10 @@ private struct FinalResultsView: View {
                         .controlSize(.large)
                         .frame(maxWidth: .infinity, minHeight: 52)
                 }
-                .padding(.top, 4)
+                .padding(.top, 2)
             }
             .padding(.horizontal, 16)
-            .padding(.top, 16)
+            .padding(.top, 14)
             .padding(.bottom, 24)
         }
         .navigationTitle("Final Results")
@@ -407,6 +477,16 @@ private struct FinalResultsView: View {
 
             Spacer()
 
+            Text(isWinner ? "Winner" : "Runner-up")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(isWinner ? .primary : .secondary)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(
+                    isWinner ? Color.tapTenCelebrationGold.opacity(0.28) : Color.secondary.opacity(0.12),
+                    in: Capsule()
+                )
+
             Text("\(score)")
                 .font(.title2.weight(.black))
                 .foregroundStyle(isWinner ? .primary : .secondary)
@@ -423,10 +503,18 @@ private struct FinalResultsView: View {
 
     private var winnerSubtitle: String {
         if winnerName == nil {
-            return "Photo finish. Nobody gets to be humble."
+            return "Perfect stalemate. Nobody blinks."
         }
 
-        return "Cue the victory lap."
+        return "Take a bow. That was tidy."
+    }
+
+    private var winningMargin: Int? {
+        guard winnerName != nil else {
+            return nil
+        }
+
+        return abs(teamAScore - teamBScore)
     }
 }
 
@@ -495,7 +583,7 @@ private extension GameFlowView {
                 roundNumber: 2,
                 prompt: "Name countries that start with the letter S",
                 sourceURL: URL(string: "https://example.com/q2")!,
-                sassyComment: "Strong round. Brag responsibly.",
+                sassyComment: "Strong round. Clean work.",
                 answeringTeamName: "Lions",
                 pointsAwarded: 8,
                 revealedAnswers: 5,

@@ -4,8 +4,10 @@ import UIKit
 struct HostRoundView: View {
     @Bindable var viewModel: HostRoundViewModel
     var onRoundFinished: (() -> Void)? = nil
+    var onEndGameRequested: (() -> Void)? = nil
     @State private var pointsReactionText: String?
     @State private var isShowingPointsReaction = false
+    @State private var isTimerPulsing = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -92,12 +94,26 @@ struct HostRoundView: View {
                 }
             }
         }
+        .onChange(of: viewModel.remainingTenths) { _, newValue in
+            guard (1...100).contains(newValue), newValue.isMultiple(of: 10), !viewModel.isRoundFinished else {
+                return
+            }
+
+            withAnimation(.easeInOut(duration: 0.12)) {
+                isTimerPulsing = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.14) {
+                withAnimation(.easeOut(duration: 0.16)) {
+                    isTimerPulsing = false
+                }
+            }
+        }
     }
 
     private var questionHeader: some View {
         HStack(alignment: .top, spacing: 12) {
             Text(viewModel.question.prompt)
-                .font(.title2.weight(.bold))
+                .font(.title.weight(.bold))
                 .lineLimit(4)
                 .minimumScaleFactor(0.55)
                 .multilineTextAlignment(.leading)
@@ -112,6 +128,17 @@ struct HostRoundView: View {
                         .background(.background, in: Circle())
                 }
                 .accessibilityLabel("Open question source")
+            } else if let onEndGameRequested {
+                Button(role: .destructive) {
+                    onEndGameRequested()
+                } label: {
+                    Image(systemName: "xmark.circle")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .frame(width: 34, height: 34)
+                        .background(.background, in: Circle())
+                }
+                .accessibilityLabel("End game")
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -122,8 +149,9 @@ struct HostRoundView: View {
         return VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
                 Label(countdownText, systemImage: "timer")
-                    .font(.system(size: 34, weight: .bold, design: .rounded).monospacedDigit())
-                    .foregroundStyle(viewModel.isRoundFinished ? .red : .primary)
+                    .font(.system(size: 32, weight: .bold, design: .rounded).monospacedDigit())
+                    .foregroundStyle(timerTextColor)
+                    .scaleEffect(isTimerPulsing ? 1.03 : 1.0)
 
                 Spacer()
 
@@ -218,6 +246,18 @@ struct HostRoundView: View {
         }
 
         return .tapTenRevealGreen
+    }
+
+    private var timerTextColor: Color {
+        if viewModel.isRoundFinished || viewModel.remainingTime <= 10 {
+            return .red
+        }
+
+        if viewModel.remainingTime <= 20 {
+            return .orange
+        }
+
+        return .primary
     }
 
     private func performRevealHaptic(for points: Int) {

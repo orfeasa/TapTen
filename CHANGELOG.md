@@ -38,6 +38,7 @@
 - Round timer countdown stability issues in the final seconds.
 - Removed countdown rendering artifacts that looked like value flicker/regression.
 - Preserved post-timeup host ability to tick/untick answers before continuing.
+- Clarified and aligned round-count behavior to be rounds per team (not total shared rounds).
 
 ### Docs
 - Updated `README.md` to reflect current gameplay/UI behavior and data model.
