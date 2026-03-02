@@ -54,13 +54,14 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 - Default round duration is 60 seconds and should be configurable.
 - Default number of rounds is 5.
 - Each answer is worth 1 to 5 points based on guess difficulty.
-- Tapping an answer toggles reveal/unreveal; points are awarded only while revealed.
-- No separate "undo last reveal" control; toggling the same answer removes it.
+- While timer is active, tapping an answer reveals it (no active-time unreveal on second tap).
+- Include an `Undo Last` control during active play to safely remove the most recent reveal.
+- After timer ends, the host can still toggle answers for post-timeup review before continuing.
 - Timer runs continuously (not coarse second ticks).
 - Display timer as whole seconds except in the final 10 seconds, where tenths are shown.
 - Do not show `00:` prefix for sub-minute timer values.
 - The round timer stopping at zero does not auto-advance to the next screen; host explicitly continues.
-- Host round includes a fixed bottom action button: `Pause`/`Resume` while active, `Continue to Summary` when finished.
+- Host round includes clear active-round controls (`Undo Last` and `Pause`/`Resume`) and a distinct post-timeup `Continue to Summary` action.
 
 ## Content model expectations
 - Question packs are curated editorial content.

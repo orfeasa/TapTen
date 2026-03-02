@@ -8,23 +8,28 @@ final class HostRoundViewModel {
     private let countdownSoundPlayer: any CountdownSoundPlaying
 
     private(set) var remainingTime: TimeInterval
+    private(set) var remainingTenths: Int
     private(set) var isRoundFinished = false
     private(set) var isPaused = false
     private(set) var revealedAnswerIndices: Set<Int> = []
+    private(set) var latestRevealPoints: Int?
+    private(set) var revealEventToken = 0
 
-    private var timer: Timer?
-    private var lastTickDate: Date?
+    private var timer: DispatchSourceTimer?
     private var lastAnnouncedSecond: Int?
+    private var revealHistory: [Int] = []
 
     init(
         question: Question,
         roundDurationSeconds: Int = 60,
         countdownSoundPlayer: any CountdownSoundPlaying = CountdownSoundService()
     ) {
+        let initialTenths = max(roundDurationSeconds, 1) * 10
         self.question = question
         self.roundDurationSeconds = max(roundDurationSeconds, 1)
-        self.remainingTime = TimeInterval(max(roundDurationSeconds, 1))
         self.countdownSoundPlayer = countdownSoundPlayer
+        self.remainingTenths = initialTenths
+        self.remainingTime = TimeInterval(initialTenths) / 10
     }
 
     deinit {
@@ -32,32 +37,35 @@ final class HostRoundViewModel {
     }
 
     var formattedCountdown: String {
-        let clampedTime = max(0, remainingTime)
-        if clampedTime == 0 {
+        if isRoundFinished {
             return "0"
         }
 
-        // Show decimals only during the final 10 seconds.
-        if clampedTime <= 10 {
-            let totalTenths = Int((clampedTime * 10).rounded(.up))
-            let seconds = totalTenths / 10
-            let tenths = totalTenths % 10
+        let clampedTenths = max(0, remainingTenths)
+        if clampedTenths == 0 {
+            return "0"
+        }
+
+        // Enter decimal mode one tick early so we never flash a plain integer
+        // at the boundary before final-ten countdown feel.
+        if clampedTenths <= 110 {
+            let seconds = clampedTenths / 10
+            let tenths = clampedTenths % 10
             return "\(seconds).\(tenths)"
         }
 
-        // For sub-minute times, avoid a "00:" prefix.
-        let roundedSeconds = Int(ceil(clampedTime))
-        if roundedSeconds < 60 {
-            return "\(roundedSeconds)"
+        let wholeSeconds = (clampedTenths + 9) / 10
+        if wholeSeconds < 60 {
+            return "\(wholeSeconds)"
         }
 
-        let minutes = roundedSeconds / 60
-        let seconds = roundedSeconds % 60
+        let minutes = wholeSeconds / 60
+        let seconds = wholeSeconds % 60
         return String(format: "%d:%02d", minutes, seconds)
     }
 
     var remainingSeconds: Int {
-        max(0, Int(ceil(remainingTime)))
+        max(0, (remainingTenths + 9) / 10)
     }
 
     var pointsAwarded: Int {
@@ -66,27 +74,37 @@ final class HostRoundViewModel {
         }
     }
 
+    var canUndoLastReveal: Bool {
+        !isRoundFinished && !revealHistory.isEmpty
+    }
+
     func startRoundIfNeeded() {
         guard timer == nil, !isRoundFinished else {
             return
         }
 
-        lastTickDate = Date()
-        lastAnnouncedSecond = Int(ceil(remainingTime))
+        lastAnnouncedSecond = remainingSeconds
 
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0 / 30.0, repeats: true) { [weak self] _ in
+        let source = DispatchSource.makeTimerSource(queue: .main)
+        source.schedule(
+            deadline: .now() + .milliseconds(100),
+            repeating: .milliseconds(100),
+            leeway: .milliseconds(20)
+        )
+        source.setEventHandler { [weak self] in
             self?.tick()
         }
-        RunLoop.main.add(timer!, forMode: .common)
+        timer = source
+        source.resume()
     }
 
     func stopTimer() {
-        timer?.invalidate()
+        timer?.cancel()
         timer = nil
-        lastTickDate = nil
     }
 
     func endRound() {
+        remainingTenths = 0
         remainingTime = 0
         isRoundFinished = true
         isPaused = false
@@ -99,19 +117,46 @@ final class HostRoundViewModel {
         }
 
         isPaused.toggle()
-        lastTickDate = Date()
     }
 
-    func toggleAnswer(at index: Int) {
+    @discardableResult
+    func revealAnswer(at index: Int) -> Bool {
         guard question.answers.indices.contains(index) else {
+            return false
+        }
+
+        guard !isRoundFinished else {
+            if revealedAnswerIndices.contains(index) {
+                revealedAnswerIndices.remove(index)
+            } else {
+                revealedAnswerIndices.insert(index)
+            }
+            return true
+        }
+
+        guard !revealedAnswerIndices.contains(index) else {
+            return false
+        }
+
+        revealedAnswerIndices.insert(index)
+        revealHistory.append(index)
+        latestRevealPoints = question.answers[index].points
+        revealEventToken += 1
+        return true
+    }
+
+    // Backward-compatible call-site name.
+    @discardableResult
+    func toggleAnswer(at index: Int) -> Bool {
+        revealAnswer(at: index)
+    }
+
+    func undoLastReveal() {
+        guard !isRoundFinished, let index = revealHistory.popLast() else {
             return
         }
 
-        if revealedAnswerIndices.contains(index) {
-            revealedAnswerIndices.remove(index)
-        } else {
-            revealedAnswerIndices.insert(index)
-        }
+        revealedAnswerIndices.remove(index)
     }
 
     private func tick() {
@@ -121,30 +166,27 @@ final class HostRoundViewModel {
         }
 
         guard !isPaused else {
-            lastTickDate = Date()
             return
         }
 
-        let now = Date()
-        guard let lastTickDate else {
-            self.lastTickDate = now
+        guard remainingTenths > 0 else {
             return
         }
 
-        let elapsed = now.timeIntervalSince(lastTickDate)
-        self.lastTickDate = now
+        remainingTenths -= 1
+        remainingTime = Double(remainingTenths) / 10
 
-        remainingTime = max(0, remainingTime - elapsed)
-        playCountdownSoundIfNeeded()
-
-        if remainingTime <= 0 {
+        if remainingTenths == 0 {
             countdownSoundPlayer.playRoundEndedTone(volume: 1.0)
             endRound()
+            return
         }
+
+        playCountdownSoundIfNeeded()
     }
 
     private func playCountdownSoundIfNeeded() {
-        let currentSecond = max(0, Int(ceil(remainingTime)))
+        let currentSecond = remainingSeconds
         guard currentSecond != lastAnnouncedSecond else {
             return
         }
@@ -162,5 +204,10 @@ final class HostRoundViewModel {
         let progress = Double(11 - currentSecond) / 10.0
         let volume = Float(0.22 + (progress * 0.78))
         countdownSoundPlayer.playFinalCountdownTick(style: style, volume: volume)
+    }
+
+    // Test-only deterministic tick trigger.
+    func processTickForTesting() {
+        tick()
     }
 }

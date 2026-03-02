@@ -16,6 +16,29 @@ struct QuestionPackLoaderTests {
         #expect(packs[0].questions.count == 1)
         #expect(packs[0].questions[0].difficulty == .medium)
         #expect(packs[0].questions[0].answers.count == 10)
+        #expect(packs[0].packVersion == nil)
+        #expect(packs[0].questions[0].contentType == nil)
+    }
+
+    @Test
+    func optionalEditorialMetadataDecodesAndNormalizesBlankValues() throws {
+        let loader = QuestionPackLoader()
+        let data = try makeValidPackData(
+            packVersion: "2.0",
+            contentType: "factual-list",
+            quality: "reviewed",
+            difficultyNotes: "Tight list with a few tricky entries.",
+            editorialNotes: "  "
+        )
+
+        let pack = try loader.loadPack(from: data, fileName: "WithMetadata.json")
+        let question = try #require(pack.questions.first)
+
+        #expect(pack.packVersion == "2.0")
+        #expect(question.contentType == "factual-list")
+        #expect(question.quality == "reviewed")
+        #expect(question.difficultyNotes == "Tight list with a few tricky entries.")
+        #expect(question.editorialNotes == nil)
     }
 
     @Test
@@ -96,7 +119,12 @@ struct QuestionPackLoaderTests {
 private func makeValidPackData(
     answerCount: Int = 10,
     pointsForFirstAnswer: Int = 1,
-    difficulty: String = "medium"
+    difficulty: String = "medium",
+    packVersion: String? = nil,
+    contentType: String? = nil,
+    quality: String? = nil,
+    difficultyNotes: String? = nil,
+    editorialNotes: String? = nil
 ) throws -> Data {
     var answers: [[String: Any]] = []
     for index in 0..<answerCount {
@@ -107,22 +135,37 @@ private func makeValidPackData(
         ])
     }
 
-    let json: [String: Any] = [
+    var question: [String: Any] = [
+        "id": "question-1",
+        "category": "Factual",
+        "prompt": "Sample prompt",
+        "difficulty": difficulty,
+        "validationStyle": "factual",
+        "sourceURL": "https://example.com/source",
+        "answers": answers
+    ]
+    if let contentType {
+        question["contentType"] = contentType
+    }
+    if let quality {
+        question["quality"] = quality
+    }
+    if let difficultyNotes {
+        question["difficultyNotes"] = difficultyNotes
+    }
+    if let editorialNotes {
+        question["editorialNotes"] = editorialNotes
+    }
+
+    var json: [String: Any] = [
         "id": "starter-pack-v1",
         "title": "Starter Pack",
         "languageCode": "en",
-        "questions": [
-            [
-                "id": "question-1",
-                "category": "Factual",
-                "prompt": "Sample prompt",
-                "difficulty": difficulty,
-                "validationStyle": "factual",
-                "sourceURL": "https://example.com/source",
-                "answers": answers
-            ]
-        ]
+        "questions": [question]
     ]
+    if let packVersion {
+        json["packVersion"] = packVersion
+    }
 
     return try JSONSerialization.data(withJSONObject: json)
 }

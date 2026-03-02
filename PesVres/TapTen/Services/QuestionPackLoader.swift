@@ -128,6 +128,7 @@ private struct QuestionPackDTO: Decodable {
     let title: String
     let languageCode: String
     let questions: [QuestionDTO]
+    let packVersion: String?
 
     func validated(fileName: String) throws -> QuestionPack {
         guard !id.trimmed.isEmpty else {
@@ -154,7 +155,8 @@ private struct QuestionPackDTO: Decodable {
             id: id.trimmed,
             title: title.trimmed,
             languageCode: languageCode.trimmed,
-            questions: validatedQuestions
+            questions: validatedQuestions,
+            packVersion: packVersion.nilIfBlank
         )
     }
 }
@@ -167,6 +169,10 @@ private struct QuestionDTO: Decodable {
     let validationStyle: ValidationStyle
     let sourceURL: String
     let answers: [AnswerOptionDTO]
+    let contentType: String?
+    let quality: String?
+    let difficultyNotes: String?
+    let editorialNotes: String?
 
     func validated(questionIndex: Int, fileName: String) throws -> Question {
         let questionLabel = "Question \(questionIndex + 1)"
@@ -210,7 +216,11 @@ private struct QuestionDTO: Decodable {
             difficulty: difficulty,
             validationStyle: validationStyle,
             sourceURL: parsedURL,
-            answers: validatedAnswers
+            answers: validatedAnswers,
+            contentType: contentType.nilIfBlank,
+            quality: quality.nilIfBlank,
+            difficultyNotes: difficultyNotes.nilIfBlank,
+            editorialNotes: editorialNotes.nilIfBlank
         )
     }
 }
@@ -240,5 +250,16 @@ private struct AnswerOptionDTO: Decodable {
 private extension String {
     var trimmed: String {
         trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    var nilIfBlank: String? {
+        let value = trimmed
+        return value.isEmpty ? nil : value
+    }
+}
+
+private extension Optional where Wrapped == String {
+    var nilIfBlank: String? {
+        self?.nilIfBlank
     }
 }

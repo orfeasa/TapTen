@@ -11,16 +11,27 @@ Two teams play on one device. One team answers out loud while the other team hos
 - Random question selection from enabled categories.
 - No repeated questions in a single game session.
 - Bundled local JSON question packs only (no network fetching).
-- Pass-device flow between rounds.
+- Warm, Apple-native visual direction with restrained motion.
+- Playful-but-clear in-app tone for supporting copy and verdicts.
+- Pass-device handoff flow between rounds with clear answering/hosting emphasis.
 - Host round with:
   - visible question and all 10 answers
   - large tap targets
   - continuous countdown timer
-  - answer tap toggles reveal/unreveal
-  - fixed bottom action button (`Pause` / `Resume`, then `Continue to Summary`)
+  - tap-to-reveal answers only while timer is active
+  - `Undo Last` control for safe correction while timer is active
+  - after timer ends, answer rows can still be toggled for host review
+  - subtle reveal reward feedback (animation + transient `+points`)
+  - differentiated reveal haptics by answer value
+  - tense final-seconds timer treatment
+  - side-by-side `Undo Last` + `Pause`/`Resume` controls while active
+  - clear post-timeup CTA (`Continue to Summary`)
   - source-link icon available once the round ends
-- Round summary with points, scoreboard, and source link.
-- Final results with winner celebration and a randomized sassy verdict based on answer performance.
+- Round summary with stronger points-first hierarchy, playful verdict styling, scoreboard, and source link.
+- Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Home`).
+- Shared theme tokens for warm background/card, celebration gold, and reveal green.
+- Minimal v1 Settings screen (`sounds`, `haptics`, default rounds, default timer) plus safe in-game end confirmation.
+- Optional editorial metadata fields in local packs for quality control (`contentType`, `quality`, `difficultyNotes`, `editorialNotes`, `packVersion`).
 
 ## Project Layout
 
@@ -78,6 +89,7 @@ Unit tests are under `PesVres/TapTenTests/Unit/` and cover:
 - question-pack loading and validation
 - game setup category selection behavior
 - end-game sassy comment tier logic
+- host round reveal-only behavior and undo-last-reveal behavior
 
 Note: avoid launching iOS simulator test runs unless explicitly needed in the current task.
 
@@ -85,3 +97,7 @@ Note: avoid launching iOS simulator test runs unless explicitly needed in the cu
 
 - Product and UX constraints: see `PROJECT_BRIEF.md`.
 - Repository working conventions: see `AGENTS.md`.
+
+## Release Notes
+
+- Full session history and shipped changes: `CHANGELOG.md`.

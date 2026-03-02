@@ -25,6 +25,8 @@ final class GameFlowViewModel {
     private let settings: GameSettings
     private let enabledCategoryNames: Set<String>
     private let randomSassyCommentProvider: ([String]) -> String
+    private var questionPacks: [QuestionPack] = []
+    private var randomIndexProvider: (Int) -> Int = { Int.random(in: 0..<$0) }
 
     private var engine: GameEngine?
     private var hasCommittedActiveRound = false
@@ -39,17 +41,20 @@ final class GameFlowViewModel {
         settings: GameSettings,
         enabledCategoryNames: Set<String>,
         questionPackLoader: QuestionPackLoader = QuestionPackLoader(),
+        randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) },
         randomSassyCommentProvider: @escaping ([String]) -> String = { comments in
             comments.randomElement() ?? "Confetti machine malfunctioned. You still get a clap."
         }
     ) {
         self.settings = settings
         self.enabledCategoryNames = enabledCategoryNames
+        self.randomIndexProvider = randomIndexProvider
         self.randomSassyCommentProvider = randomSassyCommentProvider
 
         do {
             let packs = try questionPackLoader.loadAllPacks()
-            try configureEngine(questionPacks: packs)
+            questionPacks = packs
+            try configureEngine(questionPacks: packs, randomIndexProvider: randomIndexProvider)
         } catch {
             setError(error.localizedDescription)
         }
@@ -66,6 +71,8 @@ final class GameFlowViewModel {
     ) {
         self.settings = settings
         self.enabledCategoryNames = enabledCategoryNames
+        self.questionPacks = questionPacks
+        self.randomIndexProvider = randomIndexProvider
         self.randomSassyCommentProvider = randomSassyCommentProvider
 
         do {
@@ -228,6 +235,26 @@ final class GameFlowViewModel {
         }
     }
 
+    func playAgain() {
+        guard phase == .finalResults else {
+            return
+        }
+
+        do {
+            try configureEngine(
+                questionPacks: questionPacks,
+                randomIndexProvider: randomIndexProvider
+            )
+            teamAScore = 0
+            teamBScore = 0
+            latestRoundSummary = nil
+            hostRoundViewModel = nil
+            hasCommittedActiveRound = false
+        } catch {
+            setError(error.localizedDescription)
+        }
+    }
+
     private func configureEngine(
         questionPacks: [QuestionPack],
         randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) }
@@ -257,33 +284,33 @@ final class GameFlowViewModel {
         switch revealedRatio {
         case ..<0.2:
             return [
-                "That round was mostly vibes and very few answers.",
-                "If guessing was cardio, you'd still be at warm-up pace.",
-                "Bold strategy: reveal almost nothing and call it mystery."
+                "Big energy, light scoring.",
+                "Plenty of confidence, not many hits.",
+                "You kept the drama high and the points low."
             ]
         case ..<0.45:
             return [
-                "Not a disaster, but definitely a character-building performance.",
-                "You found a few answers and left the rest for archaeology.",
-                "Half-cooked effort, served with confidence."
+                "Decent sparks, not quite fireworks.",
+                "You got momentum, then misplaced it.",
+                "Solid effort, chaotic finish."
             ]
         case ..<0.7:
             return [
-                "Solid showing. Mildly smug behavior is now permitted.",
-                "You did well enough to brag, but keep it tasteful.",
-                "Respectable work. Nobody needs to pretend this was luck."
+                "Strong round. Brag responsibly.",
+                "Clean work under pressure.",
+                "You looked very ready for this."
             ]
         case ..<0.9:
             return [
-                "Now that was sharp. The other team may request therapy.",
-                "Excellent run. You made this look suspiciously rehearsed.",
-                "Strong performance. Someone clearly came prepared to win."
+                "Sharp round. The other team felt that.",
+                "Confident, quick, and slightly ruthless.",
+                "That was smooth from start to finish."
             ]
         default:
             return [
-                "Absolute demolition. Please leave some points for society.",
-                "Nearly perfect. Somewhere a trivia host just got nervous.",
-                "That was ruthless. Sportsmanship survives, barely."
+                "Clinical performance. Borderline unfair.",
+                "You cleared that round like pros.",
+                "Absolute heater. Save some points for next game."
             ]
         }
     }

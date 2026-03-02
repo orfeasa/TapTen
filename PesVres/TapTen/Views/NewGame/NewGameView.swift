@@ -2,7 +2,7 @@ import SwiftUI
 
 struct NewGameView: View {
     @State var viewModel: NewGameViewModel
-    @State private var gameStartRequest: GameStartRequest?
+    @State private var gameFlowViewModel: GameFlowViewModel?
 
     var body: some View {
         Form {
@@ -64,7 +64,7 @@ struct NewGameView: View {
             Section {
                 Button("Start Game") {
                     if viewModel.startGame() {
-                        gameStartRequest = GameStartRequest(
+                        gameFlowViewModel = GameFlowViewModel(
                             settings: viewModel.settings,
                             enabledCategoryNames: viewModel.includedCategoryNames
                         )
@@ -84,13 +84,21 @@ struct NewGameView: View {
             }
         }
         .navigationTitle("New Game")
-        .navigationDestination(item: $gameStartRequest) { request in
-            GameFlowView(
-                viewModel: GameFlowViewModel(
-                    settings: request.settings,
-                    enabledCategoryNames: request.enabledCategoryNames
-                )
+        .scrollContentBackground(.hidden)
+        .background(Color.tapTenWarmBackground)
+        .navigationDestination(
+            isPresented: Binding(
+                get: { gameFlowViewModel != nil },
+                set: { isPresented in
+                    if !isPresented {
+                        gameFlowViewModel = nil
+                    }
+                }
             )
+        ) {
+            if let gameFlowViewModel {
+                GameFlowView(viewModel: gameFlowViewModel)
+            }
         }
     }
 }

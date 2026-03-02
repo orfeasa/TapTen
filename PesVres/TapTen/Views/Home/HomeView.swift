@@ -28,7 +28,7 @@ struct HomeView: View {
         .background(
             LinearGradient(
                 colors: [
-                    Color(.systemGroupedBackground),
+                    Color.tapTenWarmBackground,
                     Color(.systemBackground)
                 ],
                 startPoint: .top,
@@ -48,11 +48,11 @@ struct HomeView: View {
 private extension HomeView {
     var header: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Party guessing, one iPhone.")
+            Text("Fast mouths. Faster taps.")
                 .font(.title2.weight(.bold))
                 .foregroundStyle(.primary)
 
-            Text("Two teams alternate rounds. The host controls answers and timer under pressure.")
+            Text("One phone, two teams, one loud room. The host listens, taps, and keeps the clock honest.")
                 .font(.body)
                 .foregroundStyle(.secondary)
         }
@@ -63,16 +63,16 @@ private extension HomeView {
 
     var infoCard: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("How It Works")
+            Text("How To Play")
                 .font(.headline)
 
-            featureRow(icon: "person.2.fill", text: "Team A answers while Team B hosts, then switch.")
+            featureRow(icon: "person.2.fill", text: "Team A guesses while Team B hosts, then you switch.")
             featureRow(icon: "list.number", text: "Each round has one prompt and 10 possible answers.")
-            featureRow(icon: "timer", text: "Reveal answers fast before the countdown ends.")
+            featureRow(icon: "timer", text: "Tap fast, trust your ears, beat the timer.")
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .background(Color.tapTenWarmCard, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     func featureRow(icon: String, text: String) -> some View {

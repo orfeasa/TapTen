@@ -2,6 +2,7 @@
   "id": "starter-pack-v1",
   "title": "Starter Pack",
   "languageCode": "en",
+  "packVersion": "1.1",
   "questions": [
     {
       "id": "countries-starting-s",
@@ -9,6 +10,10 @@
       "prompt": "Name countries that start with the letter S",
       "difficulty": "medium",
       "validationStyle": "factual",
+      "contentType": "factual-list",
+      "quality": "reviewed",
+      "difficultyNotes": "Common entries first, rarer entries toward the end.",
+      "editorialNotes": "Accept common spoken variants and minor pronunciation differences.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
       "answers": [
         { "text": "Spain", "points": 1 },

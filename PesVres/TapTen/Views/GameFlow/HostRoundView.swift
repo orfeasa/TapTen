@@ -1,8 +1,11 @@
 import SwiftUI
+import UIKit
 
 struct HostRoundView: View {
-    @State var viewModel: HostRoundViewModel
+    @Bindable var viewModel: HostRoundViewModel
     var onRoundFinished: (() -> Void)? = nil
+    @State private var pointsReactionText: String?
+    @State private var isShowingPointsReaction = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -10,7 +13,8 @@ struct HostRoundView: View {
             let sectionSpacing = 6.0
             let rowSpacing = 6.0
             let outerPadding = 14.0
-            let buttonHeight = 58.0
+            let controlsHeight = viewModel.isRoundFinished ? 0.0 : 50.0
+            let buttonHeight = viewModel.isRoundFinished ? 58.0 : 0.0
             let minimumRowHeight = 30.0
             let minimumAnswersHeight = (minimumRowHeight * 10) + (rowSpacing * 9)
             let approximateQuestionLines = max(1, min(4, Int(ceil(Double(viewModel.question.prompt.count) / 28.0))))
@@ -20,8 +24,9 @@ struct HostRoundView: View {
                 - (outerPadding * 2)
                 - questionHeaderHeight
                 - timerSectionHeight
+                - controlsHeight
                 - buttonHeight
-                - (sectionSpacing * 3)
+                - (sectionSpacing * 4)
             let fittedRowsHeight = max(minimumAnswersHeight, availableRowsHeight)
             let rowHeight = max(
                 minimumRowHeight,
@@ -44,34 +49,57 @@ struct HostRoundView: View {
                             isRevealed: viewModel.revealedAnswerIndices.contains(index),
                             rowHeight: rowHeight
                         ) {
-                            viewModel.toggleAnswer(at: index)
+                            viewModel.revealAnswer(at: index)
                         }
                     }
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: answersHeight, alignment: .top)
 
-                bottomActionButton
-                    .frame(maxWidth: .infinity, minHeight: buttonHeight, maxHeight: buttonHeight)
+                if !viewModel.isRoundFinished {
+                    roundControls
+                        .frame(maxWidth: .infinity, minHeight: controlsHeight, maxHeight: controlsHeight)
+                }
+
+                if viewModel.isRoundFinished {
+                    bottomActionButton
+                        .frame(maxWidth: .infinity, minHeight: buttonHeight, maxHeight: buttonHeight)
+                }
             }
             .padding(outerPadding)
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
         }
-        .navigationTitle("Host Round")
-        .navigationBarTitleDisplayMode(.inline)
-        .background(Color(.systemGroupedBackground))
+        .toolbar(.hidden, for: .navigationBar)
+        .background(Color.tapTenWarmBackground)
         .onAppear {
             viewModel.startRoundIfNeeded()
         }
         .onDisappear {
             viewModel.stopTimer()
         }
+        .onChange(of: viewModel.revealEventToken) {
+            guard let points = viewModel.latestRevealPoints else {
+                return
+            }
+
+            performRevealHaptic(for: points)
+            pointsReactionText = "+\(points)"
+            withAnimation(.spring(response: 0.25, dampingFraction: 0.74)) {
+                isShowingPointsReaction = true
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.65) {
+                withAnimation(.easeOut(duration: 0.2)) {
+                    isShowingPointsReaction = false
+                }
+            }
+        }
     }
 
     private var questionHeader: some View {
-        HStack(alignment: .top, spacing: 10) {
+        HStack(alignment: .top, spacing: 12) {
             Text(viewModel.question.prompt)
-                .font(.title2.weight(.semibold))
+                .font(.title2.weight(.bold))
                 .lineLimit(4)
                 .minimumScaleFactor(0.55)
                 .multilineTextAlignment(.leading)
@@ -92,9 +120,10 @@ struct HostRoundView: View {
     }
 
     private var timerSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        let countdownText = viewModel.formattedCountdown
+        return VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
-                Label(viewModel.formattedCountdown, systemImage: "timer")
+                Label(countdownText, systemImage: "timer")
                     .font(.system(size: 34, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(viewModel.isRoundFinished ? .red : .primary)
 
@@ -105,12 +134,6 @@ struct HostRoundView: View {
                     .foregroundStyle(.secondary)
             }
 
-            if viewModel.isPaused && !viewModel.isRoundFinished {
-                Text("Paused")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.orange)
-            }
-
             ProgressView(
                 value: viewModel.remainingTime,
                 total: Double(viewModel.roundDurationSeconds)
@@ -119,31 +142,75 @@ struct HostRoundView: View {
         }
         .padding(14)
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(alignment: .topTrailing) {
+            if let pointsReactionText {
+                Text(pointsReactionText)
+                    .font(.headline.weight(.bold))
+                    .foregroundStyle(Color.tapTenRevealGreen)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(.ultraThinMaterial, in: Capsule())
+                    .opacity(isShowingPointsReaction ? 1 : 0)
+                    .offset(y: isShowingPointsReaction ? -12 : 0)
+                    .allowsHitTesting(false)
+            }
+        }
+    }
+
+    private var roundControls: some View {
+        Group {
+            HStack(spacing: 10) {
+                Button {
+                    viewModel.undoLastReveal()
+                } label: {
+                    Label("Undo Last", systemImage: "arrow.uturn.backward.circle")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity)
+                }
+                .controlSize(.large)
+                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
+                .disabled(!viewModel.canUndoLastReveal)
+
+                Button {
+                    viewModel.togglePause()
+                }
+                label: {
+                    Label(
+                        viewModel.isPaused ? "Resume" : "Pause",
+                        systemImage: viewModel.isPaused ? "play.fill" : "pause.fill"
+                    )
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity)
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
+            }
+        }
     }
 
     private var bottomActionButton: some View {
-        Button(bottomButtonTitle) {
-            bottomButtonTapped()
+        VStack(spacing: 6) {
+            Button(bottomButtonTitle) {
+                bottomButtonTapped()
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+
+            Text("Time's up. Review toggles, then continue.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .center)
         }
-        .buttonStyle(.borderedProminent)
-        .controlSize(.large)
     }
 
     private var bottomButtonTitle: String {
-        if viewModel.isRoundFinished {
-            return "Continue to Summary"
-        }
-
-        return viewModel.isPaused ? "Resume" : "Pause"
+        "Continue to Summary"
     }
 
     private func bottomButtonTapped() {
-        if viewModel.isRoundFinished {
-            onRoundFinished?()
-            return
-        }
-
-        viewModel.togglePause()
+        onRoundFinished?()
     }
 
     private var timerProgressColor: Color {
@@ -160,7 +227,21 @@ struct HostRoundView: View {
             return .yellow
         }
 
-        return .green
+        return .tapTenRevealGreen
+    }
+
+    private func performRevealHaptic(for points: Int) {
+        if points >= 4 {
+            let heavy = UIImpactFeedbackGenerator(style: .heavy)
+            heavy.impactOccurred()
+            let notify = UINotificationFeedbackGenerator()
+            notify.notificationOccurred(.success)
+            return
+        }
+
+        let style: UIImpactFeedbackGenerator.FeedbackStyle = points >= 2 ? .medium : .light
+        let generator = UIImpactFeedbackGenerator(style: style)
+        generator.impactOccurred()
     }
 }
 
@@ -175,7 +256,7 @@ private struct HostAnswerRow: View {
         Button(action: action) {
             HStack(spacing: 12) {
                 Image(systemName: isRevealed ? "checkmark.circle.fill" : "circle")
-                    .foregroundStyle(isRevealed ? .green : .secondary)
+                    .foregroundStyle(isRevealed ? Color.tapTenRevealGreen : .secondary)
                     .font(.title3)
 
                 Text(title)
@@ -197,14 +278,20 @@ private struct HostAnswerRow: View {
             .frame(maxWidth: .infinity, minHeight: rowHeight, maxHeight: rowHeight, alignment: .leading)
             .padding(.horizontal, 14)
             .background(rowBackground, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(isRevealed ? Color.tapTenRevealGreen.opacity(0.22) : .clear, lineWidth: 1)
+            )
             .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .scaleEffect(isRevealed ? 1.0 : 0.995)
         }
         .buttonStyle(.plain)
+        .animation(.spring(response: 0.22, dampingFraction: 0.8), value: isRevealed)
     }
 
     private var rowBackground: some ShapeStyle {
         if isRevealed {
-            return AnyShapeStyle(.green.opacity(0.16))
+            return AnyShapeStyle(Color.tapTenRevealGreen.opacity(0.14))
         }
 
         return AnyShapeStyle(.background)
