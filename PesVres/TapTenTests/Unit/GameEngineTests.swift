@@ -5,7 +5,7 @@ import Testing
 struct GameEngineTests {
     @Test
     func alternatesTurnsBetweenTeamsAcrossRounds() throws {
-        let settings = GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 4, roundDurationSeconds: 60)
+        let settings = GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 2, roundDurationSeconds: 60)
         let pack = makePack(
             questions: [
                 makeQuestion(id: "q1", category: "Factual"),
@@ -45,6 +45,7 @@ struct GameEngineTests {
             questions: [
                 makeQuestion(id: "q1", category: "Factual"),
                 makeQuestion(id: "q2", category: "Editorial"),
+                makeQuestion(id: "q4", category: "Editorial"),
                 makeQuestion(id: "q3", category: "Humorous")
             ]
         )
@@ -61,12 +62,13 @@ struct GameEngineTests {
 
     @Test
     func doesNotRepeatQuestionsWithinSession() throws {
-        let settings = GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 3, roundDurationSeconds: 60)
+        let settings = GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 2, roundDurationSeconds: 60)
         let pack = makePack(
             questions: [
                 makeQuestion(id: "q1", category: "Factual"),
                 makeQuestion(id: "q2", category: "Factual"),
-                makeQuestion(id: "q3", category: "Factual")
+                makeQuestion(id: "q3", category: "Factual"),
+                makeQuestion(id: "q4", category: "Factual")
             ]
         )
 
@@ -83,8 +85,10 @@ struct GameEngineTests {
         selectedQuestionIDs.append(engine.currentRound?.question.id ?? "")
         try engine.completeRound()
         selectedQuestionIDs.append(engine.currentRound?.question.id ?? "")
+        try engine.completeRound()
+        selectedQuestionIDs.append(engine.currentRound?.question.id ?? "")
 
-        #expect(Set(selectedQuestionIDs).count == 3)
+        #expect(Set(selectedQuestionIDs).count == 4)
     }
 
     @Test
@@ -94,7 +98,8 @@ struct GameEngineTests {
             questions: [
                 makeQuestion(id: "q1", category: "Factual"),
                 makeQuestion(id: "q2", category: "Factual"),
-                makeQuestion(id: "q3", category: "Factual")
+                makeQuestion(id: "q3", category: "Factual"),
+                makeQuestion(id: "q4", category: "Factual")
             ]
         )
 
@@ -106,19 +111,33 @@ struct GameEngineTests {
         )
 
         #expect(engine.completedRounds == 0)
-        #expect(engine.roundsRemaining == 2)
+        #expect(engine.roundsRemaining == 4)
         #expect(engine.isGameOver == false)
 
         try engine.completeRound()
 
         #expect(engine.completedRounds == 1)
-        #expect(engine.roundsRemaining == 1)
+        #expect(engine.roundsRemaining == 3)
         #expect(engine.isGameOver == false)
         #expect(engine.currentRound?.roundNumber == 2)
 
         try engine.completeRound()
 
         #expect(engine.completedRounds == 2)
+        #expect(engine.roundsRemaining == 2)
+        #expect(engine.isGameOver == false)
+        #expect(engine.currentRound?.roundNumber == 3)
+
+        try engine.completeRound()
+
+        #expect(engine.completedRounds == 3)
+        #expect(engine.roundsRemaining == 1)
+        #expect(engine.isGameOver == false)
+        #expect(engine.currentRound?.roundNumber == 4)
+
+        try engine.completeRound()
+
+        #expect(engine.completedRounds == 4)
         #expect(engine.roundsRemaining == 0)
         #expect(engine.isGameOver == true)
         #expect(engine.currentRound == nil)
@@ -145,7 +164,7 @@ struct GameEngineTests {
         } catch let error as GameEngineError {
             switch error {
             case .insufficientQuestionsForSession(let required, let available):
-                #expect(required == 3)
+                #expect(required == 6)
                 #expect(available == 2)
             default:
                 Issue.record("Expected .insufficientQuestionsForSession, got \(error.localizedDescription)")

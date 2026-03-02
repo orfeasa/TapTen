@@ -18,7 +18,7 @@ struct NewGameView: View {
 
             Section("Round Settings") {
                 Stepper(
-                    "Number of Rounds: \(viewModel.settings.numberOfRounds)",
+                    "Rounds per Team: \(viewModel.settings.numberOfRounds)",
                     value: $viewModel.settings.numberOfRounds,
                     in: 1...10
                 )

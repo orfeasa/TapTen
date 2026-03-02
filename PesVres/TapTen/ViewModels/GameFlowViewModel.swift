@@ -89,15 +89,15 @@ final class GameFlowViewModel {
         engine?.currentRound
     }
 
-    var totalRoundCount: Int {
+    var roundsPerTeamCount: Int {
         settings.numberOfRounds
     }
 
     var roundProgressText: String {
-        guard let roundNumber = currentRound?.roundNumber else {
+        guard let currentRound else {
             return "Final Results"
         }
-        return "Round \(roundNumber) of \(settings.numberOfRounds)"
+        return "Round \(teamRoundNumber(for: currentRound)) of \(settings.numberOfRounds)"
     }
 
     var teamAName: String {
@@ -128,7 +128,7 @@ final class GameFlowViewModel {
         }
 
         let completedAfterCurrentSummary = engine.completedRounds + 1
-        if completedAfterCurrentSummary >= settings.numberOfRounds {
+        if completedAfterCurrentSummary >= engine.totalRoundCount {
             return "See Final Results"
         }
 
@@ -193,7 +193,7 @@ final class GameFlowViewModel {
         }
 
         latestRoundSummary = RoundSummary(
-            roundNumber: currentRound.roundNumber,
+            roundNumber: teamRoundNumber(for: currentRound),
             prompt: currentRound.question.prompt,
             sourceURL: currentRound.question.sourceURL,
             sassyComment: makeRoundSassyComment(
@@ -312,6 +312,15 @@ final class GameFlowViewModel {
                 "You cleared that round like pros.",
                 "Absolute heater. Save some points for next game."
             ]
+        }
+    }
+
+    private func teamRoundNumber(for round: ActiveGameRound) -> Int {
+        switch round.answeringTeam {
+        case .teamA:
+            return (round.roundNumber + 1) / 2
+        case .teamB:
+            return round.roundNumber / 2
         }
     }
 }

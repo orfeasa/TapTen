@@ -10,7 +10,7 @@ enum GameEngineError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidRoundCount(let count):
-            return "Number of rounds must be greater than zero. Received \(count)."
+            return "Rounds per team must be greater than zero. Received \(count)."
         case .noQuestionsForEnabledCategories:
             return "No questions matched the enabled categories."
         case .insufficientQuestionsForSession(let required, let available):
@@ -53,12 +53,16 @@ struct GameEngine {
     private(set) var nextTeamTurn: TeamTurn = .teamA
     private var usedQuestionIDs: Set<String> = []
 
+    var totalRoundCount: Int {
+        settings.numberOfRounds * 2
+    }
+
     var isGameOver: Bool {
-        completedRounds >= settings.numberOfRounds
+        completedRounds >= totalRoundCount
     }
 
     var roundsRemaining: Int {
-        max(settings.numberOfRounds - completedRounds, 0)
+        max(totalRoundCount - completedRounds, 0)
     }
 
     init(
@@ -70,6 +74,7 @@ struct GameEngine {
         guard settings.numberOfRounds > 0 else {
             throw GameEngineError.invalidRoundCount(settings.numberOfRounds)
         }
+        let totalRoundsForSession = settings.numberOfRounds * 2
 
         let normalizedEnabledCategories = Set(
             enabledCategories
@@ -93,9 +98,9 @@ struct GameEngine {
         }
         let uniqueQuestions = uniqueQuestionsByID.values.sorted { $0.id < $1.id }
 
-        guard uniqueQuestions.count >= settings.numberOfRounds else {
+        guard uniqueQuestions.count >= totalRoundsForSession else {
             throw GameEngineError.insufficientQuestionsForSession(
-                required: settings.numberOfRounds,
+                required: totalRoundsForSession,
                 available: uniqueQuestions.count
             )
         }

@@ -8,7 +8,7 @@ struct GameFlowViewModelTests {
         let viewModel = GameFlowViewModel(
             settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
             enabledCategoryNames: ["Factual"],
-            questionPacks: [makePack(questionCount: 1)],
+            questionPacks: [makePack(questionCount: 2)],
             randomIndexProvider: { _ in 0 },
             randomSassyCommentProvider: { comments in
                 comments.first ?? ""
@@ -27,7 +27,7 @@ struct GameFlowViewModelTests {
         let viewModel = GameFlowViewModel(
             settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
             enabledCategoryNames: ["Factual"],
-            questionPacks: [makePack(questionCount: 1)],
+            questionPacks: [makePack(questionCount: 2)],
             randomIndexProvider: { _ in 0 },
             randomSassyCommentProvider: { comments in
                 comments.first ?? ""

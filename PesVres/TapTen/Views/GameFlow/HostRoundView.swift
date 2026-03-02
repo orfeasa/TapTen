@@ -14,7 +14,6 @@ struct HostRoundView: View {
             let rowSpacing = 6.0
             let outerPadding = 14.0
             let controlsHeight = viewModel.isRoundFinished ? 0.0 : 50.0
-            let buttonHeight = viewModel.isRoundFinished ? 58.0 : 0.0
             let minimumRowHeight = 30.0
             let minimumAnswersHeight = (minimumRowHeight * 10) + (rowSpacing * 9)
             let approximateQuestionLines = max(1, min(4, Int(ceil(Double(viewModel.question.prompt.count) / 28.0))))
@@ -25,7 +24,6 @@ struct HostRoundView: View {
                 - questionHeaderHeight
                 - timerSectionHeight
                 - controlsHeight
-                - buttonHeight
                 - (sectionSpacing * 4)
             let fittedRowsHeight = max(minimumAnswersHeight, availableRowsHeight)
             let rowHeight = max(
@@ -60,11 +58,6 @@ struct HostRoundView: View {
                     roundControls
                         .frame(maxWidth: .infinity, minHeight: controlsHeight, maxHeight: controlsHeight)
                 }
-
-                if viewModel.isRoundFinished {
-                    bottomActionButton
-                        .frame(maxWidth: .infinity, minHeight: buttonHeight, maxHeight: buttonHeight)
-                }
             }
             .padding(outerPadding)
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
@@ -76,6 +69,11 @@ struct HostRoundView: View {
         }
         .onDisappear {
             viewModel.stopTimer()
+        }
+        .safeAreaInset(edge: .bottom) {
+            if viewModel.isRoundFinished {
+                postRoundActionArea
+            }
         }
         .onChange(of: viewModel.revealEventToken) {
             guard let points = viewModel.latestRevealPoints else {
@@ -190,27 +188,19 @@ struct HostRoundView: View {
         }
     }
 
-    private var bottomActionButton: some View {
-        VStack(spacing: 6) {
-            Button(bottomButtonTitle) {
-                bottomButtonTapped()
+    private var postRoundActionArea: some View {
+        VStack(spacing: 0) {
+            Button("Continue to Summary") {
+                onRoundFinished?()
             }
+            .frame(maxWidth: .infinity)
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
-
-            Text("Time's up. Review toggles, then continue.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .center)
         }
-    }
-
-    private var bottomButtonTitle: String {
-        "Continue to Summary"
-    }
-
-    private func bottomButtonTapped() {
-        onRoundFinished?()
+        .padding(.horizontal, 16)
+        .padding(.top, 8)
+        .padding(.bottom, 12)
+        .background(.thinMaterial)
     }
 
     private var timerProgressColor: Color {
