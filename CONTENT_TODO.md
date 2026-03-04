@@ -12,13 +12,14 @@
 - Technology: 12 total (4 easy, 4 medium, 4 hard)
 - Travel: 12 total (4 easy, 4 medium, 4 hard)
 - Work & School: 12 total (4 easy, 4 medium, 4 hard)
-- Pop Culture & Trends: 1 total (0 easy, 1 medium, 0 hard)
+- Pop Culture & Trends: 12 total (4 easy, 4 medium, 4 hard)
 
 ## Audit Highlights
 - Missing categories: none.
 - Underfilled categories: none.
 - Overfilled categories: none.
 - Target distribution status: all 12 categories now meet 12 total questions with exact 4 easy / 4 medium / 4 hard.
+- Open structural content tasks: none.
 - Duplicate pizza concept was removed; exact duplicate prompt/answer-set audit is currently clean.
 - Geography duplicate-family risk reduced (South America populous prompt removed); exact duplicate prompt/answer-set audit is clean.
 

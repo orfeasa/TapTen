@@ -65,6 +65,11 @@ Each question must include:
 
 Optional metadata is supported for curation (`contentType`, `quality`, `tags`, `difficultyNotes`, `editorialNotes`, `packVersion`).
 
+Current content target status:
+- final 12-category set is present:
+  - `Everyday Life`, `Food & Drink`, `Film & TV`, `Music`, `Sport`, `Geography`, `History`, `Science`, `Technology`, `Travel`, `Work & School`, `Pop Culture & Trends`
+- each category currently has 12 questions with exact `4 easy / 4 medium / 4 hard` distribution
+
 Malformed pack data is validated and surfaced with clean loader errors.
 For authoring and audit workflow, see:
 - `PesVres/TapTen/Resources/QuestionPacks/CONTENT_AUTHORING_SPEC.md`

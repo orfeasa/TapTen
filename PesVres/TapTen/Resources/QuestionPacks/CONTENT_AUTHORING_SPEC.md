@@ -157,7 +157,7 @@ Required checks:
 - No duplicate or near-overlapping answers inside a single question.
 - Prompt adjudication speed: host can map spoken guesses quickly without legalistic interpretation.
 - Category-level review: verify each category still has a sensible easy/medium/hard spread for available question count.
-- Category target review: for release target, each category should converge to exactly 12 questions with 4 easy / 4 medium / 4 hard.
+- Category target review: for release target, each category should remain at exactly 12 questions with 4 easy / 4 medium / 4 hard.
 
 Recommended cadence:
 - Run full audit after any batch edit to packs.

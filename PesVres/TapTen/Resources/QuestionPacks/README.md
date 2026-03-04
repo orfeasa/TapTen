@@ -49,4 +49,4 @@ After adding or changing pack content, run a quick audit before merging:
 - `difficultyScore` equals sum of answer points
 - `difficultyTier` matches score band (`easy 12...18`, `medium 19...26`, `hard 27...35`)
 - spot-check prompts for host speed and low ambiguity in spoken play
-- verify category coverage is moving toward `12` questions per category with `4 easy / 4 medium / 4 hard`
+- verify category coverage remains at `12` questions per category with `4 easy / 4 medium / 4 hard`

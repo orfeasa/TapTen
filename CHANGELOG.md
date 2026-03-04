@@ -21,6 +21,13 @@
   - `GeographyPack.json`
   - `HistoryPack.json`
   - `SciencePack.json`
+- New category pack files to complete the final category set:
+  - `MusicPack.json`
+  - `SportPack.json`
+  - `TechnologyPack.json`
+  - `TravelPack.json`
+  - `WorkSchoolPack.json`
+  - `PopCultureTrendsPack.json`
 
 ### Changed
 - Home/onboarding UX:
@@ -38,11 +45,16 @@
   - richer question metadata support (`contentType`, `difficultyTier`, `difficultyScore`, `quality`, `tags`, `difficultyNotes`, `editorialNotes`)
   - validation enforces 10 answers, points in `1...5`, `difficultyScore == sum(points)`, and tier-band consistency
   - backward compatibility kept for legacy `difficulty` field where migration is needed
+- Question pack content normalization:
+  - final category taxonomy now fully populated (12 categories)
+  - each category now has exactly 12 questions with exact 4 easy / 4 medium / 4 hard distribution
+  - duplicate/near-duplicate prompt issues from migration were reduced and re-audited
 
 ### Docs
 - Updated `README.md` to reflect:
   - current Home and Host Round UX behavior
   - pack metadata and validation requirements
+- Updated `CONTENT_TODO.md` and `PROJECT_BACKLOG.md` to reflect completed category normalization and current remaining work.
 - Updated `PROJECT_BRIEF.md` and `AGENTS.md` gameplay notes to match current Host Round interactions.
 - Updated question-pack docs to align with audit-first content workflow and final category migration target.
 

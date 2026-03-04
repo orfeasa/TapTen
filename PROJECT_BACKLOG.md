@@ -1,13 +1,14 @@
 # Project Backlog
 
 ## Product Status
-- Current milestone: Playable MVP with full core game loop and active content expansion.
+- Current milestone: Playable MVP with full core game loop and complete v1 category baseline.
 - Current state:
   - Home, New Game, Pass Device, Host Round, Round Summary, Final Results, and Settings are implemented.
   - Host Round supports timer, pause/resume, source link after time-up, and answer tap toggling.
-  - Question pack loader now validates richer metadata and difficulty score/tier consistency.
-  - Content baseline exists, but category coverage and difficulty balance are not at release target.
-- Release readiness: Not ready for content freeze yet; core gameplay is usable, but content and category-completeness gaps remain.
+  - Question pack loader validates richer metadata and difficulty score/tier consistency.
+  - Question content now covers all 12 target categories with 12 questions each and exact 4 easy / 4 medium / 4 hard spread.
+  - Setup category picker still exposes only 6 categories, so not all shipped content is selectable yet.
+- Release readiness: Not ready for content freeze; gameplay loop is stable, but setup parity and final editorial QA are still open.
 
 ## Active Decisions
 - Final content category target is fixed to 12 categories:
@@ -21,29 +22,15 @@
 
 ### P0 - Now
 
-- [ ] TASK: Execute category normalization to final 12-category content set
-  - Type: Content
-  - Priority: P0
-  - Status: Planned
-  - Area: `Resources/QuestionPacks`
-  - Goal: Reach exactly 12 questions per final category with exact 4 easy / 4 medium / 4 hard distribution.
-  - Acceptance Criteria:
-    - All 12 target categories exist.
-    - Each category has 12 questions and exact 4/4/4 tier spread.
-    - Validation passes for all packs (10 answers, points 1...5, score/tier integrity).
-    - Legacy duplicate/overlap issues identified in `CONTENT_TODO.md` are addressed.
-  - Notes:
-    - `CONTENT_TODO.md` is the execution source of truth.
-
 - [ ] TASK: Align setup category catalog with final category set
   - Type: Feature
   - Priority: P0
   - Status: Planned
   - Area: `Services/CategoryCatalogService`, `Views/NewGame`, `ViewModels/NewGameViewModel`
-  - Goal: Ensure category selection UI reflects final product taxonomy and avoids dead-end game starts.
+  - Goal: Ensure category selection UI reflects the exact final taxonomy and can start games against all shipped categories.
   - Acceptance Criteria:
-    - Category list in setup matches the exact final category set.
-    - Starting a game with selected categories never fails due to missing content without a clear validation message.
+    - Category list in setup matches the 12-category final set exactly.
+    - Starting a game with selected categories never fails due to missing catalog entries.
     - Category names are consistent across loader data, setup UI, and docs.
   - Notes:
     - Current setup catalog still exposes only 6 categories.
@@ -60,6 +47,17 @@
     - Audit usage is documented for future content edits.
   - Notes:
     - This should complement existing loader tests, not replace them.
+
+- [ ] TASK: Run editorial pass and quality promotion on draft questions
+  - Type: Content QA
+  - Priority: P0
+  - Status: Planned
+  - Area: `Resources/QuestionPacks`
+  - Goal: Move newly added questions from `quality: "draft"` to reviewed/playtested status where appropriate.
+  - Acceptance Criteria:
+    - Draft questions are reviewed for ambiguity, adjudication speed, and spoken clarity.
+    - `quality` values are updated consistently (`reviewed` or `playtested`) where checks pass.
+    - Any unresolved prompts are tracked in `CONTENT_TODO.md` with concrete follow-ups.
 
 ### P1 - Next
 
@@ -79,7 +77,7 @@
   - Priority: P1
   - Status: Planned
   - Area: `Services/AppSettingsStore`, `Services/CountdownSoundService`, `Views/GameFlow/HostRoundView`
-  - Goal: Make `Sounds` and `Haptics` settings actually affect in-round feedback.
+  - Goal: Make `Sounds` and `Haptics` settings affect in-round feedback.
   - Acceptance Criteria:
     - Disabling sounds suppresses countdown and round-end audio.
     - Disabling haptics suppresses reveal haptic feedback.
@@ -101,10 +99,10 @@
   - Priority: P1
   - Status: Planned
   - Area: `Resources/QuestionPacks`
-  - Goal: Remove transitional pack fragmentation once final packs are in place.
+  - Goal: Remove transitional pack fragmentation now that final packs are in place.
   - Acceptance Criteria:
-    - Deprecated packs (`StarterPack`, mixed/legacy packs) are either migrated or removed.
-    - No duplicate prompt concepts remain because of overlapping legacy/new files.
+    - Deprecated legacy pack files are either migrated or removed.
+    - No duplicate prompt concepts remain due to overlapping legacy/new files.
     - Loader still finds sufficient packs for fresh installs.
 
 ### P2 - Later
@@ -144,28 +142,16 @@
 
 ## In Progress
 
-- [ ] TASK: Rich metadata rollout and validation hardening for question packs
-  - Type: Content Model / Validation
-  - Priority: P0
-  - Status: In Progress
-  - Area: `Models/Question`, `Services/QuestionPackLoader`, `TapTenTests/Unit/QuestionPackLoaderTests`
-  - Goal: Complete migration to richer question metadata while preserving compatibility.
-  - Acceptance Criteria:
-    - All active packs decode with metadata fields where present.
-    - Loader validation errors remain clear and actionable.
-    - Compatibility path for legacy `difficulty` remains intentional and documented.
-  - Notes:
-    - Code and tests are already partially updated in the current workspace.
-
-- [ ] TASK: Content audit execution planning
+- [ ] TASK: Maintain `CONTENT_TODO.md` as the live content QA queue
   - Type: Planning / Content
   - Priority: P0
   - Status: In Progress
   - Area: repo root docs
-  - Goal: Keep one actionable content work queue for subsequent implementation runs.
+  - Goal: Keep one actionable source of truth for unresolved content review and cleanup tasks.
   - Acceptance Criteria:
-    - `CONTENT_TODO.md` remains current with category counts, tier gaps, and review flags.
-    - Tasks remain atomic enough for one-pass Codex execution.
+    - Coverage/tier summary stays accurate after each content batch.
+    - Remaining tasks are atomic and execution-ready.
+    - Manual-review flags are updated as issues are resolved.
 
 ## Blocked
 
@@ -176,18 +162,14 @@
   - Area: Content pipeline
   - Goal: Reach a stable, balanced, low-ambiguity content set suitable for broad playtesting.
   - Acceptance Criteria:
-    - Final 12 categories complete with 12 questions each and balanced tiers.
-    - Manual ambiguity review issues are closed or explicitly deferred.
-    - Duplicate and near-duplicate prompt checks are clean.
+    - Final 12 categories stay complete with 12 questions each and balanced tiers.
+    - Setup category picker is aligned with shipped content taxonomy.
+    - Manual editorial review issues are closed or explicitly deferred.
+    - Duplicate and near-duplicate prompt checks remain clean.
   - Notes:
-    - Blocked by unfinished category migration and editorial review workload.
+    - Blocked by pending editorial review and setup-catalog parity work.
 
 ## Manual Review Needed
-- Review ambiguous questions already flagged in `CONTENT_TODO.md`:
-  - `geo-largest-deserts-world`
-  - `geo-most-visited-countries-arrivals`
-  - `things-that-make-parties-awkward`
-  - `late-to-work-excuses`
-  - `sci-famous-equations`
-- Confirm desired scope for category availability during migration (show all final categories vs hide empty categories).
-- Verify final tone split between `Film & TV` and `Pop Culture & Trends` to reduce overlap during authoring.
+- Review newly added questions currently marked `quality: "draft"` and promote status after playtest/editor pass.
+- Spot-check near-boundary prompts where category overlap is plausible (`Film & TV` vs `Pop Culture & Trends`, `Geography` vs `Travel`).
+- Confirm host adjudication speed on harder prompts in `Science`, `Technology`, and `History` during live playtests.
