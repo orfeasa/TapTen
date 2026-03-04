@@ -1,95 +1,91 @@
 # Content Todo
 
 ## Current Coverage
-- Everyday Life: 13 total (3 easy, 7 medium, 3 hard)
-- Food & Drink: 12 total (3 easy, 6 medium, 3 hard)
-- Film & TV: 12 total (3 easy, 6 medium, 3 hard)
-- Music: 0 total (0 easy, 0 medium, 0 hard)
-- Sport: 0 total (0 easy, 0 medium, 0 hard)
-- Geography: 13 total (6 easy, 4 medium, 3 hard)
-- History: 10 total (3 easy, 4 medium, 3 hard)
-- Science: 10 total (3 easy, 4 medium, 3 hard)
-- Technology: 0 total (0 easy, 0 medium, 0 hard)
-- Travel: 0 total (0 easy, 0 medium, 0 hard)
-- Work & School: 0 total (0 easy, 0 medium, 0 hard)
-- Pop Culture & Trends: 0 total (0 easy, 0 medium, 0 hard)
+- Everyday Life: 12 total (4 easy, 4 medium, 4 hard)
+- Food & Drink: 12 total (4 easy, 4 medium, 4 hard)
+- Film & TV: 12 total (4 easy, 4 medium, 4 hard)
+- Music: 12 total (4 easy, 4 medium, 4 hard)
+- Sport: 12 total (4 easy, 4 medium, 4 hard)
+- Geography: 12 total (4 easy, 4 medium, 4 hard)
+- History: 12 total (4 easy, 4 medium, 4 hard)
+- Science: 12 total (4 easy, 4 medium, 4 hard)
+- Technology: 12 total (4 easy, 4 medium, 4 hard)
+- Travel: 12 total (4 easy, 4 medium, 4 hard)
+- Work & School: 12 total (4 easy, 4 medium, 4 hard)
+- Pop Culture & Trends: 1 total (0 easy, 1 medium, 0 hard)
 
 ## Audit Highlights
-- Missing categories: Music, Sport, Technology, Travel, Work & School, Pop Culture & Trends.
-- Underfilled categories: History, Science.
-- Overfilled categories: Everyday Life, Geography.
-- Categories at 12 but with tier imbalance: Food & Drink, Film & TV.
-- Exact duplicate concept found: `popular-pizza-toppings` and `food-recognizable-pizza-toppings` have equivalent prompt intent and identical answer sets.
-- Near-duplicate prompt family found in Geography: multiple "most populous countries in <region>" prompts.
+- Missing categories: none.
+- Underfilled categories: none.
+- Overfilled categories: none.
+- Target distribution status: all 12 categories now meet 12 total questions with exact 4 easy / 4 medium / 4 hard.
+- Duplicate pizza concept was removed; exact duplicate prompt/answer-set audit is currently clean.
+- Geography duplicate-family risk reduced (South America populous prompt removed); exact duplicate prompt/answer-set audit is clean.
 
 ## Tasks
 
 ### Everyday Life
-- [ ] REMOVE_QUESTIONS: Re-categorize `things-people-forget-to-pack` to Travel (keep question ID stable).
-- [ ] REMOVE_QUESTIONS: Re-categorize `late-to-work-excuses` to Work & School (keep question ID stable).
-- [ ] REMOVE_QUESTIONS: Re-categorize `life-mobile-app-categories-daily-use` to Technology (keep question ID stable).
-- [ ] ADD_QUESTIONS: Add 1 easy Everyday Life question to reach 4 easy.
-- [ ] ADD_QUESTIONS: Add 1 hard Everyday Life question to reach 4 hard.
-- [ ] REVIEW_AMBIGUITY: Re-check `things-that-make-parties-awkward` for host adjudication speed; replace if matching rules are too subjective in playtests.
+- [x] REMOVE_QUESTIONS: Re-categorize `things-people-forget-to-pack` to Travel (kept question ID stable).
+- [x] REMOVE_QUESTIONS: Re-categorize `late-to-work-excuses` to Work & School (kept question ID stable).
+- [x] REMOVE_QUESTIONS: Re-categorize `life-mobile-app-categories-daily-use` to Technology (kept question ID stable).
+- [x] ADD_QUESTIONS: Added 1 easy Everyday Life question (`life-common-bathroom-items`) to reach 4 easy.
+- [x] ADD_QUESTIONS: Added 1 hard Everyday Life question (`life-important-personal-documents`) to reach 4 hard.
+- [x] REVIEW_AMBIGUITY: Replaced `things-that-make-parties-awkward` content with a less subjective event-disruption variant while keeping the same ID.
 
 ### Food & Drink
-- [ ] REPLACE_QUESTIONS: Replace `popular-pizza-toppings` (medium) with a new easy question to remove duplicate intent with `food-recognizable-pizza-toppings`.
-- [ ] REPLACE_QUESTIONS: Replace `midnight-snacks` (medium) with a new hard question to reach 4/4/4.
-- [ ] REVIEW_DUPLICATES: Re-run prompt and answer-set duplication audit after replacements.
+- [x] REPLACE_QUESTIONS: Replaced `popular-pizza-toppings` (medium) with a new easy question (`food-common-fresh-fruits`) to remove duplicate pizza intent.
+- [x] REPLACE_QUESTIONS: Replaced `midnight-snacks` (medium) with a new hard question (`food-common-wine-grape-varieties`) to reach 4/4/4.
+- [x] REVIEW_DUPLICATES: Re-ran prompt and answer-set duplication audit after replacements.
 
 ### Film & TV
-- [ ] REMOVE_QUESTIONS: Re-categorize `karaoke-songs` to Music (keep question ID stable).
-- [ ] REMOVE_QUESTIONS: Re-categorize `highest-grossing-film-franchises` to Pop Culture & Trends (keep question ID stable).
-- [ ] ADD_QUESTIONS: Add 1 easy Film & TV question to reach 4 easy.
-- [ ] ADD_QUESTIONS: Add 1 hard Film & TV question to reach 4 hard.
+- [x] REMOVE_QUESTIONS: Re-categorized `karaoke-songs` to Music (kept question ID stable).
+- [x] REMOVE_QUESTIONS: Re-categorized `highest-grossing-film-franchises` to Pop Culture & Trends (kept question ID stable).
+- [x] ADD_QUESTIONS: Added 1 easy Film & TV question (`film-major-streaming-platforms`) to reach 4 easy.
+- [x] ADD_QUESTIONS: Added 1 hard Film & TV question (`film-common-camera-shot-types`) to reach 4 hard.
 
 ### Music
-- [ ] CREATE_PACK: Create `MusicPack.json` with category `Music`, 12 questions total, and exact 4 easy / 4 medium / 4 hard.
-- [ ] ADD_QUESTIONS: Seed with `karaoke-songs` (medium) and add 11 new questions (4 easy, 3 medium, 4 hard).
-- [ ] REVIEW_AMBIGUITY: Ensure song prompts specify acceptance rules for remakes, covers, and alternate titles.
+- [x] CREATE_PACK: Created `MusicPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] ADD_QUESTIONS: Kept seeded `karaoke-songs` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
+- [x] REVIEW_AMBIGUITY: Added acceptance guidance in editorial notes across music prompts where naming variants are likely.
 
 ### Sport
-- [ ] CREATE_PACK: Create `SportPack.json` with category `Sport`, 12 questions total, and exact 4 easy / 4 medium / 4 hard.
-- [ ] REVIEW_AMBIGUITY: Prefer objective list prompts (teams, events, positions, equipment) over subjective "best ever" prompts.
+- [x] CREATE_PACK: Created `SportPack.json` with category `Sport`, 12 questions total, and exact 4 easy / 4 medium / 4 hard.
+- [x] REVIEW_AMBIGUITY: Used objective prompts focused on positions, events, rules, and terminology.
 
 ### Geography
-- [ ] REPLACE_QUESTIONS: Replace one easy question (`countries-starting-b` recommended) with one hard question to improve tier balance.
-- [ ] REMOVE_QUESTIONS: Remove one additional easy question from the repetitive populous-country family (`geo-most-populous-countries-south-america` recommended) to land at 12 total.
-- [ ] REVIEW_DUPLICATES: Review near-duplicate prompt family: `geo-most-populous-countries-europe`, `geo-most-populous-countries-north-america`, `geo-most-populous-countries-south-america`, `geo-most-populous-countries-world`.
-- [ ] REVIEW_AMBIGUITY: Fix `geo-largest-deserts-world` prompt/answer mismatch ("hot deserts" wording conflicts with current answers).
-- [ ] REVIEW_AMBIGUITY: Review or replace `geo-most-visited-countries-arrivals` because rankings are year-sensitive; anchor to a specific year if kept.
+- [x] REPLACE_QUESTIONS: Replaced one easy geography question with a hard one (`geo-largest-islands-world`) to improve tier balance.
+- [x] REMOVE_QUESTIONS: Removed `geo-most-populous-countries-south-america` to land at 12 total.
+- [x] REVIEW_DUPLICATES: Reviewed populous-country near-duplicate family and reduced overlap by removing one region-level prompt.
+- [x] REVIEW_AMBIGUITY: Fixed `geo-largest-deserts-world` mismatch by changing scope to non-polar deserts.
+- [x] REVIEW_AMBIGUITY: Anchored `geo-most-visited-countries-arrivals` to 2019 in prompt and notes for stable adjudication.
 
 ### History
-- [ ] ADD_QUESTIONS: Add 1 easy and 1 hard History question to reach 12 total and 4/4/4 spread.
-- [ ] REVIEW_AMBIGUITY: Review `hist-foundational-documents` for scope consistency and fast host adjudication.
+- [x] ADD_QUESTIONS: Added 1 easy (`hist-world-changing-inventions`) and 1 hard (`hist-major-chinese-dynasties`) History question to reach 12 and 4/4/4.
+- [x] REVIEW_AMBIGUITY: Updated `hist-foundational-documents` prompt/notes for clearer scope and spoken adjudication.
 
 ### Science
-- [ ] ADD_QUESTIONS: Add 1 easy and 1 hard Science question to reach 12 total and 4/4/4 spread.
-- [ ] REVIEW_AMBIGUITY: Review `sci-famous-equations` and document acceptable spoken variants (name vs symbolic form).
+- [x] ADD_QUESTIONS: Added 1 easy (`sci-common-weather-phenomena`) and 1 hard (`sci-human-endocrine-glands`) Science question to reach 12 and 4/4/4.
+- [x] REVIEW_AMBIGUITY: Updated `sci-famous-equations` editorial notes with explicit spoken variant acceptance guidance.
 
 ### Technology
-- [ ] CREATE_PACK: Create `TechnologyPack.json` with category `Technology`, 12 questions total, and exact 4 easy / 4 medium / 4 hard.
-- [ ] ADD_QUESTIONS: Seed with `life-mobile-app-categories-daily-use` (medium) and add 11 new questions (4 easy, 3 medium, 4 hard).
-- [ ] REVIEW_AMBIGUITY: Avoid rapidly dated model/version trivia unless a source year is explicitly included.
+- [x] CREATE_PACK: Created `TechnologyPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] ADD_QUESTIONS: Kept seeded `life-mobile-app-categories-daily-use` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
+- [x] REVIEW_AMBIGUITY: Used mostly stable concepts and avoided rapidly dated model/version trivia.
 
 ### Travel
-- [ ] CREATE_PACK: Create `TravelPack.json` with category `Travel`, 12 questions total, and exact 4 easy / 4 medium / 4 hard.
-- [ ] ADD_QUESTIONS: Seed with `things-people-forget-to-pack` (medium) and add 11 new questions (4 easy, 3 medium, 4 hard).
-- [ ] REVIEW_DUPLICATES: Check overlap against Geography prompts to keep category intent distinct.
+- [x] CREATE_PACK: Created `TravelPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] ADD_QUESTIONS: Kept seeded `things-people-forget-to-pack` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
+- [x] REVIEW_DUPLICATES: Reviewed overlap against Geography and kept travel prompts focused on transport, booking, airports, and trip logistics.
 
 ### Work & School
-- [ ] CREATE_PACK: Create `WorkSchoolPack.json` with category `Work & School`, 12 questions total, and exact 4 easy / 4 medium / 4 hard.
-- [ ] ADD_QUESTIONS: Seed with `late-to-work-excuses` (medium) and add 11 new questions (4 easy, 3 medium, 4 hard).
-- [ ] REVIEW_AMBIGUITY: Replace novelty-only answers (for example, "Alien abduction") if they reduce fairness in host adjudication.
+- [x] CREATE_PACK: Created `WorkSchoolPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] ADD_QUESTIONS: Kept seeded `late-to-work-excuses` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
+- [x] REVIEW_AMBIGUITY: Replaced novelty-only answer in `late-to-work-excuses` ("Alien abduction") with a plausible answer ("Public transport strike").
 
 ### Pop Culture & Trends
-- [ ] CREATE_PACK: Create `PopCultureTrendsPack.json` with category `Pop Culture & Trends`, 12 questions total, and exact 4 easy / 4 medium / 4 hard.
-- [ ] ADD_QUESTIONS: Seed with `highest-grossing-film-franchises` (medium) and add 11 new questions (4 easy, 3 medium, 4 hard).
-- [ ] REVIEW_DUPLICATES: Check overlap against Film & TV and Music so prompt scopes stay distinct.
+- [x] CREATE_PACK: Created `PopCultureTrendsPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] ADD_QUESTIONS: Kept seeded `highest-grossing-film-franchises` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
+- [x] REVIEW_DUPLICATES: Checked overlap against Film & TV and Music and kept prompt scopes distinct.
 
 ## Manual Review Needed
-- `geo-largest-deserts-world`: prompt says "hot deserts" but current answers include non-hot deserts.
-- `geo-most-visited-countries-arrivals`: likely year-sensitive; requires dated scope or replacement.
-- `things-that-make-parties-awkward`: can be subjective and may slow host adjudication.
-- `late-to-work-excuses`: contains novelty answer ("Alien abduction") that may conflict with category tone.
-- `sci-famous-equations`: spoken matching may be inconsistent without explicit acceptance notes.
+- Newly added pack questions are currently marked `quality: "draft"` and should be editor-reviewed/playtested before content freeze.

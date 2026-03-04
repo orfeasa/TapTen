@@ -86,6 +86,33 @@
       ]
     },
     {
+      "id": "film-major-streaming-platforms",
+      "category": "Film & TV",
+      "prompt": "Streaming platforms people use for films and TV shows",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "entertainment-platform-list",
+      "quality": "draft",
+      "tags": ["film", "tv", "streaming"],
+      "difficultyNotes": "Global household platforms are guessed quickly by most teams.",
+      "editorialNotes": "Accept common service shorthand such as Prime for Prime Video.",
+      "sourceURL": "https://en.wikipedia.org/wiki/List_of_streaming_media_services",
+      "answers": [
+        { "text": "Netflix", "points": 1 },
+        { "text": "Prime Video", "points": 1 },
+        { "text": "Disney+", "points": 1 },
+        { "text": "Max", "points": 1 },
+        { "text": "Hulu", "points": 1 },
+        { "text": "Apple TV+", "points": 2 },
+        { "text": "Paramount+", "points": 2 },
+        { "text": "Peacock", "points": 2 },
+        { "text": "YouTube", "points": 2 },
+        { "text": "Crunchyroll", "points": 3 }
+      ]
+    },
+    {
       "id": "film-best-picture-winners-2010s",
       "category": "Film & TV",
       "prompt": "Academy Award Best Picture winners from the 2010s",
@@ -272,6 +299,33 @@
         { "text": "Tribeca Festival", "points": 4 },
         { "text": "Busan International Film Festival", "points": 4 },
         { "text": "Karlovy Vary International Film Festival", "points": 4 }
+      ]
+    },
+    {
+      "id": "film-common-camera-shot-types",
+      "category": "Film & TV",
+      "prompt": "Camera shot types people hear in filmmaking discussions",
+      "difficulty": "hard",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "factual",
+      "contentType": "entertainment-production-list",
+      "quality": "draft",
+      "tags": ["film", "cinematography", "production"],
+      "difficultyNotes": "Basic shots are common; technical movement and angle terms are harder under pressure.",
+      "editorialNotes": "Accept close equivalents when they clearly map to the same shot convention.",
+      "sourceURL": "https://en.wikipedia.org/wiki/Shot_(filmmaking)",
+      "answers": [
+        { "text": "Close-up", "points": 1 },
+        { "text": "Wide shot", "points": 2 },
+        { "text": "Medium shot", "points": 2 },
+        { "text": "Long shot", "points": 3 },
+        { "text": "Over-the-shoulder shot", "points": 3 },
+        { "text": "Tracking shot", "points": 3 },
+        { "text": "Crane shot", "points": 3 },
+        { "text": "Establishing shot", "points": 4 },
+        { "text": "Dolly zoom", "points": 4 },
+        { "text": "Dutch angle", "points": 4 }
       ]
     }
   ]

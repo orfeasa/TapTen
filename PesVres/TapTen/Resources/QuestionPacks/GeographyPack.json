@@ -5,33 +5,6 @@
   "packVersion": "2.0",
   "questions": [
     {
-      "id": "geo-most-populous-countries-south-america",
-      "category": "Geography",
-      "prompt": "Most populous countries in South America",
-      "difficulty": "easy",
-      "difficultyTier": "easy",
-      "difficultyScore": 16,
-      "validationStyle": "factual",
-      "contentType": "factual-ranking",
-      "quality": "draft",
-      "tags": ["geography", "south-america", "population"],
-      "difficultyNotes": "High-frequency country names dominate this list.",
-      "editorialNotes": "Accept common short forms such as 'Venezuela' without formal country prefix.",
-      "sourceURL": "https://en.wikipedia.org/wiki/List_of_South_American_countries_by_population",
-      "answers": [
-        { "text": "Brazil", "points": 1 },
-        { "text": "Colombia", "points": 1 },
-        { "text": "Argentina", "points": 1 },
-        { "text": "Peru", "points": 1 },
-        { "text": "Venezuela", "points": 1 },
-        { "text": "Chile", "points": 2 },
-        { "text": "Ecuador", "points": 2 },
-        { "text": "Bolivia", "points": 2 },
-        { "text": "Paraguay", "points": 2 },
-        { "text": "Uruguay", "points": 3 }
-      ]
-    },
-    {
       "id": "geo-most-populous-countries-europe",
       "category": "Geography",
       "prompt": "Most populous countries in Europe",
@@ -223,7 +196,7 @@
     {
       "id": "geo-largest-deserts-world",
       "category": "Geography",
-      "prompt": "Largest hot deserts in the world",
+      "prompt": "Largest non-polar deserts in the world",
       "difficulty": "hard",
       "difficultyTier": "hard",
       "difficultyScore": 29,
@@ -250,7 +223,7 @@
     {
       "id": "geo-most-visited-countries-arrivals",
       "category": "Geography",
-      "prompt": "Most visited countries by international arrivals",
+      "prompt": "Most visited countries by international tourist arrivals (2019)",
       "difficulty": "hard",
       "difficultyTier": "hard",
       "difficultyScore": 29,
@@ -258,8 +231,8 @@
       "contentType": "factual-ranking",
       "quality": "draft",
       "tags": ["geography", "tourism", "countries"],
-      "difficultyNotes": "This list can shift over time and should be refreshed periodically.",
-      "editorialNotes": "Accept current country names used in tourism reports.",
+      "difficultyNotes": "Anchored to the 2019 ranking snapshot for stable adjudication.",
+      "editorialNotes": "Accept standard short forms such as UK and USA when unambiguous.",
       "sourceURL": "https://en.wikipedia.org/wiki/World_Tourism_rankings",
       "answers": [
         { "text": "France", "points": 1 },

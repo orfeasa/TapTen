@@ -4,25 +4,25 @@
   "languageCode": "en",
   "questions": [
     {
-      "id": "countries-starting-b",
+      "id": "geo-largest-islands-world",
       "category": "Geography",
-      "prompt": "Countries that start with the letter B",
-      "difficulty": "easy",
-      "difficultyTier": "easy",
-      "difficultyScore": 18,
+      "prompt": "Largest islands in the world (excluding continents)",
+      "difficulty": "hard",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
       "validationStyle": "factual",
-      "sourceURL": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
+      "sourceURL": "https://en.wikipedia.org/wiki/List_of_islands_by_area",
       "answers": [
-        { "text": "Bahamas", "points": 1 },
-        { "text": "Bahrain", "points": 1 },
-        { "text": "Bangladesh", "points": 1 },
-        { "text": "Barbados", "points": 2 },
-        { "text": "Belarus", "points": 2 },
-        { "text": "Belgium", "points": 1 },
-        { "text": "Belize", "points": 2 },
-        { "text": "Benin", "points": 3 },
-        { "text": "Bhutan", "points": 3 },
-        { "text": "Bolivia", "points": 2 }
+        { "text": "Greenland", "points": 1 },
+        { "text": "New Guinea", "points": 2 },
+        { "text": "Borneo", "points": 2 },
+        { "text": "Madagascar", "points": 3 },
+        { "text": "Baffin Island", "points": 3 },
+        { "text": "Sumatra", "points": 3 },
+        { "text": "Honshu", "points": 3 },
+        { "text": "Victoria Island", "points": 4 },
+        { "text": "Great Britain", "points": 4 },
+        { "text": "Ellesmere Island", "points": 4 }
       ]
     },
     {
@@ -49,7 +49,7 @@
     },
     {
       "id": "highest-grossing-film-franchises",
-      "category": "Film & TV",
+      "category": "Pop Culture & Trends",
       "prompt": "Highest-grossing film franchises",
       "difficulty": "medium",
       "difficultyTier": "medium",

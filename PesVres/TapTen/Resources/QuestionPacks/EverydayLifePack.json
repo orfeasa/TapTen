@@ -86,6 +86,33 @@
       ]
     },
     {
+      "id": "life-common-bathroom-items",
+      "category": "Everyday Life",
+      "prompt": "Items people commonly keep in a bathroom",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "lifestyle-item-list",
+      "quality": "draft",
+      "tags": ["everyday", "home", "bathroom"],
+      "difficultyNotes": "Most answers are routine household essentials.",
+      "editorialNotes": "Accept close wording such as 'body wash' for soap.",
+      "sourceURL": "https://en.wikipedia.org/wiki/Toiletry",
+      "answers": [
+        { "text": "Toothbrush", "points": 1 },
+        { "text": "Toothpaste", "points": 1 },
+        { "text": "Soap", "points": 1 },
+        { "text": "Shampoo", "points": 1 },
+        { "text": "Towel", "points": 1 },
+        { "text": "Toilet paper", "points": 2 },
+        { "text": "Deodorant", "points": 2 },
+        { "text": "Razor", "points": 2 },
+        { "text": "Hairbrush", "points": 2 },
+        { "text": "Mouthwash", "points": 3 }
+      ]
+    },
+    {
       "id": "life-common-small-talk-topics",
       "category": "Everyday Life",
       "prompt": "Small-talk topics people use in casual conversation",
@@ -141,7 +168,7 @@
     },
     {
       "id": "life-mobile-app-categories-daily-use",
-      "category": "Everyday Life",
+      "category": "Technology",
       "prompt": "Mobile app categories people use daily",
       "difficulty": "medium",
       "difficultyTier": "medium",
@@ -272,6 +299,33 @@
         { "text": "Reflecting emotions", "points": 4 },
         { "text": "Summarizing points", "points": 4 },
         { "text": "Follow-up question", "points": 4 }
+      ]
+    },
+    {
+      "id": "life-important-personal-documents",
+      "category": "Everyday Life",
+      "prompt": "Personal documents adults often keep for major paperwork",
+      "difficulty": "hard",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "lifestyle-admin-list",
+      "quality": "draft",
+      "tags": ["everyday", "documents", "admin"],
+      "difficultyNotes": "Common ID documents are easy; recordkeeping documents are harder to recall quickly.",
+      "editorialNotes": "Accept close equivalents used in different countries when the intent clearly matches.",
+      "sourceURL": "https://en.wikipedia.org/wiki/Identity_document",
+      "answers": [
+        { "text": "Passport", "points": 1 },
+        { "text": "Birth certificate", "points": 2 },
+        { "text": "Driver's license", "points": 2 },
+        { "text": "Tax return", "points": 3 },
+        { "text": "Insurance policy", "points": 3 },
+        { "text": "Bank statement", "points": 3 },
+        { "text": "Lease agreement", "points": 3 },
+        { "text": "Employment contract", "points": 4 },
+        { "text": "Vehicle registration", "points": 4 },
+        { "text": "Proof of address letter", "points": 4 }
       ]
     }
   ]

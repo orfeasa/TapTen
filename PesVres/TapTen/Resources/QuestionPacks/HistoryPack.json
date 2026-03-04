@@ -86,6 +86,33 @@
       ]
     },
     {
+      "id": "hist-world-changing-inventions",
+      "category": "History",
+      "prompt": "Inventions from history that changed daily life",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "history-invention-list",
+      "quality": "draft",
+      "tags": ["history", "inventions", "daily-life"],
+      "difficultyNotes": "Most answers are globally taught inventions with familiar names.",
+      "editorialNotes": "Accept concise variants such as 'bulb' for light bulb.",
+      "sourceURL": "https://en.wikipedia.org/wiki/Timeline_of_historic_inventions",
+      "answers": [
+        { "text": "Printing press", "points": 1 },
+        { "text": "Compass", "points": 1 },
+        { "text": "Gunpowder", "points": 1 },
+        { "text": "Steam engine", "points": 1 },
+        { "text": "Telephone", "points": 1 },
+        { "text": "Light bulb", "points": 2 },
+        { "text": "Airplane", "points": 2 },
+        { "text": "Radio", "points": 2 },
+        { "text": "Antibiotics", "points": 2 },
+        { "text": "Internet", "points": 3 }
+      ]
+    },
+    {
       "id": "hist-iconic-world-heritage-landmarks",
       "category": "History",
       "prompt": "Iconic historical landmarks with strong global recognition",
@@ -169,7 +196,7 @@
     {
       "id": "hist-foundational-documents",
       "category": "History",
-      "prompt": "Foundational historical documents often referenced in civics",
+      "prompt": "Foundational historical documents often referenced in history classes",
       "difficulty": "medium",
       "difficultyTier": "medium",
       "difficultyScore": 22,
@@ -177,8 +204,8 @@
       "contentType": "history-document-list",
       "quality": "draft",
       "tags": ["history", "documents", "civics"],
-      "difficultyNotes": "Document titles are harder to recall exactly under pressure.",
-      "editorialNotes": "Accept shortened but clearly identifiable document names.",
+      "difficultyNotes": "Document and declaration titles are harder to recall exactly under pressure.",
+      "editorialNotes": "Accept shortened but clearly identifiable titles (for example, 'Rights of Man').",
       "sourceURL": "https://en.wikipedia.org/wiki/Historic_document",
       "answers": [
         { "text": "Magna Carta", "points": 1 },
@@ -272,6 +299,33 @@
         { "text": "Mexican Revolution", "points": 4 },
         { "text": "Xinhai Revolution", "points": 4 },
         { "text": "Velvet Revolution", "points": 4 }
+      ]
+    },
+    {
+      "id": "hist-major-chinese-dynasties",
+      "category": "History",
+      "prompt": "Major dynasties in imperial Chinese history",
+      "difficulty": "hard",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "factual",
+      "contentType": "history-dynasty-list",
+      "quality": "draft",
+      "tags": ["history", "china", "dynasties"],
+      "difficultyNotes": "Early and transition dynasties are usually hardest for teams to recall quickly.",
+      "editorialNotes": "Accept standard dynasty names only.",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dynasties_in_Chinese_history",
+      "answers": [
+        { "text": "Zhou", "points": 1 },
+        { "text": "Qin", "points": 2 },
+        { "text": "Han", "points": 2 },
+        { "text": "Sui", "points": 3 },
+        { "text": "Tang", "points": 3 },
+        { "text": "Song", "points": 3 },
+        { "text": "Yuan", "points": 3 },
+        { "text": "Ming", "points": 4 },
+        { "text": "Qing", "points": 4 },
+        { "text": "Jin", "points": 4 }
       ]
     }
   ]

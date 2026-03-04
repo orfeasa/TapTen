@@ -86,6 +86,33 @@
       ]
     },
     {
+      "id": "sci-common-weather-phenomena",
+      "category": "Science",
+      "prompt": "Weather phenomena people can name quickly",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "science-weather-list",
+      "quality": "draft",
+      "tags": ["science", "weather", "earth-science"],
+      "difficultyNotes": "Most answers are common weather terms heard in daily forecasts.",
+      "editorialNotes": "Accept regional naming variants when clearly equivalent.",
+      "sourceURL": "https://en.wikipedia.org/wiki/Weather",
+      "answers": [
+        { "text": "Rain", "points": 1 },
+        { "text": "Snow", "points": 1 },
+        { "text": "Wind", "points": 1 },
+        { "text": "Fog", "points": 1 },
+        { "text": "Thunder", "points": 1 },
+        { "text": "Lightning", "points": 2 },
+        { "text": "Hail", "points": 2 },
+        { "text": "Rainbow", "points": 2 },
+        { "text": "Tornado", "points": 2 },
+        { "text": "Hurricane", "points": 3 }
+      ]
+    },
+    {
       "id": "sci-major-human-bones",
       "category": "Science",
       "prompt": "Major bones in the human body",
@@ -232,7 +259,7 @@
       "quality": "draft",
       "tags": ["science", "equations", "physics"],
       "difficultyNotes": "Equation names are harder to retrieve than symbols in spoken play.",
-      "editorialNotes": "Accept either equation title or formula expression if clearly matched.",
+      "editorialNotes": "Accept spoken formula variants and equation names (for example 'E equals mc squared', 'F equals ma', 'PV equals nRT').",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_equations",
       "answers": [
         { "text": "E=mc squared", "points": 1 },
@@ -272,6 +299,33 @@
         { "text": "Mars Pathfinder landing", "points": 4 },
         { "text": "Curiosity rover landing", "points": 4 },
         { "text": "James Webb Space Telescope launch", "points": 4 }
+      ]
+    },
+    {
+      "id": "sci-human-endocrine-glands",
+      "category": "Science",
+      "prompt": "Endocrine glands and hormone-producing organs in the human body",
+      "difficulty": "hard",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "factual",
+      "contentType": "science-anatomy-list",
+      "quality": "draft",
+      "tags": ["science", "biology", "endocrine-system"],
+      "difficultyNotes": "Core glands are known, but several organs are easy to miss in fast rounds.",
+      "editorialNotes": "Accept common gland names and accepted anatomical equivalents.",
+      "sourceURL": "https://en.wikipedia.org/wiki/Endocrine_system",
+      "answers": [
+        { "text": "Pituitary gland", "points": 1 },
+        { "text": "Thyroid gland", "points": 2 },
+        { "text": "Parathyroid glands", "points": 2 },
+        { "text": "Adrenal glands", "points": 3 },
+        { "text": "Pancreas", "points": 3 },
+        { "text": "Pineal gland", "points": 3 },
+        { "text": "Hypothalamus", "points": 3 },
+        { "text": "Thymus", "points": 4 },
+        { "text": "Ovaries", "points": 4 },
+        { "text": "Testes", "points": 4 }
       ]
     }
   ]

@@ -5,7 +5,7 @@
   "questions": [
     {
       "id": "things-people-forget-to-pack",
-      "category": "Everyday Life",
+      "category": "Travel",
       "prompt": "Things people forget to pack for vacation",
       "difficulty": "medium",
       "difficultyTier": "medium",
@@ -26,30 +26,30 @@
       ]
     },
     {
-      "id": "popular-pizza-toppings",
+      "id": "food-common-fresh-fruits",
       "category": "Food & Drink",
-      "prompt": "Popular pizza toppings",
-      "difficulty": "medium",
-      "difficultyTier": "medium",
-      "difficultyScore": 20,
+      "prompt": "Fresh fruits people often buy at supermarkets",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
       "validationStyle": "editorial",
-      "sourceURL": "https://www.statista.com/statistics/299280/top-10-us-favorite-pizza-toppings/",
+      "sourceURL": "https://en.wikipedia.org/wiki/Fruit",
       "answers": [
-        { "text": "Pepperoni", "points": 1 },
-        { "text": "Mushrooms", "points": 1 },
-        { "text": "Onions", "points": 1 },
-        { "text": "Sausage", "points": 1 },
-        { "text": "Bacon", "points": 2 },
-        { "text": "Extra cheese", "points": 2 },
-        { "text": "Black olives", "points": 2 },
-        { "text": "Green peppers", "points": 2 },
-        { "text": "Pineapple", "points": 3 },
-        { "text": "Anchovies", "points": 5 }
+        { "text": "Apple", "points": 1 },
+        { "text": "Banana", "points": 1 },
+        { "text": "Orange", "points": 1 },
+        { "text": "Grapes", "points": 1 },
+        { "text": "Strawberry", "points": 1 },
+        { "text": "Watermelon", "points": 2 },
+        { "text": "Mango", "points": 2 },
+        { "text": "Pineapple", "points": 2 },
+        { "text": "Blueberries", "points": 2 },
+        { "text": "Pear", "points": 3 }
       ]
     },
     {
       "id": "late-to-work-excuses",
-      "category": "Everyday Life",
+      "category": "Work & School",
       "prompt": "Excuses people use for being late to work",
       "difficulty": "medium",
       "difficultyTier": "medium",
@@ -66,7 +66,7 @@
         { "text": "Locked out of the house", "points": 3 },
         { "text": "Elevator stuck", "points": 3 },
         { "text": "Wrong day confusion", "points": 4 },
-        { "text": "Alien abduction", "points": 5 }
+        { "text": "Public transport strike", "points": 5 }
       ]
     }
   ]
