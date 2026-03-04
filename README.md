@@ -13,18 +13,18 @@ Two teams play on one device. One team answers out loud while the other team hos
 - Bundled local JSON question packs only (no network fetching).
 - Warm, Apple-native visual direction with restrained motion.
 - Playful-but-clear in-app tone for supporting copy and verdicts.
+- Cleaner Home with focused hero copy, one strong primary CTA, setup status capsules, and a separate `How To Play` sheet.
 - Pass-device handoff flow between rounds with clear answering/hosting emphasis.
 - Host round with:
   - visible question and all 10 answers
   - large tap targets
   - continuous countdown timer
-  - tap-to-reveal answers only while timer is active
-  - `Undo Last` control for safe correction while timer is active
-  - after timer ends, answer rows can still be toggled for host review
+  - answer rows sorted alphabetically for faster scanning
+  - tap-to-toggle answers (tap again to untap) during active play and after time-up review
   - subtle reveal reward feedback (animation + transient `+points`)
   - differentiated reveal haptics by answer value
   - tense final-seconds timer treatment
-  - side-by-side `Undo Last` + `Pause`/`Resume` controls while active
+  - active-round `Pause` / `Resume` control
   - clear post-timeup CTA (`Continue to Summary`)
   - source-link icon available once the round ends
 - Round summary with stronger points-first hierarchy, playful verdict styling, scoreboard, and source link.
@@ -57,12 +57,18 @@ Question packs live in `PesVres/TapTen/Resources/QuestionPacks/` and are bundled
 Each question must include:
 
 - exactly 10 answers
-- a difficulty value: `easy`, `medium`, or `hard`
 - points from 1 to 5 per answer
+- `difficultyScore` that equals the sum of the 10 answer points
+- `difficultyTier` (`easy`, `medium`, `hard`) that matches the score bands
 - one `sourceURL`
 - `validationStyle` (`factual`, `editorial`, or `humorous`)
 
+Optional metadata is supported for curation (`contentType`, `quality`, `tags`, `difficultyNotes`, `editorialNotes`, `packVersion`).
+
 Malformed pack data is validated and surfaced with clean loader errors.
+For authoring and audit workflow, see:
+- `PesVres/TapTen/Resources/QuestionPacks/CONTENT_AUTHORING_SPEC.md`
+- `CONTENT_TODO.md`
 
 ## Build
 
@@ -91,7 +97,7 @@ Unit tests are under `PesVres/TapTenTests/Unit/` and cover:
 - question-pack loading and validation
 - game setup category selection behavior
 - end-game sassy comment tier logic
-- host round reveal-only behavior and undo-last-reveal behavior
+- host round tap-toggle behavior and countdown behavior
 
 Note: avoid launching iOS simulator test runs unless explicitly needed in the current task.
 

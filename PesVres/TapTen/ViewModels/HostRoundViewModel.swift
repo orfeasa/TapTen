@@ -17,7 +17,6 @@ final class HostRoundViewModel {
 
     private var timer: DispatchSourceTimer?
     private var lastAnnouncedSecond: Int?
-    private var revealHistory: [Int] = []
 
     init(
         question: Question,
@@ -74,10 +73,6 @@ final class HostRoundViewModel {
         }
     }
 
-    var canUndoLastReveal: Bool {
-        !isRoundFinished && !revealHistory.isEmpty
-    }
-
     func startRoundIfNeeded() {
         guard timer == nil, !isRoundFinished else {
             return
@@ -125,23 +120,16 @@ final class HostRoundViewModel {
             return false
         }
 
-        guard !isRoundFinished else {
-            if revealedAnswerIndices.contains(index) {
-                revealedAnswerIndices.remove(index)
-            } else {
-                revealedAnswerIndices.insert(index)
-            }
+        if revealedAnswerIndices.contains(index) {
+            revealedAnswerIndices.remove(index)
             return true
         }
 
-        guard !revealedAnswerIndices.contains(index) else {
-            return false
-        }
-
         revealedAnswerIndices.insert(index)
-        revealHistory.append(index)
-        latestRevealPoints = question.answers[index].points
-        revealEventToken += 1
+        if !isRoundFinished {
+            latestRevealPoints = question.answers[index].points
+            revealEventToken += 1
+        }
         return true
     }
 
@@ -149,14 +137,6 @@ final class HostRoundViewModel {
     @discardableResult
     func toggleAnswer(at index: Int) -> Bool {
         revealAnswer(at: index)
-    }
-
-    func undoLastReveal() {
-        guard !isRoundFinished, let index = revealHistory.popLast() else {
-            return
-        }
-
-        revealedAnswerIndices.remove(index)
     }
 
     private func tick() {

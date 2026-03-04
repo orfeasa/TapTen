@@ -5,9 +5,11 @@
   "questions": [
     {
       "id": "countries-starting-b",
-      "category": "Factual",
+      "category": "Geography",
       "prompt": "Countries that start with the letter B",
-      "difficulty": "medium",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 18,
       "validationStyle": "factual",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
       "answers": [
@@ -25,9 +27,11 @@
     },
     {
       "id": "largest-us-cities",
-      "category": "Factual",
+      "category": "Geography",
       "prompt": "Top 10 most populated U.S. cities",
-      "difficulty": "medium",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 17,
       "validationStyle": "factual",
       "sourceURL": "https://www.census.gov/newsroom/press-releases/2021/2020-census-counts.html",
       "answers": [
@@ -45,9 +49,11 @@
     },
     {
       "id": "highest-grossing-film-franchises",
-      "category": "Pop Culture",
+      "category": "Film & TV",
       "prompt": "Highest-grossing film franchises",
-      "difficulty": "hard",
+      "difficulty": "medium",
+      "difficultyTier": "medium",
+      "difficultyScore": 23,
       "validationStyle": "editorial",
       "sourceURL": "https://www.the-numbers.com/movies/franchises",
       "answers": [

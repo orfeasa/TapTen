@@ -4,7 +4,7 @@ import Testing
 
 struct HostRoundViewModelTests {
     @Test
-    func revealOnlyTapDoesNotUnrevealAnswer() {
+    func tapAgainUnrevealsAnswerDuringActiveRound() {
         let viewModel = HostRoundViewModel(
             question: makeQuestion(),
             roundDurationSeconds: 60
@@ -14,13 +14,13 @@ struct HostRoundViewModelTests {
         let secondReveal = viewModel.revealAnswer(at: 0)
 
         #expect(firstReveal == true)
-        #expect(secondReveal == false)
-        #expect(viewModel.revealedAnswerIndices.contains(0))
-        #expect(viewModel.pointsAwarded == 1)
+        #expect(secondReveal == true)
+        #expect(!viewModel.revealedAnswerIndices.contains(0))
+        #expect(viewModel.pointsAwarded == 0)
     }
 
     @Test
-    func undoLastRevealRemovesMostRecentReveal() {
+    func togglingMultipleAnswersUpdatesPoints() {
         let viewModel = HostRoundViewModel(
             question: makeQuestion(),
             roundDurationSeconds: 60
@@ -29,19 +29,13 @@ struct HostRoundViewModelTests {
         _ = viewModel.revealAnswer(at: 0)
         _ = viewModel.revealAnswer(at: 2)
         #expect(viewModel.pointsAwarded == 4)
-        #expect(viewModel.canUndoLastReveal == true)
 
-        viewModel.undoLastReveal()
-
-        #expect(viewModel.revealedAnswerIndices == [0])
+        _ = viewModel.revealAnswer(at: 2)
         #expect(viewModel.pointsAwarded == 1)
-        #expect(viewModel.canUndoLastReveal == true)
 
-        viewModel.undoLastReveal()
-
-        #expect(viewModel.revealedAnswerIndices.isEmpty)
+        _ = viewModel.revealAnswer(at: 0)
         #expect(viewModel.pointsAwarded == 0)
-        #expect(viewModel.canUndoLastReveal == false)
+        #expect(viewModel.revealedAnswerIndices.isEmpty)
     }
 
     @Test

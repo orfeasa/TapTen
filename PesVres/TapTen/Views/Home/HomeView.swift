@@ -2,30 +2,19 @@ import SwiftUI
 
 struct HomeView: View {
     let viewModel: HomeViewModel
+    @State private var isShowingHowToPlay = false
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 26) {
                 header
-
-                NavigationLink {
-                    NewGameView(
-                        viewModel: NewGameViewModel(
-                            settings: AppSettingsStore.shared.defaultGameSettings
-                        )
-                    )
-                } label: {
-                    Label("Start New Game", systemImage: "play.fill")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, minHeight: 56)
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-
-                infoCard
+                statusCapsules
+                startGameButton
+                howToPlayButton
             }
             .padding(.horizontal, 20)
-            .padding(.vertical, 24)
+            .padding(.top, 28)
+            .padding(.bottom, 24)
         }
         .navigationTitle(viewModel.title)
         .navigationBarTitleDisplayMode(.large)
@@ -34,21 +23,23 @@ struct HomeView: View {
                 NavigationLink {
                     SettingsView(settingsStore: AppSettingsStore.shared)
                 } label: {
-                    Label("Settings", systemImage: "gearshape")
+                    Image(systemName: "gearshape")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(.blue)
+                        .frame(width: 36, height: 36)
+                        .background(.ultraThinMaterial, in: Circle())
+                        .overlay(
+                            Circle()
+                                .stroke(Color.blue.opacity(0.24), lineWidth: 1)
+                        )
                 }
+                .accessibilityLabel("Settings")
             }
         }
-        .background(
-            LinearGradient(
-                colors: [
-                    Color.tapTenWarmBackground,
-                    Color(.systemBackground)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
-        )
+        .sheet(isPresented: $isShowingHowToPlay) {
+            HowToPlaySheet()
+        }
+        .background(homeBackground)
     }
 }
 
@@ -60,44 +51,240 @@ struct HomeView: View {
 
 private extension HomeView {
     var header: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Good guesses. Fast taps.")
-                .font(.title2.weight(.bold))
+        VStack(alignment: .leading, spacing: 12) {
+            heroPill
+
+            Text("Tap Ten")
+                .font(.system(.largeTitle, design: .rounded).weight(.heavy))
                 .foregroundStyle(.primary)
 
-            Text("One phone, two teams, and one host under pressure. Listen sharp, tap fast, keep the round moving.")
+            Text("Good guesses. Fast taps.")
+                .font(.title3.weight(.semibold))
+                .foregroundStyle(.primary)
+
+            Text("One phone, two teams, one host under pressure. Keep rounds moving and trust your ears.")
                 .font(.body)
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(18)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
-    var infoCard: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Text("How To Play")
-                .font(.headline)
+    var statusCapsules: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Default setup")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
 
-            featureRow(icon: "person.2.fill", text: "Team A guesses while Team B hosts, then you switch.")
-            featureRow(icon: "list.number", text: "Each round has one prompt and 10 possible answers.")
-            featureRow(icon: "timer", text: "Tap fast, trust your ears, beat the timer.")
+            HStack(spacing: 8) {
+                statusCapsule(text: "2 teams", systemImage: "person.2.fill", tint: .orange)
+                statusCapsule(text: "5 rounds", systemImage: "flag.fill", tint: .pink)
+                statusCapsule(text: "60 sec", systemImage: "timer", tint: .blue)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(18)
-        .background(Color.tapTenWarmCard, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
-    func featureRow(icon: String, text: String) -> some View {
-        HStack(alignment: .top, spacing: 10) {
-            Image(systemName: icon)
-                .font(.body.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .frame(width: 18)
+    var startGameButton: some View {
+        NavigationLink {
+            NewGameView(
+                viewModel: NewGameViewModel(
+                    settings: AppSettingsStore.shared.defaultGameSettings
+                )
+            )
+        } label: {
+            Label("Start New Game", systemImage: "play.fill")
+                .font(.headline.weight(.semibold))
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity, minHeight: 56)
+                .background {
+                    ZStack {
+                        Capsule(style: .continuous)
+                            .fill(.ultraThinMaterial)
 
-            Text(text)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+                        Capsule(style: .continuous)
+                            .fill(
+                                LinearGradient(
+                                    colors: [
+                                        Color.orange.opacity(0.96),
+                                        Color.orange.opacity(0.78)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                    }
+                }
+                .overlay(
+                    Capsule(style: .continuous)
+                        .stroke(Color.white.opacity(0.42), lineWidth: 1)
+                )
+                .shadow(color: Color.orange.opacity(0.26), radius: 10, y: 6)
         }
+        .buttonStyle(.plain)
+    }
+
+    var howToPlayButton: some View {
+        Button {
+            isShowingHowToPlay = true
+        } label: {
+            Label("How To Play", systemImage: "questionmark.circle")
+                .font(.subheadline.weight(.semibold))
+                .frame(maxWidth: .infinity, minHeight: 44)
+        }
+        .buttonStyle(.plain)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color.white.opacity(0.28),
+                            .clear
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(Color.orange.opacity(0.2), lineWidth: 1)
+        )
+    }
+
+    var homeBackground: some View {
+        ZStack(alignment: .top) {
+            LinearGradient(
+                colors: [
+                    Color.tapTenWarmBackground,
+                    Color(.systemBackground)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+
+            LinearGradient(
+                colors: [
+                    Color.orange.opacity(0.22),
+                    Color.yellow.opacity(0.08),
+                    .clear
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .frame(height: 250)
+        }
+        .ignoresSafeArea()
+    }
+
+    var heroPill: some View {
+        Label("Host-operated party game", systemImage: "sparkles")
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(.primary)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 7)
+            .background(.ultraThinMaterial, in: Capsule(style: .continuous))
+            .overlay(
+                Capsule(style: .continuous)
+                    .stroke(Color.orange.opacity(0.24), lineWidth: 1)
+            )
+    }
+
+    func statusCapsule(text: String, systemImage: String, tint: Color) -> some View {
+        Label {
+            Text(text)
+                .foregroundStyle(.primary)
+        } icon: {
+            Image(systemName: systemImage)
+                .foregroundStyle(tint)
+        }
+        .font(.footnote.weight(.semibold))
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .background {
+            Capsule(style: .continuous)
+                .fill(.ultraThinMaterial)
+        }
+        .overlay(
+            Capsule(style: .continuous)
+                .fill(tint.opacity(0.1))
+        )
+        .overlay(
+            Capsule(style: .continuous)
+                .stroke(Color.white.opacity(0.3), lineWidth: 0.8)
+        )
+    }
+}
+
+private struct HowToPlaySheet: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            List {
+                HowToStepRow(
+                    step: "1",
+                    title: "Host holds the phone",
+                    detail: "A player from the opposing team reads the prompt and handles all taps."
+                )
+
+                HowToStepRow(
+                    step: "2",
+                    title: "Guess out loud",
+                    detail: "The answering team calls guesses while the host reveals matching answers."
+                )
+
+                HowToStepRow(
+                    step: "3",
+                    title: "Switch and repeat",
+                    detail: "When time is up, review round results, swap host roles, and start the next turn."
+                )
+            }
+            .navigationTitle("How To Play")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+    }
+}
+
+private struct HowToStepRow: View {
+    let step: String
+    let title: String
+    let detail: String
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            Text(step)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(.primary)
+                .frame(width: 24, height: 24)
+                .background(
+                    Circle()
+                        .fill(.ultraThinMaterial)
+                )
+                .overlay(
+                    Circle()
+                        .stroke(Color.orange.opacity(0.26), lineWidth: 1)
+                )
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.headline)
+
+                Text(detail)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.top, 1)
+        }
+        .padding(.vertical, 4)
     }
 }

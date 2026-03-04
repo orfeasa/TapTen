@@ -14,19 +14,25 @@ struct QuestionPackLoaderTests {
         #expect(packs.count == 1)
         #expect(packs[0].id == "starter-pack-v1")
         #expect(packs[0].questions.count == 1)
+        #expect(packs[0].questions[0].difficultyTier == .medium)
         #expect(packs[0].questions[0].difficulty == .medium)
+        #expect(packs[0].questions[0].difficultyScore == 19)
         #expect(packs[0].questions[0].answers.count == 10)
         #expect(packs[0].packVersion == nil)
         #expect(packs[0].questions[0].contentType == nil)
+        #expect(packs[0].questions[0].tags == nil)
     }
 
     @Test
-    func optionalEditorialMetadataDecodesAndNormalizesBlankValues() throws {
+    func richMetadataDecodesAndNormalizesOptionalValues() throws {
         let loader = QuestionPackLoader()
         let data = try makeValidPackData(
             packVersion: "2.0",
             contentType: "factual-list",
+            difficultyTier: "medium",
+            difficultyScore: 19,
             quality: "reviewed",
+            tags: [" ranked ", "", "Trivia", "RANKED"],
             difficultyNotes: "Tight list with a few tricky entries.",
             editorialNotes: "  "
         )
@@ -36,7 +42,10 @@ struct QuestionPackLoaderTests {
 
         #expect(pack.packVersion == "2.0")
         #expect(question.contentType == "factual-list")
+        #expect(question.difficultyTier == .medium)
+        #expect(question.difficultyScore == 19)
         #expect(question.quality == "reviewed")
+        #expect(question.tags == ["ranked", "Trivia"])
         #expect(question.difficultyNotes == "Tight list with a few tricky entries.")
         #expect(question.editorialNotes == nil)
     }
@@ -114,21 +123,105 @@ struct QuestionPackLoaderTests {
             }
         }
     }
+
+    @Test
+    func mismatchedDifficultyScoreThrowsCleanError() throws {
+        let loader = QuestionPackLoader()
+        let invalidData = try makeValidPackData(
+            difficultyTier: "medium",
+            difficultyScore: 25
+        )
+
+        do {
+            _ = try loader.loadPack(from: invalidData, fileName: "InvalidDifficultyScore.json")
+            Issue.record("Expected invalid pack error.")
+        } catch let error as QuestionPackLoaderError {
+            switch error {
+            case .invalidPack(let fileName, let reason):
+                #expect(fileName == "InvalidDifficultyScore.json")
+                #expect(reason.contains("difficultyScore 25 must equal the sum of answer points (19)"))
+            default:
+                Issue.record("Expected .invalidPack, got \(error.localizedDescription)")
+            }
+        }
+    }
+
+    @Test
+    func difficultyTierBandMismatchThrowsCleanError() throws {
+        let loader = QuestionPackLoader()
+        let invalidData = try makeValidPackData(
+            difficultyTier: "easy",
+            difficultyScore: 19
+        )
+
+        do {
+            _ = try loader.loadPack(from: invalidData, fileName: "InvalidDifficultyTier.json")
+            Issue.record("Expected invalid pack error.")
+        } catch let error as QuestionPackLoaderError {
+            switch error {
+            case .invalidPack(let fileName, let reason):
+                #expect(fileName == "InvalidDifficultyTier.json")
+                #expect(reason.contains("difficultyTier 'easy' does not match difficultyScore 19"))
+            default:
+                Issue.record("Expected .invalidPack, got \(error.localizedDescription)")
+            }
+        }
+    }
+
+    @Test
+    func legacyDifficultyFieldRemainsCompatibleWhenTierAndScoreAreMissing() throws {
+        let loader = QuestionPackLoader()
+        let data = try makeValidPackData(difficulty: "easy")
+
+        let pack = try loader.loadPack(from: data, fileName: "LegacyDifficulty.json")
+        let question = try #require(pack.questions.first)
+
+        // Legacy difficulty can differ from score bands in existing packs; score is canonical.
+        #expect(question.difficultyTier == .medium)
+        #expect(question.difficulty == .medium)
+        #expect(question.difficultyScore == 19)
+    }
+
+    @Test
+    func scoreOutsideDifficultyBandsThrowsCleanError() throws {
+        let loader = QuestionPackLoader()
+        let invalidData = try makeValidPackData(
+            pointsForFirstAnswer: 5,
+            pointsForRemainingAnswers: 5
+        )
+
+        do {
+            _ = try loader.loadPack(from: invalidData, fileName: "OutOfBandScore.json")
+            Issue.record("Expected invalid pack error.")
+        } catch let error as QuestionPackLoaderError {
+            switch error {
+            case .invalidPack(let fileName, let reason):
+                #expect(fileName == "OutOfBandScore.json")
+                #expect(reason.contains("difficultyScore 50 is out of range"))
+            default:
+                Issue.record("Expected .invalidPack, got \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 private func makeValidPackData(
     answerCount: Int = 10,
     pointsForFirstAnswer: Int = 1,
-    difficulty: String = "medium",
+    pointsForRemainingAnswers: Int = 2,
+    difficulty: String? = "medium",
+    difficultyTier: String? = nil,
+    difficultyScore: Int? = nil,
     packVersion: String? = nil,
     contentType: String? = nil,
     quality: String? = nil,
+    tags: [String]? = nil,
     difficultyNotes: String? = nil,
     editorialNotes: String? = nil
 ) throws -> Data {
     var answers: [[String: Any]] = []
     for index in 0..<answerCount {
-        let points = index == 0 ? pointsForFirstAnswer : 1
+        let points = index == 0 ? pointsForFirstAnswer : pointsForRemainingAnswers
         answers.append([
             "text": "Answer \(index + 1)",
             "points": points
@@ -139,16 +232,27 @@ private func makeValidPackData(
         "id": "question-1",
         "category": "Factual",
         "prompt": "Sample prompt",
-        "difficulty": difficulty,
         "validationStyle": "factual",
         "sourceURL": "https://example.com/source",
         "answers": answers
     ]
+    if let difficulty {
+        question["difficulty"] = difficulty
+    }
+    if let difficultyTier {
+        question["difficultyTier"] = difficultyTier
+    }
+    if let difficultyScore {
+        question["difficultyScore"] = difficultyScore
+    }
     if let contentType {
         question["contentType"] = contentType
     }
     if let quality {
         question["quality"] = quality
+    }
+    if let tags {
+        question["tags"] = tags
     }
     if let difficultyNotes {
         question["difficultyNotes"] = difficultyNotes

@@ -6,9 +6,11 @@
   "questions": [
     {
       "id": "countries-starting-s",
-      "category": "Factual",
+      "category": "Geography",
       "prompt": "Name countries that start with the letter S",
-      "difficulty": "medium",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 18,
       "validationStyle": "factual",
       "contentType": "factual-list",
       "quality": "reviewed",

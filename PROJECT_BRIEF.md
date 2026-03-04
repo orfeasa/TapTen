@@ -73,8 +73,10 @@ Players choose:
 - Exactly one question is active.
 - The host sees all 10 answers immediately.
 - Each answer has a point value from 1 to 5.
-- Tapping an unrevealed answer reveals it and awards its points exactly once.
-- The host can undo the last reveal.
+- Tapping an answer toggles it between revealed and unrevealed.
+- Round points are always the sum of currently revealed answers.
+- While time is active, the host uses `Pause` / `Resume` to manage pace.
+- After timer expiry, the host can still adjust revealed answers before continuing.
 - The round ends when the timer hits zero.
 
 ### Scoring
@@ -144,7 +146,7 @@ Example answers:
 ## Detailed screen notes
 ### Home
 - Start new game
-- Browse packs
+- Open How To Play sheet
 - Open settings
 
 ### New Game
@@ -168,7 +170,7 @@ Example answers:
 - Show a large countdown timer
 - Show all 10 answers to the host
 - Make answer taps fast and forgiving
-- Show small utility controls like Undo and End Round
+- Keep active controls simple (`Pause`/`Resume`) and provide clear post-timeup `Continue to Summary`
 
 ### Round Summary
 - Show answers found

@@ -1,5 +1,51 @@
 # Changelog
 
+## 2026-03-04
+
+### Added
+- `CONTENT_TODO.md` as the single actionable content-work queue:
+  - current per-category/per-tier coverage snapshot
+  - gap analysis against the final 12-category target
+  - atomic, category-grouped content tasks
+  - manual review list for uncertain prompts
+- `PROJECT_BACKLOG.md` as the main project planning document with:
+  - product status
+  - active decisions
+  - prioritized backlog (`P0`, `P1`, `P2`)
+  - in-progress, blocked, and manual-review sections
+- `CONTENT_AUTHORING_SPEC.md` for project-local reusable question-pack authoring guidance.
+- Additional category pack files for expanded content coverage:
+  - `EverydayLifePack.json`
+  - `FilmTVPack.json`
+  - `FoodDrinkPack.json`
+  - `GeographyPack.json`
+  - `HistoryPack.json`
+  - `SciencePack.json`
+
+### Changed
+- Home/onboarding UX:
+  - Home layout simplified around brand + hero + one clear primary action
+  - large `How To Play` card removed from Home
+  - concise 3-step `How To Play` moved into a sheet
+  - subtle warm gradient and restrained glass-like control styling applied to small controls
+  - setup status capsules added near the top (`2 teams`, `5 rounds`, `60 sec`)
+- Host Round interaction flow:
+  - answer rows sorted alphabetically for faster host scanning
+  - answers now support tap/tap-again toggle during active play and after timer end
+  - dedicated `Undo Last` active-round control removed
+  - active control simplified to `Pause` / `Resume`, then `Continue to Summary` when time is up
+- Question model and loader:
+  - richer question metadata support (`contentType`, `difficultyTier`, `difficultyScore`, `quality`, `tags`, `difficultyNotes`, `editorialNotes`)
+  - validation enforces 10 answers, points in `1...5`, `difficultyScore == sum(points)`, and tier-band consistency
+  - backward compatibility kept for legacy `difficulty` field where migration is needed
+
+### Docs
+- Updated `README.md` to reflect:
+  - current Home and Host Round UX behavior
+  - pack metadata and validation requirements
+- Updated `PROJECT_BRIEF.md` and `AGENTS.md` gameplay notes to match current Host Round interactions.
+- Updated question-pack docs to align with audit-first content workflow and final category migration target.
+
 ## 2026-03-02
 
 ### Added

@@ -15,7 +15,7 @@ struct HostRoundView: View {
             let sectionSpacing = 6.0
             let rowSpacing = 6.0
             let outerPadding = 14.0
-            let controlsHeight = viewModel.isRoundFinished ? 0.0 : 50.0
+            let controlsHeight = 50.0
             let minimumRowHeight = 30.0
             let minimumAnswersHeight = (minimumRowHeight * 10) + (rowSpacing * 9)
             let approximateQuestionLines = max(1, min(4, Int(ceil(Double(viewModel.question.prompt.count) / 28.0))))
@@ -42,7 +42,7 @@ struct HostRoundView: View {
                     .frame(maxWidth: .infinity, minHeight: timerSectionHeight, maxHeight: timerSectionHeight)
 
                 VStack(spacing: rowSpacing) {
-                    ForEach(Array(viewModel.question.answers.enumerated()), id: \.offset) { index, answer in
+                    ForEach(sortedAnswerRows, id: \.offset) { index, answer in
                         HostAnswerRow(
                             title: answer.text,
                             points: answer.points,
@@ -56,10 +56,8 @@ struct HostRoundView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: answersHeight, alignment: .top)
 
-                if !viewModel.isRoundFinished {
-                    roundControls
-                        .frame(maxWidth: .infinity, minHeight: controlsHeight, maxHeight: controlsHeight)
-                }
+                roundControls
+                    .frame(maxWidth: .infinity, minHeight: controlsHeight, maxHeight: controlsHeight)
             }
             .padding(outerPadding)
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
@@ -71,11 +69,6 @@ struct HostRoundView: View {
         }
         .onDisappear {
             viewModel.stopTimer()
-        }
-        .safeAreaInset(edge: .bottom) {
-            if viewModel.isRoundFinished {
-                postRoundActionArea
-            }
         }
         .onChange(of: viewModel.revealEventToken) {
             guard let points = viewModel.latestRevealPoints else {
@@ -184,51 +177,27 @@ struct HostRoundView: View {
     }
 
     private var roundControls: some View {
-        Group {
-            HStack(spacing: 10) {
-                Button {
-                    viewModel.undoLastReveal()
-                } label: {
-                    Label("Undo Last", systemImage: "arrow.uturn.backward.circle")
-                        .font(.subheadline.weight(.semibold))
-                        .frame(maxWidth: .infinity)
-                }
-                .controlSize(.large)
-                .buttonStyle(.bordered)
-                .frame(maxWidth: .infinity)
-                .disabled(!viewModel.canUndoLastReveal)
-
-                Button {
-                    viewModel.togglePause()
-                }
-                label: {
-                    Label(
-                        viewModel.isPaused ? "Resume" : "Pause",
-                        systemImage: viewModel.isPaused ? "play.fill" : "pause.fill"
-                    )
-                    .font(.subheadline.weight(.semibold))
-                    .frame(maxWidth: .infinity)
-                }
-                .controlSize(.large)
-                .buttonStyle(.borderedProminent)
-                .frame(maxWidth: .infinity)
-            }
-        }
-    }
-
-    private var postRoundActionArea: some View {
-        VStack(spacing: 0) {
-            Button("Continue to Summary") {
+        Button {
+            if viewModel.isRoundFinished {
                 onRoundFinished?()
+            } else {
+                viewModel.togglePause()
             }
+        } label: {
+            Label(
+                viewModel.isRoundFinished
+                    ? "Continue to Summary"
+                    : (viewModel.isPaused ? "Resume" : "Pause"),
+                systemImage: viewModel.isRoundFinished
+                    ? "arrow.right.circle.fill"
+                    : (viewModel.isPaused ? "play.fill" : "pause.fill")
+            )
+            .font(.subheadline.weight(.semibold))
             .frame(maxWidth: .infinity)
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
         }
-        .padding(.horizontal, 16)
-        .padding(.top, 8)
-        .padding(.bottom, 12)
-        .background(.thinMaterial)
+        .controlSize(.large)
+        .buttonStyle(.borderedProminent)
+        .frame(maxWidth: .infinity)
     }
 
     private var timerProgressColor: Color {
@@ -272,6 +241,17 @@ struct HostRoundView: View {
         let style: UIImpactFeedbackGenerator.FeedbackStyle = points >= 2 ? .medium : .light
         let generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()
+    }
+
+    private var sortedAnswerRows: [(offset: Int, element: AnswerOption)] {
+        Array(viewModel.question.answers.enumerated())
+            .sorted { lhs, rhs in
+                let comparison = lhs.element.text.localizedCaseInsensitiveCompare(rhs.element.text)
+                if comparison == .orderedSame {
+                    return lhs.offset < rhs.offset
+                }
+                return comparison == .orderedAscending
+            }
     }
 }
 

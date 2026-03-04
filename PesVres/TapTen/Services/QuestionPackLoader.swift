@@ -165,12 +165,15 @@ private struct QuestionDTO: Decodable {
     let id: String
     let category: String
     let prompt: String
-    let difficulty: QuestionDifficulty
+    let difficulty: QuestionDifficulty?
+    let difficultyTier: QuestionDifficulty?
+    let difficultyScore: Int?
     let validationStyle: ValidationStyle
     let sourceURL: String
     let answers: [AnswerOptionDTO]
     let contentType: String?
     let quality: String?
+    let tags: [String]?
     let difficultyNotes: String?
     let editorialNotes: String?
 
@@ -209,16 +212,46 @@ private struct QuestionDTO: Decodable {
             throw QuestionPackLoaderError.invalidPack(name: fileName, reason: "\(questionLabel): answers must be unique.")
         }
 
+        let computedDifficultyScore = validatedAnswers.reduce(0) { partialResult, answer in
+            partialResult + answer.points
+        }
+
+        if let difficultyScore, difficultyScore != computedDifficultyScore {
+            throw QuestionPackLoaderError.invalidPack(
+                name: fileName,
+                reason: "\(questionLabel): difficultyScore \(difficultyScore) must equal the sum of answer points (\(computedDifficultyScore))."
+            )
+        }
+
+        let resolvedDifficultyScore = difficultyScore ?? computedDifficultyScore
+        guard let expectedDifficultyTier = QuestionDifficulty.tier(forScore: resolvedDifficultyScore) else {
+            throw QuestionPackLoaderError.invalidPack(
+                name: fileName,
+                reason: "\(questionLabel): difficultyScore \(resolvedDifficultyScore) is out of range. Supported score bands are easy 12...18, medium 19...26, hard 27...35."
+            )
+        }
+
+        if let explicitDifficultyTier = difficultyTier, explicitDifficultyTier != expectedDifficultyTier {
+            throw QuestionPackLoaderError.invalidPack(
+                name: fileName,
+                reason: "\(questionLabel): difficultyTier '\(explicitDifficultyTier.rawValue)' does not match difficultyScore \(resolvedDifficultyScore). Expected '\(expectedDifficultyTier.rawValue)'."
+            )
+        }
+
+        let resolvedDifficultyTier = difficultyTier ?? expectedDifficultyTier
+
         return Question(
             id: id.trimmed,
             category: category.trimmed,
             prompt: prompt.trimmed,
-            difficulty: difficulty,
+            difficultyTier: resolvedDifficultyTier,
+            difficultyScore: resolvedDifficultyScore,
             validationStyle: validationStyle,
             sourceURL: parsedURL,
             answers: validatedAnswers,
             contentType: contentType.nilIfBlank,
             quality: quality.nilIfBlank,
+            tags: tags.normalizedTags,
             difficultyNotes: difficultyNotes.nilIfBlank,
             editorialNotes: editorialNotes.nilIfBlank
         )
@@ -261,5 +294,48 @@ private extension String {
 private extension Optional where Wrapped == String {
     var nilIfBlank: String? {
         self?.nilIfBlank
+    }
+}
+
+private extension Optional where Wrapped == [String] {
+    var normalizedTags: [String]? {
+        guard let values = self else {
+            return nil
+        }
+
+        var seen: Set<String> = []
+        var normalized: [String] = []
+
+        for value in values {
+            let trimmed = value.trimmed
+            guard !trimmed.isEmpty else {
+                continue
+            }
+
+            let key = trimmed.lowercased()
+            guard !seen.contains(key) else {
+                continue
+            }
+
+            seen.insert(key)
+            normalized.append(trimmed)
+        }
+
+        return normalized.isEmpty ? nil : normalized
+    }
+}
+
+private extension QuestionDifficulty {
+    static func tier(forScore score: Int) -> QuestionDifficulty? {
+        switch score {
+        case 12...18:
+            return .easy
+        case 19...26:
+            return .medium
+        case 27...35:
+            return .hard
+        default:
+            return nil
+        }
     }
 }

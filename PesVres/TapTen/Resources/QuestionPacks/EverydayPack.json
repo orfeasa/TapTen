@@ -5,9 +5,11 @@
   "questions": [
     {
       "id": "things-people-forget-to-pack",
-      "category": "Editorial",
+      "category": "Everyday Life",
       "prompt": "Things people forget to pack for vacation",
-      "difficulty": "easy",
+      "difficulty": "medium",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
       "validationStyle": "editorial",
       "sourceURL": "https://www.travelandleisure.com/travel-tips/packing-tips",
       "answers": [
@@ -25,9 +27,11 @@
     },
     {
       "id": "popular-pizza-toppings",
-      "category": "Food",
+      "category": "Food & Drink",
       "prompt": "Popular pizza toppings",
-      "difficulty": "easy",
+      "difficulty": "medium",
+      "difficultyTier": "medium",
+      "difficultyScore": 20,
       "validationStyle": "editorial",
       "sourceURL": "https://www.statista.com/statistics/299280/top-10-us-favorite-pizza-toppings/",
       "answers": [
@@ -45,9 +49,11 @@
     },
     {
       "id": "late-to-work-excuses",
-      "category": "Humorous",
+      "category": "Everyday Life",
       "prompt": "Excuses people use for being late to work",
       "difficulty": "medium",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
       "validationStyle": "humorous",
       "sourceURL": "https://www.careerbuilder.com/advice/excuses-for-being-late",
       "answers": [

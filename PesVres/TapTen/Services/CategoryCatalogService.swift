@@ -3,11 +3,12 @@ import Foundation
 struct CategoryCatalogService {
     func categories() -> [GameCategory] {
         [
-            GameCategory(name: "Factual"),
-            GameCategory(name: "Editorial"),
-            GameCategory(name: "Humorous"),
-            GameCategory(name: "Pop Culture"),
-            GameCategory(name: "Food")
+            GameCategory(name: "Geography"),
+            GameCategory(name: "History"),
+            GameCategory(name: "Science"),
+            GameCategory(name: "Food & Drink"),
+            GameCategory(name: "Film & TV"),
+            GameCategory(name: "Everyday Life")
         ]
     }
 }
