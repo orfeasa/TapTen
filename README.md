@@ -74,6 +74,8 @@ Malformed pack data is validated and surfaced with clean loader errors.
 For authoring and audit workflow, see:
 - `PesVres/TapTen/Resources/QuestionPacks/CONTENT_AUTHORING_SPEC.md`
 - `CONTENT_TODO.md`
+- Run a full local pack audit with:
+  - `./scripts/audit_question_packs.sh`
 
 ## Build
 

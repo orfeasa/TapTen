@@ -4,6 +4,30 @@ import Testing
 
 struct GameFlowViewModelTests {
     @Test
+    func summaryContinueButtonTitleMatchesRoundState() {
+        let viewModel = GameFlowViewModel(
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
+            enabledCategoryNames: ["Factual"],
+            questionPacks: [makePack(questionCount: 4)],
+            randomIndexProvider: { _ in 0 },
+            randomSassyCommentProvider: { comments in
+                comments.first ?? ""
+            }
+        )
+
+        viewModel.startRound()
+        viewModel.finalizeActiveRoundIfNeeded()
+        #expect(viewModel.phase == .roundSummary)
+        #expect(viewModel.summaryContinueButtonTitle == "Next Round")
+
+        viewModel.continueAfterRoundSummary()
+        viewModel.startRound()
+        viewModel.finalizeActiveRoundIfNeeded()
+        #expect(viewModel.phase == .roundSummary)
+        #expect(viewModel.summaryContinueButtonTitle == "Continue to Final Results")
+    }
+
+    @Test
     func roundSummarySassyCommentUsesLowTierWhenFewAnswersAreRevealed() {
         let viewModel = GameFlowViewModel(
             settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),

@@ -24,6 +24,7 @@ Current content planning docs:
 - Authoring rules: `CONTENT_AUTHORING_SPEC.md`
 - Remaining content work: repo-root `CONTENT_TODO.md`
 - Project-level prioritization: repo-root `PROJECT_BACKLOG.md`
+- Audit command: repo-root `./scripts/audit_question_packs.sh`
 
 Target final category set:
 - Everyday Life

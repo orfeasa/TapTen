@@ -4,7 +4,6 @@ import UIKit
 struct HostRoundView: View {
     @Bindable var viewModel: HostRoundViewModel
     var onRoundFinished: (() -> Void)? = nil
-    var onEndGameRequested: (() -> Void)? = nil
     @State private var pointsReactionText: String?
     @State private var isShowingPointsReaction = false
     @State private var isTimerPulsing = false
@@ -62,7 +61,8 @@ struct HostRoundView: View {
             .padding(outerPadding)
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
         }
-        .toolbar(.hidden, for: .navigationBar)
+        .navigationTitle("Host Round")
+        .navigationBarTitleDisplayMode(.inline)
         .background(Color.tapTenWarmBackground)
         .onAppear {
             viewModel.startRoundIfNeeded()
@@ -121,17 +121,6 @@ struct HostRoundView: View {
                         .background(.background, in: Circle())
                 }
                 .accessibilityLabel("Open question source")
-            } else if let onEndGameRequested {
-                Button(role: .destructive) {
-                    onEndGameRequested()
-                } label: {
-                    Image(systemName: "xmark.circle")
-                        .font(.headline.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                        .frame(width: 34, height: 34)
-                        .background(.background, in: Circle())
-                }
-                .accessibilityLabel("End game")
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)

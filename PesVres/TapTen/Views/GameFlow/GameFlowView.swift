@@ -2,6 +2,7 @@ import SwiftUI
 
 struct GameFlowView: View {
     @Bindable var viewModel: GameFlowViewModel
+    var onReturnHome: (() -> Void)? = nil
     @Environment(\.dismiss) private var dismiss
     @State private var isShowingEndGameConfirmation = false
 
@@ -20,8 +21,7 @@ struct GameFlowView: View {
                 if let hostRoundViewModel = viewModel.hostRoundViewModel {
                     HostRoundView(
                         viewModel: hostRoundViewModel,
-                        onRoundFinished: viewModel.finalizeActiveRoundIfNeeded,
-                        onEndGameRequested: { isShowingEndGameConfirmation = true }
+                        onRoundFinished: viewModel.finalizeActiveRoundIfNeeded
                     )
                 } else {
                     flowErrorView(message: "Missing host round data.")
@@ -51,7 +51,7 @@ struct GameFlowView: View {
                     teamBName: viewModel.teamBName,
                     teamBScore: viewModel.teamBScore,
                     playAgainAction: viewModel.playAgain,
-                    homeAction: { dismiss() }
+                    homeAction: returnHome
                 )
 
             case .error(let message):
@@ -74,7 +74,7 @@ struct GameFlowView: View {
             titleVisibility: .visible
         ) {
             Button("End Game", role: .destructive) {
-                dismiss()
+                returnHome()
             }
             Button("Cancel", role: .cancel) { }
         } message: {
@@ -100,6 +100,15 @@ struct GameFlowView: View {
         case .finalResults, .error:
             return false
         }
+    }
+
+    private func returnHome() {
+        if let onReturnHome {
+            onReturnHome()
+            return
+        }
+
+        dismiss()
     }
 }
 
@@ -593,7 +602,7 @@ private extension GameFlowView {
             teamAScore: 14,
             teamBName: "Tigers",
             teamBScore: 11,
-            continueTitle: "Pass Phone",
+            continueTitle: "Next Round",
             continueAction: { }
         )
     }

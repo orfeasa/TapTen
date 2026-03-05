@@ -129,10 +129,10 @@ final class GameFlowViewModel {
 
         let completedAfterCurrentSummary = engine.completedRounds + 1
         if completedAfterCurrentSummary >= engine.totalRoundCount {
-            return "See Final Results"
+            return "Continue to Final Results"
         }
 
-        return "Pass Phone"
+        return "Next Round"
     }
 
     var winnerName: String? {

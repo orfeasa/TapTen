@@ -1,19 +1,24 @@
 import SwiftUI
 
 struct NewGameView: View {
+    @Environment(\.dismiss) private var dismiss
     @State var viewModel: NewGameViewModel
     @State private var gameFlowViewModel: GameFlowViewModel?
 
     var body: some View {
         Form {
             Section("Teams") {
-                TextField("Team A Name", text: $viewModel.settings.teamAName)
-                    .textInputAutocapitalization(.words)
-                    .autocorrectionDisabled()
+                teamField(
+                    title: "Team A",
+                    placeholder: "Enter Team A name",
+                    text: $viewModel.settings.teamAName
+                )
 
-                TextField("Team B Name", text: $viewModel.settings.teamBName)
-                    .textInputAutocapitalization(.words)
-                    .autocorrectionDisabled()
+                teamField(
+                    title: "Team B",
+                    placeholder: "Enter Team B name",
+                    text: $viewModel.settings.teamBName
+                )
             }
 
             Section("Round Settings") {
@@ -62,17 +67,21 @@ struct NewGameView: View {
             }
 
             Section {
-                Button("Start Game") {
+                Button {
                     if viewModel.startGame() {
                         gameFlowViewModel = GameFlowViewModel(
                             settings: viewModel.settings,
                             enabledCategoryNames: viewModel.includedCategoryNames
                         )
                     }
+                } label: {
+                    Text("Start Game")
+                        .font(.headline.weight(.semibold))
+                        .frame(maxWidth: .infinity, minHeight: 46)
                 }
                 .buttonStyle(.borderedProminent)
-                .frame(maxWidth: .infinity, alignment: .center)
                 .disabled(!viewModel.canStartGame)
+                .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
             }
 
             if let validationMessage = viewModel.validationMessage {
@@ -84,6 +93,7 @@ struct NewGameView: View {
             }
         }
         .navigationTitle("New Game")
+        .navigationBarTitleDisplayMode(.inline)
         .scrollContentBackground(.hidden)
         .background(Color.tapTenWarmBackground)
         .navigationDestination(
@@ -97,9 +107,34 @@ struct NewGameView: View {
             )
         ) {
             if let gameFlowViewModel {
-                GameFlowView(viewModel: gameFlowViewModel)
+                GameFlowView(
+                    viewModel: gameFlowViewModel,
+                    onReturnHome: {
+                        self.gameFlowViewModel = nil
+                        dismiss()
+                    }
+                )
             }
         }
+    }
+
+    @ViewBuilder
+    private func teamField(
+        title: String,
+        placeholder: String,
+        text: Binding<String>
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(title)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+
+            TextField(placeholder, text: text)
+                .textInputAutocapitalization(.words)
+                .autocorrectionDisabled()
+                .textFieldStyle(.roundedBorder)
+        }
+        .padding(.vertical, 2)
     }
 }
 

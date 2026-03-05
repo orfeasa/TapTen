@@ -3,6 +3,28 @@ import Testing
 
 struct NewGameViewModelTests {
     @Test
+    func defaultCategoryCatalogExposesFinalTwelveCategories() {
+        let viewModel = NewGameViewModel()
+
+        let categoryNames = viewModel.categories.map(\.name)
+        #expect(categoryNames == [
+            "Everyday Life",
+            "Food & Drink",
+            "Film & TV",
+            "Music",
+            "Sport",
+            "Geography",
+            "History",
+            "Science",
+            "Technology",
+            "Travel",
+            "Work & School",
+            "Pop Culture & Trends"
+        ])
+        #expect(viewModel.categories.count == 12)
+    }
+
+    @Test
     func includeAllCategoriesSelectsEveryLoadedCategory() throws {
         let viewModel = NewGameViewModel()
 

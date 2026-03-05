@@ -7,8 +7,9 @@
   - Host Round supports timer, pause/resume, source link after time-up, and answer tap toggling.
   - Question pack loader validates richer metadata and difficulty score/tier consistency.
   - Question content now covers all 12 target categories with 12 questions each and exact 4 easy / 4 medium / 4 hard spread.
-  - Setup category picker still exposes only 6 categories, so not all shipped content is selectable yet.
-- Release readiness: Not ready for content freeze; gameplay loop is stable, but setup parity and final editorial QA are still open.
+  - Setup category picker now reflects all 12 shipped categories.
+  - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
+- Release readiness: Not ready for content freeze; gameplay loop is stable, but remaining UX polish and final editorial QA are still open.
 
 ## Active Decisions
 - Final content category target is fixed to 12 categories:
@@ -17,28 +18,79 @@
 - Home keeps instructional content in a separate How To Play sheet (not a large on-home card).
 - Host answer rows are currently sorted alphabetically for scanning speed.
 - Host-round interaction baseline is tap-to-toggle answers with active-round `Pause`/`Resume` and post-timeup `Continue to Summary`.
+- Home should use a single strong brand title (remove duplicate `Tap Ten` heading).
+- Navigation chrome should use standard native bars/back behavior instead of mixed floating controls.
+- New Game should use clearer editable team fields and a stronger full-width primary `Start Game` action.
+- Setup category selection should expose all 12 shipped categories.
+- End-game actions should use native destructive confirmation dialog patterns.
+- Round Summary CTA labels should be state-specific (`Next Round` / `Continue to Final Results`).
+- Settings should stay visually aligned with the warm app theme and use native control styling.
 
 ## Backlog
 
 ### P0 - Now
 
-- [ ] TASK: Align setup category catalog with final category set
-  - Type: Feature
+- [x] TASK: Restore Home `How To Play` action interactivity
+  - Type: UX / Bug
   - Priority: P0
-  - Status: Planned
-  - Area: `Services/CategoryCatalogService`, `Views/NewGame`, `ViewModels/NewGameViewModel`
-  - Goal: Ensure category selection UI reflects the exact final taxonomy and can start games against all shipped categories.
+  - Status: Completed
+  - Area: `Views/Home`, onboarding sheet presentation
+  - Goal: Ensure the secondary onboarding action is visibly and functionally tappable.
   - Acceptance Criteria:
-    - Category list in setup matches the 12-category final set exactly.
-    - Starting a game with selected categories never fails due to missing catalog entries.
-    - Category names are consistent across loader data, setup UI, and docs.
-  - Notes:
-    - Current setup catalog still exposes only 6 categories.
+    - Tapping `How To Play` on Home always presents the sheet.
+    - The control has clear enabled-state affordance and native tap feedback.
+    - No overlap/gesture conflict blocks taps on the control.
 
-- [ ] TASK: Add automated content audit check for regression prevention
+- [x] TASK: Refine Home hierarchy and navigation consistency
+  - Type: UX
+  - Priority: P0
+  - Status: Completed
+  - Area: `Views/Home`, shared navigation bars/toolbars
+  - Goal: Make top-level flow feel confidently native and visually coherent.
+  - Acceptance Criteria:
+    - Home presents one primary brand title (no duplicate heading).
+    - Screens use consistent native navigation bars and back affordances.
+    - Floating/custom back controls are removed where a standard nav pattern is expected.
+
+- [x] TASK: Improve New Game setup clarity and category completeness
+  - Type: UX / Feature
+  - Priority: P0
+  - Status: Completed
+  - Area: `Views/NewGame`, `ViewModels/NewGameViewModel`, `Services/CategoryCatalogService`
+  - Goal: Reduce setup friction and ensure all shipped content is selectable.
+  - Acceptance Criteria:
+    - Team name rows clearly communicate editability with native field affordances.
+    - `Start Game` is a clear full-width primary action with strong prominence.
+    - Category list shows the exact 12-category final set.
+    - Include/exclude all actions remain visible and predictable.
+    - Setup validation avoids dead-end starts due to catalog mismatch.
+
+- [x] TASK: Normalize end-game confirmation and round progression CTAs
+  - Type: UX
+  - Priority: P0
+  - Status: Completed
+  - Area: `Views/GameFlow/HostRoundView`, `Views/GameFlow/RoundSummaryView`, shared game-flow actions
+  - Goal: Make destructive actions safer and progression actions easier to scan.
+  - Acceptance Criteria:
+    - End-game actions consistently use native destructive confirmation dialogs.
+    - Round Summary uses state-based CTA labels (`Next Round`, `Continue to Final Results`).
+    - CTA wording is consistent with current game state across the flow.
+
+- [x] TASK: Fix post-game `Home` navigation target
+  - Type: UX / Bug
+  - Priority: P0
+  - Status: Completed
+  - Area: `Views/GameFlow/GameFlowView`, `Views/NewGame/NewGameView`
+  - Goal: Ensure `Home` from Final Results returns directly to Home, not back to New Game.
+  - Acceptance Criteria:
+    - Tapping `Home` on Final Results pops to Home screen.
+    - End-game exit paths use consistent root-navigation behavior.
+    - No stale game-flow state remains when returning Home.
+
+- [x] TASK: Add automated content audit check for regression prevention
   - Type: QA / Tooling
   - Priority: P0
-  - Status: Planned
+  - Status: Completed
   - Area: `TapTenTests` and/or project-local audit script
   - Goal: Make pack quality checks repeatable and enforceable before merge.
   - Acceptance Criteria:
@@ -48,18 +100,18 @@
   - Notes:
     - This should complement existing loader tests, not replace them.
 
-- [ ] TASK: Run editorial pass and quality promotion on draft questions
-  - Type: Content QA
-  - Priority: P0
-  - Status: Planned
-  - Area: `Resources/QuestionPacks`
-  - Goal: Move newly added questions from `quality: "draft"` to reviewed/playtested status where appropriate.
-  - Acceptance Criteria:
-    - Draft questions are reviewed for ambiguity, adjudication speed, and spoken clarity.
-    - `quality` values are updated consistently (`reviewed` or `playtested`) where checks pass.
-    - Any unresolved prompts are tracked in `CONTENT_TODO.md` with concrete follow-ups.
-
 ### P1 - Next
+
+- [x] TASK: Refresh Settings layout to native control language
+  - Type: UX
+  - Priority: P1
+  - Status: Completed
+  - Area: `Views/Settings`
+  - Goal: Align Settings with the app’s warm visual language and native form behavior.
+  - Acceptance Criteria:
+    - Settings uses native `Form`/list grouping and system-standard control styling.
+    - Stepper/adjustment controls follow native interaction patterns.
+    - Background and section styling remain consistent with the warm app palette.
 
 - [ ] TASK: Add difficulty filtering to New Game setup
   - Type: Feature
@@ -104,6 +156,17 @@
     - Deprecated legacy pack files are either migrated or removed.
     - No duplicate prompt concepts remain due to overlapping legacy/new files.
     - Loader still finds sufficient packs for fresh installs.
+
+- [ ] TASK: Run editorial pass and quality promotion on draft questions
+  - Type: Content QA
+  - Priority: P1
+  - Status: Planned
+  - Area: `Resources/QuestionPacks`
+  - Goal: Move newly added questions from `quality: "draft"` to reviewed/playtested status where appropriate.
+  - Acceptance Criteria:
+    - Draft questions are reviewed for ambiguity, adjudication speed, and spoken clarity.
+    - `quality` values are updated consistently (`reviewed` or `playtested`) where checks pass.
+    - Any unresolved prompts are tracked in `CONTENT_TODO.md` with concrete follow-ups.
 
 ### P2 - Later
 
