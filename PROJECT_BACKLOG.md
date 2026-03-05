@@ -15,6 +15,7 @@
   - Debug-only round telemetry now records category/answers/points/time-remaining for playtest tuning.
   - A reusable pre-release checklist now exists in `RELEASE_CHECKLIST.md`.
   - Most `quality: \"draft\"` questions have been promoted to `reviewed`, with a small holdout list in `CONTENT_TODO.md`.
+  - Accessibility pass completed for Dynamic Type and VoiceOver on core game-flow controls.
   - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
 - Release readiness: Not ready for content freeze; gameplay loop is stable, but remaining UX polish and final editorial QA are still open.
 
@@ -177,10 +178,10 @@
 
 ### P2 - Later
 
-- [ ] TASK: Full accessibility and Dynamic Type pass across gameplay flow
+- [x] TASK: Full accessibility and Dynamic Type pass across gameplay flow
   - Type: UX / Accessibility
   - Priority: P2
-  - Status: In Progress
+  - Status: Completed
   - Area: All player-facing screens
   - Goal: Improve readability and interaction reliability under larger text and VoiceOver.
   - Acceptance Criteria:
@@ -188,7 +189,8 @@
     - Primary controls remain reachable and clearly labeled for VoiceOver.
     - Any clipped/overlapping layouts are fixed.
   - Notes:
-    - Initial pass completed for Host Round, Pass Device, Round Summary, and Final Results typography scaling.
+    - Added Dynamic Type scaling refinements and VoiceOver hints/combined semantics across core flow.
+    - Keep manual large-text smoke checks in `RELEASE_CHECKLIST.md` before release.
 
 - [x] TASK: Add lightweight game telemetry hooks for playtest tuning
   - Type: Technical

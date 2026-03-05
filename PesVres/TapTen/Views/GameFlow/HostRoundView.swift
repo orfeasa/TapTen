@@ -203,6 +203,11 @@ struct HostRoundView: View {
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
         .frame(maxWidth: .infinity)
+        .accessibilityHint(
+            viewModel.isRoundFinished
+                ? "Continue to the round summary."
+                : (viewModel.isPaused ? "Resume the round timer." : "Pause the round timer.")
+        )
     }
 
     private var timerProgressColor: Color {
@@ -303,6 +308,9 @@ private struct HostAnswerRow: View {
         }
         .buttonStyle(.plain)
         .animation(.spring(response: 0.22, dampingFraction: 0.8), value: isRevealed)
+        .accessibilityLabel("\(title), \(points) points")
+        .accessibilityValue(isRevealed ? "Revealed" : "Hidden")
+        .accessibilityHint("Double tap to toggle this answer.")
     }
 
     private var rowBackground: some ShapeStyle {
