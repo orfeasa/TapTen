@@ -171,6 +171,29 @@ struct GameEngineTests {
             }
         }
     }
+
+    @Test
+    func filtersQuestionsByEnabledDifficultyTiers() throws {
+        let settings = GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60)
+        let pack = makePack(
+            questions: [
+                makeQuestion(id: "q1", category: "Factual", difficulty: .easy),
+                makeQuestion(id: "q2", category: "Factual", difficulty: .medium),
+                makeQuestion(id: "q3", category: "Factual", difficulty: .hard),
+                makeQuestion(id: "q4", category: "Factual", difficulty: .hard)
+            ]
+        )
+
+        let engine = try GameEngine(
+            settings: settings,
+            questionPacks: [pack],
+            enabledCategories: ["Factual"],
+            enabledDifficulties: [.hard],
+            randomIndexProvider: { _ in 0 }
+        )
+
+        #expect(engine.currentRound?.question.difficultyTier == .hard)
+    }
 }
 
 private func makePack(questions: [Question]) -> QuestionPack {
@@ -182,12 +205,16 @@ private func makePack(questions: [Question]) -> QuestionPack {
     )
 }
 
-private func makeQuestion(id: String, category: String) -> Question {
+private func makeQuestion(
+    id: String,
+    category: String,
+    difficulty: QuestionDifficulty = .medium
+) -> Question {
     Question(
         id: id,
         category: category,
         prompt: "Prompt \(id)",
-        difficulty: .medium,
+        difficulty: difficulty,
         validationStyle: .factual,
         sourceURL: URL(string: "https://example.com/\(id)")!,
         answers: makeAnswers()

@@ -13,22 +13,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "lifestyle-checklist",
-      "quality": "draft",
-      "tags": ["everyday", "habits", "checklist"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "habits",
+        "checklist"
+      ],
       "difficultyNotes": "First five answers are routine for most players.",
       "editorialNotes": "Accept close wording such as 'phone battery' for charger-related guesses.",
       "sourceURL": "https://en.wikipedia.org/wiki/Checklist",
       "answers": [
-        { "text": "Phone", "points": 1 },
-        { "text": "Wallet", "points": 1 },
-        { "text": "Keys", "points": 1 },
-        { "text": "ID card", "points": 1 },
-        { "text": "House lock", "points": 1 },
-        { "text": "Transit card", "points": 2 },
-        { "text": "Headphones", "points": 2 },
-        { "text": "Water bottle", "points": 2 },
-        { "text": "Sunglasses", "points": 2 },
-        { "text": "Charger", "points": 3 }
+        {
+          "text": "Phone",
+          "points": 1
+        },
+        {
+          "text": "Wallet",
+          "points": 1
+        },
+        {
+          "text": "Keys",
+          "points": 1
+        },
+        {
+          "text": "ID card",
+          "points": 1
+        },
+        {
+          "text": "House lock",
+          "points": 1
+        },
+        {
+          "text": "Transit card",
+          "points": 2
+        },
+        {
+          "text": "Headphones",
+          "points": 2
+        },
+        {
+          "text": "Water bottle",
+          "points": 2
+        },
+        {
+          "text": "Sunglasses",
+          "points": 2
+        },
+        {
+          "text": "Charger",
+          "points": 3
+        }
       ]
     },
     {
@@ -40,22 +74,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "lifestyle-routine-list",
-      "quality": "draft",
-      "tags": ["everyday", "time", "productivity"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "time",
+        "productivity"
+      ],
       "difficultyNotes": "Morning and schedule reminders dominate this list.",
       "editorialNotes": "Accept equivalent phrasing if intent matches.",
       "sourceURL": "https://en.wikipedia.org/wiki/Alarm_clock",
       "answers": [
-        { "text": "Wake up for work", "points": 1 },
-        { "text": "Wake up for school", "points": 1 },
-        { "text": "Morning workout", "points": 1 },
-        { "text": "Catch transport", "points": 1 },
-        { "text": "Join a meeting", "points": 1 },
-        { "text": "Medication reminder", "points": 2 },
-        { "text": "Cooking timer", "points": 2 },
-        { "text": "Study session", "points": 2 },
-        { "text": "Bedtime reminder", "points": 2 },
-        { "text": "Daily prayer reminder", "points": 3 }
+        {
+          "text": "Wake up for work",
+          "points": 1
+        },
+        {
+          "text": "Wake up for school",
+          "points": 1
+        },
+        {
+          "text": "Morning workout",
+          "points": 1
+        },
+        {
+          "text": "Catch transport",
+          "points": 1
+        },
+        {
+          "text": "Join a meeting",
+          "points": 1
+        },
+        {
+          "text": "Medication reminder",
+          "points": 2
+        },
+        {
+          "text": "Cooking timer",
+          "points": 2
+        },
+        {
+          "text": "Study session",
+          "points": 2
+        },
+        {
+          "text": "Bedtime reminder",
+          "points": 2
+        },
+        {
+          "text": "Daily prayer reminder",
+          "points": 3
+        }
       ]
     },
     {
@@ -67,22 +135,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "lifestyle-household-list",
-      "quality": "draft",
-      "tags": ["everyday", "home", "chores"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "home",
+        "chores"
+      ],
       "difficultyNotes": "Routine chores make this approachable for most teams.",
       "editorialNotes": "Accept singular/plural task wording.",
       "sourceURL": "https://en.wikipedia.org/wiki/Housekeeping",
       "answers": [
-        { "text": "Laundry", "points": 1 },
-        { "text": "Grocery shopping", "points": 1 },
-        { "text": "Washing dishes", "points": 1 },
-        { "text": "Taking out trash", "points": 1 },
-        { "text": "Vacuuming", "points": 1 },
-        { "text": "Cleaning bathroom", "points": 2 },
-        { "text": "Meal prep", "points": 2 },
-        { "text": "Changing bed sheets", "points": 2 },
-        { "text": "Paying bills", "points": 2 },
-        { "text": "Watering plants", "points": 3 }
+        {
+          "text": "Laundry",
+          "points": 1
+        },
+        {
+          "text": "Grocery shopping",
+          "points": 1
+        },
+        {
+          "text": "Washing dishes",
+          "points": 1
+        },
+        {
+          "text": "Taking out trash",
+          "points": 1
+        },
+        {
+          "text": "Vacuuming",
+          "points": 1
+        },
+        {
+          "text": "Cleaning bathroom",
+          "points": 2
+        },
+        {
+          "text": "Meal prep",
+          "points": 2
+        },
+        {
+          "text": "Changing bed sheets",
+          "points": 2
+        },
+        {
+          "text": "Paying bills",
+          "points": 2
+        },
+        {
+          "text": "Watering plants",
+          "points": 3
+        }
       ]
     },
     {
@@ -94,22 +196,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "lifestyle-item-list",
-      "quality": "draft",
-      "tags": ["everyday", "home", "bathroom"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "home",
+        "bathroom"
+      ],
       "difficultyNotes": "Most answers are routine household essentials.",
       "editorialNotes": "Accept close wording such as 'body wash' for soap.",
       "sourceURL": "https://en.wikipedia.org/wiki/Toiletry",
       "answers": [
-        { "text": "Toothbrush", "points": 1 },
-        { "text": "Toothpaste", "points": 1 },
-        { "text": "Soap", "points": 1 },
-        { "text": "Shampoo", "points": 1 },
-        { "text": "Towel", "points": 1 },
-        { "text": "Toilet paper", "points": 2 },
-        { "text": "Deodorant", "points": 2 },
-        { "text": "Razor", "points": 2 },
-        { "text": "Hairbrush", "points": 2 },
-        { "text": "Mouthwash", "points": 3 }
+        {
+          "text": "Toothbrush",
+          "points": 1
+        },
+        {
+          "text": "Toothpaste",
+          "points": 1
+        },
+        {
+          "text": "Soap",
+          "points": 1
+        },
+        {
+          "text": "Shampoo",
+          "points": 1
+        },
+        {
+          "text": "Towel",
+          "points": 1
+        },
+        {
+          "text": "Toilet paper",
+          "points": 2
+        },
+        {
+          "text": "Deodorant",
+          "points": 2
+        },
+        {
+          "text": "Razor",
+          "points": 2
+        },
+        {
+          "text": "Hairbrush",
+          "points": 2
+        },
+        {
+          "text": "Mouthwash",
+          "points": 3
+        }
       ]
     },
     {
@@ -121,22 +257,56 @@
       "difficultyScore": 22,
       "validationStyle": "editorial",
       "contentType": "lifestyle-social-list",
-      "quality": "draft",
-      "tags": ["everyday", "conversation", "social"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "conversation",
+        "social"
+      ],
       "difficultyNotes": "The first half is near-universal small-talk territory.",
       "editorialNotes": "Accept close topic labels that clearly map.",
       "sourceURL": "https://en.wikipedia.org/wiki/Small_talk",
       "answers": [
-        { "text": "Weather", "points": 1 },
-        { "text": "Weekend plans", "points": 1 },
-        { "text": "Work", "points": 1 },
-        { "text": "Sports", "points": 2 },
-        { "text": "Traffic", "points": 2 },
-        { "text": "Family", "points": 2 },
-        { "text": "Food", "points": 2 },
-        { "text": "Travel", "points": 3 },
-        { "text": "TV shows", "points": 4 },
-        { "text": "Local news", "points": 4 }
+        {
+          "text": "Weather",
+          "points": 1
+        },
+        {
+          "text": "Weekend plans",
+          "points": 1
+        },
+        {
+          "text": "Work",
+          "points": 1
+        },
+        {
+          "text": "Sports",
+          "points": 2
+        },
+        {
+          "text": "Traffic",
+          "points": 2
+        },
+        {
+          "text": "Family",
+          "points": 2
+        },
+        {
+          "text": "Food",
+          "points": 2
+        },
+        {
+          "text": "Travel",
+          "points": 3
+        },
+        {
+          "text": "TV shows",
+          "points": 4
+        },
+        {
+          "text": "Local news",
+          "points": 4
+        }
       ]
     },
     {
@@ -148,49 +318,56 @@
       "difficultyScore": 22,
       "validationStyle": "editorial",
       "contentType": "lifestyle-item-list",
-      "quality": "draft",
-      "tags": ["everyday", "bags", "essentials"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "bags",
+        "essentials"
+      ],
       "difficultyNotes": "Most answers are practical, high-frequency carry items.",
       "editorialNotes": "Accept equivalent item names like 'power bank' for backup charger.",
       "sourceURL": "https://en.wikipedia.org/wiki/Backpack",
       "answers": [
-        { "text": "Laptop", "points": 1 },
-        { "text": "Notebook", "points": 1 },
-        { "text": "Pen", "points": 1 },
-        { "text": "Water bottle", "points": 2 },
-        { "text": "Phone charger", "points": 2 },
-        { "text": "Headphones", "points": 2 },
-        { "text": "Snacks", "points": 2 },
-        { "text": "Umbrella", "points": 3 },
-        { "text": "Hand sanitizer", "points": 4 },
-        { "text": "Tissues", "points": 4 }
-      ]
-    },
-    {
-      "id": "life-mobile-app-categories-daily-use",
-      "category": "Technology",
-      "prompt": "Mobile app categories people use daily",
-      "difficulty": "medium",
-      "difficultyTier": "medium",
-      "difficultyScore": 22,
-      "validationStyle": "editorial",
-      "contentType": "lifestyle-digital-list",
-      "quality": "draft",
-      "tags": ["everyday", "apps", "digital-life"],
-      "difficultyNotes": "Core utility apps are easy; niche categories are harder.",
-      "editorialNotes": "Accept equivalent app labels used on iOS and Android.",
-      "sourceURL": "https://en.wikipedia.org/wiki/Mobile_app",
-      "answers": [
-        { "text": "Messaging", "points": 1 },
-        { "text": "Maps", "points": 1 },
-        { "text": "Email", "points": 1 },
-        { "text": "Camera", "points": 2 },
-        { "text": "Calendar", "points": 2 },
-        { "text": "Music", "points": 2 },
-        { "text": "Weather", "points": 2 },
-        { "text": "Banking", "points": 3 },
-        { "text": "Shopping", "points": 4 },
-        { "text": "Notes", "points": 4 }
+        {
+          "text": "Laptop",
+          "points": 1
+        },
+        {
+          "text": "Notebook",
+          "points": 1
+        },
+        {
+          "text": "Pen",
+          "points": 1
+        },
+        {
+          "text": "Water bottle",
+          "points": 2
+        },
+        {
+          "text": "Phone charger",
+          "points": 2
+        },
+        {
+          "text": "Headphones",
+          "points": 2
+        },
+        {
+          "text": "Snacks",
+          "points": 2
+        },
+        {
+          "text": "Umbrella",
+          "points": 3
+        },
+        {
+          "text": "Hand sanitizer",
+          "points": 4
+        },
+        {
+          "text": "Tissues",
+          "points": 4
+        }
       ]
     },
     {
@@ -202,22 +379,56 @@
       "difficultyScore": 22,
       "validationStyle": "editorial",
       "contentType": "lifestyle-situation-list",
-      "quality": "draft",
-      "tags": ["everyday", "planning", "time-management"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "planning",
+        "time-management"
+      ],
       "difficultyNotes": "Common real-life constraints make this list intuitive.",
       "editorialNotes": "Accept brief phrasing when intent is the same.",
       "sourceURL": "https://en.wikipedia.org/wiki/Time_management",
       "answers": [
-        { "text": "Work ran late", "points": 1 },
-        { "text": "Family emergency", "points": 1 },
-        { "text": "Feeling unwell", "points": 1 },
-        { "text": "Transport delay", "points": 2 },
-        { "text": "Childcare issue", "points": 2 },
-        { "text": "Bad weather", "points": 2 },
-        { "text": "Deadline moved up", "points": 2 },
-        { "text": "Overbooked calendar", "points": 3 },
-        { "text": "Budget constraints", "points": 4 },
-        { "text": "Low energy", "points": 4 }
+        {
+          "text": "Work ran late",
+          "points": 1
+        },
+        {
+          "text": "Family emergency",
+          "points": 1
+        },
+        {
+          "text": "Feeling unwell",
+          "points": 1
+        },
+        {
+          "text": "Transport delay",
+          "points": 2
+        },
+        {
+          "text": "Childcare issue",
+          "points": 2
+        },
+        {
+          "text": "Bad weather",
+          "points": 2
+        },
+        {
+          "text": "Deadline moved up",
+          "points": 2
+        },
+        {
+          "text": "Overbooked calendar",
+          "points": 3
+        },
+        {
+          "text": "Budget constraints",
+          "points": 4
+        },
+        {
+          "text": "Low energy",
+          "points": 4
+        }
       ]
     },
     {
@@ -229,22 +440,56 @@
       "difficultyScore": 29,
       "validationStyle": "editorial",
       "contentType": "lifestyle-finance-list",
-      "quality": "draft",
-      "tags": ["everyday", "budget", "household"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "budget",
+        "household"
+      ],
       "difficultyNotes": "Mid-list categories are often forgotten under pressure.",
       "editorialNotes": "Accept common equivalents, for example 'utilities' for gas/electric/water.",
       "sourceURL": "https://en.wikipedia.org/wiki/Personal_budget",
       "answers": [
-        { "text": "Rent or mortgage", "points": 1 },
-        { "text": "Utilities", "points": 2 },
-        { "text": "Groceries", "points": 2 },
-        { "text": "Transport", "points": 3 },
-        { "text": "Internet", "points": 3 },
-        { "text": "Phone bill", "points": 3 },
-        { "text": "Insurance", "points": 3 },
-        { "text": "Childcare", "points": 4 },
-        { "text": "Subscriptions", "points": 4 },
-        { "text": "Savings contribution", "points": 4 }
+        {
+          "text": "Rent or mortgage",
+          "points": 1
+        },
+        {
+          "text": "Utilities",
+          "points": 2
+        },
+        {
+          "text": "Groceries",
+          "points": 2
+        },
+        {
+          "text": "Transport",
+          "points": 3
+        },
+        {
+          "text": "Internet",
+          "points": 3
+        },
+        {
+          "text": "Phone bill",
+          "points": 3
+        },
+        {
+          "text": "Insurance",
+          "points": 3
+        },
+        {
+          "text": "Childcare",
+          "points": 4
+        },
+        {
+          "text": "Subscriptions",
+          "points": 4
+        },
+        {
+          "text": "Savings contribution",
+          "points": 4
+        }
       ]
     },
     {
@@ -256,22 +501,56 @@
       "difficultyScore": 29,
       "validationStyle": "editorial",
       "contentType": "lifestyle-situation-list",
-      "quality": "draft",
-      "tags": ["everyday", "work", "negotiation"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "work",
+        "negotiation"
+      ],
       "difficultyNotes": "Some scenarios are workplace-specific and harder for younger groups.",
       "editorialNotes": "Accept concise descriptions of the same negotiation context.",
       "sourceURL": "https://en.wikipedia.org/wiki/Negotiation",
       "answers": [
-        { "text": "Salary discussion", "points": 1 },
-        { "text": "Deadline extension", "points": 2 },
-        { "text": "Shift swap", "points": 2 },
-        { "text": "Chore split", "points": 3 },
-        { "text": "Meeting time", "points": 3 },
-        { "text": "Project scope", "points": 3 },
-        { "text": "Budget request", "points": 3 },
-        { "text": "Service contract", "points": 4 },
-        { "text": "Rent renewal", "points": 4 },
-        { "text": "Return policy", "points": 4 }
+        {
+          "text": "Salary discussion",
+          "points": 1
+        },
+        {
+          "text": "Deadline extension",
+          "points": 2
+        },
+        {
+          "text": "Shift swap",
+          "points": 2
+        },
+        {
+          "text": "Chore split",
+          "points": 3
+        },
+        {
+          "text": "Meeting time",
+          "points": 3
+        },
+        {
+          "text": "Project scope",
+          "points": 3
+        },
+        {
+          "text": "Budget request",
+          "points": 3
+        },
+        {
+          "text": "Service contract",
+          "points": 4
+        },
+        {
+          "text": "Rent renewal",
+          "points": 4
+        },
+        {
+          "text": "Return policy",
+          "points": 4
+        }
       ]
     },
     {
@@ -283,22 +562,56 @@
       "difficultyScore": 29,
       "validationStyle": "editorial",
       "contentType": "lifestyle-communication-list",
-      "quality": "draft",
-      "tags": ["everyday", "communication", "listening"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "communication",
+        "listening"
+      ],
       "difficultyNotes": "Soft-skill vocabulary is harder to retrieve in fast rounds.",
       "editorialNotes": "Accept behavior descriptions that match the intended cue.",
       "sourceURL": "https://en.wikipedia.org/wiki/Active_listening",
       "answers": [
-        { "text": "Eye contact", "points": 1 },
-        { "text": "Nodding", "points": 2 },
-        { "text": "Verbal affirmations", "points": 2 },
-        { "text": "Paraphrasing", "points": 3 },
-        { "text": "Clarifying questions", "points": 3 },
-        { "text": "Open posture", "points": 3 },
-        { "text": "Minimal interruptions", "points": 3 },
-        { "text": "Reflecting emotions", "points": 4 },
-        { "text": "Summarizing points", "points": 4 },
-        { "text": "Follow-up question", "points": 4 }
+        {
+          "text": "Eye contact",
+          "points": 1
+        },
+        {
+          "text": "Nodding",
+          "points": 2
+        },
+        {
+          "text": "Verbal affirmations",
+          "points": 2
+        },
+        {
+          "text": "Paraphrasing",
+          "points": 3
+        },
+        {
+          "text": "Clarifying questions",
+          "points": 3
+        },
+        {
+          "text": "Open posture",
+          "points": 3
+        },
+        {
+          "text": "Minimal interruptions",
+          "points": 3
+        },
+        {
+          "text": "Reflecting emotions",
+          "points": 4
+        },
+        {
+          "text": "Summarizing points",
+          "points": 4
+        },
+        {
+          "text": "Follow-up question",
+          "points": 4
+        }
       ]
     },
     {
@@ -310,22 +623,108 @@
       "difficultyScore": 29,
       "validationStyle": "editorial",
       "contentType": "lifestyle-admin-list",
-      "quality": "draft",
-      "tags": ["everyday", "documents", "admin"],
+      "quality": "reviewed",
+      "tags": [
+        "everyday",
+        "documents",
+        "admin"
+      ],
       "difficultyNotes": "Common ID documents are easy; recordkeeping documents are harder to recall quickly.",
       "editorialNotes": "Accept close equivalents used in different countries when the intent clearly matches.",
       "sourceURL": "https://en.wikipedia.org/wiki/Identity_document",
       "answers": [
-        { "text": "Passport", "points": 1 },
-        { "text": "Birth certificate", "points": 2 },
-        { "text": "Driver's license", "points": 2 },
-        { "text": "Tax return", "points": 3 },
-        { "text": "Insurance policy", "points": 3 },
-        { "text": "Bank statement", "points": 3 },
-        { "text": "Lease agreement", "points": 3 },
-        { "text": "Employment contract", "points": 4 },
-        { "text": "Vehicle registration", "points": 4 },
-        { "text": "Proof of address letter", "points": 4 }
+        {
+          "text": "Passport",
+          "points": 1
+        },
+        {
+          "text": "Birth certificate",
+          "points": 2
+        },
+        {
+          "text": "Driver's license",
+          "points": 2
+        },
+        {
+          "text": "Tax return",
+          "points": 3
+        },
+        {
+          "text": "Insurance policy",
+          "points": 3
+        },
+        {
+          "text": "Bank statement",
+          "points": 3
+        },
+        {
+          "text": "Lease agreement",
+          "points": 3
+        },
+        {
+          "text": "Employment contract",
+          "points": 4
+        },
+        {
+          "text": "Vehicle registration",
+          "points": 4
+        },
+        {
+          "text": "Proof of address letter",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "things-that-make-parties-awkward",
+      "category": "Everyday Life",
+      "prompt": "Issues that can disrupt a party event",
+      "difficulty": "medium",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "sourceURL": "https://en.wikipedia.org/wiki/Event_management",
+      "answers": [
+        {
+          "text": "Power outage",
+          "points": 1
+        },
+        {
+          "text": "No music system",
+          "points": 1
+        },
+        {
+          "text": "Food runs out",
+          "points": 1
+        },
+        {
+          "text": "Drink spill",
+          "points": 2
+        },
+        {
+          "text": "Noise complaint",
+          "points": 2
+        },
+        {
+          "text": "Host arrives late",
+          "points": 2
+        },
+        {
+          "text": "Transport issue",
+          "points": 2
+        },
+        {
+          "text": "Venue overcapacity",
+          "points": 3
+        },
+        {
+          "text": "Security incident",
+          "points": 4
+        },
+        {
+          "text": "Fire alarm",
+          "points": 4
+        }
       ]
     }
   ]

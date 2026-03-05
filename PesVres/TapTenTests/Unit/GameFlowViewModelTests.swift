@@ -3,6 +3,35 @@ import Testing
 @testable import TapTen
 
 struct GameFlowViewModelTests {
+#if DEBUG
+    @Test
+    func recordsDebugTelemetryOnRoundSummaryAndClearsOnPlayAgain() {
+        let viewModel = GameFlowViewModel(
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
+            enabledCategoryNames: ["Factual"],
+            questionPacks: [makePack(questionCount: 2)],
+            randomIndexProvider: { _ in 0 },
+            randomSassyCommentProvider: { comments in
+                comments.first ?? ""
+            }
+        )
+
+        viewModel.startRound()
+        let hostRoundViewModel = viewModel.hostRoundViewModel
+        hostRoundViewModel?.endRound()
+        viewModel.finalizeActiveRoundIfNeeded()
+
+        #expect(viewModel.debugRoundTelemetry.count == 1)
+        #expect(viewModel.debugRoundTelemetry.first?.category == "Factual")
+
+        viewModel.continueAfterRoundSummary()
+        #expect(viewModel.phase == .finalResults)
+
+        viewModel.playAgain()
+        #expect(viewModel.debugRoundTelemetry.isEmpty)
+    }
+#endif
+
     @Test
     func summaryContinueButtonTitleMatchesRoundState() {
         let viewModel = GameFlowViewModel(

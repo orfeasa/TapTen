@@ -8,12 +8,13 @@ Two teams play on one device. One team answers out loud while the other team hos
 
 - Single-device game with exactly two teams.
 - Configurable rounds per team and round duration.
-- Random question selection from enabled categories.
+- Random question selection from enabled categories and difficulty tiers.
 - No repeated questions in a single game session.
 - Bundled local JSON question packs only (no network fetching).
 - Warm, Apple-native visual direction with restrained motion.
 - Playful-but-clear in-app tone for supporting copy and verdicts.
 - Cleaner Home with focused hero copy, one strong primary CTA, setup status capsules, and a separate `How To Play` sheet.
+- Home includes a native `Browse Question Packs` screen with category and pack-level counts.
 - Pass-device handoff flow between rounds with clear answering/hosting emphasis.
 - Host round with:
   - visible question and all 10 answers
@@ -32,6 +33,7 @@ Two teams play on one device. One team answers out loud while the other team hos
 - Shared theme tokens for warm background/card, celebration gold, and reveal green.
 - Minimal v1 Settings screen (`sounds`, `haptics`, default rounds, default timer) plus safe in-game end confirmation.
   - Settings is available from Home via the toolbar gear button.
+  - `Sounds` and `Haptics` toggles now directly control in-round feedback behavior.
   - `End Game` is available during in-progress game flow and always requires explicit confirmation.
 - Optional editorial metadata fields in local packs for quality control (`contentType`, `quality`, `difficultyNotes`, `editorialNotes`, `packVersion`).
 
@@ -112,6 +114,7 @@ Note: avoid launching iOS simulator test runs unless explicitly needed in the cu
 
 - Product and UX constraints: see `PROJECT_BRIEF.md`.
 - Repository working conventions: see `AGENTS.md`.
+- Release smoke-test protocol: see `RELEASE_CHECKLIST.md`.
 
 ## Release Notes
 

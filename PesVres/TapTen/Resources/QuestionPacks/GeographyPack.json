@@ -13,22 +13,56 @@
       "difficultyScore": 16,
       "validationStyle": "factual",
       "contentType": "factual-ranking",
-      "quality": "draft",
-      "tags": ["geography", "europe", "population"],
+      "quality": "reviewed",
+      "tags": [
+        "geography",
+        "europe",
+        "population"
+      ],
       "difficultyNotes": "Commonly referenced countries appear first.",
       "editorialNotes": "Accept 'UK' for United Kingdom.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_European_countries_by_population",
       "answers": [
-        { "text": "Russia", "points": 1 },
-        { "text": "Germany", "points": 1 },
-        { "text": "United Kingdom", "points": 1 },
-        { "text": "France", "points": 1 },
-        { "text": "Italy", "points": 1 },
-        { "text": "Spain", "points": 2 },
-        { "text": "Ukraine", "points": 2 },
-        { "text": "Poland", "points": 2 },
-        { "text": "Romania", "points": 2 },
-        { "text": "Netherlands", "points": 3 }
+        {
+          "text": "Russia",
+          "points": 1
+        },
+        {
+          "text": "Germany",
+          "points": 1
+        },
+        {
+          "text": "United Kingdom",
+          "points": 1
+        },
+        {
+          "text": "France",
+          "points": 1
+        },
+        {
+          "text": "Italy",
+          "points": 1
+        },
+        {
+          "text": "Spain",
+          "points": 2
+        },
+        {
+          "text": "Ukraine",
+          "points": 2
+        },
+        {
+          "text": "Poland",
+          "points": 2
+        },
+        {
+          "text": "Romania",
+          "points": 2
+        },
+        {
+          "text": "Netherlands",
+          "points": 3
+        }
       ]
     },
     {
@@ -40,22 +74,56 @@
       "difficultyScore": 16,
       "validationStyle": "factual",
       "contentType": "factual-ranking",
-      "quality": "draft",
-      "tags": ["geography", "north-america", "population"],
+      "quality": "reviewed",
+      "tags": [
+        "geography",
+        "north-america",
+        "population"
+      ],
       "difficultyNotes": "The first five answers are guessed quickly in live play.",
       "editorialNotes": "Accept 'US' for United States and 'DR' for Dominican Republic.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_North_American_countries_by_population",
       "answers": [
-        { "text": "United States", "points": 1 },
-        { "text": "Mexico", "points": 1 },
-        { "text": "Canada", "points": 1 },
-        { "text": "Guatemala", "points": 1 },
-        { "text": "Cuba", "points": 1 },
-        { "text": "Haiti", "points": 2 },
-        { "text": "Dominican Republic", "points": 2 },
-        { "text": "Honduras", "points": 2 },
-        { "text": "Nicaragua", "points": 2 },
-        { "text": "El Salvador", "points": 3 }
+        {
+          "text": "United States",
+          "points": 1
+        },
+        {
+          "text": "Mexico",
+          "points": 1
+        },
+        {
+          "text": "Canada",
+          "points": 1
+        },
+        {
+          "text": "Guatemala",
+          "points": 1
+        },
+        {
+          "text": "Cuba",
+          "points": 1
+        },
+        {
+          "text": "Haiti",
+          "points": 2
+        },
+        {
+          "text": "Dominican Republic",
+          "points": 2
+        },
+        {
+          "text": "Honduras",
+          "points": 2
+        },
+        {
+          "text": "Nicaragua",
+          "points": 2
+        },
+        {
+          "text": "El Salvador",
+          "points": 3
+        }
       ]
     },
     {
@@ -67,22 +135,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "factual-ranking",
-      "quality": "draft",
-      "tags": ["geography", "countries", "land-area"],
+      "quality": "reviewed",
+      "tags": [
+        "geography",
+        "countries",
+        "land-area"
+      ],
       "difficultyNotes": "The final entries are often missed under time pressure.",
       "editorialNotes": "Accept common abbreviations like 'USA'.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_area",
       "answers": [
-        { "text": "Russia", "points": 1 },
-        { "text": "Canada", "points": 1 },
-        { "text": "China", "points": 1 },
-        { "text": "United States", "points": 2 },
-        { "text": "Brazil", "points": 2 },
-        { "text": "Australia", "points": 2 },
-        { "text": "India", "points": 2 },
-        { "text": "Argentina", "points": 3 },
-        { "text": "Kazakhstan", "points": 4 },
-        { "text": "Algeria", "points": 4 }
+        {
+          "text": "Russia",
+          "points": 1
+        },
+        {
+          "text": "Canada",
+          "points": 1
+        },
+        {
+          "text": "China",
+          "points": 1
+        },
+        {
+          "text": "United States",
+          "points": 2
+        },
+        {
+          "text": "Brazil",
+          "points": 2
+        },
+        {
+          "text": "Australia",
+          "points": 2
+        },
+        {
+          "text": "India",
+          "points": 2
+        },
+        {
+          "text": "Argentina",
+          "points": 3
+        },
+        {
+          "text": "Kazakhstan",
+          "points": 4
+        },
+        {
+          "text": "Algeria",
+          "points": 4
+        }
       ]
     },
     {
@@ -94,22 +196,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "factual-ranking",
-      "quality": "draft",
-      "tags": ["geography", "rivers", "physical-geography"],
+      "quality": "reviewed",
+      "tags": [
+        "geography",
+        "rivers",
+        "physical-geography"
+      ],
       "difficultyNotes": "Hosts should accept common river-system naming variants.",
       "editorialNotes": "Accept 'Mississippi' for Mississippi River System.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_river_systems_by_length",
       "answers": [
-        { "text": "Nile", "points": 1 },
-        { "text": "Amazon", "points": 1 },
-        { "text": "Yangtze", "points": 1 },
-        { "text": "Mississippi River System", "points": 2 },
-        { "text": "Yenisei", "points": 2 },
-        { "text": "Yellow River", "points": 2 },
-        { "text": "Ob-Irtysh", "points": 2 },
-        { "text": "Parana", "points": 3 },
-        { "text": "Congo", "points": 4 },
-        { "text": "Amur", "points": 4 }
+        {
+          "text": "Nile",
+          "points": 1
+        },
+        {
+          "text": "Amazon",
+          "points": 1
+        },
+        {
+          "text": "Yangtze",
+          "points": 1
+        },
+        {
+          "text": "Mississippi River System",
+          "points": 2
+        },
+        {
+          "text": "Yenisei",
+          "points": 2
+        },
+        {
+          "text": "Yellow River",
+          "points": 2
+        },
+        {
+          "text": "Ob-Irtysh",
+          "points": 2
+        },
+        {
+          "text": "Parana",
+          "points": 3
+        },
+        {
+          "text": "Congo",
+          "points": 4
+        },
+        {
+          "text": "Amur",
+          "points": 4
+        }
       ]
     },
     {
@@ -121,22 +257,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "factual-ranking",
-      "quality": "draft",
-      "tags": ["geography", "world", "population"],
+      "quality": "reviewed",
+      "tags": [
+        "geography",
+        "world",
+        "population"
+      ],
       "difficultyNotes": "Late-list countries are less frequently guessed.",
       "editorialNotes": "Accept informal country abbreviations if unambiguous.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population",
       "answers": [
-        { "text": "India", "points": 1 },
-        { "text": "China", "points": 1 },
-        { "text": "United States", "points": 1 },
-        { "text": "Indonesia", "points": 2 },
-        { "text": "Pakistan", "points": 2 },
-        { "text": "Nigeria", "points": 2 },
-        { "text": "Brazil", "points": 2 },
-        { "text": "Bangladesh", "points": 3 },
-        { "text": "Russia", "points": 4 },
-        { "text": "Mexico", "points": 4 }
+        {
+          "text": "India",
+          "points": 1
+        },
+        {
+          "text": "China",
+          "points": 1
+        },
+        {
+          "text": "United States",
+          "points": 1
+        },
+        {
+          "text": "Indonesia",
+          "points": 2
+        },
+        {
+          "text": "Pakistan",
+          "points": 2
+        },
+        {
+          "text": "Nigeria",
+          "points": 2
+        },
+        {
+          "text": "Brazil",
+          "points": 2
+        },
+        {
+          "text": "Bangladesh",
+          "points": 3
+        },
+        {
+          "text": "Russia",
+          "points": 4
+        },
+        {
+          "text": "Mexico",
+          "points": 4
+        }
       ]
     },
     {
@@ -148,22 +318,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "factual-ranking",
-      "quality": "draft",
-      "tags": ["geography", "mountains", "asia"],
+      "quality": "reviewed",
+      "tags": [
+        "geography",
+        "mountains",
+        "asia"
+      ],
       "difficultyNotes": "Only a few peaks are widely known by casual players.",
       "editorialNotes": "Accept common spacing variants like 'Cho Oyu'.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_highest_mountains_on_Earth",
       "answers": [
-        { "text": "Mount Everest", "points": 1 },
-        { "text": "K2", "points": 1 },
-        { "text": "Kangchenjunga", "points": 1 },
-        { "text": "Lhotse", "points": 2 },
-        { "text": "Makalu", "points": 2 },
-        { "text": "Cho Oyu", "points": 2 },
-        { "text": "Dhaulagiri I", "points": 2 },
-        { "text": "Manaslu", "points": 3 },
-        { "text": "Nanga Parbat", "points": 4 },
-        { "text": "Annapurna I", "points": 4 }
+        {
+          "text": "Mount Everest",
+          "points": 1
+        },
+        {
+          "text": "K2",
+          "points": 1
+        },
+        {
+          "text": "Kangchenjunga",
+          "points": 1
+        },
+        {
+          "text": "Lhotse",
+          "points": 2
+        },
+        {
+          "text": "Makalu",
+          "points": 2
+        },
+        {
+          "text": "Cho Oyu",
+          "points": 2
+        },
+        {
+          "text": "Dhaulagiri I",
+          "points": 2
+        },
+        {
+          "text": "Manaslu",
+          "points": 3
+        },
+        {
+          "text": "Nanga Parbat",
+          "points": 4
+        },
+        {
+          "text": "Annapurna I",
+          "points": 4
+        }
       ]
     },
     {
@@ -175,22 +379,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "factual-ranking",
-      "quality": "draft",
-      "tags": ["geography", "coastline", "countries"],
+      "quality": "reviewed",
+      "tags": [
+        "geography",
+        "coastline",
+        "countries"
+      ],
       "difficultyNotes": "Mid-table answers are often surprising to players.",
       "editorialNotes": "Accept country short forms when unambiguous.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_countries_by_length_of_coastline",
       "answers": [
-        { "text": "Canada", "points": 1 },
-        { "text": "Norway", "points": 2 },
-        { "text": "Indonesia", "points": 2 },
-        { "text": "Russia", "points": 3 },
-        { "text": "Philippines", "points": 3 },
-        { "text": "Japan", "points": 3 },
-        { "text": "Australia", "points": 3 },
-        { "text": "United States", "points": 4 },
-        { "text": "New Zealand", "points": 4 },
-        { "text": "China", "points": 4 }
+        {
+          "text": "Canada",
+          "points": 1
+        },
+        {
+          "text": "Norway",
+          "points": 2
+        },
+        {
+          "text": "Indonesia",
+          "points": 2
+        },
+        {
+          "text": "Russia",
+          "points": 3
+        },
+        {
+          "text": "Philippines",
+          "points": 3
+        },
+        {
+          "text": "Japan",
+          "points": 3
+        },
+        {
+          "text": "Australia",
+          "points": 3
+        },
+        {
+          "text": "United States",
+          "points": 4
+        },
+        {
+          "text": "New Zealand",
+          "points": 4
+        },
+        {
+          "text": "China",
+          "points": 4
+        }
       ]
     },
     {
@@ -202,22 +440,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "factual-list",
-      "quality": "draft",
-      "tags": ["geography", "deserts", "climate"],
+      "quality": "reviewed",
+      "tags": [
+        "geography",
+        "deserts",
+        "climate"
+      ],
       "difficultyNotes": "Players usually know the first few deserts, but later entries are tougher.",
       "editorialNotes": "Accept common regional naming variants when clearly referring to the same desert.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_deserts_by_area",
       "answers": [
-        { "text": "Sahara", "points": 1 },
-        { "text": "Arabian Desert", "points": 2 },
-        { "text": "Gobi", "points": 2 },
-        { "text": "Kalahari", "points": 3 },
-        { "text": "Patagonian Desert", "points": 3 },
-        { "text": "Great Victoria Desert", "points": 3 },
-        { "text": "Syrian Desert", "points": 3 },
-        { "text": "Great Basin Desert", "points": 4 },
-        { "text": "Chihuahuan Desert", "points": 4 },
-        { "text": "Great Sandy Desert", "points": 4 }
+        {
+          "text": "Sahara",
+          "points": 1
+        },
+        {
+          "text": "Arabian Desert",
+          "points": 2
+        },
+        {
+          "text": "Gobi",
+          "points": 2
+        },
+        {
+          "text": "Kalahari",
+          "points": 3
+        },
+        {
+          "text": "Patagonian Desert",
+          "points": 3
+        },
+        {
+          "text": "Great Victoria Desert",
+          "points": 3
+        },
+        {
+          "text": "Syrian Desert",
+          "points": 3
+        },
+        {
+          "text": "Great Basin Desert",
+          "points": 4
+        },
+        {
+          "text": "Chihuahuan Desert",
+          "points": 4
+        },
+        {
+          "text": "Great Sandy Desert",
+          "points": 4
+        }
       ]
     },
     {
@@ -230,21 +502,215 @@
       "validationStyle": "factual",
       "contentType": "factual-ranking",
       "quality": "draft",
-      "tags": ["geography", "tourism", "countries"],
+      "tags": [
+        "geography",
+        "tourism",
+        "countries"
+      ],
       "difficultyNotes": "Anchored to the 2019 ranking snapshot for stable adjudication.",
       "editorialNotes": "Accept standard short forms such as UK and USA when unambiguous.",
       "sourceURL": "https://en.wikipedia.org/wiki/World_Tourism_rankings",
       "answers": [
-        { "text": "France", "points": 1 },
-        { "text": "Spain", "points": 2 },
-        { "text": "United States", "points": 2 },
-        { "text": "Italy", "points": 3 },
-        { "text": "Turkey", "points": 3 },
-        { "text": "Mexico", "points": 3 },
-        { "text": "Thailand", "points": 3 },
-        { "text": "Germany", "points": 4 },
-        { "text": "United Kingdom", "points": 4 },
-        { "text": "Japan", "points": 4 }
+        {
+          "text": "France",
+          "points": 1
+        },
+        {
+          "text": "Spain",
+          "points": 2
+        },
+        {
+          "text": "United States",
+          "points": 2
+        },
+        {
+          "text": "Italy",
+          "points": 3
+        },
+        {
+          "text": "Turkey",
+          "points": 3
+        },
+        {
+          "text": "Mexico",
+          "points": 3
+        },
+        {
+          "text": "Thailand",
+          "points": 3
+        },
+        {
+          "text": "Germany",
+          "points": 4
+        },
+        {
+          "text": "United Kingdom",
+          "points": 4
+        },
+        {
+          "text": "Japan",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "geo-largest-islands-world",
+      "category": "Geography",
+      "prompt": "Largest islands in the world (excluding continents)",
+      "difficulty": "hard",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "factual",
+      "sourceURL": "https://en.wikipedia.org/wiki/List_of_islands_by_area",
+      "answers": [
+        {
+          "text": "Greenland",
+          "points": 1
+        },
+        {
+          "text": "New Guinea",
+          "points": 2
+        },
+        {
+          "text": "Borneo",
+          "points": 2
+        },
+        {
+          "text": "Madagascar",
+          "points": 3
+        },
+        {
+          "text": "Baffin Island",
+          "points": 3
+        },
+        {
+          "text": "Sumatra",
+          "points": 3
+        },
+        {
+          "text": "Honshu",
+          "points": 3
+        },
+        {
+          "text": "Victoria Island",
+          "points": 4
+        },
+        {
+          "text": "Great Britain",
+          "points": 4
+        },
+        {
+          "text": "Ellesmere Island",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "largest-us-cities",
+      "category": "Geography",
+      "prompt": "Top 10 most populated U.S. cities",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 17,
+      "validationStyle": "factual",
+      "sourceURL": "https://www.census.gov/newsroom/press-releases/2021/2020-census-counts.html",
+      "answers": [
+        {
+          "text": "New York City",
+          "points": 1
+        },
+        {
+          "text": "Los Angeles",
+          "points": 1
+        },
+        {
+          "text": "Chicago",
+          "points": 1
+        },
+        {
+          "text": "Houston",
+          "points": 1
+        },
+        {
+          "text": "Phoenix",
+          "points": 2
+        },
+        {
+          "text": "Philadelphia",
+          "points": 2
+        },
+        {
+          "text": "San Antonio",
+          "points": 2
+        },
+        {
+          "text": "San Diego",
+          "points": 2
+        },
+        {
+          "text": "Dallas",
+          "points": 2
+        },
+        {
+          "text": "San Jose",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "countries-starting-s",
+      "category": "Geography",
+      "prompt": "Name countries that start with the letter S",
+      "difficulty": "easy",
+      "difficultyTier": "easy",
+      "difficultyScore": 18,
+      "validationStyle": "factual",
+      "contentType": "factual-list",
+      "quality": "reviewed",
+      "difficultyNotes": "Common entries first, rarer entries toward the end.",
+      "editorialNotes": "Accept common spoken variants and minor pronunciation differences.",
+      "sourceURL": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
+      "answers": [
+        {
+          "text": "Spain",
+          "points": 1
+        },
+        {
+          "text": "Sweden",
+          "points": 1
+        },
+        {
+          "text": "Switzerland",
+          "points": 1
+        },
+        {
+          "text": "Serbia",
+          "points": 2
+        },
+        {
+          "text": "Slovakia",
+          "points": 2
+        },
+        {
+          "text": "Slovenia",
+          "points": 2
+        },
+        {
+          "text": "Singapore",
+          "points": 2
+        },
+        {
+          "text": "South Africa",
+          "points": 2
+        },
+        {
+          "text": "Sudan",
+          "points": 2
+        },
+        {
+          "text": "San Marino",
+          "points": 3
+        }
       ]
     }
   ]

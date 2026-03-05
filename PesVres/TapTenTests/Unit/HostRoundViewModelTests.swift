@@ -4,6 +4,41 @@ import Testing
 
 struct HostRoundViewModelTests {
     @Test
+    func soundsDisabledSuppressesCountdownAndRoundEndAudio() {
+        let spyPlayer = SpyCountdownPlayer()
+        let viewModel = HostRoundViewModel(
+            question: makeQuestion(),
+            roundDurationSeconds: 1,
+            countdownSoundPlayer: spyPlayer,
+            soundsEnabled: false
+        )
+        viewModel.startRoundIfNeeded()
+
+        advanceTicks(viewModel, count: 10)
+
+        #expect(viewModel.isRoundFinished)
+        #expect(spyPlayer.finalTickCount == 0)
+        #expect(spyPlayer.roundEndedCount == 0)
+    }
+
+    @Test
+    func soundsEnabledPlaysRoundEndAudio() {
+        let spyPlayer = SpyCountdownPlayer()
+        let viewModel = HostRoundViewModel(
+            question: makeQuestion(),
+            roundDurationSeconds: 1,
+            countdownSoundPlayer: spyPlayer,
+            soundsEnabled: true
+        )
+        viewModel.startRoundIfNeeded()
+
+        advanceTicks(viewModel, count: 10)
+
+        #expect(viewModel.isRoundFinished)
+        #expect(spyPlayer.roundEndedCount == 1)
+    }
+
+    @Test
     func tapAgainUnrevealsAnswerDuringActiveRound() {
         let viewModel = HostRoundViewModel(
             question: makeQuestion(),
@@ -156,6 +191,19 @@ private func makeQuestion() -> Question {
 private final class SilentCountdownPlayer: CountdownSoundPlaying {
     func playFinalCountdownTick(style: CountdownTickStyle, volume: Float) { }
     func playRoundEndedTone(volume: Float) { }
+}
+
+private final class SpyCountdownPlayer: CountdownSoundPlaying {
+    private(set) var finalTickCount = 0
+    private(set) var roundEndedCount = 0
+
+    func playFinalCountdownTick(style: CountdownTickStyle, volume: Float) {
+        finalTickCount += 1
+    }
+
+    func playRoundEndedTone(volume: Float) {
+        roundEndedCount += 1
+    }
 }
 
 private func makeDeterministicTimerViewModel(durationSeconds: Int) -> HostRoundViewModel {

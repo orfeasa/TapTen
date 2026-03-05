@@ -46,4 +46,22 @@ struct NewGameViewModelTests {
 
         #expect(first.id == second.id)
     }
+
+    @Test
+    func defaultDifficultyFilterIncludesAllTiers() {
+        let viewModel = NewGameViewModel()
+
+        #expect(viewModel.includedDifficultyTiers == Set(QuestionDifficulty.allCases))
+        #expect(viewModel.difficultiesAreValid)
+    }
+
+    @Test
+    func excludingAllDifficultiesInvalidatesStartReadiness() {
+        let viewModel = NewGameViewModel()
+
+        viewModel.excludeAllDifficulties()
+
+        #expect(!viewModel.canStartGame)
+        #expect(viewModel.validationMessage == "Select at least one difficulty tier.")
+    }
 }

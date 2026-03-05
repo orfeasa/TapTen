@@ -6,6 +6,7 @@ final class NewGameViewModel {
     var settings: GameSettings
     var categories: [GameCategory]
     var includedCategoryIDs: Set<GameCategory.ID>
+    var includedDifficultyTiers: Set<QuestionDifficulty>
 
     init(
         settings: GameSettings = GameSettings(),
@@ -15,6 +16,7 @@ final class NewGameViewModel {
         self.settings = settings
         self.categories = loadedCategories
         self.includedCategoryIDs = Set(loadedCategories.map(\.id))
+        self.includedDifficultyTiers = Set(QuestionDifficulty.allCases)
     }
 
     var includedCategoryCount: Int {
@@ -48,7 +50,7 @@ final class NewGameViewModel {
     }
 
     var canStartGame: Bool {
-        teamNamesAreValid && categoriesAreValid
+        teamNamesAreValid && categoriesAreValid && difficultiesAreValid
     }
 
     var validationMessage: String? {
@@ -64,7 +66,15 @@ final class NewGameViewModel {
             return "Select at least one category."
         }
 
+        if includedDifficultyTiers.isEmpty {
+            return "Select at least one difficulty tier."
+        }
+
         return nil
+    }
+
+    var difficultiesAreValid: Bool {
+        !includedDifficultyTiers.isEmpty
     }
 
     func isCategoryIncluded(_ category: GameCategory) -> Bool {
@@ -85,6 +95,26 @@ final class NewGameViewModel {
 
     func excludeAllCategories() {
         includedCategoryIDs.removeAll()
+    }
+
+    func isDifficultyIncluded(_ difficulty: QuestionDifficulty) -> Bool {
+        includedDifficultyTiers.contains(difficulty)
+    }
+
+    func setDifficulty(_ difficulty: QuestionDifficulty, included: Bool) {
+        if included {
+            includedDifficultyTiers.insert(difficulty)
+        } else {
+            includedDifficultyTiers.remove(difficulty)
+        }
+    }
+
+    func includeAllDifficulties() {
+        includedDifficultyTiers = Set(QuestionDifficulty.allCases)
+    }
+
+    func excludeAllDifficulties() {
+        includedDifficultyTiers.removeAll()
     }
 
     @discardableResult

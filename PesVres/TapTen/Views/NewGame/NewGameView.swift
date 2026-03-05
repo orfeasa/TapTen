@@ -4,6 +4,7 @@ struct NewGameView: View {
     @Environment(\.dismiss) private var dismiss
     @State var viewModel: NewGameViewModel
     @State private var gameFlowViewModel: GameFlowViewModel?
+    @State private var startGameErrorMessage: String?
 
     var body: some View {
         Form {
@@ -51,6 +52,7 @@ struct NewGameView: View {
                         viewModel.includeAllCategories()
                     }
                     .buttonStyle(.borderless)
+                    .accessibilityHint("Turn on all categories.")
 
                     Spacer()
 
@@ -58,6 +60,7 @@ struct NewGameView: View {
                         viewModel.excludeAllCategories()
                     }
                     .buttonStyle(.borderless)
+                    .accessibilityHint("Turn off all categories.")
                 }
                 .font(.subheadline)
             } header: {
@@ -67,12 +70,54 @@ struct NewGameView: View {
             }
 
             Section {
+                ForEach(QuestionDifficulty.allCases, id: \.self) { difficulty in
+                    Toggle(difficulty.displayName, isOn: Binding(
+                        get: { viewModel.isDifficultyIncluded(difficulty) },
+                        set: { isIncluded in
+                            viewModel.setDifficulty(difficulty, included: isIncluded)
+                        }
+                    ))
+                }
+
+                HStack {
+                    Button("Include All") {
+                        viewModel.includeAllDifficulties()
+                    }
+                    .buttonStyle(.borderless)
+                    .accessibilityHint("Turn on all difficulty tiers.")
+
+                    Spacer()
+
+                    Button("Exclude All") {
+                        viewModel.excludeAllDifficulties()
+                    }
+                    .buttonStyle(.borderless)
+                    .accessibilityHint("Turn off all difficulty tiers.")
+                }
+                .font(.subheadline)
+            } header: {
+                Text("Difficulty")
+            } footer: {
+                Text("\(viewModel.includedDifficultyTiers.count) selected")
+            }
+
+            Section {
                 Button {
                     if viewModel.startGame() {
-                        gameFlowViewModel = GameFlowViewModel(
+                        let candidate = GameFlowViewModel(
                             settings: viewModel.settings,
-                            enabledCategoryNames: viewModel.includedCategoryNames
+                            enabledCategoryNames: viewModel.includedCategoryNames,
+                            enabledDifficultyTiers: viewModel.includedDifficultyTiers,
+                            soundsEnabled: AppSettingsStore.shared.soundsEnabled
                         )
+
+                        if case .error(let message) = candidate.phase {
+                            startGameErrorMessage = message
+                            return
+                        }
+
+                        startGameErrorMessage = nil
+                        gameFlowViewModel = candidate
                     }
                 } label: {
                     Text("Start Game")
@@ -84,7 +129,7 @@ struct NewGameView: View {
                 .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
             }
 
-            if let validationMessage = viewModel.validationMessage {
+            if let validationMessage = viewModel.validationMessage ?? startGameErrorMessage {
                 Section {
                     Text(validationMessage)
                         .foregroundStyle(.red)
@@ -135,6 +180,12 @@ struct NewGameView: View {
                 .textFieldStyle(.roundedBorder)
         }
         .padding(.vertical, 2)
+    }
+}
+
+private extension QuestionDifficulty {
+    var displayName: String {
+        rawValue.capitalized
     }
 }
 

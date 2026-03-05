@@ -13,22 +13,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "popculture-platform-list",
-      "quality": "draft",
-      "tags": ["pop-culture", "social-media", "platforms"],
+      "quality": "reviewed",
+      "tags": [
+        "pop-culture",
+        "social-media",
+        "platforms"
+      ],
       "difficultyNotes": "Top platforms are globally recognized.",
       "editorialNotes": "Accept current brand names used in everyday speech.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_social_platforms_with_at_least_100_million_active_users",
       "answers": [
-        { "text": "Instagram", "points": 1 },
-        { "text": "TikTok", "points": 1 },
-        { "text": "YouTube", "points": 1 },
-        { "text": "Facebook", "points": 1 },
-        { "text": "X", "points": 1 },
-        { "text": "Snapchat", "points": 2 },
-        { "text": "Reddit", "points": 2 },
-        { "text": "LinkedIn", "points": 2 },
-        { "text": "Pinterest", "points": 2 },
-        { "text": "Twitch", "points": 3 }
+        {
+          "text": "Instagram",
+          "points": 1
+        },
+        {
+          "text": "TikTok",
+          "points": 1
+        },
+        {
+          "text": "YouTube",
+          "points": 1
+        },
+        {
+          "text": "Facebook",
+          "points": 1
+        },
+        {
+          "text": "X",
+          "points": 1
+        },
+        {
+          "text": "Snapchat",
+          "points": 2
+        },
+        {
+          "text": "Reddit",
+          "points": 2
+        },
+        {
+          "text": "LinkedIn",
+          "points": 2
+        },
+        {
+          "text": "Pinterest",
+          "points": 2
+        },
+        {
+          "text": "Twitch",
+          "points": 3
+        }
       ]
     },
     {
@@ -40,22 +74,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "popculture-event-list",
-      "quality": "draft",
-      "tags": ["pop-culture", "events", "entertainment"],
+      "quality": "reviewed",
+      "tags": [
+        "pop-culture",
+        "events",
+        "entertainment"
+      ],
       "difficultyNotes": "Most answers are common event types seen in headlines.",
       "editorialNotes": "Accept close event labels where the intent is the same.",
       "sourceURL": "https://en.wikipedia.org/wiki/Entertainment",
       "answers": [
-        { "text": "Award shows", "points": 1 },
-        { "text": "Movie premieres", "points": 1 },
-        { "text": "Album releases", "points": 1 },
-        { "text": "Fashion week", "points": 1 },
-        { "text": "Sports finals", "points": 1 },
-        { "text": "Reality show finales", "points": 2 },
-        { "text": "Viral challenges", "points": 2 },
-        { "text": "Influencer collaborations", "points": 2 },
-        { "text": "Fan conventions", "points": 2 },
-        { "text": "Esports finals", "points": 3 }
+        {
+          "text": "Award shows",
+          "points": 1
+        },
+        {
+          "text": "Movie premieres",
+          "points": 1
+        },
+        {
+          "text": "Album releases",
+          "points": 1
+        },
+        {
+          "text": "Fashion week",
+          "points": 1
+        },
+        {
+          "text": "Sports finals",
+          "points": 1
+        },
+        {
+          "text": "Reality show finales",
+          "points": 2
+        },
+        {
+          "text": "Viral challenges",
+          "points": 2
+        },
+        {
+          "text": "Influencer collaborations",
+          "points": 2
+        },
+        {
+          "text": "Fan conventions",
+          "points": 2
+        },
+        {
+          "text": "Esports finals",
+          "points": 3
+        }
       ]
     },
     {
@@ -68,21 +136,55 @@
       "validationStyle": "editorial",
       "contentType": "popculture-symbol-list",
       "quality": "draft",
-      "tags": ["pop-culture", "emoji", "chat"],
+      "tags": [
+        "pop-culture",
+        "emoji",
+        "chat"
+      ],
       "difficultyNotes": "Most answers are high-frequency emoji in messaging apps.",
       "editorialNotes": "Accept standard verbal descriptions of each emoji.",
       "sourceURL": "https://en.wikipedia.org/wiki/Emoji",
       "answers": [
-        { "text": "Thumbs up", "points": 1 },
-        { "text": "Red heart", "points": 1 },
-        { "text": "Face with tears of joy", "points": 1 },
-        { "text": "Fire", "points": 1 },
-        { "text": "Clapping hands", "points": 1 },
-        { "text": "Crying face", "points": 2 },
-        { "text": "Smiling face with hearts", "points": 2 },
-        { "text": "Party popper", "points": 2 },
-        { "text": "Thinking face", "points": 2 },
-        { "text": "Sparkles", "points": 3 }
+        {
+          "text": "Thumbs up",
+          "points": 1
+        },
+        {
+          "text": "Red heart",
+          "points": 1
+        },
+        {
+          "text": "Face with tears of joy",
+          "points": 1
+        },
+        {
+          "text": "Fire",
+          "points": 1
+        },
+        {
+          "text": "Clapping hands",
+          "points": 1
+        },
+        {
+          "text": "Crying face",
+          "points": 2
+        },
+        {
+          "text": "Smiling face with hearts",
+          "points": 2
+        },
+        {
+          "text": "Party popper",
+          "points": 2
+        },
+        {
+          "text": "Thinking face",
+          "points": 2
+        },
+        {
+          "text": "Sparkles",
+          "points": 3
+        }
       ]
     },
     {
@@ -94,22 +196,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "popculture-genre-list",
-      "quality": "draft",
-      "tags": ["pop-culture", "podcasts", "genres"],
+      "quality": "reviewed",
+      "tags": [
+        "pop-culture",
+        "podcasts",
+        "genres"
+      ],
       "difficultyNotes": "Top genres are familiar from podcast charts.",
       "editorialNotes": "Accept close genre wording used by podcast apps.",
       "sourceURL": "https://en.wikipedia.org/wiki/Podcast",
       "answers": [
-        { "text": "News", "points": 1 },
-        { "text": "Comedy", "points": 1 },
-        { "text": "True crime", "points": 1 },
-        { "text": "Sports", "points": 1 },
-        { "text": "Interview", "points": 1 },
-        { "text": "Business", "points": 2 },
-        { "text": "Self-help", "points": 2 },
-        { "text": "Technology", "points": 2 },
-        { "text": "History", "points": 2 },
-        { "text": "Fiction", "points": 3 }
+        {
+          "text": "News",
+          "points": 1
+        },
+        {
+          "text": "Comedy",
+          "points": 1
+        },
+        {
+          "text": "True crime",
+          "points": 1
+        },
+        {
+          "text": "Sports",
+          "points": 1
+        },
+        {
+          "text": "Interview",
+          "points": 1
+        },
+        {
+          "text": "Business",
+          "points": 2
+        },
+        {
+          "text": "Self-help",
+          "points": 2
+        },
+        {
+          "text": "Technology",
+          "points": 2
+        },
+        {
+          "text": "History",
+          "points": 2
+        },
+        {
+          "text": "Fiction",
+          "points": 3
+        }
       ]
     },
     {
@@ -122,21 +258,55 @@
       "validationStyle": "editorial",
       "contentType": "popculture-language-list",
       "quality": "draft",
-      "tags": ["pop-culture", "internet", "slang"],
+      "tags": [
+        "pop-culture",
+        "internet",
+        "slang"
+      ],
       "difficultyNotes": "Short acronyms are easier than context-specific abbreviations.",
       "editorialNotes": "Accept letter-by-letter spoken forms.",
       "sourceURL": "https://en.wikipedia.org/wiki/Internet_slang",
       "answers": [
-        { "text": "LOL", "points": 1 },
-        { "text": "OMG", "points": 1 },
-        { "text": "DM", "points": 1 },
-        { "text": "FOMO", "points": 2 },
-        { "text": "IMO", "points": 2 },
-        { "text": "IRL", "points": 2 },
-        { "text": "NSFW", "points": 2 },
-        { "text": "TBH", "points": 3 },
-        { "text": "POV", "points": 4 },
-        { "text": "AFK", "points": 4 }
+        {
+          "text": "LOL",
+          "points": 1
+        },
+        {
+          "text": "OMG",
+          "points": 1
+        },
+        {
+          "text": "DM",
+          "points": 1
+        },
+        {
+          "text": "FOMO",
+          "points": 2
+        },
+        {
+          "text": "IMO",
+          "points": 2
+        },
+        {
+          "text": "IRL",
+          "points": 2
+        },
+        {
+          "text": "NSFW",
+          "points": 2
+        },
+        {
+          "text": "TBH",
+          "points": 3
+        },
+        {
+          "text": "POV",
+          "points": 4
+        },
+        {
+          "text": "AFK",
+          "points": 4
+        }
       ]
     },
     {
@@ -149,21 +319,55 @@
       "validationStyle": "editorial",
       "contentType": "popculture-style-list",
       "quality": "draft",
-      "tags": ["pop-culture", "fashion", "trends"],
+      "tags": [
+        "pop-culture",
+        "fashion",
+        "trends"
+      ],
       "difficultyNotes": "Mainstream labels are easier than niche style terms.",
       "editorialNotes": "Accept close style names if they refer to the same trend.",
       "sourceURL": "https://en.wikipedia.org/wiki/Fashion",
       "answers": [
-        { "text": "Streetwear", "points": 1 },
-        { "text": "Athleisure", "points": 1 },
-        { "text": "Vintage", "points": 1 },
-        { "text": "Minimalist", "points": 2 },
-        { "text": "Boho", "points": 2 },
-        { "text": "Preppy", "points": 2 },
-        { "text": "Goth", "points": 2 },
-        { "text": "Y2K", "points": 3 },
-        { "text": "Techwear", "points": 4 },
-        { "text": "Haute couture", "points": 4 }
+        {
+          "text": "Streetwear",
+          "points": 1
+        },
+        {
+          "text": "Athleisure",
+          "points": 1
+        },
+        {
+          "text": "Vintage",
+          "points": 1
+        },
+        {
+          "text": "Minimalist",
+          "points": 2
+        },
+        {
+          "text": "Boho",
+          "points": 2
+        },
+        {
+          "text": "Preppy",
+          "points": 2
+        },
+        {
+          "text": "Goth",
+          "points": 2
+        },
+        {
+          "text": "Y2K",
+          "points": 3
+        },
+        {
+          "text": "Techwear",
+          "points": 4
+        },
+        {
+          "text": "Haute couture",
+          "points": 4
+        }
       ]
     },
     {
@@ -175,22 +379,56 @@
       "difficultyScore": 22,
       "validationStyle": "editorial",
       "contentType": "popculture-creator-list",
-      "quality": "draft",
-      "tags": ["pop-culture", "creators", "social-media"],
+      "quality": "reviewed",
+      "tags": [
+        "pop-culture",
+        "creators",
+        "social-media"
+      ],
       "difficultyNotes": "Creator types are familiar but some roles overlap in practice.",
       "editorialNotes": "Accept equivalent creator labels where intent is clear.",
       "sourceURL": "https://en.wikipedia.org/wiki/Content_creator",
       "answers": [
-        { "text": "Vlogger", "points": 1 },
-        { "text": "Streamer", "points": 1 },
-        { "text": "Podcaster", "points": 1 },
-        { "text": "Beauty creator", "points": 2 },
-        { "text": "Gaming creator", "points": 2 },
-        { "text": "Educator creator", "points": 2 },
-        { "text": "Comedy creator", "points": 2 },
-        { "text": "Reviewer", "points": 3 },
-        { "text": "Cosplayer", "points": 4 },
-        { "text": "Lifestyle influencer", "points": 4 }
+        {
+          "text": "Vlogger",
+          "points": 1
+        },
+        {
+          "text": "Streamer",
+          "points": 1
+        },
+        {
+          "text": "Podcaster",
+          "points": 1
+        },
+        {
+          "text": "Beauty creator",
+          "points": 2
+        },
+        {
+          "text": "Gaming creator",
+          "points": 2
+        },
+        {
+          "text": "Educator creator",
+          "points": 2
+        },
+        {
+          "text": "Comedy creator",
+          "points": 2
+        },
+        {
+          "text": "Reviewer",
+          "points": 3
+        },
+        {
+          "text": "Cosplayer",
+          "points": 4
+        },
+        {
+          "text": "Lifestyle influencer",
+          "points": 4
+        }
       ]
     },
     {
@@ -202,22 +440,56 @@
       "difficultyScore": 29,
       "validationStyle": "editorial",
       "contentType": "popculture-community-list",
-      "quality": "draft",
-      "tags": ["pop-culture", "forums", "community"],
+      "quality": "reviewed",
+      "tags": [
+        "pop-culture",
+        "forums",
+        "community"
+      ],
       "difficultyNotes": "Basic terms are easy; platform-specific terms are harder.",
       "editorialNotes": "Accept close platform variants where concepts match.",
       "sourceURL": "https://en.wikipedia.org/wiki/Internet_forum",
       "answers": [
-        { "text": "Thread", "points": 1 },
-        { "text": "Upvote", "points": 2 },
-        { "text": "Downvote", "points": 2 },
-        { "text": "AMA", "points": 3 },
-        { "text": "Moderator", "points": 3 },
-        { "text": "Flair", "points": 3 },
-        { "text": "Karma", "points": 3 },
-        { "text": "Lurker", "points": 4 },
-        { "text": "Throwaway account", "points": 4 },
-        { "text": "Subcommunity", "points": 4 }
+        {
+          "text": "Thread",
+          "points": 1
+        },
+        {
+          "text": "Upvote",
+          "points": 2
+        },
+        {
+          "text": "Downvote",
+          "points": 2
+        },
+        {
+          "text": "AMA",
+          "points": 3
+        },
+        {
+          "text": "Moderator",
+          "points": 3
+        },
+        {
+          "text": "Flair",
+          "points": 3
+        },
+        {
+          "text": "Karma",
+          "points": 3
+        },
+        {
+          "text": "Lurker",
+          "points": 4
+        },
+        {
+          "text": "Throwaway account",
+          "points": 4
+        },
+        {
+          "text": "Subcommunity",
+          "points": 4
+        }
       ]
     },
     {
@@ -229,22 +501,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "popculture-analytics-list",
-      "quality": "draft",
-      "tags": ["pop-culture", "social-media", "analytics"],
+      "quality": "reviewed",
+      "tags": [
+        "pop-culture",
+        "social-media",
+        "analytics"
+      ],
       "difficultyNotes": "Headline metrics are easy; conversion and retention terms are harder.",
       "editorialNotes": "Accept standard abbreviated forms where common.",
       "sourceURL": "https://en.wikipedia.org/wiki/Social_media_measurement",
       "answers": [
-        { "text": "Impressions", "points": 1 },
-        { "text": "Reach", "points": 2 },
-        { "text": "Engagement rate", "points": 2 },
-        { "text": "Click-through rate", "points": 3 },
-        { "text": "Watch time", "points": 3 },
-        { "text": "Retention rate", "points": 3 },
-        { "text": "Conversion rate", "points": 3 },
-        { "text": "Cost per click", "points": 4 },
-        { "text": "Bounce rate", "points": 4 },
-        { "text": "Churn rate", "points": 4 }
+        {
+          "text": "Impressions",
+          "points": 1
+        },
+        {
+          "text": "Reach",
+          "points": 2
+        },
+        {
+          "text": "Engagement rate",
+          "points": 2
+        },
+        {
+          "text": "Click-through rate",
+          "points": 3
+        },
+        {
+          "text": "Watch time",
+          "points": 3
+        },
+        {
+          "text": "Retention rate",
+          "points": 3
+        },
+        {
+          "text": "Conversion rate",
+          "points": 3
+        },
+        {
+          "text": "Cost per click",
+          "points": 4
+        },
+        {
+          "text": "Bounce rate",
+          "points": 4
+        },
+        {
+          "text": "Churn rate",
+          "points": 4
+        }
       ]
     },
     {
@@ -256,22 +562,56 @@
       "difficultyScore": 29,
       "validationStyle": "editorial",
       "contentType": "popculture-gaming-list",
-      "quality": "draft",
-      "tags": ["pop-culture", "gaming", "esports"],
+      "quality": "reviewed",
+      "tags": [
+        "pop-culture",
+        "gaming",
+        "esports"
+      ],
       "difficultyNotes": "General roles are easy; game-specific role labels are harder.",
       "editorialNotes": "Accept close role terms used across different games.",
       "sourceURL": "https://en.wikipedia.org/wiki/Esports",
       "answers": [
-        { "text": "Shot-caller", "points": 1 },
-        { "text": "Support", "points": 2 },
-        { "text": "Tank", "points": 2 },
-        { "text": "Entry fragger", "points": 3 },
-        { "text": "In-game leader", "points": 3 },
-        { "text": "Jungler", "points": 3 },
-        { "text": "Mid laner", "points": 3 },
-        { "text": "ADC", "points": 4 },
-        { "text": "Flex player", "points": 4 },
-        { "text": "Anchor", "points": 4 }
+        {
+          "text": "Shot-caller",
+          "points": 1
+        },
+        {
+          "text": "Support",
+          "points": 2
+        },
+        {
+          "text": "Tank",
+          "points": 2
+        },
+        {
+          "text": "Entry fragger",
+          "points": 3
+        },
+        {
+          "text": "In-game leader",
+          "points": 3
+        },
+        {
+          "text": "Jungler",
+          "points": 3
+        },
+        {
+          "text": "Mid laner",
+          "points": 3
+        },
+        {
+          "text": "ADC",
+          "points": 4
+        },
+        {
+          "text": "Flex player",
+          "points": 4
+        },
+        {
+          "text": "Anchor",
+          "points": 4
+        }
       ]
     },
     {
@@ -283,22 +623,108 @@
       "difficultyScore": 29,
       "validationStyle": "editorial",
       "contentType": "popculture-music-industry-list",
-      "quality": "draft",
-      "tags": ["pop-culture", "music", "charts"],
+      "quality": "reviewed",
+      "tags": [
+        "pop-culture",
+        "music",
+        "charts"
+      ],
       "difficultyNotes": "Top-line chart terms are easier than certification metrics.",
       "editorialNotes": "Accept close chart-industry wording where unambiguous.",
       "sourceURL": "https://en.wikipedia.org/wiki/Record_chart",
       "answers": [
-        { "text": "Chart debut", "points": 1 },
-        { "text": "Chart peak", "points": 2 },
-        { "text": "Re-entry", "points": 2 },
-        { "text": "Hot 100", "points": 3 },
-        { "text": "Streaming-equivalent units", "points": 3 },
-        { "text": "Airplay", "points": 3 },
-        { "text": "Week-on-week movement", "points": 3 },
-        { "text": "Gold certification", "points": 4 },
-        { "text": "Platinum certification", "points": 4 },
-        { "text": "Number-one streak", "points": 4 }
+        {
+          "text": "Chart debut",
+          "points": 1
+        },
+        {
+          "text": "Chart peak",
+          "points": 2
+        },
+        {
+          "text": "Re-entry",
+          "points": 2
+        },
+        {
+          "text": "Hot 100",
+          "points": 3
+        },
+        {
+          "text": "Streaming-equivalent units",
+          "points": 3
+        },
+        {
+          "text": "Airplay",
+          "points": 3
+        },
+        {
+          "text": "Week-on-week movement",
+          "points": 3
+        },
+        {
+          "text": "Gold certification",
+          "points": 4
+        },
+        {
+          "text": "Platinum certification",
+          "points": 4
+        },
+        {
+          "text": "Number-one streak",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "highest-grossing-film-franchises",
+      "category": "Pop Culture & Trends",
+      "prompt": "Highest-grossing film franchises",
+      "difficulty": "medium",
+      "difficultyTier": "medium",
+      "difficultyScore": 23,
+      "validationStyle": "editorial",
+      "sourceURL": "https://www.the-numbers.com/movies/franchises",
+      "answers": [
+        {
+          "text": "Marvel Cinematic Universe",
+          "points": 1
+        },
+        {
+          "text": "Star Wars",
+          "points": 1
+        },
+        {
+          "text": "Spider-Man",
+          "points": 2
+        },
+        {
+          "text": "Wizarding World",
+          "points": 2
+        },
+        {
+          "text": "James Bond",
+          "points": 2
+        },
+        {
+          "text": "Fast and Furious",
+          "points": 2
+        },
+        {
+          "text": "Batman",
+          "points": 3
+        },
+        {
+          "text": "Jurassic Park",
+          "points": 3
+        },
+        {
+          "text": "X-Men",
+          "points": 3
+        },
+        {
+          "text": "Mission Impossible",
+          "points": 4
+        }
       ]
     }
   ]

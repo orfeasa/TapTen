@@ -2,7 +2,9 @@ import SwiftUI
 import UIKit
 
 struct HostRoundView: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Bindable var viewModel: HostRoundViewModel
+    var hapticsEnabled = true
     var onRoundFinished: (() -> Void)? = nil
     @State private var pointsReactionText: String?
     @State private var isShowingPointsReaction = false
@@ -11,14 +13,19 @@ struct HostRoundView: View {
     var body: some View {
         GeometryReader { geometry in
             let containerHeight = geometry.size.height
-            let sectionSpacing = 6.0
-            let rowSpacing = 6.0
+            let sectionSpacing = dynamicTypeSize.isAccessibilitySize ? 8.0 : 6.0
+            let rowSpacing = dynamicTypeSize.isAccessibilitySize ? 8.0 : 6.0
             let outerPadding = 14.0
-            let controlsHeight = 50.0
-            let minimumRowHeight = 30.0
+            let controlsHeight = dynamicTypeSize.isAccessibilitySize ? 56.0 : 50.0
+            let minimumRowHeight = dynamicTypeSize.isAccessibilitySize ? 38.0 : 30.0
             let minimumAnswersHeight = (minimumRowHeight * 10) + (rowSpacing * 9)
             let approximateQuestionLines = max(1, min(4, Int(ceil(Double(viewModel.question.prompt.count) / 28.0))))
-            let questionHeaderHeight = max(56, min(116, 24 + (Double(approximateQuestionLines) * 22)))
+            let questionHeaderBase = dynamicTypeSize.isAccessibilitySize ? 34.0 : 24.0
+            let questionHeaderLineHeight = dynamicTypeSize.isAccessibilitySize ? 26.0 : 22.0
+            let questionHeaderHeight = max(
+                dynamicTypeSize.isAccessibilitySize ? 74.0 : 56.0,
+                min(132, questionHeaderBase + (Double(approximateQuestionLines) * questionHeaderLineHeight))
+            )
             let timerSectionHeight = max(76, min(100, containerHeight * 0.12))
             let availableRowsHeight = containerHeight
                 - (outerPadding * 2)
@@ -75,7 +82,9 @@ struct HostRoundView: View {
                 return
             }
 
-            performRevealHaptic(for: points)
+            if hapticsEnabled {
+                performRevealHaptic(for: points)
+            }
             pointsReactionText = "+\(points)"
             withAnimation(.spring(response: 0.25, dampingFraction: 0.74)) {
                 isShowingPointsReaction = true
@@ -131,7 +140,14 @@ struct HostRoundView: View {
         return VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
                 Label(countdownText, systemImage: "timer")
-                    .font(.system(size: 32, weight: .bold, design: .rounded).monospacedDigit())
+                    .font(
+                        .system(
+                            size: dynamicTypeSize.isAccessibilitySize ? 28 : 32,
+                            weight: .bold,
+                            design: .rounded
+                        )
+                        .monospacedDigit()
+                    )
                     .foregroundStyle(timerTextColor)
                     .scaleEffect(isTimerPulsing ? 1.03 : 1.0)
 
@@ -245,6 +261,7 @@ struct HostRoundView: View {
 }
 
 private struct HostAnswerRow: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let title: String
     let points: Int
     let isRevealed: Bool
@@ -259,8 +276,8 @@ private struct HostAnswerRow: View {
                     .font(.title3)
 
                 Text(title)
-                    .font(.body.weight(.medium))
-                    .lineLimit(1)
+                    .font(dynamicTypeSize.isAccessibilitySize ? .subheadline.weight(.semibold) : .body.weight(.medium))
+                    .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
                     .minimumScaleFactor(0.55)
                     .allowsTightening(true)
                     .foregroundStyle(.primary)

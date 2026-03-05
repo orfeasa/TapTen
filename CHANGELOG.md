@@ -1,5 +1,41 @@
 # Changelog
 
+## 2026-03-05
+
+### Added
+- `scripts/audit_question_packs.sh` for one-command local content integrity checks:
+  - schema constraints (`10` answers, points `1...5`, score/tier consistency)
+  - duplicate prompt detection
+  - final category/tier coverage report
+- `RELEASE_CHECKLIST.md` with reusable release smoke-test protocol and ship/no-ship gates.
+- Home `Browse Question Packs` experience with:
+  - category-level question/difficulty coverage
+  - pack-level title/category/count summaries
+- Debug-only round telemetry in `GameFlowViewModel` for playtest diagnostics (`category`, `revealed/total`, `points`, `time remaining`).
+
+### Changed
+- Game setup and flow:
+  - fixed Final Results `Home` navigation to return to Home (not New Game)
+  - setup now exposes all 12 final categories
+  - setup adds difficulty-tier filtering (`easy` / `medium` / `hard`)
+  - start validation now surfaces a clear message when filters yield no playable pool
+  - round summary CTA labels now use state-specific copy (`Next Round`, `Continue to Final Results`)
+- Runtime feedback settings:
+  - `Sounds` toggle now controls countdown and round-end audio behavior
+  - `Haptics` toggle now controls reveal haptic feedback
+- Content pipeline:
+  - consolidated legacy mixed packs into one-pack-per-category structure
+  - removed transitional files (`EverydayPack`, `FactualAndPopPack`, `PartyPack`, `StarterPack`)
+  - promoted most `quality: "draft"` questions to `quality: "reviewed"`; explicit holdouts remain for manual review
+- Accessibility polish:
+  - improved Dynamic Type scaling on Host Round, Pass Device, Round Summary, and Final Results typography
+  - added VoiceOver hints/combined semantics for key actions and pack-browser rows
+
+### Docs
+- Updated `PROJECT_BACKLOG.md` with completed backlog items and current in-progress accessibility pass.
+- Updated `CONTENT_TODO.md` with post-consolidation audit status and explicit editorial holdouts.
+- Updated `README.md` to reflect category+difficulty filtering, pack browser, runtime feedback wiring, and release checklist location.
+
 ## 2026-03-04
 
 ### Added

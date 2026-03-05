@@ -26,6 +26,8 @@ Current content planning docs:
 - Project-level prioritization: repo-root `PROJECT_BACKLOG.md`
 - Audit command: repo-root `./scripts/audit_question_packs.sh`
 
+Current repository layout uses one active JSON pack per final category (12 files total).
+
 Target final category set:
 - Everyday Life
 - Food & Drink

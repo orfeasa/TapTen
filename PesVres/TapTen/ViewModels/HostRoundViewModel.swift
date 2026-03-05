@@ -6,6 +6,7 @@ final class HostRoundViewModel {
     let question: Question
     let roundDurationSeconds: Int
     private let countdownSoundPlayer: any CountdownSoundPlaying
+    private let soundsEnabled: Bool
 
     private(set) var remainingTime: TimeInterval
     private(set) var remainingTenths: Int
@@ -21,12 +22,14 @@ final class HostRoundViewModel {
     init(
         question: Question,
         roundDurationSeconds: Int = 60,
-        countdownSoundPlayer: any CountdownSoundPlaying = CountdownSoundService()
+        countdownSoundPlayer: any CountdownSoundPlaying = CountdownSoundService(),
+        soundsEnabled: Bool = true
     ) {
         let initialTenths = max(roundDurationSeconds, 1) * 10
         self.question = question
         self.roundDurationSeconds = max(roundDurationSeconds, 1)
         self.countdownSoundPlayer = countdownSoundPlayer
+        self.soundsEnabled = soundsEnabled
         self.remainingTenths = initialTenths
         self.remainingTime = TimeInterval(initialTenths) / 10
     }
@@ -157,7 +160,9 @@ final class HostRoundViewModel {
         remainingTime = Double(remainingTenths) / 10
 
         if remainingTenths == 0 {
-            countdownSoundPlayer.playRoundEndedTone(volume: 1.0)
+            if soundsEnabled {
+                countdownSoundPlayer.playRoundEndedTone(volume: 1.0)
+            }
             endRound()
             return
         }
@@ -173,6 +178,10 @@ final class HostRoundViewModel {
 
         defer {
             lastAnnouncedSecond = currentSecond
+        }
+
+        guard soundsEnabled else {
+            return
         }
 
         guard (1...10).contains(currentSecond) else {

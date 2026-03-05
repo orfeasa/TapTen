@@ -13,22 +13,56 @@
       "difficultyScore": 16,
       "validationStyle": "factual",
       "contentType": "science-ranking-list",
-      "quality": "draft",
-      "tags": ["science", "chemistry", "earth-science"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "chemistry",
+        "earth-science"
+      ],
       "difficultyNotes": "Top elements are familiar from school chemistry.",
       "editorialNotes": "Accept standard element names only.",
       "sourceURL": "https://en.wikipedia.org/wiki/Abundance_of_elements_in_Earth%27s_crust",
       "answers": [
-        { "text": "Oxygen", "points": 1 },
-        { "text": "Silicon", "points": 1 },
-        { "text": "Aluminum", "points": 1 },
-        { "text": "Iron", "points": 1 },
-        { "text": "Calcium", "points": 1 },
-        { "text": "Sodium", "points": 2 },
-        { "text": "Potassium", "points": 2 },
-        { "text": "Magnesium", "points": 2 },
-        { "text": "Titanium", "points": 2 },
-        { "text": "Hydrogen", "points": 3 }
+        {
+          "text": "Oxygen",
+          "points": 1
+        },
+        {
+          "text": "Silicon",
+          "points": 1
+        },
+        {
+          "text": "Aluminum",
+          "points": 1
+        },
+        {
+          "text": "Iron",
+          "points": 1
+        },
+        {
+          "text": "Calcium",
+          "points": 1
+        },
+        {
+          "text": "Sodium",
+          "points": 2
+        },
+        {
+          "text": "Potassium",
+          "points": 2
+        },
+        {
+          "text": "Magnesium",
+          "points": 2
+        },
+        {
+          "text": "Titanium",
+          "points": 2
+        },
+        {
+          "text": "Hydrogen",
+          "points": 3
+        }
       ]
     },
     {
@@ -40,22 +74,56 @@
       "difficultyScore": 16,
       "validationStyle": "factual",
       "contentType": "science-concept-list",
-      "quality": "draft",
-      "tags": ["science", "biology", "cell"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "biology",
+        "cell"
+      ],
       "difficultyNotes": "Most answers are basic biology vocabulary.",
       "editorialNotes": "Accept close phrasing like 'cell wall' only when appropriate to classroom context.",
       "sourceURL": "https://en.wikipedia.org/wiki/Cell_(biology)",
       "answers": [
-        { "text": "Nucleus", "points": 1 },
-        { "text": "Cell membrane", "points": 1 },
-        { "text": "Cytoplasm", "points": 1 },
-        { "text": "Mitochondria", "points": 1 },
-        { "text": "Ribosome", "points": 1 },
-        { "text": "Golgi apparatus", "points": 2 },
-        { "text": "Endoplasmic reticulum", "points": 2 },
-        { "text": "Lysosome", "points": 2 },
-        { "text": "Vacuole", "points": 2 },
-        { "text": "Nucleolus", "points": 3 }
+        {
+          "text": "Nucleus",
+          "points": 1
+        },
+        {
+          "text": "Cell membrane",
+          "points": 1
+        },
+        {
+          "text": "Cytoplasm",
+          "points": 1
+        },
+        {
+          "text": "Mitochondria",
+          "points": 1
+        },
+        {
+          "text": "Ribosome",
+          "points": 1
+        },
+        {
+          "text": "Golgi apparatus",
+          "points": 2
+        },
+        {
+          "text": "Endoplasmic reticulum",
+          "points": 2
+        },
+        {
+          "text": "Lysosome",
+          "points": 2
+        },
+        {
+          "text": "Vacuole",
+          "points": 2
+        },
+        {
+          "text": "Nucleolus",
+          "points": 3
+        }
       ]
     },
     {
@@ -67,22 +135,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "science-category-list",
-      "quality": "draft",
-      "tags": ["science", "education", "disciplines"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "education",
+        "disciplines"
+      ],
       "difficultyNotes": "This is a broad educational list, not an exhaustive taxonomy.",
       "editorialNotes": "Accept regionally common curriculum labels.",
       "sourceURL": "https://en.wikipedia.org/wiki/Outline_of_academic_disciplines",
       "answers": [
-        { "text": "Physics", "points": 1 },
-        { "text": "Chemistry", "points": 1 },
-        { "text": "Biology", "points": 1 },
-        { "text": "Astronomy", "points": 1 },
-        { "text": "Geology", "points": 1 },
-        { "text": "Ecology", "points": 2 },
-        { "text": "Genetics", "points": 2 },
-        { "text": "Meteorology", "points": 2 },
-        { "text": "Oceanography", "points": 2 },
-        { "text": "Neuroscience", "points": 3 }
+        {
+          "text": "Physics",
+          "points": 1
+        },
+        {
+          "text": "Chemistry",
+          "points": 1
+        },
+        {
+          "text": "Biology",
+          "points": 1
+        },
+        {
+          "text": "Astronomy",
+          "points": 1
+        },
+        {
+          "text": "Geology",
+          "points": 1
+        },
+        {
+          "text": "Ecology",
+          "points": 2
+        },
+        {
+          "text": "Genetics",
+          "points": 2
+        },
+        {
+          "text": "Meteorology",
+          "points": 2
+        },
+        {
+          "text": "Oceanography",
+          "points": 2
+        },
+        {
+          "text": "Neuroscience",
+          "points": 3
+        }
       ]
     },
     {
@@ -94,22 +196,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "science-weather-list",
-      "quality": "draft",
-      "tags": ["science", "weather", "earth-science"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "weather",
+        "earth-science"
+      ],
       "difficultyNotes": "Most answers are common weather terms heard in daily forecasts.",
       "editorialNotes": "Accept regional naming variants when clearly equivalent.",
       "sourceURL": "https://en.wikipedia.org/wiki/Weather",
       "answers": [
-        { "text": "Rain", "points": 1 },
-        { "text": "Snow", "points": 1 },
-        { "text": "Wind", "points": 1 },
-        { "text": "Fog", "points": 1 },
-        { "text": "Thunder", "points": 1 },
-        { "text": "Lightning", "points": 2 },
-        { "text": "Hail", "points": 2 },
-        { "text": "Rainbow", "points": 2 },
-        { "text": "Tornado", "points": 2 },
-        { "text": "Hurricane", "points": 3 }
+        {
+          "text": "Rain",
+          "points": 1
+        },
+        {
+          "text": "Snow",
+          "points": 1
+        },
+        {
+          "text": "Wind",
+          "points": 1
+        },
+        {
+          "text": "Fog",
+          "points": 1
+        },
+        {
+          "text": "Thunder",
+          "points": 1
+        },
+        {
+          "text": "Lightning",
+          "points": 2
+        },
+        {
+          "text": "Hail",
+          "points": 2
+        },
+        {
+          "text": "Rainbow",
+          "points": 2
+        },
+        {
+          "text": "Tornado",
+          "points": 2
+        },
+        {
+          "text": "Hurricane",
+          "points": 3
+        }
       ]
     },
     {
@@ -121,22 +257,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "science-anatomy-list",
-      "quality": "draft",
-      "tags": ["science", "anatomy", "human-body"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "anatomy",
+        "human-body"
+      ],
       "difficultyNotes": "Higher-point bones are less frequently named in casual play.",
       "editorialNotes": "Accept plural forms where natural in speech.",
       "sourceURL": "https://en.wikipedia.org/wiki/Human_skeleton",
       "answers": [
-        { "text": "Femur", "points": 1 },
-        { "text": "Humerus", "points": 1 },
-        { "text": "Tibia", "points": 1 },
-        { "text": "Fibula", "points": 2 },
-        { "text": "Radius", "points": 2 },
-        { "text": "Ulna", "points": 2 },
-        { "text": "Pelvis", "points": 2 },
-        { "text": "Sternum", "points": 3 },
-        { "text": "Scapula", "points": 4 },
-        { "text": "Clavicle", "points": 4 }
+        {
+          "text": "Femur",
+          "points": 1
+        },
+        {
+          "text": "Humerus",
+          "points": 1
+        },
+        {
+          "text": "Tibia",
+          "points": 1
+        },
+        {
+          "text": "Fibula",
+          "points": 2
+        },
+        {
+          "text": "Radius",
+          "points": 2
+        },
+        {
+          "text": "Ulna",
+          "points": 2
+        },
+        {
+          "text": "Pelvis",
+          "points": 2
+        },
+        {
+          "text": "Sternum",
+          "points": 3
+        },
+        {
+          "text": "Scapula",
+          "points": 4
+        },
+        {
+          "text": "Clavicle",
+          "points": 4
+        }
       ]
     },
     {
@@ -148,22 +318,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "science-astronomy-list",
-      "quality": "draft",
-      "tags": ["science", "astronomy", "solar-system"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "astronomy",
+        "solar-system"
+      ],
       "difficultyNotes": "Core planets are easy; dwarf planets raise difficulty.",
       "editorialNotes": "Accept accepted English spellings only.",
       "sourceURL": "https://en.wikipedia.org/wiki/Dwarf_planet",
       "answers": [
-        { "text": "Mercury", "points": 1 },
-        { "text": "Venus", "points": 1 },
-        { "text": "Earth", "points": 1 },
-        { "text": "Mars", "points": 2 },
-        { "text": "Jupiter", "points": 2 },
-        { "text": "Saturn", "points": 2 },
-        { "text": "Uranus", "points": 2 },
-        { "text": "Neptune", "points": 3 },
-        { "text": "Pluto", "points": 4 },
-        { "text": "Ceres", "points": 4 }
+        {
+          "text": "Mercury",
+          "points": 1
+        },
+        {
+          "text": "Venus",
+          "points": 1
+        },
+        {
+          "text": "Earth",
+          "points": 1
+        },
+        {
+          "text": "Mars",
+          "points": 2
+        },
+        {
+          "text": "Jupiter",
+          "points": 2
+        },
+        {
+          "text": "Saturn",
+          "points": 2
+        },
+        {
+          "text": "Uranus",
+          "points": 2
+        },
+        {
+          "text": "Neptune",
+          "points": 3
+        },
+        {
+          "text": "Pluto",
+          "points": 4
+        },
+        {
+          "text": "Ceres",
+          "points": 4
+        }
       ]
     },
     {
@@ -175,22 +379,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "science-equipment-list",
-      "quality": "draft",
-      "tags": ["science", "laboratory", "equipment"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "laboratory",
+        "equipment"
+      ],
       "difficultyNotes": "Specialized tools near the end are harder to guess.",
       "editorialNotes": "Accept close everyday wording such as 'measuring cylinder' for graduated cylinder.",
       "sourceURL": "https://en.wikipedia.org/wiki/Laboratory",
       "answers": [
-        { "text": "Beaker", "points": 1 },
-        { "text": "Test tube", "points": 1 },
-        { "text": "Microscope", "points": 1 },
-        { "text": "Pipette", "points": 2 },
-        { "text": "Bunsen burner", "points": 2 },
-        { "text": "Graduated cylinder", "points": 2 },
-        { "text": "Petri dish", "points": 2 },
-        { "text": "Erlenmeyer flask", "points": 3 },
-        { "text": "Centrifuge", "points": 4 },
-        { "text": "Spectrophotometer", "points": 4 }
+        {
+          "text": "Beaker",
+          "points": 1
+        },
+        {
+          "text": "Test tube",
+          "points": 1
+        },
+        {
+          "text": "Microscope",
+          "points": 1
+        },
+        {
+          "text": "Pipette",
+          "points": 2
+        },
+        {
+          "text": "Bunsen burner",
+          "points": 2
+        },
+        {
+          "text": "Graduated cylinder",
+          "points": 2
+        },
+        {
+          "text": "Petri dish",
+          "points": 2
+        },
+        {
+          "text": "Erlenmeyer flask",
+          "points": 3
+        },
+        {
+          "text": "Centrifuge",
+          "points": 4
+        },
+        {
+          "text": "Spectrophotometer",
+          "points": 4
+        }
       ]
     },
     {
@@ -202,22 +440,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "science-concept-list",
-      "quality": "draft",
-      "tags": ["science", "physics", "energy"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "physics",
+        "energy"
+      ],
       "difficultyNotes": "Conceptual distinctions increase difficulty in timed guessing.",
       "editorialNotes": "Accept equivalent textbook terms when unambiguous.",
       "sourceURL": "https://en.wikipedia.org/wiki/Energy",
       "answers": [
-        { "text": "Kinetic energy", "points": 1 },
-        { "text": "Potential energy", "points": 1 },
-        { "text": "Thermal energy", "points": 1 },
-        { "text": "Chemical energy", "points": 2 },
-        { "text": "Electrical energy", "points": 2 },
-        { "text": "Nuclear energy", "points": 2 },
-        { "text": "Radiant energy", "points": 2 },
-        { "text": "Sound energy", "points": 3 },
-        { "text": "Elastic energy", "points": 4 },
-        { "text": "Gravitational energy", "points": 4 }
+        {
+          "text": "Kinetic energy",
+          "points": 1
+        },
+        {
+          "text": "Potential energy",
+          "points": 1
+        },
+        {
+          "text": "Thermal energy",
+          "points": 1
+        },
+        {
+          "text": "Chemical energy",
+          "points": 2
+        },
+        {
+          "text": "Electrical energy",
+          "points": 2
+        },
+        {
+          "text": "Nuclear energy",
+          "points": 2
+        },
+        {
+          "text": "Radiant energy",
+          "points": 2
+        },
+        {
+          "text": "Sound energy",
+          "points": 3
+        },
+        {
+          "text": "Elastic energy",
+          "points": 4
+        },
+        {
+          "text": "Gravitational energy",
+          "points": 4
+        }
       ]
     },
     {
@@ -229,22 +501,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "science-ranking-list",
-      "quality": "draft",
-      "tags": ["science", "atmosphere", "chemistry"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "atmosphere",
+        "chemistry"
+      ],
       "difficultyNotes": "Trace gases create high-difficulty tail answers.",
       "editorialNotes": "Accept common gas names rather than formula-only answers.",
       "sourceURL": "https://en.wikipedia.org/wiki/Atmosphere_of_Earth",
       "answers": [
-        { "text": "Nitrogen", "points": 1 },
-        { "text": "Oxygen", "points": 2 },
-        { "text": "Argon", "points": 2 },
-        { "text": "Carbon dioxide", "points": 3 },
-        { "text": "Neon", "points": 3 },
-        { "text": "Helium", "points": 3 },
-        { "text": "Methane", "points": 3 },
-        { "text": "Krypton", "points": 4 },
-        { "text": "Hydrogen", "points": 4 },
-        { "text": "Xenon", "points": 4 }
+        {
+          "text": "Nitrogen",
+          "points": 1
+        },
+        {
+          "text": "Oxygen",
+          "points": 2
+        },
+        {
+          "text": "Argon",
+          "points": 2
+        },
+        {
+          "text": "Carbon dioxide",
+          "points": 3
+        },
+        {
+          "text": "Neon",
+          "points": 3
+        },
+        {
+          "text": "Helium",
+          "points": 3
+        },
+        {
+          "text": "Methane",
+          "points": 3
+        },
+        {
+          "text": "Krypton",
+          "points": 4
+        },
+        {
+          "text": "Hydrogen",
+          "points": 4
+        },
+        {
+          "text": "Xenon",
+          "points": 4
+        }
       ]
     },
     {
@@ -257,21 +563,55 @@
       "validationStyle": "editorial",
       "contentType": "science-formula-list",
       "quality": "draft",
-      "tags": ["science", "equations", "physics"],
+      "tags": [
+        "science",
+        "equations",
+        "physics"
+      ],
       "difficultyNotes": "Equation names are harder to retrieve than symbols in spoken play.",
       "editorialNotes": "Accept spoken formula variants and equation names (for example 'E equals mc squared', 'F equals ma', 'PV equals nRT').",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_equations",
       "answers": [
-        { "text": "E=mc squared", "points": 1 },
-        { "text": "Newton's second law", "points": 2 },
-        { "text": "Ideal gas law", "points": 2 },
-        { "text": "Ohm's law", "points": 3 },
-        { "text": "Law of gravitation", "points": 3 },
-        { "text": "Schrodinger equation", "points": 3 },
-        { "text": "Maxwell's equations", "points": 3 },
-        { "text": "Arrhenius equation", "points": 4 },
-        { "text": "Nernst equation", "points": 4 },
-        { "text": "Beer-Lambert law", "points": 4 }
+        {
+          "text": "E=mc squared",
+          "points": 1
+        },
+        {
+          "text": "Newton's second law",
+          "points": 2
+        },
+        {
+          "text": "Ideal gas law",
+          "points": 2
+        },
+        {
+          "text": "Ohm's law",
+          "points": 3
+        },
+        {
+          "text": "Law of gravitation",
+          "points": 3
+        },
+        {
+          "text": "Schrodinger equation",
+          "points": 3
+        },
+        {
+          "text": "Maxwell's equations",
+          "points": 3
+        },
+        {
+          "text": "Arrhenius equation",
+          "points": 4
+        },
+        {
+          "text": "Nernst equation",
+          "points": 4
+        },
+        {
+          "text": "Beer-Lambert law",
+          "points": 4
+        }
       ]
     },
     {
@@ -283,22 +623,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "science-event-list",
-      "quality": "draft",
-      "tags": ["science", "space", "milestones"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "space",
+        "milestones"
+      ],
       "difficultyNotes": "Later milestones are less likely to be guessed quickly.",
       "editorialNotes": "Accept mission nicknames when widely used.",
       "sourceURL": "https://en.wikipedia.org/wiki/Timeline_of_Solar_System_exploration",
       "answers": [
-        { "text": "Sputnik 1 launch", "points": 1 },
-        { "text": "First human in space", "points": 2 },
-        { "text": "First spacewalk", "points": 2 },
-        { "text": "Apollo 11 Moon landing", "points": 3 },
-        { "text": "Voyager 1 launch", "points": 3 },
-        { "text": "Hubble Space Telescope deployment", "points": 3 },
-        { "text": "International Space Station assembly", "points": 3 },
-        { "text": "Mars Pathfinder landing", "points": 4 },
-        { "text": "Curiosity rover landing", "points": 4 },
-        { "text": "James Webb Space Telescope launch", "points": 4 }
+        {
+          "text": "Sputnik 1 launch",
+          "points": 1
+        },
+        {
+          "text": "First human in space",
+          "points": 2
+        },
+        {
+          "text": "First spacewalk",
+          "points": 2
+        },
+        {
+          "text": "Apollo 11 Moon landing",
+          "points": 3
+        },
+        {
+          "text": "Voyager 1 launch",
+          "points": 3
+        },
+        {
+          "text": "Hubble Space Telescope deployment",
+          "points": 3
+        },
+        {
+          "text": "International Space Station assembly",
+          "points": 3
+        },
+        {
+          "text": "Mars Pathfinder landing",
+          "points": 4
+        },
+        {
+          "text": "Curiosity rover landing",
+          "points": 4
+        },
+        {
+          "text": "James Webb Space Telescope launch",
+          "points": 4
+        }
       ]
     },
     {
@@ -310,22 +684,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "science-anatomy-list",
-      "quality": "draft",
-      "tags": ["science", "biology", "endocrine-system"],
+      "quality": "reviewed",
+      "tags": [
+        "science",
+        "biology",
+        "endocrine-system"
+      ],
       "difficultyNotes": "Core glands are known, but several organs are easy to miss in fast rounds.",
       "editorialNotes": "Accept common gland names and accepted anatomical equivalents.",
       "sourceURL": "https://en.wikipedia.org/wiki/Endocrine_system",
       "answers": [
-        { "text": "Pituitary gland", "points": 1 },
-        { "text": "Thyroid gland", "points": 2 },
-        { "text": "Parathyroid glands", "points": 2 },
-        { "text": "Adrenal glands", "points": 3 },
-        { "text": "Pancreas", "points": 3 },
-        { "text": "Pineal gland", "points": 3 },
-        { "text": "Hypothalamus", "points": 3 },
-        { "text": "Thymus", "points": 4 },
-        { "text": "Ovaries", "points": 4 },
-        { "text": "Testes", "points": 4 }
+        {
+          "text": "Pituitary gland",
+          "points": 1
+        },
+        {
+          "text": "Thyroid gland",
+          "points": 2
+        },
+        {
+          "text": "Parathyroid glands",
+          "points": 2
+        },
+        {
+          "text": "Adrenal glands",
+          "points": 3
+        },
+        {
+          "text": "Pancreas",
+          "points": 3
+        },
+        {
+          "text": "Pineal gland",
+          "points": 3
+        },
+        {
+          "text": "Hypothalamus",
+          "points": 3
+        },
+        {
+          "text": "Thymus",
+          "points": 4
+        },
+        {
+          "text": "Ovaries",
+          "points": 4
+        },
+        {
+          "text": "Testes",
+          "points": 4
+        }
       ]
     }
   ]

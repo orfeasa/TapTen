@@ -20,8 +20,10 @@
 - Overfilled categories: none.
 - Target distribution status: all 12 categories now meet 12 total questions with exact 4 easy / 4 medium / 4 hard.
 - Open structural content tasks: none.
+- Legacy mixed packs have been consolidated; active content now uses one pack file per final category.
 - Duplicate pizza concept was removed; exact duplicate prompt/answer-set audit is currently clean.
 - Geography duplicate-family risk reduced (South America populous prompt removed); exact duplicate prompt/answer-set audit is clean.
+- Most draft questions have been promoted to `reviewed`; only targeted ambiguity/recency holdouts remain `draft`.
 
 ## Tasks
 
@@ -89,4 +91,14 @@
 - [x] REVIEW_DUPLICATES: Checked overlap against Film & TV and Music and kept prompt scopes distinct.
 
 ## Manual Review Needed
-- Newly added pack questions are currently marked `quality: "draft"` and should be editor-reviewed/playtested before content freeze.
+- Keep these intentionally-held draft items under manual editorial review before content freeze:
+  - `film-classic-animated-tv-series`
+  - `geo-most-visited-countries-arrivals`
+  - `music-jazz-subgenres`
+  - `sci-famous-equations`
+  - `pop-common-chat-emojis`
+  - `pop-common-internet-slang`
+  - `pop-fashion-style-labels`
+  - `travel-border-control-terms`
+  - `travel-common-visa-types`
+  - `workschool-teaching-method-terms`

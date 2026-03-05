@@ -8,6 +8,13 @@
   - Question pack loader validates richer metadata and difficulty score/tier consistency.
   - Question content now covers all 12 target categories with 12 questions each and exact 4 easy / 4 medium / 4 hard spread.
   - Setup category picker now reflects all 12 shipped categories.
+  - New Game now supports difficulty-tier filtering and preflight validation for empty playable pools.
+  - Runtime round feedback now respects `Sounds` and `Haptics` settings.
+  - Home now includes a native pack browser showing category coverage and pack-level counts.
+  - Legacy mixed pack files were consolidated into one-category pack files.
+  - Debug-only round telemetry now records category/answers/points/time-remaining for playtest tuning.
+  - A reusable pre-release checklist now exists in `RELEASE_CHECKLIST.md`.
+  - Most `quality: \"draft\"` questions have been promoted to `reviewed`, with a small holdout list in `CONTENT_TODO.md`.
   - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
 - Release readiness: Not ready for content freeze; gameplay loop is stable, but remaining UX polish and final editorial QA are still open.
 
@@ -113,10 +120,10 @@
     - Stepper/adjustment controls follow native interaction patterns.
     - Background and section styling remain consistent with the warm app palette.
 
-- [ ] TASK: Add difficulty filtering to New Game setup
+- [x] TASK: Add difficulty filtering to New Game setup
   - Type: Feature
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/NewGame`, `ViewModels/NewGameViewModel`, `Services/GameEngine`
   - Goal: Let hosts include/exclude easy/medium/hard questions before starting a session.
   - Acceptance Criteria:
@@ -124,10 +131,10 @@
     - Round selection uses both category and difficulty filters.
     - Clear validation message appears when filter combination yields no playable question pool.
 
-- [ ] TASK: Connect Settings toggles to runtime behavior
+- [x] TASK: Connect Settings toggles to runtime behavior
   - Type: Feature
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Services/AppSettingsStore`, `Services/CountdownSoundService`, `Views/GameFlow/HostRoundView`
   - Goal: Make `Sounds` and `Haptics` settings affect in-round feedback.
   - Acceptance Criteria:
@@ -135,10 +142,10 @@
     - Disabling haptics suppresses reveal haptic feedback.
     - Existing behavior remains unchanged when toggles are enabled.
 
-- [ ] TASK: Add Question Pack Browser screen
+- [x] TASK: Add Question Pack Browser screen
   - Type: Feature
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/Home`, new content browser view(s)
   - Goal: Expose pack/category metadata before game start.
   - Acceptance Criteria:
@@ -146,10 +153,10 @@
     - Browser shows pack title, category coverage, and question counts.
     - UI remains native and lightweight (no custom heavy components).
 
-- [ ] TASK: Consolidate legacy pack files after category migration
+- [x] TASK: Consolidate legacy pack files after category migration
   - Type: Content / Cleanup
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Resources/QuestionPacks`
   - Goal: Remove transitional pack fragmentation now that final packs are in place.
   - Acceptance Criteria:
@@ -157,10 +164,10 @@
     - No duplicate prompt concepts remain due to overlapping legacy/new files.
     - Loader still finds sufficient packs for fresh installs.
 
-- [ ] TASK: Run editorial pass and quality promotion on draft questions
+- [x] TASK: Run editorial pass and quality promotion on draft questions
   - Type: Content QA
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Resources/QuestionPacks`
   - Goal: Move newly added questions from `quality: "draft"` to reviewed/playtested status where appropriate.
   - Acceptance Criteria:
@@ -173,18 +180,20 @@
 - [ ] TASK: Full accessibility and Dynamic Type pass across gameplay flow
   - Type: UX / Accessibility
   - Priority: P2
-  - Status: Planned
+  - Status: In Progress
   - Area: All player-facing screens
   - Goal: Improve readability and interaction reliability under larger text and VoiceOver.
   - Acceptance Criteria:
     - Core flow remains usable at larger Dynamic Type sizes.
     - Primary controls remain reachable and clearly labeled for VoiceOver.
     - Any clipped/overlapping layouts are fixed.
+  - Notes:
+    - Initial pass completed for Host Round, Pass Device, Round Summary, and Final Results typography scaling.
 
-- [ ] TASK: Add lightweight game telemetry hooks for playtest tuning
+- [x] TASK: Add lightweight game telemetry hooks for playtest tuning
   - Type: Technical
   - Priority: P2
-  - Status: Planned
+  - Status: Completed
   - Area: `ViewModels/GameFlowViewModel`, local diagnostics
   - Goal: Capture low-risk gameplay signals to tune difficulty and pacing.
   - Acceptance Criteria:
@@ -192,10 +201,10 @@
     - No network dependency is introduced for v1.
     - Telemetry code is isolated and easy to disable.
 
-- [ ] TASK: Release readiness checklist and smoke-test protocol
+- [x] TASK: Release readiness checklist and smoke-test protocol
   - Type: Release / QA
   - Priority: P2
-  - Status: Planned
+  - Status: Completed
   - Area: docs + test process
   - Goal: Standardize pre-release checks before TestFlight.
   - Acceptance Criteria:
@@ -233,6 +242,6 @@
     - Blocked by pending editorial review and setup-catalog parity work.
 
 ## Manual Review Needed
-- Review newly added questions currently marked `quality: "draft"` and promote status after playtest/editor pass.
+- Final editorial holdouts still marked `quality: "draft"` in `CONTENT_TODO.md` need manual review/playtest before freeze.
 - Spot-check near-boundary prompts where category overlap is plausible (`Film & TV` vs `Pop Culture & Trends`, `Geography` vs `Travel`).
 - Confirm host adjudication speed on harder prompts in `Science`, `Technology`, and `History` during live playtests.

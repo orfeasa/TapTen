@@ -1,5 +1,8 @@
 import Foundation
 import Observation
+#if DEBUG
+import OSLog
+#endif
 
 @Observable
 final class GameFlowViewModel {
@@ -24,6 +27,8 @@ final class GameFlowViewModel {
 
     private let settings: GameSettings
     private let enabledCategoryNames: Set<String>
+    private let enabledDifficultyTiers: Set<QuestionDifficulty>
+    private let soundsEnabled: Bool
     private let randomSassyCommentProvider: ([String]) -> String
     private var questionPacks: [QuestionPack] = []
     private var randomIndexProvider: (Int) -> Int = { Int.random(in: 0..<$0) }
@@ -36,10 +41,15 @@ final class GameFlowViewModel {
     private(set) var latestRoundSummary: RoundSummary?
     private(set) var teamAScore = 0
     private(set) var teamBScore = 0
+#if DEBUG
+    private(set) var debugRoundTelemetry: [DebugRoundTelemetry] = []
+#endif
 
     init(
         settings: GameSettings,
         enabledCategoryNames: Set<String>,
+        enabledDifficultyTiers: Set<QuestionDifficulty> = Set(QuestionDifficulty.allCases),
+        soundsEnabled: Bool = true,
         questionPackLoader: QuestionPackLoader = QuestionPackLoader(),
         randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) },
         randomSassyCommentProvider: @escaping ([String]) -> String = { comments in
@@ -48,6 +58,8 @@ final class GameFlowViewModel {
     ) {
         self.settings = settings
         self.enabledCategoryNames = enabledCategoryNames
+        self.enabledDifficultyTiers = enabledDifficultyTiers
+        self.soundsEnabled = soundsEnabled
         self.randomIndexProvider = randomIndexProvider
         self.randomSassyCommentProvider = randomSassyCommentProvider
 
@@ -63,6 +75,8 @@ final class GameFlowViewModel {
     init(
         settings: GameSettings,
         enabledCategoryNames: Set<String>,
+        enabledDifficultyTiers: Set<QuestionDifficulty> = Set(QuestionDifficulty.allCases),
+        soundsEnabled: Bool = true,
         questionPacks: [QuestionPack],
         randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) },
         randomSassyCommentProvider: @escaping ([String]) -> String = { comments in
@@ -71,6 +85,8 @@ final class GameFlowViewModel {
     ) {
         self.settings = settings
         self.enabledCategoryNames = enabledCategoryNames
+        self.enabledDifficultyTiers = enabledDifficultyTiers
+        self.soundsEnabled = soundsEnabled
         self.questionPacks = questionPacks
         self.randomIndexProvider = randomIndexProvider
         self.randomSassyCommentProvider = randomSassyCommentProvider
@@ -161,7 +177,8 @@ final class GameFlowViewModel {
 
         hostRoundViewModel = HostRoundViewModel(
             question: currentRound.question,
-            roundDurationSeconds: settings.roundDurationSeconds
+            roundDurationSeconds: settings.roundDurationSeconds,
+            soundsEnabled: soundsEnabled
         )
         phase = .hostRound
     }
@@ -205,6 +222,21 @@ final class GameFlowViewModel {
             revealedAnswers: revealedAnswers,
             totalAnswers: totalAnswers
         )
+#if DEBUG
+        let telemetry = DebugRoundTelemetry(
+            roundNumber: teamRoundNumber(for: currentRound),
+            category: currentRound.question.category,
+            answeringTeamName: answeringTeamName,
+            revealedAnswers: revealedAnswers,
+            totalAnswers: totalAnswers,
+            pointsAwarded: pointsAwarded,
+            remainingTimeAtSummary: hostRoundViewModel.remainingTime
+        )
+        debugRoundTelemetry.append(telemetry)
+        Self.telemetryLogger.debug(
+            "Round \(telemetry.roundNumber) | category: \(telemetry.category, privacy: .public) | team: \(telemetry.answeringTeamName, privacy: .public) | revealed: \(telemetry.revealedAnswers)/\(telemetry.totalAnswers) | points: \(telemetry.pointsAwarded) | remaining: \(telemetry.remainingTimeAtSummary, format: .fixed(precision: 1))s"
+        )
+#endif
         phase = .roundSummary
     }
 
@@ -250,6 +282,9 @@ final class GameFlowViewModel {
             latestRoundSummary = nil
             hostRoundViewModel = nil
             hasCommittedActiveRound = false
+#if DEBUG
+            debugRoundTelemetry.removeAll()
+#endif
         } catch {
             setError(error.localizedDescription)
         }
@@ -263,6 +298,7 @@ final class GameFlowViewModel {
             settings: settings,
             questionPacks: questionPacks,
             enabledCategories: enabledCategoryNames,
+            enabledDifficulties: enabledDifficultyTiers,
             randomIndexProvider: randomIndexProvider
         )
 
@@ -323,4 +359,23 @@ final class GameFlowViewModel {
             return round.roundNumber / 2
         }
     }
+
+#if DEBUG
+    private static let telemetryLogger = Logger(
+        subsystem: "TapTen",
+        category: "GameplayTelemetry"
+    )
+#endif
 }
+
+#if DEBUG
+struct DebugRoundTelemetry: Equatable {
+    let roundNumber: Int
+    let category: String
+    let answeringTeamName: String
+    let revealedAnswers: Int
+    let totalAnswers: Int
+    let pointsAwarded: Int
+    let remainingTimeAtSummary: TimeInterval
+}
+#endif

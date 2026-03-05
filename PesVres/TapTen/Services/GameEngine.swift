@@ -12,7 +12,7 @@ enum GameEngineError: LocalizedError {
         case .invalidRoundCount(let count):
             return "Rounds per team must be greater than zero. Received \(count)."
         case .noQuestionsForEnabledCategories:
-            return "No questions matched the enabled categories."
+            return "No questions matched the enabled filters."
         case .insufficientQuestionsForSession(let required, let available):
             return "Not enough unique questions for this session. Required \(required), available \(available)."
         case .noActiveRound:
@@ -69,6 +69,7 @@ struct GameEngine {
         settings: GameSettings,
         questionPacks: [QuestionPack],
         enabledCategories: Set<String>,
+        enabledDifficulties: Set<QuestionDifficulty> = Set(QuestionDifficulty.allCases),
         randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) }
     ) throws {
         guard settings.numberOfRounds > 0 else {
@@ -81,10 +82,14 @@ struct GameEngine {
                 .map(\.normalizedCategoryKey)
                 .filter { !$0.isEmpty }
         )
+        let activeDifficultyFilters = enabledDifficulties.isEmpty
+            ? Set(QuestionDifficulty.allCases)
+            : enabledDifficulties
 
         let allQuestions = questionPacks.flatMap(\.questions)
         let filteredQuestions = allQuestions.filter {
             normalizedEnabledCategories.contains($0.category.normalizedCategoryKey)
+            && activeDifficultyFilters.contains($0.difficultyTier)
         }
 
         guard !filteredQuestions.isEmpty else {

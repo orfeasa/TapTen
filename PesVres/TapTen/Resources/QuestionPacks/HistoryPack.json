@@ -13,22 +13,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "history-curated-list",
-      "quality": "draft",
-      "tags": ["history", "ancient-world", "civilizations"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "ancient-world",
+        "civilizations"
+      ],
       "difficultyNotes": "Most answers are familiar from school-level history.",
       "editorialNotes": "Accept common variants like 'Ancient Egypt' or 'Egyptians'.",
       "sourceURL": "https://en.wikipedia.org/wiki/Ancient_history",
       "answers": [
-        { "text": "Ancient Egypt", "points": 1 },
-        { "text": "Mesopotamia", "points": 1 },
-        { "text": "Ancient Greece", "points": 1 },
-        { "text": "Ancient Rome", "points": 1 },
-        { "text": "Indus Valley Civilization", "points": 1 },
-        { "text": "Ancient China", "points": 2 },
-        { "text": "Maya Civilization", "points": 2 },
-        { "text": "Aztec Empire", "points": 2 },
-        { "text": "Inca Empire", "points": 2 },
-        { "text": "Phoenician Civilization", "points": 3 }
+        {
+          "text": "Ancient Egypt",
+          "points": 1
+        },
+        {
+          "text": "Mesopotamia",
+          "points": 1
+        },
+        {
+          "text": "Ancient Greece",
+          "points": 1
+        },
+        {
+          "text": "Ancient Rome",
+          "points": 1
+        },
+        {
+          "text": "Indus Valley Civilization",
+          "points": 1
+        },
+        {
+          "text": "Ancient China",
+          "points": 2
+        },
+        {
+          "text": "Maya Civilization",
+          "points": 2
+        },
+        {
+          "text": "Aztec Empire",
+          "points": 2
+        },
+        {
+          "text": "Inca Empire",
+          "points": 2
+        },
+        {
+          "text": "Phoenician Civilization",
+          "points": 3
+        }
       ]
     },
     {
@@ -40,22 +74,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "history-curated-list",
-      "quality": "draft",
-      "tags": ["history", "leaders", "biography"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "leaders",
+        "biography"
+      ],
       "difficultyNotes": "Front-half answers are frequently guessed in the first seconds.",
       "editorialNotes": "Accept titles and commonly used short forms when clear.",
       "sourceURL": "https://en.wikipedia.org/wiki/Historical_rankings_of_presidents_of_the_United_States",
       "answers": [
-        { "text": "Julius Caesar", "points": 1 },
-        { "text": "Cleopatra", "points": 1 },
-        { "text": "Genghis Khan", "points": 1 },
-        { "text": "Napoleon Bonaparte", "points": 1 },
-        { "text": "Mahatma Gandhi", "points": 1 },
-        { "text": "Queen Victoria", "points": 2 },
-        { "text": "Joan of Arc", "points": 2 },
-        { "text": "Nelson Mandela", "points": 2 },
-        { "text": "Martin Luther King Jr.", "points": 2 },
-        { "text": "Simón Bolívar", "points": 3 }
+        {
+          "text": "Julius Caesar",
+          "points": 1
+        },
+        {
+          "text": "Cleopatra",
+          "points": 1
+        },
+        {
+          "text": "Genghis Khan",
+          "points": 1
+        },
+        {
+          "text": "Napoleon Bonaparte",
+          "points": 1
+        },
+        {
+          "text": "Mahatma Gandhi",
+          "points": 1
+        },
+        {
+          "text": "Queen Victoria",
+          "points": 2
+        },
+        {
+          "text": "Joan of Arc",
+          "points": 2
+        },
+        {
+          "text": "Nelson Mandela",
+          "points": 2
+        },
+        {
+          "text": "Martin Luther King Jr.",
+          "points": 2
+        },
+        {
+          "text": "Simón Bolívar",
+          "points": 3
+        }
       ]
     },
     {
@@ -67,22 +135,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "history-curated-list",
-      "quality": "draft",
-      "tags": ["history", "modern-era", "events"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "modern-era",
+        "events"
+      ],
       "difficultyNotes": "The list favors globally taught events over regional detail.",
       "editorialNotes": "Accept close phrasing (for example, 'Industrialization' for Industrial Revolution).",
       "sourceURL": "https://en.wikipedia.org/wiki/Modern_history",
       "answers": [
-        { "text": "American Revolution", "points": 1 },
-        { "text": "French Revolution", "points": 1 },
-        { "text": "Industrial Revolution", "points": 1 },
-        { "text": "Cold War", "points": 1 },
-        { "text": "World War II", "points": 1 },
-        { "text": "Russian Revolution", "points": 2 },
-        { "text": "Fall of the Berlin Wall", "points": 2 },
-        { "text": "Moon Landing", "points": 2 },
-        { "text": "Indian Independence", "points": 2 },
-        { "text": "Great Depression", "points": 3 }
+        {
+          "text": "American Revolution",
+          "points": 1
+        },
+        {
+          "text": "French Revolution",
+          "points": 1
+        },
+        {
+          "text": "Industrial Revolution",
+          "points": 1
+        },
+        {
+          "text": "Cold War",
+          "points": 1
+        },
+        {
+          "text": "World War II",
+          "points": 1
+        },
+        {
+          "text": "Russian Revolution",
+          "points": 2
+        },
+        {
+          "text": "Fall of the Berlin Wall",
+          "points": 2
+        },
+        {
+          "text": "Moon Landing",
+          "points": 2
+        },
+        {
+          "text": "Indian Independence",
+          "points": 2
+        },
+        {
+          "text": "Great Depression",
+          "points": 3
+        }
       ]
     },
     {
@@ -94,22 +196,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "history-invention-list",
-      "quality": "draft",
-      "tags": ["history", "inventions", "daily-life"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "inventions",
+        "daily-life"
+      ],
       "difficultyNotes": "Most answers are globally taught inventions with familiar names.",
       "editorialNotes": "Accept concise variants such as 'bulb' for light bulb.",
       "sourceURL": "https://en.wikipedia.org/wiki/Timeline_of_historic_inventions",
       "answers": [
-        { "text": "Printing press", "points": 1 },
-        { "text": "Compass", "points": 1 },
-        { "text": "Gunpowder", "points": 1 },
-        { "text": "Steam engine", "points": 1 },
-        { "text": "Telephone", "points": 1 },
-        { "text": "Light bulb", "points": 2 },
-        { "text": "Airplane", "points": 2 },
-        { "text": "Radio", "points": 2 },
-        { "text": "Antibiotics", "points": 2 },
-        { "text": "Internet", "points": 3 }
+        {
+          "text": "Printing press",
+          "points": 1
+        },
+        {
+          "text": "Compass",
+          "points": 1
+        },
+        {
+          "text": "Gunpowder",
+          "points": 1
+        },
+        {
+          "text": "Steam engine",
+          "points": 1
+        },
+        {
+          "text": "Telephone",
+          "points": 1
+        },
+        {
+          "text": "Light bulb",
+          "points": 2
+        },
+        {
+          "text": "Airplane",
+          "points": 2
+        },
+        {
+          "text": "Radio",
+          "points": 2
+        },
+        {
+          "text": "Antibiotics",
+          "points": 2
+        },
+        {
+          "text": "Internet",
+          "points": 3
+        }
       ]
     },
     {
@@ -121,22 +257,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "history-site-list",
-      "quality": "draft",
-      "tags": ["history", "landmarks", "heritage"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "landmarks",
+        "heritage"
+      ],
       "difficultyNotes": "Late-list entries require stronger recall under time pressure.",
       "editorialNotes": "Accept close site names like 'Acropolis' for Acropolis of Athens.",
       "sourceURL": "https://whc.unesco.org/en/list/",
       "answers": [
-        { "text": "Great Wall of China", "points": 1 },
-        { "text": "Pyramids of Giza", "points": 1 },
-        { "text": "Machu Picchu", "points": 1 },
-        { "text": "Colosseum", "points": 2 },
-        { "text": "Stonehenge", "points": 2 },
-        { "text": "Petra", "points": 2 },
-        { "text": "Acropolis of Athens", "points": 2 },
-        { "text": "Angkor Wat", "points": 3 },
-        { "text": "Chichen Itza", "points": 4 },
-        { "text": "Taj Mahal", "points": 4 }
+        {
+          "text": "Great Wall of China",
+          "points": 1
+        },
+        {
+          "text": "Pyramids of Giza",
+          "points": 1
+        },
+        {
+          "text": "Machu Picchu",
+          "points": 1
+        },
+        {
+          "text": "Colosseum",
+          "points": 2
+        },
+        {
+          "text": "Stonehenge",
+          "points": 2
+        },
+        {
+          "text": "Petra",
+          "points": 2
+        },
+        {
+          "text": "Acropolis of Athens",
+          "points": 2
+        },
+        {
+          "text": "Angkor Wat",
+          "points": 3
+        },
+        {
+          "text": "Chichen Itza",
+          "points": 4
+        },
+        {
+          "text": "Taj Mahal",
+          "points": 4
+        }
       ]
     },
     {
@@ -148,22 +318,56 @@
       "difficultyScore": 22,
       "validationStyle": "editorial",
       "contentType": "history-curated-list",
-      "quality": "draft",
-      "tags": ["history", "empires", "world-history"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "empires",
+        "world-history"
+      ],
       "difficultyNotes": "Players often guess the top few quickly and then stall.",
       "editorialNotes": "Accept dynasty names when clearly tied to the empire.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_largest_empires",
       "answers": [
-        { "text": "Roman Empire", "points": 1 },
-        { "text": "Ottoman Empire", "points": 1 },
-        { "text": "British Empire", "points": 1 },
-        { "text": "Mongol Empire", "points": 2 },
-        { "text": "Persian Empire", "points": 2 },
-        { "text": "Spanish Empire", "points": 2 },
-        { "text": "Mughal Empire", "points": 2 },
-        { "text": "Qing Dynasty", "points": 3 },
-        { "text": "Abbasid Caliphate", "points": 4 },
-        { "text": "Achaemenid Empire", "points": 4 }
+        {
+          "text": "Roman Empire",
+          "points": 1
+        },
+        {
+          "text": "Ottoman Empire",
+          "points": 1
+        },
+        {
+          "text": "British Empire",
+          "points": 1
+        },
+        {
+          "text": "Mongol Empire",
+          "points": 2
+        },
+        {
+          "text": "Persian Empire",
+          "points": 2
+        },
+        {
+          "text": "Spanish Empire",
+          "points": 2
+        },
+        {
+          "text": "Mughal Empire",
+          "points": 2
+        },
+        {
+          "text": "Qing Dynasty",
+          "points": 3
+        },
+        {
+          "text": "Abbasid Caliphate",
+          "points": 4
+        },
+        {
+          "text": "Achaemenid Empire",
+          "points": 4
+        }
       ]
     },
     {
@@ -175,22 +379,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "history-biography-list",
-      "quality": "draft",
-      "tags": ["history", "explorers", "navigation"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "explorers",
+        "navigation"
+      ],
       "difficultyNotes": "The highest-point names are less common in casual recall.",
       "editorialNotes": "Accept alternate spellings for non-English names.",
       "sourceURL": "https://en.wikipedia.org/wiki/Age_of_Discovery",
       "answers": [
-        { "text": "Christopher Columbus", "points": 1 },
-        { "text": "Vasco da Gama", "points": 1 },
-        { "text": "Ferdinand Magellan", "points": 1 },
-        { "text": "James Cook", "points": 2 },
-        { "text": "Marco Polo", "points": 2 },
-        { "text": "Amerigo Vespucci", "points": 2 },
-        { "text": "Zheng He", "points": 2 },
-        { "text": "Hernán Cortés", "points": 3 },
-        { "text": "Francisco Pizarro", "points": 4 },
-        { "text": "Roald Amundsen", "points": 4 }
+        {
+          "text": "Christopher Columbus",
+          "points": 1
+        },
+        {
+          "text": "Vasco da Gama",
+          "points": 1
+        },
+        {
+          "text": "Ferdinand Magellan",
+          "points": 1
+        },
+        {
+          "text": "James Cook",
+          "points": 2
+        },
+        {
+          "text": "Marco Polo",
+          "points": 2
+        },
+        {
+          "text": "Amerigo Vespucci",
+          "points": 2
+        },
+        {
+          "text": "Zheng He",
+          "points": 2
+        },
+        {
+          "text": "Hernán Cortés",
+          "points": 3
+        },
+        {
+          "text": "Francisco Pizarro",
+          "points": 4
+        },
+        {
+          "text": "Roald Amundsen",
+          "points": 4
+        }
       ]
     },
     {
@@ -202,22 +440,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "history-document-list",
-      "quality": "draft",
-      "tags": ["history", "documents", "civics"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "documents",
+        "civics"
+      ],
       "difficultyNotes": "Document and declaration titles are harder to recall exactly under pressure.",
       "editorialNotes": "Accept shortened but clearly identifiable titles (for example, 'Rights of Man').",
       "sourceURL": "https://en.wikipedia.org/wiki/Historic_document",
       "answers": [
-        { "text": "Magna Carta", "points": 1 },
-        { "text": "Declaration of Independence", "points": 1 },
-        { "text": "United States Constitution", "points": 1 },
-        { "text": "Bill of Rights", "points": 2 },
-        { "text": "Declaration of the Rights of Man", "points": 2 },
-        { "text": "Emancipation Proclamation", "points": 2 },
-        { "text": "Treaty of Versailles", "points": 2 },
-        { "text": "Universal Declaration of Human Rights", "points": 3 },
-        { "text": "Communist Manifesto", "points": 4 },
-        { "text": "Gettysburg Address", "points": 4 }
+        {
+          "text": "Magna Carta",
+          "points": 1
+        },
+        {
+          "text": "Declaration of Independence",
+          "points": 1
+        },
+        {
+          "text": "United States Constitution",
+          "points": 1
+        },
+        {
+          "text": "Bill of Rights",
+          "points": 2
+        },
+        {
+          "text": "Declaration of the Rights of Man",
+          "points": 2
+        },
+        {
+          "text": "Emancipation Proclamation",
+          "points": 2
+        },
+        {
+          "text": "Treaty of Versailles",
+          "points": 2
+        },
+        {
+          "text": "Universal Declaration of Human Rights",
+          "points": 3
+        },
+        {
+          "text": "Communist Manifesto",
+          "points": 4
+        },
+        {
+          "text": "Gettysburg Address",
+          "points": 4
+        }
       ]
     },
     {
@@ -229,22 +501,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "history-battle-list",
-      "quality": "draft",
-      "tags": ["history", "battles", "military"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "battles",
+        "military"
+      ],
       "difficultyNotes": "Higher-point answers require stronger historical recall.",
       "editorialNotes": "Accept phrasing variants such as 'D-Day' for Normandy Landings.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_battles",
       "answers": [
-        { "text": "Battle of Waterloo", "points": 1 },
-        { "text": "Battle of Stalingrad", "points": 2 },
-        { "text": "Battle of Gettysburg", "points": 2 },
-        { "text": "Battle of Hastings", "points": 3 },
-        { "text": "Battle of Marathon", "points": 3 },
-        { "text": "Battle of Agincourt", "points": 3 },
-        { "text": "Battle of Midway", "points": 3 },
-        { "text": "Battle of Verdun", "points": 4 },
-        { "text": "Battle of the Somme", "points": 4 },
-        { "text": "Normandy Landings", "points": 4 }
+        {
+          "text": "Battle of Waterloo",
+          "points": 1
+        },
+        {
+          "text": "Battle of Stalingrad",
+          "points": 2
+        },
+        {
+          "text": "Battle of Gettysburg",
+          "points": 2
+        },
+        {
+          "text": "Battle of Hastings",
+          "points": 3
+        },
+        {
+          "text": "Battle of Marathon",
+          "points": 3
+        },
+        {
+          "text": "Battle of Agincourt",
+          "points": 3
+        },
+        {
+          "text": "Battle of Midway",
+          "points": 3
+        },
+        {
+          "text": "Battle of Verdun",
+          "points": 4
+        },
+        {
+          "text": "Battle of the Somme",
+          "points": 4
+        },
+        {
+          "text": "Normandy Landings",
+          "points": 4
+        }
       ]
     },
     {
@@ -256,22 +562,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "history-route-list",
-      "quality": "draft",
-      "tags": ["history", "trade", "routes"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "trade",
+        "routes"
+      ],
       "difficultyNotes": "Several routes are regional and less obvious in party play.",
       "editorialNotes": "Accept close route naming used in standard references.",
       "sourceURL": "https://en.wikipedia.org/wiki/Trade_route",
       "answers": [
-        { "text": "Silk Road", "points": 1 },
-        { "text": "Spice Route", "points": 2 },
-        { "text": "Incense Route", "points": 2 },
-        { "text": "Amber Road", "points": 3 },
-        { "text": "Trans-Saharan Trade Route", "points": 3 },
-        { "text": "Tea Horse Road", "points": 3 },
-        { "text": "Grand Trunk Road", "points": 3 },
-        { "text": "Royal Road of Persia", "points": 4 },
-        { "text": "Volga Trade Route", "points": 4 },
-        { "text": "Indian Ocean trade route", "points": 4 }
+        {
+          "text": "Silk Road",
+          "points": 1
+        },
+        {
+          "text": "Spice Route",
+          "points": 2
+        },
+        {
+          "text": "Incense Route",
+          "points": 2
+        },
+        {
+          "text": "Amber Road",
+          "points": 3
+        },
+        {
+          "text": "Trans-Saharan Trade Route",
+          "points": 3
+        },
+        {
+          "text": "Tea Horse Road",
+          "points": 3
+        },
+        {
+          "text": "Grand Trunk Road",
+          "points": 3
+        },
+        {
+          "text": "Royal Road of Persia",
+          "points": 4
+        },
+        {
+          "text": "Volga Trade Route",
+          "points": 4
+        },
+        {
+          "text": "Indian Ocean trade route",
+          "points": 4
+        }
       ]
     },
     {
@@ -283,22 +623,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "history-event-list",
-      "quality": "draft",
-      "tags": ["history", "revolutions", "politics"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "revolutions",
+        "politics"
+      ],
       "difficultyNotes": "Players often mix up similarly named 19th and 20th century revolutions.",
       "editorialNotes": "Accept standard English names for each revolution.",
       "sourceURL": "https://en.wikipedia.org/wiki/Revolution",
       "answers": [
-        { "text": "Glorious Revolution", "points": 1 },
-        { "text": "Haitian Revolution", "points": 2 },
-        { "text": "July Revolution", "points": 2 },
-        { "text": "February Revolution", "points": 3 },
-        { "text": "October Revolution", "points": 3 },
-        { "text": "Iranian Revolution", "points": 3 },
-        { "text": "Cuban Revolution", "points": 3 },
-        { "text": "Mexican Revolution", "points": 4 },
-        { "text": "Xinhai Revolution", "points": 4 },
-        { "text": "Velvet Revolution", "points": 4 }
+        {
+          "text": "Glorious Revolution",
+          "points": 1
+        },
+        {
+          "text": "Haitian Revolution",
+          "points": 2
+        },
+        {
+          "text": "July Revolution",
+          "points": 2
+        },
+        {
+          "text": "February Revolution",
+          "points": 3
+        },
+        {
+          "text": "October Revolution",
+          "points": 3
+        },
+        {
+          "text": "Iranian Revolution",
+          "points": 3
+        },
+        {
+          "text": "Cuban Revolution",
+          "points": 3
+        },
+        {
+          "text": "Mexican Revolution",
+          "points": 4
+        },
+        {
+          "text": "Xinhai Revolution",
+          "points": 4
+        },
+        {
+          "text": "Velvet Revolution",
+          "points": 4
+        }
       ]
     },
     {
@@ -310,22 +684,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "history-dynasty-list",
-      "quality": "draft",
-      "tags": ["history", "china", "dynasties"],
+      "quality": "reviewed",
+      "tags": [
+        "history",
+        "china",
+        "dynasties"
+      ],
       "difficultyNotes": "Early and transition dynasties are usually hardest for teams to recall quickly.",
       "editorialNotes": "Accept standard dynasty names only.",
       "sourceURL": "https://en.wikipedia.org/wiki/Dynasties_in_Chinese_history",
       "answers": [
-        { "text": "Zhou", "points": 1 },
-        { "text": "Qin", "points": 2 },
-        { "text": "Han", "points": 2 },
-        { "text": "Sui", "points": 3 },
-        { "text": "Tang", "points": 3 },
-        { "text": "Song", "points": 3 },
-        { "text": "Yuan", "points": 3 },
-        { "text": "Ming", "points": 4 },
-        { "text": "Qing", "points": 4 },
-        { "text": "Jin", "points": 4 }
+        {
+          "text": "Zhou",
+          "points": 1
+        },
+        {
+          "text": "Qin",
+          "points": 2
+        },
+        {
+          "text": "Han",
+          "points": 2
+        },
+        {
+          "text": "Sui",
+          "points": 3
+        },
+        {
+          "text": "Tang",
+          "points": 3
+        },
+        {
+          "text": "Song",
+          "points": 3
+        },
+        {
+          "text": "Yuan",
+          "points": 3
+        },
+        {
+          "text": "Ming",
+          "points": 4
+        },
+        {
+          "text": "Qing",
+          "points": 4
+        },
+        {
+          "text": "Jin",
+          "points": 4
+        }
       ]
     }
   ]

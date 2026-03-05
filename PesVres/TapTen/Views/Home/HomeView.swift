@@ -11,6 +11,7 @@ struct HomeView: View {
                 statusCapsules
                 startGameButton
                 howToPlayButton
+                browsePacksButton
             }
             .padding(.horizontal, 20)
             .padding(.top, 28)
@@ -119,6 +120,8 @@ private extension HomeView {
                 .shadow(color: Color.orange.opacity(0.26), radius: 10, y: 6)
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("Start New Game")
+        .accessibilityHint("Open game setup.")
     }
 
     var howToPlayButton: some View {
@@ -154,6 +157,29 @@ private extension HomeView {
                 .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
         .buttonStyle(.plain)
+        .accessibilityHint("Open quick instructions in a sheet.")
+    }
+
+    var browsePacksButton: some View {
+        NavigationLink {
+            PackBrowserView()
+        } label: {
+            Label("Browse Question Packs", systemImage: "books.vertical")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.primary)
+                .frame(maxWidth: .infinity, minHeight: 44)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
+                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(Color.blue.opacity(0.2), lineWidth: 1)
+                        .allowsHitTesting(false)
+                )
+                .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .accessibilityHint("View available categories and question counts.")
     }
 
     var homeBackground: some View {
@@ -289,4 +315,134 @@ private struct HowToStepRow: View {
         }
         .padding(.vertical, 4)
     }
+}
+
+private struct PackBrowserView: View {
+    @State private var packs: [QuestionPack] = []
+    @State private var loadError: String?
+
+    var body: some View {
+        List {
+            if let loadError {
+                Section {
+                    Text(loadError)
+                        .foregroundStyle(.red)
+                } header: {
+                    Text("Unable to Load Packs")
+                }
+            } else {
+                Section("Category Coverage") {
+                    ForEach(categoryCoverage) { coverage in
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack {
+                                Text(coverage.category)
+                                    .font(.headline)
+                                Spacer()
+                                Text("\(coverage.total) questions")
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            Text("Easy \(coverage.easy) • Medium \(coverage.medium) • Hard \(coverage.hard)")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                        .accessibilityElement(children: .combine)
+                    }
+                }
+
+                Section("Packs") {
+                    ForEach(packSummaries) { summary in
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(summary.title)
+                                .font(.headline)
+
+                            Text("\(summary.questionCount) questions • \(summary.categoryList)")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(.vertical, 2)
+                        .accessibilityElement(children: .combine)
+                    }
+                }
+            }
+        }
+        .navigationTitle("Question Packs")
+        .navigationBarTitleDisplayMode(.inline)
+        .scrollContentBackground(.hidden)
+        .background(Color.tapTenWarmBackground)
+        .task {
+            guard packs.isEmpty, loadError == nil else {
+                return
+            }
+            loadPacks()
+        }
+    }
+
+    private var categoryCoverage: [CategoryCoverage] {
+        var countsByCategory: [String: CategoryCoverage] = [:]
+
+        for question in packs.flatMap(\.questions) {
+            var current = countsByCategory[question.category] ?? CategoryCoverage(category: question.category)
+            current.total += 1
+            switch question.difficultyTier {
+            case .easy:
+                current.easy += 1
+            case .medium:
+                current.medium += 1
+            case .hard:
+                current.hard += 1
+            }
+            countsByCategory[question.category] = current
+        }
+
+        return countsByCategory.values.sorted { $0.category < $1.category }
+    }
+
+    private var packSummaries: [PackSummary] {
+        packs.map { pack in
+            let categories = Set(pack.questions.map(\.category)).sorted()
+            return PackSummary(
+                id: pack.id,
+                title: pack.title,
+                questionCount: pack.questions.count,
+                categoryList: categories.joined(separator: ", ")
+            )
+        }
+        .sorted { $0.title < $1.title }
+    }
+
+    private func loadPacks() {
+        do {
+            packs = try QuestionPackLoader().loadAllPacks()
+            loadError = nil
+        } catch {
+            loadError = error.localizedDescription
+        }
+    }
+}
+
+private struct CategoryCoverage: Identifiable {
+    let id: String
+    let category: String
+    var total: Int
+    var easy: Int
+    var medium: Int
+    var hard: Int
+
+    init(category: String) {
+        self.id = category
+        self.category = category
+        self.total = 0
+        self.easy = 0
+        self.medium = 0
+        self.hard = 0
+    }
+}
+
+private struct PackSummary: Identifiable {
+    let id: String
+    let title: String
+    let questionCount: Int
+    let categoryList: String
 }

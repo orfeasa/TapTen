@@ -13,22 +13,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "entertainment-title-list",
-      "quality": "draft",
-      "tags": ["film", "animation", "pixar"],
+      "quality": "reviewed",
+      "tags": [
+        "film",
+        "animation",
+        "pixar"
+      ],
       "difficultyNotes": "High-profile franchises dominate early guesses.",
       "editorialNotes": "Accept common subtitle omissions when unambiguous.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_Pixar_films",
       "answers": [
-        { "text": "Toy Story", "points": 1 },
-        { "text": "Finding Nemo", "points": 1 },
-        { "text": "Monsters, Inc.", "points": 1 },
-        { "text": "The Incredibles", "points": 1 },
-        { "text": "Cars", "points": 1 },
-        { "text": "Up", "points": 2 },
-        { "text": "WALL-E", "points": 2 },
-        { "text": "Ratatouille", "points": 2 },
-        { "text": "Inside Out", "points": 2 },
-        { "text": "Coco", "points": 3 }
+        {
+          "text": "Toy Story",
+          "points": 1
+        },
+        {
+          "text": "Finding Nemo",
+          "points": 1
+        },
+        {
+          "text": "Monsters, Inc.",
+          "points": 1
+        },
+        {
+          "text": "The Incredibles",
+          "points": 1
+        },
+        {
+          "text": "Cars",
+          "points": 1
+        },
+        {
+          "text": "Up",
+          "points": 2
+        },
+        {
+          "text": "WALL-E",
+          "points": 2
+        },
+        {
+          "text": "Ratatouille",
+          "points": 2
+        },
+        {
+          "text": "Inside Out",
+          "points": 2
+        },
+        {
+          "text": "Coco",
+          "points": 3
+        }
       ]
     },
     {
@@ -40,22 +74,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "entertainment-show-list",
-      "quality": "draft",
-      "tags": ["tv", "sitcom", "comedy"],
+      "quality": "reviewed",
+      "tags": [
+        "tv",
+        "sitcom",
+        "comedy"
+      ],
       "difficultyNotes": "Most answers are widely syndicated shows.",
       "editorialNotes": "Accept well-known abbreviations like 'HIMYM'.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_longest-running_scripted_American_primetime_television_series",
       "answers": [
-        { "text": "Friends", "points": 1 },
-        { "text": "The Office", "points": 1 },
-        { "text": "Seinfeld", "points": 1 },
-        { "text": "How I Met Your Mother", "points": 1 },
-        { "text": "The Big Bang Theory", "points": 1 },
-        { "text": "Modern Family", "points": 2 },
-        { "text": "Brooklyn Nine-Nine", "points": 2 },
-        { "text": "Parks and Recreation", "points": 2 },
-        { "text": "Frasier", "points": 2 },
-        { "text": "Everybody Loves Raymond", "points": 3 }
+        {
+          "text": "Friends",
+          "points": 1
+        },
+        {
+          "text": "The Office",
+          "points": 1
+        },
+        {
+          "text": "Seinfeld",
+          "points": 1
+        },
+        {
+          "text": "How I Met Your Mother",
+          "points": 1
+        },
+        {
+          "text": "The Big Bang Theory",
+          "points": 1
+        },
+        {
+          "text": "Modern Family",
+          "points": 2
+        },
+        {
+          "text": "Brooklyn Nine-Nine",
+          "points": 2
+        },
+        {
+          "text": "Parks and Recreation",
+          "points": 2
+        },
+        {
+          "text": "Frasier",
+          "points": 2
+        },
+        {
+          "text": "Everybody Loves Raymond",
+          "points": 3
+        }
       ]
     },
     {
@@ -68,21 +136,55 @@
       "validationStyle": "editorial",
       "contentType": "entertainment-show-list",
       "quality": "draft",
-      "tags": ["tv", "animation", "series"],
+      "tags": [
+        "tv",
+        "animation",
+        "series"
+      ],
       "difficultyNotes": "Family and youth titles make this fast for most groups.",
       "editorialNotes": "Accept close franchise naming used in broadcast guides.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_animated_television_series",
       "answers": [
-        { "text": "The Simpsons", "points": 1 },
-        { "text": "SpongeBob SquarePants", "points": 1 },
-        { "text": "Tom and Jerry", "points": 1 },
-        { "text": "Looney Tunes", "points": 1 },
-        { "text": "Scooby-Doo", "points": 1 },
-        { "text": "Pokémon", "points": 2 },
-        { "text": "Dragon Ball Z", "points": 2 },
-        { "text": "Avatar: The Last Airbender", "points": 2 },
-        { "text": "Teen Titans", "points": 2 },
-        { "text": "Futurama", "points": 3 }
+        {
+          "text": "The Simpsons",
+          "points": 1
+        },
+        {
+          "text": "SpongeBob SquarePants",
+          "points": 1
+        },
+        {
+          "text": "Tom and Jerry",
+          "points": 1
+        },
+        {
+          "text": "Looney Tunes",
+          "points": 1
+        },
+        {
+          "text": "Scooby-Doo",
+          "points": 1
+        },
+        {
+          "text": "Pokémon",
+          "points": 2
+        },
+        {
+          "text": "Dragon Ball Z",
+          "points": 2
+        },
+        {
+          "text": "Avatar: The Last Airbender",
+          "points": 2
+        },
+        {
+          "text": "Teen Titans",
+          "points": 2
+        },
+        {
+          "text": "Futurama",
+          "points": 3
+        }
       ]
     },
     {
@@ -94,22 +196,56 @@
       "difficultyScore": 16,
       "validationStyle": "editorial",
       "contentType": "entertainment-platform-list",
-      "quality": "draft",
-      "tags": ["film", "tv", "streaming"],
+      "quality": "reviewed",
+      "tags": [
+        "film",
+        "tv",
+        "streaming"
+      ],
       "difficultyNotes": "Global household platforms are guessed quickly by most teams.",
       "editorialNotes": "Accept common service shorthand such as Prime for Prime Video.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_streaming_media_services",
       "answers": [
-        { "text": "Netflix", "points": 1 },
-        { "text": "Prime Video", "points": 1 },
-        { "text": "Disney+", "points": 1 },
-        { "text": "Max", "points": 1 },
-        { "text": "Hulu", "points": 1 },
-        { "text": "Apple TV+", "points": 2 },
-        { "text": "Paramount+", "points": 2 },
-        { "text": "Peacock", "points": 2 },
-        { "text": "YouTube", "points": 2 },
-        { "text": "Crunchyroll", "points": 3 }
+        {
+          "text": "Netflix",
+          "points": 1
+        },
+        {
+          "text": "Prime Video",
+          "points": 1
+        },
+        {
+          "text": "Disney+",
+          "points": 1
+        },
+        {
+          "text": "Max",
+          "points": 1
+        },
+        {
+          "text": "Hulu",
+          "points": 1
+        },
+        {
+          "text": "Apple TV+",
+          "points": 2
+        },
+        {
+          "text": "Paramount+",
+          "points": 2
+        },
+        {
+          "text": "Peacock",
+          "points": 2
+        },
+        {
+          "text": "YouTube",
+          "points": 2
+        },
+        {
+          "text": "Crunchyroll",
+          "points": 3
+        }
       ]
     },
     {
@@ -121,22 +257,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "entertainment-awards-list",
-      "quality": "draft",
-      "tags": ["film", "oscars", "awards"],
+      "quality": "reviewed",
+      "tags": [
+        "film",
+        "oscars",
+        "awards"
+      ],
       "difficultyNotes": "Recent winners are easier than early-decade titles.",
       "editorialNotes": "Accept subtitle-only responses if uniquely identifying the film.",
       "sourceURL": "https://en.wikipedia.org/wiki/Academy_Award_for_Best_Picture",
       "answers": [
-        { "text": "The King's Speech", "points": 1 },
-        { "text": "The Artist", "points": 1 },
-        { "text": "Argo", "points": 1 },
-        { "text": "12 Years a Slave", "points": 2 },
-        { "text": "Birdman", "points": 2 },
-        { "text": "Spotlight", "points": 2 },
-        { "text": "Moonlight", "points": 2 },
-        { "text": "The Shape of Water", "points": 3 },
-        { "text": "Green Book", "points": 4 },
-        { "text": "Parasite", "points": 4 }
+        {
+          "text": "The King's Speech",
+          "points": 1
+        },
+        {
+          "text": "The Artist",
+          "points": 1
+        },
+        {
+          "text": "Argo",
+          "points": 1
+        },
+        {
+          "text": "12 Years a Slave",
+          "points": 2
+        },
+        {
+          "text": "Birdman",
+          "points": 2
+        },
+        {
+          "text": "Spotlight",
+          "points": 2
+        },
+        {
+          "text": "Moonlight",
+          "points": 2
+        },
+        {
+          "text": "The Shape of Water",
+          "points": 3
+        },
+        {
+          "text": "Green Book",
+          "points": 4
+        },
+        {
+          "text": "Parasite",
+          "points": 4
+        }
       ]
     },
     {
@@ -148,22 +318,56 @@
       "difficultyScore": 22,
       "validationStyle": "editorial",
       "contentType": "entertainment-people-list",
-      "quality": "draft",
-      "tags": ["film", "directors", "cinema"],
+      "quality": "reviewed",
+      "tags": [
+        "film",
+        "directors",
+        "cinema"
+      ],
       "difficultyNotes": "This list favors directors recognizable to broad audiences.",
       "editorialNotes": "Accept surname-only guesses when unambiguous.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_film_directors",
       "answers": [
-        { "text": "Steven Spielberg", "points": 1 },
-        { "text": "Christopher Nolan", "points": 1 },
-        { "text": "James Cameron", "points": 1 },
-        { "text": "Martin Scorsese", "points": 2 },
-        { "text": "Quentin Tarantino", "points": 2 },
-        { "text": "Peter Jackson", "points": 2 },
-        { "text": "Ridley Scott", "points": 2 },
-        { "text": "Denis Villeneuve", "points": 3 },
-        { "text": "Alfonso Cuarón", "points": 4 },
-        { "text": "Greta Gerwig", "points": 4 }
+        {
+          "text": "Steven Spielberg",
+          "points": 1
+        },
+        {
+          "text": "Christopher Nolan",
+          "points": 1
+        },
+        {
+          "text": "James Cameron",
+          "points": 1
+        },
+        {
+          "text": "Martin Scorsese",
+          "points": 2
+        },
+        {
+          "text": "Quentin Tarantino",
+          "points": 2
+        },
+        {
+          "text": "Peter Jackson",
+          "points": 2
+        },
+        {
+          "text": "Ridley Scott",
+          "points": 2
+        },
+        {
+          "text": "Denis Villeneuve",
+          "points": 3
+        },
+        {
+          "text": "Alfonso Cuarón",
+          "points": 4
+        },
+        {
+          "text": "Greta Gerwig",
+          "points": 4
+        }
       ]
     },
     {
@@ -175,22 +379,56 @@
       "difficultyScore": 22,
       "validationStyle": "editorial",
       "contentType": "entertainment-genre-list",
-      "quality": "draft",
-      "tags": ["tv", "streaming", "genres"],
+      "quality": "reviewed",
+      "tags": [
+        "tv",
+        "streaming",
+        "genres"
+      ],
       "difficultyNotes": "Popular categories come first; niche genres close the list.",
       "editorialNotes": "Accept equivalent genre labels used by major streaming services.",
       "sourceURL": "https://en.wikipedia.org/wiki/Television_genre",
       "answers": [
-        { "text": "Drama", "points": 1 },
-        { "text": "Comedy", "points": 1 },
-        { "text": "Thriller", "points": 1 },
-        { "text": "Documentary", "points": 2 },
-        { "text": "Reality", "points": 2 },
-        { "text": "Crime", "points": 2 },
-        { "text": "Science fiction", "points": 2 },
-        { "text": "Fantasy", "points": 3 },
-        { "text": "Romance", "points": 4 },
-        { "text": "Animation", "points": 4 }
+        {
+          "text": "Drama",
+          "points": 1
+        },
+        {
+          "text": "Comedy",
+          "points": 1
+        },
+        {
+          "text": "Thriller",
+          "points": 1
+        },
+        {
+          "text": "Documentary",
+          "points": 2
+        },
+        {
+          "text": "Reality",
+          "points": 2
+        },
+        {
+          "text": "Crime",
+          "points": 2
+        },
+        {
+          "text": "Science fiction",
+          "points": 2
+        },
+        {
+          "text": "Fantasy",
+          "points": 3
+        },
+        {
+          "text": "Romance",
+          "points": 4
+        },
+        {
+          "text": "Animation",
+          "points": 4
+        }
       ]
     },
     {
@@ -202,22 +440,56 @@
       "difficultyScore": 22,
       "validationStyle": "factual",
       "contentType": "entertainment-awards-list",
-      "quality": "draft",
-      "tags": ["film", "awards", "categories"],
+      "quality": "reviewed",
+      "tags": [
+        "film",
+        "awards",
+        "categories"
+      ],
       "difficultyNotes": "Core acting and picture categories are easiest.",
       "editorialNotes": "Accept common shorthand like 'Best Actor'.",
       "sourceURL": "https://en.wikipedia.org/wiki/Academy_Awards",
       "answers": [
-        { "text": "Best Picture", "points": 1 },
-        { "text": "Best Director", "points": 1 },
-        { "text": "Best Actor", "points": 1 },
-        { "text": "Best Actress", "points": 2 },
-        { "text": "Best Supporting Actor", "points": 2 },
-        { "text": "Best Supporting Actress", "points": 2 },
-        { "text": "Best Original Screenplay", "points": 2 },
-        { "text": "Best Adapted Screenplay", "points": 3 },
-        { "text": "Best Cinematography", "points": 4 },
-        { "text": "Best Film Editing", "points": 4 }
+        {
+          "text": "Best Picture",
+          "points": 1
+        },
+        {
+          "text": "Best Director",
+          "points": 1
+        },
+        {
+          "text": "Best Actor",
+          "points": 1
+        },
+        {
+          "text": "Best Actress",
+          "points": 2
+        },
+        {
+          "text": "Best Supporting Actor",
+          "points": 2
+        },
+        {
+          "text": "Best Supporting Actress",
+          "points": 2
+        },
+        {
+          "text": "Best Original Screenplay",
+          "points": 2
+        },
+        {
+          "text": "Best Adapted Screenplay",
+          "points": 3
+        },
+        {
+          "text": "Best Cinematography",
+          "points": 4
+        },
+        {
+          "text": "Best Film Editing",
+          "points": 4
+        }
       ]
     },
     {
@@ -229,22 +501,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "entertainment-history-list",
-      "quality": "draft",
-      "tags": ["film", "history", "movements"],
+      "quality": "reviewed",
+      "tags": [
+        "film",
+        "history",
+        "movements"
+      ],
       "difficultyNotes": "This list intentionally targets higher-difficulty film knowledge.",
       "editorialNotes": "Accept standard English movement names.",
       "sourceURL": "https://en.wikipedia.org/wiki/Film_movement",
       "answers": [
-        { "text": "French New Wave", "points": 1 },
-        { "text": "Italian Neorealism", "points": 2 },
-        { "text": "German Expressionism", "points": 2 },
-        { "text": "New Hollywood", "points": 3 },
-        { "text": "Soviet Montage", "points": 3 },
-        { "text": "British New Wave", "points": 3 },
-        { "text": "Dogme 95", "points": 3 },
-        { "text": "Japanese New Wave", "points": 4 },
-        { "text": "Iranian New Wave", "points": 4 },
-        { "text": "Third Cinema", "points": 4 }
+        {
+          "text": "French New Wave",
+          "points": 1
+        },
+        {
+          "text": "Italian Neorealism",
+          "points": 2
+        },
+        {
+          "text": "German Expressionism",
+          "points": 2
+        },
+        {
+          "text": "New Hollywood",
+          "points": 3
+        },
+        {
+          "text": "Soviet Montage",
+          "points": 3
+        },
+        {
+          "text": "British New Wave",
+          "points": 3
+        },
+        {
+          "text": "Dogme 95",
+          "points": 3
+        },
+        {
+          "text": "Japanese New Wave",
+          "points": 4
+        },
+        {
+          "text": "Iranian New Wave",
+          "points": 4
+        },
+        {
+          "text": "Third Cinema",
+          "points": 4
+        }
       ]
     },
     {
@@ -256,22 +562,56 @@
       "difficultyScore": 29,
       "validationStyle": "editorial",
       "contentType": "entertainment-industry-list",
-      "quality": "draft",
-      "tags": ["tv", "production", "credits"],
+      "quality": "reviewed",
+      "tags": [
+        "tv",
+        "production",
+        "credits"
+      ],
       "difficultyNotes": "Behind-the-scenes roles are less obvious to casual players.",
       "editorialNotes": "Accept role synonyms if they map clearly to the intended credit.",
       "sourceURL": "https://en.wikipedia.org/wiki/Filmmaking",
       "answers": [
-        { "text": "Showrunner", "points": 1 },
-        { "text": "Executive producer", "points": 2 },
-        { "text": "Director", "points": 2 },
-        { "text": "Writer", "points": 3 },
-        { "text": "Script supervisor", "points": 3 },
-        { "text": "Cinematographer", "points": 3 },
-        { "text": "Editor", "points": 3 },
-        { "text": "Production designer", "points": 4 },
-        { "text": "Costume designer", "points": 4 },
-        { "text": "Composer", "points": 4 }
+        {
+          "text": "Showrunner",
+          "points": 1
+        },
+        {
+          "text": "Executive producer",
+          "points": 2
+        },
+        {
+          "text": "Director",
+          "points": 2
+        },
+        {
+          "text": "Writer",
+          "points": 3
+        },
+        {
+          "text": "Script supervisor",
+          "points": 3
+        },
+        {
+          "text": "Cinematographer",
+          "points": 3
+        },
+        {
+          "text": "Editor",
+          "points": 3
+        },
+        {
+          "text": "Production designer",
+          "points": 4
+        },
+        {
+          "text": "Costume designer",
+          "points": 4
+        },
+        {
+          "text": "Composer",
+          "points": 4
+        }
       ]
     },
     {
@@ -283,22 +623,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "entertainment-event-list",
-      "quality": "draft",
-      "tags": ["film", "festivals", "international"],
+      "quality": "reviewed",
+      "tags": [
+        "film",
+        "festivals",
+        "international"
+      ],
       "difficultyNotes": "High-point festivals are less familiar to mainstream audiences.",
       "editorialNotes": "Accept common festival shorthand names.",
       "sourceURL": "https://en.wikipedia.org/wiki/List_of_film_festivals",
       "answers": [
-        { "text": "Cannes Film Festival", "points": 1 },
-        { "text": "Venice Film Festival", "points": 2 },
-        { "text": "Berlin International Film Festival", "points": 2 },
-        { "text": "Toronto International Film Festival", "points": 3 },
-        { "text": "Sundance Film Festival", "points": 3 },
-        { "text": "San Sebastián International Film Festival", "points": 3 },
-        { "text": "Locarno Film Festival", "points": 3 },
-        { "text": "Tribeca Festival", "points": 4 },
-        { "text": "Busan International Film Festival", "points": 4 },
-        { "text": "Karlovy Vary International Film Festival", "points": 4 }
+        {
+          "text": "Cannes Film Festival",
+          "points": 1
+        },
+        {
+          "text": "Venice Film Festival",
+          "points": 2
+        },
+        {
+          "text": "Berlin International Film Festival",
+          "points": 2
+        },
+        {
+          "text": "Toronto International Film Festival",
+          "points": 3
+        },
+        {
+          "text": "Sundance Film Festival",
+          "points": 3
+        },
+        {
+          "text": "San Sebastián International Film Festival",
+          "points": 3
+        },
+        {
+          "text": "Locarno Film Festival",
+          "points": 3
+        },
+        {
+          "text": "Tribeca Festival",
+          "points": 4
+        },
+        {
+          "text": "Busan International Film Festival",
+          "points": 4
+        },
+        {
+          "text": "Karlovy Vary International Film Festival",
+          "points": 4
+        }
       ]
     },
     {
@@ -310,22 +684,56 @@
       "difficultyScore": 29,
       "validationStyle": "factual",
       "contentType": "entertainment-production-list",
-      "quality": "draft",
-      "tags": ["film", "cinematography", "production"],
+      "quality": "reviewed",
+      "tags": [
+        "film",
+        "cinematography",
+        "production"
+      ],
       "difficultyNotes": "Basic shots are common; technical movement and angle terms are harder under pressure.",
       "editorialNotes": "Accept close equivalents when they clearly map to the same shot convention.",
       "sourceURL": "https://en.wikipedia.org/wiki/Shot_(filmmaking)",
       "answers": [
-        { "text": "Close-up", "points": 1 },
-        { "text": "Wide shot", "points": 2 },
-        { "text": "Medium shot", "points": 2 },
-        { "text": "Long shot", "points": 3 },
-        { "text": "Over-the-shoulder shot", "points": 3 },
-        { "text": "Tracking shot", "points": 3 },
-        { "text": "Crane shot", "points": 3 },
-        { "text": "Establishing shot", "points": 4 },
-        { "text": "Dolly zoom", "points": 4 },
-        { "text": "Dutch angle", "points": 4 }
+        {
+          "text": "Close-up",
+          "points": 1
+        },
+        {
+          "text": "Wide shot",
+          "points": 2
+        },
+        {
+          "text": "Medium shot",
+          "points": 2
+        },
+        {
+          "text": "Long shot",
+          "points": 3
+        },
+        {
+          "text": "Over-the-shoulder shot",
+          "points": 3
+        },
+        {
+          "text": "Tracking shot",
+          "points": 3
+        },
+        {
+          "text": "Crane shot",
+          "points": 3
+        },
+        {
+          "text": "Establishing shot",
+          "points": 4
+        },
+        {
+          "text": "Dolly zoom",
+          "points": 4
+        },
+        {
+          "text": "Dutch angle",
+          "points": 4
+        }
       ]
     }
   ]

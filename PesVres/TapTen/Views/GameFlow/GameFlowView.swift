@@ -2,6 +2,7 @@ import SwiftUI
 
 struct GameFlowView: View {
     @Bindable var viewModel: GameFlowViewModel
+    var settingsStore: AppSettingsStore = .shared
     var onReturnHome: (() -> Void)? = nil
     @Environment(\.dismiss) private var dismiss
     @State private var isShowingEndGameConfirmation = false
@@ -21,6 +22,7 @@ struct GameFlowView: View {
                 if let hostRoundViewModel = viewModel.hostRoundViewModel {
                     HostRoundView(
                         viewModel: hostRoundViewModel,
+                        hapticsEnabled: settingsStore.hapticsEnabled,
                         onRoundFinished: viewModel.finalizeActiveRoundIfNeeded
                     )
                 } else {
@@ -65,6 +67,7 @@ struct GameFlowView: View {
                     Button("End Game", role: .destructive) {
                         isShowingEndGameConfirmation = true
                     }
+                    .accessibilityHint("End the current game and return to Home.")
                 }
             }
         }
@@ -183,8 +186,8 @@ private struct PassDeviceView: View {
             }
 
             Text("\(answeringTeamName) is up")
-                .font(.system(size: 36, weight: .black, design: .rounded))
-                .minimumScaleFactor(0.75)
+                .font(.system(.largeTitle, design: .rounded).weight(.black))
+                .minimumScaleFactor(0.68)
                 .lineLimit(2)
 
             Text("Phone holder: \(hostingTeamName)")
@@ -255,7 +258,9 @@ private struct RoundSummaryView: View {
                         .foregroundStyle(.primary)
 
                     Text("+\(summary.pointsAwarded) points")
-                        .font(.system(size: 56, weight: .black, design: .rounded))
+                        .font(.system(.largeTitle, design: .rounded).weight(.black))
+                        .minimumScaleFactor(0.55)
+                        .lineLimit(1)
                         .contentTransition(.numericText())
 
                     Text("\(summary.revealedAnswers) of \(summary.totalAnswers) answers found.")
@@ -378,7 +383,9 @@ private struct FinalResultsView: View {
                         )
 
                     Text(winnerTitle)
-                        .font(.system(size: 40, weight: .black, design: .rounded))
+                        .font(.system(.largeTitle, design: .rounded).weight(.black))
+                        .minimumScaleFactor(0.62)
+                        .lineLimit(2)
                         .multilineTextAlignment(.center)
 
                     Text(winnerSubtitle)
@@ -441,11 +448,13 @@ private struct FinalResultsView: View {
                         .buttonStyle(.borderedProminent)
                         .controlSize(.large)
                         .frame(maxWidth: .infinity, minHeight: 56)
+                        .accessibilityHint("Start a new game with current setup values.")
 
                     Button("Home", action: homeAction)
                         .buttonStyle(.bordered)
                         .controlSize(.large)
                         .frame(maxWidth: .infinity, minHeight: 52)
+                        .accessibilityHint("Return to Home screen.")
                 }
                 .padding(.top, 2)
             }
