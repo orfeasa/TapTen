@@ -15,11 +15,15 @@
 
 ### Changed
 - Game setup and flow:
-  - fixed Final Results `Home` navigation to return to Home (not New Game)
+  - Final Results secondary action now uses destination-accurate copy (`Start New Game`) instead of `Home`
   - setup now exposes all 12 final categories
   - setup adds difficulty-tier filtering (`easy` / `medium` / `hard`)
   - start validation now surfaces a clear message when filters yield no playable pool
   - round summary CTA labels now use state-specific copy (`Next Round`, `Continue to Final Results`)
+- Visual direction and controls:
+  - applied a playful color refresh across Home, New Game, Settings, and game-flow surfaces
+  - kept glass-like treatment restrained to controls/chips while preserving readable warm content surfaces
+  - moved prominent system-tinted actions from blue to warm orange to align with Home styling
 - Runtime feedback settings:
   - `Sounds` toggle now controls countdown and round-end audio behavior
   - `Haptics` toggle now controls reveal haptic feedback
@@ -35,6 +39,7 @@
 - Updated `PROJECT_BACKLOG.md` with completed backlog items and current in-progress accessibility pass.
 - Updated `CONTENT_TODO.md` with post-consolidation audit status and explicit editorial holdouts.
 - Updated `README.md` to reflect category+difficulty filtering, pack browser, runtime feedback wiring, and release checklist location.
+- Updated post-game action wording docs (`Start New Game`) and warm/playful tint direction notes.
 
 ## 2026-03-04
 

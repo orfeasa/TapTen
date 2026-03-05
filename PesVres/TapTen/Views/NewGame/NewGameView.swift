@@ -140,7 +140,7 @@ struct NewGameView: View {
         .navigationTitle("New Game")
         .navigationBarTitleDisplayMode(.inline)
         .scrollContentBackground(.hidden)
-        .background(Color.tapTenWarmBackground)
+        .background(newGameBackground)
         .navigationDestination(
             isPresented: Binding(
                 get: { gameFlowViewModel != nil },
@@ -180,6 +180,26 @@ struct NewGameView: View {
                 .textFieldStyle(.roundedBorder)
         }
         .padding(.vertical, 2)
+    }
+}
+
+private extension NewGameView {
+    var newGameBackground: some View {
+        ZStack(alignment: .top) {
+            Color.tapTenWarmBackground
+
+            LinearGradient(
+                colors: [
+                    Color.tapTenPlayfulOrange.opacity(0.11),
+                    Color.tapTenPlayfulPink.opacity(0.08),
+                    .clear
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .frame(height: 250)
+        }
+        .ignoresSafeArea()
     }
 }
 

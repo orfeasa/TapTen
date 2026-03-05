@@ -29,8 +29,8 @@ Two teams play on one device. One team answers out loud while the other team hos
   - clear post-timeup CTA (`Continue to Summary`)
   - source-link icon available once the round ends
 - Round summary with stronger points-first hierarchy, playful verdict styling, scoreboard, and source link.
-- Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Home`).
-- Shared theme tokens for warm background/card, celebration gold, and reveal green.
+- Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Start New Game`).
+- Shared theme tokens for warm background/card, celebration gold, reveal green, and playful accent colors used for controls.
 - Minimal v1 Settings screen (`sounds`, `haptics`, default rounds, default timer) plus safe in-game end confirmation.
   - Settings is available from Home via the toolbar gear button.
   - `Sounds` and `Haptics` toggles now directly control in-round feedback behavior.

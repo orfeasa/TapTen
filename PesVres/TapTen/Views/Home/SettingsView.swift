@@ -28,7 +28,27 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
         .scrollContentBackground(.hidden)
-        .background(Color.tapTenWarmBackground)
+        .background(settingsBackground)
+    }
+}
+
+private extension SettingsView {
+    var settingsBackground: some View {
+        ZStack(alignment: .top) {
+            Color.tapTenWarmBackground
+
+            LinearGradient(
+                colors: [
+                    Color.tapTenPlayfulBlue.opacity(0.10),
+                    Color.tapTenPlayfulViolet.opacity(0.07),
+                    .clear
+                ],
+                startPoint: .topTrailing,
+                endPoint: .bottomLeading
+            )
+            .frame(height: 240)
+        }
+        .ignoresSafeArea()
     }
 }
 

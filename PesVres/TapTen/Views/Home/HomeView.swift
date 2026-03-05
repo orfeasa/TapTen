@@ -24,12 +24,12 @@ struct HomeView: View {
                 } label: {
                     Image(systemName: "gearshape")
                         .font(.headline.weight(.semibold))
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(Color.tapTenPlayfulBlue)
                         .frame(width: 36, height: 36)
                         .background(.ultraThinMaterial, in: Circle())
                         .overlay(
                             Circle()
-                                .stroke(Color.blue.opacity(0.24), lineWidth: 1)
+                                .stroke(Color.tapTenPlayfulViolet.opacity(0.26), lineWidth: 1)
                         )
                 }
                 .accessibilityLabel("Settings")
@@ -75,9 +75,9 @@ private extension HomeView {
                 .foregroundStyle(.secondary)
 
             HStack(spacing: 8) {
-                statusCapsule(text: "2 teams", systemImage: "person.2.fill", tint: .orange)
-                statusCapsule(text: "5 rounds", systemImage: "flag.fill", tint: .pink)
-                statusCapsule(text: "60 sec", systemImage: "timer", tint: .blue)
+                statusCapsule(text: "2 teams", systemImage: "person.2.fill", tint: .tapTenPlayfulOrange)
+                statusCapsule(text: "5 rounds", systemImage: "flag.fill", tint: .tapTenPlayfulPink)
+                statusCapsule(text: "60 sec", systemImage: "timer", tint: .tapTenPlayfulBlue)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -104,8 +104,8 @@ private extension HomeView {
                             .fill(
                                 LinearGradient(
                                     colors: [
-                                        Color.orange.opacity(0.96),
-                                        Color.orange.opacity(0.78)
+                                        Color.tapTenPlayfulOrange.opacity(0.96),
+                                        Color.tapTenPlayfulPink.opacity(0.86)
                                     ],
                                     startPoint: .topLeading,
                                     endPoint: .bottomTrailing
@@ -117,7 +117,7 @@ private extension HomeView {
                     Capsule(style: .continuous)
                         .stroke(Color.white.opacity(0.42), lineWidth: 1)
                 )
-                .shadow(color: Color.orange.opacity(0.26), radius: 10, y: 6)
+                .shadow(color: Color.tapTenPlayfulOrange.opacity(0.24), radius: 10, y: 6)
         }
         .buttonStyle(.plain)
         .accessibilityLabel("Start New Game")
@@ -151,7 +151,7 @@ private extension HomeView {
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .stroke(Color.orange.opacity(0.2), lineWidth: 1)
+                        .stroke(Color.tapTenPlayfulOrange.opacity(0.26), lineWidth: 1)
                         .allowsHitTesting(false)
                 )
                 .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
@@ -173,7 +173,7 @@ private extension HomeView {
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
                 .overlay(
                     RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .stroke(Color.blue.opacity(0.2), lineWidth: 1)
+                        .stroke(Color.tapTenPlayfulBlue.opacity(0.24), lineWidth: 1)
                         .allowsHitTesting(false)
                 )
                 .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
@@ -203,6 +203,17 @@ private extension HomeView {
                 endPoint: .bottomTrailing
             )
             .frame(height: 250)
+
+            LinearGradient(
+                colors: [
+                    Color.tapTenPlayfulPink.opacity(0.12),
+                    Color.tapTenPlayfulViolet.opacity(0.08),
+                    .clear
+                ],
+                startPoint: .topTrailing,
+                endPoint: .bottomLeading
+            )
+            .frame(height: 220)
         }
         .ignoresSafeArea()
     }
@@ -216,7 +227,7 @@ private extension HomeView {
             .background(.ultraThinMaterial, in: Capsule(style: .continuous))
             .overlay(
                 Capsule(style: .continuous)
-                    .stroke(Color.orange.opacity(0.24), lineWidth: 1)
+                    .stroke(Color.tapTenPlayfulPink.opacity(0.28), lineWidth: 1)
             )
     }
 
@@ -300,7 +311,7 @@ private struct HowToStepRow: View {
                 )
                 .overlay(
                     Circle()
-                        .stroke(Color.orange.opacity(0.26), lineWidth: 1)
+                        .stroke(Color.tapTenPlayfulOrange.opacity(0.26), lineWidth: 1)
                 )
 
             VStack(alignment: .leading, spacing: 4) {

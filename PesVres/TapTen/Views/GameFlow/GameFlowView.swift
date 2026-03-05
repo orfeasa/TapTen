@@ -83,6 +83,7 @@ struct GameFlowView: View {
         } message: {
             Text("This will end the current game and return Home.")
         }
+        .tint(.tapTenPlayfulOrange)
     }
 
     @ViewBuilder
@@ -146,7 +147,7 @@ private struct PassDeviceView: View {
         .padding(.top, 20)
         .navigationTitle("Pass Device")
         .navigationBarTitleDisplayMode(.inline)
-        .background(Color.tapTenWarmBackground)
+        .background(passDeviceBackground)
         .onAppear {
             withAnimation(.easeOut(duration: 0.3)) {
                 showContent = true
@@ -162,10 +163,10 @@ private struct PassDeviceView: View {
             Text(roundProgressText)
                 .font(.subheadline.weight(.semibold))
         }
-        .foregroundStyle(.orange)
+        .foregroundStyle(Color.tapTenPlayfulOrange)
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
-        .background(.orange.opacity(0.14), in: Capsule())
+        .background(Color.tapTenPlayfulOrange.opacity(0.16), in: Capsule())
     }
 
     private var ritualCard: some View {
@@ -173,7 +174,7 @@ private struct PassDeviceView: View {
             HStack(spacing: 10) {
                 Image(systemName: "iphone.gen3.radiowaves.left.and.right")
                     .font(.title3.weight(.semibold))
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(Color.tapTenPlayfulOrange)
                     .scaleEffect(pulseIcon ? 1.06 : 1.0)
                     .animation(
                         .easeInOut(duration: 1.2).repeatForever(autoreverses: true),
@@ -202,7 +203,7 @@ private struct PassDeviceView: View {
         .padding(20)
         .background(
             LinearGradient(
-                colors: [Color.orange.opacity(0.14), Color.tapTenWarmCard],
+                colors: [Color.tapTenPlayfulOrange.opacity(0.16), Color.tapTenWarmCard],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             ),
@@ -210,10 +211,27 @@ private struct PassDeviceView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .stroke(Color.orange.opacity(0.16), lineWidth: 1)
+                .stroke(Color.tapTenPlayfulOrange.opacity(0.18), lineWidth: 1)
         )
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(roundProgressText). \(answeringTeamName) is answering. \(hostingTeamName) should hold the phone. No peeking.")
+    }
+
+    var passDeviceBackground: some View {
+        ZStack(alignment: .top) {
+            Color.tapTenWarmBackground
+            LinearGradient(
+                colors: [
+                    Color.tapTenPlayfulOrange.opacity(0.10),
+                    Color.tapTenPlayfulPink.opacity(0.06),
+                    .clear
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .frame(height: 220)
+        }
+        .ignoresSafeArea()
     }
 }
 
@@ -243,7 +261,7 @@ private struct RoundSummaryView: View {
                     Link(destination: summary.sourceURL) {
                         Image(systemName: "safari")
                             .font(.title3.weight(.semibold))
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(Color.tapTenPlayfulBlue)
                             .frame(width: 36, height: 36)
                             .background(.background, in: Circle())
                     }
@@ -272,7 +290,7 @@ private struct RoundSummaryView: View {
                 .padding(.horizontal, 18)
                 .background(
                     LinearGradient(
-                        colors: [Color.orange.opacity(0.24), Color.tapTenCelebrationGold.opacity(0.2)],
+                        colors: [Color.tapTenPlayfulOrange.opacity(0.24), Color.tapTenCelebrationGold.opacity(0.2)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),
@@ -282,7 +300,7 @@ private struct RoundSummaryView: View {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .stroke(Color.tapTenCelebrationGold.opacity(0.35), lineWidth: 1)
                 )
-                .shadow(color: Color.orange.opacity(0.12), radius: 14, y: 6)
+                .shadow(color: Color.tapTenPlayfulOrange.opacity(0.12), radius: 14, y: 6)
                 .scaleEffect(animateHero ? 1 : 0.97)
                 .opacity(animateHero ? 1 : 0.88)
 
@@ -300,7 +318,7 @@ private struct RoundSummaryView: View {
                 .padding(.vertical, 11)
                 .background(
                     LinearGradient(
-                        colors: [Color.tapTenCelebrationGold.opacity(0.16), Color.orange.opacity(0.1)],
+                        colors: [Color.tapTenCelebrationGold.opacity(0.16), Color.tapTenPlayfulOrange.opacity(0.1)],
                         startPoint: .leading,
                         endPoint: .trailing
                     ),
@@ -333,7 +351,7 @@ private struct RoundSummaryView: View {
         }
         .navigationTitle("Round Summary")
         .navigationBarTitleDisplayMode(.inline)
-        .background(Color.tapTenWarmBackground)
+        .background(roundSummaryBackground)
         .onAppear {
             withAnimation(.spring(response: 0.34, dampingFraction: 0.8)) {
                 animateHero = true
@@ -353,6 +371,23 @@ private struct RoundSummaryView: View {
             Text("\(score)")
                 .font(.title3.weight(.semibold))
         }
+    }
+
+    var roundSummaryBackground: some View {
+        ZStack(alignment: .top) {
+            Color.tapTenWarmBackground
+            LinearGradient(
+                colors: [
+                    Color.tapTenCelebrationGold.opacity(0.14),
+                    Color.tapTenPlayfulViolet.opacity(0.06),
+                    .clear
+                ],
+                startPoint: .topTrailing,
+                endPoint: .bottomLeading
+            )
+            .frame(height: 220)
+        }
+        .ignoresSafeArea()
     }
 }
 
@@ -407,7 +442,7 @@ private struct FinalResultsView: View {
                 .padding(.horizontal, 18)
                 .background(
                     LinearGradient(
-                        colors: [Color.tapTenCelebrationGold.opacity(0.28), Color.orange.opacity(0.14)],
+                        colors: [Color.tapTenCelebrationGold.opacity(0.28), Color.tapTenPlayfulPink.opacity(0.14)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),
@@ -450,11 +485,11 @@ private struct FinalResultsView: View {
                         .frame(maxWidth: .infinity, minHeight: 56)
                         .accessibilityHint("Start a new game with current setup values.")
 
-                    Button("Home", action: homeAction)
+                    Button("Start New Game", action: homeAction)
                         .buttonStyle(.bordered)
                         .controlSize(.large)
                         .frame(maxWidth: .infinity, minHeight: 52)
-                        .accessibilityHint("Return to Home screen.")
+                        .accessibilityHint("Return to game setup.")
                 }
                 .padding(.top, 2)
             }

@@ -5,7 +5,7 @@ struct AppRootView: View {
         NavigationStack {
             HomeView(viewModel: HomeViewModel())
         }
-        .tint(.blue)
+        .tint(.tapTenPlayfulOrange)
     }
 }
 

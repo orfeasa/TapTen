@@ -70,7 +70,8 @@ struct HostRoundView: View {
         }
         .navigationTitle("Host Round")
         .navigationBarTitleDisplayMode(.inline)
-        .background(Color.tapTenWarmBackground)
+        .background(hostRoundBackground)
+        .tint(.tapTenPlayfulOrange)
         .onAppear {
             viewModel.startRoundIfNeeded()
         }
@@ -125,7 +126,7 @@ struct HostRoundView: View {
                 Link(destination: viewModel.question.sourceURL) {
                     Image(systemName: "safari")
                         .font(.headline.weight(.semibold))
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(Color.tapTenPlayfulBlue)
                         .frame(width: 34, height: 34)
                         .background(.background, in: Circle())
                 }
@@ -323,6 +324,24 @@ private struct HostAnswerRow: View {
 }
 
 private extension HostRoundView {
+    var hostRoundBackground: some View {
+        ZStack(alignment: .top) {
+            Color.tapTenWarmBackground
+
+            LinearGradient(
+                colors: [
+                    Color.tapTenPlayfulMint.opacity(0.10),
+                    Color.tapTenPlayfulBlue.opacity(0.07),
+                    .clear
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .frame(height: 220)
+        }
+        .ignoresSafeArea()
+    }
+
     static func previewQuestion() -> Question {
         Question(
             id: "countries-starting-s",

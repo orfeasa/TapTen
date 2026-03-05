@@ -17,6 +17,7 @@
   - Most `quality: \"draft\"` questions have been promoted to `reviewed`, with a small holdout list in `CONTENT_TODO.md`.
   - Accessibility pass completed for Dynamic Type and VoiceOver on core game-flow controls.
   - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
+  - Playful color pass applied; controls use warmer accents and prominent action tinting now aligns with Home’s orange-led palette.
 - Release readiness: Not ready for content freeze; gameplay loop is stable, but remaining UX polish and final editorial QA are still open.
 
 ## Active Decisions
@@ -31,6 +32,7 @@
 - New Game should use clearer editable team fields and a stronger full-width primary `Start Game` action.
 - Setup category selection should expose all 12 shipped categories.
 - End-game actions should use native destructive confirmation dialog patterns.
+- Final Results secondary action should be label/destination aligned (`Start New Game` to setup flow), not presented as `Home`.
 - Round Summary CTA labels should be state-specific (`Next Round` / `Continue to Final Results`).
 - Settings should stay visually aligned with the warm app theme and use native control styling.
 
@@ -84,16 +86,16 @@
     - Round Summary uses state-based CTA labels (`Next Round`, `Continue to Final Results`).
     - CTA wording is consistent with current game state across the flow.
 
-- [x] TASK: Fix post-game `Home` navigation target
+- [x] TASK: Align Final Results secondary action label with destination
   - Type: UX / Bug
   - Priority: P0
   - Status: Completed
   - Area: `Views/GameFlow/GameFlowView`, `Views/NewGame/NewGameView`
-  - Goal: Ensure `Home` from Final Results returns directly to Home, not back to New Game.
+  - Goal: Ensure Final Results secondary action text matches its destination behavior.
   - Acceptance Criteria:
-    - Tapping `Home` on Final Results pops to Home screen.
-    - End-game exit paths use consistent root-navigation behavior.
-    - No stale game-flow state remains when returning Home.
+    - Final Results secondary button is labeled `Start New Game`.
+    - Tapping it exits the finished flow and returns to New Game setup.
+    - Post-game actions no longer imply a Home destination when they open setup.
 
 - [x] TASK: Add automated content audit check for regression prevention
   - Type: QA / Tooling
@@ -241,7 +243,7 @@
     - Manual editorial review issues are closed or explicitly deferred.
     - Duplicate and near-duplicate prompt checks remain clean.
   - Notes:
-    - Blocked by pending editorial review and setup-catalog parity work.
+    - Blocked by pending editorial review and final content freeze sign-off.
 
 ## Manual Review Needed
 - Final editorial holdouts still marked `quality: "draft"` in `CONTENT_TODO.md` need manual review/playtest before freeze.
