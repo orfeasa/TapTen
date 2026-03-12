@@ -113,6 +113,7 @@ Note: avoid launching iOS simulator test runs unless explicitly needed in the cu
 ## Working Notes
 
 - Product and UX constraints: see `PROJECT_BRIEF.md`.
+- Prioritized follow-up work: see `BACKLOG.md`.
 - Repository working conventions: see `AGENTS.md`.
 - Release smoke-test protocol: see `RELEASE_CHECKLIST.md`.
 
