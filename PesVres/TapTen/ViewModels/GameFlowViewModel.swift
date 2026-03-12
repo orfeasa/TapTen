@@ -23,6 +23,7 @@ final class GameFlowViewModel {
         let pointsAwarded: Int
         let revealedAnswers: Int
         let totalAnswers: Int
+        let feedbackContext: QuestionFeedbackContext
     }
 
     private let settings: GameSettings
@@ -220,7 +221,8 @@ final class GameFlowViewModel {
             answeringTeamName: answeringTeamName,
             pointsAwarded: pointsAwarded,
             revealedAnswers: revealedAnswers,
-            totalAnswers: totalAnswers
+            totalAnswers: totalAnswers,
+            feedbackContext: feedbackContext(for: currentRound.question)
         )
 #if DEBUG
         let telemetry = DebugRoundTelemetry(
@@ -307,6 +309,24 @@ final class GameFlowViewModel {
 
     private func setError(_ message: String) {
         phase = .error(message)
+    }
+
+    private func feedbackContext(for question: Question) -> QuestionFeedbackContext {
+        let containingPack = questionPacks.first { pack in
+            pack.questions.contains(where: { $0.id == question.id })
+        }
+
+        return QuestionFeedbackContext(
+            packID: containingPack?.id,
+            packTitle: containingPack?.title,
+            packVersion: containingPack?.packVersion,
+            questionID: question.id,
+            prompt: question.prompt,
+            category: question.category,
+            difficultyTier: question.difficultyTier,
+            validationStyle: question.validationStyle,
+            sourceURL: question.sourceURL
+        )
     }
 
     private func makeRoundSassyComment(revealedAnswers: Int, totalAnswers: Int) -> String {

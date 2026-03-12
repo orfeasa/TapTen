@@ -98,6 +98,28 @@ struct GameFlowViewModelTests {
         #expect(viewModel.phase == .roundSummary)
         #expect(viewModel.latestRoundSummary?.sassyComment == "Absolute demolition. Please leave some points for society.")
     }
+
+    @Test
+    func roundSummaryCarriesQuestionFeedbackMetadata() throws {
+        let viewModel = GameFlowViewModel(
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
+            enabledCategoryNames: ["Factual"],
+            questionPacks: [makePack(questionCount: 1)],
+            randomIndexProvider: { _ in 0 },
+            randomSassyCommentProvider: { comments in
+                comments.first ?? ""
+            }
+        )
+
+        viewModel.startRound()
+        viewModel.finalizeActiveRoundIfNeeded()
+
+        let summary = try #require(viewModel.latestRoundSummary)
+        #expect(summary.feedbackContext.packTitle == "Pack")
+        #expect(summary.feedbackContext.packID == "pack")
+        #expect(summary.feedbackContext.questionID == "q1")
+        #expect(summary.feedbackContext.difficultyTier == .medium)
+    }
 }
 
 private func makePack(questionCount: Int) -> QuestionPack {

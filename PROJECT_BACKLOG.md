@@ -4,6 +4,7 @@
 - Current milestone: Playable MVP with full core game loop and complete v1 category baseline.
 - Current state:
   - Home, New Game, Pass Device, Host Round, Round Summary, Final Results, and Settings are implemented.
+  - Settings now safely owns persistent defaults for rounds/timer, while New Game focuses on team names, categories, and difficulty tiers.
   - Host Round supports timer, pause/resume, source link after time-up, and answer tap toggling.
   - Question pack loader validates richer metadata and difficulty score/tier consistency.
   - Question content now covers all 12 target categories with 12 questions each and exact 4 easy / 4 medium / 4 hard spread.
@@ -25,20 +26,42 @@
   - Everyday Life, Food & Drink, Film & TV, Music, Sport, Geography, History, Science, Technology, Travel, Work & School, Pop Culture & Trends.
 - Content quality workflow requires post-edit auditing (duplicates, ambiguity, overlap, score/tier integrity).
 - Home keeps instructional content in a separate How To Play sheet (not a large on-home card).
+- Home keeps `Browse Question Packs` as a secondary top-level action.
 - Host answer rows are currently sorted alphabetically for scanning speed.
 - Host-round interaction baseline is tap-to-toggle answers with active-round `Pause`/`Resume` and post-timeup `Continue to Summary`.
 - Home should use a single strong brand title (remove duplicate `Tap Ten` heading).
 - Navigation chrome should use standard native bars/back behavior instead of mixed floating controls.
 - New Game should use clearer editable team fields and a stronger full-width primary `Start Game` action.
 - Setup category selection should expose all 12 shipped categories.
+- Setup difficulty filtering is multi-select (`easy`, `medium`, `hard`) with all tiers enabled by default.
 - End-game actions should use native destructive confirmation dialog patterns.
 - Final Results secondary action should be label/destination aligned (`Start New Game` to setup flow), not presented as `Home`.
 - Round Summary CTA labels should be state-specific (`Next Round` / `Continue to Final Results`).
 - Settings should stay visually aligned with the warm app theme and use native control styling.
+- Question feedback v1 should use a prefilled email flow rather than backend submission.
+- Settings changes should affect future setup defaults only, not mutate an already-open New Game draft.
 
 ## Backlog
 
 ### P0 - Now
+
+- [x] TASK: Fix Settings crash and move rounds/timer ownership into defaults
+  - Type: Bug / UX
+  - Priority: P0
+  - Status: Completed
+  - Area: `Views/Home`, `Views/NewGame`, `Views/Home/SettingsView`, `Services/AppSettingsStore`, setup state wiring
+  - Goal: Make the gear-based settings flow safe and let persistent defaults own rounds/timer so New Game stays focused on session-specific choices.
+  - Acceptance Criteria:
+    - Changing `Rounds per Team` or `Round Timer` in Settings does not crash.
+    - Settings owns persistent defaults for rounds/timer.
+    - New Game no longer shows rounds/timer controls.
+    - New Game continues to expose team names, categories, and difficulty tiers.
+    - Home no longer shows redundant `Default setup` capsules.
+    - `Browse Question Packs` remains available on Home.
+    - Updating Settings changes future New Game defaults, but does not mutate an already-open setup draft.
+  - Notes:
+    - Settings writes now go through explicit setter methods instead of self-mutating property observers.
+    - Home still seeds New Game from `AppSettingsStore.shared.defaultGameSettings`, so future drafts pick up new defaults without mutating an already-open setup screen.
 
 - [x] TASK: Restore Home `How To Play` action interactivity
   - Type: UX / Bug
@@ -111,6 +134,22 @@
     - This should complement existing loader tests, not replace them.
 
 ### P1 - Next
+
+- [x] TASK: Add post-round question feedback via email
+  - Type: Feature / Content QA
+  - Priority: P1
+  - Status: Completed
+  - Area: `Views/GameFlow`, round summary / post-timeup review, local feedback composition
+  - Goal: Let hosts flag unclear, outdated, duplicate, or low-quality questions without interrupting active play.
+  - Acceptance Criteria:
+    - `Report Question` or equivalent is available after active play, not during countdown.
+    - The flow opens a small native sheet with reason selection and optional note.
+    - Submitting creates a prefilled email with structured question metadata.
+    - Included metadata covers pack name, question ID, prompt, source URL, difficulty tier, app version, selected reason, and note.
+    - The feedback entry point does not weaken the main continue/progression CTA.
+  - Notes:
+    - v1 entry point lives on `Round Summary` to keep active and time-up host states uncluttered.
+    - Feedback drafts use a configurable recipient constant in `QuestionFeedbackComposer`.
 
 - [x] TASK: Refresh Settings layout to native control language
   - Type: UX

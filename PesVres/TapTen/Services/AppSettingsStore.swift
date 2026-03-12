@@ -14,50 +14,30 @@ final class AppSettingsStore {
 
     private let defaults: UserDefaults
 
-    var soundsEnabled: Bool {
-        didSet { defaults.set(soundsEnabled, forKey: Keys.soundsEnabled) }
-    }
+    private(set) var soundsEnabled: Bool
 
-    var hapticsEnabled: Bool {
-        didSet { defaults.set(hapticsEnabled, forKey: Keys.hapticsEnabled) }
-    }
+    private(set) var hapticsEnabled: Bool
 
-    var defaultRounds: Int {
-        didSet {
-            defaultRounds = min(max(defaultRounds, 1), 10)
-            defaults.set(defaultRounds, forKey: Keys.defaultRounds)
-        }
-    }
+    private(set) var defaultRounds: Int
 
-    var defaultTimerSeconds: Int {
-        didSet {
-            let clamped = min(max(defaultTimerSeconds, 30), 180)
-            // Keep timer aligned to game step size.
-            defaultTimerSeconds = (clamped / 5) * 5
-            defaults.set(defaultTimerSeconds, forKey: Keys.defaultTimerSeconds)
-        }
-    }
+    private(set) var defaultTimerSeconds: Int
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
-
-        if defaults.object(forKey: Keys.soundsEnabled) == nil {
-            defaults.set(true, forKey: Keys.soundsEnabled)
-        }
-        if defaults.object(forKey: Keys.hapticsEnabled) == nil {
-            defaults.set(true, forKey: Keys.hapticsEnabled)
-        }
-        if defaults.object(forKey: Keys.defaultRounds) == nil {
-            defaults.set(5, forKey: Keys.defaultRounds)
-        }
-        if defaults.object(forKey: Keys.defaultTimerSeconds) == nil {
-            defaults.set(60, forKey: Keys.defaultTimerSeconds)
-        }
+        defaults.register(defaults: [
+            Keys.soundsEnabled: true,
+            Keys.hapticsEnabled: true,
+            Keys.defaultRounds: 5,
+            Keys.defaultTimerSeconds: 60
+        ])
 
         soundsEnabled = defaults.bool(forKey: Keys.soundsEnabled)
         hapticsEnabled = defaults.bool(forKey: Keys.hapticsEnabled)
-        defaultRounds = defaults.integer(forKey: Keys.defaultRounds)
-        defaultTimerSeconds = defaults.integer(forKey: Keys.defaultTimerSeconds)
+        defaultRounds = Self.clampedRounds(defaults.integer(forKey: Keys.defaultRounds))
+        defaultTimerSeconds = Self.clampedTimerSeconds(defaults.integer(forKey: Keys.defaultTimerSeconds))
+
+        defaults.set(defaultRounds, forKey: Keys.defaultRounds)
+        defaults.set(defaultTimerSeconds, forKey: Keys.defaultTimerSeconds)
     }
 
     var defaultGameSettings: GameSettings {
@@ -67,5 +47,38 @@ final class AppSettingsStore {
             numberOfRounds: defaultRounds,
             roundDurationSeconds: defaultTimerSeconds
         )
+    }
+
+    func setSoundsEnabled(_ isEnabled: Bool) {
+        soundsEnabled = isEnabled
+        defaults.set(isEnabled, forKey: Keys.soundsEnabled)
+    }
+
+    func setHapticsEnabled(_ isEnabled: Bool) {
+        hapticsEnabled = isEnabled
+        defaults.set(isEnabled, forKey: Keys.hapticsEnabled)
+    }
+
+    func setDefaultRounds(_ rounds: Int) {
+        let clampedRounds = Self.clampedRounds(rounds)
+        defaultRounds = clampedRounds
+        defaults.set(clampedRounds, forKey: Keys.defaultRounds)
+    }
+
+    func setDefaultTimerSeconds(_ seconds: Int) {
+        let clampedSeconds = Self.clampedTimerSeconds(seconds)
+        defaultTimerSeconds = clampedSeconds
+        defaults.set(clampedSeconds, forKey: Keys.defaultTimerSeconds)
+    }
+}
+
+private extension AppSettingsStore {
+    static func clampedRounds(_ rounds: Int) -> Int {
+        min(max(rounds, 1), 10)
+    }
+
+    static func clampedTimerSeconds(_ seconds: Int) -> Int {
+        let clamped = min(max(seconds, 30), 180)
+        return (clamped / 5) * 5
     }
 }

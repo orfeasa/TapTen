@@ -22,21 +22,6 @@ struct NewGameView: View {
                 )
             }
 
-            Section("Round Settings") {
-                Stepper(
-                    "Rounds per Team: \(viewModel.settings.numberOfRounds)",
-                    value: $viewModel.settings.numberOfRounds,
-                    in: 1...10
-                )
-
-                Stepper(
-                    "Round Timer: \(viewModel.settings.roundDurationSeconds) seconds",
-                    value: $viewModel.settings.roundDurationSeconds,
-                    in: 30...180,
-                    step: 5
-                )
-            }
-
             Section {
                 ForEach(viewModel.categories) { category in
                     Toggle(category.name, isOn: Binding(

@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-03-12
+
+### Added
+- Round Summary `Report Question` flow with:
+  - native feedback sheet
+  - reason selection and optional note
+  - structured prefilled email draft for editorial review
+
+### Changed
+- Setup ownership and navigation:
+  - Settings now owns persistent defaults for rounds per team and round duration
+  - New Game now focuses on team names, category filters, and difficulty tiers
+  - Home removed the redundant default-setup summary and gives larger visual weight to its remaining actions
+
+### Fixed
+- Settings no longer crashes when changing rounds or timer defaults from the gear flow.
+
+### Docs
+- Updated `PROJECT_BACKLOG.md`, `PROJECT_BRIEF.md`, and `README.md` to reflect the new Settings/New Game responsibility split.
+
 ## 2026-03-05
 
 ### Added

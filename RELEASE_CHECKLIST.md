@@ -27,8 +27,12 @@ Run one full game (at least 2 rounds per team) and verify:
   - `Browse Question Packs` opens and loads category/pack counts.
 - [ ] New Game:
   - Team names are editable and validation errors are clear.
+  - Rounds/timer controls are not shown in setup.
   - Category and difficulty filters behave correctly.
   - Start fails with a clear message if filters produce no playable pool.
+- [ ] Settings:
+  - Changing default rounds/timer does not crash.
+  - Updated defaults apply to the next New Game entry.
 - [ ] Pass Device:
   - Round progress and team handoff text are correct.
 - [ ] Host Round:
@@ -40,9 +44,10 @@ Run one full game (at least 2 rounds per team) and verify:
   - Points and found-answer count match revealed answers.
   - Continue CTA label matches state (`Next Round` or `Continue to Final Results`).
   - Source link appears only after round ends.
+  - `Report Question` opens the feedback sheet and can prepare an email draft.
 - [ ] Final Results:
   - Winner/runner-up display is correct.
-  - `Home` returns to Home screen (not New Game).
+  - `Start New Game` returns to setup (not Home).
   - `Play Again` starts a fresh game with scores reset.
 
 ## 4) Feedback and Accessibility Spot Check
@@ -58,4 +63,3 @@ Run one full game (at least 2 rounds per team) and verify:
 - [ ] No P0 backlog task remains open.
 - [ ] Any open P1/P2 item is consciously deferred and documented.
 - [ ] Manual Review Needed section in `PROJECT_BACKLOG.md` is updated.
-

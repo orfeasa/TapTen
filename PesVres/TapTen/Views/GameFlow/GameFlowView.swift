@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct GameFlowView: View {
     @Bindable var viewModel: GameFlowViewModel
@@ -236,6 +237,7 @@ private struct PassDeviceView: View {
 }
 
 private struct RoundSummaryView: View {
+    @Environment(\.openURL) private var openURL
     let summary: GameFlowViewModel.RoundSummary
     let teamAName: String
     let teamAScore: Int
@@ -245,6 +247,8 @@ private struct RoundSummaryView: View {
     let continueAction: () -> Void
     @State private var animateHero = false
     @State private var showVerdict = false
+    @State private var isShowingFeedbackSheet = false
+    @State private var feedbackFallbackMessage: String?
 
     var body: some View {
         ScrollView {
@@ -331,6 +335,18 @@ private struct RoundSummaryView: View {
                 .opacity(showVerdict ? 1 : 0)
                 .offset(y: showVerdict ? 0 : 6)
 
+                Button {
+                    isShowingFeedbackSheet = true
+                } label: {
+                    Label("Report Question", systemImage: "flag.badge.ellipsis")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+                .frame(maxWidth: .infinity)
+                .accessibilityHint("Open question feedback options.")
+
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Match Score")
                         .font(.subheadline.weight(.semibold))
@@ -352,6 +368,40 @@ private struct RoundSummaryView: View {
         .navigationTitle("Round Summary")
         .navigationBarTitleDisplayMode(.inline)
         .background(roundSummaryBackground)
+        .sheet(isPresented: $isShowingFeedbackSheet) {
+            QuestionFeedbackSheet(
+                context: summary.feedbackContext,
+                onSubmit: { composer in
+                    guard let emailURL = composer.emailURL else {
+                        UIPasteboard.general.string = composer.body
+                        feedbackFallbackMessage = "Couldn't prepare the email draft. Feedback details were copied instead."
+                        return
+                    }
+
+                    openURL(emailURL) { accepted in
+                        if accepted {
+                            isShowingFeedbackSheet = false
+                            return
+                        }
+
+                        UIPasteboard.general.string = composer.body
+                        feedbackFallbackMessage = "Couldn't open Mail. Feedback details were copied instead."
+                    }
+                }
+            )
+        }
+        .alert("Feedback copied", isPresented: Binding(
+            get: { feedbackFallbackMessage != nil },
+            set: { isPresented in
+                if !isPresented {
+                    feedbackFallbackMessage = nil
+                }
+            }
+        )) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(feedbackFallbackMessage ?? "")
+        }
         .onAppear {
             withAnimation(.spring(response: 0.34, dampingFraction: 0.8)) {
                 animateHero = true
@@ -388,6 +438,99 @@ private struct RoundSummaryView: View {
             .frame(height: 220)
         }
         .ignoresSafeArea()
+    }
+}
+
+private struct QuestionFeedbackSheet: View {
+    @Environment(\.dismiss) private var dismiss
+
+    let context: QuestionFeedbackContext
+    let onSubmit: (QuestionFeedbackComposer) -> Void
+
+    @State private var selectedReason: QuestionFeedbackReason = .incorrectAnswers
+    @State private var note = ""
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section("Question") {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(context.prompt)
+                            .font(.body.weight(.semibold))
+
+                        Text(metadataLine)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.vertical, 2)
+                }
+
+                Section("Feedback") {
+                    Picker("Reason", selection: $selectedReason) {
+                        ForEach(QuestionFeedbackReason.allCases) { reason in
+                            Text(reason.title).tag(reason)
+                        }
+                    }
+
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Notes")
+                            .font(.subheadline.weight(.semibold))
+
+                        TextEditor(text: $note)
+                            .frame(minHeight: 120)
+                    }
+                }
+
+                Section {
+                    Button {
+                        onSubmit(
+                            QuestionFeedbackComposer(
+                                context: context,
+                                reason: selectedReason,
+                                note: note
+                            )
+                        )
+                    } label: {
+                        Label("Open Email Draft", systemImage: "envelope.fill")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+
+                    Button {
+                        let composer = QuestionFeedbackComposer(
+                            context: context,
+                            reason: selectedReason,
+                            note: note
+                        )
+                        UIPasteboard.general.string = composer.body
+                        dismiss()
+                    } label: {
+                        Label("Copy Details", systemImage: "doc.on.doc")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                }
+            }
+            .navigationTitle("Report Question")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+    }
+
+    private var metadataLine: String {
+        [
+            context.packTitle,
+            context.category,
+            context.difficultyTier.rawValue.capitalized
+        ]
+        .compactMap { $0 }
+        .joined(separator: " • ")
     }
 }
 
@@ -640,7 +783,18 @@ private extension GameFlowView {
                 answeringTeamName: "Lions",
                 pointsAwarded: 8,
                 revealedAnswers: 5,
-                totalAnswers: 10
+                totalAnswers: 10,
+                feedbackContext: QuestionFeedbackContext(
+                    packID: "preview-pack",
+                    packTitle: "Preview Pack",
+                    packVersion: "1.0",
+                    questionID: "q2",
+                    prompt: "Name countries that start with the letter S",
+                    category: "Factual",
+                    difficultyTier: .medium,
+                    validationStyle: .factual,
+                    sourceURL: URL(string: "https://example.com/q2")!
+                )
             ),
             teamAName: "Lions",
             teamAScore: 14,

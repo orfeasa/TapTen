@@ -65,9 +65,12 @@ Two teams play on a single device.
 Players choose:
 - Team A name
 - Team B name
+- Included and excluded categories
+- Included difficulty tiers
+
+Persistent settings control:
 - Number of rounds
 - Round duration in seconds
-- Included and excluded categories
 
 ### During a round
 - Exactly one question is active.
@@ -146,14 +149,14 @@ Example answers:
 ## Detailed screen notes
 ### Home
 - Start new game
+- Browse packs
 - Open How To Play sheet
 - Open settings
 
 ### New Game
 - Team names
-- Number of rounds
-- Round duration
 - Category include/exclude
+- Difficulty include/exclude
 - Start game
 
 ### Round Intro

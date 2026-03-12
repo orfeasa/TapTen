@@ -7,14 +7,15 @@ Two teams play on one device. One team answers out loud while the other team hos
 ## Current MVP Behavior
 
 - Single-device game with exactly two teams.
-- Configurable rounds per team and round duration.
+- Configurable default rounds per team and round duration via Settings.
 - Random question selection from enabled categories and difficulty tiers.
 - No repeated questions in a single game session.
 - Bundled local JSON question packs only (no network fetching).
 - Warm, Apple-native visual direction with restrained motion.
 - Playful-but-clear in-app tone for supporting copy and verdicts.
-- Cleaner Home with focused hero copy, one strong primary CTA, setup status capsules, and a separate `How To Play` sheet.
+- Cleaner Home with focused hero copy, one strong primary CTA, larger secondary actions, and a separate `How To Play` sheet.
 - Home includes a native `Browse Question Packs` screen with category and pack-level counts.
+- New Game focuses on team names, category filters, and difficulty tiers, while rounds/timer live in Settings defaults.
 - Pass-device handoff flow between rounds with clear answering/hosting emphasis.
 - Host round with:
   - visible question and all 10 answers
@@ -29,6 +30,7 @@ Two teams play on one device. One team answers out loud while the other team hos
   - clear post-timeup CTA (`Continue to Summary`)
   - source-link icon available once the round ends
 - Round summary with stronger points-first hierarchy, playful verdict styling, scoreboard, and source link.
+- Round summary includes a `Report Question` flow that opens a native feedback sheet and prepares a structured email draft.
 - Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Start New Game`).
 - Shared theme tokens for warm background/card, celebration gold, reveal green, and playful accent colors used for controls.
 - Minimal v1 Settings screen (`sounds`, `haptics`, default rounds, default timer) plus safe in-game end confirmation.
@@ -113,7 +115,7 @@ Note: avoid launching iOS simulator test runs unless explicitly needed in the cu
 ## Working Notes
 
 - Product and UX constraints: see `PROJECT_BRIEF.md`.
-- Prioritized follow-up work: see `BACKLOG.md`.
+- Prioritized follow-up work: see `PROJECT_BACKLOG.md`.
 - Repository working conventions: see `AGENTS.md`.
 - Release smoke-test protocol: see `RELEASE_CHECKLIST.md`.
 

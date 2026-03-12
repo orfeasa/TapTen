@@ -2,13 +2,14 @@ import SwiftUI
 
 struct HomeView: View {
     let viewModel: HomeViewModel
+    @State private var settingsStore = AppSettingsStore.shared
     @State private var isShowingHowToPlay = false
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 26) {
+            VStack(alignment: .leading, spacing: 22) {
                 header
-                statusCapsules
+                currentSetupSummary
                 startGameButton
                 howToPlayButton
                 browsePacksButton
@@ -20,7 +21,7 @@ struct HomeView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 NavigationLink {
-                    SettingsView(settingsStore: AppSettingsStore.shared)
+                    SettingsView(settingsStore: settingsStore)
                 } label: {
                     Image(systemName: "gearshape")
                         .font(.headline.weight(.semibold))
@@ -68,56 +69,71 @@ private extension HomeView {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    var statusCapsules: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Default setup")
+    var currentSetupSummary: some View {
+        VStack(spacing: 12) {
+            Text("Current settings")
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .center)
 
-            HStack(spacing: 8) {
-                statusCapsule(text: "2 teams", systemImage: "person.2.fill", tint: .tapTenPlayfulOrange)
-                statusCapsule(text: "5 rounds", systemImage: "flag.fill", tint: .tapTenPlayfulPink)
-                statusCapsule(text: "60 sec", systemImage: "timer", tint: .tapTenPlayfulBlue)
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 10) {
+                    teamsChip
+                    roundsChip
+                    timerChip
+                }
+
+                VStack(spacing: 10) {
+                    teamsChip
+                    roundsChip
+                    timerChip
+                }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     var startGameButton: some View {
         NavigationLink {
             NewGameView(
                 viewModel: NewGameViewModel(
-                    settings: AppSettingsStore.shared.defaultGameSettings
+                    settings: settingsStore.defaultGameSettings
                 )
             )
         } label: {
-            Label("Start New Game", systemImage: "play.fill")
-                .font(.headline.weight(.semibold))
-                .foregroundStyle(.white)
-                .frame(maxWidth: .infinity, minHeight: 56)
-                .background {
-                    ZStack {
-                        Capsule(style: .continuous)
-                            .fill(.ultraThinMaterial)
+            HStack(spacing: 12) {
+                Image(systemName: "play.fill")
+                    .font(.title3.weight(.bold))
+                    .frame(width: 24, height: 24)
 
-                        Capsule(style: .continuous)
-                            .fill(
-                                LinearGradient(
-                                    colors: [
-                                        Color.tapTenPlayfulOrange.opacity(0.96),
-                                        Color.tapTenPlayfulPink.opacity(0.86)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
-                    }
-                }
-                .overlay(
+                Text("Start New Game")
+                    .font(.headline.weight(.semibold))
+            }
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity, minHeight: 56)
+            .background {
+                ZStack {
                     Capsule(style: .continuous)
-                        .stroke(Color.white.opacity(0.42), lineWidth: 1)
-                )
-                .shadow(color: Color.tapTenPlayfulOrange.opacity(0.24), radius: 10, y: 6)
+                        .fill(.ultraThinMaterial)
+
+                    Capsule(style: .continuous)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color.tapTenPlayfulOrange.opacity(0.96),
+                                    Color.tapTenPlayfulPink.opacity(0.86)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                }
+            }
+            .overlay(
+                Capsule(style: .continuous)
+                    .stroke(Color.white.opacity(0.42), lineWidth: 1)
+            )
+            .shadow(color: Color.tapTenPlayfulOrange.opacity(0.24), radius: 10, y: 6)
         }
         .buttonStyle(.plain)
         .accessibilityLabel("Start New Game")
@@ -128,33 +144,12 @@ private extension HomeView {
         Button {
             isShowingHowToPlay = true
         } label: {
-            Label("How To Play", systemImage: "questionmark.circle")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.primary)
-                .frame(maxWidth: .infinity, minHeight: 44)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 10)
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .fill(
-                            LinearGradient(
-                                colors: [
-                                    Color.white.opacity(0.28),
-                                    .clear
-                                ],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
-                        )
-                        .allowsHitTesting(false)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .stroke(Color.tapTenPlayfulOrange.opacity(0.26), lineWidth: 1)
-                        .allowsHitTesting(false)
-                )
-                .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            secondaryActionRow(
+                title: "How To Play",
+                systemImage: "questionmark.circle.fill",
+                tint: .tapTenPlayfulOrange,
+                strokeTint: Color.tapTenPlayfulOrange.opacity(0.26)
+            )
         }
         .buttonStyle(.plain)
         .accessibilityHint("Open quick instructions in a sheet.")
@@ -164,22 +159,39 @@ private extension HomeView {
         NavigationLink {
             PackBrowserView()
         } label: {
-            Label("Browse Question Packs", systemImage: "books.vertical")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.primary)
-                .frame(maxWidth: .infinity, minHeight: 44)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 10)
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .stroke(Color.tapTenPlayfulBlue.opacity(0.24), lineWidth: 1)
-                        .allowsHitTesting(false)
-                )
-                .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            secondaryActionRow(
+                title: "Browse Question Packs",
+                systemImage: "books.vertical.fill",
+                tint: .tapTenPlayfulBlue,
+                strokeTint: Color.tapTenPlayfulBlue.opacity(0.24)
+            )
         }
         .buttonStyle(.plain)
         .accessibilityHint("View available categories and question counts.")
+    }
+
+    var teamsChip: some View {
+        setupSummaryChip(
+            title: "2 teams",
+            systemImage: "person.2.fill",
+            tint: .tapTenPlayfulOrange
+        )
+    }
+
+    var roundsChip: some View {
+        setupSummaryChip(
+            title: "\(settingsStore.defaultRounds) round\(settingsStore.defaultRounds == 1 ? "" : "s")",
+            systemImage: "flag.fill",
+            tint: .tapTenPlayfulPink
+        )
+    }
+
+    var timerChip: some View {
+        setupSummaryChip(
+            title: "\(settingsStore.defaultTimerSeconds) sec",
+            systemImage: "timer",
+            tint: .tapTenPlayfulBlue
+        )
     }
 
     var homeBackground: some View {
@@ -193,27 +205,39 @@ private extension HomeView {
                 endPoint: .bottom
             )
 
-            LinearGradient(
-                colors: [
-                    Color.orange.opacity(0.22),
-                    Color.yellow.opacity(0.08),
-                    .clear
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .frame(height: 250)
+            Ellipse()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            Color.tapTenPlayfulOrange.opacity(0.22),
+                            Color.yellow.opacity(0.10),
+                            .clear
+                        ],
+                        center: .center,
+                        startRadius: 12,
+                        endRadius: 240
+                    )
+                )
+                .frame(width: 420, height: 280)
+                .blur(radius: 18)
+                .offset(x: -84, y: -118)
 
-            LinearGradient(
-                colors: [
-                    Color.tapTenPlayfulPink.opacity(0.12),
-                    Color.tapTenPlayfulViolet.opacity(0.08),
-                    .clear
-                ],
-                startPoint: .topTrailing,
-                endPoint: .bottomLeading
-            )
-            .frame(height: 220)
+            Ellipse()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            Color.tapTenPlayfulPink.opacity(0.16),
+                            Color.tapTenPlayfulViolet.opacity(0.08),
+                            .clear
+                        ],
+                        center: .center,
+                        startRadius: 12,
+                        endRadius: 230
+                    )
+                )
+                .frame(width: 400, height: 260)
+                .blur(radius: 20)
+                .offset(x: 96, y: -108)
         }
         .ignoresSafeArea()
     }
@@ -231,28 +255,86 @@ private extension HomeView {
             )
     }
 
-    func statusCapsule(text: String, systemImage: String, tint: Color) -> some View {
-        Label {
-            Text(text)
-                .foregroundStyle(.primary)
-        } icon: {
+    func secondaryActionRow(
+        title: String,
+        systemImage: String,
+        tint: Color,
+        strokeTint: Color
+    ) -> some View {
+        HStack(spacing: 12) {
             Image(systemName: systemImage)
+                .font(.title3.weight(.bold))
                 .foregroundStyle(tint)
+                .frame(width: 24, height: 24)
+
+            Text(title)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.primary)
+
+            Spacer(minLength: 0)
         }
-        .font(.footnote.weight(.semibold))
-        .padding(.horizontal, 10)
-        .padding(.vertical, 6)
-        .background {
-            Capsule(style: .continuous)
-                .fill(.ultraThinMaterial)
-        }
+        .frame(maxWidth: .infinity, minHeight: 50)
+        .padding(.horizontal, 14)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
-            Capsule(style: .continuous)
-                .fill(tint.opacity(0.1))
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color.white.opacity(0.28),
+                            .clear
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .allowsHitTesting(false)
         )
         .overlay(
-            Capsule(style: .continuous)
-                .stroke(Color.white.opacity(0.3), lineWidth: 0.8)
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(strokeTint, lineWidth: 1)
+                .allowsHitTesting(false)
+        )
+        .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    func setupSummaryChip(
+        title: String,
+        systemImage: String,
+        tint: Color
+    ) -> some View {
+        VStack(spacing: 12) {
+            Image(systemName: systemImage)
+                .font(.title2.weight(.bold))
+                .foregroundStyle(tint)
+                .frame(width: 28, height: 28)
+
+            Text(title)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.primary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, minHeight: 96, alignment: .center)
+        .padding(14)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            tint.opacity(0.12),
+                            Color.white.opacity(0.10)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .allowsHitTesting(false)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(tint.opacity(0.24), lineWidth: 1)
+                .allowsHitTesting(false)
         )
     }
 }

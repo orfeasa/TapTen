@@ -5,21 +5,34 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section("Feedback") {
-                Toggle("Sounds", isOn: $settingsStore.soundsEnabled)
-                Toggle("Haptics", isOn: $settingsStore.hapticsEnabled)
+            Section("Audio & Haptics") {
+                Toggle("Sounds", isOn: Binding(
+                    get: { settingsStore.soundsEnabled },
+                    set: { settingsStore.setSoundsEnabled($0) }
+                ))
+
+                Toggle("Haptics", isOn: Binding(
+                    get: { settingsStore.hapticsEnabled },
+                    set: { settingsStore.setHapticsEnabled($0) }
+                ))
             }
 
             Section("New Game Defaults") {
                 Stepper(
                     "Rounds per Team: \(settingsStore.defaultRounds)",
-                    value: $settingsStore.defaultRounds,
+                    value: Binding(
+                        get: { settingsStore.defaultRounds },
+                        set: { settingsStore.setDefaultRounds($0) }
+                    ),
                     in: 1...10
                 )
 
                 Stepper(
                     "Round Timer: \(settingsStore.defaultTimerSeconds) seconds",
-                    value: $settingsStore.defaultTimerSeconds,
+                    value: Binding(
+                        get: { settingsStore.defaultTimerSeconds },
+                        set: { settingsStore.setDefaultTimerSeconds($0) }
+                    ),
                     in: 30...180,
                     step: 5
                 )
