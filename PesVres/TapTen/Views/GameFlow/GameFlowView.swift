@@ -320,14 +320,27 @@ private struct RoundSummaryView: View {
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                    Link(destination: summary.sourceURL) {
-                        Image(systemName: "safari")
-                            .font(.title3.weight(.semibold))
-                            .foregroundStyle(Color.tapTenPlayfulBlue)
-                            .frame(width: 36, height: 36)
-                            .background(.background, in: Circle())
+                    HStack(spacing: 8) {
+                        Link(destination: summary.sourceURL) {
+                            questionToolIcon(
+                                systemImage: "safari",
+                                tint: .tapTenPlayfulBlue
+                            )
+                        }
+                        .accessibilityLabel("Open question source")
+
+                        Button {
+                            isShowingFeedbackSheet = true
+                        } label: {
+                            questionToolIcon(
+                                systemImage: "flag.badge.ellipsis",
+                                tint: .tapTenPlayfulOrange
+                            )
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("Report question")
+                        .accessibilityHint("Open question feedback options.")
                     }
-                    .accessibilityLabel("Open question source")
                 }
                 .padding()
                 .background(Color.tapTenWarmCard, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
@@ -393,20 +406,6 @@ private struct RoundSummaryView: View {
                 .opacity(showVerdict ? 1 : 0)
                 .offset(y: showVerdict ? 0 : 6)
 
-                HStack {
-                    Spacer()
-
-                    Button {
-                        isShowingFeedbackSheet = true
-                    } label: {
-                        Label("Report", systemImage: "flag.badge.ellipsis")
-                            .font(.caption.weight(.semibold))
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.small)
-                    .accessibilityHint("Open question feedback options.")
-                }
-
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Match Score")
                         .font(.subheadline.weight(.semibold))
@@ -418,10 +417,12 @@ private struct RoundSummaryView: View {
                 .padding()
                 .background(Color.tapTenWarmCard, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
 
-                Button(continueTitle, action: continueAction)
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                    .frame(maxWidth: .infinity, minHeight: 56)
+                Button(action: continueAction) {
+                    Label(continueTitle, systemImage: "arrow.right.circle.fill")
+                        .font(.headline.weight(.semibold))
+                        .frame(maxWidth: .infinity, minHeight: 56)
+                }
+                .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
             }
             .padding()
         }
@@ -473,6 +474,22 @@ private struct RoundSummaryView: View {
     }
 
     @ViewBuilder
+    private func questionToolIcon(
+        systemImage: String,
+        tint: Color
+    ) -> some View {
+        Image(systemName: systemImage)
+            .font(.headline.weight(.semibold))
+            .foregroundStyle(tint)
+            .frame(width: 36, height: 36)
+            .background(Color(.systemBackground).opacity(0.94), in: Circle())
+            .overlay(
+                Circle()
+                    .stroke(tint.opacity(0.18), lineWidth: 1)
+            )
+    }
+
+    @ViewBuilder
     private func scoreRow(name: String, score: Int) -> some View {
         HStack {
             Text(name)
@@ -507,69 +524,16 @@ private struct QuestionFeedbackSheet: View {
     let context: QuestionFeedbackContext
     let onSubmit: (QuestionFeedbackComposer) -> Void
 
-    @State private var selectedReason: QuestionFeedbackReason = .incorrectAnswers
+    @State private var selectedReason: QuestionFeedbackReason = .tooEasy
     @State private var note = ""
 
     var body: some View {
         NavigationStack {
             Form {
-                Section("Question") {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(context.prompt)
-                            .font(.body.weight(.semibold))
-
-                        Text(metadataLine)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding(.vertical, 2)
-                }
-
-                Section("Feedback") {
-                    Picker("Reason", selection: $selectedReason) {
-                        ForEach(QuestionFeedbackReason.allCases) { reason in
-                            Text(reason.title).tag(reason)
-                        }
-                    }
-
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Notes")
-                            .font(.subheadline.weight(.semibold))
-
-                        TextEditor(text: $note)
-                            .frame(minHeight: 120)
-                    }
-                }
-
-                Section {
-                    Button {
-                        onSubmit(
-                            QuestionFeedbackComposer(
-                                context: context,
-                                reason: selectedReason,
-                                note: note
-                            )
-                        )
-                    } label: {
-                        Label("Open Email Draft", systemImage: "envelope.fill")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.borderedProminent)
-
-                    Button {
-                        let composer = QuestionFeedbackComposer(
-                            context: context,
-                            reason: selectedReason,
-                            note: note
-                        )
-                        UIPasteboard.general.string = composer.body
-                        dismiss()
-                    } label: {
-                        Label("Copy Details", systemImage: "doc.on.doc")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.bordered)
-                }
+                questionDetailsSection
+                commonReportsSection
+                extraDetailsSection
+                actionsSection
             }
             .navigationTitle("Report Question")
             .navigationBarTitleDisplayMode(.inline)
@@ -583,14 +547,144 @@ private struct QuestionFeedbackSheet: View {
         }
     }
 
-    private var metadataLine: String {
-        [
-            context.packTitle,
-            context.category,
-            context.difficultyTier.rawValue.capitalized
-        ]
-        .compactMap { $0 }
-        .joined(separator: " • ")
+    private var canSubmit: Bool {
+        selectedReason != .other || !trimmedNote.isEmpty
+    }
+
+    private var composer: QuestionFeedbackComposer {
+        QuestionFeedbackComposer(
+            context: context,
+            reason: selectedReason,
+            note: note
+        )
+    }
+
+    private var trimmedNote: String {
+        note.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private var sourceLabel: String {
+        if let host = context.sourceURL.host(), !host.isEmpty {
+            return host
+        }
+
+        return "Open source"
+    }
+
+    @ViewBuilder
+    private var questionDetailsSection: some View {
+        Section("Question Details") {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(context.prompt)
+                    .font(.body.weight(.semibold))
+                    .fixedSize(horizontal: false, vertical: true)
+
+                LabeledContent("Category", value: context.category)
+                    .font(.footnote)
+
+                LabeledContent("Difficulty", value: context.difficultyTier.rawValue.capitalized)
+                    .font(.footnote)
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Source")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.secondary)
+
+                    Link(destination: context.sourceURL) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "safari")
+                                .foregroundStyle(Color.tapTenPlayfulBlue)
+
+                            Text(sourceLabel)
+                                .font(.subheadline.weight(.semibold))
+                                .lineLimit(1)
+                        }
+                    }
+
+                    Text(context.sourceURL.absoluteString)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .textSelection(.enabled)
+                }
+            }
+            .padding(.vertical, 2)
+        }
+    }
+
+    @ViewBuilder
+    private var commonReportsSection: some View {
+        Section("Common Reports") {
+            ForEach(QuestionFeedbackReason.allCases) { reason in
+                reasonRow(reason)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var extraDetailsSection: some View {
+        Section(selectedReason == .other ? "Details Required" : "Extra Details") {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(selectedReason == .other ? "Tell us what needs reviewing." : "Add context if it helps.")
+                    .font(.subheadline.weight(.semibold))
+
+                TextEditor(text: $note)
+                    .frame(minHeight: 120)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var actionsSection: some View {
+        Section {
+            Button {
+                onSubmit(composer)
+            } label: {
+                Label("Open Report Email", systemImage: "envelope.fill")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(!canSubmit)
+
+            Button {
+                UIPasteboard.general.string = composer.body
+                dismiss()
+            } label: {
+                Label("Copy Report Details", systemImage: "doc.on.doc")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .disabled(!canSubmit)
+        }
+    }
+
+    @ViewBuilder
+    private func reasonRow(_ reason: QuestionFeedbackReason) -> some View {
+        Button {
+            selectedReason = reason
+        } label: {
+            HStack(alignment: .top, spacing: 12) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(reason.title)
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.primary)
+
+                    Text(reason.detail)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                Spacer(minLength: 12)
+
+                Image(systemName: selectedReason == reason ? "checkmark.circle.fill" : "circle")
+                    .font(.title3)
+                    .foregroundStyle(selectedReason == reason ? Color.tapTenPlayfulOrange : Color.secondary.opacity(0.35))
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(reason.title)
+        .accessibilityValue(selectedReason == reason ? "Selected" : "Not selected")
     }
 }
 

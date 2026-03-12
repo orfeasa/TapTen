@@ -5,8 +5,10 @@
 ### Added
 - Round Summary `Report Question` flow with:
   - native feedback sheet
-  - reason selection and optional note
-  - structured prefilled email draft for editorial review
+  - question details (`category`, `difficulty`, `source`)
+  - reason selection for `Too easy`, `Too difficult`, `Wrong category`, `Inappropriate`, or `Other`
+  - optional notes, with notes required for `Other`
+  - structured prefilled email draft for editorial review sent to `tapten-reports@orfeasa.com`
 
 ### Changed
 - Setup ownership and navigation:
@@ -19,13 +21,15 @@
   - Pass Device and other warm screens now use softer radial background color fields without visible gradient seams
   - in-flow `Start Round` and `Continue to Summary` CTAs now use the shared playful gradient capsule treatment
   - active Host Round `Pause` / `Resume` is now a lower-emphasis utility control
-  - Round Summary verdict is larger and more characterful, while the feedback action is reduced to a small utility `Report` button
+  - Round Summary verdict is larger and more characterful, while source/report tools now sit together beside the question with matched icon treatment
+  - Round Summary progression iconography now matches the rest of the game-flow CTA styling
+  - in-game `End Game` confirmation is anchored to its toolbar action instead of using a visually misleading tip direction
 
 ### Fixed
 - Settings no longer crashes when changing rounds or timer defaults from the gear flow.
 
 ### Docs
-- Updated `PROJECT_BACKLOG.md`, `PROJECT_BRIEF.md`, and `README.md` to reflect the new Settings/New Game responsibility split.
+- Updated `PROJECT_BACKLOG.md`, `PROJECT_BRIEF.md`, `README.md`, and `RELEASE_CHECKLIST.md` to reflect the new Settings/New Game responsibility split and the shipped reporting flow.
 
 ## 2026-03-05
 

@@ -13,36 +13,77 @@ struct QuestionFeedbackContext: Equatable, Sendable {
 }
 
 enum QuestionFeedbackReason: String, CaseIterable, Identifiable, Sendable {
-    case incorrectAnswers
-    case unclearPrompt
-    case outdatedSource
-    case duplicateQuestion
-    case notFun
+    case tooEasy
+    case tooDifficult
+    case wrongCategory
+    case inappropriate
     case other
 
     var id: String { rawValue }
 
     var title: String {
         switch self {
-        case .incorrectAnswers:
-            return "Incorrect answers"
-        case .unclearPrompt:
-            return "Unclear prompt"
-        case .outdatedSource:
-            return "Outdated source"
-        case .duplicateQuestion:
-            return "Duplicate question"
-        case .notFun:
-            return "Not fun"
+        case .tooEasy:
+            return "Too easy"
+        case .tooDifficult:
+            return "Too difficult"
+        case .wrongCategory:
+            return "Wrong category"
+        case .inappropriate:
+            return "Inappropriate"
         case .other:
             return "Other"
+        }
+    }
+
+    var detail: String {
+        switch self {
+        case .tooEasy:
+            return "The question feels easier than its current difficulty suggests."
+        case .tooDifficult:
+            return "The question feels too hard for the current pack or tier."
+        case .wrongCategory:
+            return "The prompt looks like it belongs in a different category."
+        case .inappropriate:
+            return "The question may be unsuitable for the app's tone or audience."
+        case .other:
+            return "Something else is off. Add details so it can be reviewed properly."
+        }
+    }
+
+    var subjectLinePrefix: String {
+        switch self {
+        case .tooEasy:
+            return "Too Easy"
+        case .tooDifficult:
+            return "Too Difficult"
+        case .wrongCategory:
+            return "Wrong Category"
+        case .inappropriate:
+            return "Inappropriate"
+        case .other:
+            return "Other Report"
+        }
+    }
+
+    var reviewRequest: String {
+        switch self {
+        case .tooEasy:
+            return "Review difficulty calibration. This question may be too easy for its current tier."
+        case .tooDifficult:
+            return "Review difficulty calibration. This question may be too difficult for its current tier."
+        case .wrongCategory:
+            return "Review category placement. This question may belong in a different category."
+        case .inappropriate:
+            return "Review tone and suitability. This question may be inappropriate for the app."
+        case .other:
+            return "Review editorial fit based on the notes below."
         }
     }
 }
 
 struct QuestionFeedbackComposer {
-    // Replace with the real feedback inbox before external release.
-    static let feedbackRecipient = "feedback@tapten.app"
+    static let feedbackRecipient = "tapten-reports@orfeasa.com"
 
     let context: QuestionFeedbackContext
     let reason: QuestionFeedbackReason
@@ -62,18 +103,19 @@ struct QuestionFeedbackComposer {
     }
 
     var subject: String {
-        "Tap Ten feedback: \(context.questionID)"
+        "Tap Ten Report: \(reason.subjectLinePrefix) [\(context.questionID)]"
     }
 
     var body: String {
         let lines = [
-            "Tap Ten Question Feedback",
+            "Tap Ten Question Report",
             "",
-            "Reason: \(reason.title)",
+            "Report Type: \(reason.title)",
+            "Review Request: \(reason.reviewRequest)",
             "Question ID: \(context.questionID)",
             "Prompt: \(context.prompt)",
             "Category: \(context.category)",
-            "Difficulty Tier: \(context.difficultyTier.rawValue)",
+            "Difficulty Tier: \(context.difficultyTier.rawValue.capitalized)",
             "Validation Style: \(context.validationStyle.rawValue)",
             "Pack Title: \(context.packTitle ?? "Unknown")",
             "Pack ID: \(context.packID ?? "Unknown")",
@@ -81,7 +123,7 @@ struct QuestionFeedbackComposer {
             "Source URL: \(context.sourceURL.absoluteString)",
             "App Version: \(appVersion)",
             "",
-            "Notes:",
+            "Reporter Notes:",
             note.isEmpty ? "No extra notes provided." : note
         ]
 

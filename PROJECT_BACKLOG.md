@@ -20,7 +20,7 @@
   - Accessibility pass completed for Dynamic Type and VoiceOver on core game-flow controls.
   - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
   - Playful color pass applied; controls use warmer accents and prominent action tinting now aligns with Home’s orange-led palette.
-  - Latest polish pass refined New Game into warm setup cards, aligned in-flow CTA styling, reduced Host Round pause emphasis, and increased Round Summary verdict emphasis.
+  - Latest polish pass refined New Game into warm setup cards, aligned in-flow CTA styling, reduced Host Round pause emphasis, and increased Round Summary verdict emphasis while grouping source/report tools beside the summary question.
 - Release readiness: Not ready for content freeze; gameplay loop is stable, but remaining UX polish and final editorial QA are still open.
 
 ## Active Decisions
@@ -146,13 +146,15 @@
   - Goal: Let hosts flag unclear, outdated, duplicate, or low-quality questions without interrupting active play.
   - Acceptance Criteria:
     - `Report Question` or equivalent is available after active play, not during countdown.
-    - The flow opens a small native sheet with reason selection and optional note.
-    - Submitting creates a prefilled email with structured question metadata.
+    - The flow opens a native sheet with question details (`category`, `difficulty`, `source`), reason selection, and note capture.
+    - Supported reasons are `Too easy`, `Too difficult`, `Wrong category`, `Inappropriate`, and `Other`.
+    - `Other` requires a note before submission.
+    - Submitting creates a prefilled email with structured question metadata and reason-specific review language.
     - Included metadata covers pack name, question ID, prompt, source URL, difficulty tier, app version, selected reason, and note.
     - The feedback entry point does not weaken the main continue/progression CTA.
   - Notes:
     - v1 entry point lives on `Round Summary` to keep active and time-up host states uncluttered.
-    - Feedback drafts use a configurable recipient constant in `QuestionFeedbackComposer`.
+    - Feedback drafts currently target `tapten-reports@orfeasa.com` via `QuestionFeedbackComposer`.
 
 - [x] TASK: Refresh Settings layout to native control language
   - Type: UX
