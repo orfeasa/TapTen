@@ -220,6 +220,28 @@
     - Browser shows pack title, category coverage, and question counts.
     - UI remains native and lightweight (no custom heavy components).
 
+- [ ] TASK: Refine Pass Device composition
+  - Type: UX
+  - Priority: P1
+  - Status: Planned
+  - Area: `Views/GameFlow/PassDevice`
+  - Goal: Make the handoff screen feel more deliberate and reduce the sense of empty unused space.
+  - Acceptance Criteria:
+    - The handoff card and `Start Round` CTA read as one intentional action area.
+    - Vertical rhythm feels tighter and more deliberate.
+    - The ritual feel remains calm, clear, and first-time-user friendly.
+
+- [ ] TASK: Reduce visual competition in Host Round time-up review
+  - Type: UX
+  - Priority: P1
+  - Status: Planned
+  - Area: `Views/GameFlow/HostRoundView`
+  - Goal: Keep the post-timeup review state clear while preserving access to source and reporting tools.
+  - Acceptance Criteria:
+    - `Continue to Summary` remains the single dominant action after time-up.
+    - `View Source` and `Report Question` remain available with text labels.
+    - Utility actions are visually secondary and more compact than the continue CTA.
+
 - [x] TASK: Consolidate legacy pack files after category migration
   - Type: Content / Cleanup
   - Priority: P1
@@ -257,6 +279,28 @@
   - Notes:
     - Added Dynamic Type scaling refinements and VoiceOver hints/combined semantics across core flow.
     - Keep manual large-text smoke checks in `RELEASE_CHECKLIST.md` before release.
+
+- [ ] TASK: Normalize pushed-screen back navigation chrome
+  - Type: UX
+  - Priority: P2
+  - Status: Planned
+  - Area: `Views/NewGame`, `Views/Home/SettingsView`, shared navigation patterns
+  - Goal: Use more standard native back affordances on pushed screens for visual consistency.
+  - Acceptance Criteria:
+    - `New Game` and `Settings` use standard native back behavior.
+    - Custom circular back styling is removed unless there is a clear product reason to keep it.
+    - Navigation chrome remains consistent with the rest of the app.
+
+- [ ] TASK: Polish How To Play presentation
+  - Type: UX
+  - Priority: P2
+  - Status: Planned
+  - Area: `Views/Home`, onboarding sheet presentation
+  - Goal: Make the instructional sheet feel more aligned with the app’s current visual quality without adding clutter.
+  - Acceptance Criteria:
+    - `How To Play` remains concise and easy to scan.
+    - Visual treatment feels more consistent with the rest of the app.
+    - The sheet stays lightweight and native.
 
 - [x] TASK: Add lightweight game telemetry hooks for playtest tuning
   - Type: Technical
