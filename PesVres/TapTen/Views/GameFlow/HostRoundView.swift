@@ -211,7 +211,7 @@ struct HostRoundView: View {
     }
 
     private var timeUpReviewSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 10) {
                 Label("Time's up", systemImage: "checkmark.circle.fill")
                     .font(.headline.weight(.semibold))
@@ -224,30 +224,56 @@ struct HostRoundView: View {
                     .foregroundStyle(.secondary)
             }
 
-            HStack(spacing: 10) {
-                Button {
-                    openURL(viewModel.question.sourceURL)
-                } label: {
-                    Label("View Source", systemImage: "safari")
-                        .font(.subheadline.weight(.semibold))
-                        .frame(maxWidth: .infinity, minHeight: 44)
-                }
-                .buttonStyle(.bordered)
-                .tint(.tapTenPlayfulBlue)
-
-                Button {
-                    isShowingFeedbackSheet = true
-                } label: {
-                    Label("Report Question", systemImage: "flag.badge.ellipsis")
-                        .font(.subheadline.weight(.semibold))
-                        .frame(maxWidth: .infinity, minHeight: 44)
-                }
-                .buttonStyle(.bordered)
-                .tint(.tapTenPlayfulOrange)
-            }
+            reviewUtilityButtons
         }
         .padding(14)
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    @ViewBuilder
+    private var reviewUtilityButtons: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 8) {
+                sourceButton
+                reportButton
+                Spacer(minLength: 0)
+            }
+
+            VStack(alignment: .leading, spacing: 8) {
+                sourceButton
+                reportButton
+            }
+        }
+    }
+
+    private var sourceButton: some View {
+        Button {
+            openURL(viewModel.question.sourceURL)
+        } label: {
+            Label("View Source", systemImage: "safari")
+                .font(.subheadline.weight(.semibold))
+                .padding(.horizontal, 12)
+                .frame(minHeight: 36)
+        }
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.capsule)
+        .controlSize(.small)
+        .tint(.tapTenPlayfulBlue)
+    }
+
+    private var reportButton: some View {
+        Button {
+            isShowingFeedbackSheet = true
+        } label: {
+            Label("Report Question", systemImage: "flag.badge.ellipsis")
+                .font(.subheadline.weight(.semibold))
+                .padding(.horizontal, 12)
+                .frame(minHeight: 36)
+        }
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.capsule)
+        .controlSize(.small)
+        .tint(.tapTenPlayfulOrange)
     }
 
     private var roundControls: some View {

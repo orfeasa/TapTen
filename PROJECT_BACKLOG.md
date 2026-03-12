@@ -220,27 +220,33 @@
     - Browser shows pack title, category coverage, and question counts.
     - UI remains native and lightweight (no custom heavy components).
 
-- [ ] TASK: Refine Pass Device composition
+- [x] TASK: Refine Pass Device composition
   - Type: UX
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/GameFlow/PassDevice`
   - Goal: Make the handoff screen feel more deliberate and reduce the sense of empty unused space.
   - Acceptance Criteria:
     - The handoff card and `Start Round` CTA read as one intentional action area.
     - Vertical rhythm feels tighter and more deliberate.
     - The ritual feel remains calm, clear, and first-time-user friendly.
+  - Notes:
+    - `Start Round` is now integrated into the handoff block instead of floating below it.
+    - The round badge, ritual copy, and CTA now read as one composed unit.
 
-- [ ] TASK: Reduce visual competition in Host Round time-up review
+- [x] TASK: Reduce visual competition in Host Round time-up review
   - Type: UX
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/GameFlow/HostRoundView`
   - Goal: Keep the post-timeup review state clear while preserving access to source and reporting tools.
   - Acceptance Criteria:
     - `Continue to Summary` remains the single dominant action after time-up.
     - `View Source` and `Report Question` remain available with text labels.
     - Utility actions are visually secondary and more compact than the continue CTA.
+  - Notes:
+    - Post-timeup utilities now use compact labeled pills instead of full-width peer actions.
+    - `Continue to Summary` remains the only dominant action in the time-up state.
 
 - [x] TASK: Consolidate legacy pack files after category migration
   - Type: Content / Cleanup
@@ -280,27 +286,32 @@
     - Added Dynamic Type scaling refinements and VoiceOver hints/combined semantics across core flow.
     - Keep manual large-text smoke checks in `RELEASE_CHECKLIST.md` before release.
 
-- [ ] TASK: Normalize pushed-screen back navigation chrome
-  - Type: UX
+- [ ] TASK: Verify pushed-screen back navigation chrome on target iOS versions
+  - Type: UX / Verification
   - Priority: P2
   - Status: Planned
   - Area: `Views/NewGame`, `Views/Home/SettingsView`, shared navigation patterns
-  - Goal: Use more standard native back affordances on pushed screens for visual consistency.
+  - Goal: Confirm whether any non-standard pushed-screen back chrome is app-owned or simply current system navigation styling.
   - Acceptance Criteria:
-    - `New Game` and `Settings` use standard native back behavior.
-    - Custom circular back styling is removed unless there is a clear product reason to keep it.
-    - Navigation chrome remains consistent with the rest of the app.
+    - `New Game` and `Settings` are checked on target iOS versions/screenshots.
+    - If custom app-owned back styling exists, it is identified precisely before any UI changes are made.
+    - If the circular appearance is system-provided, no unnecessary app-side workaround is added.
+  - Notes:
+    - Current code review shows no custom back button implementation in `New Game` or `Settings`.
+    - Revisit only if target-device screenshots show behavior that is truly inconsistent with native navigation for the release OS.
 
-- [ ] TASK: Polish How To Play presentation
+- [x] TASK: Polish How To Play presentation
   - Type: UX
   - Priority: P2
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/Home`, onboarding sheet presentation
   - Goal: Make the instructional sheet feel more aligned with the app’s current visual quality without adding clutter.
   - Acceptance Criteria:
     - `How To Play` remains concise and easy to scan.
     - Visual treatment feels more consistent with the rest of the app.
     - The sheet stays lightweight and native.
+  - Notes:
+    - The sheet now uses a warm background, a short intro, and one grouped step card instead of a plain list.
 
 - [x] TASK: Add lightweight game telemetry hooks for playtest tuning
   - Type: Technical

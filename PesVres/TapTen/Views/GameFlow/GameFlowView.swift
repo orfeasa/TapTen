@@ -159,29 +159,20 @@ private struct PassDeviceView: View {
     @State private var pulseIcon = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            roundBadge
+        VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 16) {
+                roundBadge
 
-            Spacer(minLength: 8)
-
-            VStack(alignment: .leading, spacing: 14) {
-                ritualCard
+                handoffBlock
                     .opacity(showContent ? 1 : 0)
                     .offset(y: showContent ? 0 : 10)
-
-                Button(action: startAction) {
-                    Text("Start Round")
-                        .font(.headline.weight(.semibold))
-                        .padding(.horizontal, 28)
-                        .frame(minHeight: 56)
-                }
-                .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
             }
 
-            Spacer(minLength: 12)
+            Spacer(minLength: 0)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(.horizontal, 20)
-        .padding(.top, 20)
+        .padding(.top, 28)
         .navigationTitle("Pass Device")
         .navigationBarTitleDisplayMode(.inline)
         .background(passDeviceBackground)
@@ -206,38 +197,51 @@ private struct PassDeviceView: View {
         .background(Color.tapTenPlayfulOrange.opacity(0.16), in: Capsule())
     }
 
-    private var ritualCard: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack(spacing: 10) {
-                Image(systemName: "iphone.gen3.radiowaves.left.and.right")
-                    .font(.title3.weight(.semibold))
-                    .foregroundStyle(Color.tapTenPlayfulOrange)
-                    .scaleEffect(pulseIcon ? 1.06 : 1.0)
-                    .animation(
-                        .easeInOut(duration: 1.2).repeatForever(autoreverses: true),
-                        value: pulseIcon
-                    )
+    private var handoffBlock: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 14) {
+                HStack(spacing: 10) {
+                    Image(systemName: "iphone.gen3.radiowaves.left.and.right")
+                        .font(.title3.weight(.semibold))
+                        .foregroundStyle(Color.tapTenPlayfulOrange)
+                        .scaleEffect(pulseIcon ? 1.06 : 1.0)
+                        .animation(
+                            .easeInOut(duration: 1.2).repeatForever(autoreverses: true),
+                            value: pulseIcon
+                        )
 
-                Text("Handoff time")
-                    .font(.headline)
+                    Text("Handoff time")
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
+                }
+
+                Text("\(answeringTeamName) is up")
+                    .font(.system(.largeTitle, design: .rounded).weight(.black))
+                    .minimumScaleFactor(0.68)
+                    .lineLimit(2)
+
+                Text("Phone holder: \(hostingTeamName)")
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(.primary)
+
+                Text("No peeking. Keep it honest.")
+                    .font(.body)
                     .foregroundStyle(.secondary)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(20)
 
-            Text("\(answeringTeamName) is up")
-                .font(.system(.largeTitle, design: .rounded).weight(.black))
-                .minimumScaleFactor(0.68)
-                .lineLimit(2)
+            Divider()
+                .padding(.horizontal, 20)
 
-            Text("Phone holder: \(hostingTeamName)")
-                .font(.title3.weight(.semibold))
-                .foregroundStyle(.primary)
-
-            Text("No peeking. Keep it honest.")
-                .font(.body)
-                .foregroundStyle(.secondary)
+            Button(action: startAction) {
+                Text("Start Round")
+                    .font(.headline.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 56)
+            }
+            .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
+            .padding(20)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(20)
         .background(
             LinearGradient(
                 colors: [Color.tapTenPlayfulOrange.opacity(0.16), Color.tapTenWarmCard],

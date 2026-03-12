@@ -343,27 +343,61 @@ private extension HomeView {
 
 private struct HowToPlaySheet: View {
     @Environment(\.dismiss) private var dismiss
+    private let steps: [(step: String, title: String, detail: String)] = [
+        (
+            "1",
+            "Host holds the phone",
+            "A player from the opposing team reads the prompt and handles all taps."
+        ),
+        (
+            "2",
+            "Guess out loud",
+            "The answering team calls guesses while the host reveals matching answers."
+        ),
+        (
+            "3",
+            "Switch and repeat",
+            "When time is up, review round results, swap host roles, and start the next turn."
+        )
+    ]
 
     var body: some View {
         NavigationStack {
-            List {
-                HowToStepRow(
-                    step: "1",
-                    title: "Host holds the phone",
-                    detail: "A player from the opposing team reads the prompt and handles all taps."
-                )
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("One team guesses. One team hosts. Then you swap.")
+                            .font(.headline.weight(.semibold))
 
-                HowToStepRow(
-                    step: "2",
-                    title: "Guess out loud",
-                    detail: "The answering team calls guesses while the host reveals matching answers."
-                )
+                        Text("Three quick beats and you’re playing.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
 
-                HowToStepRow(
-                    step: "3",
-                    title: "Switch and repeat",
-                    detail: "When time is up, review round results, swap host roles, and start the next turn."
-                )
+                    VStack(spacing: 0) {
+                        ForEach(Array(steps.enumerated()), id: \.offset) { index, step in
+                            HowToStepRow(
+                                step: step.step,
+                                title: step.title,
+                                detail: step.detail
+                            )
+
+                            if index < steps.count - 1 {
+                                Divider()
+                                    .padding(.leading, 48)
+                            }
+                        }
+                    }
+                    .padding(18)
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 22, style: .continuous)
+                            .stroke(Color.tapTenPlayfulOrange.opacity(0.14), lineWidth: 1)
+                    )
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 16)
+                .padding(.bottom, 24)
             }
             .navigationTitle("How To Play")
             .navigationBarTitleDisplayMode(.inline)
@@ -374,7 +408,32 @@ private struct HowToPlaySheet: View {
                     }
                 }
             }
+            .background(howToPlayBackground)
         }
+    }
+
+    private var howToPlayBackground: some View {
+        ZStack(alignment: .top) {
+            Color.tapTenWarmBackground
+
+            Ellipse()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            Color.tapTenPlayfulOrange.opacity(0.16),
+                            Color.tapTenPlayfulPink.opacity(0.08),
+                            .clear
+                        ],
+                        center: .center,
+                        startRadius: 12,
+                        endRadius: 220
+                    )
+                )
+                .frame(width: 360, height: 240)
+                .blur(radius: 18)
+                .offset(x: -56, y: -96)
+        }
+        .ignoresSafeArea()
     }
 }
 
@@ -408,7 +467,7 @@ private struct HowToStepRow: View {
             }
             .padding(.top, 1)
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, 12)
     }
 }
 
