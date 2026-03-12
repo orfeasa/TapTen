@@ -703,92 +703,10 @@ private struct FinalResultsView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 14) {
-                VStack(spacing: 12) {
-                    Image(systemName: winnerName == nil ? "person.3.fill" : "trophy.fill")
-                        .font(.system(size: 62, weight: .bold))
-                        .foregroundStyle(Color.tapTenCelebrationGold)
-                        .scaleEffect(celebrate ? 1.05 : 1.0)
-                        .animation(
-                            .spring(response: 0.6, dampingFraction: 0.72).repeatForever(autoreverses: true),
-                            value: celebrate
-                        )
-
-                    Text(winnerTitle)
-                        .font(.system(.largeTitle, design: .rounded).weight(.black))
-                        .minimumScaleFactor(0.62)
-                        .lineLimit(2)
-                        .multilineTextAlignment(.center)
-
-                    Text(winnerSubtitle)
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-
-                    if let winningMargin {
-                        Text("Won by \(winningMargin) point\(winningMargin == 1 ? "" : "s")")
-                            .font(.footnote.weight(.semibold))
-                            .foregroundStyle(.secondary)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 6)
-                            .background(.regularMaterial, in: Capsule())
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 24)
-                .padding(.horizontal, 18)
-                .background(
-                    LinearGradient(
-                        colors: [Color.tapTenCelebrationGold.opacity(0.28), Color.tapTenPlayfulPink.opacity(0.14)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    in: RoundedRectangle(cornerRadius: 22, style: .continuous)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 22, style: .continuous)
-                        .stroke(Color.tapTenCelebrationGold.opacity(0.45), lineWidth: 1)
-                )
-                .shadow(color: Color.tapTenCelebrationGold.opacity(0.15), radius: 14, y: 7)
-                .scaleEffect(showHero ? 1 : 0.97)
-                .opacity(showHero ? 1 : 0.86)
-
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Final Score")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                    scoreRow(name: teamAName, score: teamAScore)
-                    scoreRow(name: teamBName, score: teamBScore)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(16)
-                .background(
-                    LinearGradient(
-                        colors: [Color.tapTenWarmCard, Color.tapTenWarmCard.opacity(0.86)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    ),
-                    in: RoundedRectangle(cornerRadius: 18, style: .continuous)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .stroke(Color.tapTenCelebrationGold.opacity(0.15), lineWidth: 1)
-                )
-
-                VStack(spacing: 10) {
-                    Button("Play Again", action: playAgainAction)
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.large)
-                        .frame(maxWidth: .infinity, minHeight: 56)
-                        .accessibilityHint("Start a new game with current setup values.")
-
-                    Button("Start New Game", action: homeAction)
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
-                        .frame(maxWidth: .infinity, minHeight: 52)
-                        .accessibilityHint("Return to game setup.")
-                }
-                .padding(.top, 2)
+            VStack(spacing: 18) {
+                heroCard
+                scoreCard
+                actionStack
             }
             .padding(.horizontal, 16)
             .padding(.top, 14)
@@ -802,6 +720,22 @@ private struct FinalResultsView: View {
                 startPoint: .top,
                 endPoint: .bottom
             )
+            .overlay(alignment: .topTrailing) {
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            colors: [
+                                Color.tapTenCelebrationGold.opacity(0.18),
+                                .clear
+                            ],
+                            center: .center,
+                            startRadius: 12,
+                            endRadius: 170
+                        )
+                    )
+                    .frame(width: 260, height: 260)
+                    .offset(x: 70, y: -40)
+            }
             .ignoresSafeArea()
         )
         .onAppear {
@@ -812,42 +746,165 @@ private struct FinalResultsView: View {
         }
     }
 
+    private var heroCard: some View {
+        VStack(spacing: 14) {
+            ZStack {
+                Circle()
+                    .fill(Color.tapTenCelebrationGold.opacity(0.18))
+                    .frame(width: 92, height: 92)
+
+                Image(systemName: winnerName == nil ? "person.3.fill" : "trophy.fill")
+                    .font(.system(size: 48, weight: .bold))
+                    .foregroundStyle(Color.tapTenCelebrationGold)
+                    .scaleEffect(celebrate ? 1.05 : 1.0)
+                    .animation(
+                        .spring(response: 0.6, dampingFraction: 0.72).repeatForever(autoreverses: true),
+                        value: celebrate
+                    )
+            }
+
+            VStack(spacing: 8) {
+                Text(winnerTitle)
+                    .font(.system(.largeTitle, design: .rounded).weight(.black))
+                    .minimumScaleFactor(0.62)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.center)
+
+                Text(winnerSubtitle)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+
+            if let winningMargin {
+                Text("Won by \(winningMargin) point\(winningMargin == 1 ? "" : "s")")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(.regularMaterial, in: Capsule())
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 26)
+        .padding(.horizontal, 20)
+        .background(
+            LinearGradient(
+                colors: [Color.tapTenCelebrationGold.opacity(0.26), Color.tapTenPlayfulPink.opacity(0.14)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            in: RoundedRectangle(cornerRadius: 24, style: .continuous)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(Color.tapTenCelebrationGold.opacity(0.42), lineWidth: 1)
+        )
+        .shadow(color: Color.tapTenCelebrationGold.opacity(0.15), radius: 14, y: 7)
+        .scaleEffect(showHero ? 1 : 0.97)
+        .opacity(showHero ? 1 : 0.86)
+    }
+
+    private var scoreCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .firstTextBaseline) {
+                Text("Final Score")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(.secondary)
+
+                Spacer()
+
+                Text(scoreSummary)
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(Color.tapTenPlayfulOrange)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(Color.tapTenPlayfulOrange.opacity(0.12), in: Capsule())
+            }
+
+            VStack(spacing: 10) {
+                scoreRow(name: teamAName, score: teamAScore)
+                scoreRow(name: teamBName, score: teamBScore)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+        .background(
+            LinearGradient(
+                colors: [Color.tapTenWarmCard, Color.tapTenWarmCard.opacity(0.86)],
+                startPoint: .top,
+                endPoint: .bottom
+            ),
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(Color.tapTenCelebrationGold.opacity(0.15), lineWidth: 1)
+        )
+    }
+
+    private var actionStack: some View {
+        VStack(spacing: 10) {
+            Button(action: playAgainAction) {
+                Label("Play Again", systemImage: "arrow.clockwise.circle.fill")
+                    .font(.headline.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 56)
+            }
+            .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
+            .accessibilityHint("Start a new game with the current setup values.")
+
+            Button(action: homeAction) {
+                Label("Home", systemImage: "house.fill")
+                    .font(.headline.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 54)
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+            .accessibilityHint("Return to the Home screen.")
+        }
+        .padding(.top, 2)
+    }
+
     @ViewBuilder
     private func scoreRow(name: String, score: Int) -> some View {
         let isWinner = winnerName == name
 
-        HStack(spacing: 10) {
-            Image(systemName: isWinner ? "crown.fill" : "circle.fill")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(isWinner ? Color.tapTenCelebrationGold : .secondary)
+        HStack(spacing: 12) {
+            ZStack {
+                Circle()
+                    .fill(isWinner ? Color.tapTenCelebrationGold.opacity(0.2) : Color.secondary.opacity(0.10))
+                    .frame(width: 34, height: 34)
 
-            Text(name)
-                .font(.headline)
-                .foregroundStyle(isWinner ? .primary : .secondary)
+                Image(systemName: rowSymbol(for: name, isWinner: isWinner))
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(isWinner ? Color.tapTenCelebrationGold : .secondary)
+            }
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text(name)
+                    .font(.headline)
+                    .foregroundStyle(isWinner || winnerName == nil ? .primary : .secondary)
+
+                Text(rowStatus(for: name, isWinner: isWinner))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(isWinner ? Color.tapTenPlayfulOrange : .secondary)
+            }
 
             Spacer()
 
-            Text(isWinner ? "Winner" : "Runner-up")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(isWinner ? .primary : .secondary)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(
-                    isWinner ? Color.tapTenCelebrationGold.opacity(0.28) : Color.secondary.opacity(0.12),
-                    in: Capsule()
-                )
-
             Text("\(score)")
-                .font(.title2.weight(.black))
-                .foregroundStyle(isWinner ? .primary : .secondary)
+                .font(.system(.title, design: .rounded).weight(.black))
+                .foregroundStyle(isWinner || winnerName == nil ? .primary : .secondary)
         }
         .padding(.horizontal, 12)
-        .padding(.vertical, 10)
+        .padding(.vertical, 12)
         .background(
-            isWinner
-                ? Color.tapTenCelebrationGold.opacity(0.22)
-                : Color.tapTenWarmCard.opacity(0.7),
+            rowBackground(for: name, isWinner: isWinner),
             in: RoundedRectangle(cornerRadius: 12, style: .continuous)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(isWinner ? Color.tapTenCelebrationGold.opacity(0.24) : Color.clear, lineWidth: 1)
         )
     }
 
@@ -865,6 +922,38 @@ private struct FinalResultsView: View {
         }
 
         return abs(teamAScore - teamBScore)
+    }
+
+    private var scoreSummary: String {
+        if let winnerName {
+            return "\(winnerName) on top"
+        }
+
+        return "Dead even"
+    }
+
+    private func rowSymbol(for name: String, isWinner: Bool) -> String {
+        if winnerName == nil {
+            return name == teamAName ? "equal.circle.fill" : "equal.circle"
+        }
+
+        return isWinner ? "crown.fill" : "flag.fill"
+    }
+
+    private func rowStatus(for name: String, isWinner: Bool) -> String {
+        if winnerName == nil {
+            return "Still level"
+        }
+
+        return isWinner ? "Winner" : "Runner-up"
+    }
+
+    private func rowBackground(for name: String, isWinner: Bool) -> Color {
+        if winnerName == nil {
+            return Color.tapTenWarmCard.opacity(0.82)
+        }
+
+        return isWinner ? Color.tapTenCelebrationGold.opacity(0.22) : Color.tapTenWarmCard.opacity(0.7)
     }
 }
 

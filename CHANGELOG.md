@@ -15,6 +15,7 @@
   - Settings now owns persistent defaults for rounds per team and round duration
   - New Game now focuses on team names, category filters, and difficulty tiers
   - Home now shows a lighter live `Current settings` summary and gives larger visual weight to its main actions
+  - New Game now keeps `Start Game` pinned to the bottom so hosts can start without scrolling to the end of setup
 - UI polish pass:
   - Home settings button now uses simpler native toolbar chrome
   - New Game now uses warm card-based setup sections instead of a plain settings-style form
@@ -24,9 +25,11 @@
   - Round Summary verdict is larger and more characterful, while source/report tools now sit together beside the question with matched icon treatment
   - Round Summary progression iconography now matches the rest of the game-flow CTA styling
   - in-game `End Game` confirmation is anchored to its toolbar action instead of using a visually misleading tip direction
+  - Final Results now uses a stronger hero/score layout and a clearer `Home` secondary action instead of the previous setup-return action
 
 ### Fixed
 - Settings no longer crashes when changing rounds or timer defaults from the gear flow.
+- New Game no longer relies on a `safeAreaInset` bottom CTA, reducing the risk of navigation-transition instability on push/pop.
 
 ### Docs
 - Updated `PROJECT_BACKLOG.md`, `PROJECT_BRIEF.md`, `README.md`, and `RELEASE_CHECKLIST.md` to reflect the new Settings/New Game responsibility split and the shipped reporting flow.

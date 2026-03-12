@@ -157,7 +157,7 @@ Example answers:
 - Team names
 - Category include/exclude
 - Difficulty include/exclude
-- Start game
+- Keep `Start Game` easy to reach without scrolling to the bottom of the screen
 
 ### Round Intro
 - Show whose turn it is
@@ -188,7 +188,7 @@ Example answers:
 
 ### Final Results
 - Show winner and final scores
-- Replay or start a new game
+- Replay or return Home
 
 ## Technical direction
 ### Tech choices

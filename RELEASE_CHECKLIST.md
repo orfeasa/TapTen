@@ -29,6 +29,7 @@ Run one full game (at least 2 rounds per team) and verify:
   - Team names are editable and validation errors are clear.
   - Rounds/timer controls are not shown in setup.
   - Category and difficulty filters behave correctly.
+  - `Start Game` remains visible without scrolling to the end of setup.
   - Start fails with a clear message if filters produce no playable pool.
 - [ ] Settings:
   - Changing default rounds/timer does not crash.
@@ -47,7 +48,7 @@ Run one full game (at least 2 rounds per team) and verify:
   - `Report Question` opens the feedback sheet, shows category/difficulty/source, and can prepare the correct reason-specific email draft.
 - [ ] Final Results:
   - Winner/runner-up display is correct.
-  - `Start New Game` returns to setup (not Home).
+  - `Home` returns to the Home screen.
   - `Play Again` starts a fresh game with scores reset.
 
 ## 4) Feedback and Accessibility Spot Check

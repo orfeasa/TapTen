@@ -7,104 +7,107 @@ struct NewGameView: View {
     @State private var startGameErrorMessage: String?
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
-                introHeader
+        ZStack(alignment: .bottom) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
+                    introHeader
 
-                sectionCard(
-                    title: "Teams",
-                    subtitle: "Name both sides before the guesses start.",
-                    systemImage: "person.2.fill",
-                    tint: .tapTenPlayfulOrange
-                ) {
-                    VStack(spacing: 12) {
-                        teamField(
-                            title: "Team A",
-                            placeholder: "Enter Team A name",
-                            text: $viewModel.settings.teamAName
-                        )
+                    sectionCard(
+                        title: "Teams",
+                        subtitle: "Name both sides before the guesses start.",
+                        systemImage: "person.2.fill",
+                        tint: .tapTenPlayfulOrange
+                    ) {
+                        VStack(spacing: 12) {
+                            teamField(
+                                title: "Team A",
+                                placeholder: "Enter Team A name",
+                                text: $viewModel.settings.teamAName
+                            )
 
-                        teamField(
-                            title: "Team B",
-                            placeholder: "Enter Team B name",
-                            text: $viewModel.settings.teamBName
-                        )
-                    }
-                }
-
-                sectionCard(
-                    title: "Categories",
-                    subtitle: "Pick the packs in play.",
-                    systemImage: "books.vertical.fill",
-                    tint: .tapTenPlayfulBlue,
-                    badgeText: "\(viewModel.includedCategoryCount) selected"
-                ) {
-                    VStack(spacing: 0) {
-                        ForEach(Array(viewModel.categories.enumerated()), id: \.element.id) { index, category in
-                            toggleRow(
-                                title: category.name,
-                                isOn: Binding(
-                                    get: { viewModel.isCategoryIncluded(category) },
-                                    set: { isIncluded in
-                                        viewModel.setCategory(category, included: isIncluded)
-                                    }
-                                ),
-                                showsDivider: index < viewModel.categories.count - 1
+                            teamField(
+                                title: "Team B",
+                                placeholder: "Enter Team B name",
+                                text: $viewModel.settings.teamBName
                             )
                         }
-
-                        bulkToggleActions(
-                            includeTitle: "Include All",
-                            excludeTitle: "Exclude All",
-                            includeAction: viewModel.includeAllCategories,
-                            excludeAction: viewModel.excludeAllCategories
-                        )
                     }
-                }
 
-                sectionCard(
-                    title: "Difficulty",
-                    subtitle: "Mix the easy wins with the risky ones.",
-                    systemImage: "dial.medium.fill",
-                    tint: .tapTenPlayfulPink,
-                    badgeText: "\(viewModel.includedDifficultyTiers.count) selected"
-                ) {
-                    VStack(spacing: 0) {
-                        ForEach(Array(QuestionDifficulty.allCases.enumerated()), id: \.element) { index, difficulty in
-                            toggleRow(
-                                title: difficulty.displayName,
-                                isOn: Binding(
-                                    get: { viewModel.isDifficultyIncluded(difficulty) },
-                                    set: { isIncluded in
-                                        viewModel.setDifficulty(difficulty, included: isIncluded)
-                                    }
-                                ),
-                                showsDivider: index < QuestionDifficulty.allCases.count - 1
+                    sectionCard(
+                        title: "Categories",
+                        subtitle: "Pick the packs in play.",
+                        systemImage: "books.vertical.fill",
+                        tint: .tapTenPlayfulBlue,
+                        badgeText: "\(viewModel.includedCategoryCount) selected"
+                    ) {
+                        VStack(spacing: 0) {
+                            ForEach(Array(viewModel.categories.enumerated()), id: \.element.id) { index, category in
+                                toggleRow(
+                                    title: category.name,
+                                    isOn: Binding(
+                                        get: { viewModel.isCategoryIncluded(category) },
+                                        set: { isIncluded in
+                                            viewModel.setCategory(category, included: isIncluded)
+                                        }
+                                    ),
+                                    showsDivider: index < viewModel.categories.count - 1
+                                )
+                            }
+
+                            bulkToggleActions(
+                                includeTitle: "Include All",
+                                excludeTitle: "Exclude All",
+                                includeAction: viewModel.includeAllCategories,
+                                excludeAction: viewModel.excludeAllCategories
                             )
                         }
+                    }
 
-                        bulkToggleActions(
-                            includeTitle: "Include All",
-                            excludeTitle: "Exclude All",
-                            includeAction: viewModel.includeAllDifficulties,
-                            excludeAction: viewModel.excludeAllDifficulties
-                        )
+                    sectionCard(
+                        title: "Difficulty",
+                        subtitle: "Mix the easy wins with the risky ones.",
+                        systemImage: "dial.medium.fill",
+                        tint: .tapTenPlayfulPink,
+                        badgeText: "\(viewModel.includedDifficultyTiers.count) selected"
+                    ) {
+                        VStack(spacing: 0) {
+                            ForEach(Array(QuestionDifficulty.allCases.enumerated()), id: \.element) { index, difficulty in
+                                toggleRow(
+                                    title: difficulty.displayName,
+                                    isOn: Binding(
+                                        get: { viewModel.isDifficultyIncluded(difficulty) },
+                                        set: { isIncluded in
+                                            viewModel.setDifficulty(difficulty, included: isIncluded)
+                                        }
+                                    ),
+                                    showsDivider: index < QuestionDifficulty.allCases.count - 1
+                                )
+                            }
+
+                            bulkToggleActions(
+                                includeTitle: "Include All",
+                                excludeTitle: "Exclude All",
+                                includeAction: viewModel.includeAllDifficulties,
+                                excludeAction: viewModel.excludeAllDifficulties
+                            )
+                        }
+                    }
+
+                    if let validationMessage = viewModel.validationMessage ?? startGameErrorMessage {
+                        validationCard(message: validationMessage)
                     }
                 }
-
-                if let validationMessage = viewModel.validationMessage ?? startGameErrorMessage {
-                    validationCard(message: validationMessage)
-                }
-
-                startGameButton
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
+                .padding(.bottom, 110)
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 20)
-            .padding(.bottom, 32)
+
+            bottomActionBar
         }
         .navigationTitle("New Game")
         .navigationBarTitleDisplayMode(.inline)
         .background(newGameBackground)
+        .ignoresSafeArea(.container, edges: .bottom)
         .navigationDestination(
             isPresented: Binding(
                 get: { gameFlowViewModel != nil },
@@ -166,6 +169,19 @@ private extension NewGameView {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
+    var bottomActionBar: some View {
+        VStack(spacing: 0) {
+            Divider()
+                .opacity(0.08)
+
+            startGameButton
+                .padding(.horizontal, 20)
+                .padding(.top, 10)
+                .padding(.bottom, 8)
+        }
+        .background(Color.tapTenWarmBackground.opacity(0.96))
+    }
+
     var startGameButton: some View {
         Button(action: startGame) {
             Text("Start Game")
@@ -198,13 +214,6 @@ private extension NewGameView {
         }
         .buttonStyle(.plain)
         .disabled(!viewModel.canStartGame)
-        .padding(6)
-        .background(Color.tapTenWarmCard.opacity(0.92), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .stroke(Color.white.opacity(0.36), lineWidth: 1)
-        )
-        .padding(.top, 6)
     }
 
     var newGameBackground: some View {

@@ -20,7 +20,7 @@
   - Accessibility pass completed for Dynamic Type and VoiceOver on core game-flow controls.
   - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
   - Playful color pass applied; controls use warmer accents and prominent action tinting now aligns with Home’s orange-led palette.
-  - Latest polish pass refined New Game into warm setup cards, aligned in-flow CTA styling, reduced Host Round pause emphasis, and increased Round Summary verdict emphasis while grouping source/report tools beside the summary question.
+  - Latest polish pass refined New Game into warm setup cards with a pinned `Start Game` action, aligned in-flow CTA styling, reduced Host Round pause emphasis, and increased Round Summary verdict emphasis while grouping source/report tools beside the summary question.
 - Release readiness: Not ready for content freeze; gameplay loop is stable, but remaining UX polish and final editorial QA are still open.
 
 ## Active Decisions
@@ -37,7 +37,7 @@
 - Setup category selection should expose all 12 shipped categories.
 - Setup difficulty filtering is multi-select (`easy`, `medium`, `hard`) with all tiers enabled by default.
 - End-game actions should use native destructive confirmation dialog patterns.
-- Final Results secondary action should be label/destination aligned (`Start New Game` to setup flow), not presented as `Home`.
+- Final Results secondary action should be label/destination aligned (`Home` to Home), while `Play Again` remains the primary replay action.
 - Round Summary CTA labels should be state-specific (`Next Round` / `Continue to Final Results`).
 - Settings should stay visually aligned with the warm app theme and use native control styling.
 - Question feedback v1 should use a prefilled email flow rather than backend submission.
@@ -119,9 +119,9 @@
   - Area: `Views/GameFlow/GameFlowView`, `Views/NewGame/NewGameView`
   - Goal: Ensure Final Results secondary action text matches its destination behavior.
   - Acceptance Criteria:
-    - Final Results secondary button is labeled `Start New Game`.
-    - Tapping it exits the finished flow and returns to New Game setup.
-    - Post-game actions no longer imply a Home destination when they open setup.
+    - Final Results secondary button is labeled `Home`.
+    - Tapping it exits the finished flow and returns to Home.
+    - Post-game actions no longer imply a setup destination when they return Home.
 
 - [x] TASK: Add automated content audit check for regression prevention
   - Type: QA / Tooling

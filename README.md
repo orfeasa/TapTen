@@ -15,7 +15,7 @@ Two teams play on one device. One team answers out loud while the other team hos
 - Playful-but-clear in-app tone for supporting copy and verdicts.
 - Cleaner Home with focused hero copy, a native toolbar gear, live `Current settings` chips, one strong primary CTA, larger secondary actions, and a separate `How To Play` sheet.
 - Home includes a native `Browse Question Packs` screen with category and pack-level counts.
-- New Game focuses on team names, category filters, and difficulty tiers, while rounds/timer live in Settings defaults and the setup screen uses warmer card-based grouping instead of a plain settings form.
+- New Game focuses on team names, category filters, and difficulty tiers, while rounds/timer live in Settings defaults and the setup screen uses warmer card-based grouping plus a pinned bottom `Start Game` action so the main CTA stays visible.
 - Pass-device handoff flow between rounds with clear answering/hosting emphasis and a playful primary `Start Round` CTA.
 - Host round with:
   - visible question and all 10 answers
@@ -31,7 +31,7 @@ Two teams play on one device. One team answers out loud while the other team hos
   - source-link icon available once the round ends
 - Round summary with stronger points-first hierarchy, a larger verdict moment, scoreboard, and matched source/report tool actions anchored beside the question.
 - Round summary includes a low-emphasis `Report` flow that opens a native feedback sheet, shows question details (`category`, `difficulty`, `source`), and prepares a reason-specific email draft for `too easy`, `too difficult`, `wrong category`, `inappropriate`, or `other`.
-- Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Start New Game`).
+- Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Home`).
 - Shared theme tokens for warm background/card, celebration gold, reveal green, and playful accent colors used for controls and prominent gradient capsule CTAs.
 - Minimal v1 Settings screen (`sounds`, `haptics`, default rounds, default timer) plus safe in-game end confirmation.
   - Settings is available from Home via the toolbar gear button.
