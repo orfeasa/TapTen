@@ -286,10 +286,10 @@
     - Added Dynamic Type scaling refinements and VoiceOver hints/combined semantics across core flow.
     - Keep manual large-text smoke checks in `RELEASE_CHECKLIST.md` before release.
 
-- [ ] TASK: Verify pushed-screen back navigation chrome on target iOS versions
+- [x] TASK: Verify pushed-screen back navigation chrome on target iOS versions
   - Type: UX / Verification
   - Priority: P2
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/NewGame`, `Views/Home/SettingsView`, shared navigation patterns
   - Goal: Confirm whether any non-standard pushed-screen back chrome is app-owned or simply current system navigation styling.
   - Acceptance Criteria:
@@ -298,7 +298,8 @@
     - If the circular appearance is system-provided, no unnecessary app-side workaround is added.
   - Notes:
     - Current code review shows no custom back button implementation in `New Game` or `Settings`.
-    - Revisit only if target-device screenshots show behavior that is truly inconsistent with native navigation for the release OS.
+    - Current screenshots match system-provided pushed-screen navigation chrome on the release OS, so no app-side workaround was added.
+    - Revisit only if future target-device screenshots show behavior that is truly inconsistent with native navigation for the release OS.
 
 - [x] TASK: Polish How To Play presentation
   - Type: UX
