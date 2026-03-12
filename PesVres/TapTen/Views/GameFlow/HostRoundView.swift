@@ -183,26 +183,46 @@ struct HostRoundView: View {
     }
 
     private var roundControls: some View {
-        Button {
+        Group {
             if viewModel.isRoundFinished {
-                onRoundFinished?()
+                Button {
+                    onRoundFinished?()
+                } label: {
+                    Label("Continue to Summary", systemImage: "arrow.right.circle.fill")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity, minHeight: 52)
+                }
+                .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
             } else {
-                viewModel.togglePause()
+                HStack {
+                    Spacer(minLength: 0)
+
+                    Button {
+                        viewModel.togglePause()
+                    } label: {
+                        Label(
+                            viewModel.isPaused ? "Resume" : "Pause",
+                            systemImage: viewModel.isPaused ? "play.fill" : "pause.fill"
+                        )
+                        .font(.subheadline.weight(.semibold))
+                        .padding(.horizontal, 18)
+                        .frame(minWidth: 132, minHeight: 44)
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(viewModel.isPaused ? Color.tapTenPlayfulOrange : .primary)
+                    .background(.thinMaterial, in: Capsule(style: .continuous))
+                    .overlay(
+                        Capsule(style: .continuous)
+                            .stroke(
+                                Color.tapTenPlayfulOrange.opacity(viewModel.isPaused ? 0.28 : 0.16),
+                                lineWidth: 1
+                            )
+                    )
+
+                    Spacer(minLength: 0)
+                }
             }
-        } label: {
-            Label(
-                viewModel.isRoundFinished
-                    ? "Continue to Summary"
-                    : (viewModel.isPaused ? "Resume" : "Pause"),
-                systemImage: viewModel.isRoundFinished
-                    ? "arrow.right.circle.fill"
-                    : (viewModel.isPaused ? "play.fill" : "pause.fill")
-            )
-            .font(.subheadline.weight(.semibold))
-            .frame(maxWidth: .infinity)
         }
-        .controlSize(.large)
-        .buttonStyle(.borderedProminent)
         .frame(maxWidth: .infinity)
         .accessibilityHint(
             viewModel.isRoundFinished

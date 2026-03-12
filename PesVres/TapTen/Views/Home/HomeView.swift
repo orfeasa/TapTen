@@ -26,12 +26,7 @@ struct HomeView: View {
                     Image(systemName: "gearshape")
                         .font(.headline.weight(.semibold))
                         .foregroundStyle(Color.tapTenPlayfulBlue)
-                        .frame(width: 36, height: 36)
-                        .background(.ultraThinMaterial, in: Circle())
-                        .overlay(
-                            Circle()
-                                .stroke(Color.tapTenPlayfulViolet.opacity(0.26), lineWidth: 1)
-                        )
+                        .frame(width: 32, height: 32)
                 }
                 .accessibilityLabel("Settings")
             }

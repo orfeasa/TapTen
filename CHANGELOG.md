@@ -12,7 +12,14 @@
 - Setup ownership and navigation:
   - Settings now owns persistent defaults for rounds per team and round duration
   - New Game now focuses on team names, category filters, and difficulty tiers
-  - Home removed the redundant default-setup summary and gives larger visual weight to its remaining actions
+  - Home now shows a lighter live `Current settings` summary and gives larger visual weight to its main actions
+- UI polish pass:
+  - Home settings button now uses simpler native toolbar chrome
+  - New Game now uses warm card-based setup sections instead of a plain settings-style form
+  - Pass Device and other warm screens now use softer radial background color fields without visible gradient seams
+  - in-flow `Start Round` and `Continue to Summary` CTAs now use the shared playful gradient capsule treatment
+  - active Host Round `Pause` / `Resume` is now a lower-emphasis utility control
+  - Round Summary verdict is larger and more characterful, while the feedback action is reduced to a small utility `Report` button
 
 ### Fixed
 - Settings no longer crashes when changing rounds or timer defaults from the gear flow.

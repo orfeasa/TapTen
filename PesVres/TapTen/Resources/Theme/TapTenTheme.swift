@@ -24,3 +24,38 @@ extension Color {
     static let tapTenPlayfulViolet = Color(uiColor: UIColor(red: 0.60, green: 0.49, blue: 0.93, alpha: 1.0))
     static let tapTenPlayfulMint = Color(uiColor: UIColor(red: 0.21, green: 0.74, blue: 0.63, alpha: 1.0))
 }
+
+struct TapTenPrimaryCapsuleButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundStyle(.white)
+            .background {
+                ZStack {
+                    Capsule(style: .continuous)
+                        .fill(.ultraThinMaterial)
+
+                    Capsule(style: .continuous)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color.tapTenPlayfulOrange.opacity(isEnabled ? 0.96 : 0.58),
+                                    Color.tapTenPlayfulPink.opacity(isEnabled ? 0.84 : 0.48)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                }
+            }
+            .overlay(
+                Capsule(style: .continuous)
+                    .stroke(Color.white.opacity(0.40), lineWidth: 1)
+            )
+            .shadow(color: Color.tapTenPlayfulOrange.opacity(isEnabled ? 0.18 : 0), radius: 10, y: 6)
+            .scaleEffect(configuration.isPressed ? 0.985 : 1.0)
+            .opacity(isEnabled ? 1 : 0.84)
+            .animation(.easeOut(duration: 0.14), value: configuration.isPressed)
+    }
+}

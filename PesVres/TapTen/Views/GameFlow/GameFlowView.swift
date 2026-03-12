@@ -68,21 +68,24 @@ struct GameFlowView: View {
                     Button("End Game", role: .destructive) {
                         isShowingEndGameConfirmation = true
                     }
+                    .popover(
+                        isPresented: $isShowingEndGameConfirmation,
+                        attachmentAnchor: .rect(.bounds),
+                        arrowEdge: .top
+                    ) {
+                        EndGameConfirmationPopover(
+                            cancelAction: {
+                                isShowingEndGameConfirmation = false
+                            },
+                            confirmAction: {
+                                isShowingEndGameConfirmation = false
+                                returnHome()
+                            }
+                        )
+                    }
                     .accessibilityHint("End the current game and return to Home.")
                 }
             }
-        }
-        .confirmationDialog(
-            "End this game?",
-            isPresented: $isShowingEndGameConfirmation,
-            titleVisibility: .visible
-        ) {
-            Button("End Game", role: .destructive) {
-                returnHome()
-            }
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("This will end the current game and return Home.")
         }
         .tint(.tapTenPlayfulOrange)
     }
@@ -117,6 +120,34 @@ struct GameFlowView: View {
     }
 }
 
+private struct EndGameConfirmationPopover: View {
+    let cancelAction: () -> Void
+    let confirmAction: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("End this game?")
+                .font(.headline)
+
+            Text("This will end the current game and return Home.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+
+            HStack(spacing: 10) {
+                Button("Cancel", action: cancelAction)
+                    .buttonStyle(.bordered)
+
+                Button("End Game", role: .destructive, action: confirmAction)
+                    .buttonStyle(.borderedProminent)
+                    .tint(.red)
+            }
+        }
+        .padding(18)
+        .frame(width: 260)
+        .presentationCompactAdaptation(.popover)
+    }
+}
+
 private struct PassDeviceView: View {
     let roundProgressText: String
     let answeringTeamName: String
@@ -136,10 +167,13 @@ private struct PassDeviceView: View {
                     .opacity(showContent ? 1 : 0)
                     .offset(y: showContent ? 0 : 10)
 
-                Button("Start Round", action: startAction)
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                    .frame(maxWidth: .infinity, minHeight: 56)
+                Button(action: startAction) {
+                    Text("Start Round")
+                        .font(.headline.weight(.semibold))
+                        .padding(.horizontal, 28)
+                        .frame(minHeight: 56)
+                }
+                .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
             }
 
             Spacer(minLength: 12)
@@ -221,16 +255,40 @@ private struct PassDeviceView: View {
     var passDeviceBackground: some View {
         ZStack(alignment: .top) {
             Color.tapTenWarmBackground
-            LinearGradient(
-                colors: [
-                    Color.tapTenPlayfulOrange.opacity(0.10),
-                    Color.tapTenPlayfulPink.opacity(0.06),
-                    .clear
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .frame(height: 220)
+
+            Ellipse()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            Color.tapTenPlayfulOrange.opacity(0.16),
+                            Color.tapTenPlayfulPink.opacity(0.08),
+                            .clear
+                        ],
+                        center: .center,
+                        startRadius: 12,
+                        endRadius: 220
+                    )
+                )
+                .frame(width: 380, height: 240)
+                .blur(radius: 18)
+                .offset(x: -64, y: -104)
+
+            Ellipse()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            Color.tapTenPlayfulPink.opacity(0.08),
+                            Color.tapTenPlayfulViolet.opacity(0.06),
+                            .clear
+                        ],
+                        center: .center,
+                        startRadius: 12,
+                        endRadius: 200
+                    )
+                )
+                .frame(width: 340, height: 220)
+                .blur(radius: 20)
+                .offset(x: 92, y: -116)
         }
         .ignoresSafeArea()
     }
@@ -308,18 +366,18 @@ private struct RoundSummaryView: View {
                 .scaleEffect(animateHero ? 1 : 0.97)
                 .opacity(animateHero ? 1 : 0.88)
 
-                HStack(spacing: 8) {
-                    Image(systemName: "sparkles")
-                        .font(.subheadline.weight(.semibold))
+                VStack(spacing: 10) {
+                    Label("Verdict", systemImage: "sparkles")
+                        .font(.caption.weight(.semibold))
                         .foregroundStyle(Color.tapTenCelebrationGold)
 
                     Text(summary.sassyComment)
-                        .font(.subheadline.weight(.semibold))
-                        .multilineTextAlignment(.leading)
+                        .font(.title3.weight(.bold))
+                        .multilineTextAlignment(.center)
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 11)
+                .padding(.horizontal, 18)
+                .padding(.vertical, 16)
                 .background(
                     LinearGradient(
                         colors: [Color.tapTenCelebrationGold.opacity(0.16), Color.tapTenPlayfulOrange.opacity(0.1)],
@@ -335,17 +393,19 @@ private struct RoundSummaryView: View {
                 .opacity(showVerdict ? 1 : 0)
                 .offset(y: showVerdict ? 0 : 6)
 
-                Button {
-                    isShowingFeedbackSheet = true
-                } label: {
-                    Label("Report Question", systemImage: "flag.badge.ellipsis")
-                        .font(.subheadline.weight(.semibold))
-                        .frame(maxWidth: .infinity)
+                HStack {
+                    Spacer()
+
+                    Button {
+                        isShowingFeedbackSheet = true
+                    } label: {
+                        Label("Report", systemImage: "flag.badge.ellipsis")
+                            .font(.caption.weight(.semibold))
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                    .accessibilityHint("Open question feedback options.")
                 }
-                .buttonStyle(.bordered)
-                .controlSize(.large)
-                .frame(maxWidth: .infinity)
-                .accessibilityHint("Open question feedback options.")
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Match Score")

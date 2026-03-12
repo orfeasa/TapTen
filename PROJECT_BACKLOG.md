@@ -12,6 +12,7 @@
   - New Game now supports difficulty-tier filtering and preflight validation for empty playable pools.
   - Runtime round feedback now respects `Sounds` and `Haptics` settings.
   - Home now includes a native pack browser showing category coverage and pack-level counts.
+  - Home now shows live current-settings chips and uses simpler native toolbar/settings chrome.
   - Legacy mixed pack files were consolidated into one-category pack files.
   - Debug-only round telemetry now records category/answers/points/time-remaining for playtest tuning.
   - A reusable pre-release checklist now exists in `RELEASE_CHECKLIST.md`.
@@ -19,6 +20,7 @@
   - Accessibility pass completed for Dynamic Type and VoiceOver on core game-flow controls.
   - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
   - Playful color pass applied; controls use warmer accents and prominent action tinting now aligns with Home’s orange-led palette.
+  - Latest polish pass refined New Game into warm setup cards, aligned in-flow CTA styling, reduced Host Round pause emphasis, and increased Round Summary verdict emphasis.
 - Release readiness: Not ready for content freeze; gameplay loop is stable, but remaining UX polish and final editorial QA are still open.
 
 ## Active Decisions
@@ -62,6 +64,7 @@
   - Notes:
     - Settings writes now go through explicit setter methods instead of self-mutating property observers.
     - Home still seeds New Game from `AppSettingsStore.shared.defaultGameSettings`, so future drafts pick up new defaults without mutating an already-open setup screen.
+    - Home now shows a lighter current-settings summary rather than the older redundant default-setup strip.
 
 - [x] TASK: Restore Home `How To Play` action interactivity
   - Type: UX / Bug
