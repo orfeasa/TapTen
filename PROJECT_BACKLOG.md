@@ -5,7 +5,7 @@
 - Current state:
   - Home, New Game, Pass Device, Host Round, Round Summary, Final Results, and Settings are implemented.
   - Settings now safely owns persistent defaults for rounds/timer, while New Game focuses on team names, categories, and difficulty tiers.
-  - Host Round supports timer, pause/resume, source link after time-up, and answer tap toggling.
+  - Host Round supports timer, pause/resume, source/report actions after time-up, and answer tap toggling.
   - Question pack loader validates richer metadata and difficulty score/tier consistency.
   - Question content now covers all 12 target categories with 12 questions each and exact 4 easy / 4 medium / 4 hard spread.
   - Setup category picker now reflects all 12 shipped categories.
@@ -20,7 +20,7 @@
   - Accessibility pass completed for Dynamic Type and VoiceOver on core game-flow controls.
   - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
   - Playful color pass applied; controls use warmer accents and prominent action tinting now aligns with Home’s orange-led palette.
-  - Latest polish pass refined New Game into warm setup cards with a pinned `Start Game` action, aligned in-flow CTA styling, reduced Host Round pause emphasis, and increased Round Summary verdict emphasis while grouping source/report tools beside the summary question.
+  - Latest polish pass refined New Game into warm setup cards with a pinned `Start Game` action, aligned in-flow CTA styling, reduced Host Round pause emphasis, moved source/report into the Host Round time-up state, simplified Round Summary, and fixed `Home` navigation to exit the full finished-game flow.
 - Release readiness: Not ready for content freeze; gameplay loop is stable, but remaining UX polish and final editorial QA are still open.
 
 ## Active Decisions
@@ -40,7 +40,8 @@
 - Final Results secondary action should be label/destination aligned (`Home` to Home), while `Play Again` remains the primary replay action.
 - Round Summary CTA labels should be state-specific (`Next Round` / `Continue to Final Results`).
 - Settings should stay visually aligned with the warm app theme and use native control styling.
-- Question feedback v1 should use a prefilled email flow rather than backend submission.
+- Seamless question reporting should move from email drafting to direct in-app submission against a lightweight HTTPS endpoint.
+- This reporting flow is an intentional exception to the broader "no network dependencies in v1" constraint because it removes app-switching and deferred follow-up for players.
 - Settings changes should affect future setup defaults only, not mutate an already-open New Game draft.
 
 ## Backlog
@@ -142,7 +143,7 @@
   - Type: Feature / Content QA
   - Priority: P1
   - Status: Completed
-  - Area: `Views/GameFlow`, round summary / post-timeup review, local feedback composition
+  - Area: `Views/GameFlow`, post-timeup review, local feedback composition
   - Goal: Let hosts flag unclear, outdated, duplicate, or low-quality questions without interrupting active play.
   - Acceptance Criteria:
     - `Report Question` or equivalent is available after active play, not during countdown.
@@ -153,8 +154,27 @@
     - Included metadata covers pack name, question ID, prompt, source URL, difficulty tier, app version, selected reason, and note.
     - The feedback entry point does not weaken the main continue/progression CTA.
   - Notes:
-    - v1 entry point lives on `Round Summary` to keep active and time-up host states uncluttered.
+    - v1 entry point now lives on Host Round after time-up, beside `View Source`, so the host can review/report before moving on.
     - Feedback drafts currently target `tapten-reports@orfeasa.com` via `QuestionFeedbackComposer`.
+    - This flow is now considered transitional and should be replaced by direct in-app submission.
+
+- [ ] TASK: Replace email-based question reporting with seamless in-app submission
+  - Type: Feature / Content QA / Technical
+  - Priority: P1
+  - Status: Planned
+  - Area: `Views/GameFlow`, question feedback flow, lightweight networking, local retry queue
+  - Goal: Let hosts report a question in-app without opening Mail or requiring any later export/follow-up.
+  - Acceptance Criteria:
+    - `Report Question` remains available only after active countdown play.
+    - Submitting a report sends it directly from the app to a lightweight HTTPS endpoint with no app switch.
+    - If the device is offline or the request fails, the report is saved locally and retried automatically later.
+    - The user sees a small native confirmation state such as `Report sent` or `Saved, will send when online`.
+    - The report payload includes pack metadata, question ID, prompt, category, difficulty tier, validation style, source URL, selected reason, optional note, app version, and timestamp.
+    - The app-side submission layer stays narrow in scope and does not introduce remote pack fetching or broader gameplay networking.
+  - Notes:
+    - Preferred backend shape is a minimal serverless endpoint, not a general-purpose app backend.
+    - Cloudflare Workers, Supabase Edge Functions, or Firebase Functions are acceptable patterns.
+    - Endpoint ownership/infrastructure will be provided externally; app work should keep the transport isolated behind a small service.
 
 - [x] TASK: Refresh Settings layout to native control language
   - Type: UX

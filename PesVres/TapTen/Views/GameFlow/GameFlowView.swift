@@ -20,9 +20,11 @@ struct GameFlowView: View {
                 )
 
             case .hostRound:
-                if let hostRoundViewModel = viewModel.hostRoundViewModel {
+                if let hostRoundViewModel = viewModel.hostRoundViewModel,
+                   let feedbackContext = viewModel.currentQuestionFeedbackContext {
                     HostRoundView(
                         viewModel: hostRoundViewModel,
+                        feedbackContext: feedbackContext,
                         hapticsEnabled: settingsStore.hapticsEnabled,
                         onRoundFinished: viewModel.finalizeActiveRoundIfNeeded
                     )
@@ -295,7 +297,6 @@ private struct PassDeviceView: View {
 }
 
 private struct RoundSummaryView: View {
-    @Environment(\.openURL) private var openURL
     let summary: GameFlowViewModel.RoundSummary
     let teamAName: String
     let teamAScore: Int
@@ -305,8 +306,6 @@ private struct RoundSummaryView: View {
     let continueAction: () -> Void
     @State private var animateHero = false
     @State private var showVerdict = false
-    @State private var isShowingFeedbackSheet = false
-    @State private var feedbackFallbackMessage: String?
 
     var body: some View {
         ScrollView {
@@ -314,36 +313,12 @@ private struct RoundSummaryView: View {
                 Text("Round \(summary.roundNumber) Wrapped")
                     .font(.title2.weight(.bold))
 
-                HStack(alignment: .top, spacing: 10) {
-                    Text(summary.prompt)
-                        .font(.headline)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                    HStack(spacing: 8) {
-                        Link(destination: summary.sourceURL) {
-                            questionToolIcon(
-                                systemImage: "safari",
-                                tint: .tapTenPlayfulBlue
-                            )
-                        }
-                        .accessibilityLabel("Open question source")
-
-                        Button {
-                            isShowingFeedbackSheet = true
-                        } label: {
-                            questionToolIcon(
-                                systemImage: "flag.badge.ellipsis",
-                                tint: .tapTenPlayfulOrange
-                            )
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Report question")
-                        .accessibilityHint("Open question feedback options.")
-                    }
-                }
-                .padding()
-                .background(Color.tapTenWarmCard, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                Text(summary.prompt)
+                    .font(.headline)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                    .background(Color.tapTenWarmCard, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
 
                 VStack(spacing: 8) {
                     Text(summary.answeringTeamName)
@@ -429,40 +404,6 @@ private struct RoundSummaryView: View {
         .navigationTitle("Round Summary")
         .navigationBarTitleDisplayMode(.inline)
         .background(roundSummaryBackground)
-        .sheet(isPresented: $isShowingFeedbackSheet) {
-            QuestionFeedbackSheet(
-                context: summary.feedbackContext,
-                onSubmit: { composer in
-                    guard let emailURL = composer.emailURL else {
-                        UIPasteboard.general.string = composer.body
-                        feedbackFallbackMessage = "Couldn't prepare the email draft. Feedback details were copied instead."
-                        return
-                    }
-
-                    openURL(emailURL) { accepted in
-                        if accepted {
-                            isShowingFeedbackSheet = false
-                            return
-                        }
-
-                        UIPasteboard.general.string = composer.body
-                        feedbackFallbackMessage = "Couldn't open Mail. Feedback details were copied instead."
-                    }
-                }
-            )
-        }
-        .alert("Feedback copied", isPresented: Binding(
-            get: { feedbackFallbackMessage != nil },
-            set: { isPresented in
-                if !isPresented {
-                    feedbackFallbackMessage = nil
-                }
-            }
-        )) {
-            Button("OK", role: .cancel) { }
-        } message: {
-            Text(feedbackFallbackMessage ?? "")
-        }
         .onAppear {
             withAnimation(.spring(response: 0.34, dampingFraction: 0.8)) {
                 animateHero = true
@@ -471,22 +412,6 @@ private struct RoundSummaryView: View {
                 showVerdict = true
             }
         }
-    }
-
-    @ViewBuilder
-    private func questionToolIcon(
-        systemImage: String,
-        tint: Color
-    ) -> some View {
-        Image(systemName: systemImage)
-            .font(.headline.weight(.semibold))
-            .foregroundStyle(tint)
-            .frame(width: 36, height: 36)
-            .background(Color(.systemBackground).opacity(0.94), in: Circle())
-            .overlay(
-                Circle()
-                    .stroke(tint.opacity(0.18), lineWidth: 1)
-            )
     }
 
     @ViewBuilder
@@ -515,176 +440,6 @@ private struct RoundSummaryView: View {
             .frame(height: 220)
         }
         .ignoresSafeArea()
-    }
-}
-
-private struct QuestionFeedbackSheet: View {
-    @Environment(\.dismiss) private var dismiss
-
-    let context: QuestionFeedbackContext
-    let onSubmit: (QuestionFeedbackComposer) -> Void
-
-    @State private var selectedReason: QuestionFeedbackReason = .tooEasy
-    @State private var note = ""
-
-    var body: some View {
-        NavigationStack {
-            Form {
-                questionDetailsSection
-                commonReportsSection
-                extraDetailsSection
-                actionsSection
-            }
-            .navigationTitle("Report Question")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-            }
-        }
-    }
-
-    private var canSubmit: Bool {
-        selectedReason != .other || !trimmedNote.isEmpty
-    }
-
-    private var composer: QuestionFeedbackComposer {
-        QuestionFeedbackComposer(
-            context: context,
-            reason: selectedReason,
-            note: note
-        )
-    }
-
-    private var trimmedNote: String {
-        note.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-
-    private var sourceLabel: String {
-        if let host = context.sourceURL.host(), !host.isEmpty {
-            return host
-        }
-
-        return "Open source"
-    }
-
-    @ViewBuilder
-    private var questionDetailsSection: some View {
-        Section("Question Details") {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(context.prompt)
-                    .font(.body.weight(.semibold))
-                    .fixedSize(horizontal: false, vertical: true)
-
-                LabeledContent("Category", value: context.category)
-                    .font(.footnote)
-
-                LabeledContent("Difficulty", value: context.difficultyTier.rawValue.capitalized)
-                    .font(.footnote)
-
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Source")
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(.secondary)
-
-                    Link(destination: context.sourceURL) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "safari")
-                                .foregroundStyle(Color.tapTenPlayfulBlue)
-
-                            Text(sourceLabel)
-                                .font(.subheadline.weight(.semibold))
-                                .lineLimit(1)
-                        }
-                    }
-
-                    Text(context.sourceURL.absoluteString)
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                        .textSelection(.enabled)
-                }
-            }
-            .padding(.vertical, 2)
-        }
-    }
-
-    @ViewBuilder
-    private var commonReportsSection: some View {
-        Section("Common Reports") {
-            ForEach(QuestionFeedbackReason.allCases) { reason in
-                reasonRow(reason)
-            }
-        }
-    }
-
-    @ViewBuilder
-    private var extraDetailsSection: some View {
-        Section(selectedReason == .other ? "Details Required" : "Extra Details") {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(selectedReason == .other ? "Tell us what needs reviewing." : "Add context if it helps.")
-                    .font(.subheadline.weight(.semibold))
-
-                TextEditor(text: $note)
-                    .frame(minHeight: 120)
-            }
-        }
-    }
-
-    @ViewBuilder
-    private var actionsSection: some View {
-        Section {
-            Button {
-                onSubmit(composer)
-            } label: {
-                Label("Open Report Email", systemImage: "envelope.fill")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(!canSubmit)
-
-            Button {
-                UIPasteboard.general.string = composer.body
-                dismiss()
-            } label: {
-                Label("Copy Report Details", systemImage: "doc.on.doc")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
-            .disabled(!canSubmit)
-        }
-    }
-
-    @ViewBuilder
-    private func reasonRow(_ reason: QuestionFeedbackReason) -> some View {
-        Button {
-            selectedReason = reason
-        } label: {
-            HStack(alignment: .top, spacing: 12) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(reason.title)
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(.primary)
-
-                    Text(reason.detail)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-
-                Spacer(minLength: 12)
-
-                Image(systemName: selectedReason == reason ? "checkmark.circle.fill" : "circle")
-                    .font(.title3)
-                    .foregroundStyle(selectedReason == reason ? Color.tapTenPlayfulOrange : Color.secondary.opacity(0.35))
-            }
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(reason.title)
-        .accessibilityValue(selectedReason == reason ? "Selected" : "Not selected")
     }
 }
 

@@ -3,6 +3,7 @@ import SwiftUI
 struct NewGameView: View {
     @Environment(\.dismiss) private var dismiss
     @State var viewModel: NewGameViewModel
+    var onReturnHome: (() -> Void)? = nil
     @State private var gameFlowViewModel: GameFlowViewModel?
     @State private var startGameErrorMessage: String?
 
@@ -122,8 +123,11 @@ struct NewGameView: View {
                 GameFlowView(
                     viewModel: gameFlowViewModel,
                     onReturnHome: {
-                        self.gameFlowViewModel = nil
-                        dismiss()
+                        if let onReturnHome {
+                            onReturnHome()
+                        } else {
+                            dismiss()
+                        }
                     }
                 )
             }

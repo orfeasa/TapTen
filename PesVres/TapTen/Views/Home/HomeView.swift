@@ -4,6 +4,7 @@ struct HomeView: View {
     let viewModel: HomeViewModel
     @State private var settingsStore = AppSettingsStore.shared
     @State private var isShowingHowToPlay = false
+    @State private var isShowingNewGame = false
 
     var body: some View {
         ScrollView {
@@ -33,6 +34,16 @@ struct HomeView: View {
         }
         .sheet(isPresented: $isShowingHowToPlay) {
             HowToPlaySheet()
+        }
+        .navigationDestination(isPresented: $isShowingNewGame) {
+            NewGameView(
+                viewModel: NewGameViewModel(
+                    settings: settingsStore.defaultGameSettings
+                ),
+                onReturnHome: {
+                    isShowingNewGame = false
+                }
+            )
         }
         .background(homeBackground)
     }
@@ -89,12 +100,8 @@ private extension HomeView {
     }
 
     var startGameButton: some View {
-        NavigationLink {
-            NewGameView(
-                viewModel: NewGameViewModel(
-                    settings: settingsStore.defaultGameSettings
-                )
-            )
+        Button {
+            isShowingNewGame = true
         } label: {
             HStack(spacing: 12) {
                 Image(systemName: "play.fill")

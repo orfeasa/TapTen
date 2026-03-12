@@ -28,9 +28,9 @@ Two teams play on one device. One team answers out loud while the other team hos
   - tense final-seconds timer treatment
   - de-emphasized active-round `Pause` / `Resume` utility control
   - clear post-timeup CTA (`Continue to Summary`)
-  - source-link icon available once the round ends
-- Round summary with stronger points-first hierarchy, a larger verdict moment, scoreboard, and matched source/report tool actions anchored beside the question.
-- Round summary includes a low-emphasis `Report` flow that opens a native feedback sheet, shows question details (`category`, `difficulty`, `source`), and prepares a reason-specific email draft for `too easy`, `too difficult`, `wrong category`, `inappropriate`, or `other`.
+  - labeled post-timeup review actions for `View Source` and `Report Question`
+- Round summary with stronger points-first hierarchy, a larger verdict moment, scoreboard, and one clear progression CTA without extra source/report controls.
+- Post-timeup `Report Question` opens a native feedback sheet, shows question details (`category`, `difficulty`, `source`), and prepares a reason-specific email draft for `too easy`, `too difficult`, `wrong category`, `inappropriate`, or `other`.
 - Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Home`).
 - Shared theme tokens for warm background/card, celebration gold, reveal green, and playful accent colors used for controls and prominent gradient capsule CTAs.
 - Minimal v1 Settings screen (`sounds`, `haptics`, default rounds, default timer) plus safe in-game end confirmation.

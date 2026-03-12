@@ -174,12 +174,13 @@ Example answers:
 - Show all 10 answers to the host
 - Make answer taps fast and forgiving
 - Keep active controls simple (`Pause`/`Resume`) and provide clear post-timeup `Continue to Summary`
+- After time-up, keep source/report actions available to the host before they continue
 
 ### Round Summary
 - Show answers found
 - Show missed answers
 - Show points earned this round
-- Show optional source link
+- Keep the screen focused on performance, verdict, and progression
 
 ### Scoreboard
 - Show both team totals

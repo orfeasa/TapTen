@@ -3,7 +3,7 @@
 ## 2026-03-12
 
 ### Added
-- Round Summary `Report Question` flow with:
+- Post-timeup Host Round `Report Question` flow with:
   - native feedback sheet
   - question details (`category`, `difficulty`, `source`)
   - reason selection for `Too easy`, `Too difficult`, `Wrong category`, `Inappropriate`, or `Other`
@@ -22,14 +22,18 @@
   - Pass Device and other warm screens now use softer radial background color fields without visible gradient seams
   - in-flow `Start Round` and `Continue to Summary` CTAs now use the shared playful gradient capsule treatment
   - active Host Round `Pause` / `Resume` is now a lower-emphasis utility control
-  - Round Summary verdict is larger and more characterful, while source/report tools now sit together beside the question with matched icon treatment
+  - Host Round time-up review now carries labeled `View Source` and `Report Question` actions, while Round Summary stays focused on points, verdict, score, and progression
+  - Round Summary verdict is larger and more characterful
   - Round Summary progression iconography now matches the rest of the game-flow CTA styling
   - in-game `End Game` confirmation is anchored to its toolbar action instead of using a visually misleading tip direction
   - Final Results now uses a stronger hero/score layout and a clearer `Home` secondary action instead of the previous setup-return action
+  - Final Results `Home` now exits the full finished-game flow back to Home instead of landing on `New Game`
 
 ### Fixed
 - Settings no longer crashes when changing rounds or timer defaults from the gear flow.
 - New Game no longer relies on a `safeAreaInset` bottom CTA, reducing the risk of navigation-transition instability on push/pop.
+- Host Round time-up layout no longer clips long question text under the review panel.
+- Report sheet action layout no longer shows an awkward separator between its two utility buttons.
 
 ### Docs
 - Updated `PROJECT_BACKLOG.md`, `PROJECT_BRIEF.md`, `README.md`, and `RELEASE_CHECKLIST.md` to reflect the new Settings/New Game responsibility split and the shipped reporting flow.
@@ -49,7 +53,7 @@
 
 ### Changed
 - Game setup and flow:
-  - Final Results secondary action now uses destination-accurate copy (`Start New Game`) instead of `Home`
+  - Final Results secondary action now uses destination-accurate copy (`Home`) instead of the earlier setup-return wording
   - setup now exposes all 12 final categories
   - setup adds difficulty-tier filtering (`easy` / `medium` / `hard`)
   - start validation now surfaces a clear message when filters yield no playable pool

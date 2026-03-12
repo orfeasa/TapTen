@@ -41,11 +41,11 @@ Run one full game (at least 2 rounds per team) and verify:
   - `Pause` / `Resume` works without timer drift.
   - Final 10-second timer format remains stable.
   - `End Game` uses destructive confirmation dialog.
+  - After time-up, `View Source` and `Report Question` are available before continuing.
+  - `Report Question` opens the feedback sheet, shows category/difficulty/source, and can prepare the correct reason-specific email draft.
 - [ ] Round Summary:
   - Points and found-answer count match revealed answers.
   - Continue CTA label matches state (`Next Round` or `Continue to Final Results`).
-  - Source link appears only after round ends.
-  - `Report Question` opens the feedback sheet, shows category/difficulty/source, and can prepare the correct reason-specific email draft.
 - [ ] Final Results:
   - Winner/runner-up display is correct.
   - `Home` returns to the Home screen.

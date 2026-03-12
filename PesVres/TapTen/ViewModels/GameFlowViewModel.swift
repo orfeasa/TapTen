@@ -139,6 +139,14 @@ final class GameFlowViewModel {
         return engine.teamName(for: currentRound.answeringTeam.next)
     }
 
+    var currentQuestionFeedbackContext: QuestionFeedbackContext? {
+        guard let currentRound else {
+            return nil
+        }
+
+        return feedbackContext(for: currentRound.question)
+    }
+
     var summaryContinueButtonTitle: String {
         guard let engine else {
             return "Continue"
