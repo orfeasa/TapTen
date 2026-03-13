@@ -7,6 +7,7 @@ final class NewGameViewModel {
     var categories: [GameCategory]
     var includedCategoryIDs: Set<GameCategory.ID>
     var includedDifficultyTiers: Set<QuestionDifficulty>
+    private var suggestedTeamNamePairIndex = 0
 
     init(
         settings: GameSettings = GameSettings(),
@@ -117,6 +118,35 @@ final class NewGameViewModel {
         includedDifficultyTiers.removeAll()
     }
 
+    var hasSuggestedTeamNames: Bool {
+        !Self.suggestedTeamNamePairs.isEmpty
+    }
+
+    func applyNextSuggestedTeamNames() {
+        let pairs = Self.suggestedTeamNamePairs
+        guard !pairs.isEmpty else {
+            return
+        }
+
+        let currentTeamAName = trimmedTeamAName
+        let currentTeamBName = trimmedTeamBName
+
+        for _ in 0..<pairs.count {
+            let pair = pairs[suggestedTeamNamePairIndex]
+            suggestedTeamNamePairIndex = (suggestedTeamNamePairIndex + 1) % pairs.count
+
+            let matchesCurrentNames =
+                pair.teamA.caseInsensitiveCompare(currentTeamAName) == .orderedSame
+                && pair.teamB.caseInsensitiveCompare(currentTeamBName) == .orderedSame
+
+            if !matchesCurrentNames {
+                settings.teamAName = pair.teamA
+                settings.teamBName = pair.teamB
+                return
+            }
+        }
+    }
+
     @discardableResult
     func startGame() -> Bool {
         guard canStartGame else {
@@ -127,4 +157,24 @@ final class NewGameViewModel {
         settings.teamBName = trimmedTeamBName
         return true
     }
+}
+
+private extension NewGameViewModel {
+    struct TeamNamePair {
+        let teamA: String
+        let teamB: String
+    }
+
+    static let suggestedTeamNamePairs: [TeamNamePair] = [
+        TeamNamePair(teamA: "Hot Takes", teamB: "Cold Pizza"),
+        TeamNamePair(teamA: "Snack Attack", teamB: "Sip Happens"),
+        TeamNamePair(teamA: "Mildly Iconic", teamB: "Barely Ready"),
+        TeamNamePair(teamA: "Peak Chaos", teamB: "Soft Launch"),
+        TeamNamePair(teamA: "Big Guesses", teamB: "Bold Claims"),
+        TeamNamePair(teamA: "No Notes", teamB: "Some Notes"),
+        TeamNamePair(teamA: "Brain Cell A", teamB: "Brain Cell B"),
+        TeamNamePair(teamA: "Fast & Curious", teamB: "Loose Cannons"),
+        TeamNamePair(teamA: "Lucky Ducks", teamB: "Quick Quips"),
+        TeamNamePair(teamA: "Sharp Elbows", teamB: "Clean Slate")
+    ]
 }

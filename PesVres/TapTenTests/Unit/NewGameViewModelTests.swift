@@ -64,4 +64,37 @@ struct NewGameViewModelTests {
         #expect(!viewModel.canStartGame)
         #expect(viewModel.validationMessage == "Select at least one difficulty tier.")
     }
+
+    @Test
+    func applyingSuggestedTeamNamesUsesFirstCuratedPair() {
+        let viewModel = NewGameViewModel()
+
+        viewModel.applyNextSuggestedTeamNames()
+
+        #expect(viewModel.settings.teamAName == "Hot Takes")
+        #expect(viewModel.settings.teamBName == "Cold Pizza")
+    }
+
+    @Test
+    func applyingSuggestedTeamNamesAdvancesToNextPair() {
+        let viewModel = NewGameViewModel()
+
+        viewModel.applyNextSuggestedTeamNames()
+        viewModel.applyNextSuggestedTeamNames()
+
+        #expect(viewModel.settings.teamAName == "Snack Attack")
+        #expect(viewModel.settings.teamBName == "Sip Happens")
+    }
+
+    @Test
+    func applyingSuggestedTeamNamesSkipsCurrentPair() {
+        let viewModel = NewGameViewModel()
+        viewModel.settings.teamAName = "Hot Takes"
+        viewModel.settings.teamBName = "Cold Pizza"
+
+        viewModel.applyNextSuggestedTeamNames()
+
+        #expect(viewModel.settings.teamAName == "Snack Attack")
+        #expect(viewModel.settings.teamBName == "Sip Happens")
+    }
 }

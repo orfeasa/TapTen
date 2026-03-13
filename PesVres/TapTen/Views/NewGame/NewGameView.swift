@@ -20,6 +20,10 @@ struct NewGameView: View {
                         tint: .tapTenPlayfulOrange
                     ) {
                         VStack(spacing: 12) {
+                            if viewModel.hasSuggestedTeamNames {
+                                teamNameShuffleButton
+                            }
+
                             teamField(
                                 title: "Team A",
                                 placeholder: "Enter Team A name",
@@ -161,6 +165,20 @@ struct NewGameView: View {
 }
 
 private extension NewGameView {
+    var teamNameShuffleButton: some View {
+        Button(action: viewModel.applyNextSuggestedTeamNames) {
+            Label("Shuffle Names", systemImage: "shuffle")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Color.tapTenPlayfulOrange)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .background(Color.tapTenPlayfulOrange.opacity(0.12), in: Capsule())
+        }
+        .buttonStyle(.plain)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityHint("Fill both team name fields with a playful suggested matchup.")
+    }
+
     var introHeader: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Set the matchup")

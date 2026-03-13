@@ -158,10 +158,10 @@
     - Feedback drafts currently target `tapten-reports@orfeasa.com` via `QuestionFeedbackComposer`.
     - This flow is now considered transitional and should be replaced by direct in-app submission.
 
-- [ ] TASK: Add pre-generated funny team names in setup
+- [x] TASK: Add pre-generated funny team names in setup
   - Type: Feature / UX
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/NewGame`, setup defaults/helpers
   - Goal: Reduce setup friction and add a bit more personality by letting players quickly pick playful team names.
   - Acceptance Criteria:
@@ -170,8 +170,8 @@
     - The feature remains optional and does not get in the way of entering custom names.
     - Team-name generation stays local-only and lightweight for v1.
   - Notes:
-    - Prefer a small curated local list over procedural generation for v1.
-    - Keep the UI native and fast, for example a `Shuffle Names` action or per-team suggestion affordance.
+    - Shipped as a single local `Shuffle Names` action in the Teams card.
+    - Uses a curated pair list rather than procedural generation for v1.
 
 - [x] TASK: Refresh Settings layout to native control language
   - Type: UX
