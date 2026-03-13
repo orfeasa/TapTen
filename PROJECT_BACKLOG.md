@@ -41,8 +41,7 @@
 - Round Summary CTA labels should be state-specific (`Next Round` / `Continue to Final Results`).
 - Settings should stay visually aligned with the warm app theme and use native control styling.
 - iPhone remains portrait-only in v1; landscape and iPad layouts are deferred deliberate future work.
-- Seamless question reporting should move from email drafting to direct in-app submission against a lightweight HTTPS endpoint.
-- This reporting flow is an intentional exception to the broader "no network dependencies in v1" constraint because it removes app-switching and deferred follow-up for players.
+- Email-based question reporting is acceptable for the current launch scope; direct in-app submission is deferred future work.
 - Settings changes should affect future setup defaults only, not mutate an already-open New Game draft.
 
 ## Backlog
@@ -158,24 +157,6 @@
     - v1 entry point now lives on Host Round after time-up, beside `View Source`, so the host can review/report before moving on.
     - Feedback drafts currently target `tapten-reports@orfeasa.com` via `QuestionFeedbackComposer`.
     - This flow is now considered transitional and should be replaced by direct in-app submission.
-
-- [ ] TASK: Replace email-based question reporting with seamless in-app submission
-  - Type: Feature / Content QA / Technical
-  - Priority: P1
-  - Status: Planned
-  - Area: `Views/GameFlow`, question feedback flow, lightweight networking, local retry queue
-  - Goal: Let hosts report a question in-app without opening Mail or requiring any later export/follow-up.
-  - Acceptance Criteria:
-    - `Report Question` remains available only after active countdown play.
-    - Submitting a report sends it directly from the app to a lightweight HTTPS endpoint with no app switch.
-    - If the device is offline or the request fails, the report is saved locally and retried automatically later.
-    - The user sees a small native confirmation state such as `Report sent` or `Saved, will send when online`.
-    - The report payload includes pack metadata, question ID, prompt, category, difficulty tier, validation style, source URL, selected reason, optional note, app version, and timestamp.
-    - The app-side submission layer stays narrow in scope and does not introduce remote pack fetching or broader gameplay networking.
-  - Notes:
-    - Preferred backend shape is a minimal serverless endpoint, not a general-purpose app backend.
-    - Cloudflare Workers, Supabase Edge Functions, or Firebase Functions are acceptable patterns.
-    - Endpoint ownership/infrastructure will be provided externally; app work should keep the transport isolated behind a small service.
 
 - [ ] TASK: Add pre-generated funny team names in setup
   - Type: Feature / UX
@@ -375,6 +356,25 @@
 
 ### P3 - Someday Maybe
 
+- [ ] TASK: Replace email-based question reporting with seamless in-app submission
+  - Type: Feature / Content QA / Technical
+  - Priority: P3
+  - Status: Planned
+  - Area: `Views/GameFlow`, question feedback flow, lightweight networking, local retry queue
+  - Goal: Let hosts report a question in-app without opening Mail or requiring any later export/follow-up.
+  - Acceptance Criteria:
+    - `Report Question` remains available only after active countdown play.
+    - Submitting a report sends it directly from the app to a lightweight HTTPS endpoint with no app switch.
+    - If the device is offline or the request fails, the report is saved locally and retried automatically later.
+    - The user sees a small native confirmation state such as `Report sent` or `Saved, will send when online`.
+    - The report payload includes pack metadata, question ID, prompt, category, difficulty tier, validation style, source URL, selected reason, optional note, app version, and timestamp.
+    - The app-side submission layer stays narrow in scope and does not introduce remote pack fetching or broader gameplay networking.
+  - Notes:
+    - Preferred backend shape is a minimal serverless endpoint, not a general-purpose app backend.
+    - Cloudflare Workers, Supabase Edge Functions, or Firebase Functions are acceptable patterns.
+    - Endpoint ownership/infrastructure should remain isolated behind a small service.
+    - Current email-based reporting is acceptable for launch; this work is explicitly deferred.
+
 - [ ] TASK: Add iPad support
   - Type: Feature / UX
   - Priority: P3
@@ -388,6 +388,21 @@
   - Notes:
     - The current app is intentionally iPhone-first and portrait-first.
     - iPad support should be treated as a deliberate future design pass, not an accidental compatibility target.
+
+- [ ] TASK: Add a lightweight website for the app
+  - Type: Product / Marketing
+  - Priority: P3
+  - Status: Planned
+  - Area: support/marketing web presence, App Store metadata support
+  - Goal: Provide a simple public home for the app outside the App Store listing.
+  - Acceptance Criteria:
+    - Website clearly explains what Tap Ten is and how it is played.
+    - Website provides support/contact information suitable for App Store use.
+    - Website visual direction feels consistent with the app without requiring a large custom marketing build.
+    - Scope stays intentionally small for v1.
+  - Notes:
+    - This can support App Store support/marketing URLs later.
+    - Prefer a simple static site over a complex web product.
 
 ## In Progress
 
