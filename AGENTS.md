@@ -84,3 +84,4 @@ Read `PROJECT_BRIEF.md` before making product or UX decisions.
 - Keep the app compiling after each task.
 - Prefer incremental milestones over large rollouts.
 - Do not add features that are outside the current task.
+- Bump the app marketing version when shipping substantial user-visible changes.

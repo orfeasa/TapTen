@@ -352,6 +352,24 @@
     - Includes manual pass for host-speed adjudication and source-link visibility rules.
     - Checklist is documented and reusable.
 
+- [ ] TASK: Improve app audio feedback and reward/tension cues
+  - Type: UX / Audio
+  - Priority: P2
+  - Status: Planned
+  - Area: `Services/CountdownSoundService`, game-flow event wiring, sound assets
+  - Goal: Make the app sound more polished by strengthening confirmation, tension, and payoff moments without adding fatigue or noise.
+  - Acceptance Criteria:
+    - Reveal sounds vary by answer value tier (`1-2`, `3-4`, `5`) and feel more rewarding than the current generic cue.
+    - Countdown tension starts only in the final `5` seconds, with clear escalating ticks.
+    - `Time's up` uses a cleaner, more decisive end cue.
+    - Round/finale payoff sounds are defined for summary/final-results moments without overwhelming spoken gameplay.
+    - Sounds remain short, restrained, and broadly consistent with the app's warm Apple-clean tone.
+    - Audio respects the existing `Sounds` setting and the iPhone silent switch in v1.
+    - No background music or unnecessary utility-screen sounds are introduced.
+  - Notes:
+    - Start with the highest-leverage set first: point-tiered reveal sounds, final-`5` countdown ticks, and a better `Time's up` cue.
+    - Keep playback centralized behind one small event-based sound service API rather than ad hoc view-owned players.
+
 ### P3 - Someday Maybe
 
 - [ ] TASK: Add iPad support
