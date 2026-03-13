@@ -13,6 +13,17 @@ enum RevealSoundTier {
     case high
 }
 
+enum RoundPayoffSoundTier {
+    case weak
+    case solid
+    case strong
+}
+
+enum FinalResultsSoundOutcome {
+    case winner
+    case tie
+}
+
 protocol CountdownSoundPlaying {
     func playFinalCountdownTick(style: CountdownTickStyle, volume: Float)
     func playRoundEndedTone(volume: Float)
@@ -27,6 +38,11 @@ final class CountdownSoundService: CountdownSoundPlaying {
     private let revealLowToneData: Data
     private let revealMediumToneData: Data
     private let revealHighToneData: Data
+    private let roundPayoffWeakToneData: Data
+    private let roundPayoffSolidToneData: Data
+    private let roundPayoffStrongToneData: Data
+    private let finalResultsWinnerToneData: Data
+    private let finalResultsTieToneData: Data
     private var activePlayers: [AVAudioPlayer] = []
 
     init() {
@@ -75,6 +91,52 @@ final class CountdownSoundService: CountdownSoundPlaying {
             gapDuration: 0.008,
             fadeOutDuration: 0.04
         )
+        roundPayoffWeakToneData = Self.makeToneSequenceData(
+            [
+                .init(frequency: 560, duration: 0.07, amplitude: 0.55),
+                .init(frequency: 660, duration: 0.08, amplitude: 0.6)
+            ],
+            gapDuration: 0.014,
+            fadeOutDuration: 0.055
+        )
+        roundPayoffSolidToneData = Self.makeToneSequenceData(
+            [
+                .init(frequency: 720, duration: 0.06, amplitude: 0.55),
+                .init(frequency: 910, duration: 0.08, amplitude: 0.68),
+                .init(frequency: 1_060, duration: 0.09, amplitude: 0.74)
+            ],
+            gapDuration: 0.012,
+            fadeOutDuration: 0.06
+        )
+        roundPayoffStrongToneData = Self.makeToneSequenceData(
+            [
+                .init(frequency: 820, duration: 0.055, amplitude: 0.5),
+                .init(frequency: 1_020, duration: 0.07, amplitude: 0.64),
+                .init(frequency: 1_240, duration: 0.08, amplitude: 0.78),
+                .init(frequency: 1_420, duration: 0.09, amplitude: 0.84)
+            ],
+            gapDuration: 0.01,
+            fadeOutDuration: 0.065
+        )
+        finalResultsWinnerToneData = Self.makeToneSequenceData(
+            [
+                .init(frequency: 820, duration: 0.06, amplitude: 0.52),
+                .init(frequency: 1_040, duration: 0.08, amplitude: 0.65),
+                .init(frequency: 1_300, duration: 0.1, amplitude: 0.78),
+                .init(frequency: 1_520, duration: 0.13, amplitude: 0.86)
+            ],
+            gapDuration: 0.014,
+            fadeOutDuration: 0.08
+        )
+        finalResultsTieToneData = Self.makeToneSequenceData(
+            [
+                .init(frequency: 780, duration: 0.07, amplitude: 0.52),
+                .init(frequency: 980, duration: 0.08, amplitude: 0.62),
+                .init(frequency: 880, duration: 0.1, amplitude: 0.58)
+            ],
+            gapDuration: 0.016,
+            fadeOutDuration: 0.07
+        )
         configureAudioSession()
     }
 
@@ -105,6 +167,24 @@ final class CountdownSoundService: CountdownSoundPlaying {
         case .high:
             toneData = revealHighToneData
         }
+        playTone(toneData, volume: volume)
+    }
+
+    func playRoundPayoffTone(tier: RoundPayoffSoundTier, volume: Float) {
+        let toneData: Data
+        switch tier {
+        case .weak:
+            toneData = roundPayoffWeakToneData
+        case .solid:
+            toneData = roundPayoffSolidToneData
+        case .strong:
+            toneData = roundPayoffStrongToneData
+        }
+        playTone(toneData, volume: volume)
+    }
+
+    func playFinalResultsTone(outcome: FinalResultsSoundOutcome, volume: Float) {
+        let toneData = outcome == .winner ? finalResultsWinnerToneData : finalResultsTieToneData
         playTone(toneData, volume: volume)
     }
 

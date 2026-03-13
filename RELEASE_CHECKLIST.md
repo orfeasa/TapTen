@@ -41,9 +41,10 @@ Run one full game (at least 2 rounds per team) and verify:
   - Tap reveals/untaps answers correctly.
   - `Pause` / `Resume` works without timer drift.
   - Final 10-second timer format remains stable.
+  - Final 10-second countdown audio starts at `10` and ramps cleanly through `1`.
   - `End Game` uses destructive confirmation dialog.
-  - After time-up, `View Source` and `Report Question` are available before continuing.
-  - On narrow iPhones, post-timeup review actions do not overlap the question text.
+  - After time-up, `Source` and `Report` are available before continuing.
+  - On narrow iPhones, post-timeup review actions stay on one row without overlapping the question text.
   - `Report Question` opens the feedback sheet, shows category/difficulty/source, and can prepare the correct reason-specific email draft.
 - [ ] Round Summary:
   - Points and found-answer count match revealed answers.
@@ -56,6 +57,7 @@ Run one full game (at least 2 rounds per team) and verify:
 ## 4) Feedback and Accessibility Spot Check
 
 - [ ] With `Sounds` ON: countdown/round-end audio is audible.
+- [ ] With `Sounds` ON: Round Summary and Final Results payoff sounds are audible.
 - [ ] With `Sounds` OFF: countdown/round-end audio is silent.
 - [ ] With `Haptics` ON: reveal taps produce haptics.
 - [ ] With `Haptics` OFF: reveal taps do not produce haptics.

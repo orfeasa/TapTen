@@ -40,6 +40,7 @@ struct GameFlowView: View {
                         teamAScore: viewModel.teamAScore,
                         teamBName: viewModel.teamBName,
                         teamBScore: viewModel.teamBScore,
+                        soundsEnabled: settingsStore.soundsEnabled,
                         continueTitle: viewModel.summaryContinueButtonTitle,
                         continueAction: viewModel.continueAfterRoundSummary
                     )
@@ -55,6 +56,7 @@ struct GameFlowView: View {
                     teamAScore: viewModel.teamAScore,
                     teamBName: viewModel.teamBName,
                     teamBScore: viewModel.teamBScore,
+                    soundsEnabled: settingsStore.soundsEnabled,
                     playAgainAction: viewModel.playAgain,
                     homeAction: returnHome
                 )
@@ -306,10 +308,12 @@ private struct RoundSummaryView: View {
     let teamAScore: Int
     let teamBName: String
     let teamBScore: Int
+    let soundsEnabled: Bool
     let continueTitle: String
     let continueAction: () -> Void
     @State private var animateHero = false
     @State private var showVerdict = false
+    @State private var soundPlayer = CountdownSoundService()
 
     var body: some View {
         ScrollView {
@@ -415,6 +419,9 @@ private struct RoundSummaryView: View {
             withAnimation(.easeOut(duration: 0.24).delay(0.08)) {
                 showVerdict = true
             }
+            if soundsEnabled {
+                soundPlayer.playRoundPayoffTone(tier: payoffSoundTier, volume: 0.34)
+            }
         }
     }
 
@@ -445,6 +452,20 @@ private struct RoundSummaryView: View {
         }
         .ignoresSafeArea()
     }
+
+    private var payoffSoundTier: RoundPayoffSoundTier {
+        let totalAnswers = max(summary.totalAnswers, 1)
+        let revealedRatio = Double(summary.revealedAnswers) / Double(totalAnswers)
+
+        switch revealedRatio {
+        case ..<0.2:
+            return .weak
+        case ..<0.7:
+            return .solid
+        default:
+            return .strong
+        }
+    }
 }
 
 private struct FinalResultsView: View {
@@ -454,11 +475,13 @@ private struct FinalResultsView: View {
     let teamAScore: Int
     let teamBName: String
     let teamBScore: Int
+    let soundsEnabled: Bool
     let playAgainAction: () -> Void
     let homeAction: () -> Void
 
     @State private var celebrate = false
     @State private var showHero = false
+    @State private var soundPlayer = CountdownSoundService()
 
     var body: some View {
         ScrollView {
@@ -501,6 +524,9 @@ private struct FinalResultsView: View {
             celebrate = true
             withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
                 showHero = true
+            }
+            if soundsEnabled {
+                soundPlayer.playFinalResultsTone(outcome: finalResultsSoundOutcome, volume: 0.38)
             }
         }
     }
@@ -714,6 +740,10 @@ private struct FinalResultsView: View {
 
         return isWinner ? Color.tapTenCelebrationGold.opacity(0.22) : Color.tapTenWarmCard.opacity(0.7)
     }
+
+    private var finalResultsSoundOutcome: FinalResultsSoundOutcome {
+        winnerName == nil ? .tie : .winner
+    }
 }
 
 private extension GameFlowView {
@@ -802,6 +832,7 @@ private extension GameFlowView {
             teamAScore: 14,
             teamBName: "Tigers",
             teamBScore: 11,
+            soundsEnabled: true,
             continueTitle: "Next Round",
             continueAction: { }
         )
@@ -817,6 +848,7 @@ private extension GameFlowView {
             teamAScore: 41,
             teamBName: "Tigers",
             teamBScore: 35,
+            soundsEnabled: true,
             playAgainAction: { },
             homeAction: { }
         )

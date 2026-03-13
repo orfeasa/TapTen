@@ -258,10 +258,10 @@
   - Goal: Keep the post-timeup review state clear while preserving access to source and reporting tools.
   - Acceptance Criteria:
     - `Continue to Summary` remains the single dominant action after time-up.
-    - `View Source` and `Report Question` remain available with text labels.
+    - `Source` and `Report` remain available with text labels.
     - Utility actions are visually secondary and more compact than the continue CTA.
   - Notes:
-    - Post-timeup utilities now use compact labeled pills instead of full-width peer actions.
+    - Post-timeup utilities now use compact labeled pills (`Source`, `Report`) instead of full-width peer actions.
     - `Continue to Summary` remains the only dominant action in the time-up state.
 
 - [x] TASK: Consolidate legacy pack files after category migration
@@ -367,10 +367,11 @@
     - Audio respects the existing `Sounds` setting and the iPhone silent switch in v1.
     - No background music or unnecessary utility-screen sounds are introduced.
   - Notes:
-    - Start with the highest-leverage set first: point-tiered reveal sounds, final-`5` countdown ticks, and a better `Time's up` cue.
+    - Start with the highest-leverage set first: point-tiered reveal sounds, final-`10` countdown ticks, and a better `Time's up` cue.
     - Keep playback centralized behind one small event-based sound service API rather than ad hoc view-owned players.
-    - First pass now adds point-tiered reveal tones, limits countdown tension to the final `5` seconds, and replaces the round-end tone with a cleaner two-step cue.
-    - Remaining later-phase work: round-summary/final-results payoff sounds and any pause/resume utility cues.
+    - First pass now adds point-tiered reveal tones, starts countdown tension in the final `10` seconds, and replaces the round-end tone with a cleaner two-step cue.
+    - Second pass now adds lightweight round-summary and final-results payoff stings.
+    - Remaining later-phase work: any pause/resume utility cues or more bespoke authored sound assets.
 
 ### P3 - Someday Maybe
 

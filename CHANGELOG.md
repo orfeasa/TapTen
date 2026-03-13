@@ -5,8 +5,10 @@
 ### Changed
 - First audio-polish pass:
   - Host Round now uses point-tiered reveal tones instead of one flat cue
-  - countdown tension is now limited to the final `5` seconds with escalating urgency
+  - countdown tension now starts in the final `10` seconds with escalating urgency
   - `Time's up` now uses a cleaner two-step end cue
+  - Round Summary and Final Results now play lightweight payoff stings on appear
+  - Host Round time-up review now keeps `Source` and `Report` in one row on narrow iPhones instead of switching layouts
 
 ## 2026-03-12
 
@@ -41,7 +43,6 @@
 - Settings no longer crashes when changing rounds or timer defaults from the gear flow.
 - New Game no longer relies on a `safeAreaInset` bottom CTA, reducing the risk of navigation-transition instability on push/pop.
 - Host Round time-up layout no longer clips long question text under the review panel.
-- Host Round time-up review tools now stack on narrow iPhones so `View Source` / `Report Question` no longer collide with long prompts.
 - Report sheet action layout no longer shows an awkward separator between its two utility buttons.
 
 ### Platform

@@ -25,11 +25,9 @@ struct HostRoundView: View {
             let minimumRowHeight = dynamicTypeSize.isAccessibilitySize ? 38.0 : 30.0
             let minimumAnswersHeight = (minimumRowHeight * 10) + (rowSpacing * 9)
             let questionWidth = max(0, containerWidth - (outerPadding * 2))
-            let usesStackedReviewButtons = containerWidth < 410 || dynamicTypeSize.isAccessibilitySize
             let questionHeaderHeight = measuredQuestionHeaderHeight(for: questionWidth)
             let timerSectionHeight = measuredTimerSectionHeight(
-                containerHeight: containerHeight,
-                usesStackedReviewButtons: usesStackedReviewButtons
+                containerHeight: containerHeight
             )
             let availableRowsHeight = containerHeight
                 - (outerPadding * 2)
@@ -48,7 +46,7 @@ struct HostRoundView: View {
                 questionHeader(for: questionWidth)
                     .frame(maxWidth: .infinity, minHeight: questionHeaderHeight, maxHeight: questionHeaderHeight, alignment: .topLeading)
 
-                timerSection(usesStackedReviewButtons: usesStackedReviewButtons)
+                timerSection
                     .frame(maxWidth: .infinity, minHeight: timerSectionHeight, maxHeight: timerSectionHeight)
 
                 VStack(spacing: rowSpacing) {
@@ -161,9 +159,9 @@ struct HostRoundView: View {
     }
 
     @ViewBuilder
-    private func timerSection(usesStackedReviewButtons: Bool) -> some View {
+    private var timerSection: some View {
         if viewModel.isRoundFinished {
-            timeUpReviewSection(usesStackedReviewButtons: usesStackedReviewButtons)
+            timeUpReviewSection
         } else {
             activeTimerSection
         }
@@ -215,7 +213,7 @@ struct HostRoundView: View {
         }
     }
 
-    private func timeUpReviewSection(usesStackedReviewButtons: Bool) -> some View {
+    private var timeUpReviewSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 10) {
                 Label("Time's up", systemImage: "checkmark.circle.fill")
@@ -229,25 +227,17 @@ struct HostRoundView: View {
                     .foregroundStyle(.secondary)
             }
 
-            reviewUtilityButtons(stacked: usesStackedReviewButtons)
+            reviewUtilityButtons
         }
         .padding(14)
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
-    @ViewBuilder
-    private func reviewUtilityButtons(stacked: Bool) -> some View {
-        if stacked {
-            VStack(alignment: .leading, spacing: 8) {
-                sourceButton
-                reportButton
-            }
-        } else {
-            HStack(spacing: 8) {
-                sourceButton
-                reportButton
-                Spacer(minLength: 0)
-            }
+    private var reviewUtilityButtons: some View {
+        HStack(spacing: 8) {
+            sourceButton
+            reportButton
+            Spacer(minLength: 0)
         }
     }
 
@@ -255,9 +245,9 @@ struct HostRoundView: View {
         Button {
             openURL(viewModel.question.sourceURL)
         } label: {
-            Label("View Source", systemImage: "safari")
+            Label("Source", systemImage: "safari")
                 .font(.subheadline.weight(.semibold))
-                .padding(.horizontal, 12)
+                .padding(.horizontal, 10)
                 .frame(minHeight: 36)
         }
         .buttonStyle(.bordered)
@@ -270,9 +260,9 @@ struct HostRoundView: View {
         Button {
             isShowingFeedbackSheet = true
         } label: {
-            Label("Report Question", systemImage: "flag.badge.ellipsis")
+            Label("Report", systemImage: "flag.badge.ellipsis")
                 .font(.subheadline.weight(.semibold))
-                .padding(.horizontal, 12)
+                .padding(.horizontal, 10)
                 .frame(minHeight: 36)
         }
         .buttonStyle(.bordered)
@@ -404,18 +394,17 @@ struct HostRoundView: View {
     }
 
     private func measuredTimerSectionHeight(
-        containerHeight: CGFloat,
-        usesStackedReviewButtons: Bool
+        containerHeight: CGFloat
     ) -> CGFloat {
         guard viewModel.isRoundFinished else {
             return max(76, min(100, containerHeight * 0.12))
         }
 
         if dynamicTypeSize.isAccessibilitySize {
-            return usesStackedReviewButtons ? 152 : 118
+            return 118
         }
 
-        return usesStackedReviewButtons ? 140 : 100
+        return 100
     }
 
     private func questionHeaderFont(for width: CGFloat) -> Font {

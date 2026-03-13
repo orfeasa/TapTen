@@ -40,19 +40,19 @@ struct HostRoundViewModelTests {
     }
 
     @Test
-    func countdownAudioOnlyPlaysDuringFinalFiveSeconds() {
+    func countdownAudioOnlyPlaysDuringFinalTenSeconds() {
         let spyPlayer = SpyCountdownPlayer()
         let viewModel = HostRoundViewModel(
             question: makeQuestion(),
-            roundDurationSeconds: 6,
+            roundDurationSeconds: 12,
             countdownSoundPlayer: spyPlayer,
             soundsEnabled: true
         )
         viewModel.startRoundIfNeeded()
 
-        advanceTicks(viewModel, count: 60)
+        advanceTicks(viewModel, count: 120)
 
-        #expect(spyPlayer.finalTickCount == 5)
+        #expect(spyPlayer.finalTickCount == 10)
     }
 
     @Test

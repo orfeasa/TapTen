@@ -191,22 +191,22 @@ final class HostRoundViewModel {
             return
         }
 
-        guard (1...5).contains(currentSecond) else {
+        guard (1...10).contains(currentSecond) else {
             return
         }
 
         let style: CountdownTickStyle
         switch currentSecond {
-        case 5, 4:
+        case 7...10:
             style = .early
-        case 3, 2:
+        case 3...6:
             style = .late
         default:
             style = .urgent
         }
 
-        let progress = Double(6 - currentSecond) / 5.0
-        let volume = Float(0.26 + (progress * 0.42))
+        let progress = Double(11 - currentSecond) / 10.0
+        let volume = Float(0.2 + (progress * 0.4))
         countdownSoundPlayer.playFinalCountdownTick(style: style, volume: volume)
     }
 
