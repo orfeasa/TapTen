@@ -355,7 +355,7 @@
 - [ ] TASK: Improve app audio feedback and reward/tension cues
   - Type: UX / Audio
   - Priority: P2
-  - Status: Planned
+  - Status: In Progress
   - Area: `Services/CountdownSoundService`, game-flow event wiring, sound assets
   - Goal: Make the app sound more polished by strengthening confirmation, tension, and payoff moments without adding fatigue or noise.
   - Acceptance Criteria:
@@ -369,6 +369,8 @@
   - Notes:
     - Start with the highest-leverage set first: point-tiered reveal sounds, final-`5` countdown ticks, and a better `Time's up` cue.
     - Keep playback centralized behind one small event-based sound service API rather than ad hoc view-owned players.
+    - First pass now adds point-tiered reveal tones, limits countdown tension to the final `5` seconds, and replaces the round-end tone with a cleaner two-step cue.
+    - Remaining later-phase work: round-summary/final-results payoff sounds and any pause/resume utility cues.
 
 ### P3 - Someday Maybe
 

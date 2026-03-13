@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-03-13
+
+### Changed
+- First audio-polish pass:
+  - Host Round now uses point-tiered reveal tones instead of one flat cue
+  - countdown tension is now limited to the final `5` seconds with escalating urgency
+  - `Time's up` now uses a cleaner two-step end cue
+
 ## 2026-03-12
 
 ### Added

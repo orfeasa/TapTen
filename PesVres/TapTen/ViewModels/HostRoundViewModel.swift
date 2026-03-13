@@ -130,8 +130,15 @@ final class HostRoundViewModel {
 
         revealedAnswerIndices.insert(index)
         if !isRoundFinished {
-            latestRevealPoints = question.answers[index].points
+            let points = question.answers[index].points
+            latestRevealPoints = points
             revealEventToken += 1
+            if soundsEnabled {
+                countdownSoundPlayer.playRevealTone(
+                    tier: revealSoundTier(for: points),
+                    volume: revealVolume(for: points)
+                )
+            }
         }
         return true
     }
@@ -184,15 +191,45 @@ final class HostRoundViewModel {
             return
         }
 
-        guard (1...10).contains(currentSecond) else {
+        guard (1...5).contains(currentSecond) else {
             return
         }
 
-        // 10...5 uses the lower pitch, 4...1 uses the higher pitch.
-        let style: CountdownTickStyle = currentSecond >= 5 ? .beep : .click
-        let progress = Double(11 - currentSecond) / 10.0
-        let volume = Float(0.22 + (progress * 0.78))
+        let style: CountdownTickStyle
+        switch currentSecond {
+        case 5, 4:
+            style = .early
+        case 3, 2:
+            style = .late
+        default:
+            style = .urgent
+        }
+
+        let progress = Double(6 - currentSecond) / 5.0
+        let volume = Float(0.26 + (progress * 0.42))
         countdownSoundPlayer.playFinalCountdownTick(style: style, volume: volume)
+    }
+
+    private func revealSoundTier(for points: Int) -> RevealSoundTier {
+        switch points {
+        case 5...:
+            return .high
+        case 3...4:
+            return .medium
+        default:
+            return .low
+        }
+    }
+
+    private func revealVolume(for points: Int) -> Float {
+        switch points {
+        case 5...:
+            return 0.36
+        case 3...4:
+            return 0.3
+        default:
+            return 0.24
+        }
     }
 
     // Test-only deterministic tick trigger.

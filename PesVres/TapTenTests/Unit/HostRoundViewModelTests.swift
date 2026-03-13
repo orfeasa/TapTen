@@ -19,6 +19,7 @@ struct HostRoundViewModelTests {
         #expect(viewModel.isRoundFinished)
         #expect(spyPlayer.finalTickCount == 0)
         #expect(spyPlayer.roundEndedCount == 0)
+        #expect(spyPlayer.revealTiers.isEmpty)
     }
 
     @Test
@@ -36,6 +37,39 @@ struct HostRoundViewModelTests {
 
         #expect(viewModel.isRoundFinished)
         #expect(spyPlayer.roundEndedCount == 1)
+    }
+
+    @Test
+    func countdownAudioOnlyPlaysDuringFinalFiveSeconds() {
+        let spyPlayer = SpyCountdownPlayer()
+        let viewModel = HostRoundViewModel(
+            question: makeQuestion(),
+            roundDurationSeconds: 6,
+            countdownSoundPlayer: spyPlayer,
+            soundsEnabled: true
+        )
+        viewModel.startRoundIfNeeded()
+
+        advanceTicks(viewModel, count: 60)
+
+        #expect(spyPlayer.finalTickCount == 5)
+    }
+
+    @Test
+    func revealAudioUsesPointTiersDuringActiveRound() {
+        let spyPlayer = SpyCountdownPlayer()
+        let viewModel = HostRoundViewModel(
+            question: makeQuestion(),
+            roundDurationSeconds: 60,
+            countdownSoundPlayer: spyPlayer,
+            soundsEnabled: true
+        )
+
+        _ = viewModel.revealAnswer(at: 0)
+        _ = viewModel.revealAnswer(at: 2)
+        _ = viewModel.revealAnswer(at: 4)
+
+        #expect(spyPlayer.revealTiers == [.low, .medium, .high])
     }
 
     @Test
@@ -191,11 +225,13 @@ private func makeQuestion() -> Question {
 private final class SilentCountdownPlayer: CountdownSoundPlaying {
     func playFinalCountdownTick(style: CountdownTickStyle, volume: Float) { }
     func playRoundEndedTone(volume: Float) { }
+    func playRevealTone(tier: RevealSoundTier, volume: Float) { }
 }
 
 private final class SpyCountdownPlayer: CountdownSoundPlaying {
     private(set) var finalTickCount = 0
     private(set) var roundEndedCount = 0
+    private(set) var revealTiers: [RevealSoundTier] = []
 
     func playFinalCountdownTick(style: CountdownTickStyle, volume: Float) {
         finalTickCount += 1
@@ -203,6 +239,10 @@ private final class SpyCountdownPlayer: CountdownSoundPlaying {
 
     func playRoundEndedTone(volume: Float) {
         roundEndedCount += 1
+    }
+
+    func playRevealTone(tier: RevealSoundTier, volume: Float) {
+        revealTiers.append(tier)
     }
 }
 
