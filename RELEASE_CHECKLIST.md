@@ -25,6 +25,7 @@ Run one full game (at least 2 rounds per team) and verify:
 - [ ] Home:
   - `How To Play` opens reliably.
   - `Browse Question Packs` opens and loads category/pack counts.
+  - App remains portrait-only on iPhone.
 - [ ] New Game:
   - Team names are editable and validation errors are clear.
   - Rounds/timer controls are not shown in setup.
@@ -42,6 +43,7 @@ Run one full game (at least 2 rounds per team) and verify:
   - Final 10-second timer format remains stable.
   - `End Game` uses destructive confirmation dialog.
   - After time-up, `View Source` and `Report Question` are available before continuing.
+  - On narrow iPhones, post-timeup review actions do not overlap the question text.
   - `Report Question` opens the feedback sheet, shows category/difficulty/source, and can prepare the correct reason-specific email draft.
 - [ ] Round Summary:
   - Points and found-answer count match revealed answers.

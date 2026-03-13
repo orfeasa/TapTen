@@ -33,7 +33,11 @@
 - Settings no longer crashes when changing rounds or timer defaults from the gear flow.
 - New Game no longer relies on a `safeAreaInset` bottom CTA, reducing the risk of navigation-transition instability on push/pop.
 - Host Round time-up layout no longer clips long question text under the review panel.
+- Host Round time-up review tools now stack on narrow iPhones so `View Source` / `Report Question` no longer collide with long prompts.
 - Report sheet action layout no longer shows an awkward separator between its two utility buttons.
+
+### Platform
+- iPhone app now runs portrait-only in v1; landscape is intentionally disabled until there is a real wider-layout pass.
 
 ### Docs
 - Updated `PROJECT_BACKLOG.md`, `PROJECT_BRIEF.md`, `README.md`, and `RELEASE_CHECKLIST.md` to reflect the new Settings/New Game responsibility split and the shipped reporting flow.

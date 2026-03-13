@@ -40,6 +40,7 @@
 - Final Results secondary action should be label/destination aligned (`Home` to Home), while `Play Again` remains the primary replay action.
 - Round Summary CTA labels should be state-specific (`Next Round` / `Continue to Final Results`).
 - Settings should stay visually aligned with the warm app theme and use native control styling.
+- iPhone remains portrait-only in v1; landscape and iPad layouts are deferred deliberate future work.
 - Seamless question reporting should move from email drafting to direct in-app submission against a lightweight HTTPS endpoint.
 - This reporting flow is an intentional exception to the broader "no network dependencies in v1" constraint because it removes app-switching and deferred follow-up for players.
 - Settings changes should affect future setup defaults only, not mutate an already-open New Game draft.
@@ -175,6 +176,21 @@
     - Preferred backend shape is a minimal serverless endpoint, not a general-purpose app backend.
     - Cloudflare Workers, Supabase Edge Functions, or Firebase Functions are acceptable patterns.
     - Endpoint ownership/infrastructure will be provided externally; app work should keep the transport isolated behind a small service.
+
+- [ ] TASK: Add pre-generated funny team names in setup
+  - Type: Feature / UX
+  - Priority: P1
+  - Status: Planned
+  - Area: `Views/NewGame`, setup defaults/helpers
+  - Goal: Reduce setup friction and add a bit more personality by letting players quickly pick playful team names.
+  - Acceptance Criteria:
+    - New Game offers a simple way to apply pre-generated team names without manual typing.
+    - Suggested names feel funny/sassy but stay broadly party-friendly and not overly niche.
+    - The feature remains optional and does not get in the way of entering custom names.
+    - Team-name generation stays local-only and lightweight for v1.
+  - Notes:
+    - Prefer a small curated local list over procedural generation for v1.
+    - Keep the UI native and fast, for example a `Shuffle Names` action or per-team suggestion affordance.
 
 - [x] TASK: Refresh Settings layout to native control language
   - Type: UX
@@ -335,6 +351,22 @@
     - Checklist covers build, critical gameplay flow, and content integrity.
     - Includes manual pass for host-speed adjudication and source-link visibility rules.
     - Checklist is documented and reusable.
+
+### P3 - Someday Maybe
+
+- [ ] TASK: Add iPad support
+  - Type: Feature / UX
+  - Priority: P3
+  - Status: Planned
+  - Area: app-wide layout, navigation, and interaction patterns
+  - Goal: Expand the app beyond its current iPhone-first layout once wider-screen behavior is intentionally designed.
+  - Acceptance Criteria:
+    - Core game-flow screens are intentionally adapted for iPad rather than stretched from iPhone layouts.
+    - Navigation, spacing, and orientation behavior are re-evaluated for larger screens.
+    - Host-speed interactions remain clear and ergonomic on iPad.
+  - Notes:
+    - The current app is intentionally iPhone-first and portrait-first.
+    - iPad support should be treated as a deliberate future design pass, not an accidental compatibility target.
 
 ## In Progress
 

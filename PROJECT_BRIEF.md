@@ -21,6 +21,7 @@ Two teams play on a single device.
 
 ## v1 product decisions
 - Platform: iPhone first
+- Orientation: portrait only on iPhone for v1
 - Framework: SwiftUI
 - Device mode: single device only
 - Teams: 2
@@ -175,6 +176,7 @@ Example answers:
 - Make answer taps fast and forgiving
 - Keep active controls simple (`Pause`/`Resume`) and provide clear post-timeup `Continue to Summary`
 - After time-up, keep source/report actions available to the host before they continue
+- Ensure narrow iPhone widths still lay out question text and post-timeup review tools cleanly
 
 ### Round Summary
 - Show answers found

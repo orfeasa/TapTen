@@ -7,6 +7,7 @@ Two teams play on one device. One team answers out loud while the other team hos
 ## Current MVP Behavior
 
 - Single-device game with exactly two teams.
+- Portrait-only on iPhone in v1.
 - Configurable default rounds per team and round duration via Settings.
 - Random question selection from enabled categories and difficulty tiers.
 - No repeated questions in a single game session.
@@ -29,6 +30,7 @@ Two teams play on one device. One team answers out loud while the other team hos
   - de-emphasized active-round `Pause` / `Resume` utility control
   - clear post-timeup CTA (`Continue to Summary`)
   - labeled post-timeup review actions for `View Source` and `Report Question`
+  - narrow-screen post-timeup review tools now stack safely instead of colliding with long questions
 - Round summary with stronger points-first hierarchy, a larger verdict moment, scoreboard, and one clear progression CTA without extra source/report controls.
 - Post-timeup `Report Question` opens a native feedback sheet, shows question details (`category`, `difficulty`, `source`), and prepares a reason-specific email draft for `too easy`, `too difficult`, `wrong category`, `inappropriate`, or `other`.
 - Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Home`).
