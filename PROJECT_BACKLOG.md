@@ -170,7 +170,7 @@
     - The feature remains optional and does not get in the way of entering custom names.
     - Team-name generation stays local-only and lightweight for v1.
   - Notes:
-    - Shipped as a single local `Shuffle Names` action in the Teams card.
+    - Shipped with curated suggested names prefilled by default and a local `Shuffle Names` action in the Teams card.
     - Uses a curated pair list rather than procedural generation for v1.
 
 - [x] TASK: Refresh Settings layout to native control language

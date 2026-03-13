@@ -66,10 +66,8 @@ struct NewGameViewModelTests {
     }
 
     @Test
-    func applyingSuggestedTeamNamesUsesFirstCuratedPair() {
+    func defaultSetupUsesFirstCuratedTeamNamePair() {
         let viewModel = NewGameViewModel()
-
-        viewModel.applyNextSuggestedTeamNames()
 
         #expect(viewModel.settings.teamAName == "Hot Takes")
         #expect(viewModel.settings.teamBName == "Cold Pizza")
@@ -79,7 +77,6 @@ struct NewGameViewModelTests {
     func applyingSuggestedTeamNamesAdvancesToNextPair() {
         let viewModel = NewGameViewModel()
 
-        viewModel.applyNextSuggestedTeamNames()
         viewModel.applyNextSuggestedTeamNames()
 
         #expect(viewModel.settings.teamAName == "Snack Attack")
@@ -96,5 +93,20 @@ struct NewGameViewModelTests {
 
         #expect(viewModel.settings.teamAName == "Snack Attack")
         #expect(viewModel.settings.teamBName == "Sip Happens")
+    }
+
+    @Test
+    func customTeamNamesAreNotOverwrittenOnInit() {
+        let viewModel = NewGameViewModel(
+            settings: GameSettings(
+                teamAName: "Custom A",
+                teamBName: "Custom B",
+                numberOfRounds: 5,
+                roundDurationSeconds: 60
+            )
+        )
+
+        #expect(viewModel.settings.teamAName == "Custom A")
+        #expect(viewModel.settings.teamBName == "Custom B")
     }
 }

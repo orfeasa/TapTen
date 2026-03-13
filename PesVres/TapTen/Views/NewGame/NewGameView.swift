@@ -158,6 +158,7 @@ struct NewGameView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 14, style: .continuous)
                         .stroke(Color.tapTenPlayfulOrange.opacity(0.14), lineWidth: 1)
+                        .allowsHitTesting(false)
                 )
         }
         .padding(.vertical, 2)
@@ -329,10 +330,12 @@ private extension NewGameView {
                         endPoint: .bottomTrailing
                     )
                 )
+                .allowsHitTesting(false)
         )
         .overlay(
             RoundedRectangle(cornerRadius: 22, style: .continuous)
                 .stroke(tint.opacity(0.18), lineWidth: 1)
+                .allowsHitTesting(false)
         )
     }
 
@@ -398,6 +401,7 @@ private extension NewGameView {
         .overlay(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(Color.red.opacity(0.18), lineWidth: 1)
+                .allowsHitTesting(false)
         )
     }
 

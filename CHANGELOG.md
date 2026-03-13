@@ -3,7 +3,7 @@
 ## 2026-03-13
 
 ### Changed
-- New Game now offers a local `Shuffle Names` action in the Teams card to fill both team fields with curated funny/sassy matchups while keeping manual editing optional.
+- New Game now opens with curated funny/sassy team names prefilled and keeps a local `Shuffle Names` action in the Teams card so players can cycle to a different suggested matchup or edit manually.
 - First audio-polish pass:
   - Host Round now uses point-tiered reveal tones instead of one flat cue
   - countdown tension now starts in the final `10` seconds with escalating urgency

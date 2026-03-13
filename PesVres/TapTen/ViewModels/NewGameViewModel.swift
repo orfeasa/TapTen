@@ -18,6 +18,7 @@ final class NewGameViewModel {
         self.categories = loadedCategories
         self.includedCategoryIDs = Set(loadedCategories.map(\.id))
         self.includedDifficultyTiers = Set(QuestionDifficulty.allCases)
+        seedSuggestedTeamNamesIfNeeded()
     }
 
     var includedCategoryCount: Int {
@@ -140,8 +141,7 @@ final class NewGameViewModel {
                 && pair.teamB.caseInsensitiveCompare(currentTeamBName) == .orderedSame
 
             if !matchesCurrentNames {
-                settings.teamAName = pair.teamA
-                settings.teamBName = pair.teamB
+                updateTeamNames(teamA: pair.teamA, teamB: pair.teamB)
                 return
             }
         }
@@ -153,8 +153,7 @@ final class NewGameViewModel {
             return false
         }
 
-        settings.teamAName = trimmedTeamAName
-        settings.teamBName = trimmedTeamBName
+        updateTeamNames(teamA: trimmedTeamAName, teamB: trimmedTeamBName)
         return true
     }
 }
@@ -177,4 +176,40 @@ private extension NewGameViewModel {
         TeamNamePair(teamA: "Lucky Ducks", teamB: "Quick Quips"),
         TeamNamePair(teamA: "Sharp Elbows", teamB: "Clean Slate")
     ]
+
+    static let defaultPlaceholderTeamNames = ("Team A", "Team B")
+}
+
+private extension NewGameViewModel {
+    func seedSuggestedTeamNamesIfNeeded() {
+        guard shouldSeedSuggestedTeamNames,
+              let firstPair = Self.suggestedTeamNamePairs.first else {
+            return
+        }
+
+        updateTeamNames(teamA: firstPair.teamA, teamB: firstPair.teamB)
+        suggestedTeamNamePairIndex = Self.suggestedTeamNamePairs.count > 1 ? 1 : 0
+    }
+
+    var shouldSeedSuggestedTeamNames: Bool {
+        let trimmedTeamA = trimmedTeamAName
+        let trimmedTeamB = trimmedTeamBName
+
+        let isDefaultPlaceholderPair =
+            trimmedTeamA.caseInsensitiveCompare(Self.defaultPlaceholderTeamNames.0) == .orderedSame
+            && trimmedTeamB.caseInsensitiveCompare(Self.defaultPlaceholderTeamNames.1) == .orderedSame
+
+        let areBothEmpty = trimmedTeamA.isEmpty && trimmedTeamB.isEmpty
+
+        return isDefaultPlaceholderPair || areBothEmpty
+    }
+
+    func updateTeamNames(teamA: String, teamB: String) {
+        settings = GameSettings(
+            teamAName: teamA,
+            teamBName: teamB,
+            numberOfRounds: settings.numberOfRounds,
+            roundDurationSeconds: settings.roundDurationSeconds
+        )
+    }
 }
