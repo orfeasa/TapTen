@@ -22,6 +22,7 @@ Two teams play on a single device.
 ## v1 product decisions
 - Platform: iPhone first
 - Orientation: portrait only on iPhone for v1
+- Minimum deployment target: iOS 17
 - Framework: SwiftUI
 - Device mode: single device only
 - Teams: 2
@@ -199,6 +200,8 @@ Example answers:
 - Bundled JSON for v1 question packs
 - Local-only architecture for v1
 - Keep persistence minimal initially
+- Prefer modern Apple APIs within the supported deployment floor.
+- Do not add architectural complexity just to reach older iOS versions unless there is a clear product reason.
 
 ### Suggested project structure
 - Models/

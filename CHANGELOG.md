@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-03-16
+
+### Changed
+- Lowered the project deployment target from the temporary iOS 26.x settings down to iOS 17.0 after confirming the current SwiftUI/Observation code compiles cleanly at that floor.
+
+### Docs
+- Added a release-check step to keep running a compatibility build at the current deployment floor (`iOS 17`).
+- Documented the development preference to use modern Apple APIs within the supported floor instead of adding complexity just to support older iOS versions.
+
 ## 2026-03-13
 
 ### Changed

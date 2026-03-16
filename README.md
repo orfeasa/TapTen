@@ -8,6 +8,7 @@ Two teams play on one device. One team answers out loud while the other team hos
 
 - Single-device game with exactly two teams.
 - Portrait-only on iPhone in v1.
+- Minimum supported iPhone OS is currently iOS 17.
 - Configurable default rounds per team and round duration via Settings.
 - Random question selection from enabled categories and difficulty tiers.
 - No repeated questions in a single game session.
@@ -151,6 +152,7 @@ Note: avoid launching iOS simulator test runs unless explicitly needed in the cu
 ## Working Notes
 
 - Product and UX constraints: see `PROJECT_BRIEF.md`.
+- Development preference: use modern iOS APIs within the current deployment floor rather than contorting the app for older iOS support.
 - Prioritized follow-up work: see `PROJECT_BACKLOG.md`.
 - Repository working conventions: see `AGENTS.md`.
 - Release smoke-test protocol: see `RELEASE_CHECKLIST.md`.

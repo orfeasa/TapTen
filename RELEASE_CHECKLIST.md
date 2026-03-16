@@ -6,6 +6,8 @@ Use this checklist before creating a release candidate or TestFlight build.
 
 - [ ] Run iOS build:
   - `xcodebuild build -project PesVres/TapTen.xcodeproj -scheme TapTen -destination 'generic/platform=iOS' -derivedDataPath /tmp/pesvres-dd CODE_SIGNING_ALLOWED=NO`
+- [ ] Run compatibility build at the current deployment floor (`iOS 17`):
+  - `xcodebuild build -project PesVres/TapTen.xcodeproj -scheme TapTen -destination 'generic/platform=iOS' -derivedDataPath /tmp/pesvres-dd-ios17 CODE_SIGNING_ALLOWED=NO IPHONEOS_DEPLOYMENT_TARGET=17.0`
 - [ ] Ensure no local pack-schema regressions:
   - `./scripts/audit_question_packs.sh`
 - [ ] Confirm working tree contains only intended release changes.
