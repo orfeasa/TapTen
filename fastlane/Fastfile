@@ -16,13 +16,22 @@ platform :ios do
 
     api_key_id = ENV["APP_STORE_CONNECT_API_KEY_ID"]
     issuer_id = ENV["APP_STORE_CONNECT_ISSUER_ID"]
-    api_key_base64 = ENV["APP_STORE_CONNECT_API_KEY_BASE64"]
+    api_key_secret = ENV["APP_STORE_CONNECT_API_KEY_BASE64"]
 
     UI.user_error!("Missing APP_STORE_CONNECT_API_KEY_ID") if api_key_id.to_s.empty?
     UI.user_error!("Missing APP_STORE_CONNECT_ISSUER_ID") if issuer_id.to_s.empty?
-    UI.user_error!("Missing APP_STORE_CONNECT_API_KEY_BASE64") if api_key_base64.to_s.empty?
+    UI.user_error!("Missing APP_STORE_CONNECT_API_KEY_BASE64") if api_key_secret.to_s.empty?
 
-    api_key_content = Base64.decode64(api_key_base64)
+    api_key_content = begin
+      if api_key_secret.include?("BEGIN PRIVATE KEY")
+        api_key_secret
+      else
+        Base64.strict_decode64(api_key_secret)
+      end
+    rescue ArgumentError
+      UI.user_error!("APP_STORE_CONNECT_API_KEY_BASE64 must contain either the raw .p8 key contents or a valid base64-encoded .p8 key")
+    end
+
     api_key_path = File.join(Dir.tmpdir, "AuthKey_#{api_key_id}.p8")
     File.write(api_key_path, api_key_content)
 

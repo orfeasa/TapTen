@@ -122,7 +122,7 @@ Configure these GitHub Actions secrets before using the workflow:
 - `APP_STORE_CONNECT_API_KEY_ID`
 - `APP_STORE_CONNECT_ISSUER_ID`
 - `APP_STORE_CONNECT_API_KEY_BASE64`
-  - Base64-encoded contents of your App Store Connect `.p8` API key file.
+  - Either the raw contents of your App Store Connect `.p8` API key file or a base64-encoded version of that file.
 
 Trigger it either by:
 

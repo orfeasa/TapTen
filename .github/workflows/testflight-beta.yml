@@ -25,6 +25,9 @@ jobs:
           # - APP_STORE_CONNECT_API_KEY_ID
           # - APP_STORE_CONNECT_ISSUER_ID
           # - APP_STORE_CONNECT_API_KEY_BASE64
+          #   This value may be either:
+          #   - the raw contents of the App Store Connect .p8 key, or
+          #   - a base64-encoded copy of that .p8 file.
           #
           # This minimal workflow assumes the app scheme is `TapTen`
           # and the Xcode project path is `PesVres/TapTen.xcodeproj`.
