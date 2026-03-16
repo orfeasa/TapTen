@@ -1,0 +1,67 @@
+require "base64"
+require "shellwords"
+require "tmpdir"
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Increment the build number, archive the app, and upload a beta to TestFlight"
+  lane :beta do
+    # Update these if the Xcode project layout changes.
+    scheme_name = "TapTen"
+    project_path = "PesVres/TapTen.xcodeproj"
+
+    # Keep this in sync with Appfile if the app bundle identifier changes.
+    bundle_identifier = "Orfeas.TapTen"
+
+    api_key_id = ENV["APP_STORE_CONNECT_API_KEY_ID"]
+    issuer_id = ENV["APP_STORE_CONNECT_ISSUER_ID"]
+    api_key_base64 = ENV["APP_STORE_CONNECT_API_KEY_BASE64"]
+
+    UI.user_error!("Missing APP_STORE_CONNECT_API_KEY_ID") if api_key_id.to_s.empty?
+    UI.user_error!("Missing APP_STORE_CONNECT_ISSUER_ID") if issuer_id.to_s.empty?
+    UI.user_error!("Missing APP_STORE_CONNECT_API_KEY_BASE64") if api_key_base64.to_s.empty?
+
+    api_key_content = Base64.decode64(api_key_base64)
+    api_key_path = File.join(Dir.tmpdir, "AuthKey_#{api_key_id}.p8")
+    File.write(api_key_path, api_key_content)
+
+    api_key = app_store_connect_api_key(
+      key_id: api_key_id,
+      issuer_id: issuer_id,
+      key_content: api_key_content,
+      duration: 1200,
+      in_house: false
+    )
+
+    signing_xcargs = [
+      "-allowProvisioningUpdates",
+      "-authenticationKeyPath #{Shellwords.escape(api_key_path)}",
+      "-authenticationKeyID #{api_key_id}",
+      "-authenticationKeyIssuerID #{issuer_id}"
+    ].join(" ")
+
+    increment_build_number(
+      xcodeproj: project_path
+    )
+
+    build_app(
+      project: project_path,
+      scheme: scheme_name,
+      clean: true,
+      export_method: "app-store",
+      output_directory: "build",
+      output_name: "TapTen",
+      xcargs: signing_xcargs,
+      export_xcargs: signing_xcargs
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      app_identifier: bundle_identifier,
+      skip_waiting_for_build_processing: true
+    )
+  ensure
+    File.delete(api_key_path) if defined?(api_key_path) && api_key_path && File.exist?(api_key_path)
+  end
+end

@@ -104,6 +104,37 @@ xcodebuild build \
   CODE_SIGNING_ALLOWED=NO
 ```
 
+## TestFlight Automation
+
+This repo now includes a minimal fastlane + GitHub Actions path for TestFlight beta uploads.
+
+- Bundler installs fastlane from the root `Gemfile`.
+- The fastlane lane is `beta` in `fastlane/Fastfile`.
+- The lane:
+  - authenticates with an App Store Connect API key from environment variables
+  - increments the iOS build number
+  - archives the app for App Store/TestFlight distribution
+  - uploads the build to TestFlight
+- Marketing version remains manual. Keep updating that in Xcode when you want a new visible app version.
+
+Configure these GitHub Actions secrets before using the workflow:
+
+- `APP_STORE_CONNECT_API_KEY_ID`
+- `APP_STORE_CONNECT_ISSUER_ID`
+- `APP_STORE_CONNECT_API_KEY_BASE64`
+  - Base64-encoded contents of your App Store Connect `.p8` API key file.
+
+Trigger it either by:
+
+- running the `TestFlight Beta` workflow manually from GitHub Actions
+- pushing a tag that matches `beta-*`
+
+Notes:
+
+- The workflow intentionally does not automate App Store metadata, screenshots, or App Store release submission yet.
+- App Store release remains manual.
+- This first pass also does not add `fastlane match`. If Xcode automatic signing is not enough on the CI runner, add certificate/profile import or a signing solution later.
+
 ## Tests
 
 Unit tests are under `PesVres/TapTenTests/Unit/` and cover:

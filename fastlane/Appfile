@@ -1,0 +1,3 @@
+# Bundle identifier for the iOS app uploaded to TestFlight.
+# Update this if the app target bundle identifier changes.
+app_identifier("Orfeas.TapTen")

@@ -1,0 +1,38 @@
+name: TestFlight Beta
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "beta-*"
+
+jobs:
+  beta:
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby and Bundler cache
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Upload beta to TestFlight
+        env:
+          # Required GitHub Actions secrets:
+          # - APP_STORE_CONNECT_API_KEY_ID
+          # - APP_STORE_CONNECT_ISSUER_ID
+          # - APP_STORE_CONNECT_API_KEY_BASE64
+          #
+          # This minimal workflow assumes the app scheme is `TapTen`
+          # and the Xcode project path is `PesVres/TapTen.xcodeproj`.
+          #
+          # If CI signing is not already available to Xcode automatic signing,
+          # add certificate/profile import later. `match` is intentionally not
+          # wired in this first pass.
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}
+        run: bundle exec fastlane beta
