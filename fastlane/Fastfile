@@ -14,13 +14,13 @@ platform :ios do
     # Keep this in sync with Appfile if the app bundle identifier changes.
     bundle_identifier = "Orfeas.TapTen"
 
-    api_key_id = ENV["APP_STORE_CONNECT_API_KEY_ID"]
-    issuer_id = ENV["APP_STORE_CONNECT_ISSUER_ID"]
-    api_key_secret = ENV["APP_STORE_CONNECT_API_KEY_BASE64"]
+    api_key_id = ENV["APP_STORE_CONNECT_API_KEY_ID"].to_s.strip
+    issuer_id = ENV["APP_STORE_CONNECT_ISSUER_ID"].to_s.strip
+    api_key_secret = ENV["APP_STORE_CONNECT_API_KEY_BASE64"].to_s.gsub("\r\n", "\n").strip
 
-    UI.user_error!("Missing APP_STORE_CONNECT_API_KEY_ID") if api_key_id.to_s.empty?
-    UI.user_error!("Missing APP_STORE_CONNECT_ISSUER_ID") if issuer_id.to_s.empty?
-    UI.user_error!("Missing APP_STORE_CONNECT_API_KEY_BASE64") if api_key_secret.to_s.empty?
+    UI.user_error!("Missing APP_STORE_CONNECT_API_KEY_ID") if api_key_id.empty?
+    UI.user_error!("Missing APP_STORE_CONNECT_ISSUER_ID") if issuer_id.empty?
+    UI.user_error!("Missing APP_STORE_CONNECT_API_KEY_BASE64") if api_key_secret.empty?
 
     api_key_content = begin
       if api_key_secret.include?("BEGIN PRIVATE KEY")
