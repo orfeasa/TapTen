@@ -27,7 +27,8 @@ Run one full game (at least 2 rounds per team) and verify:
   - `Browse Question Packs` opens and loads category/pack counts.
   - App remains portrait-only on iPhone.
 - [ ] New Game:
-  - Team names are editable and validation errors are clear.
+  - Team names open with a random suggested pair, remain editable, and validation errors are clear.
+  - `Shuffle Names` replaces both team names immediately.
   - Rounds/timer controls are not shown in setup.
   - Category and difficulty filters behave correctly.
   - `Start Game` remains visible without scrolling to the end of setup.

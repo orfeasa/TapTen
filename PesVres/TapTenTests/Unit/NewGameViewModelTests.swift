@@ -66,8 +66,8 @@ struct NewGameViewModelTests {
     }
 
     @Test
-    func defaultSetupUsesFirstCuratedTeamNamePair() {
-        let viewModel = NewGameViewModel()
+    func defaultSetupUsesSeededCuratedTeamNamePair() {
+        let viewModel = NewGameViewModel(initialSuggestedTeamNamePairIndex: 0)
 
         #expect(viewModel.settings.teamAName == "Hot Takes")
         #expect(viewModel.settings.teamBName == "Cold Pizza")
@@ -75,7 +75,7 @@ struct NewGameViewModelTests {
 
     @Test
     func applyingSuggestedTeamNamesAdvancesToNextPair() {
-        let viewModel = NewGameViewModel()
+        let viewModel = NewGameViewModel(initialSuggestedTeamNamePairIndex: 0)
 
         viewModel.applyNextSuggestedTeamNames()
 
@@ -85,7 +85,7 @@ struct NewGameViewModelTests {
 
     @Test
     func applyingSuggestedTeamNamesSkipsCurrentPair() {
-        let viewModel = NewGameViewModel()
+        let viewModel = NewGameViewModel(initialSuggestedTeamNamePairIndex: 0)
         viewModel.settings.teamAName = "Hot Takes"
         viewModel.settings.teamBName = "Cold Pizza"
 
@@ -93,6 +93,14 @@ struct NewGameViewModelTests {
 
         #expect(viewModel.settings.teamAName == "Snack Attack")
         #expect(viewModel.settings.teamBName == "Sip Happens")
+    }
+
+    @Test
+    func seededSuggestedPairIndexCanStartFromLaterPair() {
+        let viewModel = NewGameViewModel(initialSuggestedTeamNamePairIndex: 3)
+
+        #expect(viewModel.settings.teamAName == "Peak Chaos")
+        #expect(viewModel.settings.teamBName == "Soft Launch")
     }
 
     @Test

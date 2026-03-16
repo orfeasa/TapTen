@@ -11,14 +11,15 @@ final class NewGameViewModel {
 
     init(
         settings: GameSettings = GameSettings(),
-        categoryService: CategoryCatalogService = CategoryCatalogService()
+        categoryService: CategoryCatalogService = CategoryCatalogService(),
+        initialSuggestedTeamNamePairIndex: Int? = nil
     ) {
         let loadedCategories = categoryService.categories()
         self.settings = settings
         self.categories = loadedCategories
         self.includedCategoryIDs = Set(loadedCategories.map(\.id))
         self.includedDifficultyTiers = Set(QuestionDifficulty.allCases)
-        seedSuggestedTeamNamesIfNeeded()
+        seedSuggestedTeamNamesIfNeeded(initialPairIndex: initialSuggestedTeamNamePairIndex)
     }
 
     var includedCategoryCount: Int {
@@ -181,14 +182,19 @@ private extension NewGameViewModel {
 }
 
 private extension NewGameViewModel {
-    func seedSuggestedTeamNamesIfNeeded() {
+    func seedSuggestedTeamNamesIfNeeded(initialPairIndex: Int?) {
+        let pairs = Self.suggestedTeamNamePairs
         guard shouldSeedSuggestedTeamNames,
-              let firstPair = Self.suggestedTeamNamePairs.first else {
+              !pairs.isEmpty else {
             return
         }
 
-        updateTeamNames(teamA: firstPair.teamA, teamB: firstPair.teamB)
-        suggestedTeamNamePairIndex = Self.suggestedTeamNamePairs.count > 1 ? 1 : 0
+        let selectedIndex = initialPairIndex.map { (($0 % pairs.count) + pairs.count) % pairs.count }
+            ?? Int.random(in: 0..<pairs.count)
+        let selectedPair = pairs[selectedIndex]
+
+        updateTeamNames(teamA: selectedPair.teamA, teamB: selectedPair.teamB)
+        suggestedTeamNamePairIndex = (selectedIndex + 1) % pairs.count
     }
 
     var shouldSeedSuggestedTeamNames: Bool {

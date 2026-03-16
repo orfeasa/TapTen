@@ -17,6 +17,7 @@ Two teams play on one device. One team answers out loud while the other team hos
 - Cleaner Home with focused hero copy, a native toolbar gear, live `Current settings` chips, one strong primary CTA, larger secondary actions, and a separate `How To Play` sheet.
 - Home includes a native `Browse Question Packs` screen with category and pack-level counts.
 - New Game focuses on team names, category filters, and difficulty tiers, while rounds/timer live in Settings defaults and the setup screen uses warmer card-based grouping plus a pinned bottom `Start Game` action so the main CTA stays visible.
+  - Team names open with a random curated funny/sassy suggested pair and can be cycled with `Shuffle Names` or edited manually.
 - Pass-device handoff flow between rounds with clear answering/hosting emphasis and a playful primary `Start Round` CTA.
 - Host round with:
   - visible question and all 10 answers
