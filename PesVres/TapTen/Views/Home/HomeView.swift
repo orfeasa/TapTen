@@ -2,9 +2,11 @@ import SwiftUI
 
 struct HomeView: View {
     let viewModel: HomeViewModel
+    @AppStorage("hasShownHowToPlayOnFirstLaunch") private var hasShownHowToPlayOnFirstLaunch = false
     @State private var settingsStore = AppSettingsStore.shared
     @State private var isShowingHowToPlay = false
     @State private var isShowingNewGame = false
+    @State private var hasHandledInitialHowToPlayPresentation = false
 
     var body: some View {
         ScrollView {
@@ -24,12 +26,13 @@ struct HomeView: View {
                 NavigationLink {
                     SettingsView(settingsStore: settingsStore)
                 } label: {
-                    Image(systemName: "gearshape")
-                        .font(.headline.weight(.semibold))
-                        .foregroundStyle(Color.tapTenPlayfulBlue)
-                        .frame(width: 32, height: 32)
+                    Image(systemName: "gearshape.fill")
+                        .font(.body.weight(.semibold))
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundStyle(Color.primary.opacity(0.72))
                 }
                 .accessibilityLabel("Settings")
+                .accessibilityHint("Open game defaults and feedback settings.")
             }
         }
         .sheet(isPresented: $isShowingHowToPlay) {
@@ -46,6 +49,20 @@ struct HomeView: View {
             )
         }
         .background(homeBackground)
+        .onAppear {
+            guard !hasHandledInitialHowToPlayPresentation else {
+                return
+            }
+
+            hasHandledInitialHowToPlayPresentation = true
+
+            guard !hasShownHowToPlayOnFirstLaunch else {
+                return
+            }
+
+            isShowingHowToPlay = true
+            hasShownHowToPlayOnFirstLaunch = true
+        }
     }
 }
 
@@ -539,6 +556,23 @@ private struct PackBrowserView: View {
                             .accessibilityHint("Informational only.")
                         }
                     }
+
+                    if let librarySummary {
+                        informationalRow {
+                            VStack(alignment: .leading, spacing: 8) {
+                                sectionTitle("Library Snapshot")
+
+                                Text("\(librarySummary.categoryCount) categories • \(librarySummary.questionCount) questions")
+                                    .font(.headline)
+
+                                Text("Easy \(librarySummary.easyCount) • Medium \(librarySummary.mediumCount) • Hard \(librarySummary.hardCount)")
+                                    .font(.footnote)
+                                    .foregroundStyle(Color.primary.opacity(0.72))
+                            }
+                        }
+                        .accessibilityElement(children: .combine)
+                        .accessibilityHint("Informational only.")
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 16)
@@ -618,6 +652,20 @@ private struct PackBrowserView: View {
                     .stroke(Color.primary.opacity(0.08), lineWidth: 1)
             )
     }
+
+    private var librarySummary: LibrarySummary? {
+        guard !categoryCoverage.isEmpty else {
+            return nil
+        }
+
+        return LibrarySummary(
+            categoryCount: categoryCoverage.count,
+            questionCount: categoryCoverage.reduce(0) { $0 + $1.total },
+            easyCount: categoryCoverage.reduce(0) { $0 + $1.easy },
+            mediumCount: categoryCoverage.reduce(0) { $0 + $1.medium },
+            hardCount: categoryCoverage.reduce(0) { $0 + $1.hard }
+        )
+    }
 }
 
 private struct CategoryCoverage: Identifiable {
@@ -643,4 +691,12 @@ private struct PackSummary: Identifiable {
     let title: String
     let questionCount: Int
     let categoryList: String
+}
+
+private struct LibrarySummary {
+    let categoryCount: Int
+    let questionCount: Int
+    let easyCount: Int
+    let mediumCount: Int
+    let hardCount: Int
 }

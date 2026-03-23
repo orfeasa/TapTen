@@ -372,10 +372,10 @@
 
 ### P2 - Later
 
-- [ ] TASK: Decide and optionally add first-launch How To Play presentation
+- [x] TASK: Decide and optionally add first-launch How To Play presentation
   - Type: UX / Onboarding
   - Priority: P2
-  - Status: Planned
+  - Status: Completed
   - Area: app launch flow, `Views/Home/HowToPlay`
   - Goal: Improve first-run clarity without adding a mandatory onboarding sequence for repeat users.
   - Acceptance Criteria:
@@ -384,12 +384,12 @@
     - The sheet can be dismissed immediately with `Done`.
     - Repeat launches are not slowed down by recurring onboarding.
   - Notes:
-    - This should only be implemented if the Home clarity pass still leaves too much ambiguity for first-time users.
+    - Home now auto-presents `How To Play` once on first launch only, then defers to the manual Home action on later visits.
 
-- [ ] TASK: Add optional Question Packs summary footer if it adds real signal
+- [x] TASK: Add optional Question Packs summary footer if it adds real signal
   - Type: UX
   - Priority: P2
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/Home/PackBrowser`
   - Goal: Make the pack browser feel more informative if the current category list still reads as repetitive.
   - Acceptance Criteria:
@@ -397,15 +397,12 @@
     - The summary only ships if it adds useful signal such as total categories, total questions, or even difficulty balance.
     - The footer does not make the screen feel redundant or cluttered.
   - Notes:
-    - Candidate copy:
-      - `12 categories`
-      - `144 total questions`
-      - `Easy / Medium / Hard evenly balanced`
+    - The footer now reports live category/question totals and tier totals from bundled content.
 
-- [ ] TASK: Refine Home settings affordance and overall button hierarchy
+- [x] TASK: Refine Home settings affordance and overall button hierarchy
   - Type: UX
   - Priority: P2
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/Home`, shared navigation/button hierarchy
   - Goal: Make Settings feel integrated into navigation and ensure it does not compete visually with the main CTA.
   - Acceptance Criteria:
