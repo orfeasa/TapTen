@@ -14,6 +14,7 @@
   - Runtime round feedback now respects `Sounds` and `Haptics` settings.
   - Home now includes a native pack browser showing category coverage and pack-level counts.
   - Home now shows live current-settings chips and uses simpler native toolbar/settings chrome.
+  - Question reporting now stays in-app, posts to a configured endpoint, and keeps a local retry queue for unsent reports.
   - Legacy mixed pack files were consolidated into one-category pack files.
   - Debug-only round telemetry now records category/answers/points/time-remaining for playtest tuning.
   - A reusable pre-release checklist now exists in `RELEASE_CHECKLIST.md`.
@@ -50,7 +51,7 @@
 - Mandatory onboarding remains deferred; an optional first-launch-only `How To Play` presentation is acceptable if needed later.
 - Countdown tension audio remains a final-`10`-seconds treatment in the shipped build.
 - iPhone remains portrait-only in v1; landscape and iPad layouts are deferred deliberate future work.
-- Email-based question reporting is acceptable for the current launch scope; direct in-app submission is deferred future work.
+- Question reporting now uses an in-app submission path; release/ops still need to provide a real feedback endpoint for production delivery.
 - Settings changes should affect future setup defaults only, not mutate an already-open New Game draft.
 
 ## Backlog
@@ -243,7 +244,7 @@
     - Utility actions remain visually secondary to the main continue CTA.
     - Home and Settings feel like one coherent defaults flow, not contradictory screens.
 
-- [x] TASK: Add post-round question feedback via email
+- [x] TASK: Add post-round question feedback entry point
   - Type: Feature / Content QA
   - Priority: P1
   - Status: Completed
@@ -254,13 +255,11 @@
     - The flow opens a native sheet with question details (`category`, `difficulty`, `source`), reason selection, and note capture.
     - Supported reasons are `Too easy`, `Too difficult`, `Wrong category`, `Inappropriate`, and `Other`.
     - `Other` requires a note before submission.
-    - Submitting creates a prefilled email with structured question metadata and reason-specific review language.
     - Included metadata covers pack name, question ID, prompt, source URL, difficulty tier, app version, selected reason, and note.
     - The feedback entry point does not weaken the main continue/progression CTA.
   - Notes:
     - v1 entry point now lives on Host Round after time-up, beside `View Source`, so the host can review/report before moving on.
-    - Feedback drafts currently target `tapten-reports@orfeasa.com` via `QuestionFeedbackComposer`.
-    - This flow is now considered transitional and should be replaced by direct in-app submission.
+    - The initial shipped version used local feedback composition; direct in-app submission now owns delivery.
 
 - [x] TASK: Add pre-generated funny team names in setup
   - Type: Feature / UX
@@ -499,10 +498,10 @@
 
 ### P3 - Someday Maybe
 
-- [ ] TASK: Replace email-based question reporting with seamless in-app submission
+- [x] TASK: Replace email-based question reporting with seamless in-app submission
   - Type: Feature / Content QA / Technical
   - Priority: P3
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/GameFlow`, question feedback flow, lightweight networking, local retry queue
   - Goal: Let hosts report a question in-app without opening Mail or requiring any later export/follow-up.
   - Acceptance Criteria:
@@ -516,7 +515,7 @@
     - Preferred backend shape is a minimal serverless endpoint, not a general-purpose app backend.
     - Cloudflare Workers, Supabase Edge Functions, or Firebase Functions are acceptable patterns.
     - Endpoint ownership/infrastructure should remain isolated behind a small service.
-    - Current email-based reporting is acceptable for launch; this work is explicitly deferred.
+    - The app now supports in-app submission plus a local retry queue; production builds still need a configured endpoint URL to deliver queued reports.
 
 - [ ] TASK: Add iPad support
   - Type: Feature / UX

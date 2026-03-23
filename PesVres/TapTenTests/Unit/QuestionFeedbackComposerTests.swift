@@ -32,7 +32,7 @@ struct QuestionFeedbackComposerTests {
     }
 
     @Test
-    func emailURLIncludesRecipientReasonSpecificSubjectAndBody() throws {
+    func reportIncludesRequiredStructuredFields() {
         let composer = QuestionFeedbackComposer(
             context: QuestionFeedbackContext(
                 packID: "pack-id",
@@ -49,10 +49,13 @@ struct QuestionFeedbackComposerTests {
             note: ""
         )
 
-        let emailURL = try #require(composer.emailURL)
-        let absolute = emailURL.absoluteString
-        #expect(absolute.contains("mailto:tapten-reports@orfeasa.com"))
-        #expect(absolute.contains("subject=Tap%20Ten%20Report:%20Wrong%20Category%20%5Bquestion-2%5D"))
-        #expect(absolute.contains("body="))
+        let report = composer.report
+        #expect(report.reason == .wrongCategory)
+        #expect(report.questionID == "question-2")
+        #expect(report.category == "Geography")
+        #expect(report.difficultyTier == .medium)
+        #expect(report.validationStyle == .editorial)
+        #expect(report.packVersion == nil)
+        #expect(report.sourceURL == URL(string: "https://example.com/city")!)
     }
 }

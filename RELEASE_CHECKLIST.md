@@ -20,6 +20,7 @@ Use this checklist before creating a release candidate or TestFlight build.
   - `APP_STORE_CONNECT_ISSUER_ID`
   - `APP_STORE_CONNECT_API_KEY_BASE64`
 - [ ] Confirm the CI runner has sufficient signing access for archive/export.
+- [ ] If using in-app question reporting in the release build, confirm `QuestionFeedbackEndpointURL` is set for that build configuration (or equivalent runtime environment injection is present).
 - [ ] Trigger one beta upload path:
   - GitHub Actions `TestFlight Beta` workflow manual dispatch, or
   - push a `beta-*` tag, or
@@ -61,9 +62,9 @@ Run one full game (at least 2 rounds per team) and verify:
   - Final 10-second timer format remains stable.
   - Final 10-second countdown audio starts at `10` and ramps cleanly through `1`.
   - `End Game` uses destructive confirmation dialog.
-  - After time-up, `Source` and `Report` are available before continuing.
+  - After time-up, `View source` and `Flag question` are available before continuing.
   - On narrow iPhones, post-timeup review actions stay on one row without overlapping the question text.
-  - `Report Question` opens the feedback sheet, shows category/difficulty/source, and can prepare the correct reason-specific email draft.
+  - `Flag question` opens the feedback sheet, shows category/difficulty/source, and either sends in-app or saves locally with a clear confirmation state.
 - [ ] Round Summary:
   - Points and found-answer count match revealed answers.
   - Continue CTA label matches state (`Next Round` or `Continue to Final Results`).

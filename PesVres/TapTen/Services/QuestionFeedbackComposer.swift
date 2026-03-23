@@ -12,7 +12,7 @@ struct QuestionFeedbackContext: Equatable, Sendable {
     let sourceURL: URL
 }
 
-enum QuestionFeedbackReason: String, CaseIterable, Identifiable, Sendable {
+enum QuestionFeedbackReason: String, Codable, CaseIterable, Identifiable, Sendable {
     case tooEasy
     case tooDifficult
     case wrongCategory
@@ -83,8 +83,6 @@ enum QuestionFeedbackReason: String, CaseIterable, Identifiable, Sendable {
 }
 
 struct QuestionFeedbackComposer {
-    static let feedbackRecipient = "tapten-reports@orfeasa.com"
-
     let context: QuestionFeedbackContext
     let reason: QuestionFeedbackReason
     let note: String
@@ -130,15 +128,13 @@ struct QuestionFeedbackComposer {
         return lines.joined(separator: "\n")
     }
 
-    var emailURL: URL? {
-        var components = URLComponents()
-        components.scheme = "mailto"
-        components.path = Self.feedbackRecipient
-        components.queryItems = [
-            URLQueryItem(name: "subject", value: subject),
-            URLQueryItem(name: "body", value: body)
-        ]
-        return components.url
+    var report: QuestionFeedbackReport {
+        QuestionFeedbackReport(
+            context: context,
+            reason: reason,
+            note: note,
+            appVersion: appVersion
+        )
     }
 }
 

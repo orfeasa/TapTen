@@ -12,7 +12,7 @@ struct HostRoundView: View {
     @State private var isShowingPointsReaction = false
     @State private var isTimerPulsing = false
     @State private var isShowingFeedbackSheet = false
-    @State private var feedbackFallbackMessage: String?
+    @State private var feedbackNotice: FeedbackNotice?
 
     var body: some View {
         GeometryReader { geometry in
@@ -77,36 +77,28 @@ struct HostRoundView: View {
         .sheet(isPresented: $isShowingFeedbackSheet) {
             HostRoundQuestionFeedbackSheet(
                 context: feedbackContext,
-                onSubmit: { composer in
-                    guard let emailURL = composer.emailURL else {
-                        UIPasteboard.general.string = composer.body
-                        feedbackFallbackMessage = "Couldn't prepare the email draft. Feedback details were copied instead."
-                        return
-                    }
-
-                    openURL(emailURL) { accepted in
-                        if accepted {
-                            isShowingFeedbackSheet = false
-                            return
-                        }
-
-                        UIPasteboard.general.string = composer.body
-                        feedbackFallbackMessage = "Couldn't open Mail. Feedback details were copied instead."
+                onSubmit: { report in
+                    let status = await QuestionFeedbackSubmissionService.shared.submit(report)
+                    await MainActor.run {
+                        isShowingFeedbackSheet = false
+                        feedbackNotice = FeedbackNotice(status: status)
                     }
                 }
             )
         }
-        .alert("Feedback copied", isPresented: Binding(
-            get: { feedbackFallbackMessage != nil },
+        .alert(feedbackNotice?.title ?? "Report status", isPresented: Binding(
+            get: { feedbackNotice != nil },
             set: { isPresented in
                 if !isPresented {
-                    feedbackFallbackMessage = nil
+                    feedbackNotice = nil
                 }
             }
         )) {
             Button("OK", role: .cancel) { }
         } message: {
-            Text(feedbackFallbackMessage ?? "")
+            if let feedbackNotice {
+                Text(feedbackNotice.message)
+            }
         }
         .onAppear {
             viewModel.startRoundIfNeeded()
@@ -431,10 +423,11 @@ private struct HostRoundQuestionFeedbackSheet: View {
     @Environment(\.dismiss) private var dismiss
 
     let context: QuestionFeedbackContext
-    let onSubmit: (QuestionFeedbackComposer) -> Void
+    let onSubmit: (QuestionFeedbackReport) async -> Void
 
     @State private var selectedReason: QuestionFeedbackReason = .tooEasy
     @State private var note = ""
+    @State private var isSubmitting = false
 
     var body: some View {
         NavigationStack {
@@ -556,13 +549,18 @@ private struct HostRoundQuestionFeedbackSheet: View {
         Section {
             VStack(spacing: 12) {
                 Button {
-                    onSubmit(composer)
+                    Task {
+                        isSubmitting = true
+                        await onSubmit(composer.report)
+                        isSubmitting = false
+                        dismiss()
+                    }
                 } label: {
-                    Label("Open Report Email", systemImage: "envelope.fill")
+                    Label(isSubmitting ? "Sending Report..." : "Send Report", systemImage: "paperplane.fill")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(!canSubmit)
+                .disabled(!canSubmit || isSubmitting)
 
                 Button {
                     UIPasteboard.general.string = composer.body
@@ -572,7 +570,7 @@ private struct HostRoundQuestionFeedbackSheet: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
-                .disabled(!canSubmit)
+                .disabled(!canSubmit || isSubmitting)
             }
         }
     }
@@ -605,6 +603,16 @@ private struct HostRoundQuestionFeedbackSheet: View {
         .buttonStyle(.plain)
         .accessibilityLabel(reason.title)
         .accessibilityValue(selectedReason == reason ? "Selected" : "Not selected")
+    }
+}
+
+private struct FeedbackNotice: Equatable {
+    let title: String
+    let message: String
+
+    init(status: QuestionFeedbackSubmissionStatus) {
+        self.title = status.title
+        self.message = status.message
     }
 }
 

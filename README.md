@@ -32,11 +32,11 @@ Two teams play on one device. One team answers out loud while the other team hos
   - countdown tension audio now starts in the final `10` seconds
   - de-emphasized active-round `Pause` / `Resume` utility control
   - clear post-timeup CTA (`Continue to Summary`)
-  - labeled post-timeup review actions for `Source` and `Report`
+  - labeled post-timeup review actions for `View source` and `Flag question`
   - narrow-screen post-timeup review tools now stay on one row without colliding with long questions
 - Round summary with stronger points-first hierarchy, a larger verdict moment, scoreboard, and one clear progression CTA without extra source/report controls.
 - Round Summary and Final Results now play lightweight payoff stings on appear.
-- Post-timeup `Report Question` opens a native feedback sheet, shows question details (`category`, `difficulty`, `source`), and prepares a reason-specific email draft for `too easy`, `too difficult`, `wrong category`, `inappropriate`, or `other`.
+- Post-timeup `Flag question` opens a native feedback sheet, shows question details (`category`, `difficulty`, `source`), submits directly in-app when a reporting endpoint is configured, and otherwise saves reports locally for retry once delivery is available.
 - Final results with stronger winner hero, warmer celebration accents, winner/runner-up distinction, and post-game actions (`Play Again`, `Home`).
 - Shared theme tokens for warm background/card, celebration gold, reveal green, and playful accent colors used for controls and prominent gradient capsule CTAs.
 - Minimal v1 Settings screen (`sounds`, `haptics`, default rounds, default timer) plus safe in-game end confirmation.
@@ -135,6 +135,7 @@ Notes:
 - The workflow intentionally does not automate App Store metadata, screenshots, or App Store release submission yet.
 - App Store release remains manual.
 - This first pass also does not add `fastlane match`. If Xcode automatic signing is not enough on the CI runner, add certificate/profile import or a signing solution later.
+- Optional in-app question-reporting delivery can be enabled per build with `QuestionFeedbackEndpointURL` in the app’s info dictionary or `TAPTEN_FEEDBACK_ENDPOINT` in the environment.
 
 ## Tests
 
