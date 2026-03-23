@@ -21,17 +21,21 @@
   - Accessibility pass completed for Dynamic Type and VoiceOver on core game-flow controls.
   - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
   - Playful color pass applied; controls use warmer accents and prominent action tinting now aligns with Home’s orange-led palette.
-  - Latest polish pass refined New Game into warm setup cards with a pinned `Start Game` action, aligned in-flow CTA styling, reduced Host Round pause emphasis, moved source/report into the Host Round time-up state, simplified Round Summary, and fixed `Home` navigation to exit the full finished-game flow.
-- Release readiness: Not ready for release candidate; gameplay is stable, but final editorial QA and end-to-end release-ops verification are still open.
+- Latest polish pass refined New Game into warm setup cards with a pinned `Start Game` action, aligned in-flow CTA styling, reduced Host Round pause emphasis, moved source/report into the Host Round time-up state, simplified Round Summary, and fixed `Home` navigation to exit the full finished-game flow.
+- Latest UX review identified one more clarity/polish pass around first-run explanation, false affordance, contrast, and information hierarchy.
+- Release readiness: Not ready for release candidate; gameplay is stable, but final editorial QA, end-to-end release-ops verification, and the latest clarity/polish pass are still open.
 
 ## Active Decisions
 - Final content category target is fixed to 12 categories:
   - Everyday Life, Food & Drink, Film & TV, Music, Sport, Geography, History, Science, Technology, Travel, Work & School, Pop Culture & Trends.
 - Content quality workflow requires post-edit auditing (duplicates, ambiguity, overlap, score/tier integrity).
+- Home should explain the core loop without depending on `How To Play` for first comprehension.
 - Home keeps instructional content in a separate How To Play sheet (not a large on-home card).
 - Home keeps `Browse Question Packs` as a secondary top-level action.
+- Home setup/defaults cards are display-only and should not look tappable.
 - Host answer rows are currently sorted alphabetically for scanning speed.
 - Host-round interaction baseline is tap-to-toggle answers with active-round `Pause`/`Resume` and post-timeup `Continue to Summary`.
+- How To Play, Pass Device, and Host Round should all use the same role language: `host`, `guessing team`, and explicit tapping guidance.
 - Home should use a single strong brand title (remove duplicate `Tap Ten` heading).
 - Navigation chrome should use standard native bars/back behavior instead of mixed floating controls.
 - New Game should use clearer editable team fields and a stronger full-width primary `Start Game` action.
@@ -41,6 +45,8 @@
 - Final Results secondary action should be label/destination aligned (`Home` to Home), while `Play Again` remains the primary replay action.
 - Round Summary CTA labels should be state-specific (`Next Round` / `Continue to Final Results`).
 - Settings should stay visually aligned with the warm app theme and use native control styling.
+- Question Pack rows should remain clearly informational unless row navigation is added later.
+- Mandatory onboarding remains deferred; an optional first-launch-only `How To Play` presentation is acceptable if needed later.
 - Countdown tension audio remains a final-`10`-seconds treatment in the shipped build.
 - iPhone remains portrait-only in v1; landscape and iPad layouts are deferred deliberate future work.
 - Email-based question reporting is acceptable for the current launch scope; direct in-app submission is deferred future work.
@@ -49,6 +55,50 @@
 ## Backlog
 
 ### P0 - Now
+
+- [ ] TASK: Clarify Home gameplay explanation and de-buttonize defaults cards
+  - Type: UX / Copy
+  - Priority: P0
+  - Status: Planned
+  - Area: `Views/Home`
+  - Goal: Let a first-time user broadly understand how the game works from Home alone, while making teams/rounds/timer read as display-only status.
+  - Acceptance Criteria:
+    - Home hero copy uses:
+      - main line: `One team guesses. One team hosts. Then you swap.`
+      - support line: `Guess the top ten answers before time runs out. The host taps matching answers as they’re said.`
+    - The defaults/status section uses an informational title such as `Game defaults` or `Match setup`.
+    - Teams / rounds / timer cards no longer look like tappable chips, segmented controls, or inline editors.
+    - Card elevation, shadow, and border treatment are reduced enough that they read as informational only.
+    - Optional helper copy such as `Change these in Settings` is only kept if it improves clarity without clutter.
+  - Notes:
+    - Keep `How To Play` as reassurance, not the only place where the core loop is understandable.
+
+- [ ] TASK: Align live role terminology across How To Play, Pass Device, and Host Round
+  - Type: UX / Copy
+  - Priority: P0
+  - Status: Planned
+  - Area: `Views/Home/HowToPlay`, `Views/GameFlow/GameFlowView`, `Views/GameFlow/HostRoundView`
+  - Goal: Use one consistent vocabulary for who guesses, who hosts, and who taps during a round.
+  - Acceptance Criteria:
+    - Pass Device uses `Guessing team` and `Host` labels.
+    - `Phone holder` is removed.
+    - Pass Device helper text uses: `Hand the phone to the host. They tap answers as your team calls them out. No peeking.`
+    - Host Round includes a visible one-line instruction: `Tap each answer as it’s guessed.`
+    - Shared flow copy consistently mentions `host`, `guessing team`, and tapping behavior.
+
+- [ ] TASK: Remove false affordance and improve contrast on informational surfaces
+  - Type: UX / Accessibility
+  - Priority: P0
+  - Status: Planned
+  - Area: `Views/Home`, `Views/Home/PackBrowser`, `Views/GameFlow/GameFlowView`, shared card styling
+  - Goal: Make it obvious which surfaces are controls and which are display-only, while improving helper-text readability.
+  - Acceptance Criteria:
+    - Informational cards/rows avoid strong button-like shadows, control-like pills, and ambiguous press feedback.
+    - Home defaults cards no longer imply direct editing.
+    - Question Pack rows do not feel tappable unless they actually navigate.
+    - Display-only summary cards in game flow are visually differentiated from real actions.
+    - Grey helper text, orange-on-warm text, and section labels are adjusted to a stronger readable contrast.
+    - Updated informational surfaces still support Dynamic Type and VoiceOver cleanly.
 
 - [x] TASK: Fix Settings crash and move rounds/timer ownership into defaults
   - Type: Bug / UX
@@ -140,6 +190,55 @@
     - This should complement existing loader tests, not replace them.
 
 ### P1 - Next
+
+- [ ] TASK: Tighten How To Play copy with the approved operational wording
+  - Type: UX / Copy
+  - Priority: P1
+  - Status: Planned
+  - Area: `Views/Home/HowToPlay`
+  - Goal: Make the sheet readable once and sufficient for a first-time group to start playing confidently.
+  - Acceptance Criteria:
+    - `How To Play` keeps the three-step structure.
+    - Intro copy uses:
+      - intro: `One team guesses. One team hosts. Then you swap.`
+      - support: `Three quick steps and you’re playing.`
+    - Step copy uses the approved wording:
+      - `Host holds the phone`
+      - `A player from the other team reads the prompt and taps answers as they are guessed.`
+      - `Guess out loud`
+      - `The guessing team calls out answers while the host reveals matching ones on screen.`
+      - `Swap and repeat`
+      - `When time is up, review the round, swap host roles, and start the next turn.`
+    - The words `host`, `guessing team`, and `taps answers` are all present.
+    - Copy stays direct and non-decorative.
+
+- [ ] TASK: Improve Question Packs hierarchy and explanatory value
+  - Type: UX
+  - Priority: P1
+  - Status: Planned
+  - Area: `Views/Home/PackBrowser`
+  - Goal: Make the pack browser feel informative and useful rather than a raw inventory list.
+  - Acceptance Criteria:
+    - The screen adds the support line: `Browse what’s included in each category and difficulty mix.`
+    - Each row visually prioritizes category name first, total question count second, and difficulty breakdown third.
+    - Total question count remains clearly secondary to the category name.
+    - If rows remain non-interactive, they do not imply tap affordance.
+    - The screen more clearly communicates what question packs are for.
+
+- [ ] TASK: Clarify defaults ownership and rename post-round utility actions
+  - Type: UX / Copy
+  - Priority: P1
+  - Status: Planned
+  - Area: `Views/Home/SettingsView`, `Views/GameFlow/HostRoundView`
+  - Goal: Make it obvious where Home defaults come from and make round-end utility actions understandable at a glance.
+  - Acceptance Criteria:
+    - `New Game Defaults` in Settings includes helper copy:
+      - `These defaults are shown on the home screen and used when starting a new game.`
+    - Post-timeup Host Round utility labels are renamed:
+      - `Source` -> `View source`
+      - `Report` -> `Flag question`
+    - Utility actions remain visually secondary to the main continue CTA.
+    - Home and Settings feel like one coherent defaults flow, not contradictory screens.
 
 - [x] TASK: Add post-round question feedback via email
   - Type: Feature / Content QA
@@ -270,6 +369,48 @@
     - Any unresolved prompts are tracked in `CONTENT_TODO.md` with concrete follow-ups.
 
 ### P2 - Later
+
+- [ ] TASK: Decide and optionally add first-launch How To Play presentation
+  - Type: UX / Onboarding
+  - Priority: P2
+  - Status: Planned
+  - Area: app launch flow, `Views/Home/HowToPlay`
+  - Goal: Improve first-run clarity without adding a mandatory onboarding sequence for repeat users.
+  - Acceptance Criteria:
+    - No mandatory onboarding flow is introduced by default.
+    - If first-launch auto-presentation is added, it shows only once on first launch.
+    - The sheet can be dismissed immediately with `Done`.
+    - Repeat launches are not slowed down by recurring onboarding.
+  - Notes:
+    - This should only be implemented if the Home clarity pass still leaves too much ambiguity for first-time users.
+
+- [ ] TASK: Add optional Question Packs summary footer if it adds real signal
+  - Type: UX
+  - Priority: P2
+  - Status: Planned
+  - Area: `Views/Home/PackBrowser`
+  - Goal: Make the pack browser feel more informative if the current category list still reads as repetitive.
+  - Acceptance Criteria:
+    - Any added footer remains clearly informational and non-interactive.
+    - The summary only ships if it adds useful signal such as total categories, total questions, or even difficulty balance.
+    - The footer does not make the screen feel redundant or cluttered.
+  - Notes:
+    - Candidate copy:
+      - `12 categories`
+      - `144 total questions`
+      - `Easy / Medium / Hard evenly balanced`
+
+- [ ] TASK: Refine Home settings affordance and overall button hierarchy
+  - Type: UX
+  - Priority: P2
+  - Status: Planned
+  - Area: `Views/Home`, shared navigation/button hierarchy
+  - Goal: Make Settings feel integrated into navigation and ensure it does not compete visually with the main CTA.
+  - Acceptance Criteria:
+    - Settings reads as part of the header/navigation structure rather than a detached floating control.
+    - If the floating treatment remains, its visual isolation is reduced enough to feel intentional.
+    - The primary CTA remains the strongest action on Home.
+    - Overall button hierarchy stays clear after the Home and informational-surface updates.
 
 - [x] TASK: Full accessibility and Dynamic Type pass across gameplay flow
   - Type: UX / Accessibility
