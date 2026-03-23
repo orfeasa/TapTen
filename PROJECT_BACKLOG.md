@@ -15,6 +15,8 @@
   - Home now includes a native pack browser showing category coverage and pack-level counts.
   - Home now shows live current-settings chips and uses simpler native toolbar/settings chrome.
   - Question reporting now stays in-app, posts to a configured endpoint, and keeps a local retry queue for unsent reports.
+  - Repo now includes a lightweight static website in `website/` with a landing page and privacy page for support/marketing use.
+  - GitHub Pages deployment is now wired for `website/` via GitHub Actions on `main`.
   - Legacy mixed pack files were consolidated into one-category pack files.
   - Debug-only round telemetry now records category/answers/points/time-remaining for playtest tuning.
   - A reusable pre-release checklist now exists in `RELEASE_CHECKLIST.md`.
@@ -52,6 +54,7 @@
 - Countdown tension audio remains a final-`10`-seconds treatment in the shipped build.
 - iPhone remains portrait-only in v1; landscape and iPad layouts are deferred deliberate future work.
 - Question reporting now uses an in-app submission path; release/ops still need to provide a real feedback endpoint for production delivery.
+- The website should stay static-first and deploy through GitHub Pages rather than a custom server stack.
 - Settings changes should affect future setup defaults only, not mutate an already-open New Game draft.
 
 ## Backlog
@@ -496,6 +499,20 @@
     - Second pass now adds lightweight round-summary and final-results payoff stings.
     - Any later move toward bespoke authored assets can be treated as optional future polish rather than remaining MVP work.
 
+- [x] TASK: Add GitHub Pages auto-deploy for the website
+  - Type: Release / Web Infra
+  - Priority: P2
+  - Status: Completed
+  - Area: `website/`, `.github/workflows`, DNS/hosting
+  - Goal: Publish the repo-local static site automatically from GitHub whenever the website changes.
+  - Acceptance Criteria:
+    - A push to `main` automatically publishes the current `website/` contents to GitHub Pages.
+    - The workflow stays static-only and does not introduce a custom app server.
+    - Deployment steps and required custom-domain follow-up are documented in the repo.
+  - Notes:
+    - Implemented with GitHub Actions Pages workflow actions (`configure-pages`, `upload-pages-artifact`, `deploy-pages`).
+    - `playtapten.com` activation still requires repository Pages settings and DNS records outside the repo.
+
 ### P3 - Someday Maybe
 
 - [x] TASK: Replace email-based question reporting with seamless in-app submission
@@ -531,10 +548,10 @@
     - The current app is intentionally iPhone-first and portrait-first.
     - iPad support should be treated as a deliberate future design pass, not an accidental compatibility target.
 
-- [ ] TASK: Add a lightweight website for the app
+- [x] TASK: Add a lightweight website for the app
   - Type: Product / Marketing
   - Priority: P3
-  - Status: Planned
+  - Status: Completed
   - Area: support/marketing web presence, App Store metadata support
   - Goal: Provide a simple public home for the app outside the App Store listing.
   - Acceptance Criteria:
@@ -543,8 +560,8 @@
     - Website visual direction feels consistent with the app without requiring a large custom marketing build.
     - Scope stays intentionally small for v1.
   - Notes:
-    - This can support App Store support/marketing URLs later.
-    - Prefer a simple static site over a complex web product.
+    - Implemented as a repo-local static site in `website/` with a landing page and privacy page.
+    - Auto-deployment to `playtapten.com` is tracked separately as follow-up web infrastructure work.
 
 ## In Progress
 
@@ -590,6 +607,22 @@
   - Notes:
     - Blocked until live App Store Connect credentials and signing availability are confirmed on the runner.
     - Raw or base64 `.p8` key input is already supported in code; this task is about end-to-end operational verification.
+
+- [ ] TASK: Activate `playtapten.com` as the live GitHub Pages custom domain
+  - Type: Release / Web Infra
+  - Priority: P1
+  - Status: Blocked
+  - Area: GitHub repository Pages settings, DNS provider
+  - Goal: Make the deployed static site publicly available at `https://playtapten.com`.
+  - Acceptance Criteria:
+    - Repository Pages settings use GitHub Actions as the source.
+    - `playtapten.com` is configured as the custom domain in GitHub Pages.
+    - DNS records point the domain at GitHub Pages correctly.
+    - HTTPS is enabled successfully for the live domain.
+    - The landing page and privacy page both load from the custom domain.
+  - Notes:
+    - Blocked on repository-side Pages configuration and DNS access outside the local repo.
+    - `website/README.md` documents the exact follow-up steps and DNS values.
 
 ## Manual Review Needed
 - Final editorial holdouts still marked `quality: "draft"` in `CONTENT_TODO.md` need manual review/playtest before freeze.

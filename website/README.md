@@ -1,0 +1,47 @@
+# Tap Ten Website
+
+This directory contains the static marketing/support site for Tap Ten.
+
+## Files
+
+- `index.html`: landing page
+- `privacy.html`: privacy page
+- `styles.css`: shared styling
+
+## Deployment
+
+The repo includes a GitHub Pages workflow in [`.github/workflows/website-pages.yml`](../.github/workflows/website-pages.yml).
+
+Current deployment target:
+- domain: `playtapten.com`
+- publishing source: GitHub Pages via GitHub Actions
+- deployed artifact: the contents of `website/`
+
+## Remaining GitHub setup
+
+The workflow is only one part of the setup. GitHub still needs repository/domain configuration outside the repo:
+
+1. In the repository on GitHub, open `Settings` -> `Pages`.
+2. Set the source to `GitHub Actions` if it is not already selected.
+3. Under `Custom domain`, enter `playtapten.com`.
+4. Enable `Enforce HTTPS` after GitHub has validated the domain.
+
+Do not add a `CNAME` file to `website/` for this setup. GitHub's custom Actions-based Pages flow ignores `CNAME` files; the custom domain should be managed in the repository Pages settings instead.
+
+## DNS for `playtapten.com`
+
+For an apex domain on GitHub Pages, point the domain to GitHub Pages using your DNS provider:
+
+- Either an `ALIAS` or `ANAME` record for `playtapten.com`, if your DNS provider supports it
+- Or `A` records to GitHub Pages:
+  - `185.199.108.153`
+  - `185.199.109.153`
+  - `185.199.110.153`
+  - `185.199.111.153`
+- Optional `AAAA` records for IPv6 support:
+  - `2606:50c0:8000::153`
+  - `2606:50c0:8001::153`
+  - `2606:50c0:8002::153`
+  - `2606:50c0:8003::153`
+
+If you later want `www.playtapten.com`, add that subdomain separately in GitHub Pages and point a DNS `CNAME` record at your GitHub Pages host.

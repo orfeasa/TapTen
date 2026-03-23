@@ -58,6 +58,7 @@ PesVres/
     Resources/QuestionPacks/
   TapTenTests/
   TapTenUITests/
+  website/
 ```
 
 ## Question Packs
@@ -149,6 +150,17 @@ Unit tests are under `PesVres/TapTenTests/Unit/` and cover:
 - host round tap-toggle behavior and countdown behavior
 
 Note: avoid launching iOS simulator test runs unless explicitly needed in the current task.
+
+## Website
+
+The repo now includes a lightweight static marketing/support site in `website/`.
+
+- `website/index.html` explains the core game loop and links to support.
+- `website/privacy.html` provides a simple privacy page for store/support use.
+- `website/styles.css` contains the shared site styling.
+- `.github/workflows/website-pages.yml` deploys the site to GitHub Pages from `main` when website files change.
+
+The intended live domain is `playtapten.com`. The GitHub Pages workflow is in-repo; remaining GitHub Pages custom-domain and DNS setup is documented in `website/README.md` and tracked in `PROJECT_BACKLOG.md`.
 
 ## Working Notes
 

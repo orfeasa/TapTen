@@ -11,12 +11,17 @@
   - post-timeup reports now submit in-app instead of opening Mail
   - failed submissions are saved locally and retried automatically when the app becomes active again
   - builds can provide a reporting endpoint through `QuestionFeedbackEndpointURL` or `TAPTEN_FEEDBACK_ENDPOINT`
+- Website:
+  - added a repo-local static site in `website/` with a landing page and privacy page
+  - kept the site plain HTML/CSS so it stays easy to host and easy to review
+  - added a GitHub Pages workflow that publishes the `website/` directory from `main`
 
 ### Docs
 - Tightened release-readiness tracking:
   - closed the stale audio-polish backlog item as shipped and aligned its wording with the current final-`10`-seconds countdown behavior
   - added explicit backlog/checklist coverage for end-to-end TestFlight pipeline verification
   - documented that local iOS 17 compatibility builds may need a normal full-Xcode environment if `actool` cannot access simulator runtimes on a restricted host
+- Added backlog/docs tracking for the remaining GitHub Pages custom-domain activation work for `playtapten.com`.
 
 ## 2026-03-16
 

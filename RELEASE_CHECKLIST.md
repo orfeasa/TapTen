@@ -28,6 +28,13 @@ Use this checklist before creating a release candidate or TestFlight build.
 - [ ] Verify the build number increments and the uploaded build appears in TestFlight.
 - [ ] Verify no generated fastlane artifacts pollute the working tree after a local beta run.
 
+## 2b) Website / Support URLs
+
+- [ ] If the release relies on public support/privacy URLs, confirm the `Website Pages` workflow succeeds on `main`.
+- [ ] Confirm `playtapten.com` serves the live landing page over HTTPS.
+- [ ] Confirm `playtapten.com/privacy.html` loads successfully.
+- [ ] Confirm support links on the site resolve to the expected contact path.
+
 ## 3) Content Integrity
 
 - [ ] Confirm final category set is intact:
