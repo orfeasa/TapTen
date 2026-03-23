@@ -2,6 +2,12 @@
 
 ## 2026-03-23
 
+### Changed
+- Home hero polish:
+  - removed the decorative `Host-operated party game` badge
+  - tightened the top hero spacing so `Tap Ten` is the first visual anchor
+  - kept the first-run explanation focused on title + direct gameplay copy
+
 ### Docs
 - Tightened release-readiness tracking:
   - closed the stale audio-polish backlog item as shipped and aligned its wording with the current final-`10`-seconds countdown behavior

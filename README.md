@@ -15,7 +15,7 @@ Two teams play on one device. One team answers out loud while the other team hos
 - Bundled local JSON question packs only (no network fetching).
 - Warm, Apple-native visual direction with restrained motion.
 - Playful-but-clear in-app tone for supporting copy and verdicts.
-- Cleaner Home with focused hero copy, a native toolbar gear, live `Current settings` chips, one strong primary CTA, larger secondary actions, and a separate `How To Play` sheet.
+- Cleaner Home with a title-first hero, a quieter native toolbar gear, `Game defaults` status cards, one strong primary CTA, larger secondary actions, and a separate `How To Play` sheet.
 - Home includes a native `Browse Question Packs` screen with category and pack-level counts.
 - New Game focuses on team names, category filters, and difficulty tiers, while rounds/timer live in Settings defaults and the setup screen uses warmer card-based grouping plus a pinned bottom `Start Game` action so the main CTA stays visible.
   - Team names open with a random curated funny/sassy suggested pair and can be cycled with `Shuffle Names` or edited manually.

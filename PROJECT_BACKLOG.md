@@ -23,6 +23,7 @@
   - Playful color pass applied; controls use warmer accents and prominent action tinting now aligns with Home’s orange-led palette.
 - Latest polish pass refined New Game into warm setup cards with a pinned `Start Game` action, aligned in-flow CTA styling, reduced Host Round pause emphasis, moved source/report into the Host Round time-up state, simplified Round Summary, and fixed `Home` navigation to exit the full finished-game flow.
 - Latest UX review identified one more clarity/polish pass around first-run explanation, false affordance, contrast, and information hierarchy.
+- Home hero now starts directly with the title and gameplay explanation; the decorative top badge has been removed to keep first-run comprehension tighter.
 - Release readiness: Not ready for release candidate; gameplay is stable, but final editorial QA, end-to-end release-ops verification, and the latest clarity/polish pass are still open.
 
 ## Active Decisions

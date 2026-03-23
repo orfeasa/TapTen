@@ -74,9 +74,7 @@ struct HomeView: View {
 
 private extension HomeView {
     var header: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            heroPill
-
+        VStack(alignment: .leading, spacing: 10) {
             Text("Tap Ten")
                 .font(.system(.largeTitle, design: .rounded).weight(.heavy))
                 .foregroundStyle(.primary)
@@ -264,19 +262,6 @@ private extension HomeView {
                 .offset(x: 96, y: -108)
         }
         .ignoresSafeArea()
-    }
-
-    var heroPill: some View {
-        Label("Host-operated party game", systemImage: "sparkles")
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(.primary)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 7)
-            .background(.ultraThinMaterial, in: Capsule(style: .continuous))
-            .overlay(
-                Capsule(style: .continuous)
-                    .stroke(Color.tapTenPlayfulPink.opacity(0.28), lineWidth: 1)
-            )
     }
 
     func secondaryActionRow(
