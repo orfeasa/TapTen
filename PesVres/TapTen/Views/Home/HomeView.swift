@@ -64,23 +64,28 @@ private extension HomeView {
                 .font(.system(.largeTitle, design: .rounded).weight(.heavy))
                 .foregroundStyle(.primary)
 
-            Text("Good guesses. Fast taps.")
-                .font(.title3.weight(.semibold))
+            Text("One team guesses. One team hosts. Then you swap.")
+                .font(.title2.weight(.bold))
                 .foregroundStyle(.primary)
 
-            Text("One phone, two teams, one host under pressure. Keep rounds moving and trust your ears.")
+            Text("Guess the top ten answers before time runs out. The host taps matching answers as they’re said.")
                 .font(.body)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color.primary.opacity(0.72))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     var currentSetupSummary: some View {
-        VStack(spacing: 12) {
-            Text("Current settings")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .center)
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Game defaults")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.primary.opacity(0.66))
+
+                Text("Change these in Settings")
+                    .font(.footnote)
+                    .foregroundStyle(Color.primary.opacity(0.66))
+            }
 
             ViewThatFits(in: .horizontal) {
                 HStack(spacing: 10) {
@@ -96,7 +101,7 @@ private extension HomeView {
                 }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .center)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     var startGameButton: some View {
@@ -173,7 +178,7 @@ private extension HomeView {
     }
 
     var teamsChip: some View {
-        setupSummaryChip(
+        setupSummaryCard(
             title: "2 teams",
             systemImage: "person.2.fill",
             tint: .tapTenPlayfulOrange
@@ -181,7 +186,7 @@ private extension HomeView {
     }
 
     var roundsChip: some View {
-        setupSummaryChip(
+        setupSummaryCard(
             title: "\(settingsStore.defaultRounds) round\(settingsStore.defaultRounds == 1 ? "" : "s")",
             systemImage: "flag.fill",
             tint: .tapTenPlayfulPink
@@ -189,7 +194,7 @@ private extension HomeView {
     }
 
     var timerChip: some View {
-        setupSummaryChip(
+        setupSummaryCard(
             title: "\(settingsStore.defaultTimerSeconds) sec",
             systemImage: "timer",
             tint: .tapTenPlayfulBlue
@@ -300,44 +305,33 @@ private extension HomeView {
         .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
-    func setupSummaryChip(
+    func setupSummaryCard(
         title: String,
         systemImage: String,
         tint: Color
     ) -> some View {
-        VStack(spacing: 12) {
+        HStack(spacing: 10) {
             Image(systemName: systemImage)
-                .font(.title2.weight(.bold))
+                .font(.headline.weight(.bold))
                 .foregroundStyle(tint)
-                .frame(width: 28, height: 28)
+                .frame(width: 20, height: 20)
 
             Text(title)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.primary)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
+
+            Spacer(minLength: 0)
         }
-        .frame(maxWidth: .infinity, minHeight: 96, alignment: .center)
-        .padding(14)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
+        .padding(.horizontal, 14)
+        .background(Color.tapTenWarmCard.opacity(0.92), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            tint.opacity(0.12),
-                            Color.white.opacity(0.10)
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(Color.primary.opacity(0.08), lineWidth: 1)
                 .allowsHitTesting(false)
         )
-        .overlay(
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .stroke(tint.opacity(0.24), lineWidth: 1)
-                .allowsHitTesting(false)
-        )
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -347,17 +341,17 @@ private struct HowToPlaySheet: View {
         (
             "1",
             "Host holds the phone",
-            "A player from the opposing team reads the prompt and handles all taps."
+            "A player from the other team reads the prompt and taps answers as they are guessed."
         ),
         (
             "2",
             "Guess out loud",
-            "The answering team calls guesses while the host reveals matching answers."
+            "The guessing team calls out answers while the host reveals matching ones on screen."
         ),
         (
             "3",
-            "Switch and repeat",
-            "When time is up, review round results, swap host roles, and start the next turn."
+            "Swap and repeat",
+            "When time is up, review the round, swap host roles, and start the next turn."
         )
     ]
 
@@ -369,9 +363,9 @@ private struct HowToPlaySheet: View {
                         Text("One team guesses. One team hosts. Then you swap.")
                             .font(.headline.weight(.semibold))
 
-                        Text("Three quick beats and you’re playing.")
+                        Text("Three quick steps and you’re playing.")
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.primary.opacity(0.7))
                     }
 
                     VStack(spacing: 0) {
@@ -463,7 +457,7 @@ private struct HowToStepRow: View {
 
                 Text(detail)
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.primary.opacity(0.7))
             }
             .padding(.top, 1)
         }

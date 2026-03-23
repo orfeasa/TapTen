@@ -214,21 +214,24 @@ private struct PassDeviceView: View {
 
                     Text("Handoff time")
                         .font(.headline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.primary.opacity(0.68))
                 }
 
-                Text("\(answeringTeamName) is up")
-                    .font(.system(.largeTitle, design: .rounded).weight(.black))
-                    .minimumScaleFactor(0.68)
-                    .lineLimit(2)
+                roleBlock(
+                    label: "Guessing team",
+                    value: answeringTeamName,
+                    font: .system(.largeTitle, design: .rounded).weight(.black)
+                )
 
-                Text("Phone holder: \(hostingTeamName)")
-                    .font(.title3.weight(.semibold))
-                    .foregroundStyle(.primary)
+                roleBlock(
+                    label: "Host",
+                    value: hostingTeamName,
+                    font: .title2.weight(.bold)
+                )
 
-                Text("No peeking. Keep it honest.")
+                Text("Hand the phone to the host. They tap answers as your team calls them out. No peeking.")
                     .font(.body)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.primary.opacity(0.72))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(20)
@@ -257,7 +260,21 @@ private struct PassDeviceView: View {
                 .stroke(Color.tapTenPlayfulOrange.opacity(0.18), lineWidth: 1)
         )
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(roundProgressText). \(answeringTeamName) is answering. \(hostingTeamName) should hold the phone. No peeking.")
+        .accessibilityHint("Hand the phone to the host. They tap answers as the guessing team calls them out.")
+    }
+
+    private func roleBlock(label: String, value: String, font: Font) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(label)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Color.primary.opacity(0.62))
+
+            Text(value)
+                .font(font)
+                .foregroundStyle(.primary)
+                .minimumScaleFactor(0.68)
+                .lineLimit(2)
+        }
     }
 
     var passDeviceBackground: some View {

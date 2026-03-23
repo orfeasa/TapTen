@@ -195,6 +195,10 @@ struct HostRoundView: View {
                 total: Double(viewModel.roundDurationSeconds)
             )
             .tint(timerProgressColor)
+
+            Text("Tap each answer as it’s guessed.")
+                .font(.footnote.weight(.medium))
+                .foregroundStyle(Color.primary.opacity(0.72))
         }
         .padding(14)
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))

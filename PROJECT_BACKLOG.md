@@ -56,10 +56,10 @@
 
 ### P0 - Now
 
-- [ ] TASK: Clarify Home gameplay explanation and de-buttonize defaults cards
+- [x] TASK: Clarify Home gameplay explanation and de-buttonize defaults cards
   - Type: UX / Copy
   - Priority: P0
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/Home`
   - Goal: Let a first-time user broadly understand how the game works from Home alone, while making teams/rounds/timer read as display-only status.
   - Acceptance Criteria:
@@ -73,10 +73,10 @@
   - Notes:
     - Keep `How To Play` as reassurance, not the only place where the core loop is understandable.
 
-- [ ] TASK: Align live role terminology across How To Play, Pass Device, and Host Round
+- [x] TASK: Align live role terminology across How To Play, Pass Device, and Host Round
   - Type: UX / Copy
   - Priority: P0
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/Home/HowToPlay`, `Views/GameFlow/GameFlowView`, `Views/GameFlow/HostRoundView`
   - Goal: Use one consistent vocabulary for who guesses, who hosts, and who taps during a round.
   - Acceptance Criteria:
@@ -89,7 +89,7 @@
 - [ ] TASK: Remove false affordance and improve contrast on informational surfaces
   - Type: UX / Accessibility
   - Priority: P0
-  - Status: Planned
+  - Status: In Progress
   - Area: `Views/Home`, `Views/Home/PackBrowser`, `Views/GameFlow/GameFlowView`, shared card styling
   - Goal: Make it obvious which surfaces are controls and which are display-only, while improving helper-text readability.
   - Acceptance Criteria:
@@ -99,6 +99,8 @@
     - Display-only summary cards in game flow are visually differentiated from real actions.
     - Grey helper text, orange-on-warm text, and section labels are adjusted to a stronger readable contrast.
     - Updated informational surfaces still support Dynamic Type and VoiceOver cleanly.
+  - Notes:
+    - Home defaults cards and key helper copy were flattened/clarified in the latest pass; broader informational-surface cleanup still remains.
 
 - [x] TASK: Fix Settings crash and move rounds/timer ownership into defaults
   - Type: Bug / UX
