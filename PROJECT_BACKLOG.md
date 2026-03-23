@@ -579,6 +579,21 @@
     - Implemented as a repo-local static site in `website/` with a landing page and privacy page.
     - Auto-deployment to `playtapten.com` is tracked separately as follow-up web infrastructure work.
 
+- [ ] TASK: Add SharePlay support for multi-device sessions
+  - Type: Feature / Multiplayer / UX
+  - Priority: P3
+  - Status: Planned
+  - Area: game session coordination, round state sync, host/player device roles
+  - Goal: Let multiple people join the same live game session instead of passing one phone around.
+  - Acceptance Criteria:
+    - Players can join a shared live game session through SharePlay.
+    - Core game state stays synchronized across participants during setup, rounds, scoring, and end-of-game flow.
+    - Host and answering-team roles remain clear on each device.
+    - The SharePlay experience is intentionally designed rather than layered awkwardly onto the current single-device UX.
+  - Notes:
+    - This is explicitly outside the v1 single-device scope.
+    - It would require a deliberate redesign of game flow, device roles, and synchronization responsibilities.
+
 ## In Progress
 
 - [ ] TASK: Maintain `CONTENT_TODO.md` as the live content QA queue
