@@ -16,6 +16,13 @@ struct GameFlowView: View {
                     roundProgressText: viewModel.roundProgressText,
                     answeringTeamName: viewModel.answeringTeamName,
                     hostingTeamName: viewModel.hostingTeamName,
+                    startAction: viewModel.showQuestionPreview
+                )
+
+            case .questionPreview:
+                QuestionPreviewView(
+                    roundProgressText: viewModel.roundProgressText,
+                    prompt: viewModel.currentQuestionPrompt,
                     startAction: viewModel.startRound
                 )
 
@@ -107,7 +114,7 @@ struct GameFlowView: View {
 
     private var canShowEndGameButton: Bool {
         switch viewModel.phase {
-        case .passDevice, .hostRound, .roundSummary:
+        case .passDevice, .questionPreview, .hostRound, .roundSummary:
             return true
         case .finalResults, .error:
             return false
@@ -240,7 +247,7 @@ private struct PassDeviceView: View {
                 .padding(.horizontal, 20)
 
             Button(action: startAction) {
-                Text("Start Round")
+                Text("Show Question")
                     .font(.headline.weight(.semibold))
                     .frame(maxWidth: .infinity, minHeight: 56)
             }
@@ -314,6 +321,117 @@ private struct PassDeviceView: View {
                 .frame(width: 340, height: 220)
                 .blur(radius: 20)
                 .offset(x: 92, y: -116)
+        }
+        .ignoresSafeArea()
+    }
+}
+
+private struct QuestionPreviewView: View {
+    let roundProgressText: String
+    let prompt: String
+    let startAction: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 22) {
+            roundBadge
+
+            VStack(alignment: .leading, spacing: 18) {
+                Text("Read the question")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(Color.tapTenPlayfulOrange)
+
+                Text(prompt)
+                    .font(.system(.largeTitle, design: .rounded).weight(.black))
+                    .multilineTextAlignment(.leading)
+                    .minimumScaleFactor(0.62)
+                    .lineLimit(5)
+
+                Text("Take a moment to read it through. Start the timer only when the host is ready.")
+                    .font(.body)
+                    .foregroundStyle(Color.primary.opacity(0.72))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(22)
+            .background(
+                LinearGradient(
+                    colors: [Color.tapTenWarmCard, Color.tapTenPlayfulOrange.opacity(0.14)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ),
+                in: RoundedRectangle(cornerRadius: 24, style: .continuous)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .stroke(Color.tapTenPlayfulOrange.opacity(0.18), lineWidth: 1)
+            )
+
+            Button(action: startAction) {
+                Text("Start Timer")
+                    .font(.headline.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 56)
+            }
+            .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
+
+            Spacer(minLength: 0)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .padding(.horizontal, 20)
+        .padding(.top, 28)
+        .navigationTitle("Question")
+        .navigationBarTitleDisplayMode(.inline)
+        .background(questionPreviewBackground)
+    }
+
+    private var roundBadge: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "text.quote")
+                .font(.subheadline.weight(.semibold))
+            Text(roundProgressText)
+                .font(.subheadline.weight(.semibold))
+        }
+        .foregroundStyle(Color.tapTenPlayfulOrange)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(Color.tapTenPlayfulOrange.opacity(0.16), in: Capsule())
+    }
+
+    private var questionPreviewBackground: some View {
+        ZStack(alignment: .top) {
+            Color.tapTenWarmBackground
+
+            Ellipse()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            Color.tapTenPlayfulOrange.opacity(0.16),
+                            Color.tapTenPlayfulPink.opacity(0.08),
+                            .clear
+                        ],
+                        center: .center,
+                        startRadius: 12,
+                        endRadius: 220
+                    )
+                )
+                .frame(width: 360, height: 220)
+                .blur(radius: 18)
+                .offset(x: -76, y: -98)
+
+            Ellipse()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            Color.tapTenPlayfulPink.opacity(0.10),
+                            Color.tapTenCelebrationGold.opacity(0.08),
+                            .clear
+                        ],
+                        center: .center,
+                        startRadius: 12,
+                        endRadius: 200
+                    )
+                )
+                .frame(width: 320, height: 220)
+                .blur(radius: 20)
+                .offset(x: 102, y: -112)
         }
         .ignoresSafeArea()
     }

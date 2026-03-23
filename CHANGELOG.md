@@ -7,6 +7,8 @@
   - removed the decorative `Host-operated party game` badge
   - tightened the top hero spacing so `Tap Ten` is the first visual anchor
   - kept the first-run explanation focused on title + direct gameplay copy
+- Game flow:
+  - added a dedicated question-preview screen between `Pass Device` and the live timer so the host can read the prompt before play starts
 - Question reporting:
   - post-timeup reports now submit in-app instead of opening Mail
   - failed submissions are saved locally and retried automatically when the app becomes active again

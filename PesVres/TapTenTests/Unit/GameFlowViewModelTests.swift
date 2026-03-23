@@ -16,6 +16,7 @@ struct GameFlowViewModelTests {
             }
         )
 
+        viewModel.showQuestionPreview()
         viewModel.startRound()
         let hostRoundViewModel = viewModel.hostRoundViewModel
         hostRoundViewModel?.endRound()
@@ -44,12 +45,14 @@ struct GameFlowViewModelTests {
             }
         )
 
+        viewModel.showQuestionPreview()
         viewModel.startRound()
         viewModel.finalizeActiveRoundIfNeeded()
         #expect(viewModel.phase == .roundSummary)
         #expect(viewModel.summaryContinueButtonTitle == "Next Round")
 
         viewModel.continueAfterRoundSummary()
+        viewModel.showQuestionPreview()
         viewModel.startRound()
         viewModel.finalizeActiveRoundIfNeeded()
         #expect(viewModel.phase == .roundSummary)
@@ -68,6 +71,7 @@ struct GameFlowViewModelTests {
             }
         )
 
+        viewModel.showQuestionPreview()
         viewModel.startRound()
         viewModel.finalizeActiveRoundIfNeeded()
 
@@ -87,6 +91,7 @@ struct GameFlowViewModelTests {
             }
         )
 
+        viewModel.showQuestionPreview()
         viewModel.startRound()
         let hostRoundViewModel = try #require(viewModel.hostRoundViewModel)
         for index in 0..<10 {
@@ -111,6 +116,7 @@ struct GameFlowViewModelTests {
             }
         )
 
+        viewModel.showQuestionPreview()
         viewModel.startRound()
         viewModel.finalizeActiveRoundIfNeeded()
 
@@ -119,6 +125,27 @@ struct GameFlowViewModelTests {
         #expect(summary.feedbackContext.packID == "pack")
         #expect(summary.feedbackContext.questionID == "q1")
         #expect(summary.feedbackContext.difficultyTier == .medium)
+    }
+
+    @Test
+    func showQuestionPreviewAddsReadStepBeforeHostRound() {
+        let viewModel = GameFlowViewModel(
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
+            enabledCategoryNames: ["Factual"],
+            questionPacks: [makePack(questionCount: 1)],
+            randomIndexProvider: { _ in 0 },
+            randomSassyCommentProvider: { comments in
+                comments.first ?? ""
+            }
+        )
+
+        #expect(viewModel.phase == .passDevice)
+
+        viewModel.showQuestionPreview()
+
+        #expect(viewModel.phase == .questionPreview)
+        #expect(viewModel.currentQuestionPrompt == "Sample prompt q1")
+        #expect(viewModel.hostRoundViewModel == nil)
     }
 }
 

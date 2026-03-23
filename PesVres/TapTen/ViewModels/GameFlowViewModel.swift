@@ -8,6 +8,7 @@ import OSLog
 final class GameFlowViewModel {
     enum Phase: Equatable {
         case passDevice
+        case questionPreview
         case hostRound
         case roundSummary
         case finalResults
@@ -147,6 +148,10 @@ final class GameFlowViewModel {
         return feedbackContext(for: currentRound.question)
     }
 
+    var currentQuestionPrompt: String {
+        currentRound?.question.prompt ?? ""
+    }
+
     var summaryContinueButtonTitle: String {
         guard let engine else {
             return "Continue"
@@ -176,8 +181,16 @@ final class GameFlowViewModel {
         return "IT'S A TIE!"
     }
 
+    func showQuestionPreview() {
+        guard phase == .passDevice, currentRound != nil else {
+            return
+        }
+
+        phase = .questionPreview
+    }
+
     func startRound() {
-        guard phase == .passDevice, let currentRound else {
+        guard phase == .questionPreview, let currentRound else {
             return
         }
 

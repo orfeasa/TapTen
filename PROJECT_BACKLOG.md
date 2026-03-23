@@ -17,6 +17,7 @@
   - Question reporting now stays in-app, posts to a configured endpoint, and keeps a local retry queue for unsent reports.
   - Repo now includes a lightweight static website in `website/` with a landing page and privacy page for support/marketing use.
   - GitHub Pages deployment is now wired for `website/` via GitHub Actions on `main`.
+  - Round flow now includes a dedicated question-preview step so the host can read the prompt before the timer starts.
   - Legacy mixed pack files were consolidated into one-category pack files.
   - Debug-only round telemetry now records category/answers/points/time-remaining for playtest tuning.
   - A reusable pre-release checklist now exists in `RELEASE_CHECKLIST.md`.
@@ -39,6 +40,7 @@
 - Home setup/defaults cards are display-only and should not look tappable.
 - Host answer rows are currently sorted alphabetically for scanning speed.
 - Host-round interaction baseline is tap-to-toggle answers with active-round `Pause`/`Resume` and post-timeup `Continue to Summary`.
+- The host should always get a pre-timer prompt-reading step before the live round starts.
 - How To Play, Pass Device, and Host Round should all use the same role language: `host`, `guessing team`, and explicit tapping guidance.
 - Home should use a single strong brand title (remove duplicate `Tap Ten` heading).
 - Navigation chrome should use standard native bars/back behavior instead of mixed floating controls.
@@ -197,6 +199,20 @@
     - This should complement existing loader tests, not replace them.
 
 ### P1 - Next
+
+- [x] TASK: Add a pre-round question preview step
+  - Type: UX / Gameplay
+  - Priority: P1
+  - Status: Completed
+  - Area: `Views/GameFlow`, `ViewModels/GameFlowViewModel`
+  - Goal: Give the host a dedicated moment to read the prompt before the live timer begins.
+  - Acceptance Criteria:
+    - `Pass Device` does not start the countdown directly.
+    - A separate question-preview screen appears before the timer starts.
+    - The preview screen clearly shows the prompt and a single `Start Timer` action.
+    - The host round timer still begins only when the host explicitly starts it.
+  - Notes:
+    - This keeps the timer logic isolated to `HostRoundViewModel` while making first-read comprehension less rushed.
 
 - [x] TASK: Tighten How To Play copy with the approved operational wording
   - Type: UX / Copy

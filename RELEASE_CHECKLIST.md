@@ -63,6 +63,9 @@ Run one full game (at least 2 rounds per team) and verify:
   - Updated defaults apply to the next New Game entry.
 - [ ] Pass Device:
   - Round progress and team handoff text are correct.
+- [ ] Question Preview:
+  - The prompt is visible before the timer starts.
+  - `Start Timer` is the only obvious primary action.
 - [ ] Host Round:
   - Tap reveals/untaps answers correctly.
   - `Pause` / `Resume` works without timer drift.
