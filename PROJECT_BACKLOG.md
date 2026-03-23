@@ -6,6 +6,7 @@
   - Home, New Game, Pass Device, Host Round, Round Summary, Final Results, and Settings are implemented.
   - Settings now safely owns persistent defaults for rounds/timer, while New Game focuses on team names, categories, and difficulty tiers.
   - Host Round supports timer, pause/resume, source/report actions after time-up, and answer tap toggling.
+  - Repo now includes fastlane + GitHub Actions automation for TestFlight beta uploads, with raw/base64 App Store Connect API key support.
   - Question pack loader validates richer metadata and difficulty score/tier consistency.
   - Question content now covers all 12 target categories with 12 questions each and exact 4 easy / 4 medium / 4 hard spread.
   - Setup category picker now reflects all 12 shipped categories.
@@ -21,7 +22,7 @@
   - First UX review batch is implemented (Home hierarchy cleanup, How To Play interactivity fix, setup category completeness, and round-summary CTA wording).
   - Playful color pass applied; controls use warmer accents and prominent action tinting now aligns with Home’s orange-led palette.
   - Latest polish pass refined New Game into warm setup cards with a pinned `Start Game` action, aligned in-flow CTA styling, reduced Host Round pause emphasis, moved source/report into the Host Round time-up state, simplified Round Summary, and fixed `Home` navigation to exit the full finished-game flow.
-- Release readiness: Not ready for content freeze; gameplay loop is stable, but remaining UX polish and final editorial QA are still open.
+- Release readiness: Not ready for release candidate; gameplay is stable, but final editorial QA and end-to-end release-ops verification are still open.
 
 ## Active Decisions
 - Final content category target is fixed to 12 categories:
@@ -40,6 +41,7 @@
 - Final Results secondary action should be label/destination aligned (`Home` to Home), while `Play Again` remains the primary replay action.
 - Round Summary CTA labels should be state-specific (`Next Round` / `Continue to Final Results`).
 - Settings should stay visually aligned with the warm app theme and use native control styling.
+- Countdown tension audio remains a final-`10`-seconds treatment in the shipped build.
 - iPhone remains portrait-only in v1; landscape and iPad layouts are deferred deliberate future work.
 - Email-based question reporting is acceptable for the current launch scope; direct in-app submission is deferred future work.
 - Settings changes should affect future setup defaults only, not mutate an already-open New Game draft.
@@ -333,15 +335,15 @@
     - Includes manual pass for host-speed adjudication and source-link visibility rules.
     - Checklist is documented and reusable.
 
-- [ ] TASK: Improve app audio feedback and reward/tension cues
+- [x] TASK: Improve app audio feedback and reward/tension cues
   - Type: UX / Audio
   - Priority: P2
-  - Status: In Progress
+  - Status: Completed
   - Area: `Services/CountdownSoundService`, game-flow event wiring, sound assets
   - Goal: Make the app sound more polished by strengthening confirmation, tension, and payoff moments without adding fatigue or noise.
   - Acceptance Criteria:
     - Reveal sounds vary by answer value tier (`1-2`, `3-4`, `5`) and feel more rewarding than the current generic cue.
-    - Countdown tension starts only in the final `5` seconds, with clear escalating ticks.
+    - Countdown tension starts in the final `10` seconds, with clear escalating ticks.
     - `Time's up` uses a cleaner, more decisive end cue.
     - Round/finale payoff sounds are defined for summary/final-results moments without overwhelming spoken gameplay.
     - Sounds remain short, restrained, and broadly consistent with the app's warm Apple-clean tone.
@@ -352,7 +354,7 @@
     - Keep playback centralized behind one small event-based sound service API rather than ad hoc view-owned players.
     - First pass now adds point-tiered reveal tones, starts countdown tension in the final `10` seconds, and replaces the round-end tone with a cleaner two-step cue.
     - Second pass now adds lightweight round-summary and final-results payoff stings.
-    - Remaining later-phase work: any pause/resume utility cues or more bespoke authored sound assets.
+    - Any later move toward bespoke authored assets can be treated as optional future polish rather than remaining MVP work.
 
 ### P3 - Someday Maybe
 
@@ -432,6 +434,22 @@
     - Duplicate and near-duplicate prompt checks remain clean.
   - Notes:
     - Blocked by pending editorial review and final content freeze sign-off.
+
+- [ ] TASK: Verify end-to-end TestFlight beta pipeline
+  - Type: Release / CI
+  - Priority: P1
+  - Status: Blocked
+  - Area: `fastlane`, `.github/workflows`, App Store Connect credentials/signing
+  - Goal: Confirm the shipped TestFlight automation works from trigger to uploaded build on a real signing-capable environment.
+  - Acceptance Criteria:
+    - Required GitHub Actions secrets are present and valid.
+    - Manual workflow dispatch or `beta-*` tag trigger starts successfully.
+    - Build number increments, archive succeeds, and upload reaches TestFlight.
+    - CI signing configuration is confirmed sufficient, or the exact missing signing step is documented.
+    - Generated fastlane artifacts remain ignored and the repo stays clean after local runs.
+  - Notes:
+    - Blocked until live App Store Connect credentials and signing availability are confirmed on the runner.
+    - Raw or base64 `.p8` key input is already supported in code; this task is about end-to-end operational verification.
 
 ## Manual Review Needed
 - Final editorial holdouts still marked `quality: "draft"` in `CONTENT_TODO.md` need manual review/playtest before freeze.

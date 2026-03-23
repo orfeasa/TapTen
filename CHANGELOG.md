@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-03-23
+
+### Docs
+- Tightened release-readiness tracking:
+  - closed the stale audio-polish backlog item as shipped and aligned its wording with the current final-`10`-seconds countdown behavior
+  - added explicit backlog/checklist coverage for end-to-end TestFlight pipeline verification
+  - documented that local iOS 17 compatibility builds may need a normal full-Xcode environment if `actool` cannot access simulator runtimes on a restricted host
+
 ## 2026-03-16
 
 ### Changed

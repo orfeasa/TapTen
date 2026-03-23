@@ -8,11 +8,26 @@ Use this checklist before creating a release candidate or TestFlight build.
   - `xcodebuild build -project PesVres/TapTen.xcodeproj -scheme TapTen -destination 'generic/platform=iOS' -derivedDataPath /tmp/pesvres-dd CODE_SIGNING_ALLOWED=NO`
 - [ ] Run compatibility build at the current deployment floor (`iOS 17`):
   - `xcodebuild build -project PesVres/TapTen.xcodeproj -scheme TapTen -destination 'generic/platform=iOS' -derivedDataPath /tmp/pesvres-dd-ios17 CODE_SIGNING_ALLOWED=NO IPHONEOS_DEPLOYMENT_TARGET=17.0`
+  - If `actool` reports missing simulator runtimes during the asset-thinning step on a restricted/sandboxed host, rerun the same command on a normal full-Xcode machine before treating it as an app regression.
 - [ ] Ensure no local pack-schema regressions:
   - `./scripts/audit_question_packs.sh`
 - [ ] Confirm working tree contains only intended release changes.
 
-## 2) Content Integrity
+## 2) TestFlight Automation
+
+- [ ] Confirm GitHub Actions secrets are configured:
+  - `APP_STORE_CONNECT_API_KEY_ID`
+  - `APP_STORE_CONNECT_ISSUER_ID`
+  - `APP_STORE_CONNECT_API_KEY_BASE64`
+- [ ] Confirm the CI runner has sufficient signing access for archive/export.
+- [ ] Trigger one beta upload path:
+  - GitHub Actions `TestFlight Beta` workflow manual dispatch, or
+  - push a `beta-*` tag, or
+  - local `bundle exec fastlane beta` on a signing-capable machine.
+- [ ] Verify the build number increments and the uploaded build appears in TestFlight.
+- [ ] Verify no generated fastlane artifacts pollute the working tree after a local beta run.
+
+## 3) Content Integrity
 
 - [ ] Confirm final category set is intact:
   - Everyday Life, Food & Drink, Film & TV, Music, Sport, Geography, History, Science, Technology, Travel, Work & School, Pop Culture & Trends.
@@ -20,7 +35,7 @@ Use this checklist before creating a release candidate or TestFlight build.
 - [ ] Confirm no duplicate prompts are reported by the audit script.
 - [ ] Review any questions still marked `quality: "draft"` and decide: promote or defer.
 
-## 3) Gameplay Smoke Test (Manual)
+## 4) Gameplay Smoke Test (Manual)
 
 Run one full game (at least 2 rounds per team) and verify:
 
@@ -57,7 +72,7 @@ Run one full game (at least 2 rounds per team) and verify:
   - `Home` returns to the Home screen.
   - `Play Again` starts a fresh game with scores reset.
 
-## 4) Feedback and Accessibility Spot Check
+## 5) Feedback and Accessibility Spot Check
 
 - [ ] With `Sounds` ON: countdown/round-end audio is audible.
 - [ ] With `Sounds` ON: Round Summary and Final Results payoff sounds are audible.
@@ -66,8 +81,9 @@ Run one full game (at least 2 rounds per team) and verify:
 - [ ] With `Haptics` OFF: reveal taps do not produce haptics.
 - [ ] Verify key controls remain readable and tappable at larger Dynamic Type.
 
-## 5) Ship/No-Ship Gate
+## 6) Ship/No-Ship Gate
 
 - [ ] No P0 backlog task remains open.
 - [ ] Any open P1/P2 item is consciously deferred and documented.
 - [ ] Manual Review Needed section in `PROJECT_BACKLOG.md` is updated.
+- [ ] Any blocked release-ops task (for example TestFlight signing/credentials) is either cleared or explicitly accepted before ship.
