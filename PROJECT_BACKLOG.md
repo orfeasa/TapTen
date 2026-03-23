@@ -86,10 +86,10 @@
     - Host Round includes a visible one-line instruction: `Tap each answer as it’s guessed.`
     - Shared flow copy consistently mentions `host`, `guessing team`, and tapping behavior.
 
-- [ ] TASK: Remove false affordance and improve contrast on informational surfaces
+- [x] TASK: Remove false affordance and improve contrast on informational surfaces
   - Type: UX / Accessibility
   - Priority: P0
-  - Status: In Progress
+  - Status: Completed
   - Area: `Views/Home`, `Views/Home/PackBrowser`, `Views/GameFlow/GameFlowView`, shared card styling
   - Goal: Make it obvious which surfaces are controls and which are display-only, while improving helper-text readability.
   - Acceptance Criteria:
@@ -100,7 +100,7 @@
     - Grey helper text, orange-on-warm text, and section labels are adjusted to a stronger readable contrast.
     - Updated informational surfaces still support Dynamic Type and VoiceOver cleanly.
   - Notes:
-    - Home defaults cards and key helper copy were flattened/clarified in the latest pass; broader informational-surface cleanup still remains.
+    - Home defaults cards, Question Pack rows, and key helper copy were flattened/clarified in the latest pass to reduce false affordance.
 
 - [x] TASK: Fix Settings crash and move rounds/timer ownership into defaults
   - Type: Bug / UX
@@ -193,10 +193,10 @@
 
 ### P1 - Next
 
-- [ ] TASK: Tighten How To Play copy with the approved operational wording
+- [x] TASK: Tighten How To Play copy with the approved operational wording
   - Type: UX / Copy
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/Home/HowToPlay`
   - Goal: Make the sheet readable once and sufficient for a first-time group to start playing confidently.
   - Acceptance Criteria:
@@ -214,10 +214,10 @@
     - The words `host`, `guessing team`, and `taps answers` are all present.
     - Copy stays direct and non-decorative.
 
-- [ ] TASK: Improve Question Packs hierarchy and explanatory value
+- [x] TASK: Improve Question Packs hierarchy and explanatory value
   - Type: UX
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/Home/PackBrowser`
   - Goal: Make the pack browser feel informative and useful rather than a raw inventory list.
   - Acceptance Criteria:
@@ -227,10 +227,10 @@
     - If rows remain non-interactive, they do not imply tap affordance.
     - The screen more clearly communicates what question packs are for.
 
-- [ ] TASK: Clarify defaults ownership and rename post-round utility actions
+- [x] TASK: Clarify defaults ownership and rename post-round utility actions
   - Type: UX / Copy
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Views/Home/SettingsView`, `Views/GameFlow/HostRoundView`
   - Goal: Make it obvious where Home defaults come from and make round-end utility actions understandable at a glance.
   - Acceptance Criteria:

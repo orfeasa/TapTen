@@ -17,7 +17,7 @@ struct SettingsView: View {
                 ))
             }
 
-            Section("New Game Defaults") {
+            Section {
                 Stepper(
                     "Rounds per Team: \(settingsStore.defaultRounds)",
                     value: Binding(
@@ -36,6 +36,10 @@ struct SettingsView: View {
                     in: 30...180,
                     step: 5
                 )
+            } header: {
+                Text("New Game Defaults")
+            } footer: {
+                Text("These defaults are shown on the home screen and used when starting a new game.")
             }
         }
         .navigationTitle("Settings")

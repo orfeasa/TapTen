@@ -470,54 +470,83 @@ private struct PackBrowserView: View {
     @State private var loadError: String?
 
     var body: some View {
-        List {
+        ScrollView {
             if let loadError {
-                Section {
+                VStack(alignment: .leading, spacing: 12) {
+                    sectionTitle("Unable to Load Packs")
+
                     Text(loadError)
                         .foregroundStyle(.red)
-                } header: {
-                    Text("Unable to Load Packs")
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(20)
             } else {
-                Section("Category Coverage") {
-                    ForEach(categoryCoverage) { coverage in
-                        VStack(alignment: .leading, spacing: 4) {
-                            HStack {
-                                Text(coverage.category)
-                                    .font(.headline)
-                                Spacer()
-                                Text("\(coverage.total) questions")
-                                    .font(.subheadline.weight(.semibold))
-                                    .foregroundStyle(.secondary)
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Browse what’s included in each category and difficulty mix.")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.primary.opacity(0.72))
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        sectionTitle("Category Coverage")
+
+                        ForEach(categoryCoverage) { coverage in
+                            informationalRow {
+                                VStack(alignment: .leading, spacing: 6) {
+                                    HStack(alignment: .firstTextBaseline, spacing: 12) {
+                                        Text(coverage.category)
+                                            .font(.headline)
+
+                                        Spacer()
+
+                                        Text("\(coverage.total) questions")
+                                            .font(.caption.weight(.semibold))
+                                            .foregroundStyle(Color.primary.opacity(0.62))
+                                    }
+
+                                    Text("Easy \(coverage.easy) • Medium \(coverage.medium) • Hard \(coverage.hard)")
+                                        .font(.footnote)
+                                        .foregroundStyle(Color.primary.opacity(0.72))
+                                }
                             }
-
-                            Text("Easy \(coverage.easy) • Medium \(coverage.medium) • Hard \(coverage.hard)")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
+                            .accessibilityElement(children: .combine)
+                            .accessibilityHint("Informational only.")
                         }
-                        .accessibilityElement(children: .combine)
+                    }
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        sectionTitle("Packs")
+
+                        ForEach(packSummaries) { summary in
+                            informationalRow {
+                                VStack(alignment: .leading, spacing: 6) {
+                                    HStack(alignment: .firstTextBaseline, spacing: 12) {
+                                        Text(summary.title)
+                                            .font(.headline)
+
+                                        Spacer()
+
+                                        Text("\(summary.questionCount) questions")
+                                            .font(.caption.weight(.semibold))
+                                            .foregroundStyle(Color.primary.opacity(0.62))
+                                    }
+
+                                    Text(summary.categoryList)
+                                        .font(.footnote)
+                                        .foregroundStyle(Color.primary.opacity(0.72))
+                                }
+                            }
+                            .accessibilityElement(children: .combine)
+                            .accessibilityHint("Informational only.")
+                        }
                     }
                 }
-
-                Section("Packs") {
-                    ForEach(packSummaries) { summary in
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(summary.title)
-                                .font(.headline)
-
-                            Text("\(summary.questionCount) questions • \(summary.categoryList)")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                        }
-                        .padding(.vertical, 2)
-                        .accessibilityElement(children: .combine)
-                    }
-                }
+                .padding(.horizontal, 20)
+                .padding(.top, 16)
+                .padding(.bottom, 24)
             }
         }
         .navigationTitle("Question Packs")
         .navigationBarTitleDisplayMode(.inline)
-        .scrollContentBackground(.hidden)
         .background(Color.tapTenWarmBackground)
         .task {
             guard packs.isEmpty, loadError == nil else {
@@ -567,6 +596,27 @@ private struct PackBrowserView: View {
         } catch {
             loadError = error.localizedDescription
         }
+    }
+
+    private func sectionTitle(_ title: String) -> some View {
+        Text(title)
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(Color.primary.opacity(0.62))
+            .textCase(.uppercase)
+    }
+
+    private func informationalRow<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        content()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(16)
+            .background(
+                Color.tapTenWarmCard.opacity(0.92),
+                in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .stroke(Color.primary.opacity(0.08), lineWidth: 1)
+            )
     }
 }
 

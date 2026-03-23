@@ -249,7 +249,7 @@ struct HostRoundView: View {
         Button {
             openURL(viewModel.question.sourceURL)
         } label: {
-            Label("Source", systemImage: "safari")
+            Label("View source", systemImage: "safari")
                 .font(.subheadline.weight(.semibold))
                 .padding(.horizontal, 10)
                 .frame(minHeight: 36)
@@ -264,7 +264,7 @@ struct HostRoundView: View {
         Button {
             isShowingFeedbackSheet = true
         } label: {
-            Label("Report", systemImage: "flag.badge.ellipsis")
+            Label("Flag question", systemImage: "flag.badge.ellipsis")
                 .font(.subheadline.weight(.semibold))
                 .padding(.horizontal, 10)
                 .frame(minHeight: 36)
