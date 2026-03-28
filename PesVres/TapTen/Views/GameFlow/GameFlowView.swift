@@ -21,8 +21,8 @@ struct GameFlowView: View {
 
             case .questionPreview:
                 QuestionPreviewView(
-                    roundProgressText: viewModel.roundProgressText,
                     prompt: viewModel.currentQuestionPrompt,
+                    roundDurationSeconds: viewModel.roundDurationSeconds,
                     startAction: viewModel.startRound
                 )
 
@@ -327,111 +327,133 @@ private struct PassDeviceView: View {
 }
 
 private struct QuestionPreviewView: View {
-    let roundProgressText: String
     let prompt: String
+    let roundDurationSeconds: Int
     let startAction: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 22) {
-            roundBadge
+        GeometryReader { geometry in
+            let containerHeight = geometry.size.height
+            let containerWidth = geometry.size.width
+            let sectionSpacing = 6.0
+            let outerPadding = 14.0
+            let questionWidth = max(0, containerWidth - (outerPadding * 2))
+            let questionHeaderHeight = measuredQuestionHeaderHeight(for: questionWidth)
+            let previewInfoHeight = max(88, min(116, containerHeight * 0.15))
 
-            VStack(alignment: .leading, spacing: 18) {
-                Text("Read the question")
-                    .font(.headline.weight(.semibold))
-                    .foregroundStyle(Color.tapTenPlayfulOrange)
+            VStack(spacing: sectionSpacing) {
+                questionHeader(for: questionWidth)
+                    .frame(
+                        maxWidth: .infinity,
+                        minHeight: questionHeaderHeight,
+                        maxHeight: questionHeaderHeight,
+                        alignment: .topLeading
+                    )
 
-                Text(prompt)
-                    .font(.system(.largeTitle, design: .rounded).weight(.black))
-                    .multilineTextAlignment(.leading)
-                    .minimumScaleFactor(0.62)
-                    .lineLimit(5)
+                previewInfoSection
+                    .frame(maxWidth: .infinity, minHeight: previewInfoHeight, alignment: .top)
 
-                Text("Take a moment to read it through. Start the timer only when the host is ready.")
-                    .font(.body)
-                    .foregroundStyle(Color.primary.opacity(0.72))
+                Spacer(minLength: 0)
+
+                Button(action: startAction) {
+                    Text("Start Timer")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity, minHeight: 52)
+                }
+                .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(22)
-            .background(
-                LinearGradient(
-                    colors: [Color.tapTenWarmCard, Color.tapTenPlayfulOrange.opacity(0.14)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                ),
-                in: RoundedRectangle(cornerRadius: 24, style: .continuous)
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 24, style: .continuous)
-                    .stroke(Color.tapTenPlayfulOrange.opacity(0.18), lineWidth: 1)
-            )
-
-            Button(action: startAction) {
-                Text("Start Timer")
-                    .font(.headline.weight(.semibold))
-                    .frame(maxWidth: .infinity, minHeight: 56)
-            }
-            .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
-
-            Spacer(minLength: 0)
+            .padding(outerPadding)
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .padding(.horizontal, 20)
-        .padding(.top, 28)
         .navigationTitle("Question")
         .navigationBarTitleDisplayMode(.inline)
         .background(questionPreviewBackground)
     }
 
-    private var roundBadge: some View {
-        HStack(spacing: 8) {
-            Image(systemName: "text.quote")
-                .font(.subheadline.weight(.semibold))
-            Text(roundProgressText)
-                .font(.subheadline.weight(.semibold))
+    private func questionHeader(for width: CGFloat) -> some View {
+        Text(prompt)
+            .font(questionHeaderFont(for: width))
+            .lineLimit(4)
+            .minimumScaleFactor(0.55)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    }
+
+    private var previewInfoSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 12) {
+                HStack(spacing: 8) {
+                    Image(systemName: "timer")
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .foregroundStyle(.primary)
+
+                    Text("\(roundDurationSeconds)")
+                        .font(.system(size: 32, weight: .bold, design: .rounded).monospacedDigit())
+                        .foregroundStyle(.primary)
+                }
+
+                Spacer()
+
+                Text("Ready")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(.secondary)
+            }
+
+            Text("Take a moment to read it through. Start the timer only when the host is ready.")
+                .font(.footnote.weight(.medium))
+                .foregroundStyle(Color.primary.opacity(0.72))
+                .fixedSize(horizontal: false, vertical: true)
         }
-        .foregroundStyle(Color.tapTenPlayfulOrange)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 8)
-        .background(Color.tapTenPlayfulOrange.opacity(0.16), in: Capsule())
+        .padding(14)
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    private func measuredQuestionHeaderHeight(for width: CGFloat) -> CGFloat {
+        let isCompactWidth = width < 382
+        let minimumHeight = isCompactWidth ? 72.0 : 56.0
+        let maximumHeight = isCompactWidth ? 172.0 : 148.0
+        let measuredHeight = prompt
+            .boundingRect(
+                with: CGSize(width: width, height: .greatestFiniteMagnitude),
+                options: [.usesLineFragmentOrigin, .usesFontLeading],
+                attributes: [.font: questionHeaderUIFont(for: width)],
+                context: nil
+            )
+            .height
+        let safetyBuffer = isCompactWidth ? 14.0 : 10.0
+
+        return max(minimumHeight, min(maximumHeight, ceil(measuredHeight) + safetyBuffer))
+    }
+
+    private func questionHeaderFont(for width: CGFloat) -> Font {
+        .system(
+            size: width < 382 ? 25 : 28,
+            weight: .bold,
+            design: .default
+        )
+    }
+
+    private func questionHeaderUIFont(for width: CGFloat) -> UIFont {
+        let baseSize: CGFloat = width < 382 ? 25 : 28
+        let textStyle: UIFont.TextStyle = width < 382 ? .title2 : .title1
+        let baseFont = UIFont.systemFont(ofSize: baseSize, weight: .bold)
+        return UIFontMetrics(forTextStyle: textStyle).scaledFont(for: baseFont)
     }
 
     private var questionPreviewBackground: some View {
         ZStack(alignment: .top) {
             Color.tapTenWarmBackground
 
-            Ellipse()
-                .fill(
-                    RadialGradient(
-                        colors: [
-                            Color.tapTenPlayfulOrange.opacity(0.16),
-                            Color.tapTenPlayfulPink.opacity(0.08),
-                            .clear
-                        ],
-                        center: .center,
-                        startRadius: 12,
-                        endRadius: 220
-                    )
-                )
-                .frame(width: 360, height: 220)
-                .blur(radius: 18)
-                .offset(x: -76, y: -98)
-
-            Ellipse()
-                .fill(
-                    RadialGradient(
-                        colors: [
-                            Color.tapTenPlayfulPink.opacity(0.10),
-                            Color.tapTenCelebrationGold.opacity(0.08),
-                            .clear
-                        ],
-                        center: .center,
-                        startRadius: 12,
-                        endRadius: 200
-                    )
-                )
-                .frame(width: 320, height: 220)
-                .blur(radius: 20)
-                .offset(x: 102, y: -112)
+            LinearGradient(
+                colors: [
+                    Color.tapTenPlayfulMint.opacity(0.10),
+                    Color.tapTenPlayfulBlue.opacity(0.07),
+                    .clear
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .frame(height: 220)
         }
         .ignoresSafeArea()
     }

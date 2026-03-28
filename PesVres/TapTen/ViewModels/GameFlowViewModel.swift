@@ -111,6 +111,10 @@ final class GameFlowViewModel {
         settings.numberOfRounds
     }
 
+    var roundDurationSeconds: Int {
+        settings.roundDurationSeconds
+    }
+
     var roundProgressText: String {
         guard let currentRound else {
             return "Final Results"
