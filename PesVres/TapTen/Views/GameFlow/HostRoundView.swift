@@ -163,17 +163,29 @@ struct HostRoundView: View {
         let countdownText = viewModel.formattedCountdown
         return VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
-                Label(countdownText, systemImage: "timer")
-                    .font(
-                        .system(
-                            size: dynamicTypeSize.isAccessibilitySize ? 28 : 32,
-                            weight: .bold,
-                            design: .rounded
+                HStack(spacing: 8) {
+                    Image(systemName: "timer")
+                        .font(
+                            .system(
+                                size: dynamicTypeSize.isAccessibilitySize ? 26 : 30,
+                                weight: .bold,
+                                design: .rounded
+                            )
                         )
-                        .monospacedDigit()
-                    )
-                    .foregroundStyle(timerTextColor)
-                    .scaleEffect(isTimerPulsing ? 1.03 : 1.0)
+                        .foregroundStyle(timerTextColor)
+                        .scaleEffect(isTimerPulsing ? 1.08 : 1.0)
+
+                    Text(countdownText)
+                        .font(
+                            .system(
+                                size: dynamicTypeSize.isAccessibilitySize ? 28 : 32,
+                                weight: .bold,
+                                design: .rounded
+                            )
+                            .monospacedDigit()
+                        )
+                        .foregroundStyle(timerTextColor)
+                }
 
                 Spacer()
 
