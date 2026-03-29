@@ -4,7 +4,7 @@ import Testing
 struct NewGameViewModelTests {
     @Test
     func defaultCategoryCatalogExposesFinalTwelveCategories() {
-        let viewModel = NewGameViewModel()
+        let viewModel = makeViewModel()
 
         let categoryNames = viewModel.categories.map(\.name)
         #expect(categoryNames == [
@@ -26,7 +26,7 @@ struct NewGameViewModelTests {
 
     @Test
     func includeAllCategoriesSelectsEveryLoadedCategory() throws {
-        let viewModel = NewGameViewModel()
+        let viewModel = makeViewModel()
 
         let firstCategory = try #require(viewModel.categories.first)
         viewModel.setCategory(firstCategory, included: false)
@@ -49,7 +49,7 @@ struct NewGameViewModelTests {
 
     @Test
     func defaultDifficultyFilterIncludesAllTiers() {
-        let viewModel = NewGameViewModel()
+        let viewModel = makeViewModel()
 
         #expect(viewModel.includedDifficultyTiers == Set(QuestionDifficulty.allCases))
         #expect(viewModel.difficultiesAreValid)
@@ -57,7 +57,7 @@ struct NewGameViewModelTests {
 
     @Test
     func excludingAllDifficultiesInvalidatesStartReadiness() {
-        let viewModel = NewGameViewModel()
+        let viewModel = makeViewModel()
 
         viewModel.excludeAllDifficulties()
 
@@ -67,7 +67,7 @@ struct NewGameViewModelTests {
 
     @Test
     func defaultSetupUsesSeededCuratedTeamNamePair() {
-        let viewModel = NewGameViewModel(initialSuggestedTeamNamePairIndex: 0)
+        let viewModel = makeViewModel(initialSuggestedTeamNamePairIndex: 0)
 
         #expect(viewModel.settings.teamAName == "Hot Takes")
         #expect(viewModel.settings.teamBName == "Cold Pizza")
@@ -75,7 +75,7 @@ struct NewGameViewModelTests {
 
     @Test
     func applyingSuggestedTeamNamesAdvancesToNextPair() {
-        let viewModel = NewGameViewModel(initialSuggestedTeamNamePairIndex: 0)
+        let viewModel = makeViewModel(initialSuggestedTeamNamePairIndex: 0)
 
         viewModel.applyNextSuggestedTeamNames()
 
@@ -85,7 +85,7 @@ struct NewGameViewModelTests {
 
     @Test
     func applyingSuggestedTeamNamesSkipsCurrentPair() {
-        let viewModel = NewGameViewModel(initialSuggestedTeamNamePairIndex: 0)
+        let viewModel = makeViewModel(initialSuggestedTeamNamePairIndex: 0)
         viewModel.settings.teamAName = "Hot Takes"
         viewModel.settings.teamBName = "Cold Pizza"
 
@@ -97,7 +97,7 @@ struct NewGameViewModelTests {
 
     @Test
     func seededSuggestedPairIndexCanStartFromLaterPair() {
-        let viewModel = NewGameViewModel(initialSuggestedTeamNamePairIndex: 3)
+        let viewModel = makeViewModel(initialSuggestedTeamNamePairIndex: 3)
 
         #expect(viewModel.settings.teamAName == "Peak Chaos")
         #expect(viewModel.settings.teamBName == "Soft Launch")
@@ -105,7 +105,7 @@ struct NewGameViewModelTests {
 
     @Test
     func customTeamNamesAreNotOverwrittenOnInit() {
-        let viewModel = NewGameViewModel(
+        let viewModel = makeViewModel(
             settings: GameSettings(
                 teamAName: "Custom A",
                 teamBName: "Custom B",
@@ -116,5 +116,18 @@ struct NewGameViewModelTests {
 
         #expect(viewModel.settings.teamAName == "Custom A")
         #expect(viewModel.settings.teamBName == "Custom B")
+    }
+
+    private func makeViewModel(
+        settings: GameSettings = GameSettings(),
+        initialSuggestedTeamNamePairIndex: Int? = nil
+    ) -> NewGameViewModel {
+        NewGameViewModel(
+            settings: settings,
+            categoryService: CategoryCatalogService(
+                questionPackLoader: QuestionPackLoader(packFileURLs: [])
+            ),
+            initialSuggestedTeamNamePairIndex: initialSuggestedTeamNamePairIndex
+        )
     }
 }

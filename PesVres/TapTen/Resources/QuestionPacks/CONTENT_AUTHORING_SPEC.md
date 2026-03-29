@@ -14,6 +14,14 @@ Required fields:
 
 Optional fields:
 - `packVersion` (string)
+- `summary` (string)
+- `monetization` (object)
+
+`monetization` fields:
+- `access` (`free` | `premium`)
+- `storeProductID` (string, required when `access` is `premium`)
+- `bundleProductIDs` (array of strings, optional, premium packs only)
+- `merchandisingLabel` (string, optional)
 
 ### Question object
 
@@ -47,9 +55,9 @@ Validation:
 - exactly 10 answers per question
 - answer texts must be unique within a question (case-insensitive)
 
-## 2) Allowed Categories
+## 2) Category Rules
 
-Use this final category set exactly:
+Free starter-library packs use this final category set exactly:
 - `Everyday Life`
 - `Food & Drink`
 - `Film & TV`
@@ -63,8 +71,12 @@ Use this final category set exactly:
 - `Work & School`
 - `Pop Culture & Trends`
 
-Migration note:
-- If content introduces or reassigns categories, keep `CategoryCatalogService` in sync so setup filtering remains accurate.
+Premium expansion packs may introduce new categories when the pack concept is the category (for example `After Dark`, `Date Night`, or `Office & Icebreakers`).
+
+Rules:
+- Free packs must stay inside the permanent 12-category starter library above.
+- Premium packs may use distinct pack-specific categories or intentionally add more questions to an existing category.
+- The setup screen now derives available categories from the currently accessible pack library, so new premium categories do not require a manual `CategoryCatalogService` edit.
 
 ## 3) contentType Rules
 
@@ -157,7 +169,8 @@ Required checks:
 - No duplicate or near-overlapping answers inside a single question.
 - Prompt adjudication speed: host can map spoken guesses quickly without legalistic interpretation.
 - Category-level review: verify each category still has a sensible easy/medium/hard spread for available question count.
-- Category target review: for release target, each category should remain at exactly 12 questions with 4 easy / 4 medium / 4 hard.
+- Free starter-library target review: each of the 12 base categories should remain at exactly 12 questions with 4 easy / 4 medium / 4 hard.
+- Premium expansion target review: each premium pack should ship at 24 questions with 8 easy / 8 medium / 8 hard unless product requirements change.
 
 Recommended cadence:
 - Run full audit after any batch edit to packs.

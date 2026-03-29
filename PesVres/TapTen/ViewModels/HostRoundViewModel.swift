@@ -1,6 +1,11 @@
 import Foundation
 import Observation
 
+enum HostRoundFinishReason: Equatable {
+    case timerExpired
+    case skipped
+}
+
 @Observable
 final class HostRoundViewModel {
     let question: Question
@@ -12,6 +17,7 @@ final class HostRoundViewModel {
     private(set) var remainingTenths: Int
     private(set) var isRoundFinished = false
     private(set) var isPaused = false
+    private(set) var finishReason: HostRoundFinishReason?
     private(set) var revealedAnswerIndices: Set<Int> = []
     private(set) var latestRevealPoints: Int?
     private(set) var revealEventToken = 0
@@ -101,12 +107,21 @@ final class HostRoundViewModel {
         timer = nil
     }
 
-    func endRound() {
+    func endRound(reason: HostRoundFinishReason = .timerExpired) {
         remainingTenths = 0
         remainingTime = 0
         isRoundFinished = true
         isPaused = false
+        finishReason = reason
         stopTimer()
+    }
+
+    func skipRound() {
+        guard !isRoundFinished else {
+            return
+        }
+
+        endRound(reason: .skipped)
     }
 
     func togglePause() {
@@ -170,7 +185,7 @@ final class HostRoundViewModel {
             if soundsEnabled {
                 countdownSoundPlayer.playRoundEndedTone(volume: 1.0)
             }
-            endRound()
+            endRound(reason: .timerExpired)
             return
         }
 

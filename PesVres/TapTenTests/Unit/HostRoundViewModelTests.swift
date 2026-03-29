@@ -126,6 +126,28 @@ struct HostRoundViewModelTests {
     }
 
     @Test
+    func skipRoundEndsActiveRoundAndPreservesCurrentScore() {
+        let viewModel = HostRoundViewModel(
+            question: makeQuestion(),
+            roundDurationSeconds: 60
+        )
+
+        _ = viewModel.revealAnswer(at: 0)
+        _ = viewModel.revealAnswer(at: 2)
+        viewModel.togglePause()
+
+        viewModel.skipRound()
+
+        #expect(viewModel.isRoundFinished)
+        #expect(viewModel.finishReason == .skipped)
+        #expect(viewModel.remainingTime == 0)
+        #expect(viewModel.remainingTenths == 0)
+        #expect(!viewModel.isPaused)
+        #expect(viewModel.pointsAwarded == 4)
+        #expect(viewModel.revealedAnswerIndices == Set([0, 2]))
+    }
+
+    @Test
     func countdownBoundaryFormattingIsStableAtTenSeconds() {
         let viewModel = makeDeterministicTimerViewModel(durationSeconds: 12)
         viewModel.startRoundIfNeeded()

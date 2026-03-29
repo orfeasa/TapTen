@@ -1,0 +1,230 @@
+import Foundation
+import Observation
+import StoreKit
+
+enum QuestionPackAvailability: Equatable {
+    case included
+    case locked
+    case unlocked
+}
+
+enum QuestionPackStoreActionState: Equatable {
+    case unavailable
+    case ready(price: String?)
+    case purchasing
+}
+
+@Observable
+final class QuestionPackEntitlementStore {
+    static let shared = QuestionPackEntitlementStore()
+
+    private enum Keys {
+        static let unlockedProductIDs = "packs.unlockedProductIDs"
+    }
+
+    private let defaults: UserDefaults
+
+    private(set) var unlockedProductIDs: Set<String>
+
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+        let storedProductIDs = defaults.stringArray(forKey: Keys.unlockedProductIDs) ?? []
+        self.unlockedProductIDs = Set(storedProductIDs)
+    }
+
+    func availability(for pack: QuestionPack) -> QuestionPackAvailability {
+        switch pack.access {
+        case .free:
+            return .included
+        case .premium:
+            let unlockingProductIDs = Set(
+                [pack.storeProductID].compactMap { $0 } + pack.bundleProductIDs
+            )
+
+            guard !unlockingProductIDs.isEmpty else {
+                return .locked
+            }
+
+            return unlockingProductIDs.isDisjoint(with: unlockedProductIDs) ? .locked : .unlocked
+        }
+    }
+
+    func accessiblePacks(from packs: [QuestionPack]) -> [QuestionPack] {
+        packs.filter { availability(for: $0) != .locked }
+    }
+
+    func setUnlockedProductIDs(_ productIDs: Set<String>) {
+        unlockedProductIDs = productIDs
+        defaults.set(Array(productIDs).sorted(), forKey: Keys.unlockedProductIDs)
+    }
+
+    func markUnlocked(productID: String) {
+        guard !productID.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            return
+        }
+
+        var updated = unlockedProductIDs
+        updated.insert(productID)
+        setUnlockedProductIDs(updated)
+    }
+}
+
+@MainActor
+@Observable
+final class QuestionPackStorefront {
+    static let shared = QuestionPackStorefront()
+
+    private let entitlementStore: QuestionPackEntitlementStore
+    private let monetizationTelemetryStore: MonetizationTelemetryStore
+
+    private(set) var isRefreshing = false
+    private(set) var isRestoringPurchases = false
+    private(set) var purchasingProductID: String?
+    private(set) var productsByID: [String: Product] = [:]
+    private(set) var storeMessage: String?
+
+    init(
+        entitlementStore: QuestionPackEntitlementStore? = nil,
+        monetizationTelemetryStore: MonetizationTelemetryStore? = nil
+    ) {
+        self.entitlementStore = entitlementStore ?? .shared
+        self.monetizationTelemetryStore = monetizationTelemetryStore ?? .shared
+    }
+
+    func refreshStoreData(for packs: [QuestionPack]) async {
+        guard !isRefreshing else {
+            return
+        }
+
+        isRefreshing = true
+        defer { isRefreshing = false }
+
+        let premiumProductIDs = Set(
+            packs
+                .filter(\.isPremium)
+                .compactMap(\.storeProductID)
+        )
+
+        if premiumProductIDs.isEmpty {
+            productsByID = [:]
+            storeMessage = nil
+            return
+        }
+
+        do {
+            let products = try await Product.products(for: Array(premiumProductIDs).sorted())
+            productsByID = Dictionary(uniqueKeysWithValues: products.map { ($0.id, $0) })
+            await syncUnlockedProductIDs()
+            storeMessage = nil
+        } catch {
+            storeMessage = "Store details are unavailable right now."
+        }
+    }
+
+    func restorePurchases(for packs: [QuestionPack]) async {
+        guard !isRestoringPurchases else {
+            return
+        }
+
+        isRestoringPurchases = true
+        defer { isRestoringPurchases = false }
+
+        do {
+            try await AppStore.sync()
+            await refreshStoreData(for: packs)
+            monetizationTelemetryStore.recordRestoreCompleted()
+            storeMessage = "Purchases restored."
+        } catch {
+            storeMessage = "Couldn't restore purchases right now."
+        }
+    }
+
+    func purchase(_ pack: QuestionPack, availablePacks: [QuestionPack]) async {
+        guard let productID = pack.storeProductID else {
+            storeMessage = "This pack is not ready for purchase yet."
+            return
+        }
+
+        if productsByID[productID] == nil {
+            await refreshStoreData(for: availablePacks)
+        }
+
+        guard let product = productsByID[productID] else {
+            storeMessage = "Store details are unavailable right now."
+            return
+        }
+
+        purchasingProductID = productID
+        defer { purchasingProductID = nil }
+        monetizationTelemetryStore.recordPurchaseStarted(packID: pack.id, productID: productID)
+
+        do {
+            let result = try await product.purchase()
+            switch result {
+            case .success(let verificationResult):
+                let transaction = try verifiedTransaction(from: verificationResult)
+                entitlementStore.markUnlocked(productID: transaction.productID)
+                monetizationTelemetryStore.recordPurchaseCompleted(
+                    packID: pack.id,
+                    productID: transaction.productID
+                )
+                await transaction.finish()
+                storeMessage = "\(pack.title) unlocked."
+            case .pending:
+                storeMessage = "Purchase pending approval."
+            case .userCancelled:
+                storeMessage = nil
+            @unknown default:
+                storeMessage = "Purchase didn't complete."
+            }
+        } catch {
+            storeMessage = "Couldn't complete the purchase right now."
+        }
+    }
+
+    func actionState(for pack: QuestionPack) -> QuestionPackStoreActionState {
+        switch entitlementStore.availability(for: pack) {
+        case .included, .unlocked:
+            return .unavailable
+        case .locked:
+            guard let productID = pack.storeProductID else {
+                return .unavailable
+            }
+
+            if purchasingProductID == productID {
+                return .purchasing
+            }
+
+            return .ready(price: productsByID[productID]?.displayPrice)
+        }
+    }
+
+    func isUnlocked(_ pack: QuestionPack) -> Bool {
+        entitlementStore.availability(for: pack) == .unlocked
+    }
+
+    private func syncUnlockedProductIDs() async {
+        var unlockedProductIDs: Set<String> = []
+
+        for await verificationResult in Transaction.currentEntitlements {
+            guard let transaction = try? verifiedTransaction(from: verificationResult) else {
+                continue
+            }
+
+            unlockedProductIDs.insert(transaction.productID)
+        }
+
+        entitlementStore.setUnlockedProductIDs(unlockedProductIDs)
+    }
+
+    private func verifiedTransaction(
+        from result: VerificationResult<Transaction>
+    ) throws -> Transaction {
+        switch result {
+        case .verified(let transaction):
+            return transaction
+        case .unverified:
+            throw StoreKitError.notEntitled
+        }
+    }
+}

@@ -12,6 +12,7 @@ struct HostRoundView: View {
     @State private var isShowingPointsReaction = false
     @State private var isTimerPulsing = false
     @State private var isShowingFeedbackSheet = false
+    @State private var isShowingSkipConfirmation = false
     @State private var feedbackNotice: FeedbackNotice?
 
     var body: some View {
@@ -99,6 +100,19 @@ struct HostRoundView: View {
             if let feedbackNotice {
                 Text(feedbackNotice.message)
             }
+        }
+        .confirmationDialog(
+            "Skip this round?",
+            isPresented: $isShowingSkipConfirmation,
+            titleVisibility: .visible
+        ) {
+            Button("Skip Round", role: .destructive) {
+                viewModel.skipRound()
+            }
+
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("This ends the timer immediately and moves the round into review.")
         }
         .onAppear {
             viewModel.startRoundIfNeeded()
@@ -224,7 +238,7 @@ struct HostRoundView: View {
     private var timeUpReviewSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 10) {
-                Label("Time's up", systemImage: "checkmark.circle.fill")
+                Label(reviewTitle, systemImage: reviewIconName)
                     .font(.headline.weight(.semibold))
                     .foregroundStyle(Color.tapTenPlayfulOrange)
 
@@ -291,32 +305,9 @@ struct HostRoundView: View {
                 }
                 .buttonStyle(TapTenPrimaryCapsuleButtonStyle())
             } else {
-                HStack {
-                    Spacer(minLength: 0)
-
-                    Button {
-                        viewModel.togglePause()
-                    } label: {
-                        Label(
-                            viewModel.isPaused ? "Resume" : "Pause",
-                            systemImage: viewModel.isPaused ? "play.fill" : "pause.fill"
-                        )
-                        .font(.subheadline.weight(.semibold))
-                        .padding(.horizontal, 18)
-                        .frame(minWidth: 132, minHeight: 44)
-                    }
-                    .buttonStyle(.plain)
-                    .foregroundStyle(viewModel.isPaused ? Color.tapTenPlayfulOrange : .primary)
-                    .background(.thinMaterial, in: Capsule(style: .continuous))
-                    .overlay(
-                        Capsule(style: .continuous)
-                            .stroke(
-                                Color.tapTenPlayfulOrange.opacity(viewModel.isPaused ? 0.28 : 0.16),
-                                lineWidth: 1
-                            )
-                    )
-
-                    Spacer(minLength: 0)
+                HStack(spacing: 10) {
+                    skipButton
+                    pauseButton
                 }
             }
         }
@@ -327,7 +318,67 @@ struct HostRoundView: View {
     private var roundControlsAccessibilityHint: String {
         viewModel.isRoundFinished
             ? "Continue to the round summary."
-            : (viewModel.isPaused ? "Resume the round timer." : "Pause the round timer.")
+            : "Pause or resume the timer, or skip the round early."
+    }
+
+    private var reviewTitle: String {
+        switch viewModel.finishReason {
+        case .skipped:
+            return "Round skipped"
+        case .timerExpired, .none:
+            return "Time's up"
+        }
+    }
+
+    private var reviewIconName: String {
+        switch viewModel.finishReason {
+        case .skipped:
+            return "forward.circle.fill"
+        case .timerExpired, .none:
+            return "checkmark.circle.fill"
+        }
+    }
+
+    private var skipButton: some View {
+        Button {
+            isShowingSkipConfirmation = true
+        } label: {
+            Label("Skip", systemImage: "forward.fill")
+                .font(.subheadline.weight(.semibold))
+                .frame(maxWidth: .infinity, minHeight: 44)
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(Color.tapTenPlayfulPink)
+        .background(.thinMaterial, in: Capsule(style: .continuous))
+        .overlay(
+            Capsule(style: .continuous)
+                .stroke(Color.tapTenPlayfulPink.opacity(0.22), lineWidth: 1)
+        )
+        .accessibilityHint("End the round early and move into review.")
+    }
+
+    private var pauseButton: some View {
+        Button {
+            viewModel.togglePause()
+        } label: {
+            Label(
+                viewModel.isPaused ? "Resume" : "Pause",
+                systemImage: viewModel.isPaused ? "play.fill" : "pause.fill"
+            )
+            .font(.subheadline.weight(.semibold))
+            .frame(maxWidth: .infinity, minHeight: 44)
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(viewModel.isPaused ? Color.tapTenPlayfulOrange : .primary)
+        .background(.thinMaterial, in: Capsule(style: .continuous))
+        .overlay(
+            Capsule(style: .continuous)
+                .stroke(
+                    Color.tapTenPlayfulOrange.opacity(viewModel.isPaused ? 0.28 : 0.16),
+                    lineWidth: 1
+                )
+        )
+        .accessibilityHint(viewModel.isPaused ? "Resume the round timer." : "Pause the round timer.")
     }
 
     private var timerProgressColor: Color {

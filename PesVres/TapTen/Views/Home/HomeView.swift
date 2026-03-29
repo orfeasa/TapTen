@@ -470,6 +470,9 @@ private struct HowToStepRow: View {
 private struct PackBrowserView: View {
     @State private var packs: [QuestionPack] = []
     @State private var loadError: String?
+    @State private var entitlementStore = QuestionPackEntitlementStore.shared
+    @State private var storefront = QuestionPackStorefront.shared
+    @State private var monetizationTelemetryStore = MonetizationTelemetryStore.shared
 
     var body: some View {
         ScrollView {
@@ -484,9 +487,19 @@ private struct PackBrowserView: View {
                 .padding(20)
             } else {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Browse what’s included in each category and difficulty mix.")
+                    Text("Browse the free library and any bundled premium expansions.")
                         .font(.subheadline)
                         .foregroundStyle(Color.primary.opacity(0.72))
+
+                    if let storeMessage = storefront.storeMessage {
+                        informationalRow {
+                            Text(storeMessage)
+                                .font(.footnote)
+                                .foregroundStyle(Color.primary.opacity(0.72))
+                        }
+                        .accessibilityElement(children: .combine)
+                        .accessibilityHint("Informational only.")
+                    }
 
                     VStack(alignment: .leading, spacing: 12) {
                         sectionTitle("Category Coverage")
@@ -516,29 +529,41 @@ private struct PackBrowserView: View {
                     }
 
                     VStack(alignment: .leading, spacing: 12) {
-                        sectionTitle("Packs")
+                        sectionTitle("Included in Base Game")
 
-                        ForEach(packSummaries) { summary in
+                        ForEach(includedPackSummaries) { summary in
+                            informationalRow {
+                                packSummaryContent(summary)
+                            }
+                            .accessibilityElement(children: .combine)
+                            .accessibilityHint("Informational only.")
+                        }
+                    }
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        sectionTitle("Premium Expansions")
+
+                        if premiumPackSummaries.isEmpty {
                             informationalRow {
                                 VStack(alignment: .leading, spacing: 6) {
-                                    HStack(alignment: .firstTextBaseline, spacing: 12) {
-                                        Text(summary.title)
-                                            .font(.headline)
+                                    Text("No premium expansions are bundled yet.")
+                                        .font(.headline)
 
-                                        Spacer()
-
-                                        Text("\(summary.questionCount) questions")
-                                            .font(.caption.weight(.semibold))
-                                            .foregroundStyle(Color.primary.opacity(0.62))
-                                    }
-
-                                    Text(summary.categoryList)
+                                    Text("When premium packs are added to the app, they will appear here with their merchandising labels and bundle info.")
                                         .font(.footnote)
                                         .foregroundStyle(Color.primary.opacity(0.72))
                                 }
                             }
                             .accessibilityElement(children: .combine)
                             .accessibilityHint("Informational only.")
+                        } else {
+                            ForEach(premiumPackSummaries) { summary in
+                                informationalRow {
+                                    packSummaryContent(summary)
+                                }
+                                .accessibilityElement(children: .combine)
+                                .accessibilityHint("Informational only.")
+                            }
                         }
                     }
 
@@ -547,8 +572,18 @@ private struct PackBrowserView: View {
                             VStack(alignment: .leading, spacing: 8) {
                                 sectionTitle("Library Snapshot")
 
-                                Text("\(librarySummary.categoryCount) categories • \(librarySummary.questionCount) questions")
-                                    .font(.headline)
+                                VStack(alignment: .leading, spacing: 4) {
+                                    HStack(alignment: .firstTextBaseline, spacing: 12) {
+                                        Text("\(librarySummary.includedPackCount) included packs • \(librarySummary.includedQuestionCount) questions")
+                                            .font(.headline)
+                                    }
+
+                                    if librarySummary.premiumPackCount > 0 {
+                                        Text("\(librarySummary.premiumPackCount) premium packs • \(librarySummary.premiumQuestionCount) questions")
+                                            .font(.subheadline.weight(.semibold))
+                                            .foregroundStyle(Color.primary.opacity(0.62))
+                                    }
+                                }
 
                                 Text("Easy \(librarySummary.easyCount) • Medium \(librarySummary.mediumCount) • Hard \(librarySummary.hardCount)")
                                     .font(.footnote)
@@ -566,12 +601,31 @@ private struct PackBrowserView: View {
         }
         .navigationTitle("Question Packs")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if !premiumPackSummaries.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        Task {
+                            await storefront.restorePurchases(for: packs)
+                        }
+                    } label: {
+                        if storefront.isRestoringPurchases {
+                            ProgressView()
+                        } else {
+                            Text("Restore")
+                        }
+                    }
+                    .disabled(storefront.isRestoringPurchases)
+                    .accessibilityHint("Restore previously purchased premium pack unlocks.")
+                }
+            }
+        }
         .background(Color.tapTenWarmBackground)
         .task {
             guard packs.isEmpty, loadError == nil else {
                 return
             }
-            loadPacks()
+            await loadPacks()
         }
     }
 
@@ -601,17 +655,35 @@ private struct PackBrowserView: View {
             return PackSummary(
                 id: pack.id,
                 title: pack.title,
+                summary: pack.summary,
                 questionCount: pack.questions.count,
-                categoryList: categories.joined(separator: ", ")
+                categoryList: categories.joined(separator: ", "),
+                access: pack.access,
+                merchandisingLabel: pack.merchandisingLabel,
+                bundleCount: pack.bundleProductIDs.count,
+                availability: entitlementStore.availability(for: pack),
+                actionState: storefront.actionState(for: pack)
             )
         }
         .sorted { $0.title < $1.title }
     }
 
-    private func loadPacks() {
+    private var includedPackSummaries: [PackSummary] {
+        packSummaries.filter { $0.access == .free }
+    }
+
+    private var premiumPackSummaries: [PackSummary] {
+        packSummaries.filter { $0.access == .premium }
+    }
+
+    private func loadPacks() async {
+        monetizationTelemetryStore.recordPackBrowserOpened()
+
         do {
-            packs = try QuestionPackLoader().loadAllPacks()
+            let loadedPacks = try QuestionPackLoader().loadAllPacks()
+            packs = loadedPacks
             loadError = nil
+            await storefront.refreshStoreData(for: loadedPacks)
         } catch {
             loadError = error.localizedDescription
         }
@@ -622,6 +694,99 @@ private struct PackBrowserView: View {
             .font(.caption.weight(.semibold))
             .foregroundStyle(Color.primary.opacity(0.62))
             .textCase(.uppercase)
+    }
+
+    @ViewBuilder
+    private func packSummaryContent(_ summary: PackSummary) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Text(summary.title)
+                    .font(.headline)
+
+                Spacer()
+
+                accessBadge(for: summary)
+            }
+
+            if let summaryText = summary.summary {
+                Text(summaryText)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.primary.opacity(0.78))
+            }
+
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Text(summary.categoryList)
+                    .font(.footnote)
+                    .foregroundStyle(Color.primary.opacity(0.72))
+
+                Spacer()
+
+                Text("\(summary.questionCount) questions")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.primary.opacity(0.62))
+            }
+
+            if let subtitle = summary.storeSubtitle {
+                Text(subtitle)
+                    .font(.caption)
+                    .foregroundStyle(Color.primary.opacity(0.62))
+            }
+
+            if let storeMessage = summary.purchaseMessage {
+                HStack(spacing: 10) {
+                    Text(storeMessage)
+                        .font(.caption)
+                        .foregroundStyle(Color.primary.opacity(0.62))
+
+                    Spacer(minLength: 0)
+
+                    purchaseButton(for: summary)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func accessBadge(for summary: PackSummary) -> some View {
+        let title = summary.badgeTitle
+        let iconName = summary.badgeIconName
+        let tint = summary.badgeTint
+
+        Label(title, systemImage: iconName)
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(tint)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(tint.opacity(0.10), in: Capsule(style: .continuous))
+    }
+
+    @ViewBuilder
+    private func purchaseButton(for summary: PackSummary) -> some View {
+        switch summary.actionState {
+        case .unavailable:
+            EmptyView()
+        case .purchasing:
+            ProgressView()
+                .controlSize(.small)
+        case .ready(let price):
+            Button {
+                guard let pack = packs.first(where: { $0.id == summary.id }) else {
+                    return
+                }
+
+                Task {
+                    await storefront.purchase(pack, availablePacks: packs)
+                }
+            } label: {
+                Text(price ?? "Buy")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.tapTenPlayfulPink)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(Color.tapTenPlayfulPink.opacity(0.10), in: Capsule(style: .continuous))
+            }
+            .buttonStyle(.plain)
+        }
     }
 
     private func informationalRow<Content: View>(@ViewBuilder content: () -> Content) -> some View {
@@ -644,8 +809,10 @@ private struct PackBrowserView: View {
         }
 
         return LibrarySummary(
-            categoryCount: categoryCoverage.count,
-            questionCount: categoryCoverage.reduce(0) { $0 + $1.total },
+            includedPackCount: includedPackSummaries.count,
+            includedQuestionCount: includedPackSummaries.reduce(0) { $0 + $1.questionCount },
+            premiumPackCount: premiumPackSummaries.count,
+            premiumQuestionCount: premiumPackSummaries.reduce(0) { $0 + $1.questionCount },
             easyCount: categoryCoverage.reduce(0) { $0 + $1.easy },
             mediumCount: categoryCoverage.reduce(0) { $0 + $1.medium },
             hardCount: categoryCoverage.reduce(0) { $0 + $1.hard }
@@ -674,13 +841,85 @@ private struct CategoryCoverage: Identifiable {
 private struct PackSummary: Identifiable {
     let id: String
     let title: String
+    let summary: String?
     let questionCount: Int
     let categoryList: String
+    let access: QuestionPackAccess
+    let merchandisingLabel: String?
+    let bundleCount: Int
+    let availability: QuestionPackAvailability
+    let actionState: QuestionPackStoreActionState
+
+    var storeSubtitle: String? {
+        guard access == .premium else {
+            return nil
+        }
+
+        if bundleCount == 1 {
+            return "Also included in 1 bundle"
+        }
+
+        if bundleCount > 1 {
+            return "Also included in \(bundleCount) bundles"
+        }
+
+        return nil
+    }
+
+    var purchaseMessage: String? {
+        guard access == .premium else {
+            return nil
+        }
+
+        switch availability {
+        case .included:
+            return nil
+        case .locked:
+            return "Unlock this expansion to add its questions to the game."
+        case .unlocked:
+            return "Unlocked. Its questions are included in future games."
+        }
+    }
+
+    var badgeTitle: String {
+        switch availability {
+        case .included:
+            return "Included"
+        case .locked:
+            return merchandisingLabel ?? "Locked"
+        case .unlocked:
+            return "Unlocked"
+        }
+    }
+
+    var badgeIconName: String {
+        switch availability {
+        case .included:
+            return "checkmark.circle.fill"
+        case .locked:
+            return "lock.fill"
+        case .unlocked:
+            return "checkmark.seal.fill"
+        }
+    }
+
+    var badgeTint: Color {
+        switch availability {
+        case .included:
+            return .tapTenPlayfulOrange
+        case .locked:
+            return .tapTenPlayfulPink
+        case .unlocked:
+            return .tapTenPlayfulBlue
+        }
+    }
 }
 
 private struct LibrarySummary {
-    let categoryCount: Int
-    let questionCount: Int
+    let includedPackCount: Int
+    let includedQuestionCount: Int
+    let premiumPackCount: Int
+    let premiumQuestionCount: Int
     let easyCount: Int
     let mediumCount: Int
     let hardCount: Int

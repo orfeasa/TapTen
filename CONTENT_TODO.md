@@ -1,6 +1,7 @@
 # Content Todo
 
 ## Current Coverage
+Free starter library:
 - Everyday Life: 12 total (4 easy, 4 medium, 4 hard)
 - Food & Drink: 12 total (4 easy, 4 medium, 4 hard)
 - Film & TV: 12 total (4 easy, 4 medium, 4 hard)
@@ -24,8 +25,41 @@
 - Duplicate pizza concept was removed; exact duplicate prompt/answer-set audit is currently clean.
 - Geography duplicate-family risk reduced (South America populous prompt removed); exact duplicate prompt/answer-set audit is clean.
 - Most draft questions have been promoted to `reviewed`; only targeted ambiguity/recency holdouts remain `draft`.
+- Audit tooling now treats the 12-category starter library and premium expansions separately, so premium packs can add new playable categories without weakening the free-base guarantees.
 
-## Tasks
+## Premium Expansion Queue
+
+### Evergreen Launch Wave
+- [ ] CREATE_PACK: Author `After Dark Vol. 1` as a 24-question premium expansion (`8 easy / 8 medium / 8 hard`) with broad adult party energy that stays suggestive rather than explicit.
+- [ ] CREATE_PACK: Author `Date Night` as a 24-question premium expansion (`8 easy / 8 medium / 8 hard`) focused on couples, flirting, romance, and relationship habits.
+- [ ] CREATE_PACK: Author `Office & Icebreakers` as a 24-question premium expansion (`8 easy / 8 medium / 8 hard`) covering meetings, presentations, workplace awkwardness, and team banter.
+- [x] REVIEW_POSITIONING: Finalized one-line store descriptions and audience labels for the first three evergreen premium expansions.
+- [ ] REVIEW_DUPLICATES: Audit the evergreen premium wave against the free starter library to avoid prompt-family overlap that weakens perceived value.
+
+Approved positioning:
+- `After Dark Vol. 1`
+  - audience label: Adults
+  - store line: `Cheeky, chaotic prompts for grown-up game nights.`
+- `Date Night`
+  - audience label: Couples
+  - store line: `Flirty, romantic, and mildly exposing in the fun way.`
+- `Office & Icebreakers`
+  - audience label: Work Friends
+  - store line: `Meeting-room awkwardness, presentation panic, and team-banter gold.`
+
+### Seasonal Premium Follow-Up
+- [ ] CREATE_PACK: Author `Holiday Chaos` as a 24-question premium expansion (`8 easy / 8 medium / 8 hard`) covering travel stress, gift drama, family gatherings, and party mishaps.
+- [x] REVIEW_TIMING: Prepared `Holiday Chaos` for an October to November merchandising window with copy that still reads well after purchase outside the season.
+
+Approved positioning:
+- `Holiday Chaos`
+  - audience label: Seasonal
+  - store line: `Travel meltdowns, gift drama, and festive-group chaos.`
+  - merchandising window: October to November
+
+### Wave-2 Discovery
+- [ ] DISCOVERY: Scope `Family-Friendly Extras` as the next evergreen premium candidate after the first paid launch.
+- [ ] DISCOVERY: Scope `US Pop Culture / 2020s Trends` with explicit guardrails for recency drift and faster content aging.
 
 ### Everyday Life
 - [x] REMOVE_QUESTIONS: Re-categorize `things-people-forget-to-pack` to Travel (kept question ID stable).

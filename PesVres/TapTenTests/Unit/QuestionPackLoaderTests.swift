@@ -18,7 +18,13 @@ struct QuestionPackLoaderTests {
         #expect(packs[0].questions[0].difficulty == .medium)
         #expect(packs[0].questions[0].difficultyScore == 19)
         #expect(packs[0].questions[0].answers.count == 10)
+        #expect(packs[0].summary == nil)
         #expect(packs[0].packVersion == nil)
+        #expect(packs[0].access == .free)
+        #expect(packs[0].isPremium == false)
+        #expect(packs[0].storeProductID == nil)
+        #expect(packs[0].bundleProductIDs.isEmpty)
+        #expect(packs[0].merchandisingLabel == nil)
         #expect(packs[0].questions[0].contentType == nil)
         #expect(packs[0].questions[0].tags == nil)
     }
@@ -27,7 +33,14 @@ struct QuestionPackLoaderTests {
     func richMetadataDecodesAndNormalizesOptionalValues() throws {
         let loader = QuestionPackLoader()
         let data = try makeValidPackData(
+            summary: "  Party-night premium prompts. ",
             packVersion: "2.0",
+            monetization: [
+                "access": "premium",
+                "storeProductID": " com.tapten.pack.after-dark-1 ",
+                "bundleProductIDs": [" launch-trio ", "", "Launch-Trio"],
+                "merchandisingLabel": " New "
+            ],
             contentType: "factual-list",
             difficultyTier: "medium",
             difficultyScore: 19,
@@ -41,6 +54,12 @@ struct QuestionPackLoaderTests {
         let question = try #require(pack.questions.first)
 
         #expect(pack.packVersion == "2.0")
+        #expect(pack.summary == "Party-night premium prompts.")
+        #expect(pack.access == .premium)
+        #expect(pack.isPremium)
+        #expect(pack.storeProductID == "com.tapten.pack.after-dark-1")
+        #expect(pack.bundleProductIDs == ["launch-trio"])
+        #expect(pack.merchandisingLabel == "New")
         #expect(question.contentType == "factual-list")
         #expect(question.difficultyTier == .medium)
         #expect(question.difficultyScore == 19)
@@ -203,6 +222,54 @@ struct QuestionPackLoaderTests {
             }
         }
     }
+
+    @Test
+    func premiumPackWithoutStoreProductIDThrowsCleanError() throws {
+        let loader = QuestionPackLoader()
+        let invalidData = try makeValidPackData(
+            monetization: [
+                "access": "premium"
+            ]
+        )
+
+        do {
+            _ = try loader.loadPack(from: invalidData, fileName: "PremiumMissingProductID.json")
+            Issue.record("Expected invalid pack error.")
+        } catch let error as QuestionPackLoaderError {
+            switch error {
+            case .invalidPack(let fileName, let reason):
+                #expect(fileName == "PremiumMissingProductID.json")
+                #expect(reason.contains("must include a storeProductID"))
+            default:
+                Issue.record("Expected .invalidPack, got \(error.localizedDescription)")
+            }
+        }
+    }
+
+    @Test
+    func freePackCannotDefineStoreProductID() throws {
+        let loader = QuestionPackLoader()
+        let invalidData = try makeValidPackData(
+            monetization: [
+                "access": "free",
+                "storeProductID": "com.tapten.pack.should-not-exist"
+            ]
+        )
+
+        do {
+            _ = try loader.loadPack(from: invalidData, fileName: "FreeWithProductID.json")
+            Issue.record("Expected invalid pack error.")
+        } catch let error as QuestionPackLoaderError {
+            switch error {
+            case .invalidPack(let fileName, let reason):
+                #expect(fileName == "FreeWithProductID.json")
+                #expect(reason.contains("marked free"))
+                #expect(reason.contains("storeProductID"))
+            default:
+                Issue.record("Expected .invalidPack, got \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 private func makeValidPackData(
@@ -212,7 +279,9 @@ private func makeValidPackData(
     difficulty: String? = "medium",
     difficultyTier: String? = nil,
     difficultyScore: Int? = nil,
+    summary: String? = nil,
     packVersion: String? = nil,
+    monetization: [String: Any]? = nil,
     contentType: String? = nil,
     quality: String? = nil,
     tags: [String]? = nil,
@@ -267,8 +336,14 @@ private func makeValidPackData(
         "languageCode": "en",
         "questions": [question]
     ]
+    if let summary {
+        json["summary"] = summary
+    }
     if let packVersion {
         json["packVersion"] = packVersion
+    }
+    if let monetization {
+        json["monetization"] = monetization
     }
 
     return try JSONSerialization.data(withJSONObject: json)

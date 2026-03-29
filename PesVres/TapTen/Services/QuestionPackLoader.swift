@@ -126,9 +126,11 @@ struct QuestionPackLoader {
 private struct QuestionPackDTO: Decodable {
     let id: String
     let title: String
+    let summary: String?
     let languageCode: String
     let questions: [QuestionDTO]
     let packVersion: String?
+    let monetization: QuestionPackMonetizationDTO?
 
     func validated(fileName: String) throws -> QuestionPack {
         guard !id.trimmed.isEmpty else {
@@ -154,9 +156,55 @@ private struct QuestionPackDTO: Decodable {
         return QuestionPack(
             id: id.trimmed,
             title: title.trimmed,
+            summary: summary.nilIfBlank,
             languageCode: languageCode.trimmed,
             questions: validatedQuestions,
-            packVersion: packVersion.nilIfBlank
+            packVersion: packVersion.nilIfBlank,
+            monetization: try monetization?.validated(fileName: fileName, packID: id.trimmed)
+        )
+    }
+}
+
+private struct QuestionPackMonetizationDTO: Decodable {
+    let access: QuestionPackAccess
+    let storeProductID: String?
+    let bundleProductIDs: [String]?
+    let merchandisingLabel: String?
+
+    func validated(fileName: String, packID: String) throws -> QuestionPackMonetization {
+        let normalizedProductID = storeProductID.nilIfBlank
+        let normalizedBundleIDs = bundleProductIDs.normalizedValues
+        let normalizedMerchandisingLabel = merchandisingLabel.nilIfBlank
+
+        switch access {
+        case .free:
+            guard normalizedProductID == nil else {
+                throw QuestionPackLoaderError.invalidPack(
+                    name: fileName,
+                    reason: "Pack '\(packID)' is marked free and cannot include a storeProductID."
+                )
+            }
+
+            guard normalizedBundleIDs.isEmpty else {
+                throw QuestionPackLoaderError.invalidPack(
+                    name: fileName,
+                    reason: "Pack '\(packID)' is marked free and cannot include bundleProductIDs."
+                )
+            }
+        case .premium:
+            guard normalizedProductID != nil else {
+                throw QuestionPackLoaderError.invalidPack(
+                    name: fileName,
+                    reason: "Pack '\(packID)' is marked premium and must include a storeProductID."
+                )
+            }
+        }
+
+        return QuestionPackMonetization(
+            access: access,
+            storeProductID: normalizedProductID,
+            bundleProductIDs: normalizedBundleIDs,
+            merchandisingLabel: normalizedMerchandisingLabel
         )
     }
 }
@@ -322,6 +370,32 @@ private extension Optional where Wrapped == [String] {
         }
 
         return normalized.isEmpty ? nil : normalized
+    }
+
+    var normalizedValues: [String] {
+        guard let values = self else {
+            return []
+        }
+
+        var seen: Set<String> = []
+        var normalized: [String] = []
+
+        for value in values {
+            let trimmed = value.trimmed
+            guard !trimmed.isEmpty else {
+                continue
+            }
+
+            let key = trimmed.lowercased()
+            guard !seen.contains(key) else {
+                continue
+            }
+
+            seen.insert(key)
+            normalized.append(trimmed)
+        }
+
+        return normalized
     }
 }
 

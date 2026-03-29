@@ -22,6 +22,8 @@ trap 'rm -rf "$tmp_dir"' EXIT
 
 question_rows="$tmp_dir/questions.tsv"
 prompt_rows="$tmp_dir/prompts.tsv"
+free_coverage_rows="$tmp_dir/free_coverage.tsv"
+premium_coverage_rows="$tmp_dir/premium_coverage.tsv"
 touch "$question_rows" "$prompt_rows"
 
 errors=0
@@ -44,6 +46,9 @@ for file in "${pack_files[@]}"; do
         ((errors += 1))
         continue
     fi
+
+    pack_access="$(jq -r '(.monetization.access // "free")' "$file")"
+    pack_title="$(jq -r '.title // ""' "$file")"
 
     invalid_answer_count_ids="$(report_question_ids "$file" '.questions[] | select((.answers | length) != 10) | .id')"
     if [[ -n "$invalid_answer_count_ids" ]]; then
@@ -111,22 +116,26 @@ for file in "${pack_files[@]}"; do
         ((errors += 1))
     fi
 
-    jq -r --arg file "$filename" '
+    jq -r --arg file "$filename" --arg access "$pack_access" --arg title "$pack_title" '
         .questions[]
         | [
             $file,
+            $access,
+            $title,
             .id,
             .category,
             .difficultyTier,
             (.prompt | tostring)
-          ]
+        ]
         | @tsv
     ' "$file" >> "$question_rows"
 
-    jq -r --arg file "$filename" '
+    jq -r --arg file "$filename" --arg access "$pack_access" --arg title "$pack_title" '
         .questions[]
         | [
             $file,
+            $access,
+            $title,
             .id,
             (.prompt | ascii_downcase | gsub("[^a-z0-9]+"; " ") | gsub("^ +| +$"; ""))
           ]
@@ -136,13 +145,13 @@ done
 
 duplicate_prompt_count="$(
     awk -F'\t' '
-        NF >= 3 {
-            key = $3
+        NF >= 5 {
+            key = $5
             if (key == "") {
                 next
             }
             count[key]++
-            refs[key] = refs[key] sprintf(" %s:%s", $1, $2)
+            refs[key] = refs[key] sprintf(" %s:%s", $1, $4)
         }
         END {
             c = 0
@@ -159,13 +168,13 @@ duplicate_prompt_count="$(
 if [[ "$duplicate_prompt_count" != "0" ]]; then
     echo "[FAIL] Duplicate prompts found across packs:"
     awk -F'\t' '
-        NF >= 3 {
-            key = $3
+        NF >= 5 {
+            key = $5
             if (key == "") {
                 next
             }
             count[key]++
-            refs[key] = refs[key] sprintf(" %s:%s", $1, $2)
+            refs[key] = refs[key] sprintf(" %s:%s", $1, $4)
         }
         END {
             for (key in count) {
@@ -178,11 +187,10 @@ if [[ "$duplicate_prompt_count" != "0" ]]; then
     ((errors += 1))
 fi
 
-coverage_rows="$tmp_dir/coverage.tsv"
 awk -F'\t' '
-    NF >= 4 {
-        category = $3
-        tier = $4
+    $2 == "free" && NF >= 6 {
+        category = $5
+        tier = $6
         total[category]++
         tierCounts[category SUBSEP tier]++
     }
@@ -196,7 +204,27 @@ awk -F'\t' '
                 tierCounts[category SUBSEP "hard"] + 0
         }
     }
-' "$question_rows" | sort > "$coverage_rows"
+' "$question_rows" | sort > "$free_coverage_rows"
+
+awk -F'\t' '
+    $2 == "premium" && NF >= 6 {
+        key = $1 SUBSEP $3
+        total[key]++
+        tierCounts[key SUBSEP $6]++
+    }
+    END {
+        for (key in total) {
+            split(key, parts, SUBSEP)
+            printf "%s\t%s\t%d\t%d\t%d\t%d\n",
+                parts[1],
+                parts[2],
+                total[key],
+                tierCounts[key SUBSEP "easy"] + 0,
+                tierCounts[key SUBSEP "medium"] + 0,
+                tierCounts[key SUBSEP "hard"] + 0
+        }
+    }
+' "$question_rows" | sort > "$premium_coverage_rows"
 
 declare -a final_categories=(
     "Everyday Life"
@@ -224,7 +252,7 @@ is_final_category() {
     return 1
 }
 
-echo "== Category Coverage =="
+echo "== Free Starter Library Coverage =="
 for category in "${final_categories[@]}"; do
     counts="$(
         awk -F'\t' -v c="$category" '
@@ -237,7 +265,7 @@ for category in "${final_categories[@]}"; do
                     printf "0\t0\t0\t0"
                 }
             }
-        ' "$coverage_rows"
+        ' "$free_coverage_rows"
     )"
 
     IFS=$'\t' read -r total easy medium hard <<< "$counts"
@@ -251,15 +279,33 @@ done
 echo
 
 unexpected_categories="$(
-    awk -F'\t' '{print $1}' "$coverage_rows" | sort -u
+    awk -F'\t' '{print $1}' "$free_coverage_rows" | sort -u
 )"
 while IFS= read -r category; do
     [[ -z "$category" ]] && continue
     if ! is_final_category "$category"; then
-        echo "[FAIL] Unexpected category found in packs: $category"
+        echo "[FAIL] Unexpected free-starter category found in packs: $category"
         ((errors += 1))
     fi
 done <<< "$unexpected_categories"
+
+premium_pack_count="$(wc -l < "$premium_coverage_rows" | tr -d ' ')"
+echo
+echo "== Premium Expansion Coverage =="
+if [[ "$premium_pack_count" == "0" ]]; then
+    echo "- No premium expansion packs found."
+else
+    while IFS=$'\t' read -r filename title total easy medium hard; do
+        [[ -z "$filename" ]] && continue
+
+        echo "- $title ($filename): $total total ($easy easy, $medium medium, $hard hard)"
+
+        if [[ "$total" -ne 24 || "$easy" -ne 8 || "$medium" -ne 8 || "$hard" -ne 8 ]]; then
+            echo "  [FAIL] Expected 24 total and 8/8/8 distribution for premium expansions."
+            ((errors += 1))
+        fi
+    done < "$premium_coverage_rows"
+fi
 
 if [[ "$errors" -eq 0 ]]; then
     echo "[PASS] All question-pack integrity checks passed."

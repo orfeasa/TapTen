@@ -17,6 +17,8 @@
   - Question reporting now stays in-app, posts to a configured endpoint, and keeps a local retry queue for unsent reports.
   - Repo now includes a lightweight static website in `website/` with a landing page and privacy page for support/marketing use.
   - GitHub Pages deployment is now wired for `website/` via GitHub Actions on `main`.
+  - Post-v1 monetization strategy is now documented in `MONETIZATION_PLAN.md`, centered on additive pack sales rather than v1 paywalls.
+  - The permanent free starter library and first premium expansion slate are now defined in `MONETIZATION_PLAN.md`.
   - Round flow now includes a dedicated question-preview step so the host can read the prompt before the timer starts.
   - Legacy mixed pack files were consolidated into one-category pack files.
   - Debug-only round telemetry now records category/answers/points/time-remaining for playtest tuning.
@@ -58,6 +60,14 @@
 - Question reporting now uses an in-app submission path; release/ops still need to provide a real feedback endpoint for production delivery.
 - The website should stay static-first and deploy through GitHub Pages rather than a custom server stack.
 - Settings changes should affect future setup defaults only, not mutate an already-open New Game draft.
+- Monetization remains post-v1; release-candidate work stays focused on polishing the free base game.
+- If the current bundled starter library ships free, it remains free; paid content should be additive through later expansion packs and bundles.
+- The first monetization pass should favor permanent non-consumable pack unlocks over ads, consumables, or subscription-first pricing.
+- The permanent free starter library is the current shipped 12-category catalog.
+- The first paid wave is `After Dark Vol. 1`, `Date Night`, and `Office & Icebreakers`, with `Holiday Chaos` as the first seasonal follow-up.
+- Paid expansions should feel session-complete, with a target premium packaging standard of `24` questions and `8 easy / 8 medium / 8 hard`.
+- Any future membership should be annual-first and only follow proven repeat purchases plus a sustainable premium content cadence.
+- Full paid-catalog unlock should wait until the catalog is deep enough to justify it; do not ship it with an undersized premium lineup.
 
 ## Backlog
 
@@ -529,6 +539,154 @@
     - Implemented with GitHub Actions Pages workflow actions (`configure-pages`, `upload-pages-artifact`, `deploy-pages`).
     - `playtapten.com` activation still requires repository Pages settings and DNS records outside the repo.
 
+- [x] TASK: Lock the free starter library and premium expansion boundary
+  - Type: Product / Content Strategy
+  - Priority: P2
+  - Status: Completed
+  - Area: catalog planning, pack packaging, store positioning
+  - Goal: Decide exactly which shipped packs remain permanently free so monetization is additive rather than a retroactive paywall.
+  - Acceptance Criteria:
+    - The permanent free starter library is explicitly named and documented.
+    - Free content still gives a fresh install enough variety for multiple sessions.
+    - No currently free shipped pack is later reclassified as paid.
+    - Store and marketing copy make it clear that paid content adds expansions rather than removes base access.
+  - Notes:
+    - Completed in `MONETIZATION_PLAN.md`.
+    - The permanent free starter library is the full currently shipped 12-category catalog.
+
+- [x] TASK: Define the first premium expansion slate and pricing ladder
+  - Type: Product / Content
+  - Priority: P2
+  - Status: Completed
+  - Area: question-pack roadmap, pricing, editorial calendar
+  - Goal: Turn the monetization strategy into concrete SKUs that feel worth buying during one party night.
+  - Acceptance Criteria:
+    - First-wave premium pack concepts are approved.
+    - Each paid SKU adds roughly `24` questions or is bundled to reach equivalent session value.
+    - The initial ladder is defined for single packs, bundles, and the threshold for a later full paid-catalog unlock.
+    - At least one seasonal or event-timed pack drop is scheduled.
+  - Notes:
+    - Completed in `MONETIZATION_PLAN.md`.
+    - Approved evergreen launch slate: `After Dark Vol. 1`, `Date Night`, `Office & Icebreakers`.
+    - Approved seasonal follow-up: `Holiday Chaos`.
+
+- [ ] TASK: Author the first premium content wave
+  - Type: Content / Editorial
+  - Priority: P2
+  - Status: Planned
+  - Area: `Resources/QuestionPacks`, premium content roadmap
+  - Goal: Produce the first evergreen paid expansions so the pack store can launch with real session-complete value.
+  - Acceptance Criteria:
+    - `After Dark Vol. 1`, `Date Night`, and `Office & Icebreakers` each ship with `24` questions.
+    - Each expansion lands at `8 easy / 8 medium / 8 hard`.
+    - Prompt ambiguity, overlap, and answer-set duplication are audited before release.
+    - Final naming, cover copy, and store-facing one-line descriptions are approved.
+  - Notes:
+    - Detailed authoring tasks should be tracked in `CONTENT_TODO.md`.
+
+- [ ] TASK: Author Holiday Chaos as the first seasonal premium follow-up
+  - Type: Content / Editorial / Release
+  - Priority: P2
+  - Status: Planned
+  - Area: `Resources/QuestionPacks`, seasonal content calendar
+  - Goal: Give the paid catalog a clear seasonal merchandising beat after the first evergreen premium launch.
+  - Acceptance Criteria:
+    - `Holiday Chaos` ships with `24` questions and balanced difficulty coverage.
+    - Content is broad enough for repeat holiday gatherings and not anchored to one narrow celebration.
+    - Store and website merchandising are ready in time for the October to November launch window.
+    - Existing owners retain access after the season ends.
+
+- [x] TASK: Add pack-level monetization metadata to the local content model
+  - Type: Technical / Content Infrastructure
+  - Priority: P2
+  - Status: Completed
+  - Area: `Models`, `Services/QuestionPackLoader`, `Resources/QuestionPacks`
+  - Goal: Let the app distinguish free packs, premium packs, bundles, and merchandising metadata without changing the local/offline content architecture.
+  - Acceptance Criteria:
+    - Pack metadata can identify free versus paid status and a stable store product identifier.
+    - Loader validation remains strict and backward-compatible for existing bundled packs.
+    - Locked premium packs can stay bundled locally and unavailable until unlocked.
+    - Pack browser or store UI can read the metadata without hard-coded special cases.
+  - Notes:
+    - Keep the first pass local-first; remote pack delivery is not required for the initial monetization rollout.
+    - Implemented with strict loader validation plus backward-compatible default-free behavior for existing bundled packs.
+
+- [x] TASK: Build a native Pack Store and restore-purchases flow
+  - Type: Feature / UX
+  - Priority: P2
+  - Status: Completed
+  - Area: `Views/Home`, pack browser or store surfaces, purchase states
+  - Goal: Sell premium expansions without weakening the fast, native feel of the app.
+  - Acceptance Criteria:
+    - Home or Pack Browser exposes a clear path to browse premium expansions.
+    - Free and paid packs are visually differentiated without making the free app feel crippled.
+    - Purchase, locked, unlocked, and restore states are all clear and native.
+    - The store never interrupts active rounds or inserts monetization into live host flow.
+  - Notes:
+    - `Browse Question Packs` is the natural starting point for this surface.
+    - The Pack Browser now differentiates included and premium packs, exposes locked/unlocked states, and provides a native restore entry point without interrupting gameplay.
+
+- [ ] TASK: Integrate StoreKit non-consumable unlocks for pack purchases and bundles
+  - Type: Feature / Store / Technical
+  - Priority: P2
+  - Status: In Progress
+  - Area: StoreKit, entitlement persistence, App Store Connect products
+  - Goal: Support permanent pack ownership and bundle unlocks with clean recovery across reinstalls and devices.
+  - Acceptance Criteria:
+    - Non-consumable IAPs are configured for packs and bundles in App Store Connect.
+    - Purchased packs unlock reliably and remain available offline after restore.
+    - `Restore Purchases` works cleanly.
+    - Family Sharing is enabled where product policy allows and makes sense for the catalog.
+  - Notes:
+    - Keep the first monetization pass one-time-purchase based; defer subscriptions and consumables.
+    - Runtime entitlement persistence, restore flow, and bundle-aware unlock checks are now in the app; App Store Connect product setup and Family Sharing remain external follow-up.
+
+- [x] TASK: Define monetization measurement and go / no-go gates
+  - Type: Product / Analytics
+  - Priority: P2
+  - Status: Completed
+  - Area: product metrics, App Store reporting, lightweight telemetry
+  - Goal: Measure whether pack sales are actually working before layering on more business-model complexity.
+  - Acceptance Criteria:
+    - Core funnel metrics are defined: install to first game, pack browser visit rate, store view rate, purchase conversion, repeat purchase rate, and refund rate.
+    - A simple source of truth is chosen for each metric (for example App Store Connect, local diagnostics, or a future lightweight analytics provider).
+    - Go / no-go thresholds are documented for the first paid rollout and any later membership test.
+    - Measurement scope stays narrow and defensible; do not add broad marketing-tech bloat by default.
+  - Notes:
+    - Completed in `MONETIZATION_PLAN.md`.
+    - Source of truth is now defined as `App Store Connect` plus a narrow first-party in-app funnel event stream.
+
+- [x] TASK: Instrument the monetization funnel with narrow first-party events
+  - Type: Technical / Analytics
+  - Priority: P2
+  - Status: Completed
+  - Area: `Views/Home`, Pack Browser, purchase flow, lightweight telemetry
+  - Goal: Capture only the in-app events needed to evaluate the paid-pack funnel without introducing broad analytics bloat.
+  - Acceptance Criteria:
+    - The app records first game started/completed, pack browser opened, purchase started, purchase completed, and restore completed.
+    - Event naming stays stable and intentionally small.
+    - Instrumentation can be disabled or swapped without entangling gameplay logic.
+    - The implementation remains compatible with App Store Connect product reporting as the source of truth for sales and refunds.
+  - Notes:
+    - Do not add advertising or attribution SDK sprawl for this task.
+    - The app now records first game started/completed plus pack-browser, purchase, and restore events into a narrow persisted telemetry stream with stable event names.
+
+- [x] TASK: Prepare seasonal merchandising and App Store promotion for paid packs
+  - Type: Product / Marketing / Release
+  - Priority: P2
+  - Status: Completed
+  - Area: App Store metadata, website, creative assets, content calendar
+  - Goal: Make paid packs discoverable at the moments when party-game demand is highest.
+  - Acceptance Criteria:
+    - A seasonal launch calendar exists for at least the next two event windows.
+    - Promoted IAP candidates are defined for the first pack and bundle wave.
+    - App Store copy, screenshots, and website copy explain additive pack purchases clearly.
+    - Seasonal packs do not disappear from owners after purchase.
+  - Notes:
+    - Treat pack drops as both monetization and reacquisition beats.
+    - `Holiday Chaos` is the first approved seasonal beat.
+    - Completed in `MONETIZATION_PLAN.md` with a two-window launch calendar, promoted IAP candidates, and additive copy rules for App Store and website surfaces.
+
 ### P3 - Someday Maybe
 
 - [x] TASK: Replace email-based question reporting with seamless in-app submission
@@ -593,6 +751,21 @@
   - Notes:
     - This is explicitly outside the v1 single-device scope.
     - It would require a deliberate redesign of game flow, device roles, and synchronization responsibilities.
+
+- [ ] TASK: Re-evaluate annual membership only after the pack business proves repeat demand
+  - Type: Product / Monetization
+  - Priority: P3
+  - Status: Planned
+  - Area: catalog strategy, recurring revenue model, product gates
+  - Goal: Decide whether an all-access membership is actually justified after permanent pack sales are live.
+  - Acceptance Criteria:
+    - Repeat purchase behavior and content cadence are reviewed against documented go / no-go gates.
+    - The catalog is deep enough that an all-access plan offers obvious value beyond one-time purchases.
+    - Any proposed membership is annual-first, with monthly only as a secondary option if needed.
+    - Core gameplay remains usable and generous without requiring a subscription.
+  - Notes:
+    - No weekly plan should be introduced.
+    - This stays out of scope until the one-time pack business is proven.
 
 ## In Progress
 

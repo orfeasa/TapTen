@@ -31,6 +31,7 @@ final class GameFlowViewModel {
     private let enabledCategoryNames: Set<String>
     private let enabledDifficultyTiers: Set<QuestionDifficulty>
     private let soundsEnabled: Bool
+    private let monetizationTelemetryStore: MonetizationTelemetryStore
     private let randomSassyCommentProvider: ([String]) -> String
     private var questionPacks: [QuestionPack] = []
     private var randomIndexProvider: (Int) -> Int = { Int.random(in: 0..<$0) }
@@ -53,6 +54,8 @@ final class GameFlowViewModel {
         enabledDifficultyTiers: Set<QuestionDifficulty> = Set(QuestionDifficulty.allCases),
         soundsEnabled: Bool = true,
         questionPackLoader: QuestionPackLoader = QuestionPackLoader(),
+        entitlementStore: QuestionPackEntitlementStore = .shared,
+        monetizationTelemetryStore: MonetizationTelemetryStore = .shared,
         randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) },
         randomSassyCommentProvider: @escaping ([String]) -> String = { comments in
             comments.randomElement() ?? "Confetti machine malfunctioned. You still get a clap."
@@ -62,13 +65,16 @@ final class GameFlowViewModel {
         self.enabledCategoryNames = enabledCategoryNames
         self.enabledDifficultyTiers = enabledDifficultyTiers
         self.soundsEnabled = soundsEnabled
+        self.monetizationTelemetryStore = monetizationTelemetryStore
         self.randomIndexProvider = randomIndexProvider
         self.randomSassyCommentProvider = randomSassyCommentProvider
 
         do {
             let packs = try questionPackLoader.loadAllPacks()
-            questionPacks = packs
-            try configureEngine(questionPacks: packs, randomIndexProvider: randomIndexProvider)
+            let accessiblePacks = entitlementStore.accessiblePacks(from: packs)
+            questionPacks = accessiblePacks
+            try configureEngine(questionPacks: accessiblePacks, randomIndexProvider: randomIndexProvider)
+            monetizationTelemetryStore.recordFirstGameStartedIfNeeded()
         } catch {
             setError(error.localizedDescription)
         }
@@ -80,6 +86,7 @@ final class GameFlowViewModel {
         enabledDifficultyTiers: Set<QuestionDifficulty> = Set(QuestionDifficulty.allCases),
         soundsEnabled: Bool = true,
         questionPacks: [QuestionPack],
+        monetizationTelemetryStore: MonetizationTelemetryStore = .shared,
         randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) },
         randomSassyCommentProvider: @escaping ([String]) -> String = { comments in
             comments.randomElement() ?? "Confetti machine malfunctioned. You still get a clap."
@@ -89,6 +96,7 @@ final class GameFlowViewModel {
         self.enabledCategoryNames = enabledCategoryNames
         self.enabledDifficultyTiers = enabledDifficultyTiers
         self.soundsEnabled = soundsEnabled
+        self.monetizationTelemetryStore = monetizationTelemetryStore
         self.questionPacks = questionPacks
         self.randomIndexProvider = randomIndexProvider
         self.randomSassyCommentProvider = randomSassyCommentProvider
@@ -98,6 +106,7 @@ final class GameFlowViewModel {
                 questionPacks: questionPacks,
                 randomIndexProvider: randomIndexProvider
             )
+            monetizationTelemetryStore.recordFirstGameStartedIfNeeded()
         } catch {
             setError(error.localizedDescription)
         }
@@ -288,6 +297,7 @@ final class GameFlowViewModel {
         hostRoundViewModel = nil
 
         if engine.isGameOver {
+            monetizationTelemetryStore.recordFirstGameCompletedIfNeeded()
             phase = .finalResults
         } else {
             phase = .passDevice

@@ -168,6 +168,7 @@ The intended live domain is `playtapten.com`. The GitHub Pages workflow is in-re
 - Product and UX constraints: see `PROJECT_BRIEF.md`.
 - Development preference: use modern iOS APIs within the current deployment floor rather than contorting the app for older iOS support.
 - Prioritized follow-up work: see `PROJECT_BACKLOG.md`.
+- Post-v1 monetization strategy: see `MONETIZATION_PLAN.md`.
 - Repository working conventions: see `AGENTS.md`.
 - Release smoke-test protocol: see `RELEASE_CHECKLIST.md`.
 
