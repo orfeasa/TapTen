@@ -2,7 +2,7 @@
   "id": "geography-pack-v2",
   "title": "Geography Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "geo-most-populous-countries-europe",
@@ -710,6 +710,942 @@
         {
           "text": "San Marino",
           "points": 3
+        }
+      ]
+    },
+    {
+      "id": "geo-world-capitals-that-start-with-the-letter-k",
+      "category": "Geography",
+      "prompt": "World capitals that start with the letter K",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Kabul",
+          "points": 1
+        },
+        {
+          "text": "Kampala",
+          "points": 1
+        },
+        {
+          "text": "Kathmandu",
+          "points": 1
+        },
+        {
+          "text": "Khartoum",
+          "points": 1
+        },
+        {
+          "text": "Kyiv",
+          "points": 1
+        },
+        {
+          "text": "Kigali",
+          "points": 2
+        },
+        {
+          "text": "Kingston",
+          "points": 2
+        },
+        {
+          "text": "Kinshasa",
+          "points": 2
+        },
+        {
+          "text": "Kuwait City",
+          "points": 2
+        },
+        {
+          "text": "Kuala Lumpur",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "geo-large-seas-and-oceans-people-can-point-to-on-a-map",
+      "category": "Geography",
+      "prompt": "Large seas and oceans people can point to on a map",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Pacific Ocean",
+          "points": 1
+        },
+        {
+          "text": "Atlantic Ocean",
+          "points": 1
+        },
+        {
+          "text": "Indian Ocean",
+          "points": 1
+        },
+        {
+          "text": "Arctic Ocean",
+          "points": 1
+        },
+        {
+          "text": "Southern Ocean",
+          "points": 1
+        },
+        {
+          "text": "Mediterranean Sea",
+          "points": 2
+        },
+        {
+          "text": "Caribbean Sea",
+          "points": 2
+        },
+        {
+          "text": "Red Sea",
+          "points": 2
+        },
+        {
+          "text": "Black Sea",
+          "points": 2
+        },
+        {
+          "text": "Baltic Sea",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "geo-landforms-people-learn-in-geography-class",
+      "category": "Geography",
+      "prompt": "Landforms people learn in geography class",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Mountain",
+          "points": 1
+        },
+        {
+          "text": "River",
+          "points": 1
+        },
+        {
+          "text": "Desert",
+          "points": 1
+        },
+        {
+          "text": "Island",
+          "points": 1
+        },
+        {
+          "text": "Valley",
+          "points": 1
+        },
+        {
+          "text": "Plateau",
+          "points": 2
+        },
+        {
+          "text": "Canyon",
+          "points": 2
+        },
+        {
+          "text": "Volcano",
+          "points": 2
+        },
+        {
+          "text": "Delta",
+          "points": 2
+        },
+        {
+          "text": "Glacier",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "geo-things-shown-in-a-map-legend",
+      "category": "Geography",
+      "prompt": "Things shown in a map legend",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Road",
+          "points": 1
+        },
+        {
+          "text": "River",
+          "points": 1
+        },
+        {
+          "text": "Border",
+          "points": 1
+        },
+        {
+          "text": "Capital city",
+          "points": 1
+        },
+        {
+          "text": "Airport",
+          "points": 1
+        },
+        {
+          "text": "Railway",
+          "points": 2
+        },
+        {
+          "text": "Park",
+          "points": 2
+        },
+        {
+          "text": "Hospital",
+          "points": 2
+        },
+        {
+          "text": "Mountain peak",
+          "points": 2
+        },
+        {
+          "text": "Scale bar",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "geo-climate-zones-people-hear-about-in-school-geography",
+      "category": "Geography",
+      "prompt": "Climate zones people hear about in school geography",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Tropical",
+          "points": 1
+        },
+        {
+          "text": "Desert",
+          "points": 1
+        },
+        {
+          "text": "Temperate",
+          "points": 1
+        },
+        {
+          "text": "Polar",
+          "points": 1
+        },
+        {
+          "text": "Mediterranean",
+          "points": 1
+        },
+        {
+          "text": "Continental",
+          "points": 2
+        },
+        {
+          "text": "Tundra",
+          "points": 2
+        },
+        {
+          "text": "Steppe",
+          "points": 2
+        },
+        {
+          "text": "Highland",
+          "points": 2
+        },
+        {
+          "text": "Monsoon",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "geo-reasons-cities-are-built-near-water",
+      "category": "Geography",
+      "prompt": "Reasons cities are built near water",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Drinking water",
+          "points": 1
+        },
+        {
+          "text": "Trade",
+          "points": 1
+        },
+        {
+          "text": "Fishing",
+          "points": 1
+        },
+        {
+          "text": "Transport",
+          "points": 1
+        },
+        {
+          "text": "Farming",
+          "points": 1
+        },
+        {
+          "text": "Defense",
+          "points": 2
+        },
+        {
+          "text": "Industry",
+          "points": 2
+        },
+        {
+          "text": "Tourism",
+          "points": 2
+        },
+        {
+          "text": "River crossing",
+          "points": 2
+        },
+        {
+          "text": "Port access",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "geo-major-mountain-ranges-people-learn-in-school",
+      "category": "Geography",
+      "prompt": "Major mountain ranges people learn in school",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Himalayas",
+          "points": 1
+        },
+        {
+          "text": "Andes",
+          "points": 1
+        },
+        {
+          "text": "Rockies",
+          "points": 2
+        },
+        {
+          "text": "Alps",
+          "points": 2
+        },
+        {
+          "text": "Appalachians",
+          "points": 2
+        },
+        {
+          "text": "Atlas Mountains",
+          "points": 2
+        },
+        {
+          "text": "Pyrenees",
+          "points": 3
+        },
+        {
+          "text": "Urals",
+          "points": 3
+        },
+        {
+          "text": "Caucasus",
+          "points": 4
+        },
+        {
+          "text": "Sierra Nevada",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "geo-major-rivers-of-the-world",
+      "category": "Geography",
+      "prompt": "Major rivers of the world",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Nile",
+          "points": 1
+        },
+        {
+          "text": "Amazon",
+          "points": 1
+        },
+        {
+          "text": "Yangtze",
+          "points": 2
+        },
+        {
+          "text": "Mississippi",
+          "points": 2
+        },
+        {
+          "text": "Danube",
+          "points": 2
+        },
+        {
+          "text": "Ganges",
+          "points": 2
+        },
+        {
+          "text": "Congo",
+          "points": 3
+        },
+        {
+          "text": "Mekong",
+          "points": 3
+        },
+        {
+          "text": "Rhine",
+          "points": 4
+        },
+        {
+          "text": "Volga",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "geo-major-deserts-of-the-world",
+      "category": "Geography",
+      "prompt": "Major deserts of the world",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Sahara",
+          "points": 1
+        },
+        {
+          "text": "Arabian Desert",
+          "points": 1
+        },
+        {
+          "text": "Gobi",
+          "points": 2
+        },
+        {
+          "text": "Kalahari",
+          "points": 2
+        },
+        {
+          "text": "Mojave",
+          "points": 2
+        },
+        {
+          "text": "Atacama",
+          "points": 2
+        },
+        {
+          "text": "Namib",
+          "points": 3
+        },
+        {
+          "text": "Sonoran",
+          "points": 3
+        },
+        {
+          "text": "Patagonian Desert",
+          "points": 4
+        },
+        {
+          "text": "Taklamakan",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "geo-coastal-features-people-learn-on-maps",
+      "category": "Geography",
+      "prompt": "Coastal features people learn on maps",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Peninsula",
+          "points": 1
+        },
+        {
+          "text": "Bay",
+          "points": 1
+        },
+        {
+          "text": "Gulf",
+          "points": 2
+        },
+        {
+          "text": "Cape",
+          "points": 2
+        },
+        {
+          "text": "Fjord",
+          "points": 2
+        },
+        {
+          "text": "Atoll",
+          "points": 2
+        },
+        {
+          "text": "Reef",
+          "points": 3
+        },
+        {
+          "text": "Lagoon",
+          "points": 3
+        },
+        {
+          "text": "Inlet",
+          "points": 4
+        },
+        {
+          "text": "Archipelago",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "geo-clues-that-a-country-is-landlocked",
+      "category": "Geography",
+      "prompt": "Clues that a country is landlocked",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "No seaport",
+          "points": 1
+        },
+        {
+          "text": "Border crossings",
+          "points": 1
+        },
+        {
+          "text": "Inland capital",
+          "points": 2
+        },
+        {
+          "text": "River trade",
+          "points": 2
+        },
+        {
+          "text": "Rail freight",
+          "points": 2
+        },
+        {
+          "text": "Neighbor dependence",
+          "points": 2
+        },
+        {
+          "text": "Dry ports",
+          "points": 3
+        },
+        {
+          "text": "Customs lines",
+          "points": 3
+        },
+        {
+          "text": "Lake borders",
+          "points": 4
+        },
+        {
+          "text": "Long trucking routes",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "geo-things-that-can-create-a-national-border",
+      "category": "Geography",
+      "prompt": "Things that can create a national border",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "River",
+          "points": 1
+        },
+        {
+          "text": "Mountain range",
+          "points": 1
+        },
+        {
+          "text": "Sea",
+          "points": 2
+        },
+        {
+          "text": "Desert",
+          "points": 2
+        },
+        {
+          "text": "Forest",
+          "points": 2
+        },
+        {
+          "text": "Lake",
+          "points": 2
+        },
+        {
+          "text": "Treaty line",
+          "points": 3
+        },
+        {
+          "text": "Line of latitude",
+          "points": 3
+        },
+        {
+          "text": "Line of longitude",
+          "points": 4
+        },
+        {
+          "text": "Wall",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "geo-geographic-lines-people-see-on-a-classroom-globe",
+      "category": "Geography",
+      "prompt": "Geographic lines people see on a classroom globe",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Equator",
+          "points": 1
+        },
+        {
+          "text": "Prime Meridian",
+          "points": 2
+        },
+        {
+          "text": "Tropic of Cancer",
+          "points": 2
+        },
+        {
+          "text": "Tropic of Capricorn",
+          "points": 3
+        },
+        {
+          "text": "Arctic Circle",
+          "points": 3
+        },
+        {
+          "text": "Antarctic Circle",
+          "points": 3
+        },
+        {
+          "text": "International Date Line",
+          "points": 4
+        },
+        {
+          "text": "Latitude",
+          "points": 4
+        },
+        {
+          "text": "Longitude",
+          "points": 5
+        },
+        {
+          "text": "Greenwich Meridian",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "geo-types-of-maps-used-for-different-purposes",
+      "category": "Geography",
+      "prompt": "Types of maps used for different purposes",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Political map",
+          "points": 1
+        },
+        {
+          "text": "Physical map",
+          "points": 2
+        },
+        {
+          "text": "Topographic map",
+          "points": 2
+        },
+        {
+          "text": "Road map",
+          "points": 3
+        },
+        {
+          "text": "Climate map",
+          "points": 3
+        },
+        {
+          "text": "Weather map",
+          "points": 3
+        },
+        {
+          "text": "Population map",
+          "points": 4
+        },
+        {
+          "text": "Relief map",
+          "points": 4
+        },
+        {
+          "text": "Nautical chart",
+          "points": 5
+        },
+        {
+          "text": "Transit map",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "geo-settlement-size-words-people-hear-in-geography",
+      "category": "Geography",
+      "prompt": "Settlement-size words people hear in geography",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Hamlet",
+          "points": 1
+        },
+        {
+          "text": "Village",
+          "points": 2
+        },
+        {
+          "text": "Town",
+          "points": 2
+        },
+        {
+          "text": "City",
+          "points": 3
+        },
+        {
+          "text": "Capital",
+          "points": 3
+        },
+        {
+          "text": "Metropolis",
+          "points": 3
+        },
+        {
+          "text": "Suburb",
+          "points": 4
+        },
+        {
+          "text": "Municipality",
+          "points": 4
+        },
+        {
+          "text": "Megacity",
+          "points": 5
+        },
+        {
+          "text": "Settlement",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "geo-things-that-make-a-place-feel-remote",
+      "category": "Geography",
+      "prompt": "Things that make a place feel remote",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "No airport",
+          "points": 1
+        },
+        {
+          "text": "Bad roads",
+          "points": 2
+        },
+        {
+          "text": "Rare buses",
+          "points": 2
+        },
+        {
+          "text": "Weak phone signal",
+          "points": 3
+        },
+        {
+          "text": "Mountain pass",
+          "points": 3
+        },
+        {
+          "text": "Ferry access",
+          "points": 3
+        },
+        {
+          "text": "Harsh weather",
+          "points": 4
+        },
+        {
+          "text": "Sparse population",
+          "points": 4
+        },
+        {
+          "text": "Long drive",
+          "points": 5
+        },
+        {
+          "text": "Limited services",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "geo-features-that-affect-a-region-s-climate",
+      "category": "Geography",
+      "prompt": "Features that affect a region's climate",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Latitude",
+          "points": 1
+        },
+        {
+          "text": "Altitude",
+          "points": 2
+        },
+        {
+          "text": "Ocean currents",
+          "points": 2
+        },
+        {
+          "text": "Mountains",
+          "points": 3
+        },
+        {
+          "text": "Wind patterns",
+          "points": 3
+        },
+        {
+          "text": "Rainfall",
+          "points": 3
+        },
+        {
+          "text": "Forest cover",
+          "points": 4
+        },
+        {
+          "text": "Desert proximity",
+          "points": 4
+        },
+        {
+          "text": "Elevation",
+          "points": 5
+        },
+        {
+          "text": "Seasonality",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "geo-industries-strongly-shaped-by-geography",
+      "category": "Geography",
+      "prompt": "Industries strongly shaped by geography",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Geography",
+      "answers": [
+        {
+          "text": "Oil drilling",
+          "points": 1
+        },
+        {
+          "text": "Fishing",
+          "points": 2
+        },
+        {
+          "text": "Tourism",
+          "points": 2
+        },
+        {
+          "text": "Farming",
+          "points": 3
+        },
+        {
+          "text": "Mining",
+          "points": 3
+        },
+        {
+          "text": "Logging",
+          "points": 3
+        },
+        {
+          "text": "Shipping",
+          "points": 4
+        },
+        {
+          "text": "Hydropower",
+          "points": 4
+        },
+        {
+          "text": "Winemaking",
+          "points": 5
+        },
+        {
+          "text": "Ski resorts",
+          "points": 5
         }
       ]
     }

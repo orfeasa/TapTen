@@ -2,7 +2,7 @@
   "id": "science-pack-v2",
   "title": "Science Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "sci-most-abundant-elements-earth-crust",
@@ -733,6 +733,942 @@
         {
           "text": "Testes",
           "points": 4
+        }
+      ]
+    },
+    {
+      "id": "science-things-scientists-wear-for-safety",
+      "category": "Science",
+      "prompt": "Things scientists wear for safety",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Goggles",
+          "points": 1
+        },
+        {
+          "text": "Lab coat",
+          "points": 1
+        },
+        {
+          "text": "Gloves",
+          "points": 1
+        },
+        {
+          "text": "Mask",
+          "points": 1
+        },
+        {
+          "text": "Closed shoes",
+          "points": 1
+        },
+        {
+          "text": "Apron",
+          "points": 2
+        },
+        {
+          "text": "Hair tie",
+          "points": 2
+        },
+        {
+          "text": "Face shield",
+          "points": 2
+        },
+        {
+          "text": "Ear protection",
+          "points": 2
+        },
+        {
+          "text": "Helmet",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "science-things-people-name-when-talking-about-space",
+      "category": "Science",
+      "prompt": "Things people name when talking about space",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Sun",
+          "points": 1
+        },
+        {
+          "text": "Planet",
+          "points": 1
+        },
+        {
+          "text": "Moon",
+          "points": 1
+        },
+        {
+          "text": "Asteroid",
+          "points": 1
+        },
+        {
+          "text": "Comet",
+          "points": 1
+        },
+        {
+          "text": "Meteor",
+          "points": 2
+        },
+        {
+          "text": "Satellite",
+          "points": 2
+        },
+        {
+          "text": "Ring",
+          "points": 2
+        },
+        {
+          "text": "Orbit",
+          "points": 2
+        },
+        {
+          "text": "Galaxy",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "science-signs-a-chemical-reaction-is-happening",
+      "category": "Science",
+      "prompt": "Signs a chemical reaction is happening",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Color change",
+          "points": 1
+        },
+        {
+          "text": "Bubbles",
+          "points": 1
+        },
+        {
+          "text": "Heat",
+          "points": 1
+        },
+        {
+          "text": "Light",
+          "points": 1
+        },
+        {
+          "text": "Smell",
+          "points": 1
+        },
+        {
+          "text": "Smoke",
+          "points": 2
+        },
+        {
+          "text": "Precipitate",
+          "points": 2
+        },
+        {
+          "text": "Temperature drop",
+          "points": 2
+        },
+        {
+          "text": "Sound",
+          "points": 2
+        },
+        {
+          "text": "Pressure change",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "science-things-a-microscope-can-help-you-see",
+      "category": "Science",
+      "prompt": "Things a microscope can help you see",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Cells",
+          "points": 1
+        },
+        {
+          "text": "Bacteria",
+          "points": 1
+        },
+        {
+          "text": "Fibers",
+          "points": 1
+        },
+        {
+          "text": "Crystals",
+          "points": 1
+        },
+        {
+          "text": "Pollen",
+          "points": 1
+        },
+        {
+          "text": "Blood",
+          "points": 2
+        },
+        {
+          "text": "Onion skin",
+          "points": 2
+        },
+        {
+          "text": "Mold",
+          "points": 2
+        },
+        {
+          "text": "Tiny insects",
+          "points": 2
+        },
+        {
+          "text": "Minerals",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "science-renewable-energy-sources-people-hear-about",
+      "category": "Science",
+      "prompt": "Renewable energy sources people hear about",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Solar",
+          "points": 1
+        },
+        {
+          "text": "Wind",
+          "points": 1
+        },
+        {
+          "text": "Hydropower",
+          "points": 1
+        },
+        {
+          "text": "Geothermal",
+          "points": 1
+        },
+        {
+          "text": "Tidal",
+          "points": 1
+        },
+        {
+          "text": "Biomass",
+          "points": 2
+        },
+        {
+          "text": "Wave power",
+          "points": 2
+        },
+        {
+          "text": "Biofuel",
+          "points": 2
+        },
+        {
+          "text": "Solar thermal",
+          "points": 2
+        },
+        {
+          "text": "Landfill gas",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "science-things-found-in-a-school-science-lab",
+      "category": "Science",
+      "prompt": "Things found in a school science lab",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Beaker",
+          "points": 1
+        },
+        {
+          "text": "Test tube",
+          "points": 1
+        },
+        {
+          "text": "Microscope",
+          "points": 1
+        },
+        {
+          "text": "Bunsen burner",
+          "points": 1
+        },
+        {
+          "text": "Scale",
+          "points": 1
+        },
+        {
+          "text": "Pipette",
+          "points": 2
+        },
+        {
+          "text": "Petri dish",
+          "points": 2
+        },
+        {
+          "text": "Safety goggles",
+          "points": 2
+        },
+        {
+          "text": "Tripod stand",
+          "points": 2
+        },
+        {
+          "text": "Flask",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "science-branches-of-biology-people-study",
+      "category": "Science",
+      "prompt": "Branches of biology people study",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Zoology",
+          "points": 1
+        },
+        {
+          "text": "Botany",
+          "points": 1
+        },
+        {
+          "text": "Genetics",
+          "points": 2
+        },
+        {
+          "text": "Ecology",
+          "points": 2
+        },
+        {
+          "text": "Microbiology",
+          "points": 2
+        },
+        {
+          "text": "Anatomy",
+          "points": 2
+        },
+        {
+          "text": "Physiology",
+          "points": 3
+        },
+        {
+          "text": "Evolution",
+          "points": 3
+        },
+        {
+          "text": "Marine biology",
+          "points": 4
+        },
+        {
+          "text": "Immunology",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "science-things-astronomers-measure",
+      "category": "Science",
+      "prompt": "Things astronomers measure",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Distance",
+          "points": 1
+        },
+        {
+          "text": "Brightness",
+          "points": 1
+        },
+        {
+          "text": "Mass",
+          "points": 2
+        },
+        {
+          "text": "Temperature",
+          "points": 2
+        },
+        {
+          "text": "Orbit",
+          "points": 2
+        },
+        {
+          "text": "Redshift",
+          "points": 2
+        },
+        {
+          "text": "Rotation",
+          "points": 3
+        },
+        {
+          "text": "Composition",
+          "points": 3
+        },
+        {
+          "text": "Gravity",
+          "points": 4
+        },
+        {
+          "text": "Age",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "science-parts-of-the-human-nervous-system",
+      "category": "Science",
+      "prompt": "Parts of the human nervous system",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Brain",
+          "points": 1
+        },
+        {
+          "text": "Spinal cord",
+          "points": 1
+        },
+        {
+          "text": "Nerves",
+          "points": 2
+        },
+        {
+          "text": "Cerebellum",
+          "points": 2
+        },
+        {
+          "text": "Brain stem",
+          "points": 2
+        },
+        {
+          "text": "Sensory neurons",
+          "points": 2
+        },
+        {
+          "text": "Motor neurons",
+          "points": 3
+        },
+        {
+          "text": "Synapse",
+          "points": 3
+        },
+        {
+          "text": "Autonomic nervous system",
+          "points": 4
+        },
+        {
+          "text": "Peripheral nervous system",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "science-things-meteorologists-track",
+      "category": "Science",
+      "prompt": "Things meteorologists track",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Temperature",
+          "points": 1
+        },
+        {
+          "text": "Rainfall",
+          "points": 1
+        },
+        {
+          "text": "Wind speed",
+          "points": 2
+        },
+        {
+          "text": "Humidity",
+          "points": 2
+        },
+        {
+          "text": "Air pressure",
+          "points": 2
+        },
+        {
+          "text": "Cloud cover",
+          "points": 2
+        },
+        {
+          "text": "Radar",
+          "points": 3
+        },
+        {
+          "text": "Storm path",
+          "points": 3
+        },
+        {
+          "text": "Dew point",
+          "points": 4
+        },
+        {
+          "text": "Visibility",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "science-ways-animals-adapt-to-survive",
+      "category": "Science",
+      "prompt": "Ways animals adapt to survive",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Camouflage",
+          "points": 1
+        },
+        {
+          "text": "Migration",
+          "points": 1
+        },
+        {
+          "text": "Hibernation",
+          "points": 2
+        },
+        {
+          "text": "Venom",
+          "points": 2
+        },
+        {
+          "text": "Thick fur",
+          "points": 2
+        },
+        {
+          "text": "Burrowing",
+          "points": 2
+        },
+        {
+          "text": "Mimicry",
+          "points": 3
+        },
+        {
+          "text": "Night vision",
+          "points": 3
+        },
+        {
+          "text": "Webbed feet",
+          "points": 4
+        },
+        {
+          "text": "Pack behavior",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "science-changes-of-state-people-learn-in-science-class",
+      "category": "Science",
+      "prompt": "Changes of state people learn in science class",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Melting",
+          "points": 1
+        },
+        {
+          "text": "Freezing",
+          "points": 1
+        },
+        {
+          "text": "Boiling",
+          "points": 2
+        },
+        {
+          "text": "Condensation",
+          "points": 2
+        },
+        {
+          "text": "Evaporation",
+          "points": 2
+        },
+        {
+          "text": "Sublimation",
+          "points": 2
+        },
+        {
+          "text": "Deposition",
+          "points": 3
+        },
+        {
+          "text": "Ionization",
+          "points": 3
+        },
+        {
+          "text": "Recombination",
+          "points": 4
+        },
+        {
+          "text": "Crystallization",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "science-things-physicists-discuss-in-particle-science",
+      "category": "Science",
+      "prompt": "Things physicists discuss in particle science",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Atom",
+          "points": 1
+        },
+        {
+          "text": "Proton",
+          "points": 2
+        },
+        {
+          "text": "Neutron",
+          "points": 2
+        },
+        {
+          "text": "Electron",
+          "points": 3
+        },
+        {
+          "text": "Quark",
+          "points": 3
+        },
+        {
+          "text": "Neutrino",
+          "points": 3
+        },
+        {
+          "text": "Boson",
+          "points": 4
+        },
+        {
+          "text": "Muon",
+          "points": 4
+        },
+        {
+          "text": "Higgs field",
+          "points": 5
+        },
+        {
+          "text": "Antimatter",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "science-things-the-immune-system-uses-to-fight-infection",
+      "category": "Science",
+      "prompt": "Things the immune system uses to fight infection",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "White blood cells",
+          "points": 1
+        },
+        {
+          "text": "Antibodies",
+          "points": 2
+        },
+        {
+          "text": "Fever",
+          "points": 2
+        },
+        {
+          "text": "Inflammation",
+          "points": 3
+        },
+        {
+          "text": "T cells",
+          "points": 3
+        },
+        {
+          "text": "B cells",
+          "points": 3
+        },
+        {
+          "text": "Lymph nodes",
+          "points": 4
+        },
+        {
+          "text": "Bone marrow",
+          "points": 4
+        },
+        {
+          "text": "Spleen",
+          "points": 5
+        },
+        {
+          "text": "Memory cells",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "science-processes-in-the-water-cycle",
+      "category": "Science",
+      "prompt": "Processes in the water cycle",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Evaporation",
+          "points": 1
+        },
+        {
+          "text": "Condensation",
+          "points": 2
+        },
+        {
+          "text": "Precipitation",
+          "points": 2
+        },
+        {
+          "text": "Runoff",
+          "points": 3
+        },
+        {
+          "text": "Infiltration",
+          "points": 3
+        },
+        {
+          "text": "Transpiration",
+          "points": 3
+        },
+        {
+          "text": "Groundwater flow",
+          "points": 4
+        },
+        {
+          "text": "Snowmelt",
+          "points": 4
+        },
+        {
+          "text": "Collection",
+          "points": 5
+        },
+        {
+          "text": "Sublimation",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "science-things-that-affect-an-ecosystem",
+      "category": "Science",
+      "prompt": "Things that affect an ecosystem",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Rainfall",
+          "points": 1
+        },
+        {
+          "text": "Predators",
+          "points": 2
+        },
+        {
+          "text": "Pollution",
+          "points": 2
+        },
+        {
+          "text": "Invasive species",
+          "points": 3
+        },
+        {
+          "text": "Temperature",
+          "points": 3
+        },
+        {
+          "text": "Habitat loss",
+          "points": 3
+        },
+        {
+          "text": "Disease",
+          "points": 4
+        },
+        {
+          "text": "Food supply",
+          "points": 4
+        },
+        {
+          "text": "Wildfire",
+          "points": 5
+        },
+        {
+          "text": "Human activity",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "science-scientific-instruments-used-for-precise-measurement",
+      "category": "Science",
+      "prompt": "Scientific instruments used for precise measurement",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Thermometer",
+          "points": 1
+        },
+        {
+          "text": "Barometer",
+          "points": 2
+        },
+        {
+          "text": "Caliper",
+          "points": 2
+        },
+        {
+          "text": "Spectrometer",
+          "points": 3
+        },
+        {
+          "text": "Balance",
+          "points": 3
+        },
+        {
+          "text": "Oscilloscope",
+          "points": 3
+        },
+        {
+          "text": "Seismometer",
+          "points": 4
+        },
+        {
+          "text": "pH meter",
+          "points": 4
+        },
+        {
+          "text": "Voltmeter",
+          "points": 5
+        },
+        {
+          "text": "Microscope",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "science-things-scientists-model-with-computers",
+      "category": "Science",
+      "prompt": "Things scientists model with computers",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Science",
+      "answers": [
+        {
+          "text": "Climate",
+          "points": 1
+        },
+        {
+          "text": "Galaxies",
+          "points": 2
+        },
+        {
+          "text": "Epidemics",
+          "points": 2
+        },
+        {
+          "text": "Molecules",
+          "points": 3
+        },
+        {
+          "text": "Weather",
+          "points": 3
+        },
+        {
+          "text": "Population growth",
+          "points": 3
+        },
+        {
+          "text": "Traffic",
+          "points": 4
+        },
+        {
+          "text": "Earthquakes",
+          "points": 4
+        },
+        {
+          "text": "Fluid flow",
+          "points": 5
+        },
+        {
+          "text": "Protein folding",
+          "points": 5
         }
       ]
     }

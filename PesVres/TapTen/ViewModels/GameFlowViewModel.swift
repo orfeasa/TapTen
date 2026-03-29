@@ -32,6 +32,7 @@ final class GameFlowViewModel {
     private let enabledDifficultyTiers: Set<QuestionDifficulty>
     private let soundsEnabled: Bool
     private let monetizationTelemetryStore: MonetizationTelemetryStore
+    private let questionCalibrationTelemetryStore: QuestionCalibrationTelemetryStore
     private let randomSassyCommentProvider: ([String]) -> String
     private var questionPacks: [QuestionPack] = []
     private var randomIndexProvider: (Int) -> Int = { Int.random(in: 0..<$0) }
@@ -56,6 +57,7 @@ final class GameFlowViewModel {
         questionPackLoader: QuestionPackLoader = QuestionPackLoader(),
         entitlementStore: QuestionPackEntitlementStore = .shared,
         monetizationTelemetryStore: MonetizationTelemetryStore = .shared,
+        questionCalibrationTelemetryStore: QuestionCalibrationTelemetryStore = .shared,
         randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) },
         randomSassyCommentProvider: @escaping ([String]) -> String = { comments in
             comments.randomElement() ?? "Confetti machine malfunctioned. You still get a clap."
@@ -66,6 +68,7 @@ final class GameFlowViewModel {
         self.enabledDifficultyTiers = enabledDifficultyTiers
         self.soundsEnabled = soundsEnabled
         self.monetizationTelemetryStore = monetizationTelemetryStore
+        self.questionCalibrationTelemetryStore = questionCalibrationTelemetryStore
         self.randomIndexProvider = randomIndexProvider
         self.randomSassyCommentProvider = randomSassyCommentProvider
 
@@ -87,6 +90,7 @@ final class GameFlowViewModel {
         soundsEnabled: Bool = true,
         questionPacks: [QuestionPack],
         monetizationTelemetryStore: MonetizationTelemetryStore = .shared,
+        questionCalibrationTelemetryStore: QuestionCalibrationTelemetryStore = .shared,
         randomIndexProvider: @escaping (Int) -> Int = { Int.random(in: 0..<$0) },
         randomSassyCommentProvider: @escaping ([String]) -> String = { comments in
             comments.randomElement() ?? "Confetti machine malfunctioned. You still get a clap."
@@ -97,6 +101,7 @@ final class GameFlowViewModel {
         self.enabledDifficultyTiers = enabledDifficultyTiers
         self.soundsEnabled = soundsEnabled
         self.monetizationTelemetryStore = monetizationTelemetryStore
+        self.questionCalibrationTelemetryStore = questionCalibrationTelemetryStore
         self.questionPacks = questionPacks
         self.randomIndexProvider = randomIndexProvider
         self.randomSassyCommentProvider = randomSassyCommentProvider
@@ -237,6 +242,9 @@ final class GameFlowViewModel {
         let pointsAwarded = hostRoundViewModel.pointsAwarded
         let revealedAnswers = hostRoundViewModel.revealedAnswerIndices.count
         let totalAnswers = currentRound.question.answers.count
+        let feedbackContext = feedbackContext(for: currentRound.question)
+        let finishReason = hostRoundViewModel.finishReason
+        let remainingTimeAtFinish = hostRoundViewModel.timeRemainingAtFinish ?? hostRoundViewModel.remainingTime
 
         if currentRound.answeringTeam == .teamA {
             teamAScore += pointsAwarded
@@ -256,21 +264,40 @@ final class GameFlowViewModel {
             pointsAwarded: pointsAwarded,
             revealedAnswers: revealedAnswers,
             totalAnswers: totalAnswers,
-            feedbackContext: feedbackContext(for: currentRound.question)
+            feedbackContext: feedbackContext
+        )
+        questionCalibrationTelemetryStore.recordRoundOutcome(
+            context: feedbackContext,
+            roundDurationSeconds: settings.roundDurationSeconds,
+            finishReason: finishReason,
+            revealedAnswerIndices: hostRoundViewModel.revealedAnswerIndices,
+            totalAnswers: totalAnswers,
+            pointsAwarded: pointsAwarded,
+            remainingTimeAtFinish: remainingTimeAtFinish,
+            timeToFirstReveal: hostRoundViewModel.timeToFirstReveal
         )
 #if DEBUG
         let telemetry = DebugRoundTelemetry(
             roundNumber: teamRoundNumber(for: currentRound),
+            questionID: currentRound.question.id,
             category: currentRound.question.category,
+            difficultyTier: currentRound.question.difficultyTier,
             answeringTeamName: answeringTeamName,
             revealedAnswers: revealedAnswers,
+            revealedAnswerIndices: hostRoundViewModel.revealedAnswerIndices.sorted(),
             totalAnswers: totalAnswers,
             pointsAwarded: pointsAwarded,
-            remainingTimeAtSummary: hostRoundViewModel.remainingTime
+            finishReason: finishReason,
+            remainingTimeAtFinish: remainingTimeAtFinish,
+            timeToFirstReveal: hostRoundViewModel.timeToFirstReveal
         )
         debugRoundTelemetry.append(telemetry)
+        let finishReasonLabel = telemetry.finishReason?.rawValue ?? "unknown"
+        let firstRevealLabel = telemetry.timeToFirstReveal.map {
+            String(format: "%.1f", $0)
+        } ?? "-"
         Self.telemetryLogger.debug(
-            "Round \(telemetry.roundNumber) | category: \(telemetry.category, privacy: .public) | team: \(telemetry.answeringTeamName, privacy: .public) | revealed: \(telemetry.revealedAnswers)/\(telemetry.totalAnswers) | points: \(telemetry.pointsAwarded) | remaining: \(telemetry.remainingTimeAtSummary, format: .fixed(precision: 1))s"
+            "Round \(telemetry.roundNumber) | question: \(telemetry.questionID, privacy: .public) | category: \(telemetry.category, privacy: .public) | tier: \(telemetry.difficultyTier.rawValue, privacy: .public) | team: \(telemetry.answeringTeamName, privacy: .public) | finish: \(finishReasonLabel, privacy: .public) | revealed: \(telemetry.revealedAnswers)/\(telemetry.totalAnswers) | points: \(telemetry.pointsAwarded) | firstReveal: \(firstRevealLabel, privacy: .public)s | remaining: \(telemetry.remainingTimeAtFinish, format: .fixed(precision: 1))s"
         )
 #endif
         phase = .roundSummary
@@ -426,11 +453,16 @@ final class GameFlowViewModel {
 #if DEBUG
 struct DebugRoundTelemetry: Equatable {
     let roundNumber: Int
+    let questionID: String
     let category: String
+    let difficultyTier: QuestionDifficulty
     let answeringTeamName: String
     let revealedAnswers: Int
+    let revealedAnswerIndices: [Int]
     let totalAnswers: Int
     let pointsAwarded: Int
-    let remainingTimeAtSummary: TimeInterval
+    let finishReason: HostRoundFinishReason?
+    let remainingTimeAtFinish: TimeInterval
+    let timeToFirstReveal: TimeInterval?
 }
 #endif

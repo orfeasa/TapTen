@@ -2,7 +2,7 @@
   "id": "sport-pack-v2",
   "title": "Sport Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "sport-football-positions-common",
@@ -733,6 +733,942 @@
         {
           "text": "Fullback",
           "points": 4
+        }
+      ]
+    },
+    {
+      "id": "sport-items-people-pack-in-a-gym-bag",
+      "category": "Sport",
+      "prompt": "Items people pack in a gym bag",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Trainers",
+          "points": 1
+        },
+        {
+          "text": "Water bottle",
+          "points": 1
+        },
+        {
+          "text": "Towel",
+          "points": 1
+        },
+        {
+          "text": "Change of clothes",
+          "points": 1
+        },
+        {
+          "text": "Headphones",
+          "points": 1
+        },
+        {
+          "text": "Deodorant",
+          "points": 2
+        },
+        {
+          "text": "Protein bar",
+          "points": 2
+        },
+        {
+          "text": "Lock",
+          "points": 2
+        },
+        {
+          "text": "Resistance band",
+          "points": 2
+        },
+        {
+          "text": "Socks",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "sport-reasons-a-referee-stops-play",
+      "category": "Sport",
+      "prompt": "Reasons a referee stops play",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Foul",
+          "points": 1
+        },
+        {
+          "text": "Injury",
+          "points": 1
+        },
+        {
+          "text": "Offside",
+          "points": 1
+        },
+        {
+          "text": "Ball out",
+          "points": 1
+        },
+        {
+          "text": "Timeout",
+          "points": 1
+        },
+        {
+          "text": "Substitution",
+          "points": 2
+        },
+        {
+          "text": "Video review",
+          "points": 2
+        },
+        {
+          "text": "Fight",
+          "points": 2
+        },
+        {
+          "text": "Weather",
+          "points": 2
+        },
+        {
+          "text": "Equipment issue",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "sport-things-fans-do-at-a-stadium",
+      "category": "Sport",
+      "prompt": "Things fans do at a stadium",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Cheer",
+          "points": 1
+        },
+        {
+          "text": "Boo",
+          "points": 1
+        },
+        {
+          "text": "Sing chants",
+          "points": 1
+        },
+        {
+          "text": "Wave flags",
+          "points": 1
+        },
+        {
+          "text": "Buy snacks",
+          "points": 1
+        },
+        {
+          "text": "Take photos",
+          "points": 2
+        },
+        {
+          "text": "Wear jerseys",
+          "points": 2
+        },
+        {
+          "text": "Do the wave",
+          "points": 2
+        },
+        {
+          "text": "Stand up",
+          "points": 2
+        },
+        {
+          "text": "Check the scoreboard",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "sport-things-athletes-do-before-a-game",
+      "category": "Sport",
+      "prompt": "Things athletes do before a game",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Warm up",
+          "points": 1
+        },
+        {
+          "text": "Stretch",
+          "points": 1
+        },
+        {
+          "text": "Team talk",
+          "points": 1
+        },
+        {
+          "text": "Tape ankles",
+          "points": 1
+        },
+        {
+          "text": "Listen to music",
+          "points": 1
+        },
+        {
+          "text": "Visualize",
+          "points": 2
+        },
+        {
+          "text": "Practice shots",
+          "points": 2
+        },
+        {
+          "text": "Hydrate",
+          "points": 2
+        },
+        {
+          "text": "Pray",
+          "points": 2
+        },
+        {
+          "text": "Put on the kit",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "sport-things-commentators-mention-in-a-match",
+      "category": "Sport",
+      "prompt": "Things commentators mention in a match",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Possession",
+          "points": 1
+        },
+        {
+          "text": "Momentum",
+          "points": 1
+        },
+        {
+          "text": "Formation",
+          "points": 1
+        },
+        {
+          "text": "Injury update",
+          "points": 1
+        },
+        {
+          "text": "Crowd noise",
+          "points": 1
+        },
+        {
+          "text": "Weather",
+          "points": 2
+        },
+        {
+          "text": "Referee decision",
+          "points": 2
+        },
+        {
+          "text": "Fatigue",
+          "points": 2
+        },
+        {
+          "text": "Bench options",
+          "points": 2
+        },
+        {
+          "text": "Previous meeting",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "sport-reasons-a-team-calls-timeout",
+      "category": "Sport",
+      "prompt": "Reasons a team calls timeout",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Change tactics",
+          "points": 1
+        },
+        {
+          "text": "Stop momentum",
+          "points": 1
+        },
+        {
+          "text": "Rest players",
+          "points": 1
+        },
+        {
+          "text": "Draw a play",
+          "points": 1
+        },
+        {
+          "text": "Calm nerves",
+          "points": 1
+        },
+        {
+          "text": "Fix the defense",
+          "points": 2
+        },
+        {
+          "text": "Discuss a set piece",
+          "points": 2
+        },
+        {
+          "text": "Manage the clock",
+          "points": 2
+        },
+        {
+          "text": "Plan a substitution",
+          "points": 2
+        },
+        {
+          "text": "Review a mistake",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "sport-ways-athletes-recover-after-training",
+      "category": "Sport",
+      "prompt": "Ways athletes recover after training",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Ice bath",
+          "points": 1
+        },
+        {
+          "text": "Stretching",
+          "points": 1
+        },
+        {
+          "text": "Massage",
+          "points": 2
+        },
+        {
+          "text": "Protein shake",
+          "points": 2
+        },
+        {
+          "text": "Sleep",
+          "points": 2
+        },
+        {
+          "text": "Foam rolling",
+          "points": 2
+        },
+        {
+          "text": "Compression boots",
+          "points": 3
+        },
+        {
+          "text": "Sauna",
+          "points": 3
+        },
+        {
+          "text": "Physiotherapy",
+          "points": 4
+        },
+        {
+          "text": "Light jog",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "sport-things-in-a-locker-room",
+      "category": "Sport",
+      "prompt": "Things in a locker room",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Benches",
+          "points": 1
+        },
+        {
+          "text": "Lockers",
+          "points": 1
+        },
+        {
+          "text": "Jerseys",
+          "points": 2
+        },
+        {
+          "text": "Tape",
+          "points": 2
+        },
+        {
+          "text": "Whiteboard",
+          "points": 2
+        },
+        {
+          "text": "Ice packs",
+          "points": 2
+        },
+        {
+          "text": "Towels",
+          "points": 3
+        },
+        {
+          "text": "Boots",
+          "points": 3
+        },
+        {
+          "text": "Water bottles",
+          "points": 4
+        },
+        {
+          "text": "Speaker",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "sport-reasons-a-crowd-boos-during-a-game",
+      "category": "Sport",
+      "prompt": "Reasons a crowd boos during a game",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Bad referee call",
+          "points": 1
+        },
+        {
+          "text": "Rival player",
+          "points": 1
+        },
+        {
+          "text": "Time wasting",
+          "points": 2
+        },
+        {
+          "text": "Dirty foul",
+          "points": 2
+        },
+        {
+          "text": "Home team losing",
+          "points": 2
+        },
+        {
+          "text": "Missed open goal",
+          "points": 2
+        },
+        {
+          "text": "Disallowed score",
+          "points": 3
+        },
+        {
+          "text": "Controversial decision",
+          "points": 3
+        },
+        {
+          "text": "Showboating",
+          "points": 4
+        },
+        {
+          "text": "Diving",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "sport-sports-people-watch-during-the-olympics",
+      "category": "Sport",
+      "prompt": "Sports people watch during the Olympics",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Athletics",
+          "points": 1
+        },
+        {
+          "text": "Swimming",
+          "points": 1
+        },
+        {
+          "text": "Gymnastics",
+          "points": 2
+        },
+        {
+          "text": "Basketball",
+          "points": 2
+        },
+        {
+          "text": "Volleyball",
+          "points": 2
+        },
+        {
+          "text": "Boxing",
+          "points": 2
+        },
+        {
+          "text": "Cycling",
+          "points": 3
+        },
+        {
+          "text": "Rowing",
+          "points": 3
+        },
+        {
+          "text": "Tennis",
+          "points": 4
+        },
+        {
+          "text": "Wrestling",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "sport-things-scouts-look-for-in-a-player",
+      "category": "Sport",
+      "prompt": "Things scouts look for in a player",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Speed",
+          "points": 1
+        },
+        {
+          "text": "Strength",
+          "points": 1
+        },
+        {
+          "text": "Decision making",
+          "points": 2
+        },
+        {
+          "text": "Technique",
+          "points": 2
+        },
+        {
+          "text": "Work rate",
+          "points": 2
+        },
+        {
+          "text": "Attitude",
+          "points": 2
+        },
+        {
+          "text": "Positioning",
+          "points": 3
+        },
+        {
+          "text": "Passing",
+          "points": 3
+        },
+        {
+          "text": "Finishing",
+          "points": 4
+        },
+        {
+          "text": "Coachability",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "sport-reasons-a-race-result-gets-overturned",
+      "category": "Sport",
+      "prompt": "Reasons a race result gets overturned",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "False start",
+          "points": 1
+        },
+        {
+          "text": "Lane violation",
+          "points": 1
+        },
+        {
+          "text": "Doping",
+          "points": 2
+        },
+        {
+          "text": "Impeding another runner",
+          "points": 2
+        },
+        {
+          "text": "Illegal equipment",
+          "points": 2
+        },
+        {
+          "text": "Missed checkpoint",
+          "points": 2
+        },
+        {
+          "text": "Faulty handoff",
+          "points": 3
+        },
+        {
+          "text": "Outside assistance",
+          "points": 3
+        },
+        {
+          "text": "Appeal upheld",
+          "points": 4
+        },
+        {
+          "text": "Timing error",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "sport-things-trainers-track-in-athlete-performance-data",
+      "category": "Sport",
+      "prompt": "Things trainers track in athlete performance data",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Speed",
+          "points": 1
+        },
+        {
+          "text": "Heart rate",
+          "points": 2
+        },
+        {
+          "text": "Distance covered",
+          "points": 2
+        },
+        {
+          "text": "Sprint count",
+          "points": 3
+        },
+        {
+          "text": "Sleep",
+          "points": 3
+        },
+        {
+          "text": "VO2 max",
+          "points": 3
+        },
+        {
+          "text": "Training load",
+          "points": 4
+        },
+        {
+          "text": "Recovery score",
+          "points": 4
+        },
+        {
+          "text": "Reaction time",
+          "points": 5
+        },
+        {
+          "text": "Jump height",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "sport-jobs-on-a-pro-team-s-sideline",
+      "category": "Sport",
+      "prompt": "Jobs on a pro team's sideline",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Head coach",
+          "points": 1
+        },
+        {
+          "text": "Assistant coach",
+          "points": 2
+        },
+        {
+          "text": "Physio",
+          "points": 2
+        },
+        {
+          "text": "Doctor",
+          "points": 3
+        },
+        {
+          "text": "Strength coach",
+          "points": 3
+        },
+        {
+          "text": "Kit manager",
+          "points": 3
+        },
+        {
+          "text": "Analyst",
+          "points": 4
+        },
+        {
+          "text": "Security",
+          "points": 4
+        },
+        {
+          "text": "Water carrier",
+          "points": 5
+        },
+        {
+          "text": "Translator",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "sport-reasons-a-penalty-gets-awarded-in-sport",
+      "category": "Sport",
+      "prompt": "Reasons a penalty gets awarded in sport",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Handball",
+          "points": 1
+        },
+        {
+          "text": "Late tackle",
+          "points": 2
+        },
+        {
+          "text": "Holding",
+          "points": 2
+        },
+        {
+          "text": "Trip",
+          "points": 3
+        },
+        {
+          "text": "Interference",
+          "points": 3
+        },
+        {
+          "text": "High stick",
+          "points": 3
+        },
+        {
+          "text": "Roughing",
+          "points": 4
+        },
+        {
+          "text": "Pass interference",
+          "points": 4
+        },
+        {
+          "text": "Blocking foul",
+          "points": 5
+        },
+        {
+          "text": "Contact in the box",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "sport-things-athletes-tape-or-brace-before-competing",
+      "category": "Sport",
+      "prompt": "Things athletes tape or brace before competing",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Ankle",
+          "points": 1
+        },
+        {
+          "text": "Knee",
+          "points": 2
+        },
+        {
+          "text": "Wrist",
+          "points": 2
+        },
+        {
+          "text": "Fingers",
+          "points": 3
+        },
+        {
+          "text": "Shoulder",
+          "points": 3
+        },
+        {
+          "text": "Hamstring",
+          "points": 3
+        },
+        {
+          "text": "Elbow",
+          "points": 4
+        },
+        {
+          "text": "Thumb",
+          "points": 4
+        },
+        {
+          "text": "Shin",
+          "points": 5
+        },
+        {
+          "text": "Back",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "sport-skills-goalkeepers-need",
+      "category": "Sport",
+      "prompt": "Skills goalkeepers need",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Reflexes",
+          "points": 1
+        },
+        {
+          "text": "Positioning",
+          "points": 2
+        },
+        {
+          "text": "Handling",
+          "points": 2
+        },
+        {
+          "text": "Communication",
+          "points": 3
+        },
+        {
+          "text": "Diving",
+          "points": 3
+        },
+        {
+          "text": "Distribution",
+          "points": 3
+        },
+        {
+          "text": "Bravery",
+          "points": 4
+        },
+        {
+          "text": "Footwork",
+          "points": 4
+        },
+        {
+          "text": "One-on-one ability",
+          "points": 5
+        },
+        {
+          "text": "Catching crosses",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "sport-reasons-a-transfer-or-trade-falls-through",
+      "category": "Sport",
+      "prompt": "Reasons a transfer or trade falls through",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sport",
+      "answers": [
+        {
+          "text": "Failed medical",
+          "points": 1
+        },
+        {
+          "text": "Contract dispute",
+          "points": 2
+        },
+        {
+          "text": "Salary demands",
+          "points": 2
+        },
+        {
+          "text": "Visa issue",
+          "points": 3
+        },
+        {
+          "text": "Owner blocks it",
+          "points": 3
+        },
+        {
+          "text": "Deadline missed",
+          "points": 3
+        },
+        {
+          "text": "Injury",
+          "points": 4
+        },
+        {
+          "text": "Personal terms",
+          "points": 4
+        },
+        {
+          "text": "Paperwork failure",
+          "points": 5
+        },
+        {
+          "text": "Club changes its mind",
+          "points": 5
         }
       ]
     }

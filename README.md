@@ -16,7 +16,7 @@ Two teams play on one device. One team answers out loud while the other team hos
 - Warm, Apple-native visual direction with restrained motion.
 - Playful-but-clear in-app tone for supporting copy and verdicts.
 - Cleaner Home with a title-first hero, a quieter native toolbar gear, `Game defaults` status cards, one strong primary CTA, larger secondary actions, and a separate `How To Play` sheet.
-- Home includes a native `Browse Question Packs` screen with category and pack-level counts.
+- Home includes a cleaner native `Browse Library` screen that explains the base game library versus premium expansions.
 - New Game focuses on team names, category filters, and difficulty tiers, while rounds/timer live in Settings defaults and the setup screen uses warmer card-based grouping plus a pinned bottom `Start Game` action so the main CTA stays visible.
   - Team names open with a random curated funny/sassy suggested pair and can be cycled with `Shuffle Names` or edited manually.
 - Pass-device handoff flow between rounds with clear answering/hosting emphasis and a playful primary `Show Question` CTA.
@@ -45,6 +45,7 @@ Two teams play on one device. One team answers out loud while the other team hos
   - `Sounds` and `Haptics` toggles now directly control in-round feedback behavior.
   - `End Game` is available during in-progress game flow and always requires explicit confirmation.
 - Optional editorial metadata fields in local packs for quality control (`contentType`, `quality`, `difficultyNotes`, `editorialNotes`, `packVersion`).
+- Four bundled premium expansions are now present in the app bundle: `After Dark Vol. 1`, `Date Night`, `Office & Icebreakers`, and `Holiday Chaos`.
 
 ## Project Layout
 
@@ -80,7 +81,12 @@ Optional metadata is supported for curation (`contentType`, `quality`, `tags`, `
 Current content target status:
 - final 12-category set is present:
   - `Everyday Life`, `Food & Drink`, `Film & TV`, `Music`, `Sport`, `Geography`, `History`, `Science`, `Technology`, `Travel`, `Work & School`, `Pop Culture & Trends`
-- each category currently has 12 questions with exact `4 easy / 4 medium / 4 hard` distribution
+- each starter category currently has 30 questions with exact `10 easy / 10 medium / 10 hard` distribution
+- four premium expansion packs are bundled locally at 40 questions each (`14 easy / 13 medium / 13 hard`):
+  - `After Dark Vol. 1`
+  - `Date Night`
+  - `Office & Icebreakers`
+  - `Holiday Chaos`
 
 Malformed pack data is validated and surfaced with clean loader errors.
 For authoring and audit workflow, see:
@@ -138,6 +144,7 @@ Notes:
 - App Store release remains manual.
 - This first pass also does not add `fastlane match`. If Xcode automatic signing is not enough on the CI runner, add certificate/profile import or a signing solution later.
 - Optional in-app question-reporting delivery can be enabled per build with `QuestionFeedbackEndpointURL` in the app’s info dictionary or `TAPTEN_FEEDBACK_ENDPOINT` in the environment.
+- Premium packs are currently locally unlockable in tester builds via a build-time tester flag; `TAPTEN_TESTER_UNLOCKS_ENABLED` can still override that behavior from the environment when needed.
 
 ## Tests
 
@@ -169,6 +176,7 @@ The intended live domain is `playtapten.com`. The GitHub Pages workflow is in-re
 - Development preference: use modern iOS APIs within the current deployment floor rather than contorting the app for older iOS support.
 - Prioritized follow-up work: see `PROJECT_BACKLOG.md`.
 - Post-v1 monetization strategy: see `MONETIZATION_PLAN.md`.
+- Narrow self-hosted backend rollout: see `BACKEND_PLAN.md`.
 - Repository working conventions: see `AGENTS.md`.
 - Release smoke-test protocol: see `RELEASE_CHECKLIST.md`.
 

@@ -40,12 +40,17 @@ struct NewGameView: View {
 
                     sectionCard(
                         title: "Categories",
-                        subtitle: "Pick the packs in play.",
+                        subtitle: "Choose the categories for this game.",
                         systemImage: "books.vertical.fill",
                         tint: .tapTenPlayfulBlue,
                         badgeText: "\(viewModel.includedCategoryCount) selected"
                     ) {
-                        VStack(spacing: 0) {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Right now, each starter pack maps to one category. Premium expansions can add more categories here later.")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+
+                            VStack(spacing: 0) {
                             ForEach(Array(viewModel.categories.enumerated()), id: \.element.id) { index, category in
                                 toggleRow(
                                     title: category.name,
@@ -65,6 +70,7 @@ struct NewGameView: View {
                                 includeAction: viewModel.includeAllCategories,
                                 excludeAction: viewModel.excludeAllCategories
                             )
+                        }
                         }
                     }
 
@@ -185,7 +191,7 @@ private extension NewGameView {
             Text("Set the matchup")
                 .font(.system(.title2, design: .rounded).weight(.bold))
 
-            Text("Choose the teams, pick the packs, and decide how spicy you want the round mix.")
+            Text("Choose the teams, pick the categories, and decide how spicy you want the round mix.")
                 .font(.body)
                 .foregroundStyle(.secondary)
         }

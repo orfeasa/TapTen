@@ -2,7 +2,7 @@
   "id": "technology-pack-v2",
   "title": "Technology Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "tech-common-web-browsers",
@@ -733,6 +733,942 @@
         {
           "text": "Notes",
           "points": 4
+        }
+      ]
+    },
+    {
+      "id": "tech-reasons-a-phone-battery-dies-quickly",
+      "category": "Technology",
+      "prompt": "Reasons a phone battery dies quickly",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Bright screen",
+          "points": 1
+        },
+        {
+          "text": "Old battery",
+          "points": 1
+        },
+        {
+          "text": "Too many apps",
+          "points": 1
+        },
+        {
+          "text": "Poor signal",
+          "points": 1
+        },
+        {
+          "text": "GPS use",
+          "points": 1
+        },
+        {
+          "text": "Video streaming",
+          "points": 2
+        },
+        {
+          "text": "Gaming",
+          "points": 2
+        },
+        {
+          "text": "Background refresh",
+          "points": 2
+        },
+        {
+          "text": "Cold weather",
+          "points": 2
+        },
+        {
+          "text": "Bluetooth left on",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "tech-things-people-back-up-to-the-cloud",
+      "category": "Technology",
+      "prompt": "Things people back up to the cloud",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Photos",
+          "points": 1
+        },
+        {
+          "text": "Contacts",
+          "points": 1
+        },
+        {
+          "text": "Videos",
+          "points": 1
+        },
+        {
+          "text": "Documents",
+          "points": 1
+        },
+        {
+          "text": "Messages",
+          "points": 1
+        },
+        {
+          "text": "Notes",
+          "points": 2
+        },
+        {
+          "text": "Passwords",
+          "points": 2
+        },
+        {
+          "text": "Music",
+          "points": 2
+        },
+        {
+          "text": "App data",
+          "points": 2
+        },
+        {
+          "text": "Calendars",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "tech-apps-people-install-on-a-new-phone",
+      "category": "Technology",
+      "prompt": "Apps people install on a new phone",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Messaging app",
+          "points": 1
+        },
+        {
+          "text": "Maps app",
+          "points": 1
+        },
+        {
+          "text": "Music app",
+          "points": 1
+        },
+        {
+          "text": "Banking app",
+          "points": 1
+        },
+        {
+          "text": "Social app",
+          "points": 1
+        },
+        {
+          "text": "Email app",
+          "points": 2
+        },
+        {
+          "text": "Photo editor",
+          "points": 2
+        },
+        {
+          "text": "Food delivery app",
+          "points": 2
+        },
+        {
+          "text": "Taxi app",
+          "points": 2
+        },
+        {
+          "text": "Notes app",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "tech-things-on-a-desk-setup",
+      "category": "Technology",
+      "prompt": "Things on a desk setup",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Laptop",
+          "points": 1
+        },
+        {
+          "text": "Monitor",
+          "points": 1
+        },
+        {
+          "text": "Keyboard",
+          "points": 1
+        },
+        {
+          "text": "Mouse",
+          "points": 1
+        },
+        {
+          "text": "Charger",
+          "points": 1
+        },
+        {
+          "text": "Headphones",
+          "points": 2
+        },
+        {
+          "text": "Webcam",
+          "points": 2
+        },
+        {
+          "text": "Lamp",
+          "points": 2
+        },
+        {
+          "text": "Notebook",
+          "points": 2
+        },
+        {
+          "text": "Dock",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "tech-reasons-home-internet-feels-slow",
+      "category": "Technology",
+      "prompt": "Reasons home internet feels slow",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Too many devices",
+          "points": 1
+        },
+        {
+          "text": "Router is far away",
+          "points": 1
+        },
+        {
+          "text": "ISP issue",
+          "points": 1
+        },
+        {
+          "text": "Bad weather",
+          "points": 1
+        },
+        {
+          "text": "4K streaming",
+          "points": 1
+        },
+        {
+          "text": "Old router",
+          "points": 2
+        },
+        {
+          "text": "Downloads running",
+          "points": 2
+        },
+        {
+          "text": "Thick walls",
+          "points": 2
+        },
+        {
+          "text": "Peak hours",
+          "points": 2
+        },
+        {
+          "text": "VPN enabled",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "tech-ways-people-unlock-a-device",
+      "category": "Technology",
+      "prompt": "Ways people unlock a device",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Passcode",
+          "points": 1
+        },
+        {
+          "text": "Fingerprint",
+          "points": 1
+        },
+        {
+          "text": "Face ID",
+          "points": 1
+        },
+        {
+          "text": "Pattern",
+          "points": 1
+        },
+        {
+          "text": "PIN",
+          "points": 1
+        },
+        {
+          "text": "Password",
+          "points": 2
+        },
+        {
+          "text": "Smartwatch unlock",
+          "points": 2
+        },
+        {
+          "text": "Security key",
+          "points": 2
+        },
+        {
+          "text": "Voice unlock",
+          "points": 2
+        },
+        {
+          "text": "Swipe code",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "tech-reasons-people-clear-a-browser-cache",
+      "category": "Technology",
+      "prompt": "Reasons people clear a browser cache",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Site looks broken",
+          "points": 1
+        },
+        {
+          "text": "Old images keep loading",
+          "points": 1
+        },
+        {
+          "text": "Login issues",
+          "points": 2
+        },
+        {
+          "text": "Free up space",
+          "points": 2
+        },
+        {
+          "text": "Fix loading errors",
+          "points": 2
+        },
+        {
+          "text": "Refresh styling",
+          "points": 2
+        },
+        {
+          "text": "Remove stale data",
+          "points": 3
+        },
+        {
+          "text": "Improve speed",
+          "points": 3
+        },
+        {
+          "text": "Logout problems",
+          "points": 4
+        },
+        {
+          "text": "Troubleshoot a bug",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "tech-smart-home-devices-people-buy",
+      "category": "Technology",
+      "prompt": "Smart home devices people buy",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Smart speaker",
+          "points": 1
+        },
+        {
+          "text": "Smart lights",
+          "points": 1
+        },
+        {
+          "text": "Smart plug",
+          "points": 2
+        },
+        {
+          "text": "Video doorbell",
+          "points": 2
+        },
+        {
+          "text": "Thermostat",
+          "points": 2
+        },
+        {
+          "text": "Security camera",
+          "points": 2
+        },
+        {
+          "text": "Robot vacuum",
+          "points": 3
+        },
+        {
+          "text": "Smart lock",
+          "points": 3
+        },
+        {
+          "text": "Air purifier",
+          "points": 4
+        },
+        {
+          "text": "Smart blind",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "tech-things-websites-ask-for-during-account-security-setup",
+      "category": "Technology",
+      "prompt": "Things websites ask for during account security setup",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Email",
+          "points": 1
+        },
+        {
+          "text": "Phone number",
+          "points": 1
+        },
+        {
+          "text": "Password",
+          "points": 2
+        },
+        {
+          "text": "Recovery code",
+          "points": 2
+        },
+        {
+          "text": "Security question",
+          "points": 2
+        },
+        {
+          "text": "2FA app",
+          "points": 2
+        },
+        {
+          "text": "Backup email",
+          "points": 3
+        },
+        {
+          "text": "CAPTCHA",
+          "points": 3
+        },
+        {
+          "text": "Passkey",
+          "points": 4
+        },
+        {
+          "text": "Device confirmation",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "tech-parts-in-a-desktop-pc-build",
+      "category": "Technology",
+      "prompt": "Parts in a desktop PC build",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "CPU",
+          "points": 1
+        },
+        {
+          "text": "GPU",
+          "points": 1
+        },
+        {
+          "text": "Motherboard",
+          "points": 2
+        },
+        {
+          "text": "RAM",
+          "points": 2
+        },
+        {
+          "text": "SSD",
+          "points": 2
+        },
+        {
+          "text": "Power supply",
+          "points": 2
+        },
+        {
+          "text": "Case",
+          "points": 3
+        },
+        {
+          "text": "Cooling fan",
+          "points": 3
+        },
+        {
+          "text": "Thermal paste",
+          "points": 4
+        },
+        {
+          "text": "Network card",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "tech-ways-people-protect-online-privacy",
+      "category": "Technology",
+      "prompt": "Ways people protect online privacy",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Strong passwords",
+          "points": 1
+        },
+        {
+          "text": "Two-factor authentication",
+          "points": 1
+        },
+        {
+          "text": "VPN",
+          "points": 2
+        },
+        {
+          "text": "Private browser",
+          "points": 2
+        },
+        {
+          "text": "Ad blocker",
+          "points": 2
+        },
+        {
+          "text": "Password manager",
+          "points": 2
+        },
+        {
+          "text": "App permissions",
+          "points": 3
+        },
+        {
+          "text": "Software updates",
+          "points": 3
+        },
+        {
+          "text": "Encrypted messaging",
+          "points": 4
+        },
+        {
+          "text": "Avoiding public Wi-Fi",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "tech-reasons-an-app-crashes-on-a-phone",
+      "category": "Technology",
+      "prompt": "Reasons an app crashes on a phone",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Bug",
+          "points": 1
+        },
+        {
+          "text": "Low memory",
+          "points": 1
+        },
+        {
+          "text": "Old OS",
+          "points": 2
+        },
+        {
+          "text": "Bad update",
+          "points": 2
+        },
+        {
+          "text": "Server issue",
+          "points": 2
+        },
+        {
+          "text": "Corrupt cache",
+          "points": 2
+        },
+        {
+          "text": "Permission denied",
+          "points": 3
+        },
+        {
+          "text": "Overheating",
+          "points": 3
+        },
+        {
+          "text": "Unsupported device",
+          "points": 4
+        },
+        {
+          "text": "Network timeout",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "tech-types-of-sensors-inside-a-smartphone",
+      "category": "Technology",
+      "prompt": "Types of sensors inside a smartphone",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Accelerometer",
+          "points": 1
+        },
+        {
+          "text": "Gyroscope",
+          "points": 2
+        },
+        {
+          "text": "GPS",
+          "points": 2
+        },
+        {
+          "text": "Proximity sensor",
+          "points": 3
+        },
+        {
+          "text": "Ambient light sensor",
+          "points": 3
+        },
+        {
+          "text": "Magnetometer",
+          "points": 3
+        },
+        {
+          "text": "Barometer",
+          "points": 4
+        },
+        {
+          "text": "Face sensor",
+          "points": 4
+        },
+        {
+          "text": "Microphone",
+          "points": 5
+        },
+        {
+          "text": "Camera sensor",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "tech-jobs-on-a-software-product-team",
+      "category": "Technology",
+      "prompt": "Jobs on a software product team",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Product manager",
+          "points": 1
+        },
+        {
+          "text": "Designer",
+          "points": 2
+        },
+        {
+          "text": "iOS engineer",
+          "points": 2
+        },
+        {
+          "text": "Backend engineer",
+          "points": 3
+        },
+        {
+          "text": "QA tester",
+          "points": 3
+        },
+        {
+          "text": "Data analyst",
+          "points": 3
+        },
+        {
+          "text": "DevOps engineer",
+          "points": 4
+        },
+        {
+          "text": "Support lead",
+          "points": 4
+        },
+        {
+          "text": "Researcher",
+          "points": 5
+        },
+        {
+          "text": "Engineering manager",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "tech-things-people-automate-in-a-smart-home-routine",
+      "category": "Technology",
+      "prompt": "Things people automate in a smart-home routine",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Lights",
+          "points": 1
+        },
+        {
+          "text": "Thermostat",
+          "points": 2
+        },
+        {
+          "text": "Alarm",
+          "points": 2
+        },
+        {
+          "text": "Coffee maker",
+          "points": 3
+        },
+        {
+          "text": "Blinds",
+          "points": 3
+        },
+        {
+          "text": "Vacuum",
+          "points": 3
+        },
+        {
+          "text": "Music",
+          "points": 4
+        },
+        {
+          "text": "Door lock",
+          "points": 4
+        },
+        {
+          "text": "Sprinklers",
+          "points": 5
+        },
+        {
+          "text": "Camera notifications",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "tech-reasons-a-laptop-overheats",
+      "category": "Technology",
+      "prompt": "Reasons a laptop overheats",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Dust build-up",
+          "points": 1
+        },
+        {
+          "text": "Blocked vents",
+          "points": 2
+        },
+        {
+          "text": "Heavy gaming",
+          "points": 2
+        },
+        {
+          "text": "Old thermal paste",
+          "points": 3
+        },
+        {
+          "text": "Hot room",
+          "points": 3
+        },
+        {
+          "text": "Too many tabs",
+          "points": 3
+        },
+        {
+          "text": "Video rendering",
+          "points": 4
+        },
+        {
+          "text": "Faulty fan",
+          "points": 4
+        },
+        {
+          "text": "Soft surface underneath",
+          "points": 5
+        },
+        {
+          "text": "Background updates",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "tech-things-reviewed-during-a-code-review",
+      "category": "Technology",
+      "prompt": "Things reviewed during a code review",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "Logic",
+          "points": 1
+        },
+        {
+          "text": "Naming",
+          "points": 2
+        },
+        {
+          "text": "Tests",
+          "points": 2
+        },
+        {
+          "text": "Readability",
+          "points": 3
+        },
+        {
+          "text": "Security",
+          "points": 3
+        },
+        {
+          "text": "Performance",
+          "points": 3
+        },
+        {
+          "text": "Edge cases",
+          "points": 4
+        },
+        {
+          "text": "Accessibility",
+          "points": 4
+        },
+        {
+          "text": "Error handling",
+          "points": 5
+        },
+        {
+          "text": "Documentation",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "tech-reasons-people-upgrade-device-storage",
+      "category": "Technology",
+      "prompt": "Reasons people upgrade device storage",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Technology",
+      "answers": [
+        {
+          "text": "More photos",
+          "points": 1
+        },
+        {
+          "text": "Larger games",
+          "points": 2
+        },
+        {
+          "text": "4K video",
+          "points": 2
+        },
+        {
+          "text": "Offline music",
+          "points": 3
+        },
+        {
+          "text": "Work files",
+          "points": 3
+        },
+        {
+          "text": "Faster SSD",
+          "points": 3
+        },
+        {
+          "text": "App cache",
+          "points": 4
+        },
+        {
+          "text": "Travel downloads",
+          "points": 4
+        },
+        {
+          "text": "Editing projects",
+          "points": 5
+        },
+        {
+          "text": "Backup overflow",
+          "points": 5
         }
       ]
     }

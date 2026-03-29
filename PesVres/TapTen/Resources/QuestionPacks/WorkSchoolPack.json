@@ -2,7 +2,7 @@
   "id": "work-school-pack-v2",
   "title": "Work & School Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "workschool-common-office-items",
@@ -723,6 +723,942 @@
         },
         {
           "text": "Public transport strike",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "workschool-reasons-students-are-late-to-class",
+      "category": "Work & School",
+      "prompt": "Reasons students are late to class",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Missed alarm",
+          "points": 1
+        },
+        {
+          "text": "Bus was late",
+          "points": 1
+        },
+        {
+          "text": "Overslept",
+          "points": 1
+        },
+        {
+          "text": "Traffic",
+          "points": 1
+        },
+        {
+          "text": "Coffee queue",
+          "points": 1
+        },
+        {
+          "text": "Could not find notes",
+          "points": 2
+        },
+        {
+          "text": "Lost track of time",
+          "points": 2
+        },
+        {
+          "text": "Wrong room",
+          "points": 2
+        },
+        {
+          "text": "Bad weather",
+          "points": 2
+        },
+        {
+          "text": "Locker issue",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-in-an-office-kitchen",
+      "category": "Work & School",
+      "prompt": "Things in an office kitchen",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Microwave",
+          "points": 1
+        },
+        {
+          "text": "Fridge",
+          "points": 1
+        },
+        {
+          "text": "Coffee machine",
+          "points": 1
+        },
+        {
+          "text": "Mugs",
+          "points": 1
+        },
+        {
+          "text": "Tea bags",
+          "points": 1
+        },
+        {
+          "text": "Paper towels",
+          "points": 2
+        },
+        {
+          "text": "Sink",
+          "points": 2
+        },
+        {
+          "text": "Snacks",
+          "points": 2
+        },
+        {
+          "text": "Dishwasher",
+          "points": 2
+        },
+        {
+          "text": "Cutlery",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-teachers-say-all-the-time",
+      "category": "Work & School",
+      "prompt": "Things teachers say all the time",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Sit down",
+          "points": 1
+        },
+        {
+          "text": "Be quiet",
+          "points": 1
+        },
+        {
+          "text": "Eyes on me",
+          "points": 1
+        },
+        {
+          "text": "Hand in your homework",
+          "points": 1
+        },
+        {
+          "text": "Phones away",
+          "points": 1
+        },
+        {
+          "text": "Any questions",
+          "points": 2
+        },
+        {
+          "text": "Work in pairs",
+          "points": 2
+        },
+        {
+          "text": "Time is up",
+          "points": 2
+        },
+        {
+          "text": "Read the instructions",
+          "points": 2
+        },
+        {
+          "text": "Good effort",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "workschool-reasons-people-call-in-sick-to-work",
+      "category": "Work & School",
+      "prompt": "Reasons people call in sick to work",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Fever",
+          "points": 1
+        },
+        {
+          "text": "Cold",
+          "points": 1
+        },
+        {
+          "text": "Stomach bug",
+          "points": 1
+        },
+        {
+          "text": "Migraine",
+          "points": 1
+        },
+        {
+          "text": "Sick child",
+          "points": 1
+        },
+        {
+          "text": "Mental health day",
+          "points": 2
+        },
+        {
+          "text": "Back pain",
+          "points": 2
+        },
+        {
+          "text": "Food poisoning",
+          "points": 2
+        },
+        {
+          "text": "Medical appointment",
+          "points": 2
+        },
+        {
+          "text": "No sleep",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-people-keep-in-a-pencil-case",
+      "category": "Work & School",
+      "prompt": "Things people keep in a pencil case",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Pens",
+          "points": 1
+        },
+        {
+          "text": "Pencils",
+          "points": 1
+        },
+        {
+          "text": "Eraser",
+          "points": 1
+        },
+        {
+          "text": "Sharpener",
+          "points": 1
+        },
+        {
+          "text": "Highlighter",
+          "points": 1
+        },
+        {
+          "text": "Ruler",
+          "points": 2
+        },
+        {
+          "text": "Glue stick",
+          "points": 2
+        },
+        {
+          "text": "Scissors",
+          "points": 2
+        },
+        {
+          "text": "Marker",
+          "points": 2
+        },
+        {
+          "text": "Sticky notes",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-on-a-classroom-wall",
+      "category": "Work & School",
+      "prompt": "Things on a classroom wall",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Whiteboard",
+          "points": 1
+        },
+        {
+          "text": "Clock",
+          "points": 1
+        },
+        {
+          "text": "Alphabet chart",
+          "points": 1
+        },
+        {
+          "text": "Calendar",
+          "points": 1
+        },
+        {
+          "text": "Rules",
+          "points": 1
+        },
+        {
+          "text": "Student work",
+          "points": 2
+        },
+        {
+          "text": "Map",
+          "points": 2
+        },
+        {
+          "text": "Posters",
+          "points": 2
+        },
+        {
+          "text": "Timetable",
+          "points": 2
+        },
+        {
+          "text": "Emergency info",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "workschool-reasons-meetings-run-long",
+      "category": "Work & School",
+      "prompt": "Reasons meetings run long",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Off-topic talk",
+          "points": 1
+        },
+        {
+          "text": "No agenda",
+          "points": 1
+        },
+        {
+          "text": "Too many questions",
+          "points": 2
+        },
+        {
+          "text": "Tech issues",
+          "points": 2
+        },
+        {
+          "text": "One person rambles",
+          "points": 2
+        },
+        {
+          "text": "Decision not made",
+          "points": 2
+        },
+        {
+          "text": "Late start",
+          "points": 3
+        },
+        {
+          "text": "Too many attendees",
+          "points": 3
+        },
+        {
+          "text": "Repeated points",
+          "points": 4
+        },
+        {
+          "text": "Status updates",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-people-do-before-giving-a-presentation",
+      "category": "Work & School",
+      "prompt": "Things people do before giving a presentation",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Rehearse",
+          "points": 1
+        },
+        {
+          "text": "Test slides",
+          "points": 1
+        },
+        {
+          "text": "Drink water",
+          "points": 2
+        },
+        {
+          "text": "Print notes",
+          "points": 2
+        },
+        {
+          "text": "Check the mic",
+          "points": 2
+        },
+        {
+          "text": "Take a deep breath",
+          "points": 2
+        },
+        {
+          "text": "Adjust outfit",
+          "points": 3
+        },
+        {
+          "text": "Open laptop",
+          "points": 3
+        },
+        {
+          "text": "Practice the intro",
+          "points": 4
+        },
+        {
+          "text": "Use the bathroom",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "workschool-excuses-students-use-for-missing-homework",
+      "category": "Work & School",
+      "prompt": "Excuses students use for missing homework",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "humorous",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Forgot it",
+          "points": 1
+        },
+        {
+          "text": "Printer broke",
+          "points": 1
+        },
+        {
+          "text": "Laptop died",
+          "points": 2
+        },
+        {
+          "text": "Family issue",
+          "points": 2
+        },
+        {
+          "text": "Was sick",
+          "points": 2
+        },
+        {
+          "text": "Did not understand it",
+          "points": 2
+        },
+        {
+          "text": "Left it at home",
+          "points": 3
+        },
+        {
+          "text": "Internet went down",
+          "points": 3
+        },
+        {
+          "text": "Had sports practice",
+          "points": 4
+        },
+        {
+          "text": "Dog ate it",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "workschool-reasons-the-printer-at-work-will-not-cooperate",
+      "category": "Work & School",
+      "prompt": "Reasons the printer at work will not cooperate",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "No paper",
+          "points": 1
+        },
+        {
+          "text": "Paper jam",
+          "points": 1
+        },
+        {
+          "text": "No ink",
+          "points": 2
+        },
+        {
+          "text": "Wrong printer selected",
+          "points": 2
+        },
+        {
+          "text": "Offline",
+          "points": 2
+        },
+        {
+          "text": "Wi-Fi issue",
+          "points": 2
+        },
+        {
+          "text": "Toner empty",
+          "points": 3
+        },
+        {
+          "text": "Queue stuck",
+          "points": 3
+        },
+        {
+          "text": "Driver error",
+          "points": 4
+        },
+        {
+          "text": "Cover open",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-people-bring-to-a-group-project-meeting",
+      "category": "Work & School",
+      "prompt": "Things people bring to a group-project meeting",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Laptop",
+          "points": 1
+        },
+        {
+          "text": "Notes",
+          "points": 1
+        },
+        {
+          "text": "Slides",
+          "points": 2
+        },
+        {
+          "text": "Coffee",
+          "points": 2
+        },
+        {
+          "text": "Charger",
+          "points": 2
+        },
+        {
+          "text": "Ideas",
+          "points": 2
+        },
+        {
+          "text": "Research",
+          "points": 3
+        },
+        {
+          "text": "Snacks",
+          "points": 3
+        },
+        {
+          "text": "Questions",
+          "points": 4
+        },
+        {
+          "text": "Calendar",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-interviewers-ask-about-beyond-experience",
+      "category": "Work & School",
+      "prompt": "Things interviewers ask about beyond experience",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Strengths",
+          "points": 1
+        },
+        {
+          "text": "Weaknesses",
+          "points": 1
+        },
+        {
+          "text": "Salary expectations",
+          "points": 2
+        },
+        {
+          "text": "Availability",
+          "points": 2
+        },
+        {
+          "text": "Teamwork",
+          "points": 2
+        },
+        {
+          "text": "Career goals",
+          "points": 2
+        },
+        {
+          "text": "Why this company",
+          "points": 3
+        },
+        {
+          "text": "Conflict example",
+          "points": 3
+        },
+        {
+          "text": "Leadership example",
+          "points": 4
+        },
+        {
+          "text": "Questions for us",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "workschool-reasons-coworkers-stay-muted-on-video-calls",
+      "category": "Work & School",
+      "prompt": "Reasons coworkers stay muted on video calls",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Background noise",
+          "points": 1
+        },
+        {
+          "text": "Eating",
+          "points": 2
+        },
+        {
+          "text": "Kids nearby",
+          "points": 2
+        },
+        {
+          "text": "Bad microphone",
+          "points": 3
+        },
+        {
+          "text": "Coughing",
+          "points": 3
+        },
+        {
+          "text": "Side conversation",
+          "points": 3
+        },
+        {
+          "text": "Typing",
+          "points": 4
+        },
+        {
+          "text": "Dog barking",
+          "points": 4
+        },
+        {
+          "text": "Do not want to interrupt",
+          "points": 5
+        },
+        {
+          "text": "Embarrassing room",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "workschool-office-perks-employees-brag-about",
+      "category": "Work & School",
+      "prompt": "Office perks employees brag about",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Free lunch",
+          "points": 1
+        },
+        {
+          "text": "Remote work",
+          "points": 2
+        },
+        {
+          "text": "Bonus",
+          "points": 2
+        },
+        {
+          "text": "Stock options",
+          "points": 3
+        },
+        {
+          "text": "Gym",
+          "points": 3
+        },
+        {
+          "text": "Extra vacation",
+          "points": 3
+        },
+        {
+          "text": "Happy hour",
+          "points": 4
+        },
+        {
+          "text": "Home-office stipend",
+          "points": 4
+        },
+        {
+          "text": "Wellness budget",
+          "points": 5
+        },
+        {
+          "text": "Four-day week",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-interns-often-get-asked-to-do",
+      "category": "Work & School",
+      "prompt": "Things interns often get asked to do",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Take notes",
+          "points": 1
+        },
+        {
+          "text": "Build a deck",
+          "points": 2
+        },
+        {
+          "text": "Shadow a meeting",
+          "points": 2
+        },
+        {
+          "text": "Fetch coffee",
+          "points": 3
+        },
+        {
+          "text": "Research a competitor",
+          "points": 3
+        },
+        {
+          "text": "Book a room",
+          "points": 3
+        },
+        {
+          "text": "Update a spreadsheet",
+          "points": 4
+        },
+        {
+          "text": "Test a feature",
+          "points": 4
+        },
+        {
+          "text": "Organize files",
+          "points": 5
+        },
+        {
+          "text": "Draft a recap",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "workschool-reasons-people-change-majors-or-careers",
+      "category": "Work & School",
+      "prompt": "Reasons people change majors or careers",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Lost interest",
+          "points": 1
+        },
+        {
+          "text": "Better salary",
+          "points": 2
+        },
+        {
+          "text": "Burnout",
+          "points": 2
+        },
+        {
+          "text": "New passion",
+          "points": 3
+        },
+        {
+          "text": "Bad grades",
+          "points": 3
+        },
+        {
+          "text": "Industry decline",
+          "points": 3
+        },
+        {
+          "text": "Family reasons",
+          "points": 4
+        },
+        {
+          "text": "Better work-life balance",
+          "points": 4
+        },
+        {
+          "text": "Opportunity",
+          "points": 5
+        },
+        {
+          "text": "Internship experience",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-people-bring-to-a-career-fair",
+      "category": "Work & School",
+      "prompt": "Things people bring to a career fair",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "Resume",
+          "points": 1
+        },
+        {
+          "text": "Portfolio",
+          "points": 2
+        },
+        {
+          "text": "Business cards",
+          "points": 2
+        },
+        {
+          "text": "Elevator pitch",
+          "points": 3
+        },
+        {
+          "text": "Notebook",
+          "points": 3
+        },
+        {
+          "text": "Good shoes",
+          "points": 3
+        },
+        {
+          "text": "Water bottle",
+          "points": 4
+        },
+        {
+          "text": "Questions",
+          "points": 4
+        },
+        {
+          "text": "LinkedIn QR code",
+          "points": 5
+        },
+        {
+          "text": "Cover letter",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "workschool-things-that-can-derail-a-group-assignment",
+      "category": "Work & School",
+      "prompt": "Things that can derail a group assignment",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Education",
+      "answers": [
+        {
+          "text": "One person disappears",
+          "points": 1
+        },
+        {
+          "text": "Missed deadline",
+          "points": 2
+        },
+        {
+          "text": "Conflicting schedules",
+          "points": 2
+        },
+        {
+          "text": "Uneven effort",
+          "points": 3
+        },
+        {
+          "text": "Bad communication",
+          "points": 3
+        },
+        {
+          "text": "No shared file",
+          "points": 3
+        },
+        {
+          "text": "Scope too big",
+          "points": 4
+        },
+        {
+          "text": "Tech issues",
+          "points": 4
+        },
+        {
+          "text": "Argument",
+          "points": 5
+        },
+        {
+          "text": "Last-minute rewrite",
           "points": 5
         }
       ]

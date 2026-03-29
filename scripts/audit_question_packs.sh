@@ -271,8 +271,8 @@ for category in "${final_categories[@]}"; do
     IFS=$'\t' read -r total easy medium hard <<< "$counts"
     echo "- $category: $total total ($easy easy, $medium medium, $hard hard)"
 
-    if [[ "$total" -ne 12 || "$easy" -ne 4 || "$medium" -ne 4 || "$hard" -ne 4 ]]; then
-        echo "  [FAIL] Expected 12 total and 4/4/4 distribution."
+    if [[ "$total" -ne 30 || "$easy" -ne 10 || "$medium" -ne 10 || "$hard" -ne 10 ]]; then
+        echo "  [FAIL] Expected 30 total and 10/10/10 distribution."
         ((errors += 1))
     fi
 done
@@ -300,8 +300,8 @@ else
 
         echo "- $title ($filename): $total total ($easy easy, $medium medium, $hard hard)"
 
-        if [[ "$total" -ne 24 || "$easy" -ne 8 || "$medium" -ne 8 || "$hard" -ne 8 ]]; then
-            echo "  [FAIL] Expected 24 total and 8/8/8 distribution for premium expansions."
+        if [[ "$total" -ne 40 || "$easy" -ne 14 || "$medium" -ne 13 || "$hard" -ne 13 ]]; then
+            echo "  [FAIL] Expected 40 total and 14/13/13 distribution for premium expansions."
             ((errors += 1))
         fi
     done < "$premium_coverage_rows"

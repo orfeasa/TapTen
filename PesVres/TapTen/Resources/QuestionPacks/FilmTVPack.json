@@ -2,7 +2,7 @@
   "id": "film-tv-pack-v2",
   "title": "Film & TV Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "film-pixar-movies-global-recognition",
@@ -166,7 +166,7 @@
           "points": 1
         },
         {
-          "text": "Pokémon",
+          "text": "Pok\u00e9mon",
           "points": 2
         },
         {
@@ -361,7 +361,7 @@
           "points": 3
         },
         {
-          "text": "Alfonso Cuarón",
+          "text": "Alfonso Cuar\u00f3n",
           "points": 4
         },
         {
@@ -654,7 +654,7 @@
           "points": 3
         },
         {
-          "text": "San Sebastián International Film Festival",
+          "text": "San Sebasti\u00e1n International Film Festival",
           "points": 3
         },
         {
@@ -733,6 +733,942 @@
         {
           "text": "Dutch angle",
           "points": 4
+        }
+      ]
+    },
+    {
+      "id": "filmtv-things-people-expect-in-a-superhero-movie",
+      "category": "Film & TV",
+      "prompt": "Things people expect in a superhero movie",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Costume",
+          "points": 1
+        },
+        {
+          "text": "Villain",
+          "points": 1
+        },
+        {
+          "text": "Origin story",
+          "points": 1
+        },
+        {
+          "text": "Explosion",
+          "points": 1
+        },
+        {
+          "text": "Final battle",
+          "points": 1
+        },
+        {
+          "text": "Sidekick",
+          "points": 2
+        },
+        {
+          "text": "Secret identity",
+          "points": 2
+        },
+        {
+          "text": "Training scene",
+          "points": 2
+        },
+        {
+          "text": "Love interest",
+          "points": 2
+        },
+        {
+          "text": "Post-credits scene",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "filmtv-reasons-people-rewatch-a-tv-series",
+      "category": "Film & TV",
+      "prompt": "Reasons people rewatch a TV series",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Comfort show",
+          "points": 1
+        },
+        {
+          "text": "Great jokes",
+          "points": 1
+        },
+        {
+          "text": "Favorite character",
+          "points": 1
+        },
+        {
+          "text": "Nostalgia",
+          "points": 1
+        },
+        {
+          "text": "Missed details",
+          "points": 1
+        },
+        {
+          "text": "Background viewing",
+          "points": 2
+        },
+        {
+          "text": "Good finale",
+          "points": 2
+        },
+        {
+          "text": "New season is coming",
+          "points": 2
+        },
+        {
+          "text": "Short episodes",
+          "points": 2
+        },
+        {
+          "text": "Someone else has not seen it",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "filmtv-jobs-listed-in-movie-end-credits",
+      "category": "Film & TV",
+      "prompt": "Jobs listed in movie end credits",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Actor",
+          "points": 1
+        },
+        {
+          "text": "Director",
+          "points": 1
+        },
+        {
+          "text": "Producer",
+          "points": 1
+        },
+        {
+          "text": "Writer",
+          "points": 1
+        },
+        {
+          "text": "Editor",
+          "points": 1
+        },
+        {
+          "text": "Composer",
+          "points": 2
+        },
+        {
+          "text": "Costume designer",
+          "points": 2
+        },
+        {
+          "text": "Makeup artist",
+          "points": 2
+        },
+        {
+          "text": "Cinematographer",
+          "points": 2
+        },
+        {
+          "text": "Stunt coordinator",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "filmtv-things-people-buy-at-a-cinema",
+      "category": "Film & TV",
+      "prompt": "Things people buy at a cinema",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Ticket",
+          "points": 1
+        },
+        {
+          "text": "Popcorn",
+          "points": 1
+        },
+        {
+          "text": "Soda",
+          "points": 1
+        },
+        {
+          "text": "Candy",
+          "points": 1
+        },
+        {
+          "text": "Nachos",
+          "points": 1
+        },
+        {
+          "text": "Hot dog",
+          "points": 2
+        },
+        {
+          "text": "Water",
+          "points": 2
+        },
+        {
+          "text": "Ice cream",
+          "points": 2
+        },
+        {
+          "text": "3D glasses",
+          "points": 2
+        },
+        {
+          "text": "Combo meal",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "filmtv-types-of-tv-shows-people-binge",
+      "category": "Film & TV",
+      "prompt": "Types of TV shows people binge",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Drama",
+          "points": 1
+        },
+        {
+          "text": "Comedy",
+          "points": 1
+        },
+        {
+          "text": "Reality show",
+          "points": 1
+        },
+        {
+          "text": "Crime series",
+          "points": 1
+        },
+        {
+          "text": "Sitcom",
+          "points": 1
+        },
+        {
+          "text": "Documentary",
+          "points": 2
+        },
+        {
+          "text": "Anime",
+          "points": 2
+        },
+        {
+          "text": "Romance",
+          "points": 2
+        },
+        {
+          "text": "Thriller",
+          "points": 2
+        },
+        {
+          "text": "Cooking show",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "filmtv-things-that-appear-on-a-movie-poster",
+      "category": "Film & TV",
+      "prompt": "Things that appear on a movie poster",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Title",
+          "points": 1
+        },
+        {
+          "text": "Actor faces",
+          "points": 1
+        },
+        {
+          "text": "Release date",
+          "points": 1
+        },
+        {
+          "text": "Tagline",
+          "points": 1
+        },
+        {
+          "text": "Credits block",
+          "points": 1
+        },
+        {
+          "text": "Background scene",
+          "points": 2
+        },
+        {
+          "text": "Logo",
+          "points": 2
+        },
+        {
+          "text": "Quote from review",
+          "points": 2
+        },
+        {
+          "text": "Age rating",
+          "points": 2
+        },
+        {
+          "text": "Studio name",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "filmtv-things-a-reality-show-contestant-worries-about",
+      "category": "Film & TV",
+      "prompt": "Things a reality show contestant worries about",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Being eliminated",
+          "points": 1
+        },
+        {
+          "text": "Looking awkward",
+          "points": 1
+        },
+        {
+          "text": "Getting a bad edit",
+          "points": 2
+        },
+        {
+          "text": "Failing a challenge",
+          "points": 2
+        },
+        {
+          "text": "Public vote",
+          "points": 2
+        },
+        {
+          "text": "Alliances",
+          "points": 2
+        },
+        {
+          "text": "Cameras everywhere",
+          "points": 3
+        },
+        {
+          "text": "Confessionals",
+          "points": 3
+        },
+        {
+          "text": "Wardrobe malfunction",
+          "points": 4
+        },
+        {
+          "text": "Saying something stupid",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "filmtv-plot-devices-common-in-mystery-movies",
+      "category": "Film & TV",
+      "prompt": "Plot devices common in mystery movies",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Red herring",
+          "points": 1
+        },
+        {
+          "text": "Secret letter",
+          "points": 1
+        },
+        {
+          "text": "Alibi",
+          "points": 2
+        },
+        {
+          "text": "Twist ending",
+          "points": 2
+        },
+        {
+          "text": "Hidden room",
+          "points": 2
+        },
+        {
+          "text": "Double identity",
+          "points": 2
+        },
+        {
+          "text": "Flashback",
+          "points": 3
+        },
+        {
+          "text": "Anonymous note",
+          "points": 3
+        },
+        {
+          "text": "Missing weapon",
+          "points": 4
+        },
+        {
+          "text": "Unexpected witness",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "filmtv-ways-a-sitcom-shows-embarrassment",
+      "category": "Film & TV",
+      "prompt": "Ways a sitcom shows embarrassment",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Awkward silence",
+          "points": 1
+        },
+        {
+          "text": "Record scratch",
+          "points": 1
+        },
+        {
+          "text": "Group stare",
+          "points": 2
+        },
+        {
+          "text": "Fake laugh",
+          "points": 2
+        },
+        {
+          "text": "Spit take",
+          "points": 2
+        },
+        {
+          "text": "Interrupted confession",
+          "points": 2
+        },
+        {
+          "text": "Wrong text",
+          "points": 3
+        },
+        {
+          "text": "Walk-in at the worst moment",
+          "points": 3
+        },
+        {
+          "text": "Costume mishap",
+          "points": 4
+        },
+        {
+          "text": "Name mix-up",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "filmtv-reasons-a-tv-show-gets-cancelled",
+      "category": "Film & TV",
+      "prompt": "Reasons a TV show gets cancelled",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Low ratings",
+          "points": 1
+        },
+        {
+          "text": "High budget",
+          "points": 1
+        },
+        {
+          "text": "Cast member leaves",
+          "points": 2
+        },
+        {
+          "text": "Bad reviews",
+          "points": 2
+        },
+        {
+          "text": "Network change",
+          "points": 2
+        },
+        {
+          "text": "Strike delays",
+          "points": 2
+        },
+        {
+          "text": "Story ran out",
+          "points": 3
+        },
+        {
+          "text": "Scheduling issues",
+          "points": 3
+        },
+        {
+          "text": "Rights problems",
+          "points": 4
+        },
+        {
+          "text": "Streaming cuts",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "filmtv-things-people-shout-at-a-horror-movie-screen",
+      "category": "Film & TV",
+      "prompt": "Things people shout at a horror movie screen",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "humorous",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Do not go in there",
+          "points": 1
+        },
+        {
+          "text": "Turn around",
+          "points": 1
+        },
+        {
+          "text": "Run",
+          "points": 2
+        },
+        {
+          "text": "Behind you",
+          "points": 2
+        },
+        {
+          "text": "Call the police",
+          "points": 2
+        },
+        {
+          "text": "Leave the house",
+          "points": 2
+        },
+        {
+          "text": "Drop the creepy doll",
+          "points": 3
+        },
+        {
+          "text": "Lock the door",
+          "points": 3
+        },
+        {
+          "text": "It is the killer",
+          "points": 4
+        },
+        {
+          "text": "Do not split up",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "filmtv-types-of-scenes-in-a-romantic-comedy",
+      "category": "Film & TV",
+      "prompt": "Types of scenes in a romantic comedy",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Meet-cute",
+          "points": 1
+        },
+        {
+          "text": "First date",
+          "points": 1
+        },
+        {
+          "text": "Misunderstanding",
+          "points": 2
+        },
+        {
+          "text": "Best-friend advice",
+          "points": 2
+        },
+        {
+          "text": "Airport chase",
+          "points": 2
+        },
+        {
+          "text": "Grand gesture",
+          "points": 2
+        },
+        {
+          "text": "Montage",
+          "points": 3
+        },
+        {
+          "text": "Rain kiss",
+          "points": 3
+        },
+        {
+          "text": "Breakup scene",
+          "points": 4
+        },
+        {
+          "text": "Happy ending",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "filmtv-things-a-film-festival-gives-awards-for",
+      "category": "Film & TV",
+      "prompt": "Things a film festival gives awards for",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Best picture",
+          "points": 1
+        },
+        {
+          "text": "Best director",
+          "points": 2
+        },
+        {
+          "text": "Best actor",
+          "points": 2
+        },
+        {
+          "text": "Best actress",
+          "points": 3
+        },
+        {
+          "text": "Best screenplay",
+          "points": 3
+        },
+        {
+          "text": "Jury prize",
+          "points": 3
+        },
+        {
+          "text": "Audience award",
+          "points": 4
+        },
+        {
+          "text": "Short film prize",
+          "points": 4
+        },
+        {
+          "text": "Cinematography award",
+          "points": 5
+        },
+        {
+          "text": "Debut award",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "filmtv-roles-on-a-tv-set-beyond-the-cast",
+      "category": "Film & TV",
+      "prompt": "Roles on a TV set beyond the cast",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Showrunner",
+          "points": 1
+        },
+        {
+          "text": "Script supervisor",
+          "points": 2
+        },
+        {
+          "text": "Gaffer",
+          "points": 2
+        },
+        {
+          "text": "Grip",
+          "points": 3
+        },
+        {
+          "text": "Production designer",
+          "points": 3
+        },
+        {
+          "text": "Line producer",
+          "points": 3
+        },
+        {
+          "text": "Sound mixer",
+          "points": 4
+        },
+        {
+          "text": "Camera operator",
+          "points": 4
+        },
+        {
+          "text": "Assistant director",
+          "points": 5
+        },
+        {
+          "text": "Prop master",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "filmtv-ways-a-crime-show-reveals-the-culprit",
+      "category": "Film & TV",
+      "prompt": "Ways a crime show reveals the culprit",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "CCTV footage",
+          "points": 1
+        },
+        {
+          "text": "DNA result",
+          "points": 2
+        },
+        {
+          "text": "Confession",
+          "points": 2
+        },
+        {
+          "text": "Slip of the tongue",
+          "points": 3
+        },
+        {
+          "text": "Hidden motive",
+          "points": 3
+        },
+        {
+          "text": "Witness identification",
+          "points": 3
+        },
+        {
+          "text": "Phone records",
+          "points": 4
+        },
+        {
+          "text": "Forensics match",
+          "points": 4
+        },
+        {
+          "text": "Timeline contradiction",
+          "points": 5
+        },
+        {
+          "text": "Accomplice flips",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "filmtv-kinds-of-camera-shots-directors-use",
+      "category": "Film & TV",
+      "prompt": "Kinds of camera shots directors use",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Close-up",
+          "points": 1
+        },
+        {
+          "text": "Wide shot",
+          "points": 2
+        },
+        {
+          "text": "Tracking shot",
+          "points": 2
+        },
+        {
+          "text": "Pan",
+          "points": 3
+        },
+        {
+          "text": "Crane shot",
+          "points": 3
+        },
+        {
+          "text": "Handheld shot",
+          "points": 3
+        },
+        {
+          "text": "Over-the-shoulder shot",
+          "points": 4
+        },
+        {
+          "text": "Dolly zoom",
+          "points": 4
+        },
+        {
+          "text": "Aerial shot",
+          "points": 5
+        },
+        {
+          "text": "POV shot",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "filmtv-reasons-an-actor-becomes-hard-to-work-with-on-set",
+      "category": "Film & TV",
+      "prompt": "Reasons an actor becomes hard to work with on set",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Scheduling conflicts",
+          "points": 1
+        },
+        {
+          "text": "Ego",
+          "points": 2
+        },
+        {
+          "text": "Tardiness",
+          "points": 2
+        },
+        {
+          "text": "Contract dispute",
+          "points": 3
+        },
+        {
+          "text": "Creative disagreement",
+          "points": 3
+        },
+        {
+          "text": "Method acting problems",
+          "points": 3
+        },
+        {
+          "text": "Bad chemistry",
+          "points": 4
+        },
+        {
+          "text": "Rehab break",
+          "points": 4
+        },
+        {
+          "text": "Public scandal",
+          "points": 5
+        },
+        {
+          "text": "Salary demands",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "filmtv-things-a-streaming-service-tracks-before-renewing-a-show",
+      "category": "Film & TV",
+      "prompt": "Things a streaming service tracks before renewing a show",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Film",
+      "answers": [
+        {
+          "text": "Viewership",
+          "points": 1
+        },
+        {
+          "text": "Completion rate",
+          "points": 2
+        },
+        {
+          "text": "Social buzz",
+          "points": 2
+        },
+        {
+          "text": "Budget",
+          "points": 3
+        },
+        {
+          "text": "Subscriber growth",
+          "points": 3
+        },
+        {
+          "text": "Critical reviews",
+          "points": 3
+        },
+        {
+          "text": "Churn risk",
+          "points": 4
+        },
+        {
+          "text": "International performance",
+          "points": 4
+        },
+        {
+          "text": "Awards attention",
+          "points": 5
+        },
+        {
+          "text": "Merch sales",
+          "points": 5
         }
       ]
     }

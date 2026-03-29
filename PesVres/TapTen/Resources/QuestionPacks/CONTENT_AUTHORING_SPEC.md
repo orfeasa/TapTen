@@ -169,8 +169,8 @@ Required checks:
 - No duplicate or near-overlapping answers inside a single question.
 - Prompt adjudication speed: host can map spoken guesses quickly without legalistic interpretation.
 - Category-level review: verify each category still has a sensible easy/medium/hard spread for available question count.
-- Free starter-library target review: each of the 12 base categories should remain at exactly 12 questions with 4 easy / 4 medium / 4 hard.
-- Premium expansion target review: each premium pack should ship at 24 questions with 8 easy / 8 medium / 8 hard unless product requirements change.
+- Free starter-library target review: each of the 12 base categories should remain at exactly 30 questions with 10 easy / 10 medium / 10 hard.
+- Premium expansion target review: each premium pack should ship at 40 questions with 14 easy / 13 medium / 13 hard unless product requirements change.
 
 Recommended cadence:
 - Run full audit after any batch edit to packs.

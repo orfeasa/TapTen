@@ -8,7 +8,7 @@
   - Host Round supports timer, pause/resume, source/report actions after time-up, and answer tap toggling.
   - Repo now includes fastlane + GitHub Actions automation for TestFlight beta uploads, with raw/base64 App Store Connect API key support.
   - Question pack loader validates richer metadata and difficulty score/tier consistency.
-  - Question content now covers all 12 target categories with 12 questions each and exact 4 easy / 4 medium / 4 hard spread.
+  - Question content now covers all 12 target categories with 30 questions each and exact 10 easy / 10 medium / 10 hard spread.
   - Setup category picker now reflects all 12 shipped categories.
   - New Game now supports difficulty-tier filtering and preflight validation for empty playable pools.
   - Runtime round feedback now respects `Sounds` and `Haptics` settings.
@@ -38,7 +38,7 @@
 - Content quality workflow requires post-edit auditing (duplicates, ambiguity, overlap, score/tier integrity).
 - Home should explain the core loop without depending on `How To Play` for first comprehension.
 - Home keeps instructional content in a separate How To Play sheet (not a large on-home card).
-- Home keeps `Browse Question Packs` as a secondary top-level action.
+- Home keeps `Browse Library` as a secondary top-level action.
 - Home setup/defaults cards are display-only and should not look tappable.
 - Host answer rows are currently sorted alphabetically for scanning speed.
 - Host-round interaction baseline is tap-to-toggle answers with active-round `Pause`/`Resume` and post-timeup `Continue to Summary`.
@@ -58,6 +58,7 @@
 - Countdown tension audio remains a final-`10`-seconds treatment in the shipped build.
 - iPhone remains portrait-only in v1; landscape and iPad layouts are deferred deliberate future work.
 - Question reporting now uses an in-app submission path; release/ops still need to provide a real feedback endpoint for production delivery.
+- Backend work should stay narrow and self-hostable; start with feedback ingestion and optional editorial telemetry, not gameplay/network sync.
 - The website should stay static-first and deploy through GitHub Pages rather than a custom server stack.
 - Settings changes should affect future setup defaults only, not mutate an already-open New Game draft.
 - Monetization remains post-v1; release-candidate work stays focused on polishing the free base game.
@@ -65,7 +66,7 @@
 - The first monetization pass should favor permanent non-consumable pack unlocks over ads, consumables, or subscription-first pricing.
 - The permanent free starter library is the current shipped 12-category catalog.
 - The first paid wave is `After Dark Vol. 1`, `Date Night`, and `Office & Icebreakers`, with `Holiday Chaos` as the first seasonal follow-up.
-- Paid expansions should feel session-complete, with a target premium packaging standard of `24` questions and `8 easy / 8 medium / 8 hard`.
+- Paid expansions should feel session-complete, with a target premium packaging standard of `40` questions and `14 easy / 13 medium / 13 hard`.
 - Any future membership should be annual-first and only follow proven repeat purchases plus a sustainable premium content cadence.
 - Full paid-catalog unlock should wait until the catalog is deep enough to justify it; do not ship it with an undersized premium lineup.
 
@@ -570,31 +571,35 @@
     - Approved evergreen launch slate: `After Dark Vol. 1`, `Date Night`, `Office & Icebreakers`.
     - Approved seasonal follow-up: `Holiday Chaos`.
 
-- [ ] TASK: Author the first premium content wave
+- [x] TASK: Author the first premium content wave
   - Type: Content / Editorial
   - Priority: P2
-  - Status: Planned
+  - Status: Completed
   - Area: `Resources/QuestionPacks`, premium content roadmap
   - Goal: Produce the first evergreen paid expansions so the pack store can launch with real session-complete value.
   - Acceptance Criteria:
-    - `After Dark Vol. 1`, `Date Night`, and `Office & Icebreakers` each ship with `24` questions.
-    - Each expansion lands at `8 easy / 8 medium / 8 hard`.
+    - `After Dark Vol. 1`, `Date Night`, and `Office & Icebreakers` each ship with `40` questions.
+    - Each expansion lands at `14 easy / 13 medium / 13 hard`.
     - Prompt ambiguity, overlap, and answer-set duplication are audited before release.
     - Final naming, cover copy, and store-facing one-line descriptions are approved.
   - Notes:
     - Detailed authoring tasks should be tracked in `CONTENT_TODO.md`.
+    - Completed with bundled premium JSON packs for `After Dark Vol. 1`, `Date Night`, and `Office & Icebreakers`, each at `40` questions with `14 easy / 13 medium / 13 hard`.
+    - Repo audit is currently clean across the evergreen paid wave and the free starter library.
 
-- [ ] TASK: Author Holiday Chaos as the first seasonal premium follow-up
+- [x] TASK: Author Holiday Chaos as the first seasonal premium follow-up
   - Type: Content / Editorial / Release
   - Priority: P2
-  - Status: Planned
+  - Status: Completed
   - Area: `Resources/QuestionPacks`, seasonal content calendar
   - Goal: Give the paid catalog a clear seasonal merchandising beat after the first evergreen premium launch.
   - Acceptance Criteria:
-    - `Holiday Chaos` ships with `24` questions and balanced difficulty coverage.
+    - `Holiday Chaos` ships with `40` questions and balanced difficulty coverage.
     - Content is broad enough for repeat holiday gatherings and not anchored to one narrow celebration.
     - Store and website merchandising are ready in time for the October to November launch window.
     - Existing owners retain access after the season ends.
+  - Notes:
+    - `Holiday Chaos` is now bundled locally with `40` questions and balanced `14 easy / 13 medium / 13 hard` coverage.
 
 - [x] TASK: Add pack-level monetization metadata to the local content model
   - Type: Technical / Content Infrastructure
@@ -640,6 +645,7 @@
   - Notes:
     - Keep the first monetization pass one-time-purchase based; defer subscriptions and consumables.
     - Runtime entitlement persistence, restore flow, and bundle-aware unlock checks are now in the app; App Store Connect product setup and Family Sharing remain external follow-up.
+    - Tester builds now expose local premium-pack unlocks without charge so the purchase flow can be exercised before live products are configured.
 
 - [x] TASK: Define monetization measurement and go / no-go gates
   - Type: Product / Analytics
@@ -703,10 +709,65 @@
     - The report payload includes pack metadata, question ID, prompt, category, difficulty tier, validation style, source URL, selected reason, optional note, app version, and timestamp.
     - The app-side submission layer stays narrow in scope and does not introduce remote pack fetching or broader gameplay networking.
   - Notes:
-    - Preferred backend shape is a minimal serverless endpoint, not a general-purpose app backend.
-    - Cloudflare Workers, Supabase Edge Functions, or Firebase Functions are acceptable patterns.
+    - Preferred backend shape is a minimal isolated service, not a general-purpose app backend.
+    - A small self-hosted service on the user-managed VPS is now an approved option alongside serverless patterns.
     - Endpoint ownership/infrastructure should remain isolated behind a small service.
     - The app now supports in-app submission plus a local retry queue; production builds still need a configured endpoint URL to deliver queued reports.
+
+- [x] TASK: Define the narrow self-hosted backend rollout plan
+  - Type: Architecture / Ops / Product
+  - Priority: P3
+  - Status: Completed
+  - Area: feedback delivery, telemetry ops, deployment planning
+  - Goal: Turn the available user-managed server into a concrete backend option without expanding the app into a networked product.
+  - Acceptance Criteria:
+    - The repo documents a phased backend rollout that starts with question feedback delivery.
+    - The plan defines an opinionated deployment stack, server layout, route set, and operational baseline.
+    - The plan explicitly keeps gameplay, pack delivery, and account systems out of scope.
+  - Notes:
+    - Completed in `BACKEND_PLAN.md`.
+
+- [ ] TASK: Deploy a self-hosted question-feedback endpoint
+  - Type: Feature / Ops / Release
+  - Priority: P3
+  - Status: Planned
+  - Area: backend service, VPS deployment, feedback delivery
+  - Goal: Back the existing in-app `Flag Question` flow with a real HTTPS endpoint on the self-hosted backend.
+  - Acceptance Criteria:
+    - `POST /tapten/v1/question-feedback` accepts the current app payload and returns `2xx` on success.
+    - Invalid payloads are rejected cleanly with validation.
+    - The service persists feedback durably and supports SSH-side export for review.
+    - A Tap Ten build can be pointed at the real endpoint using the existing endpoint configuration path.
+  - Notes:
+    - Keep the first service narrow: health check, feedback route, SQLite persistence, and basic export.
+
+- [ ] TASK: Add self-hosted calibration telemetry upload
+  - Type: Feature / Content QA / Technical
+  - Priority: P3
+  - Status: Planned
+  - Area: `Services/QuestionCalibrationTelemetryStore`, backend ingestion, editorial analytics
+  - Goal: Turn local question-outcome telemetry into a lightweight editorial signal for difficulty tuning.
+  - Acceptance Criteria:
+    - The app can batch-upload calibration events to a configured HTTPS endpoint.
+    - Uploads use local queueing and retry behavior similar to question feedback.
+    - The backend stores calibration events durably and supports summary/export workflows.
+    - The rollout can be limited to tester/debug builds first.
+  - Notes:
+    - Start only after the feedback endpoint is live and operationally stable.
+
+- [ ] TASK: Add backend ops baseline for the self-hosted service
+  - Type: Ops / Reliability
+  - Priority: P3
+  - Status: Planned
+  - Area: VPS hardening, backups, logging, service management
+  - Goal: Make the self-hosted backend recoverable and low-drama to operate.
+  - Acceptance Criteria:
+    - The service runs as a dedicated non-root user.
+    - TLS termination, reverse proxying, and rate limiting are configured.
+    - Daily database backups are produced and a restore path is documented.
+    - Health check and logs are easy to inspect during tester rollout.
+  - Notes:
+    - Follow `BACKEND_PLAN.md` rather than inventing a broader platform.
 
 - [ ] TASK: Add iPad support
   - Type: Feature / UX
@@ -789,7 +850,7 @@
   - Area: Content pipeline
   - Goal: Reach a stable, balanced, low-ambiguity content set suitable for broad playtesting.
   - Acceptance Criteria:
-    - Final 12 categories stay complete with 12 questions each and balanced tiers.
+    - Final 12 categories stay complete with 30 questions each and balanced tiers.
     - Setup category picker is aligned with shipped content taxonomy.
     - Manual editorial review issues are closed or explicitly deferred.
     - Duplicate and near-duplicate prompt checks remain clean.

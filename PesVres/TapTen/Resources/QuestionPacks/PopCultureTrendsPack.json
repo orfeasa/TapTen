@@ -2,7 +2,7 @@
   "id": "pop-culture-trends-pack-v2",
   "title": "Pop Culture & Trends Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "pop-social-platforms-common",
@@ -724,6 +724,942 @@
         {
           "text": "Mission Impossible",
           "points": 4
+        }
+      ]
+    },
+    {
+      "id": "popculture-reasons-something-goes-viral-online",
+      "category": "Pop Culture & Trends",
+      "prompt": "Reasons something goes viral online",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Funny",
+          "points": 1
+        },
+        {
+          "text": "Relatable",
+          "points": 1
+        },
+        {
+          "text": "Surprising",
+          "points": 1
+        },
+        {
+          "text": "Celebrity shared it",
+          "points": 1
+        },
+        {
+          "text": "Cute animal",
+          "points": 1
+        },
+        {
+          "text": "Short video",
+          "points": 2
+        },
+        {
+          "text": "Dance challenge",
+          "points": 2
+        },
+        {
+          "text": "Meme format",
+          "points": 2
+        },
+        {
+          "text": "Shock value",
+          "points": 2
+        },
+        {
+          "text": "Nostalgia",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "popculture-things-influencers-show-in-a-morning-routine-video",
+      "category": "Pop Culture & Trends",
+      "prompt": "Things influencers show in a morning-routine video",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Skincare",
+          "points": 1
+        },
+        {
+          "text": "Coffee",
+          "points": 1
+        },
+        {
+          "text": "Workout",
+          "points": 1
+        },
+        {
+          "text": "Journal",
+          "points": 1
+        },
+        {
+          "text": "Vitamins",
+          "points": 1
+        },
+        {
+          "text": "Outfit",
+          "points": 2
+        },
+        {
+          "text": "Matcha",
+          "points": 2
+        },
+        {
+          "text": "Shower",
+          "points": 2
+        },
+        {
+          "text": "Planner",
+          "points": 2
+        },
+        {
+          "text": "Sunlight clip",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "popculture-apps-where-trends-spread-quickly",
+      "category": "Pop Culture & Trends",
+      "prompt": "Apps where trends spread quickly",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "TikTok",
+          "points": 1
+        },
+        {
+          "text": "Instagram",
+          "points": 1
+        },
+        {
+          "text": "YouTube",
+          "points": 1
+        },
+        {
+          "text": "X",
+          "points": 1
+        },
+        {
+          "text": "Snapchat",
+          "points": 1
+        },
+        {
+          "text": "Reddit",
+          "points": 2
+        },
+        {
+          "text": "Facebook",
+          "points": 2
+        },
+        {
+          "text": "Threads",
+          "points": 2
+        },
+        {
+          "text": "Twitch",
+          "points": 2
+        },
+        {
+          "text": "Pinterest",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "popculture-things-people-buy-because-of-a-trend",
+      "category": "Pop Culture & Trends",
+      "prompt": "Things people buy because of a trend",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Water bottle",
+          "points": 1
+        },
+        {
+          "text": "Sneakers",
+          "points": 1
+        },
+        {
+          "text": "Skincare",
+          "points": 1
+        },
+        {
+          "text": "Phone case",
+          "points": 1
+        },
+        {
+          "text": "LED lights",
+          "points": 1
+        },
+        {
+          "text": "Oversized hoodie",
+          "points": 2
+        },
+        {
+          "text": "Mini bag",
+          "points": 2
+        },
+        {
+          "text": "Lip oil",
+          "points": 2
+        },
+        {
+          "text": "Vinyl record",
+          "points": 2
+        },
+        {
+          "text": "Matcha kit",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "popculture-reasons-celebrities-trend-on-social-media",
+      "category": "Pop Culture & Trends",
+      "prompt": "Reasons celebrities trend on social media",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Breakup",
+          "points": 1
+        },
+        {
+          "text": "New album",
+          "points": 1
+        },
+        {
+          "text": "Movie role",
+          "points": 1
+        },
+        {
+          "text": "Red-carpet look",
+          "points": 1
+        },
+        {
+          "text": "Award speech",
+          "points": 1
+        },
+        {
+          "text": "Feud",
+          "points": 2
+        },
+        {
+          "text": "Pregnancy announcement",
+          "points": 2
+        },
+        {
+          "text": "Scandal",
+          "points": 2
+        },
+        {
+          "text": "Surprise cameo",
+          "points": 2
+        },
+        {
+          "text": "Engagement",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "popculture-things-pop-culture-podcasts-talk-about",
+      "category": "Pop Culture & Trends",
+      "prompt": "Things pop-culture podcasts talk about",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Gossip",
+          "points": 1
+        },
+        {
+          "text": "TV recaps",
+          "points": 1
+        },
+        {
+          "text": "Celebrity news",
+          "points": 1
+        },
+        {
+          "text": "Internet drama",
+          "points": 1
+        },
+        {
+          "text": "Fashion",
+          "points": 1
+        },
+        {
+          "text": "Albums",
+          "points": 2
+        },
+        {
+          "text": "Box office",
+          "points": 2
+        },
+        {
+          "text": "Memes",
+          "points": 2
+        },
+        {
+          "text": "Reality shows",
+          "points": 2
+        },
+        {
+          "text": "Awards",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "popculture-things-fandoms-argue-about-online",
+      "category": "Pop Culture & Trends",
+      "prompt": "Things fandoms argue about online",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Best character",
+          "points": 1
+        },
+        {
+          "text": "Worst season",
+          "points": 1
+        },
+        {
+          "text": "Canon couple",
+          "points": 2
+        },
+        {
+          "text": "Plot holes",
+          "points": 2
+        },
+        {
+          "text": "Power rankings",
+          "points": 2
+        },
+        {
+          "text": "Adaptation changes",
+          "points": 2
+        },
+        {
+          "text": "Ending",
+          "points": 3
+        },
+        {
+          "text": "Casting",
+          "points": 3
+        },
+        {
+          "text": "Hidden clues",
+          "points": 4
+        },
+        {
+          "text": "Release schedule",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "popculture-reasons-a-tv-show-becomes-meme-material",
+      "category": "Pop Culture & Trends",
+      "prompt": "Reasons a TV show becomes meme material",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Weird line",
+          "points": 1
+        },
+        {
+          "text": "Wild plot twist",
+          "points": 1
+        },
+        {
+          "text": "Bad CGI",
+          "points": 2
+        },
+        {
+          "text": "Dramatic reaction",
+          "points": 2
+        },
+        {
+          "text": "Overacting",
+          "points": 2
+        },
+        {
+          "text": "Iconic costume",
+          "points": 2
+        },
+        {
+          "text": "Abrupt edit",
+          "points": 3
+        },
+        {
+          "text": "Cringe romance",
+          "points": 3
+        },
+        {
+          "text": "Chaotic finale",
+          "points": 4
+        },
+        {
+          "text": "Villain monologue",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "popculture-things-sold-in-a-merch-drop",
+      "category": "Pop Culture & Trends",
+      "prompt": "Things sold in a merch drop",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Hoodie",
+          "points": 1
+        },
+        {
+          "text": "T-shirt",
+          "points": 1
+        },
+        {
+          "text": "Cap",
+          "points": 2
+        },
+        {
+          "text": "Poster",
+          "points": 2
+        },
+        {
+          "text": "Mug",
+          "points": 2
+        },
+        {
+          "text": "Tote bag",
+          "points": 2
+        },
+        {
+          "text": "Phone case",
+          "points": 3
+        },
+        {
+          "text": "Keychain",
+          "points": 3
+        },
+        {
+          "text": "Vinyl",
+          "points": 4
+        },
+        {
+          "text": "Signed photo",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "popculture-trends-people-later-regret-trying",
+      "category": "Pop Culture & Trends",
+      "prompt": "Trends people later regret trying",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Frosted tips",
+          "points": 1
+        },
+        {
+          "text": "Tiny sunglasses",
+          "points": 1
+        },
+        {
+          "text": "Overplucked brows",
+          "points": 2
+        },
+        {
+          "text": "Juice cleanses",
+          "points": 2
+        },
+        {
+          "text": "Low-rise jeans",
+          "points": 2
+        },
+        {
+          "text": "Duck-face selfies",
+          "points": 2
+        },
+        {
+          "text": "Extreme contour",
+          "points": 3
+        },
+        {
+          "text": "Planking",
+          "points": 3
+        },
+        {
+          "text": "NFT avatar",
+          "points": 4
+        },
+        {
+          "text": "Mustache-print everything",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "popculture-places-paparazzi-spot-celebrities",
+      "category": "Pop Culture & Trends",
+      "prompt": "Places paparazzi spot celebrities",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Airport",
+          "points": 1
+        },
+        {
+          "text": "Restaurant",
+          "points": 1
+        },
+        {
+          "text": "Fashion show",
+          "points": 2
+        },
+        {
+          "text": "Hotel",
+          "points": 2
+        },
+        {
+          "text": "Beach",
+          "points": 2
+        },
+        {
+          "text": "Concert",
+          "points": 2
+        },
+        {
+          "text": "Premiere",
+          "points": 3
+        },
+        {
+          "text": "Gym",
+          "points": 3
+        },
+        {
+          "text": "Resort",
+          "points": 4
+        },
+        {
+          "text": "Coffee shop",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "popculture-ways-a-song-becomes-a-dance-trend",
+      "category": "Pop Culture & Trends",
+      "prompt": "Ways a song becomes a dance trend",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Easy chorus move",
+          "points": 1
+        },
+        {
+          "text": "Celebrity challenge",
+          "points": 1
+        },
+        {
+          "text": "Wedding clip",
+          "points": 2
+        },
+        {
+          "text": "Sports-team video",
+          "points": 2
+        },
+        {
+          "text": "Influencer push",
+          "points": 2
+        },
+        {
+          "text": "Nostalgic comeback",
+          "points": 2
+        },
+        {
+          "text": "Comedy edit",
+          "points": 3
+        },
+        {
+          "text": "TV sync",
+          "points": 3
+        },
+        {
+          "text": "Remix",
+          "points": 4
+        },
+        {
+          "text": "Group challenge",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "popculture-kinds-of-posts-that-get-ratioed-online",
+      "category": "Pop Culture & Trends",
+      "prompt": "Kinds of posts that get ratioed online",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Bad take",
+          "points": 1
+        },
+        {
+          "text": "Brand joke",
+          "points": 2
+        },
+        {
+          "text": "Tone-deaf apology",
+          "points": 2
+        },
+        {
+          "text": "Spoiler",
+          "points": 3
+        },
+        {
+          "text": "Hot sports opinion",
+          "points": 3
+        },
+        {
+          "text": "Stale meme",
+          "points": 3
+        },
+        {
+          "text": "Political bait",
+          "points": 4
+        },
+        {
+          "text": "Celebrity defense",
+          "points": 4
+        },
+        {
+          "text": "Awkward ad",
+          "points": 5
+        },
+        {
+          "text": "Wrong fact",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "popculture-reasons-a-brand-collaboration-feels-cursed-online",
+      "category": "Pop Culture & Trends",
+      "prompt": "Reasons a brand collaboration feels cursed online",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Random pairing",
+          "points": 1
+        },
+        {
+          "text": "Overpriced item",
+          "points": 2
+        },
+        {
+          "text": "Ugly design",
+          "points": 2
+        },
+        {
+          "text": "No audience overlap",
+          "points": 3
+        },
+        {
+          "text": "Forced slang",
+          "points": 3
+        },
+        {
+          "text": "Celebrity cash grab",
+          "points": 3
+        },
+        {
+          "text": "Weird mascot",
+          "points": 4
+        },
+        {
+          "text": "Bad timing",
+          "points": 4
+        },
+        {
+          "text": "Limited-stock drama",
+          "points": 5
+        },
+        {
+          "text": "Overhyped reveal",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "popculture-things-people-wear-to-a-fan-convention",
+      "category": "Pop Culture & Trends",
+      "prompt": "Things people wear to a fan convention",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Cosplay",
+          "points": 1
+        },
+        {
+          "text": "Lanyard",
+          "points": 2
+        },
+        {
+          "text": "Merch tee",
+          "points": 2
+        },
+        {
+          "text": "Comfy shoes",
+          "points": 3
+        },
+        {
+          "text": "Prop replica",
+          "points": 3
+        },
+        {
+          "text": "Wig",
+          "points": 3
+        },
+        {
+          "text": "Makeup kit",
+          "points": 4
+        },
+        {
+          "text": "Backpack",
+          "points": 4
+        },
+        {
+          "text": "Trading pins",
+          "points": 5
+        },
+        {
+          "text": "Badge holder",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "popculture-internet-slang-people-hear-in-stan-culture",
+      "category": "Pop Culture & Trends",
+      "prompt": "Internet slang people hear in stan culture",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Delulu",
+          "points": 1
+        },
+        {
+          "text": "Mid",
+          "points": 2
+        },
+        {
+          "text": "Ate",
+          "points": 2
+        },
+        {
+          "text": "Flop",
+          "points": 3
+        },
+        {
+          "text": "Ratio",
+          "points": 3
+        },
+        {
+          "text": "Canon",
+          "points": 3
+        },
+        {
+          "text": "Ship",
+          "points": 4
+        },
+        {
+          "text": "Main character",
+          "points": 4
+        },
+        {
+          "text": "Slay",
+          "points": 5
+        },
+        {
+          "text": "Parasocial",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "popculture-reasons-people-unfollow-creators",
+      "category": "Pop Culture & Trends",
+      "prompt": "Reasons people unfollow creators",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Too many ads",
+          "points": 1
+        },
+        {
+          "text": "Repetitive content",
+          "points": 2
+        },
+        {
+          "text": "Scandal",
+          "points": 2
+        },
+        {
+          "text": "Annoying voice",
+          "points": 3
+        },
+        {
+          "text": "Misinformation",
+          "points": 3
+        },
+        {
+          "text": "Political posts",
+          "points": 3
+        },
+        {
+          "text": "Clickbait",
+          "points": 4
+        },
+        {
+          "text": "Overexposure",
+          "points": 4
+        },
+        {
+          "text": "Mean behavior",
+          "points": 5
+        },
+        {
+          "text": "AI spam",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "popculture-things-that-make-awards-shows-trend-overnight",
+      "category": "Pop Culture & Trends",
+      "prompt": "Things that make awards shows trend overnight",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Popular_culture",
+      "answers": [
+        {
+          "text": "Surprise winner",
+          "points": 1
+        },
+        {
+          "text": "Wardrobe moment",
+          "points": 2
+        },
+        {
+          "text": "Host joke",
+          "points": 2
+        },
+        {
+          "text": "Live performance",
+          "points": 3
+        },
+        {
+          "text": "Acceptance speech",
+          "points": 3
+        },
+        {
+          "text": "Onstage feud",
+          "points": 3
+        },
+        {
+          "text": "Snub",
+          "points": 4
+        },
+        {
+          "text": "Technical glitch",
+          "points": 4
+        },
+        {
+          "text": "Viral reaction shot",
+          "points": 5
+        },
+        {
+          "text": "Red-carpet outfit",
+          "points": 5
         }
       ]
     }

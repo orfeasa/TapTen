@@ -2,7 +2,7 @@
   "id": "food-drink-pack-v2",
   "title": "Food & Drink Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "food-recognizable-pizza-toppings",
@@ -121,7 +121,7 @@
           "points": 2
         },
         {
-          "text": "Frappé",
+          "text": "Frapp\u00e9",
           "points": 3
         }
       ]
@@ -581,7 +581,7 @@
           "points": 2
         },
         {
-          "text": "Crème brûlée",
+          "text": "Cr\u00e8me br\u00fbl\u00e9e",
           "points": 2
         },
         {
@@ -715,6 +715,942 @@
         {
           "text": "Pinot Grigio",
           "points": 4
+        }
+      ]
+    },
+    {
+      "id": "food-pizza-toppings-people-order-most-often",
+      "category": "Food & Drink",
+      "prompt": "Pizza toppings people order most often",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Pepperoni",
+          "points": 1
+        },
+        {
+          "text": "Mushrooms",
+          "points": 1
+        },
+        {
+          "text": "Extra cheese",
+          "points": 1
+        },
+        {
+          "text": "Ham",
+          "points": 1
+        },
+        {
+          "text": "Sausage",
+          "points": 1
+        },
+        {
+          "text": "Onions",
+          "points": 2
+        },
+        {
+          "text": "Olives",
+          "points": 2
+        },
+        {
+          "text": "Peppers",
+          "points": 2
+        },
+        {
+          "text": "Pineapple",
+          "points": 2
+        },
+        {
+          "text": "Bacon",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "food-things-people-add-to-coffee",
+      "category": "Food & Drink",
+      "prompt": "Things people add to coffee",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Milk",
+          "points": 1
+        },
+        {
+          "text": "Sugar",
+          "points": 1
+        },
+        {
+          "text": "Cream",
+          "points": 1
+        },
+        {
+          "text": "Syrup",
+          "points": 1
+        },
+        {
+          "text": "Ice",
+          "points": 1
+        },
+        {
+          "text": "Whipped cream",
+          "points": 2
+        },
+        {
+          "text": "Cinnamon",
+          "points": 2
+        },
+        {
+          "text": "Oat milk",
+          "points": 2
+        },
+        {
+          "text": "Espresso shot",
+          "points": 2
+        },
+        {
+          "text": "Caramel drizzle",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "food-foods-people-take-on-a-picnic",
+      "category": "Food & Drink",
+      "prompt": "Foods people take on a picnic",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Sandwiches",
+          "points": 1
+        },
+        {
+          "text": "Crisps",
+          "points": 1
+        },
+        {
+          "text": "Fruit",
+          "points": 1
+        },
+        {
+          "text": "Salad",
+          "points": 1
+        },
+        {
+          "text": "Cookies",
+          "points": 1
+        },
+        {
+          "text": "Cheese",
+          "points": 2
+        },
+        {
+          "text": "Sausage rolls",
+          "points": 2
+        },
+        {
+          "text": "Lemonade",
+          "points": 2
+        },
+        {
+          "text": "Grapes",
+          "points": 2
+        },
+        {
+          "text": "Brownies",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "food-things-people-put-in-a-burger",
+      "category": "Food & Drink",
+      "prompt": "Things people put in a burger",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Cheese",
+          "points": 1
+        },
+        {
+          "text": "Lettuce",
+          "points": 1
+        },
+        {
+          "text": "Tomato",
+          "points": 1
+        },
+        {
+          "text": "Onion",
+          "points": 1
+        },
+        {
+          "text": "Pickles",
+          "points": 1
+        },
+        {
+          "text": "Bacon",
+          "points": 2
+        },
+        {
+          "text": "Ketchup",
+          "points": 2
+        },
+        {
+          "text": "Mustard",
+          "points": 2
+        },
+        {
+          "text": "Mayo",
+          "points": 2
+        },
+        {
+          "text": "Fried egg",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "food-dishes-people-order-at-brunch",
+      "category": "Food & Drink",
+      "prompt": "Dishes people order at brunch",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Pancakes",
+          "points": 1
+        },
+        {
+          "text": "Eggs Benedict",
+          "points": 1
+        },
+        {
+          "text": "Avocado toast",
+          "points": 1
+        },
+        {
+          "text": "Omelette",
+          "points": 1
+        },
+        {
+          "text": "Waffles",
+          "points": 1
+        },
+        {
+          "text": "French toast",
+          "points": 2
+        },
+        {
+          "text": "Breakfast burrito",
+          "points": 2
+        },
+        {
+          "text": "Bagel",
+          "points": 2
+        },
+        {
+          "text": "Hash browns",
+          "points": 2
+        },
+        {
+          "text": "Yogurt bowl",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "food-snacks-people-buy-at-a-movie-theater",
+      "category": "Food & Drink",
+      "prompt": "Snacks people buy at a movie theater",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Popcorn",
+          "points": 1
+        },
+        {
+          "text": "Candy",
+          "points": 1
+        },
+        {
+          "text": "Soda",
+          "points": 1
+        },
+        {
+          "text": "Nachos",
+          "points": 1
+        },
+        {
+          "text": "Hot dog",
+          "points": 1
+        },
+        {
+          "text": "Chocolate",
+          "points": 2
+        },
+        {
+          "text": "Pretzel",
+          "points": 2
+        },
+        {
+          "text": "Water",
+          "points": 2
+        },
+        {
+          "text": "Ice cream",
+          "points": 2
+        },
+        {
+          "text": "Slushie",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "food-foods-people-cook-on-a-grill",
+      "category": "Food & Drink",
+      "prompt": "Foods people cook on a grill",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Burgers",
+          "points": 1
+        },
+        {
+          "text": "Hot dogs",
+          "points": 1
+        },
+        {
+          "text": "Chicken",
+          "points": 2
+        },
+        {
+          "text": "Steak",
+          "points": 2
+        },
+        {
+          "text": "Corn",
+          "points": 2
+        },
+        {
+          "text": "Sausages",
+          "points": 2
+        },
+        {
+          "text": "Kebabs",
+          "points": 3
+        },
+        {
+          "text": "Vegetables",
+          "points": 3
+        },
+        {
+          "text": "Halloumi",
+          "points": 4
+        },
+        {
+          "text": "Shrimp",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "food-things-people-put-on-a-cheeseboard",
+      "category": "Food & Drink",
+      "prompt": "Things people put on a cheeseboard",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Cheddar",
+          "points": 1
+        },
+        {
+          "text": "Brie",
+          "points": 1
+        },
+        {
+          "text": "Crackers",
+          "points": 2
+        },
+        {
+          "text": "Grapes",
+          "points": 2
+        },
+        {
+          "text": "Chutney",
+          "points": 2
+        },
+        {
+          "text": "Salami",
+          "points": 2
+        },
+        {
+          "text": "Olives",
+          "points": 3
+        },
+        {
+          "text": "Nuts",
+          "points": 3
+        },
+        {
+          "text": "Honey",
+          "points": 4
+        },
+        {
+          "text": "Fig jam",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "food-ingredients-people-put-in-a-smoothie",
+      "category": "Food & Drink",
+      "prompt": "Ingredients people put in a smoothie",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Banana",
+          "points": 1
+        },
+        {
+          "text": "Berries",
+          "points": 1
+        },
+        {
+          "text": "Yogurt",
+          "points": 2
+        },
+        {
+          "text": "Milk",
+          "points": 2
+        },
+        {
+          "text": "Spinach",
+          "points": 2
+        },
+        {
+          "text": "Peanut butter",
+          "points": 2
+        },
+        {
+          "text": "Protein powder",
+          "points": 3
+        },
+        {
+          "text": "Oats",
+          "points": 3
+        },
+        {
+          "text": "Mango",
+          "points": 4
+        },
+        {
+          "text": "Honey",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "food-foods-people-ferment",
+      "category": "Food & Drink",
+      "prompt": "Foods people ferment",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Yogurt",
+          "points": 1
+        },
+        {
+          "text": "Cheese",
+          "points": 1
+        },
+        {
+          "text": "Kimchi",
+          "points": 2
+        },
+        {
+          "text": "Sauerkraut",
+          "points": 2
+        },
+        {
+          "text": "Beer",
+          "points": 2
+        },
+        {
+          "text": "Wine",
+          "points": 2
+        },
+        {
+          "text": "Bread",
+          "points": 3
+        },
+        {
+          "text": "Soy sauce",
+          "points": 3
+        },
+        {
+          "text": "Kombucha",
+          "points": 4
+        },
+        {
+          "text": "Pickles",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "food-reasons-people-order-takeout-instead-of-cooking",
+      "category": "Food & Drink",
+      "prompt": "Reasons people order takeout instead of cooking",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Too tired",
+          "points": 1
+        },
+        {
+          "text": "Too busy",
+          "points": 1
+        },
+        {
+          "text": "Craving something",
+          "points": 2
+        },
+        {
+          "text": "No groceries",
+          "points": 2
+        },
+        {
+          "text": "Treat night",
+          "points": 2
+        },
+        {
+          "text": "Guests are over",
+          "points": 2
+        },
+        {
+          "text": "Kitchen is messy",
+          "points": 3
+        },
+        {
+          "text": "Working late",
+          "points": 3
+        },
+        {
+          "text": "Celebrating",
+          "points": 4
+        },
+        {
+          "text": "No idea what to make",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "food-spreads-people-put-on-toast",
+      "category": "Food & Drink",
+      "prompt": "Spreads people put on toast",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Butter",
+          "points": 1
+        },
+        {
+          "text": "Jam",
+          "points": 1
+        },
+        {
+          "text": "Peanut butter",
+          "points": 2
+        },
+        {
+          "text": "Nutella",
+          "points": 2
+        },
+        {
+          "text": "Avocado",
+          "points": 2
+        },
+        {
+          "text": "Honey",
+          "points": 2
+        },
+        {
+          "text": "Cream cheese",
+          "points": 3
+        },
+        {
+          "text": "Marmalade",
+          "points": 3
+        },
+        {
+          "text": "Hummus",
+          "points": 4
+        },
+        {
+          "text": "Pesto",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "food-sauces-people-dip-fries-into",
+      "category": "Food & Drink",
+      "prompt": "Sauces people dip fries into",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Ketchup",
+          "points": 1
+        },
+        {
+          "text": "Mayo",
+          "points": 2
+        },
+        {
+          "text": "Ranch",
+          "points": 2
+        },
+        {
+          "text": "Barbecue sauce",
+          "points": 3
+        },
+        {
+          "text": "Aioli",
+          "points": 3
+        },
+        {
+          "text": "Gravy",
+          "points": 3
+        },
+        {
+          "text": "Curry sauce",
+          "points": 4
+        },
+        {
+          "text": "Cheese sauce",
+          "points": 4
+        },
+        {
+          "text": "Sriracha",
+          "points": 5
+        },
+        {
+          "text": "Mustard",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "food-foods-people-bring-to-a-potluck-dinner",
+      "category": "Food & Drink",
+      "prompt": "Foods people bring to a potluck dinner",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Casserole",
+          "points": 1
+        },
+        {
+          "text": "Salad",
+          "points": 2
+        },
+        {
+          "text": "Brownies",
+          "points": 2
+        },
+        {
+          "text": "Pasta bake",
+          "points": 3
+        },
+        {
+          "text": "Chips and dip",
+          "points": 3
+        },
+        {
+          "text": "Cupcakes",
+          "points": 3
+        },
+        {
+          "text": "Fruit tray",
+          "points": 4
+        },
+        {
+          "text": "Meatballs",
+          "points": 4
+        },
+        {
+          "text": "Quiche",
+          "points": 5
+        },
+        {
+          "text": "Garlic bread",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "food-things-people-keep-in-a-spice-rack",
+      "category": "Food & Drink",
+      "prompt": "Things people keep in a spice rack",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Salt",
+          "points": 1
+        },
+        {
+          "text": "Pepper",
+          "points": 2
+        },
+        {
+          "text": "Paprika",
+          "points": 2
+        },
+        {
+          "text": "Cumin",
+          "points": 3
+        },
+        {
+          "text": "Oregano",
+          "points": 3
+        },
+        {
+          "text": "Chili flakes",
+          "points": 3
+        },
+        {
+          "text": "Garlic powder",
+          "points": 4
+        },
+        {
+          "text": "Cinnamon",
+          "points": 4
+        },
+        {
+          "text": "Turmeric",
+          "points": 5
+        },
+        {
+          "text": "Curry powder",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "food-things-that-make-a-sandwich-messy-to-eat",
+      "category": "Food & Drink",
+      "prompt": "Things that make a sandwich messy to eat",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Too much sauce",
+          "points": 1
+        },
+        {
+          "text": "Tomato slices",
+          "points": 2
+        },
+        {
+          "text": "Melted cheese",
+          "points": 2
+        },
+        {
+          "text": "Overstuffed filling",
+          "points": 3
+        },
+        {
+          "text": "Runny egg",
+          "points": 3
+        },
+        {
+          "text": "Slaw",
+          "points": 3
+        },
+        {
+          "text": "Juicy meat",
+          "points": 4
+        },
+        {
+          "text": "Pickles",
+          "points": 4
+        },
+        {
+          "text": "Crushed bread",
+          "points": 5
+        },
+        {
+          "text": "Greasy bacon",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "food-foods-people-eat-with-their-hands",
+      "category": "Food & Drink",
+      "prompt": "Foods people eat with their hands",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Pizza",
+          "points": 1
+        },
+        {
+          "text": "Burger",
+          "points": 2
+        },
+        {
+          "text": "Tacos",
+          "points": 2
+        },
+        {
+          "text": "Fries",
+          "points": 3
+        },
+        {
+          "text": "Chicken wings",
+          "points": 3
+        },
+        {
+          "text": "Sushi",
+          "points": 3
+        },
+        {
+          "text": "Wrap",
+          "points": 4
+        },
+        {
+          "text": "Donut",
+          "points": 4
+        },
+        {
+          "text": "Sandwich",
+          "points": 5
+        },
+        {
+          "text": "Corn on the cob",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "food-cold-dishes-people-order-or-serve",
+      "category": "Food & Drink",
+      "prompt": "Cold dishes people order or serve",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Food",
+      "answers": [
+        {
+          "text": "Sushi",
+          "points": 1
+        },
+        {
+          "text": "Salad",
+          "points": 2
+        },
+        {
+          "text": "Gazpacho",
+          "points": 2
+        },
+        {
+          "text": "Ceviche",
+          "points": 3
+        },
+        {
+          "text": "Poke bowl",
+          "points": 3
+        },
+        {
+          "text": "Carpaccio",
+          "points": 3
+        },
+        {
+          "text": "Potato salad",
+          "points": 4
+        },
+        {
+          "text": "Coleslaw",
+          "points": 4
+        },
+        {
+          "text": "Cold noodles",
+          "points": 5
+        },
+        {
+          "text": "Cheese plate",
+          "points": 5
         }
       ]
     }

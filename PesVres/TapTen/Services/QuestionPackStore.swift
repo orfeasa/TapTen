@@ -11,6 +11,7 @@ enum QuestionPackAvailability: Equatable {
 enum QuestionPackStoreActionState: Equatable {
     case unavailable
     case ready(price: String?)
+    case testerUnlock
     case purchasing
 }
 
@@ -76,6 +77,7 @@ final class QuestionPackStorefront {
 
     private let entitlementStore: QuestionPackEntitlementStore
     private let monetizationTelemetryStore: MonetizationTelemetryStore
+    private let testerUnlocksEnabledProvider: @Sendable () -> Bool
 
     private(set) var isRefreshing = false
     private(set) var isRestoringPurchases = false
@@ -85,10 +87,18 @@ final class QuestionPackStorefront {
 
     init(
         entitlementStore: QuestionPackEntitlementStore? = nil,
-        monetizationTelemetryStore: MonetizationTelemetryStore? = nil
+        monetizationTelemetryStore: MonetizationTelemetryStore? = nil,
+        testerUnlocksEnabledProvider: @escaping @Sendable () -> Bool = {
+            QuestionPackTestingConfiguration.testerUnlocksEnabled()
+        }
     ) {
         self.entitlementStore = entitlementStore ?? .shared
         self.monetizationTelemetryStore = monetizationTelemetryStore ?? .shared
+        self.testerUnlocksEnabledProvider = testerUnlocksEnabledProvider
+    }
+
+    var isUsingTesterUnlocks: Bool {
+        testerUnlocksEnabledProvider()
     }
 
     func refreshStoreData(for packs: [QuestionPack]) async {
@@ -98,6 +108,12 @@ final class QuestionPackStorefront {
 
         isRefreshing = true
         defer { isRefreshing = false }
+
+        guard !isUsingTesterUnlocks else {
+            productsByID = [:]
+            storeMessage = nil
+            return
+        }
 
         let premiumProductIDs = Set(
             packs
@@ -126,6 +142,11 @@ final class QuestionPackStorefront {
             return
         }
 
+        guard !isUsingTesterUnlocks else {
+            storeMessage = "Tester builds unlock packs directly. Restore is not needed."
+            return
+        }
+
         isRestoringPurchases = true
         defer { isRestoringPurchases = false }
 
@@ -145,6 +166,20 @@ final class QuestionPackStorefront {
             return
         }
 
+        purchasingProductID = productID
+        defer { purchasingProductID = nil }
+        monetizationTelemetryStore.recordPurchaseStarted(packID: pack.id, productID: productID)
+
+        if isUsingTesterUnlocks {
+            entitlementStore.markUnlocked(productID: productID)
+            monetizationTelemetryStore.recordPurchaseCompleted(
+                packID: pack.id,
+                productID: productID
+            )
+            storeMessage = "\(pack.title) unlocked for testing."
+            return
+        }
+
         if productsByID[productID] == nil {
             await refreshStoreData(for: availablePacks)
         }
@@ -153,10 +188,6 @@ final class QuestionPackStorefront {
             storeMessage = "Store details are unavailable right now."
             return
         }
-
-        purchasingProductID = productID
-        defer { purchasingProductID = nil }
-        monetizationTelemetryStore.recordPurchaseStarted(packID: pack.id, productID: productID)
 
         do {
             let result = try await product.purchase()
@@ -195,6 +226,10 @@ final class QuestionPackStorefront {
                 return .purchasing
             }
 
+            if isUsingTesterUnlocks {
+                return .testerUnlock
+            }
+
             return .ready(price: productsByID[productID]?.displayPrice)
         }
     }
@@ -225,6 +260,59 @@ final class QuestionPackStorefront {
             return transaction
         case .unverified:
             throw StoreKitError.notEntitled
+        }
+    }
+}
+
+enum QuestionPackTestingConfiguration {
+    nonisolated static func testerUnlocksEnabled(
+        bundle: Bundle = .main,
+        processInfo: ProcessInfo = .processInfo
+    ) -> Bool {
+        if let parsedEnvironmentValue = parsedBool(
+            processInfo.environment["TAPTEN_TESTER_UNLOCKS_ENABLED"]
+        ) {
+            return parsedEnvironmentValue
+        }
+
+        #if TAPTEN_TESTER_UNLOCKS_ENABLED
+        return true
+        #else
+        if let boolValue = bundle.object(
+            forInfoDictionaryKey: "QuestionPackTesterUnlocksEnabled"
+        ) as? Bool {
+            return boolValue
+        }
+
+        if let stringValue = bundle.object(
+            forInfoDictionaryKey: "QuestionPackTesterUnlocksEnabled"
+        ) as? String,
+           let parsedStringValue = parsedBool(stringValue) {
+            return parsedStringValue
+        }
+
+        if let numericValue = bundle.object(
+            forInfoDictionaryKey: "QuestionPackTesterUnlocksEnabled"
+        ) as? NSNumber {
+            return numericValue.boolValue
+        }
+
+        return false
+        #endif
+    }
+
+    private nonisolated static func parsedBool(_ rawValue: String?) -> Bool? {
+        let normalized = rawValue?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+
+        switch normalized {
+        case "1", "true", "yes", "on":
+            return true
+        case "0", "false", "no", "off":
+            return false
+        default:
+            return nil
         }
     }
 }

@@ -1,0 +1,2121 @@
+{
+  "id": "date-night",
+  "title": "Date Night",
+  "summary": "Flirty, romantic, and mildly exposing in the fun way.",
+  "languageCode": "en",
+  "packVersion": "2.0",
+  "monetization": {
+    "access": "premium",
+    "storeProductID": "com.tapten.pack.date-night",
+    "bundleProductIDs": [
+      "com.tapten.bundle.launch-wave"
+    ],
+    "merchandisingLabel": "Couples"
+  },
+  "questions": [
+    {
+      "id": "datenight-date-night-activities",
+      "category": "Date Night",
+      "prompt": "Things couples do on date night",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "datenight-activity-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Dinner",
+          "points": 1
+        },
+        {
+          "text": "Drinks",
+          "points": 1
+        },
+        {
+          "text": "Movie",
+          "points": 1
+        },
+        {
+          "text": "Walk",
+          "points": 1
+        },
+        {
+          "text": "Dessert",
+          "points": 1
+        },
+        {
+          "text": "Cook together",
+          "points": 2
+        },
+        {
+          "text": "Game night",
+          "points": 2
+        },
+        {
+          "text": "Concert",
+          "points": 2
+        },
+        {
+          "text": "Mini golf",
+          "points": 2
+        },
+        {
+          "text": "Takeout at home",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-first-date-topics",
+      "category": "Date Night",
+      "prompt": "Topics people bring up on a first date",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "datenight-conversation-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/First_date",
+      "answers": [
+        {
+          "text": "Work",
+          "points": 1
+        },
+        {
+          "text": "Hobbies",
+          "points": 1
+        },
+        {
+          "text": "Music",
+          "points": 1
+        },
+        {
+          "text": "Travel",
+          "points": 1
+        },
+        {
+          "text": "Food",
+          "points": 1
+        },
+        {
+          "text": "Pets",
+          "points": 2
+        },
+        {
+          "text": "TV shows",
+          "points": 2
+        },
+        {
+          "text": "Family",
+          "points": 2
+        },
+        {
+          "text": "Weekend plans",
+          "points": 2
+        },
+        {
+          "text": "Where they grew up",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-anniversary-celebrations",
+      "category": "Date Night",
+      "prompt": "Ways couples celebrate anniversaries",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "datenight-celebration-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Anniversary",
+      "answers": [
+        {
+          "text": "Dinner reservation",
+          "points": 1
+        },
+        {
+          "text": "Weekend trip",
+          "points": 1
+        },
+        {
+          "text": "Gifts",
+          "points": 1
+        },
+        {
+          "text": "Flowers",
+          "points": 1
+        },
+        {
+          "text": "Fancy drinks",
+          "points": 1
+        },
+        {
+          "text": "Recreate first date",
+          "points": 2
+        },
+        {
+          "text": "Photo post",
+          "points": 2
+        },
+        {
+          "text": "Spa day",
+          "points": 2
+        },
+        {
+          "text": "Hotel stay",
+          "points": 2
+        },
+        {
+          "text": "Handwritten letter",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-romantic-gifts",
+      "category": "Date Night",
+      "prompt": "Gifts people buy for a romantic partner",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "datenight-gift-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Gift",
+      "answers": [
+        {
+          "text": "Flowers",
+          "points": 1
+        },
+        {
+          "text": "Chocolate",
+          "points": 1
+        },
+        {
+          "text": "Perfume",
+          "points": 1
+        },
+        {
+          "text": "Jewellery",
+          "points": 1
+        },
+        {
+          "text": "Card",
+          "points": 1
+        },
+        {
+          "text": "Clothes",
+          "points": 2
+        },
+        {
+          "text": "Watch",
+          "points": 2
+        },
+        {
+          "text": "Book",
+          "points": 2
+        },
+        {
+          "text": "Concert tickets",
+          "points": 2
+        },
+        {
+          "text": "Personalised gift",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-long-term-partner-qualities",
+      "category": "Date Night",
+      "prompt": "Qualities people want in a long-term partner",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "datenight-relationship-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romantic_relationship",
+      "answers": [
+        {
+          "text": "Kindness",
+          "points": 1
+        },
+        {
+          "text": "Humour",
+          "points": 1
+        },
+        {
+          "text": "Honesty",
+          "points": 1
+        },
+        {
+          "text": "Loyalty",
+          "points": 1
+        },
+        {
+          "text": "Good communication",
+          "points": 1
+        },
+        {
+          "text": "Reliability",
+          "points": 2
+        },
+        {
+          "text": "Patience",
+          "points": 2
+        },
+        {
+          "text": "Confidence",
+          "points": 2
+        },
+        {
+          "text": "Ambition",
+          "points": 2
+        },
+        {
+          "text": "Emotional maturity",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-date-impression-outfits",
+      "category": "Date Night",
+      "prompt": "Things people wear to impress on a date",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "datenight-style-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/First_date",
+      "answers": [
+        {
+          "text": "Nice shirt",
+          "points": 1
+        },
+        {
+          "text": "Dress",
+          "points": 1
+        },
+        {
+          "text": "Good shoes",
+          "points": 1
+        },
+        {
+          "text": "Jacket",
+          "points": 1
+        },
+        {
+          "text": "Perfume or cologne",
+          "points": 1
+        },
+        {
+          "text": "Jewellery",
+          "points": 2
+        },
+        {
+          "text": "Clean jeans",
+          "points": 2
+        },
+        {
+          "text": "Heels",
+          "points": 2
+        },
+        {
+          "text": "Fresh haircut",
+          "points": 2
+        },
+        {
+          "text": "Matching set",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-selfie-reasons",
+      "category": "Date Night",
+      "prompt": "Reasons couples take selfies together",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "datenight-photo-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romance_(love)",
+      "answers": [
+        {
+          "text": "Anniversary",
+          "points": 1
+        },
+        {
+          "text": "Vacation",
+          "points": 1
+        },
+        {
+          "text": "Fancy dinner",
+          "points": 1
+        },
+        {
+          "text": "Concert",
+          "points": 1
+        },
+        {
+          "text": "Matching outfits",
+          "points": 1
+        },
+        {
+          "text": "Sunset",
+          "points": 2
+        },
+        {
+          "text": "Holiday",
+          "points": 2
+        },
+        {
+          "text": "Big milestone",
+          "points": 2
+        },
+        {
+          "text": "New haircut",
+          "points": 2
+        },
+        {
+          "text": "One of them looks too good not to",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-romantic-getaways",
+      "category": "Date Night",
+      "prompt": "Places people go for a romantic getaway",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "datenight-travel-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romance_(love)",
+      "answers": [
+        {
+          "text": "Beach resort",
+          "points": 1
+        },
+        {
+          "text": "Cabin",
+          "points": 1
+        },
+        {
+          "text": "City break",
+          "points": 1
+        },
+        {
+          "text": "Spa hotel",
+          "points": 1
+        },
+        {
+          "text": "Mountain lodge",
+          "points": 1
+        },
+        {
+          "text": "Island",
+          "points": 2
+        },
+        {
+          "text": "Vineyard",
+          "points": 2
+        },
+        {
+          "text": "Countryside B&B",
+          "points": 2
+        },
+        {
+          "text": "Lakeside house",
+          "points": 2
+        },
+        {
+          "text": "Boutique hotel",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-first-date-awkward-reasons",
+      "category": "Date Night",
+      "prompt": "Reasons first dates get awkward",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "datenight-date-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/First_date",
+      "answers": [
+        {
+          "text": "Long silence",
+          "points": 1
+        },
+        {
+          "text": "One person talks too much",
+          "points": 1
+        },
+        {
+          "text": "Late arrival",
+          "points": 2
+        },
+        {
+          "text": "Phone checking",
+          "points": 2
+        },
+        {
+          "text": "Bad venue choice",
+          "points": 2
+        },
+        {
+          "text": "No chemistry",
+          "points": 2
+        },
+        {
+          "text": "Wrong expectations",
+          "points": 2
+        },
+        {
+          "text": "Bill confusion",
+          "points": 3
+        },
+        {
+          "text": "Overly personal questions",
+          "points": 3
+        },
+        {
+          "text": "The conversation feels like an interview",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-couple-bicker-reasons",
+      "category": "Date Night",
+      "prompt": "Reasons couples bicker at home",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "datenight-relationship-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romantic_relationship",
+      "answers": [
+        {
+          "text": "Chores",
+          "points": 1
+        },
+        {
+          "text": "Money",
+          "points": 1
+        },
+        {
+          "text": "Mess",
+          "points": 2
+        },
+        {
+          "text": "Temperature",
+          "points": 2
+        },
+        {
+          "text": "Plans",
+          "points": 2
+        },
+        {
+          "text": "Screen time",
+          "points": 2
+        },
+        {
+          "text": "Laundry",
+          "points": 2
+        },
+        {
+          "text": "Sleep schedule",
+          "points": 3
+        },
+        {
+          "text": "Who forgot to text",
+          "points": 3
+        },
+        {
+          "text": "One person saying \"I'm fine\" when they are not",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-favourite-partner-texts",
+      "category": "Date Night",
+      "prompt": "Texts people love receiving from a partner",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "datenight-text-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Text_messaging",
+      "answers": [
+        {
+          "text": "Thinking of you",
+          "points": 1
+        },
+        {
+          "text": "Get home safe",
+          "points": 1
+        },
+        {
+          "text": "Miss you",
+          "points": 2
+        },
+        {
+          "text": "Dinner is on me",
+          "points": 2
+        },
+        {
+          "text": "Good luck today",
+          "points": 2
+        },
+        {
+          "text": "Proud of you",
+          "points": 2
+        },
+        {
+          "text": "Want to see you tonight",
+          "points": 2
+        },
+        {
+          "text": "You looked incredible last night",
+          "points": 3
+        },
+        {
+          "text": "I booked us something",
+          "points": 3
+        },
+        {
+          "text": "I was wrong and I am sorry",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-apology-moves",
+      "category": "Date Night",
+      "prompt": "Things people do to apologise in a relationship",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "datenight-repair-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romantic_relationship",
+      "answers": [
+        {
+          "text": "Say sorry",
+          "points": 1
+        },
+        {
+          "text": "Bring flowers",
+          "points": 1
+        },
+        {
+          "text": "Buy favourite snack",
+          "points": 2
+        },
+        {
+          "text": "Plan dinner",
+          "points": 2
+        },
+        {
+          "text": "Write a long text",
+          "points": 2
+        },
+        {
+          "text": "Give space",
+          "points": 2
+        },
+        {
+          "text": "Do a chore",
+          "points": 2
+        },
+        {
+          "text": "Admit fault",
+          "points": 3
+        },
+        {
+          "text": "Offer physical comfort",
+          "points": 3
+        },
+        {
+          "text": "Make a real change in behaviour",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-falling-in-love-signs",
+      "category": "Date Night",
+      "prompt": "Signs someone is falling in love",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "datenight-romance-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romance_(love)",
+      "answers": [
+        {
+          "text": "Smiling at their phone",
+          "points": 1
+        },
+        {
+          "text": "Remembering tiny details",
+          "points": 1
+        },
+        {
+          "text": "Wanting daily contact",
+          "points": 2
+        },
+        {
+          "text": "Prioritising one person",
+          "points": 2
+        },
+        {
+          "text": "Daydreaming about them",
+          "points": 2
+        },
+        {
+          "text": "Introducing them to friends",
+          "points": 2
+        },
+        {
+          "text": "Planning ahead",
+          "points": 2
+        },
+        {
+          "text": "Feeling calm around them",
+          "points": 3
+        },
+        {
+          "text": "Missing them quickly",
+          "points": 3
+        },
+        {
+          "text": "Rearranging life around seeing them",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-dating-app-red-flags",
+      "category": "Date Night",
+      "prompt": "Red flags people notice on dating apps",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "datenight-app-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating_app",
+      "answers": [
+        {
+          "text": "No bio",
+          "points": 1
+        },
+        {
+          "text": "Group photos only",
+          "points": 1
+        },
+        {
+          "text": "One-word replies",
+          "points": 2
+        },
+        {
+          "text": "Love bombing",
+          "points": 2
+        },
+        {
+          "text": "Inconsistent age",
+          "points": 2
+        },
+        {
+          "text": "No clear photos",
+          "points": 2
+        },
+        {
+          "text": "Bitter about exes",
+          "points": 2
+        },
+        {
+          "text": "Pushes things too fast",
+          "points": 3
+        },
+        {
+          "text": "Avoids meeting in person",
+          "points": 3
+        },
+        {
+          "text": "Only messages after midnight",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-long-distance-habits",
+      "category": "Date Night",
+      "prompt": "Ways couples keep long-distance relationships going",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "datenight-distance-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Long-distance_relationship",
+      "answers": [
+        {
+          "text": "Video calls",
+          "points": 1
+        },
+        {
+          "text": "Goodnight texts",
+          "points": 1
+        },
+        {
+          "text": "Visit plans",
+          "points": 2
+        },
+        {
+          "text": "Shared calendar",
+          "points": 2
+        },
+        {
+          "text": "Voice notes",
+          "points": 2
+        },
+        {
+          "text": "Watch shows together",
+          "points": 2
+        },
+        {
+          "text": "Surprise deliveries",
+          "points": 2
+        },
+        {
+          "text": "Honest check-ins",
+          "points": 3
+        },
+        {
+          "text": "Countdowns to visits",
+          "points": 3
+        },
+        {
+          "text": "Online games together",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-proposal-memories",
+      "category": "Date Night",
+      "prompt": "Things people remember from a marriage proposal",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "datenight-memory-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Marriage_proposal",
+      "answers": [
+        {
+          "text": "Ring",
+          "points": 1
+        },
+        {
+          "text": "Speech",
+          "points": 1
+        },
+        {
+          "text": "Location",
+          "points": 2
+        },
+        {
+          "text": "Surprise factor",
+          "points": 2
+        },
+        {
+          "text": "Tears",
+          "points": 2
+        },
+        {
+          "text": "Weather",
+          "points": 2
+        },
+        {
+          "text": "Music",
+          "points": 2
+        },
+        {
+          "text": "Family reaction",
+          "points": 3
+        },
+        {
+          "text": "Whether photos were taken",
+          "points": 3
+        },
+        {
+          "text": "Whether the answer came instantly",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-delay-moving-in",
+      "category": "Date Night",
+      "prompt": "Reasons couples postpone moving in together",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "datenight-relationship-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Cohabitation",
+      "answers": [
+        {
+          "text": "Money",
+          "points": 1
+        },
+        {
+          "text": "Lease timing",
+          "points": 2
+        },
+        {
+          "text": "Job uncertainty",
+          "points": 2
+        },
+        {
+          "text": "Different habits",
+          "points": 3
+        },
+        {
+          "text": "One person not ready",
+          "points": 3
+        },
+        {
+          "text": "Need more space",
+          "points": 3
+        },
+        {
+          "text": "Commute issues",
+          "points": 3
+        },
+        {
+          "text": "Family expectations",
+          "points": 4
+        },
+        {
+          "text": "Past relationship baggage",
+          "points": 4
+        },
+        {
+          "text": "Pet compatibility",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-meeting-the-parents-stress",
+      "category": "Date Night",
+      "prompt": "Things that make meeting a partner's parents stressful",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "datenight-family-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romantic_relationship",
+      "answers": [
+        {
+          "text": "Impressing them",
+          "points": 1
+        },
+        {
+          "text": "Dress choice",
+          "points": 2
+        },
+        {
+          "text": "Table manners",
+          "points": 2
+        },
+        {
+          "text": "Wrong joke",
+          "points": 3
+        },
+        {
+          "text": "Politics at dinner",
+          "points": 3
+        },
+        {
+          "text": "Name mix-up",
+          "points": 3
+        },
+        {
+          "text": "Relationship questions",
+          "points": 3
+        },
+        {
+          "text": "Showing up late",
+          "points": 4
+        },
+        {
+          "text": "Feeling judged",
+          "points": 4
+        },
+        {
+          "text": "Different cultural expectations",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-serious-relationship-topics",
+      "category": "Date Night",
+      "prompt": "Topics couples avoid until the relationship feels serious",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "datenight-conversation-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+      "answers": [
+        {
+          "text": "Marriage",
+          "points": 1
+        },
+        {
+          "text": "Kids",
+          "points": 2
+        },
+        {
+          "text": "Debt",
+          "points": 2
+        },
+        {
+          "text": "Religion",
+          "points": 3
+        },
+        {
+          "text": "Ex history",
+          "points": 3
+        },
+        {
+          "text": "Moving cities",
+          "points": 3
+        },
+        {
+          "text": "Health issues",
+          "points": 3
+        },
+        {
+          "text": "Family drama",
+          "points": 4
+        },
+        {
+          "text": "Career sacrifices",
+          "points": 4
+        },
+        {
+          "text": "Living together",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-romantic-surprise-backfires",
+      "category": "Date Night",
+      "prompt": "Reasons a romantic surprise backfires",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "datenight-surprise-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Gift",
+      "answers": [
+        {
+          "text": "Wrong timing",
+          "points": 1
+        },
+        {
+          "text": "Bad reservation",
+          "points": 2
+        },
+        {
+          "text": "Hated gift",
+          "points": 2
+        },
+        {
+          "text": "Too public",
+          "points": 3
+        },
+        {
+          "text": "Ruined secret",
+          "points": 3
+        },
+        {
+          "text": "Wrong size",
+          "points": 3
+        },
+        {
+          "text": "They already had plans",
+          "points": 3
+        },
+        {
+          "text": "Too much pressure",
+          "points": 4
+        },
+        {
+          "text": "Weather disaster",
+          "points": 4
+        },
+        {
+          "text": "Allergies or food restrictions",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-first-date-secret-judgments",
+      "category": "Date Night",
+      "prompt": "Things people secretly judge on a first date",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "datenight-date-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/First_date",
+      "answers": [
+        {
+          "text": "How they treat staff",
+          "points": 1
+        },
+        {
+          "text": "Hygiene",
+          "points": 2
+        },
+        {
+          "text": "Punctuality",
+          "points": 2
+        },
+        {
+          "text": "Listening skills",
+          "points": 3
+        },
+        {
+          "text": "Table manners",
+          "points": 3
+        },
+        {
+          "text": "Conversation balance",
+          "points": 3
+        },
+        {
+          "text": "Outfit effort",
+          "points": 3
+        },
+        {
+          "text": "Phone habits",
+          "points": 4
+        },
+        {
+          "text": "Confidence",
+          "points": 4
+        },
+        {
+          "text": "Sense of humour",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-need-weekend-away-signs",
+      "category": "Date Night",
+      "prompt": "Signs a couple needs a weekend away",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "datenight-relationship-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romance_(love)",
+      "answers": [
+        {
+          "text": "Snapping at each other",
+          "points": 1
+        },
+        {
+          "text": "Boring routine",
+          "points": 2
+        },
+        {
+          "text": "Burnout",
+          "points": 2
+        },
+        {
+          "text": "Zero alone time",
+          "points": 3
+        },
+        {
+          "text": "Too many chores",
+          "points": 3
+        },
+        {
+          "text": "Short tempers",
+          "points": 3
+        },
+        {
+          "text": "Missed dates",
+          "points": 3
+        },
+        {
+          "text": "Work taking over",
+          "points": 4
+        },
+        {
+          "text": "Family stress",
+          "points": 4
+        },
+        {
+          "text": "They feel more like roommates than partners",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-compatibility-tests",
+      "category": "Date Night",
+      "prompt": "Ways people test compatibility without saying it",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "datenight-compatibility-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Watch how they treat staff",
+          "points": 1
+        },
+        {
+          "text": "Notice punctuality",
+          "points": 2
+        },
+        {
+          "text": "See how they handle stress",
+          "points": 2
+        },
+        {
+          "text": "Ask travel questions",
+          "points": 3
+        },
+        {
+          "text": "Meet their friends",
+          "points": 3
+        },
+        {
+          "text": "Share a playlist",
+          "points": 3
+        },
+        {
+          "text": "Cook together",
+          "points": 3
+        },
+        {
+          "text": "Take a road trip",
+          "points": 4
+        },
+        {
+          "text": "Discuss money lightly",
+          "points": 4
+        },
+        {
+          "text": "Watch their texting habits over time",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-redownload-app-after-breakup",
+      "category": "Date Night",
+      "prompt": "Reasons someone re-downloads a dating app after a breakup",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "datenight-app-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating_app",
+      "answers": [
+        {
+          "text": "Lonely night",
+          "points": 1
+        },
+        {
+          "text": "Needs distraction",
+          "points": 2
+        },
+        {
+          "text": "Ego boost",
+          "points": 2
+        },
+        {
+          "text": "Curiosity",
+          "points": 3
+        },
+        {
+          "text": "Friends encouraged it",
+          "points": 3
+        },
+        {
+          "text": "Wants attention",
+          "points": 3
+        },
+        {
+          "text": "Misses flirting",
+          "points": 3
+        },
+        {
+          "text": "Trying to move on",
+          "points": 4
+        },
+        {
+          "text": "Wants proof there are other options",
+          "points": 4
+        },
+        {
+          "text": "Not actually over the ex but wants to seem fine",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-things-people-plan-before-a-first-date",
+      "category": "Date Night",
+      "prompt": "Things people plan before a first date",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Outfit",
+          "points": 1
+        },
+        {
+          "text": "Venue",
+          "points": 1
+        },
+        {
+          "text": "Time",
+          "points": 1
+        },
+        {
+          "text": "Hair",
+          "points": 1
+        },
+        {
+          "text": "Transport",
+          "points": 1
+        },
+        {
+          "text": "Conversation topics",
+          "points": 2
+        },
+        {
+          "text": "Budget",
+          "points": 2
+        },
+        {
+          "text": "Playlist",
+          "points": 2
+        },
+        {
+          "text": "Backup bar",
+          "points": 2
+        },
+        {
+          "text": "Shoes",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-signs-someone-has-a-crush",
+      "category": "Date Night",
+      "prompt": "Signs someone has a crush",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Smiles more",
+          "points": 1
+        },
+        {
+          "text": "Texts first",
+          "points": 1
+        },
+        {
+          "text": "Remembers details",
+          "points": 1
+        },
+        {
+          "text": "Wants one-on-one time",
+          "points": 1
+        },
+        {
+          "text": "Nervous laugh",
+          "points": 1
+        },
+        {
+          "text": "Compliments you",
+          "points": 2
+        },
+        {
+          "text": "Watches your stories",
+          "points": 2
+        },
+        {
+          "text": "Finds excuses to talk",
+          "points": 2
+        },
+        {
+          "text": "Gets jealous",
+          "points": 2
+        },
+        {
+          "text": "Dresses up more",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-reasons-couples-choose-dinner-at-home",
+      "category": "Date Night",
+      "prompt": "Reasons couples choose dinner at home",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Save money",
+          "points": 1
+        },
+        {
+          "text": "Avoid crowds",
+          "points": 1
+        },
+        {
+          "text": "Cozy vibe",
+          "points": 1
+        },
+        {
+          "text": "Better food",
+          "points": 1
+        },
+        {
+          "text": "Kids asleep",
+          "points": 1
+        },
+        {
+          "text": "Bad weather",
+          "points": 2
+        },
+        {
+          "text": "One partner can cook",
+          "points": 2
+        },
+        {
+          "text": "No need to dress up",
+          "points": 2
+        },
+        {
+          "text": "Want privacy",
+          "points": 2
+        },
+        {
+          "text": "Easy to linger",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-things-people-argue-about-on-a-road-trip-date",
+      "category": "Date Night",
+      "prompt": "Things people argue about on a road-trip date",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Directions",
+          "points": 1
+        },
+        {
+          "text": "Music",
+          "points": 1
+        },
+        {
+          "text": "Snacks",
+          "points": 1
+        },
+        {
+          "text": "Speed",
+          "points": 1
+        },
+        {
+          "text": "Rest stops",
+          "points": 1
+        },
+        {
+          "text": "Who drives",
+          "points": 2
+        },
+        {
+          "text": "AC temperature",
+          "points": 2
+        },
+        {
+          "text": "Hotel choice",
+          "points": 2
+        },
+        {
+          "text": "Budget",
+          "points": 2
+        },
+        {
+          "text": "Arrival time",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-ways-people-try-to-impress-on-a-date",
+      "category": "Date Night",
+      "prompt": "Ways people try to impress on a date",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Dress well",
+          "points": 1
+        },
+        {
+          "text": "Use good manners",
+          "points": 1
+        },
+        {
+          "text": "Pick a nice place",
+          "points": 1
+        },
+        {
+          "text": "Tell funny stories",
+          "points": 1
+        },
+        {
+          "text": "Ask questions",
+          "points": 1
+        },
+        {
+          "text": "Act confident",
+          "points": 2
+        },
+        {
+          "text": "Smell good",
+          "points": 2
+        },
+        {
+          "text": "Pay attention",
+          "points": 2
+        },
+        {
+          "text": "Remember details",
+          "points": 2
+        },
+        {
+          "text": "Arrive on time",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-things-couples-celebrate-besides-anniversaries",
+      "category": "Date Night",
+      "prompt": "Things couples celebrate besides anniversaries",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "New job",
+          "points": 1
+        },
+        {
+          "text": "First home",
+          "points": 1
+        },
+        {
+          "text": "Birthdays",
+          "points": 1
+        },
+        {
+          "text": "Engagement",
+          "points": 1
+        },
+        {
+          "text": "Promotion",
+          "points": 1
+        },
+        {
+          "text": "Holiday",
+          "points": 2
+        },
+        {
+          "text": "Pet adoption",
+          "points": 2
+        },
+        {
+          "text": "Graduation",
+          "points": 2
+        },
+        {
+          "text": "Pregnancy",
+          "points": 2
+        },
+        {
+          "text": "Moving in",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "datenight-reasons-people-check-a-date-s-social-profile-beforehand",
+      "category": "Date Night",
+      "prompt": "Reasons people check a date's social profile beforehand",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "See photos",
+          "points": 1
+        },
+        {
+          "text": "Check relationship status",
+          "points": 1
+        },
+        {
+          "text": "Spot red flags",
+          "points": 2
+        },
+        {
+          "text": "Find common interests",
+          "points": 2
+        },
+        {
+          "text": "Confirm they are real",
+          "points": 2
+        },
+        {
+          "text": "See their friends",
+          "points": 2
+        },
+        {
+          "text": "Judge the vibe",
+          "points": 3
+        },
+        {
+          "text": "Find conversation starters",
+          "points": 3
+        },
+        {
+          "text": "Check the job title",
+          "points": 4
+        },
+        {
+          "text": "Overthink everything",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-small-things-that-make-someone-feel-cared-for-in-a-relationship",
+      "category": "Date Night",
+      "prompt": "Small things that make someone feel cared for in a relationship",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Making tea",
+          "points": 1
+        },
+        {
+          "text": "Checking they got home",
+          "points": 1
+        },
+        {
+          "text": "Remembering an order",
+          "points": 2
+        },
+        {
+          "text": "Charging their phone",
+          "points": 2
+        },
+        {
+          "text": "Saving them a snack",
+          "points": 2
+        },
+        {
+          "text": "Sending a good-luck text",
+          "points": 2
+        },
+        {
+          "text": "Doing a chore",
+          "points": 3
+        },
+        {
+          "text": "Holding a hand",
+          "points": 3
+        },
+        {
+          "text": "Sharing an umbrella",
+          "points": 4
+        },
+        {
+          "text": "Listening properly",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-reasons-couples-cancel-date-night",
+      "category": "Date Night",
+      "prompt": "Reasons couples cancel date night",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Too tired",
+          "points": 1
+        },
+        {
+          "text": "Babysitter cancelled",
+          "points": 1
+        },
+        {
+          "text": "One person is sick",
+          "points": 2
+        },
+        {
+          "text": "Budget is tight",
+          "points": 2
+        },
+        {
+          "text": "Work ran late",
+          "points": 2
+        },
+        {
+          "text": "Bad weather",
+          "points": 2
+        },
+        {
+          "text": "Family issue",
+          "points": 3
+        },
+        {
+          "text": "One partner is upset",
+          "points": 3
+        },
+        {
+          "text": "Restaurant problem",
+          "points": 4
+        },
+        {
+          "text": "Travel delay",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-things-people-overthink-after-a-great-first-date",
+      "category": "Date Night",
+      "prompt": "Things people overthink after a great first date",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Text timing",
+          "points": 1
+        },
+        {
+          "text": "Last hug",
+          "points": 1
+        },
+        {
+          "text": "Joke that landed weird",
+          "points": 2
+        },
+        {
+          "text": "Bill split",
+          "points": 2
+        },
+        {
+          "text": "Outfit choice",
+          "points": 2
+        },
+        {
+          "text": "Whether to double text",
+          "points": 2
+        },
+        {
+          "text": "If they talked too much",
+          "points": 3
+        },
+        {
+          "text": "Kiss moment",
+          "points": 3
+        },
+        {
+          "text": "Follow-up plan",
+          "points": 4
+        },
+        {
+          "text": "What friends will think",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-questions-couples-ask-when-things-get-serious",
+      "category": "Date Night",
+      "prompt": "Questions couples ask when things get serious",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Are we exclusive",
+          "points": 1
+        },
+        {
+          "text": "Where is this going",
+          "points": 1
+        },
+        {
+          "text": "Do you want kids",
+          "points": 2
+        },
+        {
+          "text": "Where would we live",
+          "points": 2
+        },
+        {
+          "text": "How do you handle money",
+          "points": 2
+        },
+        {
+          "text": "When do we meet the parents",
+          "points": 2
+        },
+        {
+          "text": "Thoughts on marriage",
+          "points": 3
+        },
+        {
+          "text": "Career priorities",
+          "points": 3
+        },
+        {
+          "text": "Travel goals",
+          "points": 4
+        },
+        {
+          "text": "What counts as cheating",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "datenight-things-that-make-long-distance-relationships-hard",
+      "category": "Date Night",
+      "prompt": "Things that make long-distance relationships hard",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Time zones",
+          "points": 1
+        },
+        {
+          "text": "Flight cost",
+          "points": 2
+        },
+        {
+          "text": "Miscommunication",
+          "points": 2
+        },
+        {
+          "text": "Jealousy",
+          "points": 3
+        },
+        {
+          "text": "Missing physical touch",
+          "points": 3
+        },
+        {
+          "text": "Different routines",
+          "points": 3
+        },
+        {
+          "text": "Bad Wi-Fi",
+          "points": 4
+        },
+        {
+          "text": "Unclear future",
+          "points": 4
+        },
+        {
+          "text": "Lonely weekends",
+          "points": 5
+        },
+        {
+          "text": "Limited visits",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "datenight-reasons-someone-hesitates-to-define-the-relationship",
+      "category": "Date Night",
+      "prompt": "Reasons someone hesitates to define the relationship",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Fear of commitment",
+          "points": 1
+        },
+        {
+          "text": "Bad past experience",
+          "points": 2
+        },
+        {
+          "text": "Wants freedom",
+          "points": 2
+        },
+        {
+          "text": "Mixed feelings",
+          "points": 3
+        },
+        {
+          "text": "Timing feels wrong",
+          "points": 3
+        },
+        {
+          "text": "Career focus",
+          "points": 3
+        },
+        {
+          "text": "Still healing",
+          "points": 4
+        },
+        {
+          "text": "Wants to date around",
+          "points": 4
+        },
+        {
+          "text": "Avoids pressure",
+          "points": 5
+        },
+        {
+          "text": "Not sure it will last",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "datenight-things-couples-bicker-about-on-vacation",
+      "category": "Date Night",
+      "prompt": "Things couples bicker about on vacation",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Directions",
+          "points": 1
+        },
+        {
+          "text": "Budget",
+          "points": 2
+        },
+        {
+          "text": "Photos",
+          "points": 2
+        },
+        {
+          "text": "Where to eat",
+          "points": 3
+        },
+        {
+          "text": "Packing",
+          "points": 3
+        },
+        {
+          "text": "Late mornings",
+          "points": 3
+        },
+        {
+          "text": "Sun or shade",
+          "points": 4
+        },
+        {
+          "text": "Souvenir spending",
+          "points": 4
+        },
+        {
+          "text": "Overplanning",
+          "points": 5
+        },
+        {
+          "text": "Who booked badly",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "datenight-ways-people-apologize-romantically",
+      "category": "Date Night",
+      "prompt": "Ways people apologize romantically",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Flowers",
+          "points": 1
+        },
+        {
+          "text": "Handwritten note",
+          "points": 2
+        },
+        {
+          "text": "Favorite food",
+          "points": 2
+        },
+        {
+          "text": "Honest talk",
+          "points": 3
+        },
+        {
+          "text": "Surprise date",
+          "points": 3
+        },
+        {
+          "text": "Thoughtful gift",
+          "points": 3
+        },
+        {
+          "text": "Playlist",
+          "points": 4
+        },
+        {
+          "text": "Doing the hated chore",
+          "points": 4
+        },
+        {
+          "text": "Long hug",
+          "points": 5
+        },
+        {
+          "text": "Owning the mistake",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "datenight-signs-a-couple-needs-a-proper-conversation",
+      "category": "Date Night",
+      "prompt": "Signs a couple needs a proper conversation",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Avoiding the topic",
+          "points": 1
+        },
+        {
+          "text": "Repeating the same fight",
+          "points": 2
+        },
+        {
+          "text": "One-word replies",
+          "points": 2
+        },
+        {
+          "text": "Tension in public",
+          "points": 3
+        },
+        {
+          "text": "Unsaid resentment",
+          "points": 3
+        },
+        {
+          "text": "Cancelled plans",
+          "points": 3
+        },
+        {
+          "text": "Mismatched expectations",
+          "points": 4
+        },
+        {
+          "text": "Feeling distant",
+          "points": 4
+        },
+        {
+          "text": "Passive-aggressive jokes",
+          "points": 5
+        },
+        {
+          "text": "Sleeping angry",
+          "points": 5
+        }
+      ]
+    }
+  ]
+}

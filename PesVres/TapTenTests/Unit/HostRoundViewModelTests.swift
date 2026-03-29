@@ -142,9 +142,24 @@ struct HostRoundViewModelTests {
         #expect(viewModel.finishReason == .skipped)
         #expect(viewModel.remainingTime == 0)
         #expect(viewModel.remainingTenths == 0)
+        #expect(viewModel.timeRemainingAtFinish == 60)
         #expect(!viewModel.isPaused)
         #expect(viewModel.pointsAwarded == 4)
         #expect(viewModel.revealedAnswerIndices == Set([0, 2]))
+    }
+
+    @Test
+    func firstRevealTimingAndFinishSnapshotSupportDifficultyCalibration() {
+        let viewModel = makeDeterministicTimerViewModel(durationSeconds: 60)
+        viewModel.startRoundIfNeeded()
+
+        advanceTicks(viewModel, count: 12)
+        _ = viewModel.revealAnswer(at: 0)
+        advanceTicks(viewModel, count: 8)
+        viewModel.skipRound()
+
+        #expect(abs((viewModel.timeToFirstReveal ?? 0) - 1.2) < 0.0001)
+        #expect(abs((viewModel.timeRemainingAtFinish ?? 0) - 58.0) < 0.0001)
     }
 
     @Test

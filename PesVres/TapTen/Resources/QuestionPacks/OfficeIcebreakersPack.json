@@ -1,0 +1,2121 @@
+{
+  "id": "office-icebreakers",
+  "title": "Office & Icebreakers",
+  "summary": "Meeting-room awkwardness, presentation panic, and team-banter gold.",
+  "languageCode": "en",
+  "packVersion": "2.0",
+  "monetization": {
+    "access": "premium",
+    "storeProductID": "com.tapten.pack.office-icebreakers",
+    "bundleProductIDs": [
+      "com.tapten.bundle.launch-wave"
+    ],
+    "merchandisingLabel": "Work Friends"
+  },
+  "questions": [
+    {
+      "id": "office-meeting-essentials",
+      "category": "Office & Icebreakers",
+      "prompt": "Things people bring into a meeting",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "office-meeting-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Laptop",
+          "points": 1
+        },
+        {
+          "text": "Notebook",
+          "points": 1
+        },
+        {
+          "text": "Coffee",
+          "points": 1
+        },
+        {
+          "text": "Water bottle",
+          "points": 1
+        },
+        {
+          "text": "Pen",
+          "points": 1
+        },
+        {
+          "text": "Agenda",
+          "points": 2
+        },
+        {
+          "text": "Charger",
+          "points": 2
+        },
+        {
+          "text": "Printed slides",
+          "points": 2
+        },
+        {
+          "text": "Headphones",
+          "points": 2
+        },
+        {
+          "text": "Snacks",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "office-volunteer-avoidance",
+      "category": "Office & Icebreakers",
+      "prompt": "Things people do when a manager asks for volunteers",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "humorous",
+      "contentType": "office-reaction-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Look down",
+          "points": 1
+        },
+        {
+          "text": "Stay silent",
+          "points": 1
+        },
+        {
+          "text": "Check laptop",
+          "points": 1
+        },
+        {
+          "text": "Avoid eye contact",
+          "points": 1
+        },
+        {
+          "text": "Pretend to take notes",
+          "points": 1
+        },
+        {
+          "text": "Suddenly type",
+          "points": 2
+        },
+        {
+          "text": "Sip coffee",
+          "points": 2
+        },
+        {
+          "text": "Shuffle papers",
+          "points": 2
+        },
+        {
+          "text": "Lean back thoughtfully",
+          "points": 2
+        },
+        {
+          "text": "Hope someone else jumps in",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "office-call-starts-late",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons a work call starts late",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "office-video-call-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Video_call",
+      "answers": [
+        {
+          "text": "Someone is still joining",
+          "points": 1
+        },
+        {
+          "text": "Audio issue",
+          "points": 1
+        },
+        {
+          "text": "Wrong link",
+          "points": 1
+        },
+        {
+          "text": "Camera not working",
+          "points": 1
+        },
+        {
+          "text": "Host is late",
+          "points": 1
+        },
+        {
+          "text": "Screen share trouble",
+          "points": 2
+        },
+        {
+          "text": "Previous meeting ran over",
+          "points": 2
+        },
+        {
+          "text": "Time zone confusion",
+          "points": 2
+        },
+        {
+          "text": "Internet lag",
+          "points": 2
+        },
+        {
+          "text": "Waiting for the decision-maker",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "office-icebreaker-intros",
+      "category": "Office & Icebreakers",
+      "prompt": "Things people say during an icebreaker",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "office-icebreaker-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Icebreaker_(facilitation)",
+      "answers": [
+        {
+          "text": "Name",
+          "points": 1
+        },
+        {
+          "text": "Job title",
+          "points": 1
+        },
+        {
+          "text": "Where they're from",
+          "points": 1
+        },
+        {
+          "text": "Hobby",
+          "points": 1
+        },
+        {
+          "text": "Favourite food",
+          "points": 1
+        },
+        {
+          "text": "Weekend plan",
+          "points": 2
+        },
+        {
+          "text": "Fun fact",
+          "points": 2
+        },
+        {
+          "text": "Favourite film",
+          "points": 2
+        },
+        {
+          "text": "Pet mention",
+          "points": 2
+        },
+        {
+          "text": "Two truths and a lie answer",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "office-desk-items",
+      "category": "Office & Icebreakers",
+      "prompt": "Things you find on an office desk",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "office-item-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Office",
+      "answers": [
+        {
+          "text": "Laptop",
+          "points": 1
+        },
+        {
+          "text": "Mouse",
+          "points": 1
+        },
+        {
+          "text": "Keyboard",
+          "points": 1
+        },
+        {
+          "text": "Mug",
+          "points": 1
+        },
+        {
+          "text": "Notebook",
+          "points": 1
+        },
+        {
+          "text": "Sticky notes",
+          "points": 2
+        },
+        {
+          "text": "Phone charger",
+          "points": 2
+        },
+        {
+          "text": "Water bottle",
+          "points": 2
+        },
+        {
+          "text": "Headphones",
+          "points": 2
+        },
+        {
+          "text": "Stress ball",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "office-camera-off-reasons",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons people turn their camera off on a video call",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "office-video-call-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Video_call",
+      "answers": [
+        {
+          "text": "Bad hair day",
+          "points": 1
+        },
+        {
+          "text": "Messy room",
+          "points": 1
+        },
+        {
+          "text": "Eating lunch",
+          "points": 1
+        },
+        {
+          "text": "Low bandwidth",
+          "points": 1
+        },
+        {
+          "text": "Multitasking",
+          "points": 1
+        },
+        {
+          "text": "Feeling ill",
+          "points": 2
+        },
+        {
+          "text": "Baby in the room",
+          "points": 2
+        },
+        {
+          "text": "Dog barking",
+          "points": 2
+        },
+        {
+          "text": "Walking between rooms",
+          "points": 2
+        },
+        {
+          "text": "Still in pyjamas",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "office-before-presentation",
+      "category": "Office & Icebreakers",
+      "prompt": "Things people do right before a presentation",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "office-presentation-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Presentation",
+      "answers": [
+        {
+          "text": "Rehearse the opener",
+          "points": 1
+        },
+        {
+          "text": "Take a sip of water",
+          "points": 1
+        },
+        {
+          "text": "Check slides",
+          "points": 1
+        },
+        {
+          "text": "Deep breath",
+          "points": 1
+        },
+        {
+          "text": "Adjust clothes",
+          "points": 1
+        },
+        {
+          "text": "Test the clicker",
+          "points": 2
+        },
+        {
+          "text": "Check the microphone",
+          "points": 2
+        },
+        {
+          "text": "Pace around",
+          "points": 2
+        },
+        {
+          "text": "Visit the bathroom",
+          "points": 2
+        },
+        {
+          "text": "Rewrite the first line again",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "office-leave-social-early",
+      "category": "Office & Icebreakers",
+      "prompt": "Excuses people use to leave a work social early",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "humorous",
+      "contentType": "office-social-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Party",
+      "answers": [
+        {
+          "text": "Early start tomorrow",
+          "points": 1
+        },
+        {
+          "text": "Babysitter issue",
+          "points": 1
+        },
+        {
+          "text": "Train to catch",
+          "points": 1
+        },
+        {
+          "text": "Not feeling well",
+          "points": 1
+        },
+        {
+          "text": "Long commute",
+          "points": 1
+        },
+        {
+          "text": "Dog needs walking",
+          "points": 2
+        },
+        {
+          "text": "Family dinner",
+          "points": 2
+        },
+        {
+          "text": "Morning gym class",
+          "points": 2
+        },
+        {
+          "text": "Friend birthday elsewhere",
+          "points": 2
+        },
+        {
+          "text": "Suddenly remembered another commitment",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "office-manager-panic-phrases",
+      "category": "Office & Icebreakers",
+      "prompt": "Phrases from a manager that make people nervous",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "office-manager-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Management",
+      "answers": [
+        {
+          "text": "Quick chat",
+          "points": 1
+        },
+        {
+          "text": "Can you stay after",
+          "points": 1
+        },
+        {
+          "text": "Need this today",
+          "points": 2
+        },
+        {
+          "text": "Circle back later",
+          "points": 2
+        },
+        {
+          "text": "Let's take this offline",
+          "points": 2
+        },
+        {
+          "text": "I have feedback",
+          "points": 2
+        },
+        {
+          "text": "Join me for a call",
+          "points": 2
+        },
+        {
+          "text": "Need a rewrite",
+          "points": 3
+        },
+        {
+          "text": "Leadership has questions",
+          "points": 3
+        },
+        {
+          "text": "This came from the CEO",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "office-chat-goes-quiet",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons the team chat suddenly goes quiet",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "office-chat-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Workplace",
+      "answers": [
+        {
+          "text": "Boss joined",
+          "points": 1
+        },
+        {
+          "text": "Nobody knows the answer",
+          "points": 1
+        },
+        {
+          "text": "Lunch hour",
+          "points": 2
+        },
+        {
+          "text": "Message was awkward",
+          "points": 2
+        },
+        {
+          "text": "Everyone is in meetings",
+          "points": 2
+        },
+        {
+          "text": "Bad news landed",
+          "points": 2
+        },
+        {
+          "text": "Topic needs a call",
+          "points": 2
+        },
+        {
+          "text": "People are screenshotting it",
+          "points": 3
+        },
+        {
+          "text": "It looked like extra work",
+          "points": 3
+        },
+        {
+          "text": "Someone hit send too honestly",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "office-common-coworker-types",
+      "category": "Office & Icebreakers",
+      "prompt": "Types of people every office seems to have",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "office-archetype-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Office",
+      "answers": [
+        {
+          "text": "Early bird",
+          "points": 1
+        },
+        {
+          "text": "Loud typer",
+          "points": 1
+        },
+        {
+          "text": "Snacker",
+          "points": 2
+        },
+        {
+          "text": "Gossip",
+          "points": 2
+        },
+        {
+          "text": "Meeting lover",
+          "points": 2
+        },
+        {
+          "text": "Plant person",
+          "points": 2
+        },
+        {
+          "text": "Tech fixer",
+          "points": 2
+        },
+        {
+          "text": "Birthday organizer",
+          "points": 3
+        },
+        {
+          "text": "Reply-all offender",
+          "points": 3
+        },
+        {
+          "text": "Person who says per my last email too much",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "office-remote-day-benefits",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons people love working from home",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "office-remote-work-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Remote_work",
+      "answers": [
+        {
+          "text": "No commute",
+          "points": 1
+        },
+        {
+          "text": "Comfortable clothes",
+          "points": 1
+        },
+        {
+          "text": "Quiet space",
+          "points": 2
+        },
+        {
+          "text": "More sleep",
+          "points": 2
+        },
+        {
+          "text": "Home lunch",
+          "points": 2
+        },
+        {
+          "text": "Focus time",
+          "points": 2
+        },
+        {
+          "text": "No small talk",
+          "points": 2
+        },
+        {
+          "text": "Easier errands",
+          "points": 3
+        },
+        {
+          "text": "Better control of schedule",
+          "points": 3
+        },
+        {
+          "text": "Can work with the dog nearby",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "office-brainstorm-derailers",
+      "category": "Office & Icebreakers",
+      "prompt": "Things that derail a brainstorming session",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "office-brainstorm-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Brainstorming",
+      "answers": [
+        {
+          "text": "One person dominates",
+          "points": 1
+        },
+        {
+          "text": "No clear brief",
+          "points": 1
+        },
+        {
+          "text": "Side conversations",
+          "points": 2
+        },
+        {
+          "text": "Running out of time",
+          "points": 2
+        },
+        {
+          "text": "Bad internet",
+          "points": 2
+        },
+        {
+          "text": "Criticism too early",
+          "points": 2
+        },
+        {
+          "text": "People checking phones",
+          "points": 2
+        },
+        {
+          "text": "Nobody writes ideas down",
+          "points": 3
+        },
+        {
+          "text": "Conversation goes off-topic",
+          "points": 3
+        },
+        {
+          "text": "It becomes a debate instead of ideation",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "office-fake-busy-tricks",
+      "category": "Office & Icebreakers",
+      "prompt": "Ways people fake being busy at work",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "office-humour-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Workplace",
+      "answers": [
+        {
+          "text": "Type quickly",
+          "points": 1
+        },
+        {
+          "text": "Walk fast",
+          "points": 1
+        },
+        {
+          "text": "Carry a laptop",
+          "points": 2
+        },
+        {
+          "text": "Keep a spreadsheet open",
+          "points": 2
+        },
+        {
+          "text": "Nod seriously",
+          "points": 2
+        },
+        {
+          "text": "Wear headphones",
+          "points": 2
+        },
+        {
+          "text": "Have a full calendar",
+          "points": 2
+        },
+        {
+          "text": "Send late emails",
+          "points": 3
+        },
+        {
+          "text": "Pace with a coffee",
+          "points": 3
+        },
+        {
+          "text": "Say just slammed right now",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "office-after-long-meeting-complaints",
+      "category": "Office & Icebreakers",
+      "prompt": "Complaints people make after a long meeting",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "office-meeting-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Could have been an email",
+          "points": 1
+        },
+        {
+          "text": "No decision was made",
+          "points": 1
+        },
+        {
+          "text": "It went over time",
+          "points": 2
+        },
+        {
+          "text": "Too many slides",
+          "points": 2
+        },
+        {
+          "text": "Wrong people were there",
+          "points": 2
+        },
+        {
+          "text": "It repeated old points",
+          "points": 2
+        },
+        {
+          "text": "There was no break",
+          "points": 2
+        },
+        {
+          "text": "I still do not know the action items",
+          "points": 3
+        },
+        {
+          "text": "It killed my whole afternoon",
+          "points": 3
+        },
+        {
+          "text": "It created even more meetings",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "office-training-pain-points",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons workplace training feels painful",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "office-training-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Training_and_development",
+      "answers": [
+        {
+          "text": "Too long",
+          "points": 1
+        },
+        {
+          "text": "Repetitive",
+          "points": 1
+        },
+        {
+          "text": "Awkward role play",
+          "points": 2
+        },
+        {
+          "text": "Too many buzzwords",
+          "points": 2
+        },
+        {
+          "text": "Bad videos",
+          "points": 2
+        },
+        {
+          "text": "Obvious material",
+          "points": 2
+        },
+        {
+          "text": "Forced participation",
+          "points": 2
+        },
+        {
+          "text": "Generic examples",
+          "points": 3
+        },
+        {
+          "text": "Quiz at the end",
+          "points": 3
+        },
+        {
+          "text": "Presenter reads every slide word for word",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "office-interview-panel-awkward",
+      "category": "Office & Icebreakers",
+      "prompt": "Things that make an interview panel awkward",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "editorial",
+      "contentType": "office-interview-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Job_interview",
+      "answers": [
+        {
+          "text": "Interrupting each other",
+          "points": 2
+        },
+        {
+          "text": "Long silence",
+          "points": 2
+        },
+        {
+          "text": "Candidate nervousness",
+          "points": 2
+        },
+        {
+          "text": "Bad room temperature",
+          "points": 2
+        },
+        {
+          "text": "One panelist is distracted",
+          "points": 3
+        },
+        {
+          "text": "Microphone problems",
+          "points": 3
+        },
+        {
+          "text": "A tough question lands badly",
+          "points": 3
+        },
+        {
+          "text": "Panelists disagree openly",
+          "points": 4
+        },
+        {
+          "text": "Someone mispronounces the candidate's name",
+          "points": 4
+        },
+        {
+          "text": "One interviewer has not read the CV",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "office-presentation-going-badly",
+      "category": "Office & Icebreakers",
+      "prompt": "Signs a presentation is going badly",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "editorial",
+      "contentType": "office-presentation-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Presentation",
+      "answers": [
+        {
+          "text": "No eye contact",
+          "points": 2
+        },
+        {
+          "text": "Slides look crowded",
+          "points": 2
+        },
+        {
+          "text": "Presenter rushes",
+          "points": 2
+        },
+        {
+          "text": "Audience checks phones",
+          "points": 2
+        },
+        {
+          "text": "Jokes fail",
+          "points": 3
+        },
+        {
+          "text": "Questions expose a gap",
+          "points": 3
+        },
+        {
+          "text": "Audio cuts out",
+          "points": 3
+        },
+        {
+          "text": "Time starts running short",
+          "points": 4
+        },
+        {
+          "text": "Presenter reads every bullet",
+          "points": 4
+        },
+        {
+          "text": "Someone from leadership looks alarmed",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "office-fridge-drama",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons the office fridge becomes dramatic",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "office-drama-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Office",
+      "answers": [
+        {
+          "text": "Stolen lunch",
+          "points": 2
+        },
+        {
+          "text": "Bad smell",
+          "points": 2
+        },
+        {
+          "text": "Expired milk",
+          "points": 2
+        },
+        {
+          "text": "Mystery container",
+          "points": 2
+        },
+        {
+          "text": "All the space is taken",
+          "points": 3
+        },
+        {
+          "text": "Unlabelled leftovers",
+          "points": 3
+        },
+        {
+          "text": "Someone's diet food disappears",
+          "points": 3
+        },
+        {
+          "text": "Lunch leaks everywhere",
+          "points": 4
+        },
+        {
+          "text": "A passive-aggressive note appears",
+          "points": 4
+        },
+        {
+          "text": "A months-old science experiment is discovered",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "office-review-dread-topics",
+      "category": "Office & Icebreakers",
+      "prompt": "Topics people secretly dread in a performance review",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "editorial",
+      "contentType": "office-review-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Performance_appraisal",
+      "answers": [
+        {
+          "text": "Salary",
+          "points": 2
+        },
+        {
+          "text": "Promotion chances",
+          "points": 2
+        },
+        {
+          "text": "Weaknesses",
+          "points": 2
+        },
+        {
+          "text": "Missed targets",
+          "points": 2
+        },
+        {
+          "text": "Feedback from peers",
+          "points": 3
+        },
+        {
+          "text": "Communication style",
+          "points": 3
+        },
+        {
+          "text": "Leadership potential",
+          "points": 3
+        },
+        {
+          "text": "Future role fit",
+          "points": 4
+        },
+        {
+          "text": "Why they want to stay",
+          "points": 4
+        },
+        {
+          "text": "Attitude or culture fit",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "office-networking-event-weird",
+      "category": "Office & Icebreakers",
+      "prompt": "Things that make a networking event weird",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "office-networking-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Business_networking",
+      "answers": [
+        {
+          "text": "Forced small talk",
+          "points": 2
+        },
+        {
+          "text": "Name-tag confusion",
+          "points": 2
+        },
+        {
+          "text": "Nobody knows anyone",
+          "points": 2
+        },
+        {
+          "text": "Hard-sell pitch",
+          "points": 2
+        },
+        {
+          "text": "Bad venue lighting",
+          "points": 3
+        },
+        {
+          "text": "Running out of conversation",
+          "points": 3
+        },
+        {
+          "text": "Talking while holding food",
+          "points": 3
+        },
+        {
+          "text": "Someone scans the room mid-chat",
+          "points": 4
+        },
+        {
+          "text": "Obvious bragging",
+          "points": 4
+        },
+        {
+          "text": "One person treats it like speed dating",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "office-group-project-fails",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons a workplace group project falls apart",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "editorial",
+      "contentType": "office-project-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Teamwork",
+      "answers": [
+        {
+          "text": "No owner",
+          "points": 2
+        },
+        {
+          "text": "Scope changes",
+          "points": 2
+        },
+        {
+          "text": "Missed deadline",
+          "points": 2
+        },
+        {
+          "text": "Too many opinions",
+          "points": 2
+        },
+        {
+          "text": "Poor handoff",
+          "points": 3
+        },
+        {
+          "text": "Conflicting priorities",
+          "points": 3
+        },
+        {
+          "text": "Nobody reads updates",
+          "points": 3
+        },
+        {
+          "text": "Decision-maker is absent",
+          "points": 4
+        },
+        {
+          "text": "Work gets duplicated by accident",
+          "points": 4
+        },
+        {
+          "text": "Everyone agrees in meetings and ignores it later",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "office-icebreaker-overshares",
+      "category": "Office & Icebreakers",
+      "prompt": "Things people accidentally overshare in an icebreaker",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "office-icebreaker-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Icebreaker_(facilitation)",
+      "answers": [
+        {
+          "text": "Weird hobby",
+          "points": 2
+        },
+        {
+          "text": "Embarrassing nickname",
+          "points": 2
+        },
+        {
+          "text": "Pet obsession",
+          "points": 2
+        },
+        {
+          "text": "Sleep schedule",
+          "points": 2
+        },
+        {
+          "text": "Dating life",
+          "points": 3
+        },
+        {
+          "text": "Therapy joke",
+          "points": 3
+        },
+        {
+          "text": "Job hunt hint",
+          "points": 3
+        },
+        {
+          "text": "Salary complaint",
+          "points": 4
+        },
+        {
+          "text": "Family drama",
+          "points": 4
+        },
+        {
+          "text": "Why they actually want to quit",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "office-manager-extra-work-signals",
+      "category": "Office & Icebreakers",
+      "prompt": "Signs a manager is about to volunteer the team for extra work",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "office-manager-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Management",
+      "answers": [
+        {
+          "text": "Uses the phrase quick win",
+          "points": 2
+        },
+        {
+          "text": "Says high visibility",
+          "points": 2
+        },
+        {
+          "text": "Mentions a stretch goal",
+          "points": 2
+        },
+        {
+          "text": "Starts with small ask",
+          "points": 2
+        },
+        {
+          "text": "Talks about impact",
+          "points": 3
+        },
+        {
+          "text": "Says leadership noticed",
+          "points": 3
+        },
+        {
+          "text": "Mentions ownership",
+          "points": 3
+        },
+        {
+          "text": "Avoids the exact deadline",
+          "points": 4
+        },
+        {
+          "text": "Smiles too much",
+          "points": 4
+        },
+        {
+          "text": "Ends with great opportunity",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "officeice-things-people-say-to-break-the-ice-in-a-meeting",
+      "category": "Office & Icebreakers",
+      "prompt": "Things people say to break the ice in a meeting",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "How was your weekend",
+          "points": 1
+        },
+        {
+          "text": "Can everyone hear me",
+          "points": 1
+        },
+        {
+          "text": "Let's give it a minute",
+          "points": 1
+        },
+        {
+          "text": "Nice to meet you",
+          "points": 1
+        },
+        {
+          "text": "Where is everyone joining from",
+          "points": 1
+        },
+        {
+          "text": "Any fun plans",
+          "points": 2
+        },
+        {
+          "text": "Love the background",
+          "points": 2
+        },
+        {
+          "text": "Shall we get started",
+          "points": 2
+        },
+        {
+          "text": "Sorry I am late",
+          "points": 2
+        },
+        {
+          "text": "Hope you had coffee",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "officeice-reasons-someone-keeps-their-camera-off-on-zoom",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons someone keeps their camera off on Zoom",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Messy room",
+          "points": 1
+        },
+        {
+          "text": "Bad hair day",
+          "points": 1
+        },
+        {
+          "text": "Bad Wi-Fi",
+          "points": 1
+        },
+        {
+          "text": "Kid nearby",
+          "points": 1
+        },
+        {
+          "text": "Eating lunch",
+          "points": 1
+        },
+        {
+          "text": "Feeling tired",
+          "points": 2
+        },
+        {
+          "text": "No makeup",
+          "points": 2
+        },
+        {
+          "text": "Technical issue",
+          "points": 2
+        },
+        {
+          "text": "Walking around",
+          "points": 2
+        },
+        {
+          "text": "Pet chaos",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "officeice-things-coworkers-bring-to-a-shared-snack-day",
+      "category": "Office & Icebreakers",
+      "prompt": "Things coworkers bring to a shared snack day",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Cookies",
+          "points": 1
+        },
+        {
+          "text": "Fruit",
+          "points": 1
+        },
+        {
+          "text": "Crisps",
+          "points": 1
+        },
+        {
+          "text": "Brownies",
+          "points": 1
+        },
+        {
+          "text": "Soda",
+          "points": 1
+        },
+        {
+          "text": "Hummus",
+          "points": 2
+        },
+        {
+          "text": "Donuts",
+          "points": 2
+        },
+        {
+          "text": "Cheese",
+          "points": 2
+        },
+        {
+          "text": "Homemade cake",
+          "points": 2
+        },
+        {
+          "text": "Candy",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "officeice-things-presenters-apologize-for-during-a-messy-meeting",
+      "category": "Office & Icebreakers",
+      "prompt": "Things presenters apologize for during a messy meeting",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Tech issue",
+          "points": 1
+        },
+        {
+          "text": "Tiny text",
+          "points": 1
+        },
+        {
+          "text": "Too many slides",
+          "points": 1
+        },
+        {
+          "text": "Wrong version",
+          "points": 1
+        },
+        {
+          "text": "Time running out",
+          "points": 1
+        },
+        {
+          "text": "Internet lag",
+          "points": 2
+        },
+        {
+          "text": "Bad audio",
+          "points": 2
+        },
+        {
+          "text": "Lost train of thought",
+          "points": 2
+        },
+        {
+          "text": "Messy data",
+          "points": 2
+        },
+        {
+          "text": "Last-minute changes",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "officeice-things-people-complain-about-in-open-plan-offices",
+      "category": "Office & Icebreakers",
+      "prompt": "Things people complain about in open-plan offices",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Noise",
+          "points": 1
+        },
+        {
+          "text": "Cold AC",
+          "points": 1
+        },
+        {
+          "text": "Hot desks",
+          "points": 1
+        },
+        {
+          "text": "Lack of privacy",
+          "points": 1
+        },
+        {
+          "text": "Phone calls",
+          "points": 1
+        },
+        {
+          "text": "Smell of lunch",
+          "points": 2
+        },
+        {
+          "text": "Bright lights",
+          "points": 2
+        },
+        {
+          "text": "No meeting rooms",
+          "points": 2
+        },
+        {
+          "text": "Keyboard clatter",
+          "points": 2
+        },
+        {
+          "text": "Interruptions",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "officeice-ways-people-kill-time-before-a-meeting-starts",
+      "category": "Office & Icebreakers",
+      "prompt": "Ways people kill time before a meeting starts",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Check email",
+          "points": 1
+        },
+        {
+          "text": "Small talk",
+          "points": 1
+        },
+        {
+          "text": "Scroll phone",
+          "points": 1
+        },
+        {
+          "text": "Refill coffee",
+          "points": 1
+        },
+        {
+          "text": "Test mic",
+          "points": 1
+        },
+        {
+          "text": "Open slides",
+          "points": 2
+        },
+        {
+          "text": "Adjust chair",
+          "points": 2
+        },
+        {
+          "text": "Look at the agenda",
+          "points": 2
+        },
+        {
+          "text": "Complain about the calendar",
+          "points": 2
+        },
+        {
+          "text": "Stare at the screen",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "officeice-questions-people-hate-in-team-icebreakers",
+      "category": "Office & Icebreakers",
+      "prompt": "Questions people hate in team icebreakers",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Fun fact",
+          "points": 1
+        },
+        {
+          "text": "Dream vacation",
+          "points": 1
+        },
+        {
+          "text": "Spirit animal",
+          "points": 2
+        },
+        {
+          "text": "Two truths and a lie",
+          "points": 2
+        },
+        {
+          "text": "Favorite song",
+          "points": 2
+        },
+        {
+          "text": "Biggest weakness",
+          "points": 2
+        },
+        {
+          "text": "What is your superpower",
+          "points": 3
+        },
+        {
+          "text": "If you were a fruit",
+          "points": 3
+        },
+        {
+          "text": "Best icebreaker you have done",
+          "points": 4
+        },
+        {
+          "text": "Share something no one knows",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "officeice-reasons-group-brainstorming-goes-nowhere",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons group brainstorming goes nowhere",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "No clear goal",
+          "points": 1
+        },
+        {
+          "text": "One person dominates",
+          "points": 1
+        },
+        {
+          "text": "No bad ideas rule ignored",
+          "points": 2
+        },
+        {
+          "text": "Too many people",
+          "points": 2
+        },
+        {
+          "text": "No follow-up",
+          "points": 2
+        },
+        {
+          "text": "Tangents",
+          "points": 2
+        },
+        {
+          "text": "Fear of judgment",
+          "points": 3
+        },
+        {
+          "text": "Not enough time",
+          "points": 3
+        },
+        {
+          "text": "Repeated ideas",
+          "points": 4
+        },
+        {
+          "text": "Everyone is tired",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "officeice-things-people-say-in-performance-review-season",
+      "category": "Office & Icebreakers",
+      "prompt": "Things people say in performance-review season",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Great teamwork",
+          "points": 1
+        },
+        {
+          "text": "Growth mindset",
+          "points": 1
+        },
+        {
+          "text": "Exceeded expectations",
+          "points": 2
+        },
+        {
+          "text": "Needs improvement",
+          "points": 2
+        },
+        {
+          "text": "Strong ownership",
+          "points": 2
+        },
+        {
+          "text": "Communication skills",
+          "points": 2
+        },
+        {
+          "text": "Stretch goal",
+          "points": 3
+        },
+        {
+          "text": "Leadership potential",
+          "points": 3
+        },
+        {
+          "text": "Development plan",
+          "points": 4
+        },
+        {
+          "text": "Impact",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "officeice-ways-coworkers-try-to-look-busy",
+      "category": "Office & Icebreakers",
+      "prompt": "Ways coworkers try to look busy",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Type intensely",
+          "points": 1
+        },
+        {
+          "text": "Carry a laptop",
+          "points": 1
+        },
+        {
+          "text": "Walk fast",
+          "points": 2
+        },
+        {
+          "text": "Wear a headset",
+          "points": 2
+        },
+        {
+          "text": "Keep calendar blocked",
+          "points": 2
+        },
+        {
+          "text": "Open a spreadsheet",
+          "points": 2
+        },
+        {
+          "text": "Nod in meetings",
+          "points": 3
+        },
+        {
+          "text": "Reply all",
+          "points": 3
+        },
+        {
+          "text": "Juggle two coffees",
+          "points": 4
+        },
+        {
+          "text": "Use buzzwords",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "officeice-things-that-make-a-team-building-day-awkward",
+      "category": "Office & Icebreakers",
+      "prompt": "Things that make a team-building day awkward",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Forced games",
+          "points": 1
+        },
+        {
+          "text": "Trust falls",
+          "points": 1
+        },
+        {
+          "text": "Sharing personal stories",
+          "points": 2
+        },
+        {
+          "text": "Bad weather",
+          "points": 2
+        },
+        {
+          "text": "Mixed departments",
+          "points": 2
+        },
+        {
+          "text": "Alcohol pressure",
+          "points": 2
+        },
+        {
+          "text": "One loud extrovert",
+          "points": 3
+        },
+        {
+          "text": "Weird venue",
+          "points": 3
+        },
+        {
+          "text": "Long bus ride",
+          "points": 4
+        },
+        {
+          "text": "Mandatory fun",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "officeice-reasons-an-office-group-chat-becomes-dangerous",
+      "category": "Office & Icebreakers",
+      "prompt": "Reasons an office group chat becomes dangerous",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Sarcasm gets misread",
+          "points": 1
+        },
+        {
+          "text": "Wrong recipient",
+          "points": 2
+        },
+        {
+          "text": "Screenshots",
+          "points": 2
+        },
+        {
+          "text": "Late-night rant",
+          "points": 3
+        },
+        {
+          "text": "Boss joins",
+          "points": 3
+        },
+        {
+          "text": "Reply-all spiral",
+          "points": 3
+        },
+        {
+          "text": "Meme lands badly",
+          "points": 4
+        },
+        {
+          "text": "HR issue",
+          "points": 4
+        },
+        {
+          "text": "Inside joke excludes people",
+          "points": 5
+        },
+        {
+          "text": "Sensitive file sent",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "officeice-things-people-remember-from-a-terrible-manager",
+      "category": "Office & Icebreakers",
+      "prompt": "Things people remember from a terrible manager",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Micromanaging",
+          "points": 1
+        },
+        {
+          "text": "Mood swings",
+          "points": 2
+        },
+        {
+          "text": "Public criticism",
+          "points": 2
+        },
+        {
+          "text": "No credit",
+          "points": 3
+        },
+        {
+          "text": "Constant urgency",
+          "points": 3
+        },
+        {
+          "text": "Mixed messages",
+          "points": 3
+        },
+        {
+          "text": "Bad feedback",
+          "points": 4
+        },
+        {
+          "text": "Favoritism",
+          "points": 4
+        },
+        {
+          "text": "Weekend emails",
+          "points": 5
+        },
+        {
+          "text": "Never listening",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "officeice-signs-a-meeting-could-have-been-an-email",
+      "category": "Office & Icebreakers",
+      "prompt": "Signs a meeting could have been an email",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "No decisions",
+          "points": 1
+        },
+        {
+          "text": "Five-minute update",
+          "points": 2
+        },
+        {
+          "text": "People multitasking",
+          "points": 2
+        },
+        {
+          "text": "Readout from slides",
+          "points": 3
+        },
+        {
+          "text": "Too many attendees",
+          "points": 3
+        },
+        {
+          "text": "One-way talking",
+          "points": 3
+        },
+        {
+          "text": "No questions",
+          "points": 4
+        },
+        {
+          "text": "Recap of a thread",
+          "points": 4
+        },
+        {
+          "text": "Everyone is silent",
+          "points": 5
+        },
+        {
+          "text": "Ends early",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "officeice-ways-office-small-talk-turns-weird",
+      "category": "Office & Icebreakers",
+      "prompt": "Ways office small talk turns weird",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Personal question",
+          "points": 1
+        },
+        {
+          "text": "Forced joke",
+          "points": 2
+        },
+        {
+          "text": "Salary mention",
+          "points": 2
+        },
+        {
+          "text": "Ex rant",
+          "points": 3
+        },
+        {
+          "text": "Health overshare",
+          "points": 3
+        },
+        {
+          "text": "Political detour",
+          "points": 3
+        },
+        {
+          "text": "Silence",
+          "points": 4
+        },
+        {
+          "text": "Name forgotten",
+          "points": 4
+        },
+        {
+          "text": "Comment on lunch smell",
+          "points": 5
+        },
+        {
+          "text": "Accidentally insulting a hometown",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "officeice-things-coworkers-silently-judge-in-a-presentation",
+      "category": "Office & Icebreakers",
+      "prompt": "Things coworkers silently judge in a presentation",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Meeting",
+      "answers": [
+        {
+          "text": "Too many slides",
+          "points": 1
+        },
+        {
+          "text": "Tiny font",
+          "points": 2
+        },
+        {
+          "text": "Reading verbatim",
+          "points": 2
+        },
+        {
+          "text": "Messy chart",
+          "points": 3
+        },
+        {
+          "text": "Nervous pacing",
+          "points": 3
+        },
+        {
+          "text": "Buzzword overload",
+          "points": 3
+        },
+        {
+          "text": "No eye contact",
+          "points": 4
+        },
+        {
+          "text": "Bad timing",
+          "points": 4
+        },
+        {
+          "text": "Overuse of a laser pointer",
+          "points": 5
+        },
+        {
+          "text": "Clip art",
+          "points": 5
+        }
+      ]
+    }
+  ]
+}

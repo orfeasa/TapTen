@@ -1,0 +1,2121 @@
+{
+  "id": "after-dark-vol-1",
+  "title": "After Dark Vol. 1",
+  "summary": "Cheeky, chaotic prompts for grown-up game nights.",
+  "languageCode": "en",
+  "packVersion": "2.0",
+  "monetization": {
+    "access": "premium",
+    "storeProductID": "com.tapten.pack.after-dark-vol-1",
+    "bundleProductIDs": [
+      "com.tapten.bundle.launch-wave"
+    ],
+    "merchandisingLabel": "Adults"
+  },
+  "questions": [
+    {
+      "id": "afterdark-before-night-out",
+      "category": "After Dark",
+      "prompt": "Things people do before going on a night out",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-prep-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Party",
+      "answers": [
+        {
+          "text": "Pick an outfit",
+          "points": 1
+        },
+        {
+          "text": "Shower",
+          "points": 1
+        },
+        {
+          "text": "Charge phone",
+          "points": 1
+        },
+        {
+          "text": "Text friends",
+          "points": 1
+        },
+        {
+          "text": "Bring ID",
+          "points": 1
+        },
+        {
+          "text": "Do hair",
+          "points": 2
+        },
+        {
+          "text": "Do makeup",
+          "points": 2
+        },
+        {
+          "text": "Book a ride",
+          "points": 2
+        },
+        {
+          "text": "Spray perfume",
+          "points": 2
+        },
+        {
+          "text": "Pre-drink",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-late-night-text-reasons",
+      "category": "After Dark",
+      "prompt": "Reasons someone sends a late-night text",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-text-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Text_messaging",
+      "answers": [
+        {
+          "text": "Missing you",
+          "points": 1
+        },
+        {
+          "text": "Still awake",
+          "points": 1
+        },
+        {
+          "text": "Feeling brave",
+          "points": 1
+        },
+        {
+          "text": "Had a few drinks",
+          "points": 1
+        },
+        {
+          "text": "Bored",
+          "points": 1
+        },
+        {
+          "text": "Wants company",
+          "points": 2
+        },
+        {
+          "text": "Wants to flirt",
+          "points": 2
+        },
+        {
+          "text": "Needs gossip",
+          "points": 2
+        },
+        {
+          "text": "Feeling lonely",
+          "points": 2
+        },
+        {
+          "text": "Regrets the breakup",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-first-date-going-well",
+      "category": "After Dark",
+      "prompt": "Signs a first date is going well",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-date-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/First_date",
+      "answers": [
+        {
+          "text": "Lots of laughing",
+          "points": 1
+        },
+        {
+          "text": "Eye contact",
+          "points": 1
+        },
+        {
+          "text": "Easy conversation",
+          "points": 1
+        },
+        {
+          "text": "Questions back",
+          "points": 1
+        },
+        {
+          "text": "No phone checking",
+          "points": 1
+        },
+        {
+          "text": "Suggests another drink",
+          "points": 2
+        },
+        {
+          "text": "Extends the night",
+          "points": 2
+        },
+        {
+          "text": "Light touching",
+          "points": 2
+        },
+        {
+          "text": "Orders dessert",
+          "points": 2
+        },
+        {
+          "text": "Mentions a second date",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-stays-out-late",
+      "category": "After Dark",
+      "prompt": "Reasons someone stays out later than planned",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-nightlife-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightclub",
+      "answers": [
+        {
+          "text": "Having too much fun",
+          "points": 1
+        },
+        {
+          "text": "Good music",
+          "points": 1
+        },
+        {
+          "text": "Friends say stay",
+          "points": 1
+        },
+        {
+          "text": "Met someone cute",
+          "points": 1
+        },
+        {
+          "text": "Another bar stop",
+          "points": 1
+        },
+        {
+          "text": "Free drinks",
+          "points": 2
+        },
+        {
+          "text": "Lost track of time",
+          "points": 2
+        },
+        {
+          "text": "After-party invite",
+          "points": 2
+        },
+        {
+          "text": "Waiting for surge pricing to drop",
+          "points": 2
+        },
+        {
+          "text": "Not ready to go home",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-bad-date-escape-excuses",
+      "category": "After Dark",
+      "prompt": "Excuses people use to leave a bad date early",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "humorous",
+      "contentType": "afterdark-escape-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Dating",
+      "answers": [
+        {
+          "text": "Early meeting",
+          "points": 1
+        },
+        {
+          "text": "Friend emergency",
+          "points": 1
+        },
+        {
+          "text": "Not feeling well",
+          "points": 1
+        },
+        {
+          "text": "Babysitter issue",
+          "points": 1
+        },
+        {
+          "text": "Need to walk the dog",
+          "points": 1
+        },
+        {
+          "text": "Family call",
+          "points": 2
+        },
+        {
+          "text": "Train to catch",
+          "points": 2
+        },
+        {
+          "text": "Headache",
+          "points": 2
+        },
+        {
+          "text": "Forgot something at home",
+          "points": 2
+        },
+        {
+          "text": "Sudden work crisis",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-regrettable-drink-quotes",
+      "category": "After Dark",
+      "prompt": "Things people regret saying after two drinks",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "humorous",
+      "contentType": "afterdark-chaos-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Alcohol_intoxication",
+      "answers": [
+        {
+          "text": "I love you",
+          "points": 1
+        },
+        {
+          "text": "One more shot",
+          "points": 1
+        },
+        {
+          "text": "Text your ex",
+          "points": 1
+        },
+        {
+          "text": "I'll pay for everyone",
+          "points": 1
+        },
+        {
+          "text": "Trust me",
+          "points": 1
+        },
+        {
+          "text": "Let's go somewhere else",
+          "points": 2
+        },
+        {
+          "text": "I can absolutely dance",
+          "points": 2
+        },
+        {
+          "text": "You won't remember this",
+          "points": 2
+        },
+        {
+          "text": "I should quit my job",
+          "points": 2
+        },
+        {
+          "text": "I know the promoter",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-flirting-spots",
+      "category": "After Dark",
+      "prompt": "Places people flirt on a night out",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-location-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightclub",
+      "answers": [
+        {
+          "text": "Bar",
+          "points": 1
+        },
+        {
+          "text": "Dance floor",
+          "points": 1
+        },
+        {
+          "text": "Queue",
+          "points": 1
+        },
+        {
+          "text": "House party",
+          "points": 1
+        },
+        {
+          "text": "Rooftop bar",
+          "points": 1
+        },
+        {
+          "text": "Karaoke booth",
+          "points": 2
+        },
+        {
+          "text": "Beer garden",
+          "points": 2
+        },
+        {
+          "text": "Food truck line",
+          "points": 2
+        },
+        {
+          "text": "Hotel lobby",
+          "points": 2
+        },
+        {
+          "text": "After-party",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-overnight-stay-items",
+      "category": "After Dark",
+      "prompt": "Items people pack for an overnight stay after a night out",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-item-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Sleepover",
+      "answers": [
+        {
+          "text": "Toothbrush",
+          "points": 1
+        },
+        {
+          "text": "Phone charger",
+          "points": 1
+        },
+        {
+          "text": "Clean underwear",
+          "points": 1
+        },
+        {
+          "text": "Clean shirt",
+          "points": 1
+        },
+        {
+          "text": "Deodorant",
+          "points": 1
+        },
+        {
+          "text": "Makeup remover",
+          "points": 2
+        },
+        {
+          "text": "Hairbrush",
+          "points": 2
+        },
+        {
+          "text": "Skincare",
+          "points": 2
+        },
+        {
+          "text": "Contact lens case",
+          "points": 2
+        },
+        {
+          "text": "Painkillers",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-flirty-compliments",
+      "category": "After Dark",
+      "prompt": "Compliments people use when flirting",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-flirting-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Flirting",
+      "answers": [
+        {
+          "text": "You look amazing",
+          "points": 1
+        },
+        {
+          "text": "Great smile",
+          "points": 1
+        },
+        {
+          "text": "Love your outfit",
+          "points": 2
+        },
+        {
+          "text": "You are hilarious",
+          "points": 2
+        },
+        {
+          "text": "Your eyes are gorgeous",
+          "points": 2
+        },
+        {
+          "text": "Great energy",
+          "points": 2
+        },
+        {
+          "text": "You smell amazing",
+          "points": 2
+        },
+        {
+          "text": "Easy to talk to",
+          "points": 3
+        },
+        {
+          "text": "You have great taste",
+          "points": 3
+        },
+        {
+          "text": "Could talk to you all night",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-wingman-reasons",
+      "category": "After Dark",
+      "prompt": "Reasons friends play wingman on a night out",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-social-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Flirting",
+      "answers": [
+        {
+          "text": "Friend is shy",
+          "points": 1
+        },
+        {
+          "text": "Someone cute is there",
+          "points": 1
+        },
+        {
+          "text": "Needs a confidence boost",
+          "points": 2
+        },
+        {
+          "text": "Easy opener needed",
+          "points": 2
+        },
+        {
+          "text": "Read the room first",
+          "points": 2
+        },
+        {
+          "text": "Help start the conversation",
+          "points": 2
+        },
+        {
+          "text": "Want to help a mate score",
+          "points": 2
+        },
+        {
+          "text": "Run interference on friends",
+          "points": 3
+        },
+        {
+          "text": "Rescue from a clingy stranger",
+          "points": 3
+        },
+        {
+          "text": "Verify there is mutual interest",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-first-date-avoid-topics",
+      "category": "After Dark",
+      "prompt": "Topics people avoid on a first date",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-date-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/First_date",
+      "answers": [
+        {
+          "text": "Exes",
+          "points": 1
+        },
+        {
+          "text": "Politics",
+          "points": 1
+        },
+        {
+          "text": "Salary",
+          "points": 2
+        },
+        {
+          "text": "Marriage timeline",
+          "points": 2
+        },
+        {
+          "text": "Past hookups",
+          "points": 2
+        },
+        {
+          "text": "Religion",
+          "points": 2
+        },
+        {
+          "text": "Family drama",
+          "points": 2
+        },
+        {
+          "text": "Why the last relationship ended",
+          "points": 3
+        },
+        {
+          "text": "Moving away soon",
+          "points": 3
+        },
+        {
+          "text": "Health issues they are not ready to share",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-party-game-chaos",
+      "category": "After Dark",
+      "prompt": "Things that make a party game turn chaotic",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "afterdark-chaos-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Party_game",
+      "answers": [
+        {
+          "text": "Trash talk",
+          "points": 1
+        },
+        {
+          "text": "Wrong rules",
+          "points": 1
+        },
+        {
+          "text": "Too much drinking",
+          "points": 2
+        },
+        {
+          "text": "Cheating accusations",
+          "points": 2
+        },
+        {
+          "text": "Competitive couples",
+          "points": 2
+        },
+        {
+          "text": "No scorekeeper",
+          "points": 2
+        },
+        {
+          "text": "Inside jokes",
+          "points": 2
+        },
+        {
+          "text": "Team switching mid-round",
+          "points": 3
+        },
+        {
+          "text": "One person hogging the spotlight",
+          "points": 3
+        },
+        {
+          "text": "Dare escalation",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-trying-too-hard",
+      "category": "After Dark",
+      "prompt": "Signs someone is trying too hard to impress a crush",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "afterdark-flirting-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Flirting",
+      "answers": [
+        {
+          "text": "Bragging",
+          "points": 1
+        },
+        {
+          "text": "Name-dropping",
+          "points": 1
+        },
+        {
+          "text": "Laughing too loudly",
+          "points": 2
+        },
+        {
+          "text": "Ordering the fanciest drink",
+          "points": 2
+        },
+        {
+          "text": "Buying unnecessary rounds",
+          "points": 2
+        },
+        {
+          "text": "Acting cooler than usual",
+          "points": 2
+        },
+        {
+          "text": "Pretending to know everything",
+          "points": 2
+        },
+        {
+          "text": "Checking the mirror constantly",
+          "points": 3
+        },
+        {
+          "text": "Showing off the wallet",
+          "points": 3
+        },
+        {
+          "text": "Changing their whole personality",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-jealousy-reasons",
+      "category": "After Dark",
+      "prompt": "Reasons people get jealous on a night out",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-drama-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Jealousy",
+      "answers": [
+        {
+          "text": "Flirting with someone else",
+          "points": 1
+        },
+        {
+          "text": "Ignoring texts",
+          "points": 1
+        },
+        {
+          "text": "Dancing with a stranger",
+          "points": 2
+        },
+        {
+          "text": "Too friendly with an ex",
+          "points": 2
+        },
+        {
+          "text": "Secretive phone use",
+          "points": 2
+        },
+        {
+          "text": "Inside jokes with someone else",
+          "points": 2
+        },
+        {
+          "text": "Complimenting another person",
+          "points": 2
+        },
+        {
+          "text": "Going missing for ages",
+          "points": 3
+        },
+        {
+          "text": "Looking single on purpose",
+          "points": 3
+        },
+        {
+          "text": "Posting with someone else first",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-messy-night-posts",
+      "category": "After Dark",
+      "prompt": "Things people post after a messy night out",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "afterdark-post-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Social_media",
+      "answers": [
+        {
+          "text": "Group selfie",
+          "points": 1
+        },
+        {
+          "text": "Cocktail photo",
+          "points": 1
+        },
+        {
+          "text": "Blurry dance video",
+          "points": 2
+        },
+        {
+          "text": "Mirror selfie",
+          "points": 2
+        },
+        {
+          "text": "Hangover joke",
+          "points": 2
+        },
+        {
+          "text": "No-context story",
+          "points": 2
+        },
+        {
+          "text": "Tagged friends",
+          "points": 2
+        },
+        {
+          "text": "We survived caption",
+          "points": 3
+        },
+        {
+          "text": "Lost item plea",
+          "points": 3
+        },
+        {
+          "text": "Public apology meme",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-kiss-awkward-reasons",
+      "category": "After Dark",
+      "prompt": "Reasons a kiss gets awkward",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-romance-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Kiss",
+      "answers": [
+        {
+          "text": "Bad timing",
+          "points": 1
+        },
+        {
+          "text": "Laughing",
+          "points": 1
+        },
+        {
+          "text": "Teeth clash",
+          "points": 2
+        },
+        {
+          "text": "Wrong signal",
+          "points": 2
+        },
+        {
+          "text": "Crowded room",
+          "points": 2
+        },
+        {
+          "text": "Friend walks in",
+          "points": 2
+        },
+        {
+          "text": "Too much gum",
+          "points": 2
+        },
+        {
+          "text": "One person pulls back",
+          "points": 3
+        },
+        {
+          "text": "Glasses get in the way",
+          "points": 3
+        },
+        {
+          "text": "Both go in differently",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-mood-killers",
+      "category": "After Dark",
+      "prompt": "Things that kill the mood on a date",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-date-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romance_(love)",
+      "answers": [
+        {
+          "text": "Checking phone",
+          "points": 1
+        },
+        {
+          "text": "Talking about an ex",
+          "points": 2
+        },
+        {
+          "text": "Bad breath",
+          "points": 2
+        },
+        {
+          "text": "Awkward silence",
+          "points": 3
+        },
+        {
+          "text": "Food on teeth",
+          "points": 3
+        },
+        {
+          "text": "Being rude to staff",
+          "points": 3
+        },
+        {
+          "text": "Getting too drunk",
+          "points": 3
+        },
+        {
+          "text": "Bill argument",
+          "points": 4
+        },
+        {
+          "text": "Parental phone call",
+          "points": 4
+        },
+        {
+          "text": "The venue suddenly closing",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-no-text-back",
+      "category": "After Dark",
+      "prompt": "Reasons people do not text back after a date",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-date-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Breakup",
+      "answers": [
+        {
+          "text": "No chemistry",
+          "points": 1
+        },
+        {
+          "text": "Too busy",
+          "points": 2
+        },
+        {
+          "text": "Unsure how they feel",
+          "points": 2
+        },
+        {
+          "text": "Met someone else",
+          "points": 3
+        },
+        {
+          "text": "Wanted casual only",
+          "points": 3
+        },
+        {
+          "text": "Mixed signals",
+          "points": 3
+        },
+        {
+          "text": "Too intense too fast",
+          "points": 3
+        },
+        {
+          "text": "Not ready after a breakup",
+          "points": 4
+        },
+        {
+          "text": "Friend talked them out of it",
+          "points": 4
+        },
+        {
+          "text": "Did not feel safe enough to continue",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-group-chat-after-midnight",
+      "category": "After Dark",
+      "prompt": "Ways a group chat becomes dangerous after midnight",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "humorous",
+      "contentType": "afterdark-chaos-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Text_messaging",
+      "answers": [
+        {
+          "text": "Drunk voice notes",
+          "points": 1
+        },
+        {
+          "text": "Screenshots",
+          "points": 2
+        },
+        {
+          "text": "Confessions",
+          "points": 2
+        },
+        {
+          "text": "Wrong recipient",
+          "points": 3
+        },
+        {
+          "text": "Dares",
+          "points": 3
+        },
+        {
+          "text": "Ex talk",
+          "points": 3
+        },
+        {
+          "text": "Unfiltered selfies",
+          "points": 3
+        },
+        {
+          "text": "Petty arguments",
+          "points": 4
+        },
+        {
+          "text": "Plans nobody will remember",
+          "points": 4
+        },
+        {
+          "text": "Accidental invite of the wrong person",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-argue-on-night-out",
+      "category": "After Dark",
+      "prompt": "Places couples argue on a night out",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "humorous",
+      "contentType": "afterdark-location-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightclub",
+      "answers": [
+        {
+          "text": "Taxi",
+          "points": 1
+        },
+        {
+          "text": "Bar queue",
+          "points": 2
+        },
+        {
+          "text": "Dance floor",
+          "points": 2
+        },
+        {
+          "text": "Street outside the club",
+          "points": 3
+        },
+        {
+          "text": "Food truck line",
+          "points": 3
+        },
+        {
+          "text": "Bathroom queue",
+          "points": 3
+        },
+        {
+          "text": "Coat check",
+          "points": 3
+        },
+        {
+          "text": "Rideshare pickup spot",
+          "points": 4
+        },
+        {
+          "text": "Hotel lobby",
+          "points": 4
+        },
+        {
+          "text": "After-party kitchen",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-flirting-lies",
+      "category": "After Dark",
+      "prompt": "Things people lie about when flirting",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-flirting-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Lie",
+      "answers": [
+        {
+          "text": "Height",
+          "points": 1
+        },
+        {
+          "text": "Age",
+          "points": 2
+        },
+        {
+          "text": "Job title",
+          "points": 2
+        },
+        {
+          "text": "Music taste",
+          "points": 3
+        },
+        {
+          "text": "How often they work out",
+          "points": 3
+        },
+        {
+          "text": "Cooking ability",
+          "points": 3
+        },
+        {
+          "text": "How busy they are",
+          "points": 3
+        },
+        {
+          "text": "Relationship intentions",
+          "points": 4
+        },
+        {
+          "text": "Number of dates they go on",
+          "points": 4
+        },
+        {
+          "text": "Who they were texting",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-afterparty-ends-quickly",
+      "category": "After Dark",
+      "prompt": "Reasons an after-party ends quickly",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "humorous",
+      "contentType": "afterdark-chaos-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Afterparty",
+      "answers": [
+        {
+          "text": "No alcohol left",
+          "points": 1
+        },
+        {
+          "text": "Host is exhausted",
+          "points": 2
+        },
+        {
+          "text": "Neighbours complain",
+          "points": 2
+        },
+        {
+          "text": "Music gets cut",
+          "points": 3
+        },
+        {
+          "text": "Uninvited guests arrive",
+          "points": 3
+        },
+        {
+          "text": "People miss the last ride",
+          "points": 3
+        },
+        {
+          "text": "Someone spills everywhere",
+          "points": 3
+        },
+        {
+          "text": "Awkward drama starts",
+          "points": 4
+        },
+        {
+          "text": "Police warning",
+          "points": 4
+        },
+        {
+          "text": "Everyone crashes at once",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-nightclub-line-endless",
+      "category": "After Dark",
+      "prompt": "Situations that make a nightclub line feel endless",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "editorial",
+      "contentType": "afterdark-nightlife-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightclub",
+      "answers": [
+        {
+          "text": "Bad weather",
+          "points": 1
+        },
+        {
+          "text": "Slow security",
+          "points": 2
+        },
+        {
+          "text": "Guest list confusion",
+          "points": 2
+        },
+        {
+          "text": "Only one bouncer",
+          "points": 3
+        },
+        {
+          "text": "ID problems",
+          "points": 3
+        },
+        {
+          "text": "Capacity is full",
+          "points": 3
+        },
+        {
+          "text": "Group arguing at the front",
+          "points": 3
+        },
+        {
+          "text": "Ticket scanning issues",
+          "points": 4
+        },
+        {
+          "text": "Re-entry chaos",
+          "points": 4
+        },
+        {
+          "text": "Friends cannot agree on going elsewhere",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-bad-romantic-decision-signs",
+      "category": "After Dark",
+      "prompt": "Signs a friend is about to make a terrible romantic decision",
+      "difficultyTier": "hard",
+      "difficultyScore": 29,
+      "validationStyle": "humorous",
+      "contentType": "afterdark-drama-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Romance_(love)",
+      "answers": [
+        {
+          "text": "Defending obvious red flags",
+          "points": 1
+        },
+        {
+          "text": "Asking \"Should I text?\" ten times",
+          "points": 2
+        },
+        {
+          "text": "Ignoring common sense",
+          "points": 2
+        },
+        {
+          "text": "Dressing for revenge",
+          "points": 3
+        },
+        {
+          "text": "Taking tequila advice seriously",
+          "points": 3
+        },
+        {
+          "text": "Typing then deleting essays",
+          "points": 3
+        },
+        {
+          "text": "Romanticising one good conversation",
+          "points": 3
+        },
+        {
+          "text": "Planning a midnight confession",
+          "points": 4
+        },
+        {
+          "text": "Saying \"What is the worst that could happen?\"",
+          "points": 4
+        },
+        {
+          "text": "Announcing they are giving the ex one more chance",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-things-people-order-on-a-late-night-fast-food-run",
+      "category": "After Dark",
+      "prompt": "Things people order on a late-night fast-food run",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Fries",
+          "points": 1
+        },
+        {
+          "text": "Burger",
+          "points": 1
+        },
+        {
+          "text": "Pizza slice",
+          "points": 1
+        },
+        {
+          "text": "Chicken nuggets",
+          "points": 1
+        },
+        {
+          "text": "Kebab",
+          "points": 1
+        },
+        {
+          "text": "Tacos",
+          "points": 2
+        },
+        {
+          "text": "Mozzarella sticks",
+          "points": 2
+        },
+        {
+          "text": "Soda",
+          "points": 2
+        },
+        {
+          "text": "Onion rings",
+          "points": 2
+        },
+        {
+          "text": "Milkshake",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-reasons-someone-disappears-to-the-bathroom-at-a-party",
+      "category": "After Dark",
+      "prompt": "Reasons someone disappears to the bathroom at a party",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Fix makeup",
+          "points": 1
+        },
+        {
+          "text": "Pep talk",
+          "points": 1
+        },
+        {
+          "text": "Text a friend",
+          "points": 1
+        },
+        {
+          "text": "Escape awkward chat",
+          "points": 1
+        },
+        {
+          "text": "Take a mirror selfie",
+          "points": 1
+        },
+        {
+          "text": "Fix outfit",
+          "points": 2
+        },
+        {
+          "text": "Cry a little",
+          "points": 2
+        },
+        {
+          "text": "Freshen up",
+          "points": 2
+        },
+        {
+          "text": "Clean a spill",
+          "points": 2
+        },
+        {
+          "text": "Gossip break",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-signs-a-bar-has-become-a-bad-idea",
+      "category": "After Dark",
+      "prompt": "Signs a bar has become a bad idea",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Sticky floor",
+          "points": 1
+        },
+        {
+          "text": "Bad music",
+          "points": 1
+        },
+        {
+          "text": "Aggressive crowd",
+          "points": 1
+        },
+        {
+          "text": "Long queue",
+          "points": 1
+        },
+        {
+          "text": "No signal",
+          "points": 1
+        },
+        {
+          "text": "People arguing",
+          "points": 2
+        },
+        {
+          "text": "Warm drinks",
+          "points": 2
+        },
+        {
+          "text": "Lost friends",
+          "points": 2
+        },
+        {
+          "text": "Broken toilet",
+          "points": 2
+        },
+        {
+          "text": "Lights suddenly on",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-things-people-hype-up-when-getting-ready-for-a-big-night-out",
+      "category": "After Dark",
+      "prompt": "Things people hype up when getting ready for a big night out",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Outfit",
+          "points": 1
+        },
+        {
+          "text": "Shoes",
+          "points": 1
+        },
+        {
+          "text": "Playlist",
+          "points": 1
+        },
+        {
+          "text": "Makeup",
+          "points": 1
+        },
+        {
+          "text": "Hair",
+          "points": 1
+        },
+        {
+          "text": "Reservation",
+          "points": 2
+        },
+        {
+          "text": "First drink",
+          "points": 2
+        },
+        {
+          "text": "Group photo",
+          "points": 2
+        },
+        {
+          "text": "Cab ride",
+          "points": 2
+        },
+        {
+          "text": "Confidence",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-reasons-someone-keeps-checking-whether-their-crush-viewed-a-story",
+      "category": "After Dark",
+      "prompt": "Reasons someone keeps checking whether their crush viewed a story",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Wants validation",
+          "points": 1
+        },
+        {
+          "text": "Posted it for them",
+          "points": 1
+        },
+        {
+          "text": "Waiting for a reply",
+          "points": 1
+        },
+        {
+          "text": "Overthinking",
+          "points": 1
+        },
+        {
+          "text": "Feeling flirty",
+          "points": 1
+        },
+        {
+          "text": "Wants an excuse to message",
+          "points": 2
+        },
+        {
+          "text": "Bored at work",
+          "points": 2
+        },
+        {
+          "text": "Friends asked",
+          "points": 2
+        },
+        {
+          "text": "Reading too much into it",
+          "points": 2
+        },
+        {
+          "text": "Ego boost",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-things-people-pretend-not-to-care-about-on-a-first-date",
+      "category": "After Dark",
+      "prompt": "Things people pretend not to care about on a first date",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Exes",
+          "points": 1
+        },
+        {
+          "text": "Income",
+          "points": 1
+        },
+        {
+          "text": "Height",
+          "points": 1
+        },
+        {
+          "text": "Job title",
+          "points": 1
+        },
+        {
+          "text": "Instagram following",
+          "points": 1
+        },
+        {
+          "text": "Where they went to school",
+          "points": 2
+        },
+        {
+          "text": "Fashion taste",
+          "points": 2
+        },
+        {
+          "text": "Politics",
+          "points": 2
+        },
+        {
+          "text": "Who pays",
+          "points": 2
+        },
+        {
+          "text": "Relationship goals",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "afterdark-ways-people-flirt-without-saying-anything-direct",
+      "category": "After Dark",
+      "prompt": "Ways people flirt without saying anything direct",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Eye contact",
+          "points": 1
+        },
+        {
+          "text": "Smiling",
+          "points": 1
+        },
+        {
+          "text": "Leaning in",
+          "points": 2
+        },
+        {
+          "text": "Touching an arm",
+          "points": 2
+        },
+        {
+          "text": "Lingering goodbye",
+          "points": 2
+        },
+        {
+          "text": "Inside joke",
+          "points": 2
+        },
+        {
+          "text": "Matching someone's pace",
+          "points": 3
+        },
+        {
+          "text": "Complimenting an outfit",
+          "points": 3
+        },
+        {
+          "text": "Replying fast",
+          "points": 4
+        },
+        {
+          "text": "Sitting closer",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-reasons-someone-ends-up-sleeping-on-a-couch-after-a-night-out",
+      "category": "After Dark",
+      "prompt": "Reasons someone ends up sleeping on a couch after a night out",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Missed the last train",
+          "points": 1
+        },
+        {
+          "text": "Too drunk to drive",
+          "points": 1
+        },
+        {
+          "text": "Crashed at a friend's",
+          "points": 2
+        },
+        {
+          "text": "Argument at home",
+          "points": 2
+        },
+        {
+          "text": "Lives too far away",
+          "points": 2
+        },
+        {
+          "text": "Shared a taxi and stayed",
+          "points": 2
+        },
+        {
+          "text": "Lost keys",
+          "points": 3
+        },
+        {
+          "text": "Rainstorm",
+          "points": 3
+        },
+        {
+          "text": "Early brunch nearby",
+          "points": 4
+        },
+        {
+          "text": "Couch felt safer than the trek home",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-things-people-bring-to-a-house-party-to-seem-useful",
+      "category": "After Dark",
+      "prompt": "Things people bring to a house party to seem useful",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Ice",
+          "points": 1
+        },
+        {
+          "text": "Wine",
+          "points": 1
+        },
+        {
+          "text": "Mixer",
+          "points": 2
+        },
+        {
+          "text": "Snacks",
+          "points": 2
+        },
+        {
+          "text": "Cups",
+          "points": 2
+        },
+        {
+          "text": "Bluetooth speaker",
+          "points": 2
+        },
+        {
+          "text": "Dessert",
+          "points": 3
+        },
+        {
+          "text": "Bottle opener",
+          "points": 3
+        },
+        {
+          "text": "Card game",
+          "points": 4
+        },
+        {
+          "text": "Extra charger",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-things-friends-say-to-stop-someone-texting-an-ex",
+      "category": "After Dark",
+      "prompt": "Things friends say to stop someone texting an ex",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Put the phone down",
+          "points": 1
+        },
+        {
+          "text": "Sleep on it",
+          "points": 1
+        },
+        {
+          "text": "You deserve better",
+          "points": 2
+        },
+        {
+          "text": "Block them",
+          "points": 2
+        },
+        {
+          "text": "Give me your phone",
+          "points": 2
+        },
+        {
+          "text": "You are drunk",
+          "points": 2
+        },
+        {
+          "text": "Text me instead",
+          "points": 3
+        },
+        {
+          "text": "Read your old messages",
+          "points": 3
+        },
+        {
+          "text": "Do not reopen that door",
+          "points": 4
+        },
+        {
+          "text": "You will regret it tomorrow",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-signs-a-situationship-is-getting-messy",
+      "category": "After Dark",
+      "prompt": "Signs a situationship is getting messy",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Mixed signals",
+          "points": 1
+        },
+        {
+          "text": "Late replies",
+          "points": 1
+        },
+        {
+          "text": "No plans ahead",
+          "points": 2
+        },
+        {
+          "text": "Jealousy",
+          "points": 2
+        },
+        {
+          "text": "Only late-night texts",
+          "points": 2
+        },
+        {
+          "text": "Friends know but there is no label",
+          "points": 2
+        },
+        {
+          "text": "Hot-and-cold behavior",
+          "points": 3
+        },
+        {
+          "text": "Frequent cancellations",
+          "points": 3
+        },
+        {
+          "text": "Avoiding real talk",
+          "points": 4
+        },
+        {
+          "text": "Social-media lurking",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "afterdark-things-people-regret-posting-after-midnight",
+      "category": "After Dark",
+      "prompt": "Things people regret posting after midnight",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Drunk selfie",
+          "points": 1
+        },
+        {
+          "text": "Cryptic quote",
+          "points": 2
+        },
+        {
+          "text": "Rant",
+          "points": 2
+        },
+        {
+          "text": "Thirst trap",
+          "points": 3
+        },
+        {
+          "text": "Ex reference",
+          "points": 3
+        },
+        {
+          "text": "Voice-note screenshot",
+          "points": 3
+        },
+        {
+          "text": "Party video",
+          "points": 4
+        },
+        {
+          "text": "Bad joke",
+          "points": 4
+        },
+        {
+          "text": "Overshare story",
+          "points": 5
+        },
+        {
+          "text": "Argument reply",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "afterdark-reasons-someone-leaves-a-crush-s-place-early-in-the-morning",
+      "category": "After Dark",
+      "prompt": "Reasons someone leaves a crush's place early in the morning",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Needs clean clothes",
+          "points": 1
+        },
+        {
+          "text": "Work starts early",
+          "points": 2
+        },
+        {
+          "text": "No toothbrush",
+          "points": 2
+        },
+        {
+          "text": "Awkward vibe",
+          "points": 3
+        },
+        {
+          "text": "Wants own bed",
+          "points": 3
+        },
+        {
+          "text": "Hungover commute",
+          "points": 3
+        },
+        {
+          "text": "Forgot charger",
+          "points": 4
+        },
+        {
+          "text": "Roommate incoming",
+          "points": 4
+        },
+        {
+          "text": "Pet needs care",
+          "points": 5
+        },
+        {
+          "text": "Does not want breakfast",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "afterdark-problems-that-ruin-the-mood-on-a-night-out",
+      "category": "After Dark",
+      "prompt": "Problems that ruin the mood on a night out",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Lost wallet",
+          "points": 1
+        },
+        {
+          "text": "Dead phone",
+          "points": 2
+        },
+        {
+          "text": "Ex shows up",
+          "points": 2
+        },
+        {
+          "text": "Bad DJ",
+          "points": 3
+        },
+        {
+          "text": "Fight nearby",
+          "points": 3
+        },
+        {
+          "text": "Spilled drink",
+          "points": 3
+        },
+        {
+          "text": "Taxi surge",
+          "points": 4
+        },
+        {
+          "text": "Shoe disaster",
+          "points": 4
+        },
+        {
+          "text": "Rain",
+          "points": 5
+        },
+        {
+          "text": "Friend meltdown",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "afterdark-things-people-lie-about-to-seem-cooler-on-a-date",
+      "category": "After Dark",
+      "prompt": "Things people lie about to seem cooler on a date",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Travel history",
+          "points": 1
+        },
+        {
+          "text": "Music taste",
+          "points": 2
+        },
+        {
+          "text": "Cooking ability",
+          "points": 2
+        },
+        {
+          "text": "Job title",
+          "points": 3
+        },
+        {
+          "text": "Workout habit",
+          "points": 3
+        },
+        {
+          "text": "Reading habit",
+          "points": 3
+        },
+        {
+          "text": "Height",
+          "points": 4
+        },
+        {
+          "text": "Wine knowledge",
+          "points": 4
+        },
+        {
+          "text": "Sports interest",
+          "points": 5
+        },
+        {
+          "text": "Being over an ex",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "afterdark-clues-a-group-chat-is-about-to-get-chaotic-after-a-night-out",
+      "category": "After Dark",
+      "prompt": "Clues a group chat is about to get chaotic after a night out",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Nightlife",
+      "answers": [
+        {
+          "text": "Typing bubbles everywhere",
+          "points": 1
+        },
+        {
+          "text": "Blurry photos",
+          "points": 2
+        },
+        {
+          "text": "Voice notes",
+          "points": 2
+        },
+        {
+          "text": "Inside jokes",
+          "points": 3
+        },
+        {
+          "text": "Screenshots",
+          "points": 3
+        },
+        {
+          "text": "Someone apologizing",
+          "points": 3
+        },
+        {
+          "text": "Random location pin",
+          "points": 4
+        },
+        {
+          "text": "Caps lock",
+          "points": 4
+        },
+        {
+          "text": "Poll about brunch",
+          "points": 5
+        },
+        {
+          "text": "Nobody remembers the bill",
+          "points": 5
+        }
+      ]
+    }
+  ]
+}

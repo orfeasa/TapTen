@@ -1,0 +1,2118 @@
+{
+  "id": "holiday-chaos",
+  "title": "Holiday Chaos",
+  "summary": "Travel meltdowns, gift drama, and festive-group chaos.",
+  "languageCode": "en",
+  "packVersion": "2.0",
+  "monetization": {
+    "access": "premium",
+    "storeProductID": "com.tapten.pack.holiday-chaos",
+    "merchandisingLabel": "Seasonal"
+  },
+  "questions": [
+    {
+      "id": "holiday-forgot-to-pack",
+      "category": "Holiday Chaos",
+      "prompt": "Things people forget to pack for a holiday trip",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "holiday-travel-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Phone charger",
+          "points": 1
+        },
+        {
+          "text": "Toothbrush",
+          "points": 1
+        },
+        {
+          "text": "Socks",
+          "points": 1
+        },
+        {
+          "text": "Pyjamas",
+          "points": 1
+        },
+        {
+          "text": "Gifts",
+          "points": 1
+        },
+        {
+          "text": "Medication",
+          "points": 2
+        },
+        {
+          "text": "Phone cable",
+          "points": 2
+        },
+        {
+          "text": "Toiletries bag",
+          "points": 2
+        },
+        {
+          "text": "Travel documents",
+          "points": 2
+        },
+        {
+          "text": "Warm coat",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-shopping-takes-forever",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons holiday shopping takes longer than expected",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "holiday-shopping-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Christmas_shopping",
+      "answers": [
+        {
+          "text": "Crowds",
+          "points": 1
+        },
+        {
+          "text": "Parking",
+          "points": 1
+        },
+        {
+          "text": "Long queues",
+          "points": 1
+        },
+        {
+          "text": "Indecision",
+          "points": 1
+        },
+        {
+          "text": "Items are out of stock",
+          "points": 1
+        },
+        {
+          "text": "Extra errands",
+          "points": 2
+        },
+        {
+          "text": "Traffic",
+          "points": 2
+        },
+        {
+          "text": "Comparing prices",
+          "points": 2
+        },
+        {
+          "text": "Gift wrapping queue",
+          "points": 2
+        },
+        {
+          "text": "Last-minute panic browsing",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-dinner-table-sights",
+      "category": "Holiday Chaos",
+      "prompt": "Things you see at a big holiday dinner",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "holiday-dinner-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Christmas_dinner",
+      "answers": [
+        {
+          "text": "Roast meat",
+          "points": 1
+        },
+        {
+          "text": "Potatoes",
+          "points": 1
+        },
+        {
+          "text": "Gravy",
+          "points": 1
+        },
+        {
+          "text": "Wine",
+          "points": 1
+        },
+        {
+          "text": "Candles",
+          "points": 1
+        },
+        {
+          "text": "Dessert tray",
+          "points": 2
+        },
+        {
+          "text": "Extra chairs",
+          "points": 2
+        },
+        {
+          "text": "Serving platters",
+          "points": 2
+        },
+        {
+          "text": "Crackers or favours",
+          "points": 2
+        },
+        {
+          "text": "Someone carving the main dish",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-party-foods",
+      "category": "Holiday Chaos",
+      "prompt": "Foods people expect at a holiday party",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "holiday-food-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Christmas_party",
+      "answers": [
+        {
+          "text": "Cookies",
+          "points": 1
+        },
+        {
+          "text": "Cheese board",
+          "points": 1
+        },
+        {
+          "text": "Ham",
+          "points": 1
+        },
+        {
+          "text": "Pie",
+          "points": 1
+        },
+        {
+          "text": "Dip",
+          "points": 1
+        },
+        {
+          "text": "Meatballs",
+          "points": 2
+        },
+        {
+          "text": "Roast vegetables",
+          "points": 2
+        },
+        {
+          "text": "Brownies",
+          "points": 2
+        },
+        {
+          "text": "Punch",
+          "points": 2
+        },
+        {
+          "text": "Shrimp platter",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-flight-delays",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons flights get delayed during the holidays",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "holiday-travel-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Flight_delay",
+      "answers": [
+        {
+          "text": "Weather",
+          "points": 1
+        },
+        {
+          "text": "Airport congestion",
+          "points": 1
+        },
+        {
+          "text": "Late incoming aircraft",
+          "points": 1
+        },
+        {
+          "text": "Crew timing out",
+          "points": 1
+        },
+        {
+          "text": "De-icing",
+          "points": 1
+        },
+        {
+          "text": "Baggage backlog",
+          "points": 2
+        },
+        {
+          "text": "Air traffic control",
+          "points": 2
+        },
+        {
+          "text": "Missed departure slot",
+          "points": 2
+        },
+        {
+          "text": "Security issue",
+          "points": 2
+        },
+        {
+          "text": "Earlier delays cascading through the day",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-last-minute-gifts",
+      "category": "Holiday Chaos",
+      "prompt": "Gifts people panic-buy at the last minute",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "contentType": "holiday-gift-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Gift",
+      "answers": [
+        {
+          "text": "Gift card",
+          "points": 1
+        },
+        {
+          "text": "Chocolates",
+          "points": 1
+        },
+        {
+          "text": "Candle",
+          "points": 1
+        },
+        {
+          "text": "Wine",
+          "points": 1
+        },
+        {
+          "text": "Flowers",
+          "points": 1
+        },
+        {
+          "text": "Mug",
+          "points": 2
+        },
+        {
+          "text": "Socks",
+          "points": 2
+        },
+        {
+          "text": "Book",
+          "points": 2
+        },
+        {
+          "text": "Perfume",
+          "points": 2
+        },
+        {
+          "text": "Fancy snacks",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-road-trip-complaints",
+      "category": "Holiday Chaos",
+      "prompt": "Things people complain about on a holiday road trip",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "humorous",
+      "contentType": "holiday-roadtrip-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Road_trip",
+      "answers": [
+        {
+          "text": "Traffic",
+          "points": 1
+        },
+        {
+          "text": "Kids fighting",
+          "points": 1
+        },
+        {
+          "text": "No legroom",
+          "points": 1
+        },
+        {
+          "text": "Hunger",
+          "points": 1
+        },
+        {
+          "text": "Bad weather",
+          "points": 1
+        },
+        {
+          "text": "Bad music",
+          "points": 2
+        },
+        {
+          "text": "Too many stops",
+          "points": 2
+        },
+        {
+          "text": "Needing the toilet",
+          "points": 2
+        },
+        {
+          "text": "No phone signal",
+          "points": 2
+        },
+        {
+          "text": "Backseat commentary",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-kitchen-hideout",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons someone hides in the kitchen during a family gathering",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "humorous",
+      "contentType": "holiday-family-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Family_reunion",
+      "answers": [
+        {
+          "text": "Avoid questions",
+          "points": 1
+        },
+        {
+          "text": "Help with dishes",
+          "points": 1
+        },
+        {
+          "text": "Need quiet",
+          "points": 1
+        },
+        {
+          "text": "Escape an awkward relative",
+          "points": 1
+        },
+        {
+          "text": "Check the food",
+          "points": 1
+        },
+        {
+          "text": "Steal snacks",
+          "points": 2
+        },
+        {
+          "text": "Text a friend",
+          "points": 2
+        },
+        {
+          "text": "Sip wine in peace",
+          "points": 2
+        },
+        {
+          "text": "Hide from the kids",
+          "points": 2
+        },
+        {
+          "text": "Take a breather",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-dinner-argument-topics",
+      "category": "Holiday Chaos",
+      "prompt": "Topics that start arguments at holiday dinner",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "holiday-family-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Family_reunion",
+      "answers": [
+        {
+          "text": "Politics",
+          "points": 1
+        },
+        {
+          "text": "Money",
+          "points": 1
+        },
+        {
+          "text": "Parenting",
+          "points": 2
+        },
+        {
+          "text": "Relationships",
+          "points": 2
+        },
+        {
+          "text": "Old grudges",
+          "points": 2
+        },
+        {
+          "text": "Travel plans",
+          "points": 2
+        },
+        {
+          "text": "Chore expectations",
+          "points": 2
+        },
+        {
+          "text": "Screen time",
+          "points": 3
+        },
+        {
+          "text": "Inheritance",
+          "points": 3
+        },
+        {
+          "text": "Who is hosting next year",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-bad-gift-reaction-signs",
+      "category": "Holiday Chaos",
+      "prompt": "Signs someone does not like the gift they just opened",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "holiday-gift-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Gift",
+      "answers": [
+        {
+          "text": "Fake smile",
+          "points": 1
+        },
+        {
+          "text": "Says interesting",
+          "points": 1
+        },
+        {
+          "text": "Reads the box for too long",
+          "points": 2
+        },
+        {
+          "text": "Immediately asks who it is from",
+          "points": 2
+        },
+        {
+          "text": "Puts it aside quickly",
+          "points": 2
+        },
+        {
+          "text": "Over-thanks you",
+          "points": 2
+        },
+        {
+          "text": "Does not open the packaging",
+          "points": 2
+        },
+        {
+          "text": "Tries to change the subject",
+          "points": 3
+        },
+        {
+          "text": "Gives it away later",
+          "points": 3
+        },
+        {
+          "text": "Says they already have one at home",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-decorating-chaos",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons holiday decorating turns chaotic",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "holiday-decoration-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Christmas_decoration",
+      "answers": [
+        {
+          "text": "Tangled lights",
+          "points": 1
+        },
+        {
+          "text": "Broken ornament",
+          "points": 1
+        },
+        {
+          "text": "Missing batteries",
+          "points": 2
+        },
+        {
+          "text": "Ladder issues",
+          "points": 2
+        },
+        {
+          "text": "Wrong hooks",
+          "points": 2
+        },
+        {
+          "text": "Glitter everywhere",
+          "points": 2
+        },
+        {
+          "text": "Pet attacks the tree",
+          "points": 2
+        },
+        {
+          "text": "Extension cords are missing",
+          "points": 3
+        },
+        {
+          "text": "One person takes over the whole theme",
+          "points": 3
+        },
+        {
+          "text": "Nobody agrees on how it should look",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-office-party-goes-wrong",
+      "category": "Holiday Chaos",
+      "prompt": "Ways an office holiday party goes wrong",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "holiday-party-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Christmas_party",
+      "answers": [
+        {
+          "text": "Karaoke gets too sincere",
+          "points": 1
+        },
+        {
+          "text": "Too many drinks",
+          "points": 1
+        },
+        {
+          "text": "Bad playlist",
+          "points": 2
+        },
+        {
+          "text": "Awkward speeches",
+          "points": 2
+        },
+        {
+          "text": "Attendance guilt",
+          "points": 2
+        },
+        {
+          "text": "Someone flirts badly",
+          "points": 2
+        },
+        {
+          "text": "Secret Santa misfires",
+          "points": 2
+        },
+        {
+          "text": "The boss stays too late",
+          "points": 3
+        },
+        {
+          "text": "Photos get posted",
+          "points": 3
+        },
+        {
+          "text": "One person turns it into a work debrief",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-wrapping-stress",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons wrapping presents becomes stressful",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "editorial",
+      "contentType": "holiday-gift-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Gift_wrapping",
+      "answers": [
+        {
+          "text": "Running out of tape",
+          "points": 1
+        },
+        {
+          "text": "Scissors are missing",
+          "points": 1
+        },
+        {
+          "text": "Odd-shaped gift",
+          "points": 2
+        },
+        {
+          "text": "Paper tears",
+          "points": 2
+        },
+        {
+          "text": "Bows will not stick",
+          "points": 2
+        },
+        {
+          "text": "Kids keep interrupting",
+          "points": 2
+        },
+        {
+          "text": "Labels are missing",
+          "points": 2
+        },
+        {
+          "text": "Trying to hide gifts",
+          "points": 3
+        },
+        {
+          "text": "Leaving it until midnight",
+          "points": 3
+        },
+        {
+          "text": "A pet sits on everything",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-family-gathering-types",
+      "category": "Holiday Chaos",
+      "prompt": "Types of relatives at a big holiday gathering",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "holiday-family-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Family_reunion",
+      "answers": [
+        {
+          "text": "Loud uncle",
+          "points": 1
+        },
+        {
+          "text": "Host aunt",
+          "points": 1
+        },
+        {
+          "text": "Sleepy grandparent",
+          "points": 2
+        },
+        {
+          "text": "Cute toddler",
+          "points": 2
+        },
+        {
+          "text": "Late cousin",
+          "points": 2
+        },
+        {
+          "text": "Gossip magnet",
+          "points": 2
+        },
+        {
+          "text": "Wine enthusiast",
+          "points": 2
+        },
+        {
+          "text": "Family historian",
+          "points": 3
+        },
+        {
+          "text": "One who brings an uninvited plus-one",
+          "points": 3
+        },
+        {
+          "text": "Relative who starts conspiracy chats",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-host-spiraling",
+      "category": "Holiday Chaos",
+      "prompt": "Signs a holiday host is starting to spiral",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "holiday-host-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Host_(reception)",
+      "answers": [
+        {
+          "text": "Cleaning while people arrive",
+          "points": 1
+        },
+        {
+          "text": "Muttering to themselves",
+          "points": 1
+        },
+        {
+          "text": "Checking the oven constantly",
+          "points": 2
+        },
+        {
+          "text": "Asking where the serving spoon is",
+          "points": 2
+        },
+        {
+          "text": "Apologising for everything",
+          "points": 2
+        },
+        {
+          "text": "Refreshing the timeline",
+          "points": 2
+        },
+        {
+          "text": "Stress-laughing",
+          "points": 2
+        },
+        {
+          "text": "Disappearing upstairs",
+          "points": 3
+        },
+        {
+          "text": "Reopening the shopping list",
+          "points": 3
+        },
+        {
+          "text": "Saying it is fine through clenched teeth",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-season-lies",
+      "category": "Holiday Chaos",
+      "prompt": "Things people lie about during the holidays",
+      "difficultyTier": "medium",
+      "difficultyScore": 22,
+      "validationStyle": "humorous",
+      "contentType": "holiday-social-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Loving the gift",
+          "points": 1
+        },
+        {
+          "text": "Travel going smoothly",
+          "points": 1
+        },
+        {
+          "text": "Not being hungry",
+          "points": 2
+        },
+        {
+          "text": "How much was spent",
+          "points": 2
+        },
+        {
+          "text": "Liking family traditions",
+          "points": 2
+        },
+        {
+          "text": "Leaving soon",
+          "points": 2
+        },
+        {
+          "text": "Not drinking much",
+          "points": 2
+        },
+        {
+          "text": "Kids being easy",
+          "points": 3
+        },
+        {
+          "text": "Having finished shopping",
+          "points": 3
+        },
+        {
+          "text": "Being completely relaxed",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-group-photo-forever",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons a holiday group photo takes forever",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "holiday-photo-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Group_photograph",
+      "answers": [
+        {
+          "text": "People keep blinking",
+          "points": 2
+        },
+        {
+          "text": "Someone is missing",
+          "points": 2
+        },
+        {
+          "text": "Kids will not stay still",
+          "points": 2
+        },
+        {
+          "text": "Wrong camera mode",
+          "points": 2
+        },
+        {
+          "text": "Glasses glare",
+          "points": 3
+        },
+        {
+          "text": "Height rearranging",
+          "points": 3
+        },
+        {
+          "text": "Closed eyes again",
+          "points": 3
+        },
+        {
+          "text": "Multiple phones get involved",
+          "points": 4
+        },
+        {
+          "text": "One person keeps requesting another take",
+          "points": 4
+        },
+        {
+          "text": "Somebody insists on a funny version first",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-travel-disasters",
+      "category": "Holiday Chaos",
+      "prompt": "Travel disasters that ruin festive plans",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "editorial",
+      "contentType": "holiday-travel-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Cancelled flight",
+          "points": 2
+        },
+        {
+          "text": "Lost luggage",
+          "points": 2
+        },
+        {
+          "text": "Passport left at home",
+          "points": 2
+        },
+        {
+          "text": "Car breakdown",
+          "points": 2
+        },
+        {
+          "text": "Hotel is overbooked",
+          "points": 3
+        },
+        {
+          "text": "Weather warning",
+          "points": 3
+        },
+        {
+          "text": "Missed connection",
+          "points": 3
+        },
+        {
+          "text": "Illness on the trip",
+          "points": 4
+        },
+        {
+          "text": "Wrong travel date was booked",
+          "points": 4
+        },
+        {
+          "text": "Border document problem",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-kids-stay-awake",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons children stay awake too late on a holiday eve",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "holiday-family-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Christmas_and_holiday_season",
+      "answers": [
+        {
+          "text": "Too much sugar",
+          "points": 2
+        },
+        {
+          "text": "Excitement",
+          "points": 2
+        },
+        {
+          "text": "New toys are nearby",
+          "points": 2
+        },
+        {
+          "text": "Late family dinner",
+          "points": 2
+        },
+        {
+          "text": "Cousins are still awake",
+          "points": 3
+        },
+        {
+          "text": "Travel schedule is off",
+          "points": 3
+        },
+        {
+          "text": "Adults are noisy",
+          "points": 3
+        },
+        {
+          "text": "Trying to spot the gift-giver",
+          "points": 4
+        },
+        {
+          "text": "No bedtime routine happened",
+          "points": 4
+        },
+        {
+          "text": "They keep sneaking downstairs",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-rental-tension",
+      "category": "Holiday Chaos",
+      "prompt": "Things that cause tension in a shared holiday rental",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "editorial",
+      "contentType": "holiday-travel-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Vacation_rental",
+      "answers": [
+        {
+          "text": "Bedroom allocation",
+          "points": 2
+        },
+        {
+          "text": "Thermostat settings",
+          "points": 2
+        },
+        {
+          "text": "Dirty dishes",
+          "points": 2
+        },
+        {
+          "text": "Bathroom queue",
+          "points": 2
+        },
+        {
+          "text": "Grocery costs",
+          "points": 3
+        },
+        {
+          "text": "Noise at night",
+          "points": 3
+        },
+        {
+          "text": "Checkout chores",
+          "points": 3
+        },
+        {
+          "text": "Kids making a mess",
+          "points": 4
+        },
+        {
+          "text": "Parking spots",
+          "points": 4
+        },
+        {
+          "text": "One group treats it like a hotel",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-family-game-competitive",
+      "category": "Holiday Chaos",
+      "prompt": "Signs the family game is about to get too competitive",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "holiday-game-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Party_game",
+      "answers": [
+        {
+          "text": "Rules debate starts",
+          "points": 2
+        },
+        {
+          "text": "Scorekeeping gets intense",
+          "points": 2
+        },
+        {
+          "text": "Accusations of cheating",
+          "points": 2
+        },
+        {
+          "text": "Loud celebrating",
+          "points": 2
+        },
+        {
+          "text": "A rematch is demanded",
+          "points": 3
+        },
+        {
+          "text": "Alliances begin forming",
+          "points": 3
+        },
+        {
+          "text": "Sarcastic clapping",
+          "points": 3
+        },
+        {
+          "text": "Someone googles the rules mid-game",
+          "points": 4
+        },
+        {
+          "text": "Old sibling rivalry appears",
+          "points": 4
+        },
+        {
+          "text": "One person cares way more than everyone else",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-toast-awkward",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons a festive toast becomes awkward",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "holiday-toast-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Toast_(honor)",
+      "answers": [
+        {
+          "text": "Wrong name",
+          "points": 2
+        },
+        {
+          "text": "Inside joke fails",
+          "points": 2
+        },
+        {
+          "text": "An ex gets mentioned",
+          "points": 2
+        },
+        {
+          "text": "Speech runs too long",
+          "points": 2
+        },
+        {
+          "text": "Microphone fails",
+          "points": 3
+        },
+        {
+          "text": "Tears appear",
+          "points": 3
+        },
+        {
+          "text": "People are not listening",
+          "points": 3
+        },
+        {
+          "text": "Too much honesty",
+          "points": 4
+        },
+        {
+          "text": "Accidental backhanded compliment",
+          "points": 4
+        },
+        {
+          "text": "Family drama everyone was avoiding gets named",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-relative-questions",
+      "category": "Holiday Chaos",
+      "prompt": "Questions relatives ask at the holidays that nobody wants to answer",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "holiday-family-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Family_reunion",
+      "answers": [
+        {
+          "text": "When are you getting married",
+          "points": 2
+        },
+        {
+          "text": "When are you having kids",
+          "points": 2
+        },
+        {
+          "text": "How much do you earn",
+          "points": 2
+        },
+        {
+          "text": "Why are you still single",
+          "points": 2
+        },
+        {
+          "text": "When will you buy a house",
+          "points": 3
+        },
+        {
+          "text": "When are you getting a better job",
+          "points": 3
+        },
+        {
+          "text": "Why did you move back",
+          "points": 3
+        },
+        {
+          "text": "Are you still together",
+          "points": 4
+        },
+        {
+          "text": "Have you gained weight",
+          "points": 4
+        },
+        {
+          "text": "What is your five-year plan",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-secret-santa-chaos",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons a Secret Santa exchange gets chaotic",
+      "difficultyTier": "hard",
+      "difficultyScore": 30,
+      "validationStyle": "humorous",
+      "contentType": "holiday-gift-list",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Secret_Santa",
+      "answers": [
+        {
+          "text": "Budget ignored",
+          "points": 2
+        },
+        {
+          "text": "Duplicate gifts",
+          "points": 2
+        },
+        {
+          "text": "Wrong person got bought for",
+          "points": 2
+        },
+        {
+          "text": "Gift is too personal",
+          "points": 2
+        },
+        {
+          "text": "A name got lost",
+          "points": 3
+        },
+        {
+          "text": "One person forgot",
+          "points": 3
+        },
+        {
+          "text": "Obvious regift",
+          "points": 3
+        },
+        {
+          "text": "A joke gift lands badly",
+          "points": 4
+        },
+        {
+          "text": "Someone reveals themselves early",
+          "points": 4
+        },
+        {
+          "text": "Two people drew each other and compare effort",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-things-people-bring-to-a-family-holiday-gathering",
+      "category": "Holiday Chaos",
+      "prompt": "Things people bring to a family holiday gathering",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Dessert",
+          "points": 1
+        },
+        {
+          "text": "Wine",
+          "points": 1
+        },
+        {
+          "text": "Flowers",
+          "points": 1
+        },
+        {
+          "text": "Side dish",
+          "points": 1
+        },
+        {
+          "text": "Board game",
+          "points": 1
+        },
+        {
+          "text": "Gift bag",
+          "points": 2
+        },
+        {
+          "text": "Kids' toys",
+          "points": 2
+        },
+        {
+          "text": "Ice",
+          "points": 2
+        },
+        {
+          "text": "Bread",
+          "points": 2
+        },
+        {
+          "text": "Leftover containers",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-reasons-holiday-gift-shopping-gets-stressful",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons holiday gift shopping gets stressful",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "No ideas",
+          "points": 1
+        },
+        {
+          "text": "Budget pressure",
+          "points": 1
+        },
+        {
+          "text": "Shipping delays",
+          "points": 1
+        },
+        {
+          "text": "Crowds",
+          "points": 1
+        },
+        {
+          "text": "Hard-to-buy-for person",
+          "points": 1
+        },
+        {
+          "text": "Items sold out",
+          "points": 2
+        },
+        {
+          "text": "Last-minute panic",
+          "points": 2
+        },
+        {
+          "text": "Too many people to buy for",
+          "points": 2
+        },
+        {
+          "text": "Wrong-size risk",
+          "points": 2
+        },
+        {
+          "text": "Comparison pressure",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-things-people-run-out-of-during-a-holiday-party",
+      "category": "Holiday Chaos",
+      "prompt": "Things people run out of during a holiday party",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Ice",
+          "points": 1
+        },
+        {
+          "text": "Plates",
+          "points": 1
+        },
+        {
+          "text": "Napkins",
+          "points": 1
+        },
+        {
+          "text": "Wine",
+          "points": 1
+        },
+        {
+          "text": "Mixer",
+          "points": 1
+        },
+        {
+          "text": "Toilet paper",
+          "points": 2
+        },
+        {
+          "text": "Snacks",
+          "points": 2
+        },
+        {
+          "text": "Chairs",
+          "points": 2
+        },
+        {
+          "text": "Batteries",
+          "points": 2
+        },
+        {
+          "text": "Cups",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-places-people-hide-presents-at-home",
+      "category": "Holiday Chaos",
+      "prompt": "Places people hide presents at home",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Closet",
+          "points": 1
+        },
+        {
+          "text": "Under the bed",
+          "points": 1
+        },
+        {
+          "text": "Garage",
+          "points": 1
+        },
+        {
+          "text": "Suitcase",
+          "points": 1
+        },
+        {
+          "text": "Car trunk",
+          "points": 1
+        },
+        {
+          "text": "Top shelf",
+          "points": 2
+        },
+        {
+          "text": "Spare room",
+          "points": 2
+        },
+        {
+          "text": "Basement",
+          "points": 2
+        },
+        {
+          "text": "Laundry basket",
+          "points": 2
+        },
+        {
+          "text": "Behind coats",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-things-kids-do-on-holiday-mornings",
+      "category": "Holiday Chaos",
+      "prompt": "Things kids do on holiday mornings",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Wake everyone up",
+          "points": 1
+        },
+        {
+          "text": "Shake gifts",
+          "points": 1
+        },
+        {
+          "text": "Stay in pajamas",
+          "points": 1
+        },
+        {
+          "text": "Eat chocolate early",
+          "points": 1
+        },
+        {
+          "text": "Rip wrapping paper",
+          "points": 1
+        },
+        {
+          "text": "Ask which gift is first",
+          "points": 2
+        },
+        {
+          "text": "Play with boxes",
+          "points": 2
+        },
+        {
+          "text": "Turn on the TV",
+          "points": 2
+        },
+        {
+          "text": "Build the toy immediately",
+          "points": 2
+        },
+        {
+          "text": "Ignore breakfast",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-reasons-holiday-travel-goes-wrong",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons holiday travel goes wrong",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Weather",
+          "points": 1
+        },
+        {
+          "text": "Traffic",
+          "points": 1
+        },
+        {
+          "text": "Cancellations",
+          "points": 1
+        },
+        {
+          "text": "Lost luggage",
+          "points": 1
+        },
+        {
+          "text": "Overbooked trains",
+          "points": 1
+        },
+        {
+          "text": "Delayed relatives",
+          "points": 2
+        },
+        {
+          "text": "Car trouble",
+          "points": 2
+        },
+        {
+          "text": "Strikes",
+          "points": 2
+        },
+        {
+          "text": "Security lines",
+          "points": 2
+        },
+        {
+          "text": "Snow",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "holiday-things-relatives-ask-that-make-everyone-uncomfortable",
+      "category": "Holiday Chaos",
+      "prompt": "Things relatives ask that make everyone uncomfortable",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Are you dating anyone",
+          "points": 1
+        },
+        {
+          "text": "When are you getting married",
+          "points": 1
+        },
+        {
+          "text": "When are you having kids",
+          "points": 2
+        },
+        {
+          "text": "How much do you earn",
+          "points": 2
+        },
+        {
+          "text": "Why are you still single",
+          "points": 2
+        },
+        {
+          "text": "Have you gained weight",
+          "points": 2
+        },
+        {
+          "text": "Why do you not visit more",
+          "points": 3
+        },
+        {
+          "text": "When will you buy a house",
+          "points": 3
+        },
+        {
+          "text": "When will you graduate",
+          "points": 4
+        },
+        {
+          "text": "Why did you quit that job",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-reasons-someone-regifts-a-present",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons someone regifts a present",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Does not need it",
+          "points": 1
+        },
+        {
+          "text": "Wrong taste",
+          "points": 1
+        },
+        {
+          "text": "Duplicate item",
+          "points": 2
+        },
+        {
+          "text": "Wrong size",
+          "points": 2
+        },
+        {
+          "text": "Already owns one",
+          "points": 2
+        },
+        {
+          "text": "Low storage space",
+          "points": 2
+        },
+        {
+          "text": "Forgot to buy something",
+          "points": 3
+        },
+        {
+          "text": "Wants to save money",
+          "points": 3
+        },
+        {
+          "text": "Never opened it",
+          "points": 4
+        },
+        {
+          "text": "Cannot return it",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-things-that-derail-hosting-holiday-dinner",
+      "category": "Holiday Chaos",
+      "prompt": "Things that derail hosting holiday dinner",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Burnt food",
+          "points": 1
+        },
+        {
+          "text": "Late guests",
+          "points": 1
+        },
+        {
+          "text": "Missing ingredient",
+          "points": 2
+        },
+        {
+          "text": "Oven too small",
+          "points": 2
+        },
+        {
+          "text": "Power cut",
+          "points": 2
+        },
+        {
+          "text": "Kids causing chaos",
+          "points": 2
+        },
+        {
+          "text": "Dog steals food",
+          "points": 3
+        },
+        {
+          "text": "Table not set",
+          "points": 3
+        },
+        {
+          "text": "Wine spill",
+          "points": 4
+        },
+        {
+          "text": "Unexpected extra guests",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-ways-people-try-to-make-a-holiday-table-look-fancy",
+      "category": "Holiday Chaos",
+      "prompt": "Ways people try to make a holiday table look fancy",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Candles",
+          "points": 1
+        },
+        {
+          "text": "Napkin folds",
+          "points": 1
+        },
+        {
+          "text": "Place cards",
+          "points": 2
+        },
+        {
+          "text": "Centerpiece",
+          "points": 2
+        },
+        {
+          "text": "Nice glassware",
+          "points": 2
+        },
+        {
+          "text": "Matching plates",
+          "points": 2
+        },
+        {
+          "text": "Fairy lights",
+          "points": 3
+        },
+        {
+          "text": "Gold cutlery",
+          "points": 3
+        },
+        {
+          "text": "Fresh greenery",
+          "points": 4
+        },
+        {
+          "text": "Dessert stand",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-things-people-forget-when-traveling-for-the-holidays",
+      "category": "Holiday Chaos",
+      "prompt": "Things people forget when traveling for the holidays",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Chargers",
+          "points": 1
+        },
+        {
+          "text": "Gifts",
+          "points": 1
+        },
+        {
+          "text": "Medication",
+          "points": 2
+        },
+        {
+          "text": "Pajamas",
+          "points": 2
+        },
+        {
+          "text": "Tickets",
+          "points": 2
+        },
+        {
+          "text": "Toothbrush",
+          "points": 2
+        },
+        {
+          "text": "Winter coat",
+          "points": 3
+        },
+        {
+          "text": "Passport",
+          "points": 3
+        },
+        {
+          "text": "Wrapped cards",
+          "points": 4
+        },
+        {
+          "text": "Baby supplies",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "holiday-reasons-a-family-group-chat-explodes-before-a-holiday",
+      "category": "Holiday Chaos",
+      "prompt": "Reasons a family group chat explodes before a holiday",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Changing plans",
+          "points": 1
+        },
+        {
+          "text": "Politics",
+          "points": 2
+        },
+        {
+          "text": "Budget drama",
+          "points": 2
+        },
+        {
+          "text": "Passive-aggressive message",
+          "points": 3
+        },
+        {
+          "text": "No one replying",
+          "points": 3
+        },
+        {
+          "text": "Who is bringing what",
+          "points": 3
+        },
+        {
+          "text": "Travel delays",
+          "points": 4
+        },
+        {
+          "text": "Old family beef",
+          "points": 4
+        },
+        {
+          "text": "Last-minute guest",
+          "points": 5
+        },
+        {
+          "text": "Time confusion",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-problems-that-happen-when-too-many-people-stay-in-one-house",
+      "category": "Holiday Chaos",
+      "prompt": "Problems that happen when too many people stay in one house",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "No hot water",
+          "points": 1
+        },
+        {
+          "text": "Bathroom queue",
+          "points": 2
+        },
+        {
+          "text": "Snoring",
+          "points": 2
+        },
+        {
+          "text": "Not enough beds",
+          "points": 3
+        },
+        {
+          "text": "Fridge too full",
+          "points": 3
+        },
+        {
+          "text": "No privacy",
+          "points": 3
+        },
+        {
+          "text": "Parking chaos",
+          "points": 4
+        },
+        {
+          "text": "Wi-Fi strain",
+          "points": 4
+        },
+        {
+          "text": "Noise",
+          "points": 5
+        },
+        {
+          "text": "Towel shortage",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-things-people-argue-about-while-decorating-for-the-holidays",
+      "category": "Holiday Chaos",
+      "prompt": "Things people argue about while decorating for the holidays",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Real tree or fake tree",
+          "points": 1
+        },
+        {
+          "text": "Color scheme",
+          "points": 2
+        },
+        {
+          "text": "Lights tangling",
+          "points": 2
+        },
+        {
+          "text": "Music choice",
+          "points": 3
+        },
+        {
+          "text": "Where ornaments go",
+          "points": 3
+        },
+        {
+          "text": "Starting too early",
+          "points": 3
+        },
+        {
+          "text": "Budget",
+          "points": 4
+        },
+        {
+          "text": "Outdoor lights",
+          "points": 4
+        },
+        {
+          "text": "Theme",
+          "points": 5
+        },
+        {
+          "text": "Sentimental decorations",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-clues-a-holiday-gift-exchange-is-going-off-the-rails",
+      "category": "Holiday Chaos",
+      "prompt": "Clues a holiday gift exchange is going off the rails",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Stolen gift laughter",
+          "points": 1
+        },
+        {
+          "text": "One gift is way nicer",
+          "points": 2
+        },
+        {
+          "text": "Someone looks offended",
+          "points": 2
+        },
+        {
+          "text": "Rules forgotten",
+          "points": 3
+        },
+        {
+          "text": "Kids grabbing gifts",
+          "points": 3
+        },
+        {
+          "text": "Re-gift spotted",
+          "points": 3
+        },
+        {
+          "text": "Batteries missing",
+          "points": 4
+        },
+        {
+          "text": "Wrong name tag",
+          "points": 4
+        },
+        {
+          "text": "One gift too weird",
+          "points": 5
+        },
+        {
+          "text": "Timer ignored",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "holiday-things-hosts-do-after-everyone-finally-leaves",
+      "category": "Holiday Chaos",
+      "prompt": "Things hosts do after everyone finally leaves",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Holiday",
+      "answers": [
+        {
+          "text": "Load the dishwasher",
+          "points": 1
+        },
+        {
+          "text": "Hide leftovers",
+          "points": 2
+        },
+        {
+          "text": "Sit in silence",
+          "points": 2
+        },
+        {
+          "text": "Count missing glasses",
+          "points": 3
+        },
+        {
+          "text": "Text thank-yous",
+          "points": 3
+        },
+        {
+          "text": "Take off the nice clothes",
+          "points": 3
+        },
+        {
+          "text": "Sweep the floor",
+          "points": 4
+        },
+        {
+          "text": "Collapse on the sofa",
+          "points": 4
+        },
+        {
+          "text": "Pack food away",
+          "points": 5
+        },
+        {
+          "text": "Open a secret snack",
+          "points": 5
+        }
+      ]
+    }
+  ]
+}

@@ -23,7 +23,9 @@ struct GameFlowViewModelTests {
         viewModel.finalizeActiveRoundIfNeeded()
 
         #expect(viewModel.debugRoundTelemetry.count == 1)
+        #expect(viewModel.debugRoundTelemetry.first?.questionID == "q1")
         #expect(viewModel.debugRoundTelemetry.first?.category == "Factual")
+        #expect(viewModel.debugRoundTelemetry.first?.difficultyTier == .medium)
 
         viewModel.continueAfterRoundSummary()
         #expect(viewModel.phase == .finalResults)

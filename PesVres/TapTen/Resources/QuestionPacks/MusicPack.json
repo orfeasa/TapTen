@@ -2,7 +2,7 @@
   "id": "music-pack-v2",
   "title": "Music Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "music-common-instruments",
@@ -723,6 +723,942 @@
         },
         {
           "text": "Tequila",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "music-instruments-people-expect-in-a-rock-band",
+      "category": "Music",
+      "prompt": "Instruments people expect in a rock band",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Guitar",
+          "points": 1
+        },
+        {
+          "text": "Bass",
+          "points": 1
+        },
+        {
+          "text": "Drums",
+          "points": 1
+        },
+        {
+          "text": "Vocals",
+          "points": 1
+        },
+        {
+          "text": "Keyboard",
+          "points": 1
+        },
+        {
+          "text": "Microphone stand",
+          "points": 2
+        },
+        {
+          "text": "Amplifier",
+          "points": 2
+        },
+        {
+          "text": "Tambourine",
+          "points": 2
+        },
+        {
+          "text": "Synth",
+          "points": 2
+        },
+        {
+          "text": "Piano",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "music-places-people-sing-along-loudly",
+      "category": "Music",
+      "prompt": "Places people sing along loudly",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Car",
+          "points": 1
+        },
+        {
+          "text": "Concert",
+          "points": 1
+        },
+        {
+          "text": "Shower",
+          "points": 1
+        },
+        {
+          "text": "Karaoke bar",
+          "points": 1
+        },
+        {
+          "text": "House party",
+          "points": 1
+        },
+        {
+          "text": "Kitchen",
+          "points": 2
+        },
+        {
+          "text": "Stadium",
+          "points": 2
+        },
+        {
+          "text": "Wedding",
+          "points": 2
+        },
+        {
+          "text": "Club",
+          "points": 2
+        },
+        {
+          "text": "Festival",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "music-things-people-do-before-a-concert-starts",
+      "category": "Music",
+      "prompt": "Things people do before a concert starts",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Find seats",
+          "points": 1
+        },
+        {
+          "text": "Buy drinks",
+          "points": 1
+        },
+        {
+          "text": "Check merch",
+          "points": 1
+        },
+        {
+          "text": "Take selfies",
+          "points": 1
+        },
+        {
+          "text": "Text friends",
+          "points": 1
+        },
+        {
+          "text": "Queue for the toilet",
+          "points": 2
+        },
+        {
+          "text": "Open tickets",
+          "points": 2
+        },
+        {
+          "text": "Check opener time",
+          "points": 2
+        },
+        {
+          "text": "Find exits",
+          "points": 2
+        },
+        {
+          "text": "Stretch",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "music-reasons-a-song-gets-stuck-in-someone-s-head",
+      "category": "Music",
+      "prompt": "Reasons a song gets stuck in someone's head",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Catchy hook",
+          "points": 1
+        },
+        {
+          "text": "Heard it often",
+          "points": 1
+        },
+        {
+          "text": "Viral trend",
+          "points": 1
+        },
+        {
+          "text": "Short chorus",
+          "points": 1
+        },
+        {
+          "text": "Emotional memory",
+          "points": 1
+        },
+        {
+          "text": "Dance routine",
+          "points": 2
+        },
+        {
+          "text": "Radio repeat",
+          "points": 2
+        },
+        {
+          "text": "Weird lyric",
+          "points": 2
+        },
+        {
+          "text": "Good beat",
+          "points": 2
+        },
+        {
+          "text": "Friend keeps singing it",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "music-things-people-throw-into-a-festival-bag",
+      "category": "Music",
+      "prompt": "Things people throw into a festival bag",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Sunscreen",
+          "points": 1
+        },
+        {
+          "text": "Water bottle",
+          "points": 1
+        },
+        {
+          "text": "Phone charger",
+          "points": 1
+        },
+        {
+          "text": "Sunglasses",
+          "points": 1
+        },
+        {
+          "text": "Poncho",
+          "points": 1
+        },
+        {
+          "text": "Earplugs",
+          "points": 2
+        },
+        {
+          "text": "ID",
+          "points": 2
+        },
+        {
+          "text": "Glitter",
+          "points": 2
+        },
+        {
+          "text": "Power bank",
+          "points": 2
+        },
+        {
+          "text": "Snacks",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "music-music-apps-people-use-to-listen-to-songs",
+      "category": "Music",
+      "prompt": "Music apps people use to listen to songs",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Spotify",
+          "points": 1
+        },
+        {
+          "text": "Apple Music",
+          "points": 1
+        },
+        {
+          "text": "YouTube",
+          "points": 1
+        },
+        {
+          "text": "Amazon Music",
+          "points": 1
+        },
+        {
+          "text": "SoundCloud",
+          "points": 1
+        },
+        {
+          "text": "Pandora",
+          "points": 2
+        },
+        {
+          "text": "Deezer",
+          "points": 2
+        },
+        {
+          "text": "Tidal",
+          "points": 2
+        },
+        {
+          "text": "Bandcamp",
+          "points": 2
+        },
+        {
+          "text": "Audiomack",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "music-things-people-buy-at-a-merch-table",
+      "category": "Music",
+      "prompt": "Things people buy at a merch table",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "T-shirt",
+          "points": 1
+        },
+        {
+          "text": "Hoodie",
+          "points": 1
+        },
+        {
+          "text": "Poster",
+          "points": 2
+        },
+        {
+          "text": "Vinyl",
+          "points": 2
+        },
+        {
+          "text": "CD",
+          "points": 2
+        },
+        {
+          "text": "Hat",
+          "points": 2
+        },
+        {
+          "text": "Tote bag",
+          "points": 3
+        },
+        {
+          "text": "Signed item",
+          "points": 3
+        },
+        {
+          "text": "Tour book",
+          "points": 4
+        },
+        {
+          "text": "Stickers",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "music-reasons-bands-break-up",
+      "category": "Music",
+      "prompt": "Reasons bands break up",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Creative differences",
+          "points": 1
+        },
+        {
+          "text": "Money issues",
+          "points": 1
+        },
+        {
+          "text": "Burnout",
+          "points": 2
+        },
+        {
+          "text": "Solo careers",
+          "points": 2
+        },
+        {
+          "text": "Personal conflict",
+          "points": 2
+        },
+        {
+          "text": "Addiction",
+          "points": 2
+        },
+        {
+          "text": "Legal disputes",
+          "points": 3
+        },
+        {
+          "text": "Different goals",
+          "points": 3
+        },
+        {
+          "text": "Touring exhaustion",
+          "points": 4
+        },
+        {
+          "text": "A member dies",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "music-things-people-see-in-a-pop-music-video",
+      "category": "Music",
+      "prompt": "Things people see in a pop music video",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Dance routine",
+          "points": 1
+        },
+        {
+          "text": "Outfit change",
+          "points": 1
+        },
+        {
+          "text": "Luxury car",
+          "points": 2
+        },
+        {
+          "text": "Neon lights",
+          "points": 2
+        },
+        {
+          "text": "Love interest",
+          "points": 2
+        },
+        {
+          "text": "Slow motion",
+          "points": 2
+        },
+        {
+          "text": "Product placement",
+          "points": 3
+        },
+        {
+          "text": "Pool scene",
+          "points": 3
+        },
+        {
+          "text": "Crowd shots",
+          "points": 4
+        },
+        {
+          "text": "Choreographed group",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "music-jobs-behind-a-live-concert",
+      "category": "Music",
+      "prompt": "Jobs behind a live concert",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Sound engineer",
+          "points": 1
+        },
+        {
+          "text": "Lighting tech",
+          "points": 1
+        },
+        {
+          "text": "Tour manager",
+          "points": 2
+        },
+        {
+          "text": "Security",
+          "points": 2
+        },
+        {
+          "text": "Stage manager",
+          "points": 2
+        },
+        {
+          "text": "Guitar tech",
+          "points": 2
+        },
+        {
+          "text": "Merch seller",
+          "points": 3
+        },
+        {
+          "text": "Camera crew",
+          "points": 3
+        },
+        {
+          "text": "Promoter",
+          "points": 4
+        },
+        {
+          "text": "Roadie",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "music-things-singers-do-to-protect-their-voice",
+      "category": "Music",
+      "prompt": "Things singers do to protect their voice",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Warm up",
+          "points": 1
+        },
+        {
+          "text": "Drink water",
+          "points": 1
+        },
+        {
+          "text": "Rest",
+          "points": 2
+        },
+        {
+          "text": "Avoid shouting",
+          "points": 2
+        },
+        {
+          "text": "Use steam",
+          "points": 2
+        },
+        {
+          "text": "Sleep well",
+          "points": 2
+        },
+        {
+          "text": "Skip dairy",
+          "points": 3
+        },
+        {
+          "text": "Use lozenges",
+          "points": 3
+        },
+        {
+          "text": "Do vocal drills",
+          "points": 4
+        },
+        {
+          "text": "Run a humidifier",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "music-reasons-people-wear-headphones-instead-of-speakers",
+      "category": "Music",
+      "prompt": "Reasons people wear headphones instead of speakers",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Avoid disturbing others",
+          "points": 1
+        },
+        {
+          "text": "Better sound",
+          "points": 1
+        },
+        {
+          "text": "Privacy",
+          "points": 2
+        },
+        {
+          "text": "Noise cancellation",
+          "points": 2
+        },
+        {
+          "text": "Commuting",
+          "points": 2
+        },
+        {
+          "text": "Work focus",
+          "points": 2
+        },
+        {
+          "text": "Shared space",
+          "points": 3
+        },
+        {
+          "text": "Late-night listening",
+          "points": 3
+        },
+        {
+          "text": "Gaming",
+          "points": 4
+        },
+        {
+          "text": "Exercise",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "music-types-of-music-awards-artists-hope-to-win",
+      "category": "Music",
+      "prompt": "Types of music awards artists hope to win",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Grammy",
+          "points": 1
+        },
+        {
+          "text": "Brit Award",
+          "points": 2
+        },
+        {
+          "text": "MTV VMA",
+          "points": 2
+        },
+        {
+          "text": "American Music Award",
+          "points": 3
+        },
+        {
+          "text": "Billboard Award",
+          "points": 3
+        },
+        {
+          "text": "Juno Award",
+          "points": 3
+        },
+        {
+          "text": "Mercury Prize",
+          "points": 4
+        },
+        {
+          "text": "Emmy for music",
+          "points": 4
+        },
+        {
+          "text": "Oscar for song",
+          "points": 5
+        },
+        {
+          "text": "CMA Award",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "music-things-people-collect-from-favorite-artists",
+      "category": "Music",
+      "prompt": "Things people collect from favorite artists",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Vinyl",
+          "points": 1
+        },
+        {
+          "text": "Signed poster",
+          "points": 2
+        },
+        {
+          "text": "Setlist",
+          "points": 2
+        },
+        {
+          "text": "Guitar pick",
+          "points": 3
+        },
+        {
+          "text": "Tour shirt",
+          "points": 3
+        },
+        {
+          "text": "Ticket stub",
+          "points": 3
+        },
+        {
+          "text": "Limited cassette",
+          "points": 4
+        },
+        {
+          "text": "Polaroid",
+          "points": 4
+        },
+        {
+          "text": "Fan club badge",
+          "points": 5
+        },
+        {
+          "text": "Autograph",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "music-reasons-a-song-goes-viral-online",
+      "category": "Music",
+      "prompt": "Reasons a song goes viral online",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Dance challenge",
+          "points": 1
+        },
+        {
+          "text": "Funny lyric",
+          "points": 2
+        },
+        {
+          "text": "TV sync",
+          "points": 2
+        },
+        {
+          "text": "Celebrity endorsement",
+          "points": 3
+        },
+        {
+          "text": "Meme edit",
+          "points": 3
+        },
+        {
+          "text": "Sad trend",
+          "points": 3
+        },
+        {
+          "text": "Remixed snippet",
+          "points": 4
+        },
+        {
+          "text": "Sports montage",
+          "points": 4
+        },
+        {
+          "text": "Breakup posts",
+          "points": 5
+        },
+        {
+          "text": "Nostalgia wave",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "music-things-found-in-a-recording-studio",
+      "category": "Music",
+      "prompt": "Things found in a recording studio",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Mixing desk",
+          "points": 1
+        },
+        {
+          "text": "Microphone",
+          "points": 2
+        },
+        {
+          "text": "Headphones",
+          "points": 2
+        },
+        {
+          "text": "Pop filter",
+          "points": 3
+        },
+        {
+          "text": "MIDI keyboard",
+          "points": 3
+        },
+        {
+          "text": "Acoustic panels",
+          "points": 3
+        },
+        {
+          "text": "Audio interface",
+          "points": 4
+        },
+        {
+          "text": "Drum kit",
+          "points": 4
+        },
+        {
+          "text": "Guitar amp",
+          "points": 5
+        },
+        {
+          "text": "Computer",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "music-roles-in-an-orchestra",
+      "category": "Music",
+      "prompt": "Roles in an orchestra",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Conductor",
+          "points": 1
+        },
+        {
+          "text": "Violinist",
+          "points": 2
+        },
+        {
+          "text": "Cellist",
+          "points": 2
+        },
+        {
+          "text": "Violist",
+          "points": 3
+        },
+        {
+          "text": "Flautist",
+          "points": 3
+        },
+        {
+          "text": "Clarinetist",
+          "points": 3
+        },
+        {
+          "text": "Trumpeter",
+          "points": 4
+        },
+        {
+          "text": "Percussionist",
+          "points": 4
+        },
+        {
+          "text": "Harpist",
+          "points": 5
+        },
+        {
+          "text": "Oboist",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "music-things-fans-shout-at-a-live-show",
+      "category": "Music",
+      "prompt": "Things fans shout at a live show",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Music",
+      "answers": [
+        {
+          "text": "Encore",
+          "points": 1
+        },
+        {
+          "text": "I love you",
+          "points": 2
+        },
+        {
+          "text": "Play the old one",
+          "points": 2
+        },
+        {
+          "text": "Sing it again",
+          "points": 3
+        },
+        {
+          "text": "We love you",
+          "points": 3
+        },
+        {
+          "text": "One more song",
+          "points": 3
+        },
+        {
+          "text": "Happy birthday",
+          "points": 4
+        },
+        {
+          "text": "Take my sign",
+          "points": 4
+        },
+        {
+          "text": "Turn up the lights",
+          "points": 5
+        },
+        {
+          "text": "Play the hit",
           "points": 5
         }
       ]

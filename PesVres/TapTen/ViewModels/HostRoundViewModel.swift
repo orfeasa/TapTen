@@ -1,11 +1,6 @@
 import Foundation
 import Observation
 
-enum HostRoundFinishReason: Equatable {
-    case timerExpired
-    case skipped
-}
-
 @Observable
 final class HostRoundViewModel {
     let question: Question
@@ -18,6 +13,8 @@ final class HostRoundViewModel {
     private(set) var isRoundFinished = false
     private(set) var isPaused = false
     private(set) var finishReason: HostRoundFinishReason?
+    private(set) var timeRemainingAtFinish: TimeInterval?
+    private(set) var timeToFirstReveal: TimeInterval?
     private(set) var revealedAnswerIndices: Set<Int> = []
     private(set) var latestRevealPoints: Int?
     private(set) var revealEventToken = 0
@@ -108,6 +105,7 @@ final class HostRoundViewModel {
     }
 
     func endRound(reason: HostRoundFinishReason = .timerExpired) {
+        timeRemainingAtFinish = remainingTime
         remainingTenths = 0
         remainingTime = 0
         isRoundFinished = true
@@ -145,6 +143,9 @@ final class HostRoundViewModel {
 
         revealedAnswerIndices.insert(index)
         if !isRoundFinished {
+            if timeToFirstReveal == nil {
+                timeToFirstReveal = max(TimeInterval(roundDurationSeconds) - remainingTime, 0)
+            }
             let points = question.answers[index].points
             latestRevealPoints = points
             revealEventToken += 1

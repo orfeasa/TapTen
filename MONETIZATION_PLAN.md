@@ -2,7 +2,7 @@
 
 Status: Post-v1 strategy. This is not part of the initial v1 release build.
 
-Last updated: 2026-03-28
+Last updated: 2026-03-29
 
 ## Why This Exists
 
@@ -17,10 +17,11 @@ This document captures the current recommendation:
 
 ## Current Starting Point
 
-- The repo currently ships 12 bundled category packs with 12 questions each, for 144 questions total.
+- The repo currently ships 12 bundled free category packs with 30 questions each, for 360 free questions total.
+- The first four premium expansion packs are also bundled locally at 40 questions each for tester-flow and storefront validation.
 - One pack roughly maps to one category today.
 - A default full game can consume about 10 questions across both teams.
-- That makes the existing library a strong free starter base, but not yet a strong recurring-content catalog for a subscription business.
+- That makes the free library a generous starter base, and it makes the premium expansions large enough to justify permanent paid ownership instead of thin micro-SKUs.
 
 Implication:
 
@@ -100,12 +101,12 @@ Why:
 
 ### 2. Sell session-complete value
 
-A paid SKU should usually add around 24 to 36 questions minimum, or be bundled to feel equivalent in session value.
+A paid SKU should usually add around 40 questions minimum, or be bundled to feel equivalent in session value.
 
 Why:
 
 - A single default full game can burn through roughly 10 questions.
-- A paid 12-question pack is likely to feel too thin unless it serves a very strong niche.
+- A paid pack materially smaller than 40 questions is likely to feel too thin unless it serves a very strong niche.
 
 ### 3. Treat content as the product, not power
 
@@ -131,19 +132,19 @@ Store surfaces should live in Home, Pack Browser, setup, or clearly post-game co
 
 For the first monetization pass, a premium storefront SKU should map to session-complete value:
 
-- target value: 24 questions per premium expansion
-- target difficulty split: 8 easy / 8 medium / 8 hard across the full 24-question expansion
-- implementation may use one 24-question JSON file or two linked 12-question local packs behind one storefront product
-- a standalone 12-question paid pack should be avoided unless it serves unusually strong niche demand
+- target value: 40 questions per premium expansion
+- target difficulty split: 14 easy / 13 medium / 13 hard across the full 40-question expansion
+- implementation may use one 40-question JSON file or multiple linked local packs behind one storefront product
+- a standalone paid pack materially smaller than 40 questions should be avoided unless it serves unusually strong niche demand
 
 ## Pricing Ladder
 
 Approved initial ladder:
 
-- 24-question evergreen premium expansion: $2.99
-- 24-question seasonal or tentpole premium expansion: $3.99
-- Three-expansion launch bundle: $7.99
-- Full paid-catalog unlock: do not ship this at the first paid launch; add it only once at least 5 evergreen premium expansions exist, with an initial target price of $14.99
+- 40-question evergreen premium expansion: $3.99
+- 40-question seasonal or tentpole premium expansion: $4.99
+- Three-expansion launch bundle: $9.99
+- Full paid-catalog unlock: do not ship this at the first paid launch; add it only once at least 5 evergreen premium expansions exist, with an initial target price of $19.99
 
 Catalog rules:
 
@@ -156,32 +157,32 @@ Catalog rules:
 These are the approved first paid expansions and their intended packaging:
 
 - After Dark Vol. 1
-  - 24 questions
+  - 40 questions
   - evergreen
   - tone: cheeky adult party energy, but not explicit or app-store-risky
-  - price: $2.99
+  - price: $3.99
 - Date Night
-  - 24 questions
+  - 40 questions
   - evergreen
   - tone: romance, flirting, relationship habits, couples-night energy
-  - price: $2.99
+  - price: $3.99
 - Office & Icebreakers
-  - 24 questions
+  - 40 questions
   - evergreen
   - tone: meetings, presentations, workplace awkwardness, team banter
-  - price: $2.99
+  - price: $3.99
 - Holiday Chaos
-  - 24 questions
+  - 40 questions
   - seasonal
   - tone: travel stress, gift drama, family gatherings, party mishaps
-  - price: $3.99
+  - price: $4.99
   - target launch window: October to November seasonal merchandising window
 
 Approved launch bundle:
 
 - Launch Trio Bundle
   - includes: After Dark Vol. 1, Date Night, Office & Icebreakers
-  - price: $7.99
+  - price: $9.99
 
 Approved wave-2 candidates after the initial paid launch:
 

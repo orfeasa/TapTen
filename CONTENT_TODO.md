@@ -2,24 +2,24 @@
 
 ## Current Coverage
 Free starter library:
-- Everyday Life: 12 total (4 easy, 4 medium, 4 hard)
-- Food & Drink: 12 total (4 easy, 4 medium, 4 hard)
-- Film & TV: 12 total (4 easy, 4 medium, 4 hard)
-- Music: 12 total (4 easy, 4 medium, 4 hard)
-- Sport: 12 total (4 easy, 4 medium, 4 hard)
-- Geography: 12 total (4 easy, 4 medium, 4 hard)
-- History: 12 total (4 easy, 4 medium, 4 hard)
-- Science: 12 total (4 easy, 4 medium, 4 hard)
-- Technology: 12 total (4 easy, 4 medium, 4 hard)
-- Travel: 12 total (4 easy, 4 medium, 4 hard)
-- Work & School: 12 total (4 easy, 4 medium, 4 hard)
-- Pop Culture & Trends: 12 total (4 easy, 4 medium, 4 hard)
+- Everyday Life: 30 total (10 easy, 10 medium, 10 hard)
+- Food & Drink: 30 total (10 easy, 10 medium, 10 hard)
+- Film & TV: 30 total (10 easy, 10 medium, 10 hard)
+- Music: 30 total (10 easy, 10 medium, 10 hard)
+- Sport: 30 total (10 easy, 10 medium, 10 hard)
+- Geography: 30 total (10 easy, 10 medium, 10 hard)
+- History: 30 total (10 easy, 10 medium, 10 hard)
+- Science: 30 total (10 easy, 10 medium, 10 hard)
+- Technology: 30 total (10 easy, 10 medium, 10 hard)
+- Travel: 30 total (10 easy, 10 medium, 10 hard)
+- Work & School: 30 total (10 easy, 10 medium, 10 hard)
+- Pop Culture & Trends: 30 total (10 easy, 10 medium, 10 hard)
 
 ## Audit Highlights
 - Missing categories: none.
 - Underfilled categories: none.
 - Overfilled categories: none.
-- Target distribution status: all 12 categories now meet 12 total questions with exact 4 easy / 4 medium / 4 hard.
+- Target distribution status: all 12 categories now meet 30 total questions with exact 10 easy / 10 medium / 10 hard.
 - Open structural content tasks: none.
 - Legacy mixed packs have been consolidated; active content now uses one pack file per final category.
 - Duplicate pizza concept was removed; exact duplicate prompt/answer-set audit is currently clean.
@@ -30,11 +30,11 @@ Free starter library:
 ## Premium Expansion Queue
 
 ### Evergreen Launch Wave
-- [ ] CREATE_PACK: Author `After Dark Vol. 1` as a 24-question premium expansion (`8 easy / 8 medium / 8 hard`) with broad adult party energy that stays suggestive rather than explicit.
-- [ ] CREATE_PACK: Author `Date Night` as a 24-question premium expansion (`8 easy / 8 medium / 8 hard`) focused on couples, flirting, romance, and relationship habits.
-- [ ] CREATE_PACK: Author `Office & Icebreakers` as a 24-question premium expansion (`8 easy / 8 medium / 8 hard`) covering meetings, presentations, workplace awkwardness, and team banter.
+- [x] CREATE_PACK: Author `After Dark Vol. 1` as a 40-question premium expansion (`14 easy / 13 medium / 13 hard`) with broad adult party energy that stays suggestive rather than explicit.
+- [x] CREATE_PACK: Author `Date Night` as a 40-question premium expansion (`14 easy / 13 medium / 13 hard`) focused on couples, flirting, romance, and relationship habits.
+- [x] CREATE_PACK: Author `Office & Icebreakers` as a 40-question premium expansion (`14 easy / 13 medium / 13 hard`) covering meetings, presentations, workplace awkwardness, and team banter.
 - [x] REVIEW_POSITIONING: Finalized one-line store descriptions and audience labels for the first three evergreen premium expansions.
-- [ ] REVIEW_DUPLICATES: Audit the evergreen premium wave against the free starter library to avoid prompt-family overlap that weakens perceived value.
+- [x] REVIEW_DUPLICATES: Audit the evergreen premium wave against the free starter library to avoid prompt-family overlap that weakens perceived value.
 
 Approved positioning:
 - `After Dark Vol. 1`
@@ -48,7 +48,7 @@ Approved positioning:
   - store line: `Meeting-room awkwardness, presentation panic, and team-banter gold.`
 
 ### Seasonal Premium Follow-Up
-- [ ] CREATE_PACK: Author `Holiday Chaos` as a 24-question premium expansion (`8 easy / 8 medium / 8 hard`) covering travel stress, gift drama, family gatherings, and party mishaps.
+- [x] CREATE_PACK: Author `Holiday Chaos` as a 40-question premium expansion (`14 easy / 13 medium / 13 hard`) covering travel stress, gift drama, family gatherings, and party mishaps.
 - [x] REVIEW_TIMING: Prepared `Holiday Chaos` for an October to November merchandising window with copy that still reads well after purchase outside the season.
 
 Approved positioning:
@@ -81,12 +81,12 @@ Approved positioning:
 - [x] ADD_QUESTIONS: Added 1 hard Film & TV question (`film-common-camera-shot-types`) to reach 4 hard.
 
 ### Music
-- [x] CREATE_PACK: Created `MusicPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] CREATE_PACK: Created `MusicPack.json`; the category now sits at the current 30-question target with balanced tiers.
 - [x] ADD_QUESTIONS: Kept seeded `karaoke-songs` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
 - [x] REVIEW_AMBIGUITY: Added acceptance guidance in editorial notes across music prompts where naming variants are likely.
 
 ### Sport
-- [x] CREATE_PACK: Created `SportPack.json` with category `Sport`, 12 questions total, and exact 4 easy / 4 medium / 4 hard.
+- [x] CREATE_PACK: Created `SportPack.json`; the category now sits at the current 30-question target with balanced tiers.
 - [x] REVIEW_AMBIGUITY: Used objective prompts focused on positions, events, rules, and terminology.
 
 ### Geography
@@ -105,22 +105,22 @@ Approved positioning:
 - [x] REVIEW_AMBIGUITY: Updated `sci-famous-equations` editorial notes with explicit spoken variant acceptance guidance.
 
 ### Technology
-- [x] CREATE_PACK: Created `TechnologyPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] CREATE_PACK: Created `TechnologyPack.json`; the category now sits at the current 30-question target with balanced tiers.
 - [x] ADD_QUESTIONS: Kept seeded `life-mobile-app-categories-daily-use` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
 - [x] REVIEW_AMBIGUITY: Used mostly stable concepts and avoided rapidly dated model/version trivia.
 
 ### Travel
-- [x] CREATE_PACK: Created `TravelPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] CREATE_PACK: Created `TravelPack.json`; the category now sits at the current 30-question target with balanced tiers.
 - [x] ADD_QUESTIONS: Kept seeded `things-people-forget-to-pack` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
 - [x] REVIEW_DUPLICATES: Reviewed overlap against Geography and kept travel prompts focused on transport, booking, airports, and trip logistics.
 
 ### Work & School
-- [x] CREATE_PACK: Created `WorkSchoolPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] CREATE_PACK: Created `WorkSchoolPack.json`; the category now sits at the current 30-question target with balanced tiers.
 - [x] ADD_QUESTIONS: Kept seeded `late-to-work-excuses` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
 - [x] REVIEW_AMBIGUITY: Replaced novelty-only answer in `late-to-work-excuses` ("Alien abduction") with a plausible answer ("Public transport strike").
 
 ### Pop Culture & Trends
-- [x] CREATE_PACK: Created `PopCultureTrendsPack.json` and reached category total 12 with exact 4 easy / 4 medium / 4 hard.
+- [x] CREATE_PACK: Created `PopCultureTrendsPack.json`; the category now sits at the current 30-question target with balanced tiers.
 - [x] ADD_QUESTIONS: Kept seeded `highest-grossing-film-franchises` (medium) and added 11 new questions (4 easy, 3 medium, 4 hard).
 - [x] REVIEW_DUPLICATES: Checked overlap against Film & TV and Music and kept prompt scopes distinct.
 

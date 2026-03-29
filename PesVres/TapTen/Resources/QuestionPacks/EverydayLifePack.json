@@ -2,7 +2,7 @@
   "id": "everyday-life-pack-v2",
   "title": "Everyday Life Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "life-before-leaving-house-checks",
@@ -724,6 +724,942 @@
         {
           "text": "Fire alarm",
           "points": 4
+        }
+      ]
+    },
+    {
+      "id": "life-things-people-keep-in-a-bedside-table",
+      "category": "Everyday Life",
+      "prompt": "Things people keep in a bedside table",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Phone charger",
+          "points": 1
+        },
+        {
+          "text": "Book",
+          "points": 1
+        },
+        {
+          "text": "Glasses",
+          "points": 1
+        },
+        {
+          "text": "Lip balm",
+          "points": 1
+        },
+        {
+          "text": "Tissues",
+          "points": 1
+        },
+        {
+          "text": "Medication",
+          "points": 2
+        },
+        {
+          "text": "Notebook",
+          "points": 2
+        },
+        {
+          "text": "Earplugs",
+          "points": 2
+        },
+        {
+          "text": "Hand cream",
+          "points": 2
+        },
+        {
+          "text": "Spare change",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "life-things-people-do-in-the-first-hour-after-waking-up",
+      "category": "Everyday Life",
+      "prompt": "Things people do in the first hour after waking up",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Turn off alarm",
+          "points": 1
+        },
+        {
+          "text": "Check phone",
+          "points": 1
+        },
+        {
+          "text": "Use the bathroom",
+          "points": 1
+        },
+        {
+          "text": "Brush teeth",
+          "points": 1
+        },
+        {
+          "text": "Get dressed",
+          "points": 1
+        },
+        {
+          "text": "Make coffee",
+          "points": 2
+        },
+        {
+          "text": "Shower",
+          "points": 2
+        },
+        {
+          "text": "Feed a pet",
+          "points": 2
+        },
+        {
+          "text": "Open the curtains",
+          "points": 2
+        },
+        {
+          "text": "Make the bed",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "life-things-people-keep-by-the-front-door",
+      "category": "Everyday Life",
+      "prompt": "Things people keep by the front door",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Shoes",
+          "points": 1
+        },
+        {
+          "text": "Keys",
+          "points": 1
+        },
+        {
+          "text": "Coat",
+          "points": 1
+        },
+        {
+          "text": "Umbrella",
+          "points": 1
+        },
+        {
+          "text": "Bag",
+          "points": 1
+        },
+        {
+          "text": "Mail",
+          "points": 2
+        },
+        {
+          "text": "Dog leash",
+          "points": 2
+        },
+        {
+          "text": "Sunglasses",
+          "points": 2
+        },
+        {
+          "text": "Hat",
+          "points": 2
+        },
+        {
+          "text": "Parcel scissors",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "life-reasons-people-make-a-shopping-list",
+      "category": "Everyday Life",
+      "prompt": "Reasons people make a shopping list",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Avoid forgetting items",
+          "points": 1
+        },
+        {
+          "text": "Stick to a budget",
+          "points": 1
+        },
+        {
+          "text": "Plan meals",
+          "points": 1
+        },
+        {
+          "text": "Save time",
+          "points": 1
+        },
+        {
+          "text": "Compare prices",
+          "points": 1
+        },
+        {
+          "text": "Restock the house",
+          "points": 2
+        },
+        {
+          "text": "Party prep",
+          "points": 2
+        },
+        {
+          "text": "Dietary needs",
+          "points": 2
+        },
+        {
+          "text": "Share with a partner",
+          "points": 2
+        },
+        {
+          "text": "Stop impulse buys",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "life-places-people-misplace-their-phone-at-home",
+      "category": "Everyday Life",
+      "prompt": "Places people misplace their phone at home",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Couch",
+          "points": 1
+        },
+        {
+          "text": "Bed",
+          "points": 1
+        },
+        {
+          "text": "Kitchen counter",
+          "points": 1
+        },
+        {
+          "text": "Bathroom",
+          "points": 1
+        },
+        {
+          "text": "Jacket pocket",
+          "points": 1
+        },
+        {
+          "text": "Desk",
+          "points": 2
+        },
+        {
+          "text": "Car",
+          "points": 2
+        },
+        {
+          "text": "Laundry basket",
+          "points": 2
+        },
+        {
+          "text": "Fridge",
+          "points": 2
+        },
+        {
+          "text": "Between cushions",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "life-things-people-carry-in-a-backpack-every-day",
+      "category": "Everyday Life",
+      "prompt": "Things people carry in a backpack every day",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Laptop",
+          "points": 1
+        },
+        {
+          "text": "Notebook",
+          "points": 1
+        },
+        {
+          "text": "Water bottle",
+          "points": 1
+        },
+        {
+          "text": "Charger",
+          "points": 1
+        },
+        {
+          "text": "Headphones",
+          "points": 1
+        },
+        {
+          "text": "Lunch",
+          "points": 2
+        },
+        {
+          "text": "Pen",
+          "points": 2
+        },
+        {
+          "text": "Keys",
+          "points": 2
+        },
+        {
+          "text": "Hoodie",
+          "points": 2
+        },
+        {
+          "text": "Gum",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "life-things-people-put-in-a-junk-drawer",
+      "category": "Everyday Life",
+      "prompt": "Things people put in a junk drawer",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Batteries",
+          "points": 1
+        },
+        {
+          "text": "Rubber bands",
+          "points": 1
+        },
+        {
+          "text": "Old keys",
+          "points": 2
+        },
+        {
+          "text": "Takeout menus",
+          "points": 2
+        },
+        {
+          "text": "Chargers",
+          "points": 2
+        },
+        {
+          "text": "Tape",
+          "points": 2
+        },
+        {
+          "text": "Scissors",
+          "points": 3
+        },
+        {
+          "text": "Receipts",
+          "points": 3
+        },
+        {
+          "text": "Pens",
+          "points": 4
+        },
+        {
+          "text": "Loose screws",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "life-reasons-people-cancel-plans-at-the-last-minute",
+      "category": "Everyday Life",
+      "prompt": "Reasons people cancel plans at the last minute",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Sick",
+          "points": 1
+        },
+        {
+          "text": "Too tired",
+          "points": 1
+        },
+        {
+          "text": "Work ran late",
+          "points": 2
+        },
+        {
+          "text": "Family issue",
+          "points": 2
+        },
+        {
+          "text": "No money",
+          "points": 2
+        },
+        {
+          "text": "Double booked",
+          "points": 2
+        },
+        {
+          "text": "Childcare problem",
+          "points": 3
+        },
+        {
+          "text": "Bad weather",
+          "points": 3
+        },
+        {
+          "text": "Transport issue",
+          "points": 4
+        },
+        {
+          "text": "Social battery is gone",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "life-noises-that-wake-people-up-at-night",
+      "category": "Everyday Life",
+      "prompt": "Noises that wake people up at night",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Alarm",
+          "points": 1
+        },
+        {
+          "text": "Baby crying",
+          "points": 1
+        },
+        {
+          "text": "Dog barking",
+          "points": 2
+        },
+        {
+          "text": "Snoring",
+          "points": 2
+        },
+        {
+          "text": "Car alarm",
+          "points": 2
+        },
+        {
+          "text": "Thunder",
+          "points": 2
+        },
+        {
+          "text": "Neighbor noise",
+          "points": 3
+        },
+        {
+          "text": "Phone notification",
+          "points": 3
+        },
+        {
+          "text": "Garbage truck",
+          "points": 4
+        },
+        {
+          "text": "Fireworks",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "life-tasks-people-procrastinate-on-at-home",
+      "category": "Everyday Life",
+      "prompt": "Tasks people procrastinate on at home",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Folding laundry",
+          "points": 1
+        },
+        {
+          "text": "Cleaning the oven",
+          "points": 1
+        },
+        {
+          "text": "Calling the landlord",
+          "points": 2
+        },
+        {
+          "text": "Sorting papers",
+          "points": 2
+        },
+        {
+          "text": "Unpacking a suitcase",
+          "points": 2
+        },
+        {
+          "text": "Fixing a broken drawer",
+          "points": 2
+        },
+        {
+          "text": "Deep-cleaning the fridge",
+          "points": 3
+        },
+        {
+          "text": "Returning packages",
+          "points": 3
+        },
+        {
+          "text": "Organizing a closet",
+          "points": 4
+        },
+        {
+          "text": "Changing a lightbulb",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "life-reasons-people-stay-up-later-than-they-meant-to",
+      "category": "Everyday Life",
+      "prompt": "Reasons people stay up later than they meant to",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "One more episode",
+          "points": 1
+        },
+        {
+          "text": "Scrolling the phone",
+          "points": 1
+        },
+        {
+          "text": "Gaming",
+          "points": 2
+        },
+        {
+          "text": "Finishing work",
+          "points": 2
+        },
+        {
+          "text": "Talking to someone",
+          "points": 2
+        },
+        {
+          "text": "Reading",
+          "points": 2
+        },
+        {
+          "text": "Cleaning",
+          "points": 3
+        },
+        {
+          "text": "Waiting for laundry",
+          "points": 3
+        },
+        {
+          "text": "Anxious thoughts",
+          "points": 4
+        },
+        {
+          "text": "Lost track of time",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "life-things-people-keep-in-the-car-just-in-case",
+      "category": "Everyday Life",
+      "prompt": "Things people keep in the car just in case",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Phone charger",
+          "points": 1
+        },
+        {
+          "text": "Umbrella",
+          "points": 1
+        },
+        {
+          "text": "Tissues",
+          "points": 2
+        },
+        {
+          "text": "Water bottle",
+          "points": 2
+        },
+        {
+          "text": "First aid kit",
+          "points": 2
+        },
+        {
+          "text": "Blanket",
+          "points": 2
+        },
+        {
+          "text": "Reusable bags",
+          "points": 3
+        },
+        {
+          "text": "Jump leads",
+          "points": 3
+        },
+        {
+          "text": "Ice scraper",
+          "points": 4
+        },
+        {
+          "text": "Flashlight",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "life-reasons-neighbors-complain-about-someone",
+      "category": "Everyday Life",
+      "prompt": "Reasons neighbors complain about someone",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Loud music",
+          "points": 1
+        },
+        {
+          "text": "Bad parking",
+          "points": 2
+        },
+        {
+          "text": "Barking dog",
+          "points": 2
+        },
+        {
+          "text": "Trash smell",
+          "points": 3
+        },
+        {
+          "text": "Party noise",
+          "points": 3
+        },
+        {
+          "text": "Smoking",
+          "points": 3
+        },
+        {
+          "text": "Construction noise",
+          "points": 4
+        },
+        {
+          "text": "Blocking the driveway",
+          "points": 4
+        },
+        {
+          "text": "Late-night shouting",
+          "points": 5
+        },
+        {
+          "text": "Hallway clutter",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "life-things-people-buy-in-bulk-to-save-money",
+      "category": "Everyday Life",
+      "prompt": "Things people buy in bulk to save money",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Toilet paper",
+          "points": 1
+        },
+        {
+          "text": "Pasta",
+          "points": 2
+        },
+        {
+          "text": "Rice",
+          "points": 2
+        },
+        {
+          "text": "Paper towels",
+          "points": 3
+        },
+        {
+          "text": "Soap",
+          "points": 3
+        },
+        {
+          "text": "Coffee",
+          "points": 3
+        },
+        {
+          "text": "Canned food",
+          "points": 4
+        },
+        {
+          "text": "Frozen vegetables",
+          "points": 4
+        },
+        {
+          "text": "Pet food",
+          "points": 5
+        },
+        {
+          "text": "Laundry detergent",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "life-signs-a-home-needs-a-proper-clean",
+      "category": "Everyday Life",
+      "prompt": "Signs a home needs a proper clean",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Dust",
+          "points": 1
+        },
+        {
+          "text": "Full sink",
+          "points": 2
+        },
+        {
+          "text": "Bad smell",
+          "points": 2
+        },
+        {
+          "text": "Overflowing trash",
+          "points": 3
+        },
+        {
+          "text": "Sticky floor",
+          "points": 3
+        },
+        {
+          "text": "Laundry pile",
+          "points": 3
+        },
+        {
+          "text": "Bathroom grime",
+          "points": 4
+        },
+        {
+          "text": "Fingerprints on mirrors",
+          "points": 4
+        },
+        {
+          "text": "Crumbs everywhere",
+          "points": 5
+        },
+        {
+          "text": "Stained microwave",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "life-things-people-unplug-before-going-on-vacation",
+      "category": "Everyday Life",
+      "prompt": "Things people unplug before going on vacation",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "TV",
+          "points": 1
+        },
+        {
+          "text": "Coffee maker",
+          "points": 2
+        },
+        {
+          "text": "Toaster",
+          "points": 2
+        },
+        {
+          "text": "Hair straightener",
+          "points": 3
+        },
+        {
+          "text": "Lamps",
+          "points": 3
+        },
+        {
+          "text": "Router",
+          "points": 3
+        },
+        {
+          "text": "Game console",
+          "points": 4
+        },
+        {
+          "text": "Fan",
+          "points": 4
+        },
+        {
+          "text": "Charger strip",
+          "points": 5
+        },
+        {
+          "text": "Electric kettle",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "life-reasons-people-rearrange-furniture",
+      "category": "Everyday Life",
+      "prompt": "Reasons people rearrange furniture",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Need more space",
+          "points": 1
+        },
+        {
+          "text": "Better light",
+          "points": 2
+        },
+        {
+          "text": "New sofa",
+          "points": 2
+        },
+        {
+          "text": "Boredom",
+          "points": 3
+        },
+        {
+          "text": "Guests visiting",
+          "points": 3
+        },
+        {
+          "text": "Cleaning day",
+          "points": 3
+        },
+        {
+          "text": "Working from home",
+          "points": 4
+        },
+        {
+          "text": "Baby-proofing",
+          "points": 4
+        },
+        {
+          "text": "New TV",
+          "points": 5
+        },
+        {
+          "text": "Seasonal refresh",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "life-things-people-keep-in-a-drawer-for-emergencies",
+      "category": "Everyday Life",
+      "prompt": "Things people keep in a drawer for emergencies",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Daily_life",
+      "answers": [
+        {
+          "text": "Candles",
+          "points": 1
+        },
+        {
+          "text": "Matches",
+          "points": 2
+        },
+        {
+          "text": "Flashlight",
+          "points": 2
+        },
+        {
+          "text": "Batteries",
+          "points": 3
+        },
+        {
+          "text": "First aid kit",
+          "points": 3
+        },
+        {
+          "text": "Cash",
+          "points": 3
+        },
+        {
+          "text": "Document copies",
+          "points": 4
+        },
+        {
+          "text": "Power bank",
+          "points": 4
+        },
+        {
+          "text": "Sewing kit",
+          "points": 5
+        },
+        {
+          "text": "Multi-tool",
+          "points": 5
         }
       ]
     }

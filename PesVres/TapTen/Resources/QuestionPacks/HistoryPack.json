@@ -2,7 +2,7 @@
   "id": "history-pack-v2",
   "title": "History Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "hist-major-ancient-civilizations",
@@ -121,7 +121,7 @@
           "points": 2
         },
         {
-          "text": "Simón Bolívar",
+          "text": "Sim\u00f3n Bol\u00edvar",
           "points": 3
         }
       ]
@@ -418,7 +418,7 @@
           "points": 2
         },
         {
-          "text": "Hernán Cortés",
+          "text": "Hern\u00e1n Cort\u00e9s",
           "points": 3
         },
         {
@@ -733,6 +733,942 @@
         {
           "text": "Jin",
           "points": 4
+        }
+      ]
+    },
+    {
+      "id": "hist-things-people-might-find-in-an-ancient-tomb",
+      "category": "History",
+      "prompt": "Things people might find in an ancient tomb",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Pottery",
+          "points": 1
+        },
+        {
+          "text": "Jewelry",
+          "points": 1
+        },
+        {
+          "text": "Weapons",
+          "points": 1
+        },
+        {
+          "text": "Coins",
+          "points": 1
+        },
+        {
+          "text": "Bones",
+          "points": 1
+        },
+        {
+          "text": "Tools",
+          "points": 2
+        },
+        {
+          "text": "Inscriptions",
+          "points": 2
+        },
+        {
+          "text": "Masks",
+          "points": 2
+        },
+        {
+          "text": "Statues",
+          "points": 2
+        },
+        {
+          "text": "Food offerings",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "hist-events-that-can-start-a-revolution",
+      "category": "History",
+      "prompt": "Events that can start a revolution",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "High taxes",
+          "points": 1
+        },
+        {
+          "text": "Food shortages",
+          "points": 1
+        },
+        {
+          "text": "Censorship",
+          "points": 1
+        },
+        {
+          "text": "War losses",
+          "points": 1
+        },
+        {
+          "text": "Inequality",
+          "points": 1
+        },
+        {
+          "text": "Corrupt ruler",
+          "points": 2
+        },
+        {
+          "text": "Unemployment",
+          "points": 2
+        },
+        {
+          "text": "Foreign rule",
+          "points": 2
+        },
+        {
+          "text": "Police violence",
+          "points": 2
+        },
+        {
+          "text": "Rigged election",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "hist-things-people-associate-with-medieval-castles",
+      "category": "History",
+      "prompt": "Things people associate with medieval castles",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Moat",
+          "points": 1
+        },
+        {
+          "text": "Drawbridge",
+          "points": 1
+        },
+        {
+          "text": "Tower",
+          "points": 1
+        },
+        {
+          "text": "Gatehouse",
+          "points": 1
+        },
+        {
+          "text": "Throne room",
+          "points": 1
+        },
+        {
+          "text": "Dungeon",
+          "points": 2
+        },
+        {
+          "text": "Battlements",
+          "points": 2
+        },
+        {
+          "text": "Great hall",
+          "points": 2
+        },
+        {
+          "text": "Courtyard",
+          "points": 2
+        },
+        {
+          "text": "Chapel",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "hist-reasons-a-historical-figure-becomes-famous",
+      "category": "History",
+      "prompt": "Reasons a historical figure becomes famous",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Won battles",
+          "points": 1
+        },
+        {
+          "text": "Ruled a nation",
+          "points": 1
+        },
+        {
+          "text": "Invented something",
+          "points": 1
+        },
+        {
+          "text": "Led a movement",
+          "points": 1
+        },
+        {
+          "text": "Explored new land",
+          "points": 1
+        },
+        {
+          "text": "Wrote a major text",
+          "points": 2
+        },
+        {
+          "text": "Gave a famous speech",
+          "points": 2
+        },
+        {
+          "text": "Changed laws",
+          "points": 2
+        },
+        {
+          "text": "Made a discovery",
+          "points": 2
+        },
+        {
+          "text": "Survived scandal",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "hist-things-shown-in-a-battlefield-museum-display",
+      "category": "History",
+      "prompt": "Things shown in a battlefield museum display",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Sword",
+          "points": 1
+        },
+        {
+          "text": "Musket",
+          "points": 1
+        },
+        {
+          "text": "Uniform",
+          "points": 1
+        },
+        {
+          "text": "Medal",
+          "points": 1
+        },
+        {
+          "text": "Map",
+          "points": 1
+        },
+        {
+          "text": "Letter",
+          "points": 2
+        },
+        {
+          "text": "Helmet",
+          "points": 2
+        },
+        {
+          "text": "Flag",
+          "points": 2
+        },
+        {
+          "text": "Cannon",
+          "points": 2
+        },
+        {
+          "text": "Photograph",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "hist-ways-people-record-history",
+      "category": "History",
+      "prompt": "Ways people record history",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Book",
+          "points": 1
+        },
+        {
+          "text": "Diary",
+          "points": 1
+        },
+        {
+          "text": "Inscription",
+          "points": 1
+        },
+        {
+          "text": "Painting",
+          "points": 1
+        },
+        {
+          "text": "Photograph",
+          "points": 1
+        },
+        {
+          "text": "Newspaper",
+          "points": 2
+        },
+        {
+          "text": "Oral tradition",
+          "points": 2
+        },
+        {
+          "text": "Film",
+          "points": 2
+        },
+        {
+          "text": "Letter",
+          "points": 2
+        },
+        {
+          "text": "Artifact",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "hist-things-that-changed-daily-life-in-the-industrial-revolution",
+      "category": "History",
+      "prompt": "Things that changed daily life in the Industrial Revolution",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Factory jobs",
+          "points": 1
+        },
+        {
+          "text": "Steam engines",
+          "points": 1
+        },
+        {
+          "text": "Railways",
+          "points": 2
+        },
+        {
+          "text": "Coal power",
+          "points": 2
+        },
+        {
+          "text": "Urban migration",
+          "points": 2
+        },
+        {
+          "text": "Mass production",
+          "points": 2
+        },
+        {
+          "text": "Child labor",
+          "points": 3
+        },
+        {
+          "text": "Textile mills",
+          "points": 3
+        },
+        {
+          "text": "Mechanized farming",
+          "points": 4
+        },
+        {
+          "text": "Telegraph",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "hist-things-an-archaeologist-looks-for-at-a-dig-site",
+      "category": "History",
+      "prompt": "Things an archaeologist looks for at a dig site",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Pottery shards",
+          "points": 1
+        },
+        {
+          "text": "Bones",
+          "points": 1
+        },
+        {
+          "text": "Foundations",
+          "points": 2
+        },
+        {
+          "text": "Tools",
+          "points": 2
+        },
+        {
+          "text": "Coins",
+          "points": 2
+        },
+        {
+          "text": "Beads",
+          "points": 2
+        },
+        {
+          "text": "Ash layers",
+          "points": 3
+        },
+        {
+          "text": "Inscriptions",
+          "points": 3
+        },
+        {
+          "text": "Burial sites",
+          "points": 4
+        },
+        {
+          "text": "Food remains",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "hist-reasons-empires-collapse",
+      "category": "History",
+      "prompt": "Reasons empires collapse",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "War",
+          "points": 1
+        },
+        {
+          "text": "Debt",
+          "points": 1
+        },
+        {
+          "text": "Rebellion",
+          "points": 2
+        },
+        {
+          "text": "Succession crisis",
+          "points": 2
+        },
+        {
+          "text": "Famine",
+          "points": 2
+        },
+        {
+          "text": "Corruption",
+          "points": 2
+        },
+        {
+          "text": "Disease",
+          "points": 3
+        },
+        {
+          "text": "Invasion",
+          "points": 3
+        },
+        {
+          "text": "Overexpansion",
+          "points": 4
+        },
+        {
+          "text": "Trade decline",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "hist-things-a-king-or-queen-uses-as-a-symbol-of-power",
+      "category": "History",
+      "prompt": "Things a king or queen uses as a symbol of power",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Crown",
+          "points": 1
+        },
+        {
+          "text": "Throne",
+          "points": 1
+        },
+        {
+          "text": "Sceptre",
+          "points": 2
+        },
+        {
+          "text": "Robe",
+          "points": 2
+        },
+        {
+          "text": "Royal seal",
+          "points": 2
+        },
+        {
+          "text": "Palace",
+          "points": 2
+        },
+        {
+          "text": "Guard",
+          "points": 3
+        },
+        {
+          "text": "Coin portrait",
+          "points": 3
+        },
+        {
+          "text": "Coat of arms",
+          "points": 4
+        },
+        {
+          "text": "Official portrait",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "hist-things-that-help-historians-date-an-old-object",
+      "category": "History",
+      "prompt": "Things that help historians date an old object",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Inscription",
+          "points": 1
+        },
+        {
+          "text": "Material",
+          "points": 1
+        },
+        {
+          "text": "Carbon dating",
+          "points": 2
+        },
+        {
+          "text": "Pottery style",
+          "points": 2
+        },
+        {
+          "text": "Coin found nearby",
+          "points": 2
+        },
+        {
+          "text": "Burial layer",
+          "points": 2
+        },
+        {
+          "text": "Tool marks",
+          "points": 3
+        },
+        {
+          "text": "Pigment test",
+          "points": 3
+        },
+        {
+          "text": "Tree rings",
+          "points": 4
+        },
+        {
+          "text": "Written record",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "hist-things-people-study-from-ancient-rome",
+      "category": "History",
+      "prompt": "Things people study from Ancient Rome",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Aqueducts",
+          "points": 1
+        },
+        {
+          "text": "Roads",
+          "points": 1
+        },
+        {
+          "text": "Senate",
+          "points": 2
+        },
+        {
+          "text": "Gladiators",
+          "points": 2
+        },
+        {
+          "text": "Latin",
+          "points": 2
+        },
+        {
+          "text": "Law",
+          "points": 2
+        },
+        {
+          "text": "Army",
+          "points": 3
+        },
+        {
+          "text": "Baths",
+          "points": 3
+        },
+        {
+          "text": "Architecture",
+          "points": 4
+        },
+        {
+          "text": "Mythology",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "hist-things-that-appear-in-treaty-negotiations",
+      "category": "History",
+      "prompt": "Things that appear in treaty negotiations",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Borders",
+          "points": 1
+        },
+        {
+          "text": "Ceasefire",
+          "points": 2
+        },
+        {
+          "text": "Reparations",
+          "points": 2
+        },
+        {
+          "text": "Trade rights",
+          "points": 3
+        },
+        {
+          "text": "Territory",
+          "points": 3
+        },
+        {
+          "text": "Recognition",
+          "points": 3
+        },
+        {
+          "text": "Prisoners",
+          "points": 4
+        },
+        {
+          "text": "Security guarantees",
+          "points": 4
+        },
+        {
+          "text": "Signatures",
+          "points": 5
+        },
+        {
+          "text": "Mediator",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "hist-reasons-a-dynasty-loses-power",
+      "category": "History",
+      "prompt": "Reasons a dynasty loses power",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "No heir",
+          "points": 1
+        },
+        {
+          "text": "Palace coup",
+          "points": 2
+        },
+        {
+          "text": "Invasion",
+          "points": 2
+        },
+        {
+          "text": "Rebellion",
+          "points": 3
+        },
+        {
+          "text": "Weak ruler",
+          "points": 3
+        },
+        {
+          "text": "Court corruption",
+          "points": 3
+        },
+        {
+          "text": "Debt",
+          "points": 4
+        },
+        {
+          "text": "Natural disaster",
+          "points": 4
+        },
+        {
+          "text": "Peasant unrest",
+          "points": 5
+        },
+        {
+          "text": "Rival claimant",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "hist-things-preserved-in-a-historical-archive",
+      "category": "History",
+      "prompt": "Things preserved in a historical archive",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Census rolls",
+          "points": 1
+        },
+        {
+          "text": "Court records",
+          "points": 2
+        },
+        {
+          "text": "Letters",
+          "points": 2
+        },
+        {
+          "text": "Maps",
+          "points": 3
+        },
+        {
+          "text": "Tax registers",
+          "points": 3
+        },
+        {
+          "text": "Photographs",
+          "points": 3
+        },
+        {
+          "text": "Treaties",
+          "points": 4
+        },
+        {
+          "text": "Speeches",
+          "points": 4
+        },
+        {
+          "text": "Newspapers",
+          "points": 5
+        },
+        {
+          "text": "Military orders",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "hist-things-people-associate-with-the-cold-war",
+      "category": "History",
+      "prompt": "Things people associate with the Cold War",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Nuclear arms",
+          "points": 1
+        },
+        {
+          "text": "Spies",
+          "points": 2
+        },
+        {
+          "text": "Berlin Wall",
+          "points": 2
+        },
+        {
+          "text": "Space race",
+          "points": 3
+        },
+        {
+          "text": "Propaganda",
+          "points": 3
+        },
+        {
+          "text": "Proxy wars",
+          "points": 3
+        },
+        {
+          "text": "NATO",
+          "points": 4
+        },
+        {
+          "text": "Soviet Union",
+          "points": 4
+        },
+        {
+          "text": "Missile crisis",
+          "points": 5
+        },
+        {
+          "text": "Iron Curtain",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "hist-things-that-spread-ideas-during-the-reformation-and-enlightenment",
+      "category": "History",
+      "prompt": "Things that spread ideas during the Reformation and Enlightenment",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Printing press",
+          "points": 1
+        },
+        {
+          "text": "Pamphlets",
+          "points": 2
+        },
+        {
+          "text": "Sermons",
+          "points": 2
+        },
+        {
+          "text": "Coffeehouses",
+          "points": 3
+        },
+        {
+          "text": "Salons",
+          "points": 3
+        },
+        {
+          "text": "Books",
+          "points": 3
+        },
+        {
+          "text": "Newspapers",
+          "points": 4
+        },
+        {
+          "text": "Letters",
+          "points": 4
+        },
+        {
+          "text": "Universities",
+          "points": 5
+        },
+        {
+          "text": "Translated Bibles",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "hist-things-that-made-long-distance-trade-possible-in-history",
+      "category": "History",
+      "prompt": "Things that made long-distance trade possible in history",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "factual",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/History",
+      "answers": [
+        {
+          "text": "Caravans",
+          "points": 1
+        },
+        {
+          "text": "Ports",
+          "points": 2
+        },
+        {
+          "text": "Ships",
+          "points": 2
+        },
+        {
+          "text": "Coinage",
+          "points": 3
+        },
+        {
+          "text": "Roads",
+          "points": 3
+        },
+        {
+          "text": "Pack animals",
+          "points": 3
+        },
+        {
+          "text": "Maps",
+          "points": 4
+        },
+        {
+          "text": "Lighthouses",
+          "points": 4
+        },
+        {
+          "text": "Banking",
+          "points": 5
+        },
+        {
+          "text": "Warehouses",
+          "points": 5
         }
       ]
     }

@@ -2,7 +2,7 @@
   "id": "travel-pack-v2",
   "title": "Travel Pack",
   "languageCode": "en",
-  "packVersion": "2.0",
+  "packVersion": "3.0",
   "questions": [
     {
       "id": "travel-common-transport-modes",
@@ -723,6 +723,942 @@
         },
         {
           "text": "Passport",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "travel-things-people-put-in-a-carry-on-bag",
+      "category": "Travel",
+      "prompt": "Things people put in a carry-on bag",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Passport",
+          "points": 1
+        },
+        {
+          "text": "Charger",
+          "points": 1
+        },
+        {
+          "text": "Headphones",
+          "points": 1
+        },
+        {
+          "text": "Snacks",
+          "points": 1
+        },
+        {
+          "text": "Book",
+          "points": 1
+        },
+        {
+          "text": "Wallet",
+          "points": 2
+        },
+        {
+          "text": "Water bottle",
+          "points": 2
+        },
+        {
+          "text": "Medication",
+          "points": 2
+        },
+        {
+          "text": "Sweater",
+          "points": 2
+        },
+        {
+          "text": "Toiletries",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "travel-reasons-flights-get-delayed",
+      "category": "Travel",
+      "prompt": "Reasons flights get delayed",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Weather",
+          "points": 1
+        },
+        {
+          "text": "Late aircraft",
+          "points": 1
+        },
+        {
+          "text": "Technical issue",
+          "points": 1
+        },
+        {
+          "text": "Crew shortage",
+          "points": 1
+        },
+        {
+          "text": "Air traffic",
+          "points": 1
+        },
+        {
+          "text": "Security issue",
+          "points": 2
+        },
+        {
+          "text": "Baggage delay",
+          "points": 2
+        },
+        {
+          "text": "De-icing",
+          "points": 2
+        },
+        {
+          "text": "Medical incident",
+          "points": 2
+        },
+        {
+          "text": "Strike",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "travel-things-people-photograph-on-vacation",
+      "category": "Travel",
+      "prompt": "Things people photograph on vacation",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Beach",
+          "points": 1
+        },
+        {
+          "text": "Food",
+          "points": 1
+        },
+        {
+          "text": "Landmark",
+          "points": 1
+        },
+        {
+          "text": "Hotel room",
+          "points": 1
+        },
+        {
+          "text": "Sunset",
+          "points": 1
+        },
+        {
+          "text": "Group selfie",
+          "points": 2
+        },
+        {
+          "text": "Museum",
+          "points": 2
+        },
+        {
+          "text": "Street art",
+          "points": 2
+        },
+        {
+          "text": "Mountains",
+          "points": 2
+        },
+        {
+          "text": "Pool",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "travel-things-people-do-right-after-checking-into-a-hotel",
+      "category": "Travel",
+      "prompt": "Things people do right after checking into a hotel",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Drop bags",
+          "points": 1
+        },
+        {
+          "text": "Check Wi-Fi",
+          "points": 1
+        },
+        {
+          "text": "Inspect the room",
+          "points": 1
+        },
+        {
+          "text": "Use the bathroom",
+          "points": 1
+        },
+        {
+          "text": "Unpack",
+          "points": 1
+        },
+        {
+          "text": "Adjust the AC",
+          "points": 2
+        },
+        {
+          "text": "Lock valuables away",
+          "points": 2
+        },
+        {
+          "text": "Charge the phone",
+          "points": 2
+        },
+        {
+          "text": "Look at the minibar",
+          "points": 2
+        },
+        {
+          "text": "Jump on the bed",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "travel-things-people-put-in-an-airport-security-tray",
+      "category": "Travel",
+      "prompt": "Things people put in an airport security tray",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Laptop",
+          "points": 1
+        },
+        {
+          "text": "Phone",
+          "points": 1
+        },
+        {
+          "text": "Keys",
+          "points": 1
+        },
+        {
+          "text": "Belt",
+          "points": 1
+        },
+        {
+          "text": "Watch",
+          "points": 1
+        },
+        {
+          "text": "Wallet",
+          "points": 2
+        },
+        {
+          "text": "Liquids bag",
+          "points": 2
+        },
+        {
+          "text": "Jacket",
+          "points": 2
+        },
+        {
+          "text": "Coins",
+          "points": 2
+        },
+        {
+          "text": "Tablet",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "travel-reasons-people-book-an-aisle-seat",
+      "category": "Travel",
+      "prompt": "Reasons people book an aisle seat",
+      "difficultyTier": "easy",
+      "difficultyScore": 16,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Bathroom access",
+          "points": 1
+        },
+        {
+          "text": "Stretch legs",
+          "points": 1
+        },
+        {
+          "text": "Fast exit",
+          "points": 1
+        },
+        {
+          "text": "Dislike the window",
+          "points": 1
+        },
+        {
+          "text": "Long flight",
+          "points": 1
+        },
+        {
+          "text": "Motion comfort",
+          "points": 2
+        },
+        {
+          "text": "Child needs the aisle",
+          "points": 2
+        },
+        {
+          "text": "Work on a laptop",
+          "points": 2
+        },
+        {
+          "text": "Tight connection",
+          "points": 2
+        },
+        {
+          "text": "Avoid climbing over strangers",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "travel-documents-people-need-for-an-international-trip",
+      "category": "Travel",
+      "prompt": "Documents people need for an international trip",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Passport",
+          "points": 1
+        },
+        {
+          "text": "Visa",
+          "points": 1
+        },
+        {
+          "text": "Boarding pass",
+          "points": 2
+        },
+        {
+          "text": "ID card",
+          "points": 2
+        },
+        {
+          "text": "Travel insurance",
+          "points": 2
+        },
+        {
+          "text": "Hotel confirmation",
+          "points": 2
+        },
+        {
+          "text": "Vaccine record",
+          "points": 3
+        },
+        {
+          "text": "Driver's license",
+          "points": 3
+        },
+        {
+          "text": "Return ticket proof",
+          "points": 4
+        },
+        {
+          "text": "Customs form",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "travel-things-travelers-realize-they-forgot-too-late",
+      "category": "Travel",
+      "prompt": "Things travelers realize they forgot too late",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Toothbrush",
+          "points": 1
+        },
+        {
+          "text": "Charger",
+          "points": 1
+        },
+        {
+          "text": "Underwear",
+          "points": 2
+        },
+        {
+          "text": "Sunscreen",
+          "points": 2
+        },
+        {
+          "text": "Medication",
+          "points": 2
+        },
+        {
+          "text": "Adapter",
+          "points": 2
+        },
+        {
+          "text": "Swimwear",
+          "points": 3
+        },
+        {
+          "text": "Pajamas",
+          "points": 3
+        },
+        {
+          "text": "Socks",
+          "points": 4
+        },
+        {
+          "text": "Razor",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "travel-ways-people-get-around-on-a-city-break",
+      "category": "Travel",
+      "prompt": "Ways people get around on a city break",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Walking",
+          "points": 1
+        },
+        {
+          "text": "Metro",
+          "points": 1
+        },
+        {
+          "text": "Bus",
+          "points": 2
+        },
+        {
+          "text": "Taxi",
+          "points": 2
+        },
+        {
+          "text": "Rental bike",
+          "points": 2
+        },
+        {
+          "text": "Tram",
+          "points": 2
+        },
+        {
+          "text": "Rideshare",
+          "points": 3
+        },
+        {
+          "text": "Ferry",
+          "points": 3
+        },
+        {
+          "text": "Scooter",
+          "points": 4
+        },
+        {
+          "text": "Train",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "travel-reasons-luggage-ends-up-overweight",
+      "category": "Travel",
+      "prompt": "Reasons luggage ends up overweight",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Too many shoes",
+          "points": 1
+        },
+        {
+          "text": "Souvenirs",
+          "points": 1
+        },
+        {
+          "text": "Toiletries",
+          "points": 2
+        },
+        {
+          "text": "Heavy coat",
+          "points": 2
+        },
+        {
+          "text": "Books",
+          "points": 2
+        },
+        {
+          "text": "Gifts",
+          "points": 2
+        },
+        {
+          "text": "Too many outfits",
+          "points": 3
+        },
+        {
+          "text": "Electronics",
+          "points": 3
+        },
+        {
+          "text": "Snacks",
+          "points": 4
+        },
+        {
+          "text": "No scale at home",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "travel-things-people-buy-in-duty-free",
+      "category": "Travel",
+      "prompt": "Things people buy in duty-free",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Perfume",
+          "points": 1
+        },
+        {
+          "text": "Chocolate",
+          "points": 1
+        },
+        {
+          "text": "Liquor",
+          "points": 2
+        },
+        {
+          "text": "Cigarettes",
+          "points": 2
+        },
+        {
+          "text": "Cosmetics",
+          "points": 2
+        },
+        {
+          "text": "Sunglasses",
+          "points": 2
+        },
+        {
+          "text": "Toys",
+          "points": 3
+        },
+        {
+          "text": "Gift set",
+          "points": 3
+        },
+        {
+          "text": "Snacks",
+          "points": 4
+        },
+        {
+          "text": "Skincare",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "travel-things-that-cause-road-trip-arguments",
+      "category": "Travel",
+      "prompt": "Things that cause road-trip arguments",
+      "difficultyTier": "medium",
+      "difficultyScore": 24,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Directions",
+          "points": 1
+        },
+        {
+          "text": "Music choice",
+          "points": 1
+        },
+        {
+          "text": "Snacks",
+          "points": 2
+        },
+        {
+          "text": "Speed",
+          "points": 2
+        },
+        {
+          "text": "Rest-stop timing",
+          "points": 2
+        },
+        {
+          "text": "Who drives",
+          "points": 2
+        },
+        {
+          "text": "AC temperature",
+          "points": 3
+        },
+        {
+          "text": "Gas money",
+          "points": 3
+        },
+        {
+          "text": "Wrong exit",
+          "points": 4
+        },
+        {
+          "text": "Mess in the car",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "travel-things-people-pack-in-a-travel-first-aid-kit",
+      "category": "Travel",
+      "prompt": "Things people pack in a travel first-aid kit",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Painkillers",
+          "points": 1
+        },
+        {
+          "text": "Bandages",
+          "points": 2
+        },
+        {
+          "text": "Antiseptic wipes",
+          "points": 2
+        },
+        {
+          "text": "Motion-sickness pills",
+          "points": 3
+        },
+        {
+          "text": "Allergy tablets",
+          "points": 3
+        },
+        {
+          "text": "Blister plasters",
+          "points": 3
+        },
+        {
+          "text": "Thermometer",
+          "points": 4
+        },
+        {
+          "text": "Tweezers",
+          "points": 4
+        },
+        {
+          "text": "Oral rehydration salts",
+          "points": 5
+        },
+        {
+          "text": "Insect-bite cream",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "travel-reasons-a-passport-application-gets-rejected-or-delayed",
+      "category": "Travel",
+      "prompt": "Reasons a passport application gets rejected or delayed",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Wrong photo",
+          "points": 1
+        },
+        {
+          "text": "Missing documents",
+          "points": 2
+        },
+        {
+          "text": "Unpaid fee",
+          "points": 2
+        },
+        {
+          "text": "Signature problem",
+          "points": 3
+        },
+        {
+          "text": "Name mismatch",
+          "points": 3
+        },
+        {
+          "text": "Damaged ID",
+          "points": 3
+        },
+        {
+          "text": "Old passport missing",
+          "points": 4
+        },
+        {
+          "text": "Citizenship proof issue",
+          "points": 4
+        },
+        {
+          "text": "Appointment backlog",
+          "points": 5
+        },
+        {
+          "text": "Incomplete form",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "travel-ways-travelers-save-money-on-a-trip",
+      "category": "Travel",
+      "prompt": "Ways travelers save money on a trip",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Book early",
+          "points": 1
+        },
+        {
+          "text": "Use points",
+          "points": 2
+        },
+        {
+          "text": "Travel off-season",
+          "points": 2
+        },
+        {
+          "text": "Pack light",
+          "points": 3
+        },
+        {
+          "text": "Use public transport",
+          "points": 3
+        },
+        {
+          "text": "Free walking tours",
+          "points": 3
+        },
+        {
+          "text": "Cook meals",
+          "points": 4
+        },
+        {
+          "text": "Stay outside the center",
+          "points": 4
+        },
+        {
+          "text": "Compare flights",
+          "points": 5
+        },
+        {
+          "text": "Split accommodation",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "travel-things-people-keep-in-a-hotel-room-safe",
+      "category": "Travel",
+      "prompt": "Things people keep in a hotel-room safe",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Passport",
+          "points": 1
+        },
+        {
+          "text": "Cash",
+          "points": 2
+        },
+        {
+          "text": "Jewelry",
+          "points": 2
+        },
+        {
+          "text": "Watch",
+          "points": 3
+        },
+        {
+          "text": "Spare cards",
+          "points": 3
+        },
+        {
+          "text": "Laptop",
+          "points": 3
+        },
+        {
+          "text": "Camera",
+          "points": 4
+        },
+        {
+          "text": "Backup documents",
+          "points": 4
+        },
+        {
+          "text": "Medication",
+          "points": 5
+        },
+        {
+          "text": "Keys",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "travel-problems-that-can-derail-a-camping-trip",
+      "category": "Travel",
+      "prompt": "Problems that can derail a camping trip",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Rain",
+          "points": 1
+        },
+        {
+          "text": "Broken tent",
+          "points": 2
+        },
+        {
+          "text": "Dead flashlight",
+          "points": 2
+        },
+        {
+          "text": "No firewood",
+          "points": 3
+        },
+        {
+          "text": "Bugs",
+          "points": 3
+        },
+        {
+          "text": "Cold night",
+          "points": 3
+        },
+        {
+          "text": "Wet sleeping bag",
+          "points": 4
+        },
+        {
+          "text": "Lost campsite",
+          "points": 4
+        },
+        {
+          "text": "Bad food storage",
+          "points": 5
+        },
+        {
+          "text": "Flat tire",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "travel-things-people-do-to-beat-jet-lag",
+      "category": "Travel",
+      "prompt": "Things people do to beat jet lag",
+      "difficultyTier": "hard",
+      "difficultyScore": 32,
+      "validationStyle": "editorial",
+      "quality": "draft",
+      "sourceURL": "https://en.wikipedia.org/wiki/Travel",
+      "answers": [
+        {
+          "text": "Sleep on the plane",
+          "points": 1
+        },
+        {
+          "text": "Hydrate",
+          "points": 2
+        },
+        {
+          "text": "Get sunlight",
+          "points": 2
+        },
+        {
+          "text": "Avoid alcohol",
+          "points": 3
+        },
+        {
+          "text": "Take short naps",
+          "points": 3
+        },
+        {
+          "text": "Adjust sleep early",
+          "points": 3
+        },
+        {
+          "text": "Use melatonin",
+          "points": 4
+        },
+        {
+          "text": "Walk after landing",
+          "points": 4
+        },
+        {
+          "text": "Eat on local time",
+          "points": 5
+        },
+        {
+          "text": "Limit caffeine",
           "points": 5
         }
       ]
