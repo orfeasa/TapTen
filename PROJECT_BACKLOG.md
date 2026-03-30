@@ -15,8 +15,8 @@
   - Home now includes a native pack browser showing category coverage and pack-level counts.
   - Home now shows live current-settings chips and uses simpler native toolbar/settings chrome.
   - Question reporting now stays in-app, posts to a configured endpoint, and keeps a local retry queue for unsent reports.
-  - Repo now includes a lightweight static website in `website/` with a landing page and privacy page for support/marketing use.
-  - GitHub Pages deployment is now wired for `website/` via GitHub Actions on `main`, and the live custom domain is `https://playtapten.com`.
+  - Repo now includes a lightweight static website workspace in `website/`, with the public site deployed from `website/public/`.
+  - GitHub Pages deployment is now wired for `website/public/` via GitHub Actions on `main`, and the live custom domain is `https://playtapten.com`.
   - Post-v1 monetization strategy is now documented in `MONETIZATION_PLAN.md`, centered on additive pack sales rather than v1 paywalls.
   - The permanent free starter library and first premium expansion slate are now defined in `MONETIZATION_PLAN.md`.
   - Round flow now includes a dedicated question-preview step so the host can read the prompt before the timer starts.
@@ -549,10 +549,10 @@
   - Type: Release / Web Infra
   - Priority: P2
   - Status: Completed
-  - Area: `website/`, `.github/workflows`, DNS/hosting
+  - Area: `website/`, `website/public/`, `.github/workflows`, DNS/hosting
   - Goal: Publish the repo-local static site automatically from GitHub whenever the website changes.
   - Acceptance Criteria:
-    - A push to `main` automatically publishes the current `website/` contents to GitHub Pages.
+    - A push to `main` automatically publishes the current `website/public/` contents to GitHub Pages.
     - The workflow stays static-only and does not introduce a custom app server.
     - Deployment steps and required custom-domain follow-up are documented in the repo.
   - Notes:
@@ -814,7 +814,7 @@
     - Website visual direction feels consistent with the app without requiring a large custom marketing build.
     - Scope stays intentionally small for v1.
   - Notes:
-    - Implemented as a repo-local static site in `website/` with a landing page and privacy page.
+    - Implemented as a repo-local website workspace in `website/`, with the public site living in `website/public/`.
     - The live public domain is `https://playtapten.com`.
 
 - [ ] TASK: Add SharePlay support for multi-device sessions

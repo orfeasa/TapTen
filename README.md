@@ -163,11 +163,12 @@ Note: avoid launching iOS simulator test runs unless explicitly needed in the cu
 
 ## Website
 
-The repo now includes a lightweight static marketing/support site in `website/`.
+The repo now includes a lightweight static marketing/beta site in `website/`.
 
-- `website/index.html` explains the core game loop and links to support.
-- `website/privacy.html` provides a simple privacy page for store/support use.
-- `website/styles.css` contains the shared site styling.
+- `website/public/index.html` explains the core game loop, links to the beta/signup flow, and keeps support secondary to the main beta CTA.
+- `website/public/privacy.html` provides the public privacy policy.
+- `website/public/styles.css` contains the shared site styling.
+- `website/README.md` and `website/AGENTS.md` hold website-specific maintenance notes.
 - `.github/workflows/website-pages.yml` deploys the site to GitHub Pages from `main` when website files change.
 
 The live website is `https://playtapten.com`. The GitHub Pages workflow is in-repo, and deployment/maintenance notes live in `website/README.md`.

@@ -1,12 +1,32 @@
 # Tap Ten Website
 
-This directory contains the static marketing/support site for Tap Ten.
+This directory contains the Tap Ten website workspace.
+
+Recommended structure:
+
+```text
+website/
+  AGENTS.md
+  README.md
+  public/
+    index.html
+    privacy.html
+    styles.css
+```
 
 ## Files
 
-- `index.html`: landing page
-- `privacy.html`: privacy page
-- `styles.css`: shared styling
+- `public/index.html`: landing page
+- `public/privacy.html`: privacy policy
+- `public/styles.css`: shared styling
+- `AGENTS.md`: website-specific maintenance notes
+
+## Content Notes
+
+- The home page should stay beta-first, not support-first.
+- The primary landing-page CTAs are `Join Beta` and `See How It Works`.
+- Support contact should remain available, but de-emphasized relative to beta signup.
+- The `Try Beta` panel should point people to the beta form and privacy policy; support can live in lighter-touch surfaces such as the footer.
 
 ## Deployment
 
@@ -15,7 +35,7 @@ The repo includes a GitHub Pages workflow in [`.github/workflows/website-pages.y
 Current deployment target:
 - domain: `playtapten.com`
 - publishing source: GitHub Pages via GitHub Actions
-- deployed artifact: the contents of `website/`
+- deployed artifact: the contents of `website/public/`
 
 The live site is currently available at:
 - `https://playtapten.com`
@@ -30,7 +50,7 @@ The expected repository-side configuration is:
 3. Confirm the custom domain is `playtapten.com`.
 4. Keep `Enforce HTTPS` enabled.
 
-Do not add a `CNAME` file to `website/` for this setup. GitHub's custom Actions-based Pages flow ignores `CNAME` files; the custom domain should be managed in the repository Pages settings instead.
+Do not add a `CNAME` file to `website/public/` for this setup. GitHub's custom Actions-based Pages flow ignores `CNAME` files; the custom domain should be managed in the repository Pages settings instead.
 
 ## DNS for `playtapten.com`
 

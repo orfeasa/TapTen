@@ -32,7 +32,7 @@ jobs:
       - name: Upload static site artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./website
+          path: ./website/public
 
   deploy:
     needs: build
