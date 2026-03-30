@@ -16,7 +16,7 @@
   - Home now shows live current-settings chips and uses simpler native toolbar/settings chrome.
   - Question reporting now stays in-app, posts to a configured endpoint, and keeps a local retry queue for unsent reports.
   - Repo now includes a lightweight static website in `website/` with a landing page and privacy page for support/marketing use.
-  - GitHub Pages deployment is now wired for `website/` via GitHub Actions on `main`.
+  - GitHub Pages deployment is now wired for `website/` via GitHub Actions on `main`, and the live custom domain is `https://playtapten.com`.
   - Post-v1 monetization strategy is now documented in `MONETIZATION_PLAN.md`, centered on additive pack sales rather than v1 paywalls.
   - The permanent free starter library and first premium expansion slate are now defined in `MONETIZATION_PLAN.md`.
   - Round flow now includes a dedicated question-preview step so the host can read the prompt before the timer starts.
@@ -557,7 +557,7 @@
     - Deployment steps and required custom-domain follow-up are documented in the repo.
   - Notes:
     - Implemented with GitHub Actions Pages workflow actions (`configure-pages`, `upload-pages-artifact`, `deploy-pages`).
-    - `playtapten.com` activation still requires repository Pages settings and DNS records outside the repo.
+    - The site now deploys publicly at `https://playtapten.com`.
 
 - [x] TASK: Lock the free starter library and premium expansion boundary
   - Type: Product / Content Strategy
@@ -815,7 +815,7 @@
     - Scope stays intentionally small for v1.
   - Notes:
     - Implemented as a repo-local static site in `website/` with a landing page and privacy page.
-    - Auto-deployment to `playtapten.com` is tracked separately as follow-up web infrastructure work.
+    - The live public domain is `https://playtapten.com`.
 
 - [ ] TASK: Add SharePlay support for multi-device sessions
   - Type: Feature / Multiplayer / UX
@@ -921,10 +921,12 @@
     - Blocked until live App Store Connect credentials and signing availability are confirmed on the runner.
     - Raw or base64 `.p8` key input is already supported in code; this task is about end-to-end operational verification.
 
-- [ ] TASK: Activate `playtapten.com` as the live GitHub Pages custom domain
+## Recently Cleared
+
+- [x] TASK: Activate `playtapten.com` as the live GitHub Pages custom domain
   - Type: Release / Web Infra
   - Priority: P1
-  - Status: Blocked
+  - Status: Completed
   - Area: GitHub repository Pages settings, DNS provider
   - Goal: Make the deployed static site publicly available at `https://playtapten.com`.
   - Acceptance Criteria:
@@ -934,8 +936,8 @@
     - HTTPS is enabled successfully for the live domain.
     - The landing page and privacy page both load from the custom domain.
   - Notes:
-    - Blocked on repository-side Pages configuration and DNS access outside the local repo.
-    - `website/README.md` documents the exact follow-up steps and DNS values.
+    - `https://playtapten.com` is now live.
+    - `website/README.md` now documents the live deployment and maintenance notes.
 
 ## Manual Review Needed
 - Final editorial holdouts still marked `quality: "draft"` in `CONTENT_TODO.md` need manual review/playtest before freeze.

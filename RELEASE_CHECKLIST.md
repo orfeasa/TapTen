@@ -31,6 +31,7 @@ Use this checklist before creating a release candidate or TestFlight build.
 ## 2b) Website / Support URLs
 
 - [ ] If the release relies on public support/privacy URLs, confirm the `Website Pages` workflow succeeds on `main`.
+- [ ] Confirm the live `playtapten.com` Pages/domain configuration still looks correct in GitHub Pages settings.
 - [ ] Confirm `playtapten.com` serves the live landing page over HTTPS.
 - [ ] Confirm `playtapten.com/privacy.html` loads successfully.
 - [ ] Confirm support links on the site resolve to the expected contact path.

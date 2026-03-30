@@ -168,7 +168,7 @@ The repo now includes a lightweight static marketing/support site in `website/`.
 - `website/styles.css` contains the shared site styling.
 - `.github/workflows/website-pages.yml` deploys the site to GitHub Pages from `main` when website files change.
 
-The intended live domain is `playtapten.com`. The GitHub Pages workflow is in-repo; remaining GitHub Pages custom-domain and DNS setup is documented in `website/README.md` and tracked in `PROJECT_BACKLOG.md`.
+The live website is `https://playtapten.com`. The GitHub Pages workflow is in-repo, and deployment/maintenance notes live in `website/README.md`.
 
 ## Working Notes
 

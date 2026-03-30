@@ -17,20 +17,24 @@ Current deployment target:
 - publishing source: GitHub Pages via GitHub Actions
 - deployed artifact: the contents of `website/`
 
-## Remaining GitHub setup
+The live site is currently available at:
+- `https://playtapten.com`
+- `https://playtapten.com/privacy.html`
 
-The workflow is only one part of the setup. GitHub still needs repository/domain configuration outside the repo:
+## Current GitHub Pages setup
+
+The expected repository-side configuration is:
 
 1. In the repository on GitHub, open `Settings` -> `Pages`.
-2. Set the source to `GitHub Actions` if it is not already selected.
-3. Under `Custom domain`, enter `playtapten.com`.
-4. Enable `Enforce HTTPS` after GitHub has validated the domain.
+2. Set the source to `GitHub Actions`.
+3. Confirm the custom domain is `playtapten.com`.
+4. Keep `Enforce HTTPS` enabled.
 
 Do not add a `CNAME` file to `website/` for this setup. GitHub's custom Actions-based Pages flow ignores `CNAME` files; the custom domain should be managed in the repository Pages settings instead.
 
 ## DNS for `playtapten.com`
 
-For an apex domain on GitHub Pages, point the domain to GitHub Pages using your DNS provider:
+For an apex domain on GitHub Pages, the expected DNS shape is:
 
 - Either an `ALIAS` or `ANAME` record for `playtapten.com`, if your DNS provider supports it
 - Or `A` records to GitHub Pages:
