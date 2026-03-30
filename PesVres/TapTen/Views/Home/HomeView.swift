@@ -1102,7 +1102,7 @@ private struct PackBrowserView: View {
                     await storefront.purchase(pack, availablePacks: packs)
                 }
             } label: {
-                Text("Unlock")
+                Text("Add")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color.tapTenPlayfulBlue)
                     .padding(.horizontal, 10)
@@ -1208,15 +1208,7 @@ private struct PackSummary: Identifiable {
         }
 
         if actionState == .testerUnlock {
-            return "Tester build: unlocks locally without charge."
-        }
-
-        if bundleCount == 1 {
-            return "Also included in 1 bundle"
-        }
-
-        if bundleCount > 1 {
-            return "Also included in \(bundleCount) bundles"
+            return "Tester build: adds locally without payment."
         }
 
         return nil
@@ -1232,7 +1224,7 @@ private struct PackSummary: Identifiable {
             return nil
         case .locked:
             if actionState == .testerUnlock {
-                return "Unlock this pack for testing. It will then appear in New Game."
+                return "Add this premium pack for testing. It will then appear in New Game."
             }
 
             return "Buy this pack to add its questions to New Game."

@@ -50,6 +50,11 @@ platform :ios do
       "-authenticationKeyIssuerID #{issuer_id}"
     ].join(" ")
 
+    beta_xcargs = [
+      signing_xcargs,
+      "INFOPLIST_KEY_QuestionPackTesterUnlocksEnabled=YES"
+    ].join(" ")
+
     increment_build_number(
       xcodeproj: project_path
     )
@@ -61,8 +66,8 @@ platform :ios do
       export_method: "app-store",
       output_directory: "build",
       output_name: "TapTen",
-      xcargs: signing_xcargs,
-      export_xcargs: signing_xcargs
+      xcargs: beta_xcargs,
+      export_xcargs: beta_xcargs
     )
 
     upload_to_testflight(
