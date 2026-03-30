@@ -240,6 +240,13 @@ button:focus-visible {
   letter-spacing: -0.04em;
 }
 
+.panel-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
 .panel-wash {
   background:
     linear-gradient(145deg, rgba(255, 211, 142, 0.44), rgba(255, 255, 255, 0.72)),
@@ -248,6 +255,10 @@ button:focus-visible {
 
 .section {
   margin-top: 52px;
+}
+
+.panel-grid-three .panel-card {
+  flex: 1 1 240px;
 }
 
 .section-heading {
