@@ -832,10 +832,10 @@
     - This is explicitly outside the v1 single-device scope.
     - It would require a deliberate redesign of game flow, device roles, and synchronization responsibilities.
 
-- [ ] TASK: Design and add local custom question packs
+- [x] TASK: Design and add local custom question packs
   - Type: Feature / Product / UX / Architecture
   - Priority: P3
-  - Status: Planned
+  - Status: Completed
   - Area: content model, `Views/Home`, pack browser, pack authoring UI, local persistence, `Views/NewGame`
   - Goal: Let groups create and play their own Tap Ten content without needing accounts, backend storage, or live network access.
   - Acceptance Criteria:

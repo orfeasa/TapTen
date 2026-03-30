@@ -5,7 +5,8 @@ struct HostRoundView: View {
     @Environment(\.openURL) private var openURL
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Bindable var viewModel: HostRoundViewModel
-    let feedbackContext: QuestionFeedbackContext
+    let feedbackContext: QuestionFeedbackContext?
+    var showsReviewUtilities = true
     var hapticsEnabled = true
     var onRoundFinished: (() -> Void)? = nil
     @State private var pointsReactionText: String?
@@ -76,16 +77,18 @@ struct HostRoundView: View {
         .background(hostRoundBackground)
         .tint(.tapTenPlayfulOrange)
         .sheet(isPresented: $isShowingFeedbackSheet) {
-            HostRoundQuestionFeedbackSheet(
-                context: feedbackContext,
-                onSubmit: { report in
-                    let status = await QuestionFeedbackSubmissionService.shared.submit(report)
-                    await MainActor.run {
-                        isShowingFeedbackSheet = false
-                        feedbackNotice = FeedbackNotice(status: status)
+            if let feedbackContext {
+                HostRoundQuestionFeedbackSheet(
+                    context: feedbackContext,
+                    onSubmit: { report in
+                        let status = await QuestionFeedbackSubmissionService.shared.submit(report)
+                        await MainActor.run {
+                            isShowingFeedbackSheet = false
+                            feedbackNotice = FeedbackNotice(status: status)
+                        }
                     }
-                }
-            )
+                )
+            }
         }
         .alert(feedbackNotice?.title ?? "Report status", isPresented: Binding(
             get: { feedbackNotice != nil },
@@ -257,8 +260,10 @@ struct HostRoundView: View {
 
     private var reviewUtilityButtons: some View {
         HStack(spacing: 8) {
-            sourceButton
-            reportButton
+            if showsReviewUtilities {
+                sourceButton
+                reportButton
+            }
             Spacer(minLength: 0)
         }
     }
@@ -279,18 +284,22 @@ struct HostRoundView: View {
     }
 
     private var reportButton: some View {
-        Button {
-            isShowingFeedbackSheet = true
-        } label: {
-            Label("Flag question", systemImage: "flag.badge.ellipsis")
-                .font(.subheadline.weight(.semibold))
-                .padding(.horizontal, 10)
-                .frame(minHeight: 36)
+        Group {
+            if feedbackContext != nil {
+                Button {
+                    isShowingFeedbackSheet = true
+                } label: {
+                    Label("Flag question", systemImage: "flag.badge.ellipsis")
+                        .font(.subheadline.weight(.semibold))
+                        .padding(.horizontal, 10)
+                        .frame(minHeight: 36)
+                }
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.capsule)
+                .controlSize(.small)
+                .tint(.tapTenPlayfulOrange)
+            }
         }
-        .buttonStyle(.bordered)
-        .buttonBorderShape(.capsule)
-        .controlSize(.small)
-        .tint(.tapTenPlayfulOrange)
     }
 
     private var roundControls: some View {

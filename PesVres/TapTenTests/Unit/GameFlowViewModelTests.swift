@@ -149,9 +149,28 @@ struct GameFlowViewModelTests {
         #expect(viewModel.currentQuestionPrompt == "Sample prompt q1")
         #expect(viewModel.hostRoundViewModel == nil)
     }
+
+    @Test
+    func customLocalPacksHideCuratedReviewUtilities() {
+        let viewModel = GameFlowViewModel(
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
+            enabledCategoryNames: ["Factual"],
+            questionPacks: [makePack(questionCount: 1, origin: .customLocal)],
+            randomIndexProvider: { _ in 0 },
+            randomSassyCommentProvider: { comments in
+                comments.first ?? ""
+            }
+        )
+
+        viewModel.showQuestionPreview()
+        viewModel.startRound()
+
+        #expect(viewModel.currentQuestionShowsReviewUtilities == false)
+        #expect(viewModel.currentQuestionFeedbackContext == nil)
+    }
 }
 
-private func makePack(questionCount: Int) -> QuestionPack {
+private func makePack(questionCount: Int, origin: QuestionPackOrigin = .bundled) -> QuestionPack {
     let questionTotal = max(questionCount, 1)
     let questions = (1...questionTotal).map { index in
         makeQuestion(id: "q\(index)")
@@ -161,7 +180,8 @@ private func makePack(questionCount: Int) -> QuestionPack {
         id: "pack",
         title: "Pack",
         languageCode: "en",
-        questions: questions
+        questions: questions,
+        origin: origin
     )
 }
 

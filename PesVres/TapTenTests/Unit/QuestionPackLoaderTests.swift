@@ -33,6 +33,8 @@ struct QuestionPackLoaderTests {
     func richMetadataDecodesAndNormalizesOptionalValues() throws {
         let loader = QuestionPackLoader()
         let data = try makeValidPackData(
+            difficultyTier: "medium",
+            difficultyScore: 19,
             summary: "  Party-night premium prompts. ",
             packVersion: "2.0",
             monetization: [
@@ -42,8 +44,6 @@ struct QuestionPackLoaderTests {
                 "merchandisingLabel": " New "
             ],
             contentType: "factual-list",
-            difficultyTier: "medium",
-            difficultyScore: 19,
             quality: "reviewed",
             tags: [" ranked ", "", "Trivia", "RANKED"],
             difficultyNotes: "Tight list with a few tricky entries.",
@@ -55,7 +55,7 @@ struct QuestionPackLoaderTests {
 
         #expect(pack.packVersion == "2.0")
         #expect(pack.summary == "Party-night premium prompts.")
-        #expect(pack.access == .premium)
+        #expect(pack.access == QuestionPackAccess.premium)
         #expect(pack.isPremium)
         #expect(pack.storeProductID == "com.tapten.pack.after-dark-1")
         #expect(pack.bundleProductIDs == ["launch-trio"])

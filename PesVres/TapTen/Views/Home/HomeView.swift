@@ -652,6 +652,9 @@ private struct PackBrowserView: View {
     @State private var entitlementStore = QuestionPackEntitlementStore.shared
     @State private var storefront = QuestionPackStorefront.shared
     @State private var monetizationTelemetryStore = MonetizationTelemetryStore.shared
+    @State private var customPackEditorState: CustomPackEditorState?
+    private let localPackStore = LocalQuestionPackStore()
+    private let questionPackLibrary = QuestionPackLibrary()
 
     var body: some View {
         ScrollView {
@@ -677,6 +680,8 @@ private struct PackBrowserView: View {
                         .accessibilityElement(children: .combine)
                         .accessibilityHint("Informational only.")
                     }
+
+                    myPacksSection
 
                     VStack(alignment: .leading, spacing: 12) {
                         sectionTitle("Premium Expansions")
@@ -740,11 +745,40 @@ private struct PackBrowserView: View {
             }
             await loadPacks()
         }
+        .sheet(item: $customPackEditorState) { state in
+            CustomPackEditorView(
+                existingPack: state.pack,
+                onSave: { pack in
+                    do {
+                        try localPackStore.savePack(pack)
+                        loadError = nil
+                        Task {
+                            await loadPacks()
+                        }
+                    } catch {
+                        loadError = error.localizedDescription
+                    }
+                },
+                onDelete: state.pack.map { existingPack in
+                    { _ in
+                        do {
+                            try localPackStore.deletePack(id: existingPack.id)
+                            loadError = nil
+                            Task {
+                                await loadPacks()
+                            }
+                        } catch {
+                            loadError = error.localizedDescription
+                        }
+                    }
+                }
+            )
+        }
     }
 
     private var introductoryCopy: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Add more packs here, then play them from New Game.")
+            Text("Browse bundled packs or create your own local ones, then play them from New Game.")
                 .font(.subheadline.weight(.semibold))
         }
     }
@@ -752,7 +786,7 @@ private struct PackBrowserView: View {
     private var includedCategoryCoverage: [CategoryCoverage] {
         var countsByCategory: [String: CategoryCoverage] = [:]
         let includedQuestions = packs
-            .filter { $0.access == .free }
+            .filter { $0.access == .free && $0.origin == .bundled }
             .flatMap(\.questions)
 
         for question in includedQuestions {
@@ -770,6 +804,54 @@ private struct PackBrowserView: View {
         }
 
         return countsByCategory.values.sorted { $0.category < $1.category }
+    }
+
+    private var myPacksSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .center) {
+                sectionTitle("My Packs")
+                Spacer()
+                Button {
+                    customPackEditorState = CustomPackEditorState(pack: nil)
+                } label: {
+                    Label("Create Pack", systemImage: "plus.circle.fill")
+                        .font(.subheadline.weight(.semibold))
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(Color.tapTenPlayfulOrange)
+            }
+
+            if customPackSummaries.isEmpty {
+                informationalRow {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("No local packs yet.")
+                            .font(.headline)
+
+                        Text("Create your own prompts on this phone. Saved packs become playable from New Game right away.")
+                            .font(.footnote)
+                            .foregroundStyle(Color.primary.opacity(0.72))
+                    }
+                }
+                .accessibilityElement(children: .combine)
+                .accessibilityHint("Create your own local question packs.")
+            } else {
+                ForEach(customPackSummaries) { summary in
+                    Button {
+                        guard let pack = packs.first(where: { $0.id == summary.id }) else {
+                            return
+                        }
+
+                        customPackEditorState = CustomPackEditorState(pack: pack)
+                    } label: {
+                        informationalRow {
+                            customPackSummaryContent(summary)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityHint("Edit this local pack.")
+                }
+            }
+        }
     }
 
     private var baseGameLibraryCard: some View {
@@ -840,6 +922,7 @@ private struct PackBrowserView: View {
                 questionCount: pack.questions.count,
                 categoryList: categories.joined(separator: ", "),
                 access: pack.access,
+                origin: pack.origin,
                 merchandisingLabel: pack.merchandisingLabel,
                 bundleCount: pack.bundleProductIDs.count,
                 availability: entitlementStore.availability(for: pack),
@@ -850,7 +933,11 @@ private struct PackBrowserView: View {
     }
 
     private var includedPackSummaries: [PackSummary] {
-        packSummaries.filter { $0.access == .free }
+        packSummaries.filter { $0.access == .free && $0.origin == .bundled }
+    }
+
+    private var customPackSummaries: [PackSummary] {
+        packSummaries.filter { $0.origin == .customLocal }
     }
 
     private var premiumPackSummaries: [PackSummary] {
@@ -861,7 +948,7 @@ private struct PackBrowserView: View {
         monetizationTelemetryStore.recordPackBrowserOpened()
 
         do {
-            let loadedPacks = try QuestionPackLoader().loadAllPacks()
+            let loadedPacks = try questionPackLibrary.loadAllPacks()
             packs = loadedPacks
             loadError = nil
             await storefront.refreshStoreData(for: loadedPacks)
@@ -931,6 +1018,47 @@ private struct PackBrowserView: View {
                     purchaseButton(for: summary)
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    private func customPackSummaryContent(_ summary: PackSummary) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Text(summary.title)
+                    .font(.headline)
+
+                Spacer()
+
+                Text("Local")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.tapTenPlayfulOrange)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(Color.tapTenPlayfulOrange.opacity(0.10), in: Capsule(style: .continuous))
+            }
+
+            if let summaryText = summary.summary {
+                Text(summaryText)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.primary.opacity(0.78))
+            }
+
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Text(summary.categoryDescription)
+                    .font(.footnote)
+                    .foregroundStyle(Color.primary.opacity(0.72))
+
+                Spacer()
+
+                Text("\(summary.questionCount) question\(summary.questionCount == 1 ? "" : "s")")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.primary.opacity(0.62))
+            }
+
+            Text("Stored on this phone only.")
+                .font(.caption)
+                .foregroundStyle(Color.primary.opacity(0.62))
         }
     }
 
@@ -1056,6 +1184,7 @@ private struct PackSummary: Identifiable {
     let questionCount: Int
     let categoryList: String
     let access: QuestionPackAccess
+    let origin: QuestionPackOrigin
     let merchandisingLabel: String?
     let bundleCount: Int
     let availability: QuestionPackAvailability
@@ -1151,4 +1280,12 @@ private struct LibrarySummary {
     let includedQuestionCount: Int
     let premiumPackCount: Int
     let premiumQuestionCount: Int
+}
+
+private struct CustomPackEditorState: Identifiable {
+    let pack: QuestionPack?
+
+    var id: String {
+        pack?.id ?? "new-custom-pack"
+    }
 }

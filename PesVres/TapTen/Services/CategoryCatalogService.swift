@@ -1,14 +1,14 @@
 import Foundation
 
 struct CategoryCatalogService {
-    private let questionPackLoader: QuestionPackLoader
+    private let questionPackLibrary: QuestionPackLibrary
     private let entitlementStore: QuestionPackEntitlementStore
 
     init(
-        questionPackLoader: QuestionPackLoader = QuestionPackLoader(),
+        questionPackLibrary: QuestionPackLibrary = QuestionPackLibrary(),
         entitlementStore: QuestionPackEntitlementStore = .shared
     ) {
-        self.questionPackLoader = questionPackLoader
+        self.questionPackLibrary = questionPackLibrary
         self.entitlementStore = entitlementStore
     }
 
@@ -45,7 +45,7 @@ private extension CategoryCatalogService {
     }
 
     func availableCategoryNames() throws -> [String] {
-        let packs = try questionPackLoader.loadAllPacks()
+        let packs = try questionPackLibrary.loadAllPacks()
         let accessiblePacks = entitlementStore.accessiblePacks(from: packs)
 
         let categoryNames = Set(

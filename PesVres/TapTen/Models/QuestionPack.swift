@@ -1,5 +1,10 @@
 import Foundation
 
+enum QuestionPackOrigin: String, Equatable, Codable, Sendable {
+    case bundled
+    case customLocal
+}
+
 enum QuestionPackAccess: String, Equatable, Codable, Sendable {
     case free
     case premium
@@ -32,6 +37,7 @@ struct QuestionPack: Equatable, Codable, Sendable {
     let questions: [Question]
     let packVersion: String?
     let monetization: QuestionPackMonetization?
+    let origin: QuestionPackOrigin
 
     init(
         id: String,
@@ -40,7 +46,8 @@ struct QuestionPack: Equatable, Codable, Sendable {
         languageCode: String,
         questions: [Question],
         packVersion: String? = nil,
-        monetization: QuestionPackMonetization? = nil
+        monetization: QuestionPackMonetization? = nil,
+        origin: QuestionPackOrigin = .bundled
     ) {
         self.id = id
         self.title = title
@@ -49,6 +56,7 @@ struct QuestionPack: Equatable, Codable, Sendable {
         self.questions = questions
         self.packVersion = packVersion
         self.monetization = monetization
+        self.origin = origin
     }
 }
 

@@ -25,7 +25,9 @@ struct CategoryCatalogServiceTests {
         defer { try? FileManager.default.removeItem(at: files.directoryURL) }
 
         let service = CategoryCatalogService(
-            questionPackLoader: QuestionPackLoader(packFileURLs: files.fileURLs),
+            questionPackLibrary: QuestionPackLibrary(
+                bundledLoader: QuestionPackLoader(packFileURLs: files.fileURLs)
+            ),
             entitlementStore: QuestionPackEntitlementStore(defaults: defaults)
         )
 
@@ -66,7 +68,9 @@ struct CategoryCatalogServiceTests {
         defer { try? FileManager.default.removeItem(at: files.directoryURL) }
 
         let service = CategoryCatalogService(
-            questionPackLoader: QuestionPackLoader(packFileURLs: files.fileURLs),
+            questionPackLibrary: QuestionPackLibrary(
+                bundledLoader: QuestionPackLoader(packFileURLs: files.fileURLs)
+            ),
             entitlementStore: store
         )
 
@@ -80,10 +84,48 @@ struct CategoryCatalogServiceTests {
     @Test
     func packLoadFailuresFallBackToTheStarterLibraryCatalog() {
         let service = CategoryCatalogService(
-            questionPackLoader: QuestionPackLoader(packFileURLs: [])
+            questionPackLibrary: QuestionPackLibrary(
+                bundledLoader: QuestionPackLoader(packFileURLs: [])
+            )
         )
 
         #expect(service.categories().map(\.name) == CategoryCatalogService.starterCategoryNames)
+    }
+
+    @Test
+    func localCustomCategoriesAppearAfterTheStarterLibrary() throws {
+        let defaults = try makeDefaults()
+        let files = try writePackFiles([
+            try makePackFileData(
+                id: "starter-pack",
+                title: "Everyday Life",
+                category: "Everyday Life"
+            )
+        ])
+        defer { try? FileManager.default.removeItem(at: files.directoryURL) }
+
+        let localDirectoryURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+        defer { try? FileManager.default.removeItem(at: localDirectoryURL) }
+
+        let localStore = LocalQuestionPackStore(baseDirectoryURL: localDirectoryURL)
+        try localStore.savePack(
+            makeCustomPack(
+                id: "inside-jokes-pack",
+                title: "Inside Jokes",
+                category: "Inside Jokes"
+            )
+        )
+
+        let service = CategoryCatalogService(
+            questionPackLibrary: QuestionPackLibrary(
+                bundledLoader: QuestionPackLoader(packFileURLs: files.fileURLs),
+                localPackStore: localStore
+            ),
+            entitlementStore: QuestionPackEntitlementStore(defaults: defaults)
+        )
+
+        #expect(service.categories().map(\.name) == ["Everyday Life", "Inside Jokes"])
     }
 
     private func makeDefaults() throws -> UserDefaults {
@@ -156,5 +198,38 @@ private func makePackFileData(
     return (
         fileName: "\(id).json",
         data: try JSONSerialization.data(withJSONObject: payload, options: [.prettyPrinted, .sortedKeys])
+    )
+}
+
+private func makeCustomPack(id: String, title: String, category: String) -> QuestionPack {
+    QuestionPack(
+        id: id,
+        title: title,
+        languageCode: "en",
+        questions: [
+            Question(
+                id: "\(id)-q1",
+                category: category,
+                prompt: "Prompt for \(title)",
+                difficultyTier: .medium,
+                difficultyScore: 19,
+                validationStyle: .editorial,
+                sourceURL: LocalQuestionPackStore.placeholderSourceURL(forQuestionID: "\(id)-q1"),
+                answers: [
+                    AnswerOption(text: "Answer 1", points: 1),
+                    AnswerOption(text: "Answer 2", points: 1),
+                    AnswerOption(text: "Answer 3", points: 1),
+                    AnswerOption(text: "Answer 4", points: 2),
+                    AnswerOption(text: "Answer 5", points: 2),
+                    AnswerOption(text: "Answer 6", points: 2),
+                    AnswerOption(text: "Answer 7", points: 2),
+                    AnswerOption(text: "Answer 8", points: 2),
+                    AnswerOption(text: "Answer 9", points: 3),
+                    AnswerOption(text: "Answer 10", points: 3)
+                ],
+                quality: "custom"
+            )
+        ],
+        origin: .customLocal
     )
 }

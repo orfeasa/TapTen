@@ -54,7 +54,7 @@ final class GameFlowViewModel {
         enabledCategoryNames: Set<String>,
         enabledDifficultyTiers: Set<QuestionDifficulty> = Set(QuestionDifficulty.allCases),
         soundsEnabled: Bool = true,
-        questionPackLoader: QuestionPackLoader = QuestionPackLoader(),
+        questionPackLibrary: QuestionPackLibrary = QuestionPackLibrary(),
         entitlementStore: QuestionPackEntitlementStore = .shared,
         monetizationTelemetryStore: MonetizationTelemetryStore = .shared,
         questionCalibrationTelemetryStore: QuestionCalibrationTelemetryStore = .shared,
@@ -73,7 +73,7 @@ final class GameFlowViewModel {
         self.randomSassyCommentProvider = randomSassyCommentProvider
 
         do {
-            let packs = try questionPackLoader.loadAllPacks()
+            let packs = try questionPackLibrary.loadAllPacks()
             let accessiblePacks = entitlementStore.accessiblePacks(from: packs)
             questionPacks = accessiblePacks
             try configureEngine(questionPacks: accessiblePacks, randomIndexProvider: randomIndexProvider)
@@ -159,11 +159,16 @@ final class GameFlowViewModel {
     }
 
     var currentQuestionFeedbackContext: QuestionFeedbackContext? {
-        guard let currentRound else {
+        guard let currentRound,
+              currentPack?.origin == .bundled else {
             return nil
         }
 
         return feedbackContext(for: currentRound.question)
+    }
+
+    var currentQuestionShowsReviewUtilities: Bool {
+        currentPack?.origin == .bundled
     }
 
     var currentQuestionPrompt: String {
@@ -374,9 +379,7 @@ final class GameFlowViewModel {
     }
 
     private func feedbackContext(for question: Question) -> QuestionFeedbackContext {
-        let containingPack = questionPacks.first { pack in
-            pack.questions.contains(where: { $0.id == question.id })
-        }
+        let containingPack = containingPack(for: question)
 
         return QuestionFeedbackContext(
             packID: containingPack?.id,
@@ -389,6 +392,20 @@ final class GameFlowViewModel {
             validationStyle: question.validationStyle,
             sourceURL: question.sourceURL
         )
+    }
+
+    private var currentPack: QuestionPack? {
+        guard let currentRound else {
+            return nil
+        }
+
+        return containingPack(for: currentRound.question)
+    }
+
+    private func containingPack(for question: Question) -> QuestionPack? {
+        questionPacks.first { pack in
+            pack.questions.contains(where: { $0.id == question.id })
+        }
     }
 
     private func makeRoundSassyComment(revealedAnswers: Int, totalAnswers: Int) -> String {

@@ -125,7 +125,9 @@ struct NewGameViewModelTests {
         NewGameViewModel(
             settings: settings,
             categoryService: CategoryCatalogService(
-                questionPackLoader: QuestionPackLoader(packFileURLs: [])
+                questionPackLibrary: QuestionPackLibrary(
+                    bundledLoader: QuestionPackLoader(packFileURLs: [])
+                )
             ),
             initialSuggestedTeamNamePairIndex: initialSuggestedTeamNamePairIndex
         )

@@ -27,11 +27,11 @@ struct GameFlowView: View {
                 )
 
             case .hostRound:
-                if let hostRoundViewModel = viewModel.hostRoundViewModel,
-                   let feedbackContext = viewModel.currentQuestionFeedbackContext {
+                if let hostRoundViewModel = viewModel.hostRoundViewModel {
                     HostRoundView(
                         viewModel: hostRoundViewModel,
-                        feedbackContext: feedbackContext,
+                        feedbackContext: viewModel.currentQuestionFeedbackContext,
+                        showsReviewUtilities: viewModel.currentQuestionShowsReviewUtilities,
                         hapticsEnabled: settingsStore.hapticsEnabled,
                         onRoundFinished: viewModel.finalizeActiveRoundIfNeeded
                     )
