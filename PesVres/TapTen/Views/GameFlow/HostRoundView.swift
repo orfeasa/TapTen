@@ -71,7 +71,7 @@ struct HostRoundView: View {
             .padding(outerPadding)
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
         }
-        .navigationTitle("Host Round")
+        .navigationTitle("Live Round")
         .navigationBarTitleDisplayMode(.inline)
         .background(hostRoundBackground)
         .tint(.tapTenPlayfulOrange)

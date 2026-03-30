@@ -6,6 +6,7 @@ struct HomeView: View {
     @State private var settingsStore = AppSettingsStore.shared
     @State private var isShowingHowToPlay = false
     @State private var isShowingNewGame = false
+    @State private var activeDefaultsEditor: HomeDefaultsEditor?
     @State private var hasHandledInitialHowToPlayPresentation = false
 
     var body: some View {
@@ -32,11 +33,17 @@ struct HomeView: View {
                         .foregroundStyle(Color.primary.opacity(0.72))
                 }
                 .accessibilityLabel("Settings")
-                .accessibilityHint("Open game defaults and feedback settings.")
+                .accessibilityHint("Open audio, haptics, and other settings.")
             }
         }
         .sheet(isPresented: $isShowingHowToPlay) {
             HowToPlaySheet()
+        }
+        .sheet(item: $activeDefaultsEditor) { editor in
+            HomeDefaultsEditorSheet(
+                settingsStore: settingsStore,
+                editor: editor
+            )
         }
         .navigationDestination(isPresented: $isShowingNewGame) {
             NewGameView(
@@ -79,11 +86,11 @@ private extension HomeView {
                 .font(.system(.largeTitle, design: .rounded).weight(.heavy))
                 .foregroundStyle(.primary)
 
-            Text("One team guesses. One team hosts. Then you swap.")
+            Text("One player holds the phone. The other team guesses. Then you swap.")
                 .font(.title2.weight(.bold))
                 .foregroundStyle(.primary)
 
-            Text("Guess the top ten answers before time runs out. The host taps matching answers as they’re said.")
+            Text("You play on one phone and pass it between teams each round. The player holding the phone reads the prompt and taps matching answers.")
                 .font(.body)
                 .foregroundStyle(Color.primary.opacity(0.72))
         }
@@ -97,26 +104,63 @@ private extension HomeView {
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color.primary.opacity(0.66))
 
-                Text("Change these in Settings")
+                Text("Tap rounds or timer to adjust before you start.")
                     .font(.footnote)
                     .foregroundStyle(Color.primary.opacity(0.66))
             }
 
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: 10) {
-                    teamsChip
-                    roundsChip
-                    timerChip
-                }
-
-                VStack(spacing: 10) {
-                    teamsChip
-                    roundsChip
-                    timerChip
-                }
-            }
+            gameDefaultsCard
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    var gameDefaultsCard: some View {
+        VStack(spacing: 0) {
+            gameDefaultsInfoRow(
+                title: "Teams",
+                value: "2 teams",
+                systemImage: "person.2.fill",
+                tint: .tapTenPlayfulOrange
+            )
+            .accessibilityHint("Two teams are fixed in this version.")
+
+            Divider()
+                .padding(.leading, 52)
+
+            gameDefaultsActionRow(
+                title: "Rounds",
+                value: "\(settingsStore.defaultRounds) round\(settingsStore.defaultRounds == 1 ? "" : "s")",
+                systemImage: "flag.fill",
+                tint: .tapTenPlayfulPink,
+                accessibilityHint: "Change rounds per team.",
+                action: {
+                    activeDefaultsEditor = .rounds
+                }
+            )
+
+            Divider()
+                .padding(.leading, 52)
+
+            gameDefaultsActionRow(
+                title: "Timer",
+                value: "\(settingsStore.defaultTimerSeconds) sec",
+                systemImage: "timer",
+                tint: .tapTenPlayfulBlue,
+                accessibilityHint: "Change round timer.",
+                action: {
+                    activeDefaultsEditor = .timer
+                }
+            )
+        }
+        .background(
+            Color.tapTenWarmCard.opacity(0.92),
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(Color.primary.opacity(0.08), lineWidth: 1)
+                .allowsHitTesting(false)
+        )
     }
 
     var startGameButton: some View {
@@ -190,30 +234,6 @@ private extension HomeView {
         }
         .buttonStyle(.plain)
         .accessibilityHint("View the included library and any premium expansions.")
-    }
-
-    var teamsChip: some View {
-        setupSummaryCard(
-            title: "2 teams",
-            systemImage: "person.2.fill",
-            tint: .tapTenPlayfulOrange
-        )
-    }
-
-    var roundsChip: some View {
-        setupSummaryCard(
-            title: "\(settingsStore.defaultRounds) round\(settingsStore.defaultRounds == 1 ? "" : "s")",
-            systemImage: "flag.fill",
-            tint: .tapTenPlayfulPink
-        )
-    }
-
-    var timerChip: some View {
-        setupSummaryCard(
-            title: "\(settingsStore.defaultTimerSeconds) sec",
-            systemImage: "timer",
-            tint: .tapTenPlayfulBlue
-        )
     }
 
     var homeBackground: some View {
@@ -307,33 +327,192 @@ private extension HomeView {
         .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
-    func setupSummaryCard(
+    func gameDefaultsInfoRow(
         title: String,
+        value: String,
         systemImage: String,
         tint: Color
     ) -> some View {
-        HStack(spacing: 10) {
+        gameDefaultsRow(
+            title: title,
+            value: value,
+            systemImage: systemImage,
+            tint: tint,
+            isEditable: false
+        )
+        .accessibilityElement(children: .combine)
+    }
+
+    func gameDefaultsActionRow(
+        title: String,
+        value: String,
+        systemImage: String,
+        tint: Color,
+        accessibilityHint: String,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            gameDefaultsRow(
+                title: title,
+                value: value,
+                systemImage: systemImage,
+                tint: tint,
+                isEditable: true
+            )
+        }
+        .buttonStyle(.plain)
+        .accessibilityHint(accessibilityHint)
+    }
+
+    func gameDefaultsRow(
+        title: String,
+        value: String,
+        systemImage: String,
+        tint: Color,
+        isEditable: Bool
+    ) -> some View {
+        HStack(spacing: 12) {
             Image(systemName: systemImage)
                 .font(.headline.weight(.bold))
                 .foregroundStyle(tint)
-                .frame(width: 20, height: 20)
+                .frame(width: 22, height: 22)
 
             Text(title)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.primary)
-                .multilineTextAlignment(.leading)
 
-            Spacer(minLength: 0)
+            Spacer(minLength: 12)
+
+            Text(value)
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(Color.primary.opacity(0.76))
+
+            if isEditable {
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.bold))
+                    .foregroundStyle(Color.primary.opacity(0.34))
+            }
         }
-        .frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
-        .padding(.horizontal, 14)
-        .background(Color.tapTenWarmCard.opacity(0.92), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.primary.opacity(0.08), lineWidth: 1)
-                .allowsHitTesting(false)
-        )
-        .accessibilityElement(children: .combine)
+        .frame(maxWidth: .infinity, minHeight: 58, alignment: .leading)
+        .padding(.horizontal, 16)
+        .contentShape(Rectangle())
+    }
+}
+
+private enum HomeDefaultsEditor: String, Identifiable {
+    case rounds
+    case timer
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .rounds:
+            return "Rounds"
+        case .timer:
+            return "Round Timer"
+        }
+    }
+
+    var options: [Int] {
+        switch self {
+        case .rounds:
+            return Array(1...10)
+        case .timer:
+            return Array(stride(from: 30, through: 180, by: 5))
+        }
+    }
+
+    var footer: String {
+        switch self {
+        case .rounds:
+            return "Used the next time you start a new game."
+        case .timer:
+            return "Used the next time you start a new game."
+        }
+    }
+
+    func valueLabel(for value: Int) -> String {
+        switch self {
+        case .rounds:
+            return value == 1 ? "1 round per team" : "\(value) rounds per team"
+        case .timer:
+            return "\(value) sec"
+        }
+    }
+
+    func currentValue(in settingsStore: AppSettingsStore) -> Int {
+        switch self {
+        case .rounds:
+            return settingsStore.defaultRounds
+        case .timer:
+            return settingsStore.defaultTimerSeconds
+        }
+    }
+
+    func apply(_ value: Int, to settingsStore: AppSettingsStore) {
+        switch self {
+        case .rounds:
+            settingsStore.setDefaultRounds(value)
+        case .timer:
+            settingsStore.setDefaultTimerSeconds(value)
+        }
+    }
+}
+
+private struct HomeDefaultsEditorSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    @Bindable var settingsStore: AppSettingsStore
+
+    let editor: HomeDefaultsEditor
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    ForEach(editor.options, id: \.self) { option in
+                        Button {
+                            editor.apply(option, to: settingsStore)
+                            dismiss()
+                        } label: {
+                            HStack(spacing: 12) {
+                                Text(editor.valueLabel(for: option))
+                                    .foregroundStyle(.primary)
+
+                                Spacer(minLength: 12)
+
+                                if editor.currentValue(in: settingsStore) == option {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundStyle(Color.tapTenPlayfulOrange)
+                                }
+                            }
+                            .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                    }
+                } footer: {
+                    Text(editor.footer)
+                }
+            }
+            .navigationTitle(editor.title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .background(editorBackground)
+        }
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
+    }
+
+    private var editorBackground: some View {
+        Color.tapTenWarmBackground
+            .ignoresSafeArea()
     }
 }
 
@@ -342,18 +521,18 @@ private struct HowToPlaySheet: View {
     private let steps: [(step: String, title: String, detail: String)] = [
         (
             "1",
-            "Host holds the phone",
-            "A player from the other team reads the prompt and taps answers as they are guessed."
+            "Hold the phone",
+            "One player from the other team holds the phone, reads the prompt, and taps answers as they are guessed."
         ),
         (
             "2",
             "Guess out loud",
-            "The guessing team calls out answers while the host reveals matching ones on screen."
+            "The guessing team calls out answers while the player holding the phone reveals matching ones on screen."
         ),
         (
             "3",
             "Swap and repeat",
-            "When time is up, review the round, swap host roles, and start the next turn."
+            "When time is up, review the round, pass the phone to the other side, and start the next turn."
         )
     ]
 
@@ -362,10 +541,10 @@ private struct HowToPlaySheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("One team guesses. One team hosts. Then you swap.")
+                        Text("One player holds the phone. The other team guesses. Then you swap.")
                             .font(.headline.weight(.semibold))
 
-                        Text("Three quick steps and you’re playing.")
+                        Text("You play on one phone and pass it between teams each round.")
                             .font(.subheadline)
                             .foregroundStyle(Color.primary.opacity(0.7))
                     }

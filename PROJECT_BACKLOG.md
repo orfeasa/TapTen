@@ -39,11 +39,12 @@
 - Home should explain the core loop without depending on `How To Play` for first comprehension.
 - Home keeps instructional content in a separate How To Play sheet (not a large on-home card).
 - Home keeps `Browse Library` as a secondary top-level action.
-- Home setup/defaults cards are display-only and should not look tappable.
+- Home should expose game-default editing from the main content area; `Rounds` and `Timer` should be directly reachable from Home, while fixed `2 teams` remains informational in v1.
+- The small toolbar cog can remain as secondary access to broader settings, but it should not be the only obvious path for changing game defaults.
 - Host answer rows are currently sorted alphabetically for scanning speed.
 - Host-round interaction baseline is tap-to-toggle answers with active-round `Pause`/`Resume` and post-timeup `Continue to Summary`.
 - The host should always get a pre-timer prompt-reading step before the live round starts.
-- How To Play, Pass Device, and Host Round should all use the same role language: `host`, `guessing team`, and explicit tapping guidance.
+- Home, How To Play, Pass Device, and active-round guidance should use plain-language role wording (`phone holder` / `player holding the phone`) plus `guessing team` and explicit tapping guidance.
 - Home should use a single strong brand title (remove duplicate `Tap Ten` heading).
 - Navigation chrome should use standard native bars/back behavior instead of mixed floating controls.
 - New Game should use clearer editable team fields and a stronger full-width primary `Start Game` action.
@@ -82,8 +83,8 @@
   - Goal: Let a first-time user broadly understand how the game works from Home alone, while making teams/rounds/timer read as display-only status.
   - Acceptance Criteria:
     - Home hero copy uses:
-      - main line: `One team guesses. One team hosts. Then you swap.`
-      - support line: `Guess the top ten answers before time runs out. The host taps matching answers as they’re said.`
+      - main line: `One player holds the phone. The other team guesses. Then you swap.`
+      - support line: `You play on one phone and pass it between teams each round. The player holding the phone reads the prompt and taps matching answers.`
     - The defaults/status section uses an informational title such as `Game defaults` or `Match setup`.
     - Teams / rounds / timer cards no longer look like tappable chips, segmented controls, or inline editors.
     - Card elevation, shadow, and border treatment are reduced enough that they read as informational only.
@@ -96,13 +97,13 @@
   - Priority: P0
   - Status: Completed
   - Area: `Views/Home/HowToPlay`, `Views/GameFlow/GameFlowView`, `Views/GameFlow/HostRoundView`
-  - Goal: Use one consistent vocabulary for who guesses, who hosts, and who taps during a round.
+  - Goal: Use one consistent vocabulary for who guesses, who holds the phone, and who taps during a round.
   - Acceptance Criteria:
-    - Pass Device uses `Guessing team` and `Host` labels.
-    - `Phone holder` is removed.
-    - Pass Device helper text uses: `Hand the phone to the host. They tap answers as your team calls them out. No peeking.`
-    - Host Round includes a visible one-line instruction: `Tap each answer as it’s guessed.`
-    - Shared flow copy consistently mentions `host`, `guessing team`, and tapping behavior.
+    - Pass Device uses `Guessing team` and `Phone holder` labels.
+    - `host` is removed from first-time explanatory copy in favor of literal one-phone wording.
+    - Pass Device helper text uses: `Pass the phone to the phone holder. They tap answers as your team calls them out. No peeking.`
+    - The active round screen includes a visible one-line instruction: `Tap each answer as it’s guessed.`
+    - Shared flow copy consistently mentions the phone holder, the guessing team, and tapping behavior.
 
 - [x] TASK: Remove false affordance and improve contrast on informational surfaces
   - Type: UX / Accessibility
@@ -234,16 +235,16 @@
   - Acceptance Criteria:
     - `How To Play` keeps the three-step structure.
     - Intro copy uses:
-      - intro: `One team guesses. One team hosts. Then you swap.`
-      - support: `Three quick steps and you’re playing.`
+      - intro: `One player holds the phone. The other team guesses. Then you swap.`
+      - support: `You play on one phone and pass it between teams each round.`
     - Step copy uses the approved wording:
-      - `Host holds the phone`
-      - `A player from the other team reads the prompt and taps answers as they are guessed.`
+      - `Hold the phone`
+      - `One player from the other team holds the phone, reads the prompt, and taps answers as they are guessed.`
       - `Guess out loud`
-      - `The guessing team calls out answers while the host reveals matching ones on screen.`
+      - `The guessing team calls out answers while the player holding the phone reveals matching ones on screen.`
       - `Swap and repeat`
-      - `When time is up, review the round, swap host roles, and start the next turn.`
-    - The words `host`, `guessing team`, and `taps answers` are all present.
+      - `When time is up, review the round, pass the phone to the other side, and start the next turn.`
+    - The ideas `guessing team`, `one phone`, and `taps answers` are all present.
     - Copy stays direct and non-decorative.
 
 - [x] TASK: Improve Question Packs hierarchy and explanatory value
@@ -316,6 +317,24 @@
     - Settings uses native `Form`/list grouping and system-standard control styling.
     - Stepper/adjustment controls follow native interaction patterns.
     - Background and section styling remain consistent with the warm app palette.
+
+- [x] TASK: Add direct Home defaults editing for rounds and timer
+  - Type: UX
+  - Priority: P1
+  - Status: Completed
+  - Area: `Views/Home`, `Views/Settings`
+  - Goal: Make round/timer defaults easier to discover and change from Home, using a native large-target pattern that is clearer than the toolbar cog and safer than ambiguous faux-buttons.
+  - Acceptance Criteria:
+    - Home keeps a visible `Game defaults` section in the main content area.
+    - `Rounds` and `Timer` are editable from Home via full-row tap targets or similarly explicit large hit areas.
+    - The fixed `2 teams` row remains clearly informational and does not imply editability.
+    - The toolbar cog remains optional/secondary and is no longer the only clear path for changing defaults.
+    - The chosen interaction uses native iPhone SwiftUI conventions and preserves `Start New Game` as the dominant Home action.
+    - The updated affordance remains readable and reachable under Dynamic Type and typical one-handed use.
+  - Notes:
+    - Feedback from UX review: the Home cog is easy to miss and awkward to reach.
+    - Shipped with a visible Home `Game defaults` card, a fixed informational `2 teams` row, and large tappable `Rounds` / `Timer` rows that open focused option pickers.
+    - The annotated mockup was directionally right on discoverability, but the final UI favors larger row hit targets over extra mini-buttons.
 
 - [x] TASK: Add difficulty filtering to New Game setup
   - Type: Feature
@@ -812,6 +831,35 @@
   - Notes:
     - This is explicitly outside the v1 single-device scope.
     - It would require a deliberate redesign of game flow, device roles, and synchronization responsibilities.
+
+- [ ] TASK: Design and add local custom question packs
+  - Type: Feature / Product / UX / Architecture
+  - Priority: P3
+  - Status: Planned
+  - Area: content model, `Views/Home`, pack browser, pack authoring UI, local persistence, `Views/NewGame`
+  - Goal: Let groups create and play their own Tap Ten content without needing accounts, backend storage, or live network access.
+  - Acceptance Criteria:
+    - The app exposes a clear `My Packs` or equivalent area separate from the bundled editorial packs.
+    - Players can create a custom pack, name it, and add/edit/delete their own questions locally on device.
+    - Each custom question supports the core playable fields:
+      - prompt
+      - exactly `10` answers
+      - per-answer point values (`1...5`)
+      - validation style (`factual`, `editorial`, or `humorous`)
+      - optional source or notes field for house rules / adjudication help
+    - Validation prevents broken custom content from entering gameplay:
+      - empty prompt
+      - fewer or more than `10` answers
+      - duplicate answers
+      - missing point values
+    - New Game can include eligible custom packs alongside bundled packs without mixing them up visually.
+    - The first rollout is local-only; no accounts, cloud sync, moderation, or public sharing are required.
+  - Notes:
+    - This stays outside v1 and should start as a local custom-pack feature, not a network/community platform.
+    - Prefer pack-level authoring over one-off single custom rounds, so created content stays reusable.
+    - On-phone authoring will be a little heavy because every question needs `10` answers, so the UX should favor drafts, templates, duplication, and strong validation helpers.
+    - Custom content should likely relax the current editorial `one required source link` rule into `optional source / notes`, since many house prompts will be personal, humorous, or not source-backed.
+    - A later follow-up can evaluate JSON import/export or sharing only after the local authoring flow feels solid.
 
 - [ ] TASK: Re-evaluate annual membership only after the pack business proves repeat demand
   - Type: Product / Monetization

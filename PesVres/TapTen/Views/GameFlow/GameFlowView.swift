@@ -231,12 +231,12 @@ private struct PassDeviceView: View {
                 )
 
                 roleBlock(
-                    label: "Host",
+                    label: "Phone holder",
                     value: hostingTeamName,
                     font: .title2.weight(.bold)
                 )
 
-                Text("Hand the phone to the host. They tap answers as your team calls them out. No peeking.")
+                Text("Pass the phone to \(hostingTeamName). They read the prompt and tap answers as your team calls them out. No peeking.")
                     .font(.body)
                     .foregroundStyle(Color.primary.opacity(0.72))
             }
@@ -267,7 +267,7 @@ private struct PassDeviceView: View {
                 .stroke(Color.tapTenPlayfulOrange.opacity(0.18), lineWidth: 1)
         )
         .accessibilityElement(children: .combine)
-        .accessibilityHint("Hand the phone to the host. They tap answers as the guessing team calls them out.")
+        .accessibilityHint("Pass the phone to the phone holder. They tap answers as the guessing team calls them out.")
     }
 
     private func roleBlock(label: String, value: String, font: Font) -> some View {
@@ -399,7 +399,7 @@ private struct QuestionPreviewView: View {
                     .foregroundStyle(.secondary)
             }
 
-            Text("Take a moment to read it through. Start the timer only when the host is ready.")
+            Text("Take a moment to read it through. Start the timer only when the phone holder is ready.")
                 .font(.footnote.weight(.medium))
                 .foregroundStyle(Color.primary.opacity(0.72))
                 .fixedSize(horizontal: false, vertical: true)

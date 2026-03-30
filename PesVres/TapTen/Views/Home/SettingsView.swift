@@ -39,7 +39,7 @@ struct SettingsView: View {
             } header: {
                 Text("New Game Defaults")
             } footer: {
-                Text("These defaults are shown on the home screen and used when starting a new game.")
+                Text("These defaults are shown on Home, can also be changed there, and are used when starting a new game.")
             }
         }
         .navigationTitle("Settings")
