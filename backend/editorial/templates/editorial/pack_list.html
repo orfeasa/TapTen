@@ -1,0 +1,32 @@
+{% extends "editorial/base.html" %}
+
+{% block title %}Packs · Tap Ten Review{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h1>Packs</h1>
+    <p class="muted">Current imported pack snapshots.</p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Pack</th>
+        <th>Version</th>
+        <th>Questions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in pack_rows %}
+        <tr>
+          <td>{{ row.pack_title }}</td>
+          <td>{{ row.pack_version|default:"-" }}</td>
+          <td>{{ row.question_count }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">No packs imported yet.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

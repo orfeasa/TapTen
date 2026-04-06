@@ -1,0 +1,15 @@
+[Unit]
+Description=Tap Ten Editorial Backend
+After=network.target
+
+[Service]
+Type=simple
+User=tapten
+Group=tapten
+EnvironmentFile=/etc/tapten-backend.env
+ExecStart=/bin/sh -c 'cd "$TAPTEN_APP_ROOT/backend" && exec "$TAPTEN_APP_ROOT/backend/.venv/bin/gunicorn" -c "$TAPTEN_APP_ROOT/backend/gunicorn.conf.py" tapten_backend.wsgi:application'
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+api.playtapten.com {
+    encode gzip zstd
+    reverse_proxy 127.0.0.1:8100
+}
+
+review.playtapten.com {
+    encode gzip zstd
+    reverse_proxy 127.0.0.1:8100
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Tap Ten Review{% endblock %}</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: #f7f4ee; color: #1f2937; }
+    header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    nav a { margin-right: 14px; color: #c56717; text-decoration: none; font-weight: 600; }
+    main { max-width: 1120px; margin: 0 auto; padding: 24px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { padding: 12px; border-bottom: 1px solid #e5e7eb; vertical-align: top; text-align: left; }
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+    .grid { display: grid; gap: 16px; }
+    .grid.two { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .muted { color: #6b7280; }
+    .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; background: #fff1e6; color: #9a3412; font-size: 0.875rem; font-weight: 600; }
+    form.inline { display: inline; }
+    input, select, textarea, button { font: inherit; }
+    input, select, textarea { width: 100%; box-sizing: border-box; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 8px; }
+    button { padding: 10px 14px; border: 0; border-radius: 8px; background: #c56717; color: #fff; cursor: pointer; }
+    button.secondary { background: #4b5563; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .list-reset { margin: 0; padding-left: 18px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <strong>Tap Ten Review</strong>
+      {% if request.user.is_authenticated %}
+        <span class="muted"> · {{ request.user.username }}</span>
+      {% endif %}
+    </div>
+    {% if request.user.is_authenticated %}
+      <nav>
+        <a href="{% url 'editorial:dashboard' %}">Dashboard</a>
+        <a href="{% url 'editorial:question-list' %}">Questions</a>
+        <a href="{% url 'editorial:report-list' %}">Reports</a>
+        <a href="{% url 'editorial:insights' %}">Insights</a>
+        <a href="{% url 'editorial:pack-list' %}">Packs</a>
+        {% if request.user.is_staff %}
+          <a href="{% url 'editorial:reviewer-list' %}">Reviewers</a>
+          <a href="{% url 'editorial:export-reviews' %}">Export Reviews</a>
+          <a href="{% url 'editorial:export-reports' %}">Export Reports</a>
+          <a href="{% url 'editorial:export-insights' %}">Export Insights</a>
+        {% endif %}
+        <form class="inline" action="{% url 'editorial:logout' %}" method="post">
+          {% csrf_token %}
+          <button class="secondary" type="submit">Log out</button>
+        </form>
+      </nav>
+    {% endif %}
+  </header>
+  <main>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="card">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends "editorial/base.html" %}
+
+{% block title %}Reviewers · Tap Ten Review{% endblock %}
+
+{% block content %}
+  <div class="grid two">
+    <div class="card">
+      <h1>Reviewer Accounts</h1>
+      <p class="muted">Admin-only reviewer access management.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Email</th>
+            <th>Flags</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reviewer in reviewers %}
+            <tr>
+              <td>{{ reviewer.username }}</td>
+              <td>{{ reviewer.email|default:"-" }}</td>
+              <td>
+                {% if reviewer.is_staff %}<span class="pill">staff</span>{% endif %}
+                {% if reviewer.is_superuser %}<span class="pill">superuser</span>{% endif %}
+              </td>
+              <td>{{ reviewer.is_active|yesno:"Active,Disabled" }}</td>
+              <td>
+                <form class="inline" method="post" action="{% url 'editorial:reviewer-toggle-active' reviewer.id %}">
+                  {% csrf_token %}
+                  <button class="secondary" type="submit">
+                    {% if reviewer.is_active %}Disable{% else %}Enable{% endif %}
+                  </button>
+                </form>
+                <form class="inline" method="post" action="{% url 'editorial:reviewer-reset-password' reviewer.id %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="password1" value="TempPass123!ChangeMe">
+                  <input type="hidden" name="password2" value="TempPass123!ChangeMe">
+                  <button class="secondary" type="submit">Set Temp Password</button>
+                </form>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="5">No reviewer accounts found.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Create Reviewer</h2>
+      <form method="post" action="{% url 'editorial:reviewer-create' %}">
+        {% csrf_token %}
+        {{ create_form.as_p }}
+        <button type="submit">Create reviewer</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

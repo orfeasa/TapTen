@@ -1,0 +1,79 @@
+{% extends "editorial/base.html" %}
+
+{% block title %}Questions · Tap Ten Review{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h1>Question Queue</h1>
+    <form method="get" class="grid two">
+      <div>
+        <label for="workflow_state">Workflow state</label>
+        <select name="workflow_state" id="workflow_state">
+          <option value="">All</option>
+          {% for value, label in workflow_choices %}
+            <option value="{{ value }}" {% if filters.workflow_state == value %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label for="pack_id">Pack</label>
+        <input type="text" name="pack_id" id="pack_id" value="{{ filters.pack_id }}">
+      </div>
+      <div>
+        <label for="category">Category</label>
+        <input type="text" name="category" id="category" value="{{ filters.category }}">
+      </div>
+      <div>
+        <label for="difficulty_tier">Difficulty</label>
+        <select name="difficulty_tier" id="difficulty_tier">
+          <option value="">All</option>
+          {% for value, label in difficulty_choices %}
+            <option value="{{ value }}" {% if filters.difficulty_tier == value %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label for="assigned">Assignment</label>
+        <select name="assigned" id="assigned">
+          <option value="">Any</option>
+          <option value="assigned" {% if filters.assigned == "assigned" %}selected{% endif %}>Assigned</option>
+          <option value="unassigned" {% if filters.assigned == "unassigned" %}selected{% endif %}>Unassigned</option>
+        </select>
+      </div>
+      <div class="actions" style="align-items: end;">
+        <button type="submit">Apply filters</button>
+      </div>
+    </form>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Pack</th>
+        <th>Category</th>
+        <th>Difficulty</th>
+        <th>Workflow</th>
+        <th>Assigned</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for question in questions %}
+        <tr>
+          <td>
+            <a href="{% url 'editorial:question-detail' question.id %}"><strong>{{ question.prompt }}</strong></a>
+            <div class="muted">{{ question.question_id }}</div>
+          </td>
+          <td>{{ question.pack_title }} <span class="muted">{{ question.pack_version|default:"-" }}</span></td>
+          <td>{{ question.category }}</td>
+          <td>{{ question.difficulty_tier }}</td>
+          <td>{{ question.review_state.workflow_state|default:"proposed" }}</td>
+          <td>{{ question.review_state.assigned_user|default:"Unassigned" }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6">No questions matched the current filters.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

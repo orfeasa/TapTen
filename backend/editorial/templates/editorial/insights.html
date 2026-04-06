@@ -1,0 +1,41 @@
+{% extends "editorial/base.html" %}
+
+{% block title %}Insights · Tap Ten Review{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h1>Question Insights</h1>
+    <p class="muted">Telemetry and report summaries for editorial review.</p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Plays</th>
+        <th>Avg completion</th>
+        <th>Avg points</th>
+        <th>Skip rate</th>
+        <th>Reports</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in insight_rows %}
+        <tr>
+          <td>
+            <div><strong>{{ row.prompt }}</strong></div>
+            <div class="muted">{{ row.question_id }} · {{ row.pack_id|default:"No pack" }}</div>
+          </td>
+          <td>{{ row.sample_count }}</td>
+          <td>{{ row.average_completion_ratio|floatformat:2 }}</td>
+          <td>{{ row.average_points_awarded|floatformat:2 }}</td>
+          <td>{{ row.skip_rate|floatformat:2 }}</td>
+          <td>{{ row.report_count }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6">No telemetry insights yet.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

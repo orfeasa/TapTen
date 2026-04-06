@@ -419,6 +419,20 @@
     - `quality` values are updated consistently (`reviewed` or `playtested`) where checks pass.
     - Any unresolved prompts are tracked in `CONTENT_TODO.md` with concrete follow-ups.
 
+- [x] TASK: Define the question review and approval workflow
+  - Type: Product / Content / Ops
+  - Priority: P1
+  - Status: Completed
+  - Area: content authoring, editorial review, approval process
+  - Goal: Create a repeatable process for reviewing all current questions and approving future questions, with enough structure to involve additional reviewers later.
+  - Acceptance Criteria:
+    - The repo documents clear roles, workflow states, reviewer responsibilities, and approval rules for questions.
+    - The process fits the existing `quality` metadata and `CONTENT_TODO.md` workflow rather than inventing a second content source of truth.
+    - The workflow covers both current-library review sweeps and future-question submissions.
+    - The authoring spec and repo docs link to the approval workflow so it is discoverable during content work.
+  - Notes:
+    - Completed in `CONTENT_REVIEW_WORKFLOW.md`.
+
 ### P2 - Later
 
 - [x] TASK: Decide and optionally add first-launch How To Play presentation
@@ -746,6 +760,20 @@
   - Notes:
     - Completed in `BACKEND_PLAN.md`.
 
+- [x] TASK: Define the report review workflow for question feedback
+  - Type: Product / Ops / Editorial
+  - Priority: P3
+  - Status: Completed
+  - Area: question feedback triage, editorial review, release closure
+  - Goal: Define how in-app question reports move from backend intake into grouped editorial review, bundled content fixes, and shipped resolution.
+  - Acceptance Criteria:
+    - The repo documents the end-to-end workflow from player report submission through grouped review and post-release closure.
+    - The workflow defines clear review statuses, triage priorities, and recommended decision rules by report type.
+    - The process keeps the backend narrow and treats bundled pack edits plus app release as the fix path.
+    - The workflow is linked from the main repo docs and from the backend plan so operational guidance does not drift.
+  - Notes:
+    - Completed in `REPORT_REVIEW_WORKFLOW.md`.
+
 - [ ] TASK: Deploy a self-hosted question-feedback endpoint
   - Type: Feature / Ops / Release
   - Priority: P3
@@ -759,6 +787,62 @@
     - A Tap Ten build can be pointed at the real endpoint using the existing endpoint configuration path.
   - Notes:
     - Keep the first service narrow: health check, feedback route, SQLite persistence, and basic export.
+
+- [ ] TASK: Build the editorial backend foundation
+  - Type: Feature / Backend / Ops
+  - Priority: P1
+  - Status: Planned
+  - Area: backend service, SQLite schema, auth, ingestion endpoints
+  - Goal: Stand up the internal editorial backend service that can run on the existing server and act as the foundation for review, reports, and telemetry insights.
+  - Acceptance Criteria:
+    - One deployable service provides reviewer authentication plus the public ingestion endpoints.
+    - SQLite schema and migrations exist for reviewer accounts, imported catalog data, reports, and telemetry.
+    - `GET /tapten/healthz`, `POST /tapten/v1/question-feedback`, and `POST /tapten/v1/question-calibration/batch` are implemented.
+    - The service can run under the recommended self-hosted deployment shape.
+  - Notes:
+    - Follow `EDITORIAL_BACKEND_MVP.md` and keep the first version server-rendered and operationally small.
+
+- [ ] TASK: Build the internal reviewer web app MVP
+  - Type: Feature / Product / Internal Tooling
+  - Priority: P1
+  - Status: Planned
+  - Area: reviewer auth, queue UI, question detail UI, review decisions, comments
+  - Goal: Let non-technical reviewers review and approve questions without source access.
+  - Acceptance Criteria:
+    - Reviewers can log in securely and see a filtered queue of questions.
+    - A question detail page shows prompt, answers, category, difficulty, source, notes, current quality, and prior review history.
+    - Reviewers can approve, request changes, mark refresh-needed, assign reviewers, and leave comments.
+    - The tool follows `CONTENT_REVIEW_WORKFLOW.md` states and maps decisions cleanly onto the current content workflow.
+  - Notes:
+    - Keep JSON packs as the release source of truth in the first implementation; the web app manages review state, not live publishing.
+
+- [ ] TASK: Add reports and telemetry insights to the reviewer tool
+  - Type: Feature / Analytics / Internal Tooling
+  - Priority: P1
+  - Status: Planned
+  - Area: grouped report views, question insights, pack/category summaries
+  - Goal: Turn player reports and calibration telemetry into usable editorial signals for question quality and difficulty tuning.
+  - Acceptance Criteria:
+    - Reviewers can view grouped player reports linked to each question.
+    - Question detail pages show core telemetry signals such as plays, completion ratio, points, skip rate, and time to first reveal.
+    - The internal tool exposes pack-level and category-level insight views or exports.
+    - Export paths exist for review decisions, grouped reports, and question insight summaries.
+  - Notes:
+    - This should stay editorial-focused and avoid collecting player identity data.
+
+- [ ] TASK: Deploy the editorial backend MVP on the existing server
+  - Type: Ops / Release / Internal Tooling
+  - Priority: P1
+  - Status: Planned
+  - Area: server deployment, Caddy, systemd, backups, reviewer access
+  - Goal: Put the internal editorial backend and reviewer app into real use on the existing server.
+  - Acceptance Criteria:
+    - The service is deployed under Caddy with HTTPS and authenticated internal access.
+    - The app can send feedback and calibration payloads to the live service.
+    - Reviewer accounts exist and at least one non-technical reviewer can complete a question review without repo access.
+    - Backups, health checks, and basic restore notes exist before relying on the service.
+  - Notes:
+    - Build and deploy incrementally; do not wait for browser-based authoring or direct publishing.
 
 - [ ] TASK: Add self-hosted calibration telemetry upload
   - Type: Feature / Content QA / Technical
@@ -787,6 +871,34 @@
     - Health check and logs are easy to inspect during tester rollout.
   - Notes:
     - Follow `BACKEND_PLAN.md` rather than inventing a broader platform.
+
+- [ ] TASK: Remove obsolete gameplay/home scaffolding and unused wrappers
+  - Type: Technical / Cleanup
+  - Priority: P3
+  - Status: Planned
+  - Area: `Services/GameFlowService`, `Views/GameFlow/GameFlowPlaceholderView`, `Views/Home`, `ViewModels/HomeViewModel`, `Models/GameStartRequest`
+  - Goal: Remove dead or redundant app code left behind by earlier scaffolding so the current flow has fewer misleading entry points and placeholder types.
+  - Acceptance Criteria:
+    - Unused placeholder/scaffolding files that no longer match the shipped flow are removed.
+    - `HomeView` no longer depends on a wrapper view model unless that model owns real state or behavior.
+    - Unreferenced model/service types are either deleted or given a real responsibility.
+    - Previews and app entry points still compile cleanly after the cleanup.
+  - Notes:
+    - Current concrete candidates include `GameFlowService`, `GameFlowPlaceholderView`, `HomeViewModel`, and `GameStartRequest`.
+
+- [ ] TASK: Remove legacy email-reporting composition code after the in-app reporting migration
+  - Type: Technical / Cleanup
+  - Priority: P3
+  - Status: Planned
+  - Area: `Services/QuestionFeedbackComposer`, question-reporting flow
+  - Goal: Delete leftover mail-oriented composition helpers that are no longer used now that question reporting submits structured payloads in-app.
+  - Acceptance Criteria:
+    - Legacy subject/body composition paths that are no longer referenced are removed.
+    - Mail-era helper properties on feedback reasons are removed if they no longer support a live flow.
+    - The remaining feedback composer API is centered on the structured report payload actually used by the app.
+    - Existing in-app report submission behavior and tests remain intact.
+  - Notes:
+    - Current concrete candidates include `QuestionFeedbackComposer.subject`, `QuestionFeedbackComposer.body`, and the mail-oriented `subjectLinePrefix` / `reviewRequest` helpers.
 
 - [ ] TASK: Add iPad support
   - Type: Feature / UX

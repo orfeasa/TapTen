@@ -1,0 +1,41 @@
+{% extends "editorial/base.html" %}
+
+{% block title %}Reports · Tap Ten Review{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h1>Grouped Player Reports</h1>
+    <p class="muted">Grouped by question, pack version, and reason.</p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Reason</th>
+        <th>Reports</th>
+        <th>First seen</th>
+        <th>Last seen</th>
+        <th>Latest note</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for group in report_groups %}
+        <tr>
+          <td>
+            <div><strong>{{ group.question_id }}</strong></div>
+            <div class="muted">{{ group.pack_id|default:"No pack" }} · {{ group.pack_version|default:"-" }}</div>
+          </td>
+          <td>{{ group.reason }}</td>
+          <td>{{ group.report_count }}</td>
+          <td>{{ group.first_seen_at }}</td>
+          <td>{{ group.last_seen_at }}</td>
+          <td>{{ group.latest_note|default:"-" }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6">No player reports yet.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

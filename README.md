@@ -60,6 +60,7 @@ PesVres/
     Resources/QuestionPacks/
   TapTenTests/
   TapTenUITests/
+  backend/
   website/
 ```
 
@@ -91,6 +92,7 @@ Current content target status:
 Malformed pack data is validated and surfaced with clean loader errors.
 For authoring and audit workflow, see:
 - `PesVres/TapTen/Resources/QuestionPacks/CONTENT_AUTHORING_SPEC.md`
+- `CONTENT_REVIEW_WORKFLOW.md`
 - `CONTENT_TODO.md`
 - Run a full local pack audit with:
   - `./scripts/audit_question_packs.sh`
@@ -180,6 +182,10 @@ The live website is `https://playtapten.com`. The GitHub Pages workflow is in-re
 - Prioritized follow-up work: see `PROJECT_BACKLOG.md`.
 - Post-v1 monetization strategy: see `MONETIZATION_PLAN.md`.
 - Narrow self-hosted backend rollout: see `BACKEND_PLAN.md`.
+- Internal editorial backend and reviewer app MVP: see `EDITORIAL_BACKEND_MVP.md`.
+- Current Django backend implementation and deploy notes: see `backend/README.md`.
+- Question report intake and editorial handling: see `REPORT_REVIEW_WORKFLOW.md`.
+- Question authoring, review, and approval process: see `CONTENT_REVIEW_WORKFLOW.md`.
 - Repository working conventions: see `AGENTS.md`.
 - Release smoke-test protocol: see `RELEASE_CHECKLIST.md`.
 

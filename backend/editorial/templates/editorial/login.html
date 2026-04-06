@@ -1,0 +1,14 @@
+{% extends "editorial/base.html" %}
+
+{% block title %}Login · Tap Ten Review{% endblock %}
+
+{% block content %}
+  <div class="card" style="max-width: 420px; margin: 0 auto;">
+    <h1>Reviewer Login</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Log in</button>
+    </form>
+  </div>
+{% endblock %}

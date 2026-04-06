@@ -2,7 +2,7 @@
 
 Status: Planning document for a narrow self-hosted backend on a user-managed VPS.
 
-Last updated: 2026-03-29
+Last updated: 2026-04-06
 
 ## Why This Exists
 
@@ -12,6 +12,8 @@ Tap Ten is still intentionally local-first for gameplay and bundled content. The
 - optional telemetry ingestion for content calibration later
 
 This document defines the recommended rollout for a self-hosted backend on the user's existing server, without turning the app into a networked product.
+
+For a concrete internal-tool MVP that combines reviewer workflow, player reports, and telemetry insights, see `EDITORIAL_BACKEND_MVP.md`.
 
 ## Scope Guardrails
 
@@ -45,6 +47,7 @@ Important implication:
 
 - Phase 1 backend work can start with question feedback only.
 - No app architecture rewrite is needed to activate the first endpoint.
+- Editorial handling after ingestion is defined separately in `REPORT_REVIEW_WORKFLOW.md`.
 
 ## Recommended Rollout
 
@@ -112,23 +115,30 @@ Possible additions:
 - read-only SSH-only admin scripts
 - daily summary jobs for problem questions and difficulty drift
 
-Do not start with a browser-based admin UI.
+Operational note:
+
+- the recommended review and closure process for question reports lives in `REPORT_REVIEW_WORKFLOW.md`
+- the broader internal reviewer app and insights system is specified in `EDITORIAL_BACKEND_MVP.md`
+
+If the goal is only narrow intake and telemetry delivery, keep the service small. Do not introduce broader editorial UI concerns into that intake-only slice unless they are already needed operationally.
 
 ## Recommended Stack
 
 For a small self-managed server, the most pragmatic stack is:
 
-- Caddy for TLS termination and reverse proxy
-- one small Go HTTP service
+- Django for the application layer
+- Gunicorn for the WSGI process
+- nginx for TLS termination and reverse proxy on servers that already use nginx
 - SQLite for the first production database
 - `systemd` for service management
 - `journald` for logs
 
 Why this stack:
 
-- Go gives a single deployable binary with low runtime friction
+- Django fits the review/auth/export workflow better than a narrow custom service
+- Gunicorn is a boring production default for a small internal tool
 - SQLite is enough for low-volume feedback and tester telemetry
-- Caddy keeps HTTPS setup simple
+- nginx reuses the existing VPS web stack cleanly
 - `systemd` is simpler than introducing Docker before it is needed
 
 When to move past SQLite:
@@ -149,7 +159,7 @@ Recommended host layout:
 - SQLite database: `/var/lib/tapten/tapten.db`
 - backups: `/var/backups/tapten/`
 - config file: `/etc/tapten-backend.env`
-- reverse proxy config: `/etc/caddy/Caddyfile`
+- reverse proxy config: `/etc/nginx/sites-available/tapten-backend`
 
 Bootstrap rule:
 
@@ -249,23 +259,25 @@ If off-box backups become available later, add them before collecting meaningful
 
 Recommended deployment flow:
 
-1. Build a Linux binary for the backend service.
-2. Upload it to `/opt/tapten-backend/releases/<timestamp>/`.
-3. Update `/opt/tapten-backend/current` to the new release.
-4. Restart `tapten-backend.service`.
-5. Verify `GET /tapten/healthz`.
-6. Point the app build at the feedback endpoint.
+1. Sync the backend code to `/opt/tapten-backend/releases/<timestamp>/` or the chosen deploy path.
+2. Update `/opt/tapten-backend/current` to the new release.
+3. Recreate or reuse the Python virtualenv and install `backend/requirements.txt`.
+4. Run migrations.
+5. Restart `tapten-backend.service`.
+6. Verify `GET /tapten/healthz`.
+7. Point the app build at the feedback endpoint.
 
-For the current tester phase, a path-based deployment on the existing host is acceptable.
+For the current tester phase, subdomain-based deployment on the existing host is acceptable and now live on:
 
-Later, if the project domain setup expands, move the API behind a dedicated subdomain.
+- `api.playtapten.com`
+- `review.playtapten.com`
 
 ## Concrete Next Steps
 
 1. Implement a tiny self-hosted backend service in a new repo folder such as `backend/`.
 2. Ship only `healthz` plus `POST /tapten/v1/question-feedback` in the first pass.
 3. Add SQLite persistence, log structure, and CSV export tooling.
-4. Deploy it behind Caddy on the VPS with a dedicated non-root service user.
+4. Deploy it behind nginx on the VPS with a dedicated non-root service user.
 5. Configure the Tap Ten build with the real feedback endpoint URL.
 6. Add calibration-upload support only after the feedback path is stable.
 

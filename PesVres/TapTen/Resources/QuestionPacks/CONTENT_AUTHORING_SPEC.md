@@ -155,6 +155,10 @@ Guidance:
 
 Keep values lowercase kebab-case and consistent across packs.
 
+Workflow note:
+- use `CONTENT_REVIEW_WORKFLOW.md` for the actual review and approval process
+- do not mark a question `reviewed` until it has been explicitly approved through that workflow
+
 ## 11) Post-Change Audit Checklist
 
 Any pack update should include a lightweight audit pass before merge.
@@ -176,6 +180,7 @@ Recommended cadence:
 - Run full audit after any batch edit to packs.
 - Mark newly added or significantly changed questions as `quality: \"draft\"` until reviewed/playtested.
 - Keep repo-root `CONTENT_TODO.md` updated after each content audit pass.
+- Use repo-root `CONTENT_REVIEW_WORKFLOW.md` when assigning reviewers, requesting approval, and moving questions out of `draft`.
 
 ## Example Question (recommended style)
 

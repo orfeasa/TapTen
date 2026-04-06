@@ -1,0 +1,27 @@
+{% extends "editorial/base.html" %}
+
+{% block title %}Dashboard · Tap Ten Review{% endblock %}
+
+{% block content %}
+  <div class="grid two">
+    <div class="card">
+      <h2>Catalog</h2>
+      <p><strong>{{ current_question_count }}</strong> current questions</p>
+      <p><strong>{{ pack_count }}</strong> packs</p>
+    </div>
+    <div class="card">
+      <h2>Review Queue</h2>
+      <p><strong>{{ draft_count }}</strong> draft / proposed</p>
+      <p><strong>{{ changes_requested_count }}</strong> changes requested</p>
+      <p><strong>{{ approved_count }}</strong> approved or playtested</p>
+    </div>
+    <div class="card">
+      <h2>Reports</h2>
+      <p><strong>{{ report_count }}</strong> feedback reports</p>
+    </div>
+    <div class="card">
+      <h2>Telemetry</h2>
+      <p><strong>{{ calibration_event_count }}</strong> calibration events</p>
+    </div>
+  </div>
+{% endblock %}

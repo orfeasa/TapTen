@@ -6,3 +6,8 @@
 /vendor/bundle/
 /fastlane/README.md
 /fastlane/report.xml
+/backend/.venv/
+/backend/db.sqlite3
+/backend/staticfiles/
+**/__pycache__/
+**/*.pyc

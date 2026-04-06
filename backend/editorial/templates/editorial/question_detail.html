@@ -1,0 +1,117 @@
+{% extends "editorial/base.html" %}
+
+{% block title %}{{ question.question_id }} · Tap Ten Review{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h1>{{ question.prompt }}</h1>
+    <p class="muted">{{ question.question_id }} · {{ question.pack_title }} · {{ question.pack_version|default:"-" }}</p>
+    <div class="actions">
+      <span class="pill">{{ review_state.workflow_state }}</span>
+      <span class="pill">{{ question.quality }}</span>
+      <span class="pill">{{ question.difficulty_tier }}</span>
+      <span class="pill">{{ question.validation_style }}</span>
+    </div>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h2>Question</h2>
+      <p><strong>Category:</strong> {{ question.category }}</p>
+      <p><strong>Difficulty score:</strong> {{ question.difficulty_score }}</p>
+      <p><strong>Source:</strong> <a href="{{ question.source_url }}" target="_blank" rel="noreferrer">{{ question.source_url }}</a></p>
+      <p><strong>Content type:</strong> {{ question.content_type|default:"-" }}</p>
+      <p><strong>Editorial notes:</strong> {{ question.editorial_notes|default:"-" }}</p>
+      <p><strong>Difficulty notes:</strong> {{ question.difficulty_notes|default:"-" }}</p>
+    </div>
+
+    <div class="card">
+      <h2>Review state</h2>
+      <p><strong>Assigned reviewer:</strong> {{ review_state.assigned_user|default:"Unassigned" }}</p>
+      <p><strong>Approved by:</strong> {{ review_state.approved_by_user|default:"-" }}</p>
+      <p><strong>Approved at:</strong> {{ review_state.approved_at|default:"-" }}</p>
+      <p><strong>Second approval required:</strong> {{ review_state.requires_second_approval|yesno:"Yes,No" }}</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Answers</h2>
+    <ol class="list-reset">
+      {% for answer in question.answers_json %}
+        <li>{{ answer.text }} <span class="muted">({{ answer.points }} pts)</span></li>
+      {% endfor %}
+    </ol>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h2>Update review state</h2>
+      <form method="post" action="{% url 'editorial:question-review' question.id %}">
+        {% csrf_token %}
+        {{ review_form.as_p }}
+        <button type="submit">Save review decision</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Assign reviewer</h2>
+      <form method="post" action="{% url 'editorial:question-assign' question.id %}">
+        {% csrf_token %}
+        {{ assignment_form.as_p }}
+        <button type="submit">Update assignment</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h2>Add comment</h2>
+      <form method="post" action="{% url 'editorial:question-comment' question.id %}">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">Add comment</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Signals</h2>
+      <p><strong>Feedback reports:</strong> {{ report_count }}</p>
+      <p><strong>Telemetry samples:</strong> {{ telemetry.sample_count }}</p>
+      <p><strong>Average completion ratio:</strong> {{ telemetry.average_completion_ratio|floatformat:2 }}</p>
+      <p><strong>Average points:</strong> {{ telemetry.average_points_awarded|floatformat:2 }}</p>
+      <p><strong>Skip rate:</strong> {{ telemetry.skip_rate|floatformat:2 }}</p>
+    </div>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h2>Recent decisions</h2>
+      <ul class="list-reset">
+        {% for decision in decisions %}
+          <li>
+            <strong>{{ decision.decision }}</strong> by {{ decision.user }} on {{ decision.created_at }}
+            {% if decision.notes %}
+              <div class="muted">{{ decision.notes }}</div>
+            {% endif %}
+          </li>
+        {% empty %}
+          <li>No decisions yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Comments</h2>
+      <ul class="list-reset">
+        {% for comment in comments %}
+          <li>
+            <strong>{{ comment.user }}</strong> · {{ comment.created_at }}
+            <div>{{ comment.body }}</div>
+          </li>
+        {% empty %}
+          <li>No comments yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}
