@@ -201,6 +201,19 @@ final class QuestionCalibrationTelemetryStore {
         }
     }
 
+    func pendingEvents() -> [QuestionCalibrationTelemetryEvent] {
+        events
+    }
+
+    func removeEvents(withIDs ids: Set<UUID>) {
+        guard !ids.isEmpty else {
+            return
+        }
+
+        events.removeAll { ids.contains($0.id) }
+        persistEvents()
+    }
+
     private func makeQuestionSummary(
         from matchingEvents: [QuestionCalibrationTelemetryEvent]
     ) -> QuestionCalibrationSummary {

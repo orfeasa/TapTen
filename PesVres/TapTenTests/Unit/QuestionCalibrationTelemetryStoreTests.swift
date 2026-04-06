@@ -117,6 +117,38 @@ struct QuestionCalibrationTelemetryStoreTests {
         #expect(abs(event.remainingTimeAtFinish - 58.5) < 0.0001)
     }
 
+    @Test
+    func removeEventsWithIDsOnlyDropsDeliveredEvents() throws {
+        let store = QuestionCalibrationTelemetryStore(defaults: try makeDefaults())
+
+        store.recordRoundOutcome(
+            context: makeContext(questionID: "q1", difficultyTier: .medium),
+            roundDurationSeconds: 60,
+            finishReason: .timerExpired,
+            revealedAnswerIndices: [0, 1],
+            totalAnswers: 10,
+            pointsAwarded: 4,
+            remainingTimeAtFinish: 0,
+            timeToFirstReveal: 1.0
+        )
+        store.recordRoundOutcome(
+            context: makeContext(questionID: "q2", difficultyTier: .hard),
+            roundDurationSeconds: 60,
+            finishReason: .skipped,
+            revealedAnswerIndices: [0],
+            totalAnswers: 10,
+            pointsAwarded: 1,
+            remainingTimeAtFinish: 32,
+            timeToFirstReveal: 2.5
+        )
+
+        let firstEventID = try #require(store.events.first?.id)
+        store.removeEvents(withIDs: [firstEventID])
+
+        #expect(store.events.count == 1)
+        #expect(store.events.first?.questionID == "q2")
+    }
+
     private func makeDefaults() throws -> UserDefaults {
         let suiteName = "QuestionCalibrationTelemetryStoreTests.\(UUID().uuidString)"
         let defaults = try #require(UserDefaults(suiteName: suiteName))

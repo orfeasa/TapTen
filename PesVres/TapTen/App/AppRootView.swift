@@ -10,6 +10,7 @@ struct AppRootView: View {
         .tint(.tapTenPlayfulOrange)
         .task {
             await QuestionFeedbackSubmissionService.shared.flushPendingReportsIfPossible()
+            await QuestionCalibrationSubmissionService.shared.submitPendingEventsIfPossible()
         }
         .onChange(of: scenePhase) { _, newValue in
             guard newValue == .active else {
@@ -18,6 +19,7 @@ struct AppRootView: View {
 
             Task {
                 await QuestionFeedbackSubmissionService.shared.flushPendingReportsIfPossible()
+                await QuestionCalibrationSubmissionService.shared.submitPendingEventsIfPossible()
             }
         }
     }

@@ -281,6 +281,9 @@ final class GameFlowViewModel {
             remainingTimeAtFinish: remainingTimeAtFinish,
             timeToFirstReveal: hostRoundViewModel.timeToFirstReveal
         )
+        Task {
+            await QuestionCalibrationSubmissionService.shared.submitPendingEventsIfPossible()
+        }
 #if DEBUG
         let telemetry = DebugRoundTelemetry(
             roundNumber: teamRoundNumber(for: currentRound),

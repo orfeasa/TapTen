@@ -146,6 +146,7 @@ Notes:
 - App Store release remains manual.
 - This first pass also does not add `fastlane match`. If Xcode automatic signing is not enough on the CI runner, add certificate/profile import or a signing solution later.
 - Optional in-app question-reporting delivery can be enabled per build with `QuestionFeedbackEndpointURL` in the app’s info dictionary or `TAPTEN_FEEDBACK_ENDPOINT` in the environment.
+- Optional question-calibration telemetry upload can be enabled per build with `QuestionCalibrationEndpointURL` in the app’s info dictionary or `TAPTEN_CALIBRATION_ENDPOINT` in the environment. The current project config points that key at `https://api.playtapten.com/tapten/v1/question-calibration/batch`.
 - TestFlight beta builds inject `QuestionPackTesterUnlocksEnabled=YES`, so premium packs can be unlocked locally without payment during testing.
 - Local debug builds also enable tester unlocks by default.
 - `TAPTEN_TESTER_UNLOCKS_ENABLED` can still override that behavior from the environment when needed.
