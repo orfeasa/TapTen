@@ -774,10 +774,10 @@
   - Notes:
     - Completed in `REPORT_REVIEW_WORKFLOW.md`.
 
-- [ ] TASK: Deploy a self-hosted question-feedback endpoint
+- [x] TASK: Deploy a self-hosted question-feedback endpoint
   - Type: Feature / Ops / Release
   - Priority: P3
-  - Status: Planned
+  - Status: Completed
   - Area: backend service, VPS deployment, feedback delivery
   - Goal: Back the existing in-app `Flag Question` flow with a real HTTPS endpoint on the self-hosted backend.
   - Acceptance Criteria:
@@ -787,11 +787,12 @@
     - A Tap Ten build can be pointed at the real endpoint using the existing endpoint configuration path.
   - Notes:
     - Keep the first service narrow: health check, feedback route, SQLite persistence, and basic export.
+    - Completed via the deployed Django backend at `api.playtapten.com`.
 
-- [ ] TASK: Build the editorial backend foundation
+- [x] TASK: Build the editorial backend foundation
   - Type: Feature / Backend / Ops
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: backend service, SQLite schema, auth, ingestion endpoints
   - Goal: Stand up the internal editorial backend service that can run on the existing server and act as the foundation for review, reports, and telemetry insights.
   - Acceptance Criteria:
@@ -800,12 +801,12 @@
     - `GET /tapten/healthz`, `POST /tapten/v1/question-feedback`, and `POST /tapten/v1/question-calibration/batch` are implemented.
     - The service can run under the recommended self-hosted deployment shape.
   - Notes:
-    - Follow `EDITORIAL_BACKEND_MVP.md` and keep the first version server-rendered and operationally small.
+    - Completed as the Django backend under `backend/` with Gunicorn + nginx deployment on the VPS.
 
-- [ ] TASK: Build the internal reviewer web app MVP
+- [x] TASK: Build the internal reviewer web app MVP
   - Type: Feature / Product / Internal Tooling
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: reviewer auth, queue UI, question detail UI, review decisions, comments
   - Goal: Let non-technical reviewers review and approve questions without source access.
   - Acceptance Criteria:
@@ -816,10 +817,10 @@
   - Notes:
     - Keep JSON packs as the release source of truth in the first implementation; the web app manages review state, not live publishing.
 
-- [ ] TASK: Add reports and telemetry insights to the reviewer tool
+- [x] TASK: Add reports and telemetry insights to the reviewer tool
   - Type: Feature / Analytics / Internal Tooling
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: grouped report views, question insights, pack/category summaries
   - Goal: Turn player reports and calibration telemetry into usable editorial signals for question quality and difficulty tuning.
   - Acceptance Criteria:
@@ -833,16 +834,16 @@
 - [ ] TASK: Deploy the editorial backend MVP on the existing server
   - Type: Ops / Release / Internal Tooling
   - Priority: P1
-  - Status: Planned
-  - Area: server deployment, Caddy, systemd, backups, reviewer access
+  - Status: In Progress
+  - Area: server deployment, nginx, systemd, backups, reviewer access
   - Goal: Put the internal editorial backend and reviewer app into real use on the existing server.
   - Acceptance Criteria:
-    - The service is deployed under Caddy with HTTPS and authenticated internal access.
+    - The service is deployed under nginx with HTTPS and authenticated internal access.
     - The app can send feedback and calibration payloads to the live service.
     - Reviewer accounts exist and at least one non-technical reviewer can complete a question review without repo access.
     - Backups, health checks, and basic restore notes exist before relying on the service.
   - Notes:
-    - Build and deploy incrementally; do not wait for browser-based authoring or direct publishing.
+    - Backend is live at `api.playtapten.com` and `review.playtapten.com`; app-side calibration upload plus ops hardening remain open.
 
 - [ ] TASK: Add self-hosted calibration telemetry upload
   - Type: Feature / Content QA / Technical
@@ -854,9 +855,23 @@
     - The app can batch-upload calibration events to a configured HTTPS endpoint.
     - Uploads use local queueing and retry behavior similar to question feedback.
     - The backend stores calibration events durably and supports summary/export workflows.
-    - The rollout can be limited to tester/debug builds first.
+    - New TestFlight builds can upload telemetry without requiring narrower debug-only gating.
   - Notes:
-    - Start only after the feedback endpoint is live and operationally stable.
+    - The app is still TestFlight-only, so telemetry can ship to all active testers once the uploader is in place.
+
+- [ ] TASK: Add app-side calibration telemetry delivery and endpoint configuration
+  - Type: Feature / Technical
+  - Priority: P1
+  - Status: Planned
+  - Area: `Services/QuestionCalibrationTelemetryStore`, app networking, build configuration
+  - Goal: Turn the existing local calibration event store into a real uploader for the live backend.
+  - Acceptance Criteria:
+    - The app has a dedicated calibration submission service mirroring the feedback submission path.
+    - Calibration upload endpoint configuration is supported via build config or environment, similar to feedback delivery.
+    - Uploads are queued and retried safely when the endpoint is unreachable.
+    - Successful uploads remove or mark delivered local events so the store does not grow indefinitely.
+  - Notes:
+    - The backend endpoint already exists; this task is primarily the iOS-side hookup for current TestFlight builds.
 
 - [ ] TASK: Add backend ops baseline for the self-hosted service
   - Type: Ops / Reliability
@@ -871,6 +886,19 @@
     - Health check and logs are easy to inspect during tester rollout.
   - Notes:
     - Follow `BACKEND_PLAN.md` rather than inventing a broader platform.
+
+- [ ] TASK: Add backend deployment automation for the editorial service
+  - Type: Ops / Tooling
+  - Priority: P3
+  - Status: Planned
+  - Area: deployment workflow, VPS release process
+  - Goal: Reduce manual backend releases after the first live rollout is stable.
+  - Acceptance Criteria:
+    - A documented single-command or CI-assisted deploy path updates the server checkout, installs dependencies if needed, runs migrations, collects static files, and restarts the service.
+    - The automated path supports the existing nginx + Gunicorn + systemd deployment shape.
+    - Failure modes are clear enough that a broken deploy can be rolled back or repaired quickly.
+  - Notes:
+    - Not required before telemetry hookup, but currently there is no backend auto-deploy on push.
 
 - [ ] TASK: Remove obsolete gameplay/home scaffolding and unused wrappers
   - Type: Technical / Cleanup
