@@ -62,6 +62,12 @@ class EditorialBackendTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertIn(reverse("editorial:login"), response.url)
 
+    def test_admin_login_uses_tapten_branding(self) -> None:
+        response = self.client.get("/admin/login/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Tap Ten Editorial Admin")
+
     def test_logged_in_reviewer_can_open_question_detail(self) -> None:
         question = QuestionCatalog.objects.create(
             pack_id="everyday-life",

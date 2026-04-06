@@ -42,9 +42,11 @@ The Django app is structured so both the API and reviewer UI can run from the sa
    - `backend/.venv/bin/python backend/manage.py createsuperuser`
 6. Import the current question packs:
    - `backend/.venv/bin/python backend/manage.py import_packs --from PesVres/TapTen/Resources/QuestionPacks`
-7. Start the server:
+7. Collect static files:
+   - `backend/.venv/bin/python backend/manage.py collectstatic --noinput`
+8. Start the server:
    - `backend/.venv/bin/python backend/manage.py runserver`
-8. Open:
+9. Open:
    - reviewer UI: `http://127.0.0.1:8000/internal/`
    - API health: `http://127.0.0.1:8000/tapten/healthz`
 
@@ -147,6 +149,7 @@ User-level bootstrap commands:
 - `backend/.venv/bin/python -m pip install -r backend/requirements.txt`
 - `backend/.venv/bin/python backend/manage.py migrate`
 - `backend/.venv/bin/python backend/manage.py import_packs --from PesVres/TapTen/Resources/QuestionPacks`
+- `backend/.venv/bin/python backend/manage.py collectstatic --noinput`
 - `backend/.venv/bin/gunicorn -c backend/gunicorn.conf.py tapten_backend.wsgi:application`
 
 Root-owned production handoff:
@@ -156,6 +159,7 @@ Root-owned production handoff:
 - copy `backend/deploy/tapten-backend.service` to `/etc/systemd/system/tapten-backend.service`
   - change `User` and `Group` if you are not running the service as a dedicated `tapten` account
 - copy `backend/deploy/nginx-site.example` to `/etc/nginx/sites-available/tapten-backend`
+  - update the `/static/` alias path if `TAPTEN_APP_ROOT` is not `/opt/tapten-backend/current`
 - symlink `/etc/nginx/sites-enabled/tapten-backend` to that file
 - `sudo systemctl daemon-reload`
 - `sudo systemctl enable --now tapten-backend`
@@ -173,7 +177,8 @@ Recommended deploy sequence:
 3. Copy `/etc/tapten-backend.env` from `backend/deploy/tapten-backend.env.example`.
 4. Run `python backend/manage.py migrate`.
 5. Run `python backend/manage.py import_packs --from .../QuestionPacks`.
-6. Start `tapten-backend.service`.
-7. Install the nginx site file and reload nginx.
-8. Issue certificates with Certbot once DNS resolves.
-9. Verify `https://api.playtapten.com/tapten/healthz`.
+6. Run `python backend/manage.py collectstatic --noinput`.
+7. Start `tapten-backend.service`.
+8. Install the nginx site file and reload nginx.
+9. Issue certificates with Certbot once DNS resolves.
+10. Verify `https://api.playtapten.com/tapten/healthz`.

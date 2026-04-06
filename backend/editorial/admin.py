@@ -9,6 +9,10 @@ from .models import (
     QuestionReviewState,
 )
 
+admin.site.site_header = "Tap Ten Editorial Admin"
+admin.site.site_title = "Tap Ten Admin"
+admin.site.index_title = "Editorial Operations"
+
 
 @admin.register(QuestionCatalog)
 class QuestionCatalogAdmin(admin.ModelAdmin):
