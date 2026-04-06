@@ -7,4 +7,4 @@ Type=oneshot
 User=tapten
 Group=tapten
 EnvironmentFile=/etc/tapten-backend.env
-ExecStart=/bin/sh "$TAPTEN_APP_ROOT/backend/deploy/tapten-backup.sh"
+ExecStart=/bin/sh -c 'exec "$TAPTEN_APP_ROOT/backend/deploy/tapten-backup.sh"'
