@@ -231,6 +231,15 @@ The calibration endpoint should be included in MVP if you are already committing
 Without telemetry, the internal tool only solves review coordination.
 With telemetry, it becomes an editorial quality system.
 
+Telemetry flow for MVP:
+
+- the iOS app records local `QuestionCalibrationTelemetryEvent` values during round finalization
+- `QuestionCalibrationSubmissionService` batches pending events and posts them to `api.playtapten.com/tapten/v1/question-calibration/batch`
+- the Django backend ingests those payloads into `CalibrationEvent`
+- reviewer-facing telemetry on `review.playtapten.com/internal/insights` and each question detail page is derived from those same stored events
+
+That coupling matters: the app payload shape, backend ingest model, and reviewer UI metrics should be treated as one pipeline rather than independent features.
+
 ## Internal Web Routes
 
 Suggested first route set:

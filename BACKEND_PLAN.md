@@ -98,7 +98,19 @@ Recommended upload model:
 
 - send batched events rather than one request per round
 - keep the client queue local and retryable, mirroring the feedback pattern
-- start with tester or debug builds before broad rollout
+- the app records `QuestionCalibrationTelemetryEvent` values locally, then `QuestionCalibrationSubmissionService` flushes pending batches when the app becomes active and after a round is finalized
+- accept either a raw JSON array of events or an object with an `events` array on the backend
+
+Editorial coupling:
+
+- the same uploaded events should be stored as backend `CalibrationEvent` records
+- those records should drive the reviewer-facing question insights views on `review.playtapten.com`
+- question detail pages and the global insights screen should expose the same core signals the app uploads:
+  - plays
+  - completion ratio
+  - points awarded
+  - skip rate
+  - time to first reveal
 
 Suggested retention:
 

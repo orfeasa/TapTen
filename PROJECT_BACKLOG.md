@@ -843,12 +843,12 @@
     - Reviewer accounts exist and at least one non-technical reviewer can complete a question review without repo access.
     - Backups, health checks, and basic restore notes exist before relying on the service.
   - Notes:
-    - Backend is live at `api.playtapten.com` and `review.playtapten.com`; app-side calibration upload plus ops hardening remain open.
+    - Backend is live at `api.playtapten.com` and `review.playtapten.com`; feedback and calibration uploads are wired from the app now, while ops hardening and backup/restore work remain open.
 
-- [ ] TASK: Add self-hosted calibration telemetry upload
+- [x] TASK: Add self-hosted calibration telemetry upload
   - Type: Feature / Content QA / Technical
   - Priority: P3
-  - Status: Planned
+  - Status: Completed
   - Area: `Services/QuestionCalibrationTelemetryStore`, backend ingestion, editorial analytics
   - Goal: Turn local question-outcome telemetry into a lightweight editorial signal for difficulty tuning.
   - Acceptance Criteria:
@@ -857,12 +857,12 @@
     - The backend stores calibration events durably and supports summary/export workflows.
     - New TestFlight builds can upload telemetry without requiring narrower debug-only gating.
   - Notes:
-    - The app is still TestFlight-only, so telemetry can ship to all active testers once the uploader is in place.
+    - Completed via the live Django endpoint plus the app-side `QuestionCalibrationSubmissionService` uploader path.
 
-- [ ] TASK: Add app-side calibration telemetry delivery and endpoint configuration
+- [x] TASK: Add app-side calibration telemetry delivery and endpoint configuration
   - Type: Feature / Technical
   - Priority: P1
-  - Status: Planned
+  - Status: Completed
   - Area: `Services/QuestionCalibrationTelemetryStore`, app networking, build configuration
   - Goal: Turn the existing local calibration event store into a real uploader for the live backend.
   - Acceptance Criteria:
@@ -871,7 +871,7 @@
     - Uploads are queued and retried safely when the endpoint is unreachable.
     - Successful uploads remove or mark delivered local events so the store does not grow indefinitely.
   - Notes:
-    - The backend endpoint already exists; this task is primarily the iOS-side hookup for current TestFlight builds.
+    - Completed in the app with the live TestFlight endpoint configured through `QuestionCalibrationEndpointURL`.
 
 - [ ] TASK: Add backend ops baseline for the self-hosted service
   - Type: Ops / Reliability

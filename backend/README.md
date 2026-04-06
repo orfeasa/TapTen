@@ -29,6 +29,26 @@ The Django app is structured so both the API and reviewer UI can run from the sa
 - pack import from local JSON files
 - production WSGI entrypoint via Gunicorn
 
+## Telemetry Flow
+
+Calibration telemetry is now a single end-to-end path:
+
+- the iOS app records `QuestionCalibrationTelemetryEvent` values locally per round
+- the app batches and uploads pending events to `https://api.playtapten.com/tapten/v1/question-calibration/batch`
+- the backend stores those payloads as `CalibrationEvent` rows
+- the reviewer UI exposes the stored data on:
+  - `/internal/insights`
+  - `/internal/questions/<id>`
+
+The intended reviewer signals from that pipeline are:
+
+- plays
+- average revealed answers
+- average completion ratio
+- average points awarded
+- skip rate
+- average time to first reveal
+
 ## Local Setup
 
 1. Create a virtual environment:
