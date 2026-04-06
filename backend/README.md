@@ -120,6 +120,9 @@ Example deployment files live in `backend/deploy/`:
 - `nginx-site.example`
 - `Caddyfile.example`
 - `tapten-backend.service`
+- `tapten-backup.service`
+- `tapten-backup.timer`
+- `tapten-backup.sh`
 - `tapten-backend.env.example`
 
 Recommended production split:
@@ -154,14 +157,16 @@ Ubuntu/Debian prerequisite packages:
 - `nginx`
 - `certbot`
 - `python3-certbot-nginx`
+- `sqlite3`
 
 Root-owned setup commands:
 
 - `sudo apt update`
-- `sudo apt install -y python3-venv nginx certbot python3-certbot-nginx`
-- `sudo mkdir -p /opt/tapten-backend /var/lib/tapten`
+- `sudo apt install -y python3-venv nginx certbot python3-certbot-nginx sqlite3`
+- `sudo mkdir -p /opt/tapten-backend /var/lib/tapten /var/backups/tapten`
 - `sudo chown -R $USER:$USER /opt/tapten-backend`
 - `sudo chown -R $USER:$USER /var/lib/tapten`
+- `sudo chown -R $USER:$USER /var/backups/tapten`
 
 User-level bootstrap commands:
 
@@ -178,11 +183,15 @@ Root-owned production handoff:
   - set `TAPTEN_APP_ROOT` to the deployed checkout path
 - copy `backend/deploy/tapten-backend.service` to `/etc/systemd/system/tapten-backend.service`
   - change `User` and `Group` if you are not running the service as a dedicated `tapten` account
+- copy `backend/deploy/tapten-backup.service` to `/etc/systemd/system/tapten-backup.service`
+  - change `User` and `Group` here to match the app service account if you are not using `tapten`
+- copy `backend/deploy/tapten-backup.timer` to `/etc/systemd/system/tapten-backup.timer`
 - copy `backend/deploy/nginx-site.example` to `/etc/nginx/sites-available/tapten-backend`
   - update the `/static/` alias path if `TAPTEN_APP_ROOT` is not `/opt/tapten-backend/current`
 - symlink `/etc/nginx/sites-enabled/tapten-backend` to that file
 - `sudo systemctl daemon-reload`
 - `sudo systemctl enable --now tapten-backend`
+- `sudo systemctl enable --now tapten-backup.timer`
 - `sudo nginx -t`
 - `sudo systemctl reload nginx`
 - `sudo certbot --nginx -d api.playtapten.com -d review.playtapten.com`
@@ -202,3 +211,55 @@ Recommended deploy sequence:
 8. Install the nginx site file and reload nginx.
 9. Issue certificates with Certbot once DNS resolves.
 10. Verify `https://api.playtapten.com/tapten/healthz`.
+
+## Ops Baseline
+
+The checked-in deploy files now assume this minimum operating baseline:
+
+- the Gunicorn service runs as a non-root account via `tapten-backend.service`
+- nginx terminates TLS and reverse proxies to Gunicorn
+- public `/tapten/` ingestion routes are rate-limited in `nginx-site.example`
+- SQLite backups run daily through `tapten-backup.timer`
+- logs are available through `journalctl`
+
+### Health And Logs
+
+Useful commands during rollout:
+
+- `curl -fsS https://api.playtapten.com/tapten/healthz`
+- `systemctl status tapten-backend --no-pager -l`
+- `journalctl -u tapten-backend -n 200 --no-pager`
+- `systemctl status tapten-backup.timer --no-pager -l`
+- `journalctl -u tapten-backup.service -n 50 --no-pager`
+
+### Backup Layout
+
+Default paths:
+
+- live DB: `TAPTEN_SQLITE_PATH`, default `/var/lib/tapten/tapten.db`
+- backup root: `TAPTEN_BACKUP_ROOT`, default `/var/backups/tapten`
+- retention: `TAPTEN_BACKUP_RETENTION_DAYS`, default `14`
+
+Each backup run creates:
+
+- `tapten-<timestamp>.sqlite3.gz`
+- optional `tapten-<timestamp>.sqlite3.gz.sha256`
+
+### Restore Drill
+
+Before relying on the service, confirm the restore path once on the server:
+
+1. Stop the app service.
+   - `sudo systemctl stop tapten-backend`
+2. Pick a backup archive.
+   - `ls -lah /var/backups/tapten`
+3. Restore it over the SQLite path.
+   - `sudo rm -f /var/lib/tapten/tapten.db`
+   - `sudo gunzip -c /var/backups/tapten/tapten-<timestamp>.sqlite3.gz > /var/lib/tapten/tapten.db`
+4. Restore ownership if needed.
+   - `sudo chown tapten:tapten /var/lib/tapten/tapten.db`
+5. Start the app and verify health.
+   - `sudo systemctl start tapten-backend`
+   - `curl -fsS https://api.playtapten.com/tapten/healthz`
+
+If the service is running as a different account on the current server, replace `tapten:tapten` with that user and group.

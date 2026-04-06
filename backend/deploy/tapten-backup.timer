@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Tap Ten editorial backend backup daily
+
+[Timer]
+OnCalendar=*-*-* 03:25:00
+Persistent=true
+Unit=tapten-backup.service
+
+[Install]
+WantedBy=timers.target

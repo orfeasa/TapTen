@@ -1,0 +1,10 @@
+[Unit]
+Description=Tap Ten editorial backend SQLite backup
+After=network.target
+
+[Service]
+Type=oneshot
+User=tapten
+Group=tapten
+EnvironmentFile=/etc/tapten-backend.env
+ExecStart=/bin/sh "$TAPTEN_APP_ROOT/backend/deploy/tapten-backup.sh"

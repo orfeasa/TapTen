@@ -876,7 +876,7 @@
 - [ ] TASK: Add backend ops baseline for the self-hosted service
   - Type: Ops / Reliability
   - Priority: P3
-  - Status: Planned
+  - Status: In Progress
   - Area: VPS hardening, backups, logging, service management
   - Goal: Make the self-hosted backend recoverable and low-drama to operate.
   - Acceptance Criteria:
@@ -885,7 +885,7 @@
     - Daily database backups are produced and a restore path is documented.
     - Health check and logs are easy to inspect during tester rollout.
   - Notes:
-    - Follow `BACKEND_PLAN.md` rather than inventing a broader platform.
+    - Checked-in deploy artifacts now cover rate limiting, daily SQLite backups, backup retention, and restore/logging guidance; the live server still needs those units and nginx changes applied.
 
 - [ ] TASK: Add backend deployment automation for the editorial service
   - Type: Ops / Tooling
