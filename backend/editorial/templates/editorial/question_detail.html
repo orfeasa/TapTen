@@ -75,11 +75,86 @@
 
     <div class="card">
       <h2>Signals</h2>
-      <p><strong>Feedback reports:</strong> {{ report_count }}</p>
-      <p><strong>Telemetry samples:</strong> {{ telemetry.sample_count }}</p>
-      <p><strong>Average completion ratio:</strong> {{ telemetry.average_completion_ratio|floatformat:2 }}</p>
-      <p><strong>Average points:</strong> {{ telemetry.average_points_awarded|floatformat:2 }}</p>
-      <p><strong>Skip rate:</strong> {{ telemetry.skip_rate|floatformat:2 }}</p>
+      <div class="stat-grid">
+        <div class="stat-tile">
+          <span class="stat-label">Reports</span>
+          <span class="stat-value">{{ report_count }}</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Telemetry samples</span>
+          <span class="stat-value">{{ telemetry.sample_count }}</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Avg reveals</span>
+          <span class="stat-value">{{ telemetry.average_revealed_answers|floatformat:2 }}</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Avg completion</span>
+          <span class="stat-value">{{ telemetry.average_completion_ratio|floatformat:2 }}</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Avg points</span>
+          <span class="stat-value">{{ telemetry.average_points_awarded|floatformat:2 }}</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Avg first reveal</span>
+          <span class="stat-value">
+            {% if telemetry.average_time_to_first_reveal %}
+              {{ telemetry.average_time_to_first_reveal|floatformat:2 }}s
+            {% else %}
+              -
+            {% endif %}
+          </span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Skip rate</span>
+          <span class="stat-value">{{ telemetry.skip_rate|floatformat:2 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Recent telemetry events</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Played at</th>
+            <th>Finish</th>
+            <th>Revealed</th>
+            <th>Indices</th>
+            <th>Completion</th>
+            <th>Points</th>
+            <th>Remaining</th>
+            <th>First reveal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for event in recent_telemetry_events %}
+            <tr>
+              <td>{{ event.client_timestamp|date:"Y-m-d H:i" }}</td>
+              <td>{{ event.finish_reason }}</td>
+              <td>{{ event.revealed_count }}</td>
+              <td>{{ event.revealed_indices_label }}</td>
+              <td>{{ event.completion_ratio|floatformat:2 }}</td>
+              <td>{{ event.points_awarded }}</td>
+              <td>{{ event.remaining_time_at_finish|floatformat:1 }}s</td>
+              <td>
+                {% if event.time_to_first_reveal != None %}
+                  {{ event.time_to_first_reveal|floatformat:2 }}s
+                {% else %}
+                  -
+                {% endif %}
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="8">No telemetry events recorded for this question yet.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
   </div>
 

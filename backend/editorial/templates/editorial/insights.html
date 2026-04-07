@@ -7,35 +7,53 @@
     <h1>Question Insights</h1>
     <p class="muted">Telemetry and report summaries for editorial review.</p>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Question</th>
-        <th>Plays</th>
-        <th>Avg completion</th>
-        <th>Avg points</th>
-        <th>Skip rate</th>
-        <th>Reports</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for row in insight_rows %}
+  <div class="table-wrap">
+    <table>
+      <thead>
         <tr>
-          <td>
-            <div><strong>{{ row.prompt }}</strong></div>
-            <div class="muted">{{ row.question_id }} · {{ row.pack_id|default:"No pack" }}</div>
-          </td>
-          <td>{{ row.sample_count }}</td>
-          <td>{{ row.average_completion_ratio|floatformat:2 }}</td>
-          <td>{{ row.average_points_awarded|floatformat:2 }}</td>
-          <td>{{ row.skip_rate|floatformat:2 }}</td>
-          <td>{{ row.report_count }}</td>
+          <th>Question</th>
+          <th>Plays</th>
+          <th>Avg reveals</th>
+          <th>Avg completion</th>
+          <th>Avg points</th>
+          <th>Avg first reveal</th>
+          <th>Latest play</th>
+          <th>Reports</th>
         </tr>
-      {% empty %}
-        <tr>
-          <td colspan="6">No telemetry insights yet.</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {% for row in insight_rows %}
+          <tr>
+            <td>
+              {% if row.question_catalog_id %}
+                <a class="text-link" href="{% url 'editorial:question-detail' row.question_catalog_id %}">
+                  <div><strong>{{ row.prompt }}</strong></div>
+                </a>
+              {% else %}
+                <div><strong>{{ row.prompt }}</strong></div>
+              {% endif %}
+              <div class="muted">{{ row.question_id }} · {{ row.pack_id|default:"No pack" }} · {{ row.latest_finish_reason|default:"-" }}</div>
+            </td>
+            <td>{{ row.sample_count }}</td>
+            <td>{{ row.average_revealed_answers|floatformat:2 }}</td>
+            <td>{{ row.average_completion_ratio|floatformat:2 }}</td>
+            <td>{{ row.average_points_awarded|floatformat:2 }}</td>
+            <td>
+              {% if row.average_time_to_first_reveal %}
+                {{ row.average_time_to_first_reveal|floatformat:2 }}s
+              {% else %}
+                -
+              {% endif %}
+            </td>
+            <td>{{ row.latest_played_at|date:"Y-m-d H:i" }}</td>
+            <td>{{ row.report_count }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="8">No telemetry insights yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}

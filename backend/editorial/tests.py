@@ -9,7 +9,7 @@ from django.test import Client, TestCase
 from django.test.utils import override_settings
 from django.urls import reverse
 
-from .models import FeedbackReport, QuestionCatalog, QuestionReviewState
+from .models import CalibrationEvent, FeedbackReport, QuestionCatalog, QuestionReviewState
 
 User = get_user_model()
 
@@ -104,6 +104,53 @@ class EditorialBackendTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Name things people lose")
+
+    def test_question_detail_shows_recent_telemetry_events(self) -> None:
+        question = QuestionCatalog.objects.create(
+            pack_id="everyday-life",
+            pack_title="Everyday Life Pack",
+            pack_version="1.0",
+            question_id="life-3",
+            prompt="Name places people sing along loudly",
+            category="Everyday Life",
+            difficulty_tier="medium",
+            difficulty_score=20,
+            validation_style="editorial",
+            source_url="https://example.com/source",
+            quality="draft",
+            answers_json=[{"text": f"Answer {index}", "points": 1} for index in range(10)],
+            content_hash="hash-3",
+            is_current=True,
+        )
+        QuestionReviewState.objects.create(question_catalog=question)
+        CalibrationEvent.objects.create(
+            event_id=uuid4(),
+            client_timestamp=datetime.now(tz=dt_timezone.utc),
+            pack_id="everyday-life",
+            pack_title="Everyday Life Pack",
+            pack_version="1.0",
+            question_id="life-3",
+            prompt="Name places people sing along loudly",
+            category="Everyday Life",
+            difficulty_tier="medium",
+            finish_reason="skipped",
+            round_duration_seconds=60,
+            revealed_answer_indices=[0, 2, 5],
+            total_answers=10,
+            points_awarded=6,
+            remaining_time_at_finish=18.4,
+            time_to_first_reveal=2.1,
+        )
+
+        self.client.force_login(self.user)
+        response = self.client.get(
+            reverse("editorial:question-detail", kwargs={"question_id": question.id})
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Recent telemetry events")
+        self.assertContains(response, "skipped")
+        self.assertContains(response, "1, 3, 6")
 
     def test_staff_user_can_export_reviews_csv(self) -> None:
         self.user.is_staff = True

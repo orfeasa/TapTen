@@ -88,6 +88,12 @@ def build_report_groups(limit: int = 200) -> list[dict]:
 
 def build_insight_rows(limit: int = 200) -> list[dict]:
     insight_rows = []
+    catalog_lookup = {
+        (question_id, pack_id, pack_version): question_pk
+        for question_pk, question_id, pack_id, pack_version in QuestionCatalog.objects.filter(
+            is_current=True
+        ).values_list("id", "question_id", "pack_id", "pack_version")
+    }
     telemetry_groups = (
         CalibrationEvent.objects.values("question_id", "pack_id", "pack_version", "prompt")
         .annotate(
@@ -114,25 +120,45 @@ def build_insight_rows(limit: int = 200) -> list[dict]:
             question_id=row["question_id"],
             pack_id=row["pack_id"],
             pack_version=row["pack_version"],
-        )
+        ).order_by("-client_timestamp")
         sample_count = row["sample_count"] or 0
         average_revealed_answers = 0.0
+        average_time_to_first_reveal = 0.0
         if sample_count:
+            matching_event_list = list(matching_events)
             average_revealed_answers = sum(
-                len(event.revealed_answer_indices) for event in matching_events
+                len(event.revealed_answer_indices) for event in matching_event_list
             ) / sample_count
+            first_reveal_samples = [
+                event.time_to_first_reveal
+                for event in matching_event_list
+                if event.time_to_first_reveal is not None
+            ]
+            if first_reveal_samples:
+                average_time_to_first_reveal = sum(first_reveal_samples) / len(first_reveal_samples)
+            latest_event = matching_event_list[0]
+        else:
+            latest_event = None
         skip_rate = (row["skip_count"] or 0) / sample_count if sample_count else 0.0
 
         insight_rows.append(
             {
+                "question_catalog_id": catalog_lookup.get(
+                    (row["question_id"], row["pack_id"], row["pack_version"] or "")
+                )
+                or catalog_lookup.get((row["question_id"], row["pack_id"], row["pack_version"])),
                 "question_id": row["question_id"],
                 "pack_id": row["pack_id"],
                 "pack_version": row["pack_version"],
                 "prompt": row["prompt"],
                 "sample_count": sample_count,
+                "average_revealed_answers": average_revealed_answers,
                 "average_completion_ratio": average_revealed_answers / 10 if sample_count else 0,
                 "average_points_awarded": row["average_points_awarded"] or 0,
+                "average_time_to_first_reveal": average_time_to_first_reveal,
                 "skip_rate": skip_rate,
+                "latest_played_at": latest_event.client_timestamp if latest_event else None,
+                "latest_finish_reason": latest_event.finish_reason if latest_event else "",
                 "report_count": report_counts.get(
                     (row["question_id"], row["pack_id"], row["pack_version"]),
                     0,
@@ -223,10 +249,17 @@ def question_detail(request: HttpRequest, question_id: int) -> HttpResponse:
         question_id=question.question_id,
         pack_id=question.pack_id,
         pack_version=question.pack_version or None,
-    )
+    ).order_by("-client_timestamp")
+    telemetry_events = list(telemetry_base[:25])
     sample_count = telemetry_base.count()
     average_points_awarded = (
         telemetry_base.aggregate(value=Avg("points_awarded"))["value"] or 0
+    )
+    average_time_to_first_reveal = (
+        telemetry_base.exclude(time_to_first_reveal__isnull=True).aggregate(
+            value=Avg("time_to_first_reveal")
+        )["value"]
+        or 0
     )
     average_revealed_answers = 0.0
     if sample_count:
@@ -255,10 +288,32 @@ def question_detail(request: HttpRequest, question_id: int) -> HttpResponse:
         "report_count": report_count,
         "telemetry": {
             "sample_count": sample_count,
+            "average_revealed_answers": average_revealed_answers,
             "average_completion_ratio": average_revealed_answers / 10 if sample_count else 0,
             "average_points_awarded": average_points_awarded,
+            "average_time_to_first_reveal": average_time_to_first_reveal,
             "skip_rate": skip_rate,
         },
+        "recent_telemetry_events": [
+            {
+                "client_timestamp": event.client_timestamp,
+                "finish_reason": event.finish_reason or "timerExpired",
+                "revealed_count": len(event.revealed_answer_indices),
+                "revealed_indices_label": ", ".join(
+                    str(index + 1) for index in event.revealed_answer_indices
+                )
+                or "-",
+                "completion_ratio": (
+                    len(event.revealed_answer_indices) / event.total_answers
+                    if event.total_answers
+                    else 0
+                ),
+                "points_awarded": event.points_awarded,
+                "remaining_time_at_finish": event.remaining_time_at_finish,
+                "time_to_first_reveal": event.time_to_first_reveal,
+            }
+            for event in telemetry_events
+        ],
     }
     return render(request, "editorial/question_detail.html", context)
 
