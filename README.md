@@ -2,7 +2,21 @@
 
 Tap Ten is an iPhone-first, host-operated party guessing game built with SwiftUI.
 
+This repository is not only the iOS app. It currently contains three product surfaces plus shared planning and release docs:
+
+- the Tap Ten iOS app in `PesVres/`
+- the public marketing/privacy website in `website/`
+- the internal Django editorial backend and reviewer tool in `backend/`
+
 Two teams play on one device. One team answers out loud while the other team hosts, watches the question and answer list, and taps matches under time pressure.
+
+## Repository Overview
+
+- `PesVres/`: the shipped iPhone app, tests, assets, and bundled question packs
+- `website/`: the public static site deployed to `playtapten.com`
+- `backend/`: the self-hosted Django service behind `api.playtapten.com` and `review.playtapten.com`
+- `fastlane/` and `.github/workflows/`: beta release and deployment automation
+- root docs such as `PROJECT_BRIEF.md`, `PROJECT_BACKLOG.md`, `BACKEND_PLAN.md`, and `EDITORIAL_BACKEND_MVP.md`: product, content, and ops guidance
 
 ## Current MVP Behavior
 
@@ -50,18 +64,25 @@ Two teams play on one device. One team answers out loud while the other team hos
 ## Project Layout
 
 ```text
-PesVres/
-  TapTen/
-    App/
-    Models/
-    Services/
-    ViewModels/
-    Views/
-    Resources/QuestionPacks/
-  TapTenTests/
-  TapTenUITests/
-  backend/
-  website/
+.
+├── PesVres/
+│   ├── TapTen/
+│   │   ├── App/
+│   │   ├── Models/
+│   │   ├── Services/
+│   │   ├── ViewModels/
+│   │   ├── Views/
+│   │   └── Resources/QuestionPacks/
+│   ├── TapTenTests/
+│   └── TapTenUITests/
+├── backend/
+│   ├── editorial/
+│   ├── tapten_backend/
+│   └── deploy/
+├── website/
+│   └── public/
+├── fastlane/
+└── .github/workflows/
 ```
 
 ## Question Packs

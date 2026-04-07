@@ -2,6 +2,12 @@
 
 This directory contains the Django-based internal editorial backend and reviewer app for Tap Ten.
 
+It is one part of the main Tap Ten repository alongside:
+
+- the iOS app in `PesVres/`
+- the public marketing/privacy website in `website/`
+- shared product, content, and release docs at the repo root
+
 Supported runtime target:
 
 - Python 3.10+

@@ -2,6 +2,12 @@
 
 This directory contains the Tap Ten website workspace.
 
+It is one part of the main Tap Ten repository alongside:
+
+- the iOS app in `PesVres/`
+- the editorial backend in `backend/`
+- shared product, content, and release docs at the repo root
+
 Recommended structure:
 
 ```text
