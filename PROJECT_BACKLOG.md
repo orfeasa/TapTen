@@ -890,7 +890,7 @@
 - [ ] TASK: Add backend deployment automation for the editorial service
   - Type: Ops / Tooling
   - Priority: P3
-  - Status: Planned
+  - Status: In Progress
   - Area: deployment workflow, VPS release process
   - Goal: Reduce manual backend releases after the first live rollout is stable.
   - Acceptance Criteria:
@@ -898,7 +898,7 @@
     - The automated path supports the existing nginx + Gunicorn + systemd deployment shape.
     - Failure modes are clear enough that a broken deploy can be rolled back or repaired quickly.
   - Notes:
-    - Not required before telemetry hookup, but currently there is no backend auto-deploy on push.
+    - Repo-side GitHub Actions deploy automation and the remote deploy script are now checked in; the remaining work is configuring repository variables/secrets and proving the first successful GitHub-triggered deploy.
 
 - [ ] TASK: Remove obsolete gameplay/home scaffolding and unused wrappers
   - Type: Technical / Cleanup

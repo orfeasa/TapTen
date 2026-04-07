@@ -206,6 +206,7 @@ The live website is `https://playtapten.com`. The GitHub Pages workflow is in-re
 - Narrow self-hosted backend rollout: see `BACKEND_PLAN.md`.
 - Internal editorial backend and reviewer app MVP: see `EDITORIAL_BACKEND_MVP.md`.
 - Current Django backend implementation and deploy notes: see `backend/README.md`.
+- Backend deploy automation workflow: see `.github/workflows/backend-deploy.yml`.
 - Question report intake and editorial handling: see `REPORT_REVIEW_WORKFLOW.md`.
 - Question authoring, review, and approval process: see `CONTENT_REVIEW_WORKFLOW.md`.
 - Repository working conventions: see `AGENTS.md`.

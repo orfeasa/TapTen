@@ -123,6 +123,7 @@ If database variables are not set, the project defaults to SQLite.
 
 Example deployment files live in `backend/deploy/`:
 
+- `deploy-release.sh`
 - `nginx-site.example`
 - `Caddyfile.example`
 - `tapten-backend.service`
@@ -145,6 +146,8 @@ The current production deployment on the existing VPS uses:
 - Gunicorn for the Django app process
 - `systemd` for service management
 
+The repo now also includes a GitHub Actions backend deploy workflow in `.github/workflows/backend-deploy.yml` for repeatable server releases without manual `scp` and ad hoc `ssh` sessions.
+
 Keep `Caddyfile.example` only as an optional alternative for a fresh server that is not already nginx-managed.
 
 ## First Server Deploy
@@ -164,11 +167,12 @@ Ubuntu/Debian prerequisite packages:
 - `certbot`
 - `python3-certbot-nginx`
 - `sqlite3`
+- `rsync`
 
 Root-owned setup commands:
 
 - `sudo apt update`
-- `sudo apt install -y python3-venv nginx certbot python3-certbot-nginx sqlite3`
+- `sudo apt install -y python3-venv nginx certbot python3-certbot-nginx sqlite3 rsync`
 - `sudo mkdir -p /opt/tapten-backend /var/lib/tapten /var/backups/tapten`
 - `sudo chown -R $USER:$USER /opt/tapten-backend`
 - `sudo chown -R $USER:$USER /var/lib/tapten`
@@ -269,3 +273,53 @@ Before relying on the service, confirm the restore path once on the server:
    - `curl -fsS https://api.playtapten.com/tapten/healthz`
 
 If the service is running as a different account on the current server, replace `tapten:tapten` with that user and group.
+
+## Deployment Automation
+
+The backend deploy workflow is now:
+
+- workflow: `.github/workflows/backend-deploy.yml`
+- remote deploy script: `backend/deploy/deploy-release.sh`
+- trigger: manual `workflow_dispatch`
+
+### What the workflow does
+
+1. Checks out the requested ref.
+2. Packages:
+   - `backend/`
+   - `PesVres/TapTen/Resources/QuestionPacks/`
+3. Uploads a release archive to the VPS over SSH.
+4. Extracts that archive into `~/tapten-backend/releases/<release-id>`.
+5. Reuses a shared Python virtualenv under `~/tapten-backend/shared/.venv`.
+6. Runs:
+   - `manage.py check`
+   - `manage.py migrate`
+   - `manage.py collectstatic --noinput`
+   - optional `manage.py import_packs`
+7. Syncs the prepared release into `~/tapten-backend/current/`.
+8. Reloads Gunicorn with `HUP`.
+9. Verifies `GET /tapten/healthz` locally.
+10. Keeps a small rolling release history for rollback.
+
+### Required GitHub configuration
+
+Repository variables:
+
+- `BACKEND_DEPLOY_HOST`
+- `BACKEND_DEPLOY_USER`
+- `BACKEND_DEPLOY_PORT`
+  - optional, defaults to `22`
+- `BACKEND_DEPLOY_ROOT`
+  - optional, defaults to `/home/orfeas/tapten-backend`
+
+Repository secrets:
+
+- `BACKEND_DEPLOY_SSH_KEY`
+- `BACKEND_DEPLOY_KNOWN_HOSTS`
+  - optional but recommended; if omitted, the workflow falls back to `ssh-keyscan`
+
+### Rollback
+
+If a deploy fails its health check after syncing into `current`, the remote script automatically restores the most recent prior release directory and reloads Gunicorn.
+
+Manual rollback remains possible by syncing a previous directory from `~/tapten-backend/releases/` back into `~/tapten-backend/current/` and sending Gunicorn another `HUP`.

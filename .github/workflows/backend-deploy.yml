@@ -1,0 +1,96 @@
+name: Backend Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref to deploy
+        required: true
+        default: main
+      import_packs:
+        description: Reimport bundled question packs during deploy
+        required: true
+        type: boolean
+        default: true
+      keep_releases:
+        description: Number of release directories to keep on the server
+        required: true
+        default: "5"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: backend-deploy
+      cancel-in-progress: false
+    permissions:
+      contents: read
+    env:
+      BACKEND_DEPLOY_HOST: ${{ vars.BACKEND_DEPLOY_HOST }}
+      BACKEND_DEPLOY_USER: ${{ vars.BACKEND_DEPLOY_USER }}
+      BACKEND_DEPLOY_PORT: ${{ vars.BACKEND_DEPLOY_PORT }}
+      BACKEND_DEPLOY_ROOT: ${{ vars.BACKEND_DEPLOY_ROOT }}
+      BACKEND_DEPLOY_SSH_KEY: ${{ secrets.BACKEND_DEPLOY_SSH_KEY }}
+      BACKEND_DEPLOY_KNOWN_HOSTS: ${{ secrets.BACKEND_DEPLOY_KNOWN_HOSTS }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Validate deploy configuration
+        run: |
+          set -eu
+          test -n "${BACKEND_DEPLOY_HOST:-}" || { echo "BACKEND_DEPLOY_HOST is required"; exit 1; }
+          test -n "${BACKEND_DEPLOY_USER:-}" || { echo "BACKEND_DEPLOY_USER is required"; exit 1; }
+          test -n "${BACKEND_DEPLOY_SSH_KEY:-}" || { echo "BACKEND_DEPLOY_SSH_KEY is required"; exit 1; }
+
+      - name: Configure SSH
+        run: |
+          set -eu
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$BACKEND_DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          if [ -n "${BACKEND_DEPLOY_KNOWN_HOSTS:-}" ]; then
+            printf '%s\n' "$BACKEND_DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          else
+            PORT="${BACKEND_DEPLOY_PORT:-22}"
+            ssh-keyscan -p "$PORT" "$BACKEND_DEPLOY_HOST" > ~/.ssh/known_hosts
+          fi
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Build backend release archive
+        id: package
+        run: |
+          set -eu
+          RELEASE_ID="$(date -u +%Y%m%dT%H%M%SZ)-${GITHUB_SHA::7}"
+          ARCHIVE="backend-release-${RELEASE_ID}.tar.gz"
+          tar \
+            --exclude='backend/.venv' \
+            --exclude='backend/staticfiles' \
+            --exclude='__pycache__' \
+            --exclude='*.pyc' \
+            -czf "$ARCHIVE" \
+            backend \
+            PesVres/TapTen/Resources/QuestionPacks
+          echo "release_id=$RELEASE_ID" >> "$GITHUB_OUTPUT"
+          echo "archive=$ARCHIVE" >> "$GITHUB_OUTPUT"
+
+      - name: Upload release archive
+        run: |
+          set -eu
+          PORT="${BACKEND_DEPLOY_PORT:-22}"
+          ROOT="${BACKEND_DEPLOY_ROOT:-/home/orfeas/tapten-backend}"
+          ssh -p "$PORT" "$BACKEND_DEPLOY_USER@$BACKEND_DEPLOY_HOST" "mkdir -p '$ROOT/incoming' '$ROOT/releases' '$ROOT/shared'"
+          scp -P "$PORT" "${{ steps.package.outputs.archive }}" "$BACKEND_DEPLOY_USER@$BACKEND_DEPLOY_HOST:$ROOT/incoming/${{ steps.package.outputs.archive }}"
+
+      - name: Deploy on server
+        run: |
+          set -eu
+          PORT="${BACKEND_DEPLOY_PORT:-22}"
+          ROOT="${BACKEND_DEPLOY_ROOT:-/home/orfeas/tapten-backend}"
+          ssh -p "$PORT" "$BACKEND_DEPLOY_USER@$BACKEND_DEPLOY_HOST" \
+            "DEPLOY_ROOT='$ROOT' RELEASE_ID='${{ steps.package.outputs.release_id }}' RELEASE_TARBALL='$ROOT/incoming/${{ steps.package.outputs.archive }}' IMPORT_PACKS='${{ inputs.import_packs }}' KEEP_RELEASES='${{ inputs.keep_releases }}' bash -s" \
+            < backend/deploy/deploy-release.sh
