@@ -54,7 +54,21 @@
     .list-reset { margin: 0; padding-left: 18px; }
     .brand-block { min-width: 0; }
     .menu { position: relative; }
-    .menu[open] summary { background: rgba(184, 93, 29, 0.08); }
+    .menu summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(184, 93, 29, 0.18);
+      background: rgba(255, 246, 234, 0.92);
+      box-shadow: 0 8px 20px rgba(65, 35, 14, 0.06);
+    }
+    .menu summary::after {
+      content: "▾";
+      font-size: 0.82rem;
+      line-height: 1;
+      opacity: 0.8;
+    }
+    .menu[open] summary { background: rgba(184, 93, 29, 0.14); }
     .menu-panel { position: absolute; right: 0; top: calc(100% + 10px); min-width: 220px; padding: 10px; border-radius: 16px; background: rgba(255, 252, 247, 0.98); border: 1px solid var(--panel-border); box-shadow: var(--shadow); display: grid; gap: 4px; }
     .menu-panel a { margin: 0; border-radius: 12px; }
     .stat-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 14px; }
