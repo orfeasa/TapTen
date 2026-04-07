@@ -303,20 +303,60 @@ The backend deploy workflow is now:
 
 ### Required GitHub configuration
 
-Repository variables:
-
-- `BACKEND_DEPLOY_HOST`
-- `BACKEND_DEPLOY_USER`
-- `BACKEND_DEPLOY_PORT`
-  - optional, defaults to `22`
-- `BACKEND_DEPLOY_ROOT`
-  - optional, defaults to `/home/orfeas/tapten-backend`
-
 Repository secrets:
 
 - `BACKEND_DEPLOY_SSH_KEY`
 - `BACKEND_DEPLOY_KNOWN_HOSTS`
   - optional but recommended; if omitted, the workflow falls back to `ssh-keyscan`
+
+The current workflow already commits the non-secret server settings:
+
+- host: `birthday.orfeasa.com`
+- user: `orfeas`
+- port: `22`
+- deploy root: `/home/orfeas/tapten-backend`
+
+### How to create the required secret
+
+Recommended approach: create a dedicated deploy key just for GitHub Actions.
+
+Generate it locally:
+
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/tapten_backend_actions -C "github-actions-backend-deploy"
+```
+
+Install the public key on the server:
+
+```bash
+ssh-copy-id -i ~/.ssh/tapten_backend_actions.pub orfeas@birthday.orfeasa.com
+```
+
+Then store the private key in GitHub as the `BACKEND_DEPLOY_SSH_KEY` secret:
+
+```bash
+cat ~/.ssh/tapten_backend_actions
+```
+
+Paste the full private key contents into:
+
+- GitHub repository `Settings`
+- `Secrets and variables`
+- `Actions`
+- `New repository secret`
+- name: `BACKEND_DEPLOY_SSH_KEY`
+
+### Optional host verification secret
+
+`BACKEND_DEPLOY_KNOWN_HOSTS` is not secret, but storing it avoids a live `ssh-keyscan` during deploys.
+
+To generate it:
+
+```bash
+ssh-keyscan -p 22 birthday.orfeasa.com
+```
+
+If you want stricter pinning, paste that output into the `BACKEND_DEPLOY_KNOWN_HOSTS` GitHub secret. If you skip it, the workflow will fetch the host key automatically.
 
 ### Rollback
 
