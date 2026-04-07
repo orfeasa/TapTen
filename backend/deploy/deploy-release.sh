@@ -21,9 +21,6 @@ for command_name in python3 rsync curl tar; do
 done
 
 mkdir -p "$RELEASES_DIR" "$SHARED_DIR" "$CURRENT_DIR"
-rm -rf "$RELEASE_DIR"
-mkdir -p "$RELEASE_DIR"
-
 shopt -s nullglob
 existing_releases=("$RELEASES_DIR"/*)
 if ((${#existing_releases[@]} > 0)); then
@@ -32,6 +29,9 @@ fi
 shopt -u nullglob
 
 PREVIOUS_RELEASE="${existing_releases[0]:-}"
+
+rm -rf "$RELEASE_DIR"
+mkdir -p "$RELEASE_DIR"
 
 tar -xzf "$RELEASE_TARBALL" -C "$RELEASE_DIR"
 rm -f "$RELEASE_TARBALL"
@@ -95,7 +95,11 @@ reload_backend() {
 check_health() {
   local api_host="${TAPTEN_API_HOST:-api.playtapten.com}"
   local body
-  body="$(curl -fsS -H "Host: $api_host" http://127.0.0.1:8100/tapten/healthz)"
+  body="$(curl -fsS \
+    -H "Host: $api_host" \
+    -H "X-Forwarded-Host: $api_host" \
+    -H "X-Forwarded-Proto: https" \
+    http://127.0.0.1:8100/tapten/healthz)"
   [[ "$body" == *'"status":"ok"'* || "$body" == *'"status": "ok"'* ]]
 }
 
