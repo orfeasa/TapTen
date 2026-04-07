@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    let viewModel: HomeViewModel
     @AppStorage("hasShownHowToPlayOnFirstLaunch") private var hasShownHowToPlayOnFirstLaunch = false
     @State private var settingsStore = AppSettingsStore.shared
     @State private var isShowingHowToPlay = false
@@ -75,7 +74,7 @@ struct HomeView: View {
 
 #Preview {
     NavigationStack {
-        HomeView(viewModel: HomeViewModel())
+        HomeView()
     }
 }
 

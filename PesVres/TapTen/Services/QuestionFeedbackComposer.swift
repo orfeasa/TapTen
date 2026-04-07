@@ -50,36 +50,6 @@ enum QuestionFeedbackReason: String, Codable, CaseIterable, Identifiable, Sendab
             return "Something else is off. Add details so it can be reviewed properly."
         }
     }
-
-    var subjectLinePrefix: String {
-        switch self {
-        case .tooEasy:
-            return "Too Easy"
-        case .tooDifficult:
-            return "Too Difficult"
-        case .wrongCategory:
-            return "Wrong Category"
-        case .inappropriate:
-            return "Inappropriate"
-        case .other:
-            return "Other Report"
-        }
-    }
-
-    var reviewRequest: String {
-        switch self {
-        case .tooEasy:
-            return "Review difficulty calibration. This question may be too easy for its current tier."
-        case .tooDifficult:
-            return "Review difficulty calibration. This question may be too difficult for its current tier."
-        case .wrongCategory:
-            return "Review category placement. This question may belong in a different category."
-        case .inappropriate:
-            return "Review tone and suitability. This question may be inappropriate for the app."
-        case .other:
-            return "Review editorial fit based on the notes below."
-        }
-    }
 }
 
 struct QuestionFeedbackComposer {
@@ -98,34 +68,6 @@ struct QuestionFeedbackComposer {
         self.reason = reason
         self.note = note.trimmingCharacters(in: .whitespacesAndNewlines)
         self.appVersion = Self.versionString(bundle: bundle)
-    }
-
-    var subject: String {
-        "Tap Ten Report: \(reason.subjectLinePrefix) [\(context.questionID)]"
-    }
-
-    var body: String {
-        let lines = [
-            "Tap Ten Question Report",
-            "",
-            "Report Type: \(reason.title)",
-            "Review Request: \(reason.reviewRequest)",
-            "Question ID: \(context.questionID)",
-            "Prompt: \(context.prompt)",
-            "Category: \(context.category)",
-            "Difficulty Tier: \(context.difficultyTier.rawValue.capitalized)",
-            "Validation Style: \(context.validationStyle.rawValue)",
-            "Pack Title: \(context.packTitle ?? "Unknown")",
-            "Pack ID: \(context.packID ?? "Unknown")",
-            "Pack Version: \(context.packVersion ?? "Unknown")",
-            "Source URL: \(context.sourceURL.absoluteString)",
-            "App Version: \(appVersion)",
-            "",
-            "Reporter Notes:",
-            note.isEmpty ? "No extra notes provided." : note
-        ]
-
-        return lines.joined(separator: "\n")
     }
 
     var report: QuestionFeedbackReport {

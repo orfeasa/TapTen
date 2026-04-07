@@ -525,12 +525,12 @@ private struct HostRoundQuestionFeedbackSheet: View {
         selectedReason != .other || !trimmedNote.isEmpty
     }
 
-    private var composer: QuestionFeedbackComposer {
+    private var feedbackReport: QuestionFeedbackReport {
         QuestionFeedbackComposer(
             context: context,
             reason: selectedReason,
             note: note
-        )
+        ).report
     }
 
     private var trimmedNote: String {
@@ -623,7 +623,7 @@ private struct HostRoundQuestionFeedbackSheet: View {
                 Button {
                     Task {
                         isSubmitting = true
-                        await onSubmit(composer.report)
+                        await onSubmit(feedbackReport)
                         isSubmitting = false
                         dismiss()
                     }
@@ -632,16 +632,6 @@ private struct HostRoundQuestionFeedbackSheet: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(!canSubmit || isSubmitting)
-
-                Button {
-                    UIPasteboard.general.string = composer.body
-                    dismiss()
-                } label: {
-                    Label("Copy Report Details", systemImage: "doc.on.doc")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.bordered)
                 .disabled(!canSubmit || isSubmitting)
             }
         }

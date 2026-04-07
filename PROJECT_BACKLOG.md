@@ -900,10 +900,10 @@
   - Notes:
     - Repo-side GitHub Actions deploy automation and the remote deploy script are now checked in; the remaining work is configuring repository variables/secrets and proving the first successful GitHub-triggered deploy.
 
-- [ ] TASK: Remove obsolete gameplay/home scaffolding and unused wrappers
+- [x] TASK: Remove obsolete gameplay/home scaffolding and unused wrappers
   - Type: Technical / Cleanup
   - Priority: P3
-  - Status: Planned
+  - Status: Completed
   - Area: `Services/GameFlowService`, `Views/GameFlow/GameFlowPlaceholderView`, `Views/Home`, `ViewModels/HomeViewModel`, `Models/GameStartRequest`
   - Goal: Remove dead or redundant app code left behind by earlier scaffolding so the current flow has fewer misleading entry points and placeholder types.
   - Acceptance Criteria:
@@ -912,12 +912,12 @@
     - Unreferenced model/service types are either deleted or given a real responsibility.
     - Previews and app entry points still compile cleanly after the cleanup.
   - Notes:
-    - Current concrete candidates include `GameFlowService`, `GameFlowPlaceholderView`, `HomeViewModel`, and `GameStartRequest`.
+    - Removed `GameFlowService`, `GameFlowPlaceholderView`, `HomeViewModel`, and `GameStartRequest`; `HomeView` now owns only its actual local state.
 
-- [ ] TASK: Remove legacy email-reporting composition code after the in-app reporting migration
+- [x] TASK: Remove legacy email-reporting composition code after the in-app reporting migration
   - Type: Technical / Cleanup
   - Priority: P3
-  - Status: Planned
+  - Status: Completed
   - Area: `Services/QuestionFeedbackComposer`, question-reporting flow
   - Goal: Delete leftover mail-oriented composition helpers that are no longer used now that question reporting submits structured payloads in-app.
   - Acceptance Criteria:
@@ -926,7 +926,7 @@
     - The remaining feedback composer API is centered on the structured report payload actually used by the app.
     - Existing in-app report submission behavior and tests remain intact.
   - Notes:
-    - Current concrete candidates include `QuestionFeedbackComposer.subject`, `QuestionFeedbackComposer.body`, and the mail-oriented `subjectLinePrefix` / `reviewRequest` helpers.
+    - Removed `QuestionFeedbackComposer.subject`, `QuestionFeedbackComposer.body`, the mail-oriented `subjectLinePrefix` / `reviewRequest` helpers, and the obsolete `Copy Report Details` action from the report sheet.
 
 - [ ] TASK: Add iPad support
   - Type: Feature / UX

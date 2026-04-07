@@ -4,7 +4,7 @@ import Testing
 
 struct QuestionFeedbackComposerTests {
     @Test
-    func bodyIncludesStructuredMetadataAndReasonSpecificReviewRequest() {
+    func reportTrimsNotesAndCarriesStructuredQuestionMetadata() {
         let composer = QuestionFeedbackComposer(
             context: QuestionFeedbackContext(
                 packID: "pack-id",
@@ -18,17 +18,16 @@ struct QuestionFeedbackComposerTests {
                 sourceURL: URL(string: "https://example.com/source")!
             ),
             reason: .tooDifficult,
-            note: "Most teams get stuck immediately."
+            note: "  Most teams get stuck immediately.  "
         )
 
-        #expect(composer.body.contains("Report Type: Too difficult"))
-        #expect(composer.body.contains("Review Request: Review difficulty calibration. This question may be too difficult for its current tier."))
-        #expect(composer.body.contains("Question ID: question-1"))
-        #expect(composer.body.contains("Category: Food & Drink"))
-        #expect(composer.body.contains("Difficulty Tier: Easy"))
-        #expect(composer.body.contains("Pack Title: Sample Pack"))
-        #expect(composer.body.contains("Source URL: https://example.com/source"))
-        #expect(composer.body.contains("Reporter Notes:\nMost teams get stuck immediately."))
+        let report = composer.report
+        #expect(report.reason == .tooDifficult)
+        #expect(report.note == "Most teams get stuck immediately.")
+        #expect(report.questionID == "question-1")
+        #expect(report.packTitle == "Sample Pack")
+        #expect(report.category == "Food & Drink")
+        #expect(report.sourceURL == URL(string: "https://example.com/source")!)
     }
 
     @Test

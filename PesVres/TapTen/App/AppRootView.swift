@@ -5,12 +5,12 @@ struct AppRootView: View {
 
     var body: some View {
         NavigationStack {
-            HomeView(viewModel: HomeViewModel())
+            HomeView()
         }
         .tint(.tapTenPlayfulOrange)
         .task {
             await QuestionFeedbackSubmissionService.shared.flushPendingReportsIfPossible()
-            await QuestionCalibrationSubmissionService.shared.submitPendingEventsIfPossible()
+            _ = await QuestionCalibrationSubmissionService.shared.submitPendingEventsIfPossible()
         }
         .onChange(of: scenePhase) { _, newValue in
             guard newValue == .active else {
@@ -19,7 +19,7 @@ struct AppRootView: View {
 
             Task {
                 await QuestionFeedbackSubmissionService.shared.flushPendingReportsIfPossible()
-                await QuestionCalibrationSubmissionService.shared.submitPendingEventsIfPossible()
+                _ = await QuestionCalibrationSubmissionService.shared.submitPendingEventsIfPossible()
             }
         }
     }
