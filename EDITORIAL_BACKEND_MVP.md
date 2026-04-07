@@ -238,6 +238,20 @@ Telemetry flow for MVP:
 - the Django backend ingests those payloads into `CalibrationEvent`
 - reviewer-facing telemetry on `review.playtapten.com/internal/insights` and each question detail page is derived from those same stored events
 
+## Revision Handling Note
+
+For the current MVP, question history is keyed by `packID + questionID + packVersion`.
+
+That means:
+
+- revised questions should keep `questionID` and bump `packVersion`
+- materially replaced questions should get a new `questionID`
+- the importer should reject changed content when `packVersion` did not change
+
+Nice-to-have after MVP:
+
+- add lineage support so the reviewer tool can relate replaced questions without merging their telemetry into one revision bucket
+
 That coupling matters: the app payload shape, backend ingest model, and reviewer UI metrics should be treated as one pipeline rather than independent features.
 
 ## Internal Web Routes

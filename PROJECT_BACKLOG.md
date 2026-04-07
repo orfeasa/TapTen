@@ -843,7 +843,7 @@
     - Reviewer accounts exist and at least one non-technical reviewer can complete a question review without repo access.
     - Backups, health checks, and basic restore notes exist before relying on the service.
   - Notes:
-    - Backend is live at `api.playtapten.com` and `review.playtapten.com`; feedback and calibration uploads are wired from the app now, while ops hardening and backup/restore work remain open.
+    - Backend is live at `api.playtapten.com` and `review.playtapten.com`; feedback and calibration uploads are wired from the app now, backups and restore notes exist, deploy automation is in GitHub Actions, and the remaining work is mainly operational adoption by real reviewers.
 
 - [x] TASK: Add self-hosted calibration telemetry upload
   - Type: Feature / Content QA / Technical
@@ -873,10 +873,10 @@
   - Notes:
     - Completed in the app with the live TestFlight endpoint configured through `QuestionCalibrationEndpointURL`.
 
-- [ ] TASK: Add backend ops baseline for the self-hosted service
+- [x] TASK: Add backend ops baseline for the self-hosted service
   - Type: Ops / Reliability
   - Priority: P3
-  - Status: In Progress
+  - Status: Completed
   - Area: VPS hardening, backups, logging, service management
   - Goal: Make the self-hosted backend recoverable and low-drama to operate.
   - Acceptance Criteria:
@@ -885,12 +885,12 @@
     - Daily database backups are produced and a restore path is documented.
     - Health check and logs are easy to inspect during tester rollout.
   - Notes:
-    - Checked-in deploy artifacts now cover rate limiting, daily SQLite backups, backup retention, and restore/logging guidance; the live server still needs those units and nginx changes applied.
+    - Completed on the VPS with nginx HTTPS, rate limiting, daily SQLite backups, restore guidance, and systemd-managed Gunicorn.
 
-- [ ] TASK: Add backend deployment automation for the editorial service
+- [x] TASK: Add backend deployment automation for the editorial service
   - Type: Ops / Tooling
   - Priority: P3
-  - Status: In Progress
+  - Status: Completed
   - Area: deployment workflow, VPS release process
   - Goal: Reduce manual backend releases after the first live rollout is stable.
   - Acceptance Criteria:
@@ -898,7 +898,21 @@
     - The automated path supports the existing nginx + Gunicorn + systemd deployment shape.
     - Failure modes are clear enough that a broken deploy can be rolled back or repaired quickly.
   - Notes:
-    - Repo-side GitHub Actions deploy automation and the remote deploy script are now checked in; the remaining work is configuring repository variables/secrets and proving the first successful GitHub-triggered deploy.
+    - Completed with the GitHub Actions `Backend Deploy` workflow, remote release script, rollback support, and a successful live deploy.
+
+- [ ] TASK: Add revision lineage support for replaced questions
+  - Type: Nice To Have / Product / Internal Tooling
+  - Priority: P3
+  - Status: Planned
+  - Area: backend catalog model, reviewer insights, revision history
+  - Goal: Preserve editorial continuity when a question is materially replaced while still keeping old telemetry and report history distinct from the new revision.
+  - Acceptance Criteria:
+    - The backend can model that one question revision supersedes or belongs to the same lineage as an older one.
+    - Reviewer pages can show current-revision signals separately from lineage-level history.
+    - Replacements do not require merging telemetry across incompatible question content.
+    - The workflow does not require new app payload fields in the first pass.
+  - Notes:
+    - Current safeguard is stricter: changed content must bump `packVersion`, and true replacements should use a new `questionID`. A future lineage field such as `lineage_id` or `supersedes_question_id` would make that workflow easier to review over time.
 
 - [x] TASK: Remove obsolete gameplay/home scaffolding and unused wrappers
   - Type: Technical / Cleanup

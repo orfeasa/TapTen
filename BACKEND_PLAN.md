@@ -279,6 +279,32 @@ Recommended deployment flow:
 6. Verify `GET /tapten/healthz`.
 7. Point the app build at the feedback endpoint.
 
+## Revision History Rule
+
+Question revision history should currently be preserved by treating this tuple as the revision identity:
+
+- `packID`
+- `questionID`
+- `packVersion`
+
+Operational rule:
+
+- keep `questionID` and bump `packVersion` when the same question is revised
+- assign a new `questionID` and bump `packVersion` when a question is materially replaced
+- do not ship changed content with the same `questionID` and same `packVersion`
+
+The importer now enforces that rule so telemetry and reports do not silently mix across incompatible revisions.
+
+## Nice To Have: Revision Lineage
+
+Later, the backend should support a lineage-level relationship such as `lineage_id` or `supersedes_question_id`.
+
+That would allow the reviewer tool to:
+
+- show current-revision signals separately from older revisions
+- preserve continuity when a new question replaces an older one
+- avoid requiring any app-side payload changes in the first pass
+
 For the current tester phase, subdomain-based deployment on the existing host is acceptable and now live on:
 
 - `api.playtapten.com`
