@@ -1,10 +1,15 @@
 from __future__ import annotations
 
 import json
+import tempfile
 from datetime import datetime, timezone as dt_timezone
+from io import StringIO
+from pathlib import Path
 from uuid import uuid4
 
 from django.contrib.auth import get_user_model
+from django.core.management import call_command
+from django.core.management.base import CommandError
 from django.test import Client, TestCase
 from django.test.utils import override_settings
 from django.urls import reverse
@@ -192,3 +197,88 @@ class EditorialBackendTests(TestCase):
         )
 
         self.assertEqual(response.status_code, 404)
+
+    def test_import_packs_rejects_changed_question_without_pack_version_bump(self) -> None:
+        payload = {
+            "id": "sample-pack",
+            "title": "Sample Pack",
+            "packVersion": "1.0",
+            "questions": [
+                {
+                    "id": "sample-question",
+                    "category": "Everyday Life",
+                    "prompt": "Things people misplace",
+                    "difficulty": "medium",
+                    "difficultyTier": "medium",
+                    "difficultyScore": 18,
+                    "validationStyle": "editorial",
+                    "contentType": "list",
+                    "quality": "draft",
+                    "tags": [],
+                    "difficultyNotes": "",
+                    "editorialNotes": "",
+                    "sourceURL": "https://example.com/source",
+                    "answers": [{"text": f"Answer {index}", "points": 1} for index in range(10)],
+                }
+            ],
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            pack_path = Path(temp_dir) / "SamplePack.json"
+            pack_path.write_text(json.dumps(payload), encoding="utf-8")
+
+            call_command("import_packs", source_path=temp_dir, stdout=StringIO())
+            self.assertEqual(QuestionCatalog.objects.count(), 1)
+
+            payload["questions"][0]["prompt"] = "Things people lose in the house"
+            pack_path.write_text(json.dumps(payload), encoding="utf-8")
+
+            with self.assertRaisesMessage(CommandError, "Bump packVersion for revised questions"):
+                call_command("import_packs", source_path=temp_dir, stdout=StringIO())
+
+        self.assertEqual(QuestionCatalog.objects.count(), 1)
+        stored_question = QuestionCatalog.objects.get()
+        self.assertEqual(stored_question.prompt, "Things people misplace")
+        self.assertTrue(stored_question.is_current)
+
+    def test_import_packs_allows_changed_question_after_pack_version_bump(self) -> None:
+        payload = {
+            "id": "sample-pack",
+            "title": "Sample Pack",
+            "packVersion": "1.0",
+            "questions": [
+                {
+                    "id": "sample-question",
+                    "category": "Everyday Life",
+                    "prompt": "Things people misplace",
+                    "difficulty": "medium",
+                    "difficultyTier": "medium",
+                    "difficultyScore": 18,
+                    "validationStyle": "editorial",
+                    "contentType": "list",
+                    "quality": "draft",
+                    "tags": [],
+                    "difficultyNotes": "",
+                    "editorialNotes": "",
+                    "sourceURL": "https://example.com/source",
+                    "answers": [{"text": f"Answer {index}", "points": 1} for index in range(10)],
+                }
+            ],
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            pack_path = Path(temp_dir) / "SamplePack.json"
+            pack_path.write_text(json.dumps(payload), encoding="utf-8")
+            call_command("import_packs", source_path=temp_dir, stdout=StringIO())
+
+            payload["packVersion"] = "1.1"
+            payload["questions"][0]["prompt"] = "Things people lose in the house"
+            pack_path.write_text(json.dumps(payload), encoding="utf-8")
+            call_command("import_packs", source_path=temp_dir, stdout=StringIO())
+
+        self.assertEqual(QuestionCatalog.objects.count(), 2)
+        current_question = QuestionCatalog.objects.get(is_current=True)
+        historical_question = QuestionCatalog.objects.get(is_current=False)
+        self.assertEqual(current_question.pack_version, "1.1")
+        self.assertEqual(current_question.prompt, "Things people lose in the house")
+        self.assertEqual(historical_question.pack_version, "1.0")

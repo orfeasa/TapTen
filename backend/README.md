@@ -55,6 +55,22 @@ The intended reviewer signals from that pipeline are:
 - skip rate
 - average time to first reveal
 
+## Revision Rule
+
+Question history stays intact as long as pack imports follow one rule:
+
+- if question content changes and it is still the same question, keep `questionID` and bump `packVersion`
+- if the old question is being replaced by a materially different prompt/answer set, assign a new `questionID` and bump `packVersion`
+- do not change question content while keeping both `questionID` and `packVersion` the same
+
+The importer now enforces that rule. It will reject a pack import when a question's content hash changes without a `packVersion` bump for that question revision.
+
+That means:
+
+- reimporting the exact same pack revision is safe
+- telemetry and reports remain attached to the original `(packID, questionID, packVersion)` revision
+- newer revisions accumulate their own history instead of silently mixing with old data
+
 ## Local Setup
 
 1. Create a virtual environment:
