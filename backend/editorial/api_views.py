@@ -4,7 +4,9 @@ import json
 from datetime import datetime, timezone as dt_timezone
 from uuid import UUID
 
+from django.conf import settings
 from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.shortcuts import redirect
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
@@ -50,6 +52,19 @@ def load_json_body(request: HttpRequest) -> dict | list | None:
 @require_GET
 def healthz(_request: HttpRequest) -> JsonResponse:
     return JsonResponse({"status": "ok"})
+
+
+@require_GET
+def root_entrypoint(request: HttpRequest) -> HttpResponse:
+    host = request.get_host().split(":")[0].lower()
+
+    if settings.TAPTEN_REVIEW_HOST and host == settings.TAPTEN_REVIEW_HOST:
+        return redirect("/internal/")
+
+    if host in {"127.0.0.1", "localhost"}:
+        return redirect("/internal/")
+
+    return HttpResponse(status=404)
 
 
 @csrf_exempt

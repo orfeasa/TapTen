@@ -4,6 +4,7 @@ from django.urls import include, path
 from editorial import api_views
 
 urlpatterns = [
+    path("", api_views.root_entrypoint, name="root-entrypoint"),
     path("admin/", admin.site.urls),
     path("tapten/healthz", api_views.healthz, name="healthz"),
     path(

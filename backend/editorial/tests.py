@@ -28,6 +28,16 @@ class EditorialBackendTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"status": "ok"})
 
+    @override_settings(
+        TAPTEN_REVIEW_HOST="review.playtapten.com",
+        ALLOWED_HOSTS=["testserver", "review.playtapten.com"],
+    )
+    def test_root_entrypoint_redirects_to_internal_on_review_host(self) -> None:
+        response = self.client.get("/", HTTP_HOST="review.playtapten.com")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response["Location"], "/internal/")
+
     def test_feedback_ingest_persists_report(self) -> None:
         payload = {
             "id": str(uuid4()),
