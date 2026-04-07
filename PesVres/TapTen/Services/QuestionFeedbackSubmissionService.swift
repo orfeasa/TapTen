@@ -50,19 +50,21 @@ enum QuestionFeedbackSubmissionStatus: Equatable, Sendable {
         switch self {
         case .sent:
             return "Report sent"
-        case .savedForRetry, .savedPendingConfiguration:
-            return "Report saved"
+        case .savedForRetry:
+            return "Report queued"
+        case .savedPendingConfiguration:
+            return "Couldn't send report"
         }
     }
 
     var message: String {
         switch self {
         case .sent:
-            return "Thanks. The question report was sent successfully."
+            return "Your report has been sent."
         case .savedForRetry:
-            return "The report was saved on this device and will retry automatically when the app is active again."
+            return "Your report will be sent automatically next time the app is online."
         case .savedPendingConfiguration:
-            return "The report was saved on this device. Delivery will start automatically once reporting is configured for this build."
+            return "There was an error sending your report. Please try again later."
         }
     }
 }
