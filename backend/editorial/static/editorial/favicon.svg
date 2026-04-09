@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffb14d"/>
-      <stop offset="55%" stop-color="#d96a26"/>
-      <stop offset="100%" stop-color="#8f3314"/>
+    <linearGradient id="review-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2b221d"/>
+      <stop offset="100%" stop-color="#6d4a2f"/>
     </linearGradient>
-    <linearGradient id="spark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff5d8"/>
-      <stop offset="100%" stop-color="#fff0b0"/>
+    <linearGradient id="review-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd48f"/>
+      <stop offset="100%" stop-color="#f0a54b"/>
     </linearGradient>
   </defs>
-  <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#bg)"/>
-  <circle cx="49" cy="16" r="6" fill="url(#spark)" opacity="0.95"/>
-  <path d="M45 10l1.8 3.7L50.5 15l-3.7 1.4L45 20l-1.8-3.6L39.5 15l3.7-1.3z" fill="#fff9e7"/>
-  <path d="M17 22h10v22h-6V28h-4z" fill="#fff8f0"/>
-  <path d="M31 24.5c2.1-1.8 4.7-2.5 7.7-2.5 6.7 0 11.3 4.2 11.3 10.5 0 4.1-1.9 7-5.7 9.8L40.2 45h10.4v5H31.8v-4.3l8.6-6.3c2.6-1.9 3.8-3.5 3.8-5.8 0-2.7-2-4.5-5.1-4.5-2.4 0-4.5.9-6.4 2.8z" fill="#fff8f0"/>
-  <rect x="4" y="4" width="56" height="56" rx="18" fill="none" stroke="#fff3de" stroke-opacity="0.45" stroke-width="1.5"/>
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#review-bg)"/>
+  <rect x="17" y="15" width="30" height="35" rx="9" fill="#fff7ee"/>
+  <rect x="24" y="11" width="16" height="8" rx="4" fill="url(#review-accent)"/>
+  <path d="M24 27h16" stroke="#d8c2ae" stroke-width="3" stroke-linecap="round"/>
+  <path d="M24 33h10" stroke="#d8c2ae" stroke-width="3" stroke-linecap="round"/>
+  <path d="M25 40l5 5 10-12" fill="none" stroke="#b85d1d" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="none" stroke="#fff4e4" stroke-opacity="0.18" stroke-width="1.5"/>
 </svg>

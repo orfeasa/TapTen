@@ -278,27 +278,24 @@ enum QuestionPackTestingConfiguration {
         #if TAPTEN_TESTER_UNLOCKS_ENABLED
         return true
         #else
-        if let boolValue = bundle.object(
-            forInfoDictionaryKey: "QuestionPackTesterUnlocksEnabled"
-        ) as? Bool {
-            return boolValue
-        }
-
-        if let stringValue = bundle.object(
-            forInfoDictionaryKey: "QuestionPackTesterUnlocksEnabled"
-        ) as? String,
-           let parsedStringValue = parsedBool(stringValue) {
-            return parsedStringValue
-        }
-
-        if let numericValue = bundle.object(
-            forInfoDictionaryKey: "QuestionPackTesterUnlocksEnabled"
-        ) as? NSNumber {
-            return numericValue.boolValue
-        }
-
-        return false
+        return inferredTesterUnlocksEnabled(
+            infoDictionaryValue: bundle.object(
+                forInfoDictionaryKey: "QuestionPackTesterUnlocksEnabled"
+            ),
+            receiptURL: bundle.appStoreReceiptURL
+        )
         #endif
+    }
+
+    nonisolated static func inferredTesterUnlocksEnabled(
+        infoDictionaryValue: Any?,
+        receiptURL: URL?
+    ) -> Bool {
+        if let parsedInfoDictionaryValue = parsedInfoDictionaryValue(infoDictionaryValue) {
+            return parsedInfoDictionaryValue
+        }
+
+        return isSandboxReceipt(receiptURL)
     }
 
     private nonisolated static func parsedBool(_ rawValue: String?) -> Bool? {
@@ -314,5 +311,26 @@ enum QuestionPackTestingConfiguration {
         default:
             return nil
         }
+    }
+
+    private nonisolated static func parsedInfoDictionaryValue(_ rawValue: Any?) -> Bool? {
+        if let boolValue = rawValue as? Bool {
+            return boolValue
+        }
+
+        if let stringValue = rawValue as? String,
+           let parsedStringValue = parsedBool(stringValue) {
+            return parsedStringValue
+        }
+
+        if let numericValue = rawValue as? NSNumber {
+            return numericValue.boolValue
+        }
+
+        return nil
+    }
+
+    private nonisolated static func isSandboxReceipt(_ receiptURL: URL?) -> Bool {
+        receiptURL?.lastPathComponent == "sandboxReceipt"
     }
 }

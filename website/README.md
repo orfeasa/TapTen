@@ -23,6 +23,7 @@ website/
 ## Files
 
 - `public/index.html`: landing page
+- `public/favicon.svg`: public website favicon
 - `public/privacy.html`: privacy policy
 - `public/styles.css`: shared styling
 - `AGENTS.md`: website-specific maintenance notes

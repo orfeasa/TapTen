@@ -83,6 +83,19 @@ class EditorialBackendTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Tap Ten Editorial Admin")
 
+    @override_settings(
+        TAPTEN_REVIEW_HOST="review.playtapten.com",
+        ALLOWED_HOSTS=["testserver", "review.playtapten.com"],
+    )
+    def test_login_page_links_to_absolute_review_favicon(self) -> None:
+        response = self.client.get(
+            reverse("editorial:login"),
+            HTTP_HOST="review.playtapten.com",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'href="/static/editorial/favicon.svg"')
+
     def test_logged_in_reviewer_can_open_question_detail(self) -> None:
         question = QuestionCatalog.objects.create(
             pack_id="everyday-life",
