@@ -123,6 +123,53 @@ class EditorialBackendTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Name things people lose")
 
+    def test_question_queue_supports_prompt_search(self) -> None:
+        matching_question = QuestionCatalog.objects.create(
+            pack_id="history",
+            pack_title="History Pack",
+            pack_version="1.0",
+            question_id="hist-events-that-can-start-a-revolution",
+            prompt="Events that can start a revolution",
+            category="History",
+            difficulty_tier="medium",
+            difficulty_score=23,
+            validation_style="editorial",
+            source_url="https://example.com/source",
+            quality="draft",
+            answers_json=[{"text": f"Answer {index}", "points": 1} for index in range(10)],
+            content_hash="hash-search-match",
+            is_current=True,
+        )
+        QuestionReviewState.objects.create(question_catalog=matching_question)
+
+        other_question = QuestionCatalog.objects.create(
+            pack_id="history",
+            pack_title="History Pack",
+            pack_version="1.0",
+            question_id="hist-famous-treaties",
+            prompt="Famous treaties people remember from school",
+            category="History",
+            difficulty_tier="medium",
+            difficulty_score=19,
+            validation_style="editorial",
+            source_url="https://example.com/other-source",
+            quality="draft",
+            answers_json=[{"text": f"Other {index}", "points": 1} for index in range(10)],
+            content_hash="hash-search-other",
+            is_current=True,
+        )
+        QuestionReviewState.objects.create(question_catalog=other_question)
+
+        self.client.force_login(self.user)
+        response = self.client.get(
+            reverse("editorial:question-list"),
+            {"search": "revolution"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Events that can start a revolution")
+        self.assertNotContains(response, "Famous treaties people remember from school")
+
     def test_question_detail_shows_recent_telemetry_events(self) -> None:
         question = QuestionCatalog.objects.create(
             pack_id="everyday-life",

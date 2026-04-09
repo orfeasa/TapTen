@@ -7,11 +7,15 @@ final class NewGameViewModel {
     var categories: [GameCategory]
     var includedCategoryIDs: Set<GameCategory.ID>
     var includedDifficultyTiers: Set<QuestionDifficulty>
+    private let settingsStore: AppSettingsStore
     private var suggestedTeamNamePairIndex = 0
+    private var teamANameSource: NewGameTeamNameSource = .manual
+    private var teamBNameSource: NewGameTeamNameSource = .manual
 
     init(
         settings: GameSettings = GameSettings(),
         categoryService: CategoryCatalogService = CategoryCatalogService(),
+        settingsStore: AppSettingsStore = .shared,
         initialSuggestedTeamNamePairIndex: Int? = nil
     ) {
         let loadedCategories = categoryService.categories()
@@ -19,6 +23,8 @@ final class NewGameViewModel {
         self.categories = loadedCategories
         self.includedCategoryIDs = Set(loadedCategories.map(\.id))
         self.includedDifficultyTiers = Set(QuestionDifficulty.allCases)
+        self.settingsStore = settingsStore
+        restorePersistedTeamNamesIfNeeded(initialPairIndex: initialSuggestedTeamNamePairIndex)
         seedSuggestedTeamNamesIfNeeded(initialPairIndex: initialSuggestedTeamNamePairIndex)
     }
 
@@ -142,10 +148,25 @@ final class NewGameViewModel {
                 && pair.teamB.caseInsensitiveCompare(currentTeamBName) == .orderedSame
 
             if !matchesCurrentNames {
+                teamANameSource = .random
+                teamBNameSource = .random
                 updateTeamNames(teamA: pair.teamA, teamB: pair.teamB)
+                persistTeamNameDraft()
                 return
             }
         }
+    }
+
+    func setTeamAName(_ name: String) {
+        teamANameSource = .manual
+        updateTeamNames(teamA: name, teamB: settings.teamBName)
+        persistTeamNameDraft()
+    }
+
+    func setTeamBName(_ name: String) {
+        teamBNameSource = .manual
+        updateTeamNames(teamA: settings.teamAName, teamB: name)
+        persistTeamNameDraft()
     }
 
     @discardableResult
@@ -155,6 +176,7 @@ final class NewGameViewModel {
         }
 
         updateTeamNames(teamA: trimmedTeamAName, teamB: trimmedTeamBName)
+        persistTeamNameDraft()
         return true
     }
 }
@@ -182,6 +204,31 @@ private extension NewGameViewModel {
 }
 
 private extension NewGameViewModel {
+    func restorePersistedTeamNamesIfNeeded(initialPairIndex: Int?) {
+        guard let draft = settingsStore.newGameTeamNameDraft else {
+            return
+        }
+
+        let selectedPair = seededPair(for: initialPairIndex)
+        let fallbackTeamA = selectedPair?.teamA ?? settings.teamAName
+        let fallbackTeamB = selectedPair?.teamB ?? settings.teamBName
+
+        let resolvedTeamA = resolveStoredTeamName(
+            storedName: draft.teamAName,
+            source: draft.teamASource,
+            fallback: fallbackTeamA
+        )
+        let resolvedTeamB = resolveStoredTeamName(
+            storedName: draft.teamBName,
+            source: draft.teamBSource,
+            fallback: fallbackTeamB
+        )
+
+        teamANameSource = resolvedTeamA.source
+        teamBNameSource = resolvedTeamB.source
+        updateTeamNames(teamA: resolvedTeamA.name, teamB: resolvedTeamB.name)
+    }
+
     func seedSuggestedTeamNamesIfNeeded(initialPairIndex: Int?) {
         let pairs = Self.suggestedTeamNamePairs
         guard shouldSeedSuggestedTeamNames,
@@ -189,12 +236,13 @@ private extension NewGameViewModel {
             return
         }
 
-        let selectedIndex = initialPairIndex.map { (($0 % pairs.count) + pairs.count) % pairs.count }
-            ?? Int.random(in: 0..<pairs.count)
-        let selectedPair = pairs[selectedIndex]
+        guard let selectedPair = seededPair(for: initialPairIndex) else {
+            return
+        }
 
+        teamANameSource = .random
+        teamBNameSource = .random
         updateTeamNames(teamA: selectedPair.teamA, teamB: selectedPair.teamB)
-        suggestedTeamNamePairIndex = (selectedIndex + 1) % pairs.count
     }
 
     var shouldSeedSuggestedTeamNames: Bool {
@@ -217,5 +265,46 @@ private extension NewGameViewModel {
             numberOfRounds: settings.numberOfRounds,
             roundDurationSeconds: settings.roundDurationSeconds
         )
+    }
+
+    func persistTeamNameDraft() {
+        settingsStore.setNewGameTeamNameDraft(
+            NewGameTeamNameDraft(
+                teamAName: trimmedTeamAName,
+                teamBName: trimmedTeamBName,
+                teamASource: teamANameSource,
+                teamBSource: teamBNameSource
+            )
+        )
+    }
+
+    func seededPair(for initialPairIndex: Int?) -> TeamNamePair? {
+        let pairs = Self.suggestedTeamNamePairs
+        guard !pairs.isEmpty else {
+            return nil
+        }
+
+        let selectedIndex = initialPairIndex.map { (($0 % pairs.count) + pairs.count) % pairs.count }
+            ?? Int.random(in: 0..<pairs.count)
+        suggestedTeamNamePairIndex = (selectedIndex + 1) % pairs.count
+        return pairs[selectedIndex]
+    }
+
+    func resolveStoredTeamName(
+        storedName: String,
+        source: NewGameTeamNameSource,
+        fallback: String
+    ) -> (name: String, source: NewGameTeamNameSource) {
+        let trimmedName = storedName.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        switch source {
+        case .manual:
+            guard !trimmedName.isEmpty else {
+                return (fallback, .random)
+            }
+            return (trimmedName, .manual)
+        case .random:
+            return (fallback, .random)
+        }
     }
 }

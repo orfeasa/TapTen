@@ -24,6 +24,8 @@ final class GameFlowViewModel {
         let pointsAwarded: Int
         let revealedAnswers: Int
         let totalAnswers: Int
+        let answers: [AnswerOption]
+        let revealedAnswerIndices: Set<Int>
         let feedbackContext: QuestionFeedbackContext
     }
 
@@ -269,6 +271,8 @@ final class GameFlowViewModel {
             pointsAwarded: pointsAwarded,
             revealedAnswers: revealedAnswers,
             totalAnswers: totalAnswers,
+            answers: currentRound.question.answers,
+            revealedAnswerIndices: hostRoundViewModel.revealedAnswerIndices,
             feedbackContext: feedbackContext
         )
         questionCalibrationTelemetryStore.recordRoundOutcome(

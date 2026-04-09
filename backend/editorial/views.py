@@ -32,6 +32,7 @@ User = get_user_model()
 
 def build_filters(request: HttpRequest) -> dict[str, str]:
     return {
+        "search": request.GET.get("search", "").strip(),
         "workflow_state": request.GET.get("workflow_state", "").strip(),
         "pack_id": request.GET.get("pack_id", "").strip(),
         "category": request.GET.get("category", "").strip(),
@@ -208,6 +209,10 @@ def question_list(request: HttpRequest) -> HttpResponse:
         "review_state__assigned_user",
     )
 
+    if filters["search"]:
+        questions = questions.filter(
+            Q(prompt__icontains=filters["search"]) | Q(question_id__icontains=filters["search"])
+        )
     if filters["workflow_state"]:
         questions = questions.filter(review_state__workflow_state=filters["workflow_state"])
     if filters["pack_id"]:

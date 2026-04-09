@@ -27,13 +27,19 @@ struct NewGameView: View {
                             teamField(
                                 title: "Team A",
                                 placeholder: "Enter Team A name",
-                                text: $viewModel.settings.teamAName
+                                text: Binding(
+                                    get: { viewModel.settings.teamAName },
+                                    set: { viewModel.setTeamAName($0) }
+                                )
                             )
 
                             teamField(
                                 title: "Team B",
                                 placeholder: "Enter Team B name",
-                                text: $viewModel.settings.teamBName
+                                text: Binding(
+                                    get: { viewModel.settings.teamBName },
+                                    set: { viewModel.setTeamBName($0) }
+                                )
                             )
                         }
                     }

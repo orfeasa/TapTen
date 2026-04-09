@@ -1,6 +1,18 @@
 import Foundation
 import Observation
 
+enum NewGameTeamNameSource: String, Codable, Equatable, Sendable {
+    case manual
+    case random
+}
+
+struct NewGameTeamNameDraft: Codable, Equatable, Sendable {
+    var teamAName: String
+    var teamBName: String
+    var teamASource: NewGameTeamNameSource
+    var teamBSource: NewGameTeamNameSource
+}
+
 @Observable
 final class AppSettingsStore {
     static let shared = AppSettingsStore()
@@ -10,6 +22,7 @@ final class AppSettingsStore {
         static let hapticsEnabled = "settings.hapticsEnabled"
         static let defaultRounds = "settings.defaultRounds"
         static let defaultTimerSeconds = "settings.defaultTimerSeconds"
+        static let newGameTeamNameDraft = "settings.newGameTeamNameDraft"
     }
 
     private let defaults: UserDefaults
@@ -21,6 +34,8 @@ final class AppSettingsStore {
     private(set) var defaultRounds: Int
 
     private(set) var defaultTimerSeconds: Int
+
+    private(set) var newGameTeamNameDraft: NewGameTeamNameDraft?
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
@@ -35,6 +50,7 @@ final class AppSettingsStore {
         hapticsEnabled = defaults.bool(forKey: Keys.hapticsEnabled)
         defaultRounds = Self.clampedRounds(defaults.integer(forKey: Keys.defaultRounds))
         defaultTimerSeconds = Self.clampedTimerSeconds(defaults.integer(forKey: Keys.defaultTimerSeconds))
+        newGameTeamNameDraft = Self.loadTeamNameDraft(from: defaults)
 
         defaults.set(defaultRounds, forKey: Keys.defaultRounds)
         defaults.set(defaultTimerSeconds, forKey: Keys.defaultTimerSeconds)
@@ -70,6 +86,20 @@ final class AppSettingsStore {
         defaultTimerSeconds = clampedSeconds
         defaults.set(clampedSeconds, forKey: Keys.defaultTimerSeconds)
     }
+
+    func setNewGameTeamNameDraft(_ draft: NewGameTeamNameDraft?) {
+        newGameTeamNameDraft = draft
+
+        guard let draft else {
+            defaults.removeObject(forKey: Keys.newGameTeamNameDraft)
+            return
+        }
+
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(draft) {
+            defaults.set(data, forKey: Keys.newGameTeamNameDraft)
+        }
+    }
 }
 
 private extension AppSettingsStore {
@@ -80,5 +110,19 @@ private extension AppSettingsStore {
     static func clampedTimerSeconds(_ seconds: Int) -> Int {
         let clamped = min(max(seconds, 30), 180)
         return (clamped / 5) * 5
+    }
+
+    static func loadTeamNameDraft(from defaults: UserDefaults) -> NewGameTeamNameDraft? {
+        guard let data = defaults.data(forKey: Keys.newGameTeamNameDraft) else {
+            return nil
+        }
+
+        let decoder = JSONDecoder()
+        guard let draft = try? decoder.decode(NewGameTeamNameDraft.self, from: data) else {
+            defaults.removeObject(forKey: Keys.newGameTeamNameDraft)
+            return nil
+        }
+
+        return draft
     }
 }

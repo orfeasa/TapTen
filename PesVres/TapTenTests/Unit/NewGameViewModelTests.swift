@@ -1,3 +1,4 @@
+import Foundation
 import Testing
 @testable import TapTen
 
@@ -118,8 +119,72 @@ struct NewGameViewModelTests {
         #expect(viewModel.settings.teamBName == "Custom B")
     }
 
+    @Test
+    func persistedManualTeamNamesAreRestored() throws {
+        let defaults = try makePersistentDefaults(prefix: "manual")
+        let store = AppSettingsStore(defaults: defaults)
+        store.setNewGameTeamNameDraft(
+            NewGameTeamNameDraft(
+                teamAName: "Custom A",
+                teamBName: "Custom B",
+                teamASource: .manual,
+                teamBSource: .manual
+            )
+        )
+
+        let viewModel = makeViewModel(
+            settingsStore: AppSettingsStore(defaults: defaults),
+            initialSuggestedTeamNamePairIndex: 3
+        )
+
+        #expect(viewModel.settings.teamAName == "Custom A")
+        #expect(viewModel.settings.teamBName == "Custom B")
+    }
+
+    @Test
+    func persistedRandomTeamNamesAreReseededOnNextInit() throws {
+        let defaults = try makePersistentDefaults(prefix: "random")
+        let store = AppSettingsStore(defaults: defaults)
+        store.setNewGameTeamNameDraft(
+            NewGameTeamNameDraft(
+                teamAName: "Old Random A",
+                teamBName: "Old Random B",
+                teamASource: .random,
+                teamBSource: .random
+            )
+        )
+
+        let viewModel = makeViewModel(
+            settingsStore: AppSettingsStore(defaults: defaults),
+            initialSuggestedTeamNamePairIndex: 2
+        )
+
+        #expect(viewModel.settings.teamAName == "Mildly Iconic")
+        #expect(viewModel.settings.teamBName == "Barely Ready")
+    }
+
+    @Test
+    func manualEditOnlyLocksEditedTeamName() throws {
+        let defaults = try makePersistentDefaults(prefix: "mixed")
+        let viewModel = makeViewModel(
+            settingsStore: AppSettingsStore(defaults: defaults),
+            initialSuggestedTeamNamePairIndex: 0
+        )
+
+        viewModel.setTeamAName("Custom A")
+
+        let reopenedViewModel = makeViewModel(
+            settingsStore: AppSettingsStore(defaults: defaults),
+            initialSuggestedTeamNamePairIndex: 3
+        )
+
+        #expect(reopenedViewModel.settings.teamAName == "Custom A")
+        #expect(reopenedViewModel.settings.teamBName == "Soft Launch")
+    }
+
     private func makeViewModel(
         settings: GameSettings = GameSettings(),
+        settingsStore: AppSettingsStore? = nil,
         initialSuggestedTeamNamePairIndex: Int? = nil
     ) -> NewGameViewModel {
         NewGameViewModel(
@@ -129,7 +194,22 @@ struct NewGameViewModelTests {
                     bundledLoader: QuestionPackLoader(packFileURLs: [])
                 )
             ),
+            settingsStore: settingsStore ?? makeTransientSettingsStore(),
             initialSuggestedTeamNamePairIndex: initialSuggestedTeamNamePairIndex
         )
+    }
+
+    private func makeTransientSettingsStore() -> AppSettingsStore {
+        let suiteName = "NewGameViewModelTests.transient.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suiteName)!
+        defaults.removePersistentDomain(forName: suiteName)
+        return AppSettingsStore(defaults: defaults)
+    }
+
+    private func makePersistentDefaults(prefix: String) throws -> UserDefaults {
+        let suiteName = "NewGameViewModelTests.\(prefix).\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suiteName))
+        defaults.removePersistentDomain(forName: suiteName)
+        return defaults
     }
 }

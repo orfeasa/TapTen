@@ -470,6 +470,7 @@ private struct RoundSummaryView: View {
     let continueAction: () -> Void
     @State private var animateHero = false
     @State private var showVerdict = false
+    @State private var isShowingAnswerReview = false
     @State private var soundPlayer = CountdownSoundService()
 
     var body: some View {
@@ -557,6 +558,16 @@ private struct RoundSummaryView: View {
                 .padding()
                 .background(Color.tapTenWarmCard, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
 
+                Button {
+                    isShowingAnswerReview = true
+                } label: {
+                    Label("Review Answers", systemImage: "list.bullet.rectangle.portrait")
+                        .font(.headline.weight(.semibold))
+                        .frame(maxWidth: .infinity, minHeight: 52)
+                }
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.capsule)
+
                 Button(action: continueAction) {
                     Label(continueTitle, systemImage: "arrow.right.circle.fill")
                         .font(.headline.weight(.semibold))
@@ -569,6 +580,9 @@ private struct RoundSummaryView: View {
         .navigationTitle("Round Summary")
         .navigationBarTitleDisplayMode(.inline)
         .background(roundSummaryBackground)
+        .sheet(isPresented: $isShowingAnswerReview) {
+            RoundAnswerReviewSheet(summary: summary)
+        }
         .onAppear {
             withAnimation(.spring(response: 0.34, dampingFraction: 0.8)) {
                 animateHero = true
@@ -622,6 +636,106 @@ private struct RoundSummaryView: View {
         default:
             return .strong
         }
+    }
+}
+
+private struct RoundAnswerReviewSheet: View {
+    let summary: GameFlowViewModel.RoundSummary
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    Text(summary.prompt)
+                        .font(.body.weight(.semibold))
+                        .fixedSize(horizontal: false, vertical: true)
+                } header: {
+                    Text("Prompt")
+                }
+
+                Section {
+                    if foundAnswerRows.isEmpty {
+                        Text("No answers were found this round.")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        ForEach(foundAnswerRows, id: \.offset) { row in
+                            RoundAnswerReviewRow(answer: row.element, isRevealed: true)
+                        }
+                    }
+                } header: {
+                    Text("Found \(foundAnswerRows.count)")
+                }
+
+                Section {
+                    if missedAnswerRows.isEmpty {
+                        Text("They found every answer.")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        ForEach(missedAnswerRows, id: \.offset) { row in
+                            RoundAnswerReviewRow(answer: row.element, isRevealed: false)
+                        }
+                    }
+                } header: {
+                    Text("Missed \(missedAnswerRows.count)")
+                }
+            }
+            .navigationTitle("Round Answers")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+    }
+
+    private var foundAnswerRows: [(offset: Int, element: AnswerOption)] {
+        sortedAnswerRows.filter { summary.revealedAnswerIndices.contains($0.offset) }
+    }
+
+    private var missedAnswerRows: [(offset: Int, element: AnswerOption)] {
+        sortedAnswerRows.filter { !summary.revealedAnswerIndices.contains($0.offset) }
+    }
+
+    private var sortedAnswerRows: [(offset: Int, element: AnswerOption)] {
+        Array(summary.answers.enumerated())
+            .sorted { lhs, rhs in
+                let comparison = lhs.element.text.localizedCaseInsensitiveCompare(rhs.element.text)
+                if comparison == .orderedSame {
+                    return lhs.offset < rhs.offset
+                }
+                return comparison == .orderedAscending
+            }
+    }
+}
+
+private struct RoundAnswerReviewRow: View {
+    let answer: AnswerOption
+    let isRevealed: Bool
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: isRevealed ? "checkmark.circle.fill" : "circle")
+                .foregroundStyle(isRevealed ? Color.tapTenRevealGreen : .secondary)
+                .font(.title3)
+
+            Text(answer.text)
+                .font(.body.weight(.medium))
+                .foregroundStyle(.primary)
+
+            Spacer()
+
+            Text("\(answer.points)")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(Color.tapTenWarmCard, in: Capsule())
+        }
+        .padding(.vertical, 4)
     }
 }
 
@@ -973,6 +1087,8 @@ private extension GameFlowView {
                 pointsAwarded: 8,
                 revealedAnswers: 5,
                 totalAnswers: 10,
+                answers: GameFlowView.sampleAnswers,
+                revealedAnswerIndices: Set([0, 1, 3, 5, 7]),
                 feedbackContext: QuestionFeedbackContext(
                     packID: "preview-pack",
                     packTitle: "Preview Pack",

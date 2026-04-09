@@ -130,6 +130,30 @@ struct GameFlowViewModelTests {
     }
 
     @Test
+    func roundSummaryCarriesAnswerReviewData() throws {
+        let viewModel = GameFlowViewModel(
+            settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),
+            enabledCategoryNames: ["Factual"],
+            questionPacks: [makePack(questionCount: 1)],
+            randomIndexProvider: { _ in 0 },
+            randomSassyCommentProvider: { comments in
+                comments.first ?? ""
+            }
+        )
+
+        viewModel.showQuestionPreview()
+        viewModel.startRound()
+        let hostRoundViewModel = try #require(viewModel.hostRoundViewModel)
+        hostRoundViewModel.toggleAnswer(at: 1)
+        hostRoundViewModel.toggleAnswer(at: 4)
+        viewModel.finalizeActiveRoundIfNeeded()
+
+        let summary = try #require(viewModel.latestRoundSummary)
+        #expect(summary.answers.count == 10)
+        #expect(summary.revealedAnswerIndices == Set([1, 4]))
+    }
+
+    @Test
     func showQuestionPreviewAddsReadStepBeforeHostRound() {
         let viewModel = GameFlowViewModel(
             settings: GameSettings(teamAName: "A", teamBName: "B", numberOfRounds: 1, roundDurationSeconds: 60),

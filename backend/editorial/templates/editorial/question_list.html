@@ -7,6 +7,10 @@
     <h1>Question Queue</h1>
     <form method="get" class="grid two">
       <div>
+        <label for="search">Prompt or question ID</label>
+        <input type="text" name="search" id="search" value="{{ filters.search }}">
+      </div>
+      <div>
         <label for="workflow_state">Workflow state</label>
         <select name="workflow_state" id="workflow_state">
           <option value="">All</option>

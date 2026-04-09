@@ -36,4 +36,25 @@ struct AppSettingsStoreTests {
         let reloadedStore = AppSettingsStore(defaults: defaults)
         #expect(reloadedStore.defaultTimerSeconds == 70)
     }
+
+    @Test
+    func newGameTeamNameDraftPersistsPerTeamSources() throws {
+        let suiteName = "AppSettingsStoreTests.teamDraft.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suiteName))
+        defaults.removePersistentDomain(forName: suiteName)
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+
+        let draft = NewGameTeamNameDraft(
+            teamAName: "Custom A",
+            teamBName: "Cold Pizza",
+            teamASource: .manual,
+            teamBSource: .random
+        )
+
+        let store = AppSettingsStore(defaults: defaults)
+        store.setNewGameTeamNameDraft(draft)
+
+        let reloadedStore = AppSettingsStore(defaults: defaults)
+        #expect(reloadedStore.newGameTeamNameDraft == draft)
+    }
 }
