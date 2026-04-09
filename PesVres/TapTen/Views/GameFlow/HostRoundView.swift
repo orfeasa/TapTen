@@ -628,7 +628,8 @@ private struct HostRoundQuestionFeedbackSheet: View {
                         dismiss()
                     }
                 } label: {
-                    Label(isSubmitting ? "Sending Report..." : "Send Report", systemImage: "paperplane.fill")
+                    Text(isSubmitting ? "Sending Report..." : "Send Report")
+                        .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
