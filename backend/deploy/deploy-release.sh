@@ -5,7 +5,11 @@ DEPLOY_ROOT="${DEPLOY_ROOT:?DEPLOY_ROOT is required}"
 RELEASE_ID="${RELEASE_ID:?RELEASE_ID is required}"
 RELEASE_TARBALL="${RELEASE_TARBALL:?RELEASE_TARBALL is required}"
 IMPORT_PACKS="${IMPORT_PACKS:-true}"
-KEEP_RELEASES="${KEEP_RELEASES:-5}"
+KEEP_RELEASES="${KEEP_RELEASES:-1}"
+case "$KEEP_RELEASES" in
+  1|2) ;;
+  *) echo "KEEP_RELEASES must be 1 (active only) or 2 (one rollback)." >&2; exit 1 ;;
+esac
 
 RELEASES_DIR="$DEPLOY_ROOT/releases"
 SHARED_DIR="$DEPLOY_ROOT/shared"
@@ -19,6 +23,9 @@ for command_name in python3 rsync curl tar; do
     exit 1
   fi
 done
+
+# Fail before mutating the shared environment if restart permission is missing.
+sudo -n -l /usr/bin/systemctl restart tapten-backend.service >/dev/null
 
 mkdir -p "$RELEASES_DIR" "$SHARED_DIR" "$CURRENT_DIR"
 shopt -s nullglob
@@ -61,6 +68,7 @@ if [[ ! -d "$SHARED_VENV" ]]; then
   python3 -m venv "$SHARED_VENV"
 fi
 
+"$SHARED_VENV/bin/python" -m pip install --upgrade pip
 "$SHARED_VENV/bin/python" -m pip install -r "$RELEASE_DIR/backend/requirements.txt"
 
 rm -rf "$RELEASE_DIR/backend/.venv"
@@ -82,13 +90,9 @@ sync_release_into_current() {
   rsync -a --delete "$source_dir"/ "$CURRENT_DIR"/
 }
 
-reload_backend() {
-  if ! pgrep -f "gunicorn.*tapten_backend.wsgi:application" >/dev/null; then
-    echo "Gunicorn process is not running." >&2
-    exit 1
-  fi
-
-  pkill -HUP -f "gunicorn.*tapten_backend.wsgi:application"
+restart_backend() {
+  # HUP can retain the old Python interpreter/modules after dependency upgrades.
+  sudo -n /usr/bin/systemctl restart tapten-backend.service
   sleep 2
 }
 
@@ -104,13 +108,13 @@ check_health() {
 }
 
 sync_release_into_current "$RELEASE_DIR"
-reload_backend
+restart_backend
 
 if ! check_health; then
   if [[ -n "$PREVIOUS_RELEASE" && -d "$PREVIOUS_RELEASE" ]]; then
     echo "Health check failed. Restoring previous release $PREVIOUS_RELEASE." >&2
     sync_release_into_current "$PREVIOUS_RELEASE"
-    reload_backend
+    restart_backend
   fi
   echo "Deploy failed health check." >&2
   exit 1

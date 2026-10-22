@@ -13,9 +13,9 @@ on:
         type: boolean
         default: true
       keep_releases:
-        description: Number of release directories to keep on the server
+        description: Release directories to keep (1 active only, or 2 with one rollback)
         required: true
-        default: "5"
+        default: "1"
 
 jobs:
   deploy:

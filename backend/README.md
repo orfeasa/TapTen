@@ -264,7 +264,7 @@ Default paths:
 
 - live DB: `TAPTEN_SQLITE_PATH`, default `/var/lib/tapten/tapten.db`
 - backup root: `TAPTEN_BACKUP_ROOT`, default `/var/backups/tapten`
-- retention: `TAPTEN_BACKUP_RETENTION_DAYS`, default `14`
+- retention: one verified snapshot and its SHA-256 checksum; failures preserve the previous snapshot
 
 Each backup run creates:
 
@@ -313,9 +313,9 @@ The backend deploy workflow is now:
    - `manage.py collectstatic --noinput`
    - optional `manage.py import_packs`
 7. Syncs the prepared release into `~/tapten-backend/current/`.
-8. Reloads Gunicorn with `HUP`.
+8. Restarts `tapten-backend.service` to load the installed dependencies (requires narrowly scoped passwordless systemctl restart permission).
 9. Verifies `GET /tapten/healthz` locally.
-10. Keeps a small rolling release history for rollback.
+10. Keeps only the active release by default; `keep_releases=2` permits at most one previous version.
 
 ### Required GitHub configuration
 
@@ -376,6 +376,17 @@ If you want stricter pinning, paste that output into the `BACKEND_DEPLOY_KNOWN_H
 
 ### Rollback
 
-If a deploy fails its health check after syncing into `current`, the remote script automatically restores the most recent prior release directory and reloads Gunicorn.
+If a deploy fails its health check after syncing into `current`, the remote script automatically restores the most recent prior release directory and restarts the service.
 
-Manual rollback remains possible by syncing a previous directory from `~/tapten-backend/releases/` back into `~/tapten-backend/current/` and sending Gunicorn another `HUP`.
+Manual rollback remains possible by syncing a previous directory from `~/tapten-backend/releases/` back into `~/tapten-backend/current/` and restarting `tapten-backend.service`. This restores source only: the shared virtualenv is not rolled back. Reinstall the prior release requirements in the runtime environment before restarting when reverting a dependency change; database migrations require separate review.
+
+### Dependency and backup maintenance
+
+Deployments upgrade pip before installing requirements. Django stays on the 5.2 LTS line, with an explicit sqlparse security floor. For manual environment creation, run `backend/.venv/bin/python -m pip install --upgrade pip` first. The deployment account needs permission for `/usr/bin/systemctl restart tapten-backend.service`; preflight checks this before modifying the shared environment.
+
+Backups use Python's SQLite backup API, a per-directory advisory lock, private temporary files, SQLite integrity validation, gzip validation and a SHA-256 checksum. Publication happens only after verification; older snapshots are removed last. Interrupted temporary directories are removed under the same lock on the next run. Verify the checksum and restore to a disposable database before relying on a snapshot.
+
+Validate changes with `python -m unittest discover -s backend/deploy -p 'test_*.py'`,
+then run `manage.py test` and `manage.py makemigrations --check --dry-run` from
+`backend` with a disposable `TAPTEN_SQLITE_PATH`. Run `pip check` and
+`pip-audit -r backend/requirements.txt` in an isolated environment.
